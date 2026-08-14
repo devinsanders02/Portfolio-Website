@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Devin Sanders</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Specific styles for About Page */
+    .about-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+      .about-header { padding: 2.5rem 3rem; }
+    }
+    .brand-name {
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--text-dark);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .about-nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .about-nav-links a {
+      font-weight: 300;
+      font-size: 0.875rem;
+      color: var(--text-dark);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .about-nav-links a:hover { opacity: 0.6; }
+
+    .about-hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+    @media (min-width: 768px) {
+      .about-hero { padding: 4rem 3rem 6rem; }
+    }
+    .about-title {
+      font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--text-dark);
+      margin: 1.5rem 0 2rem;
+      max-width: 900px;
+    }
+    .about-intro {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-weight: 300;
+      line-height: 1.6;
+      color: #2C3E50AA;
+      max-width: 800px;
+    }
+
+    .content-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .content-grid-2col {
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+        padding: 5rem 3rem;
+      }
+    }
+    .section-title {
+      font-weight: 800;
+      font-size: 1.75rem;
+      color: var(--text-dark);
+      margin: 0.75rem 0 1.5rem;
+    }
+
+    /* Beliefs List */
+    .belief-item {
+      display: flex;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+      align-items: flex-start;
+    }
+    .belief-num {
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--accent-orange);
+      opacity: 0.45;
+      line-height: 1;
+      width: 2.25rem;
+    }
+    .belief-content h4 {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      margin-bottom: 0.25rem;
+    }
+    .belief-content p {
+      font-weight: 300;
+      font-size: 0.95rem;
+      color: #2C3E50AA;
+      line-height: 1.5;
+    }
+
+    /* Timeline Section */
+    .timeline-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+      border-top: 1px solid rgba(44, 62, 80, 0.08);
+    }
+    @media (min-width: 768px) {
+      .timeline-section { padding: 5rem 3rem; }
+    }
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid rgba(44, 62, 80, 0.08);
+    }
+    @media (min-width: 768px) {
+      .timeline-row {
+        grid-template-columns: 240px 1fr;
+        gap: 3rem;
+      }
+    }
+    .timeline-date {
+      font-weight: 300;
+      font-size: 0.875rem;
+      color: #2C3E5070;
+    }
+    .timeline-content h4 {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--text-dark);
+    }
+    .timeline-company {
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--accent-orange);
+      margin: 0.2rem 0 0.75rem;
+    }
+    .timeline-desc {
+      font-weight: 300;
+      font-size: 0.95rem;
+      color: #2C3E50AA;
+      line-height: 1.6;
+    }
+
+    /* Skills Grid */
+    .skills-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+      border-top: 1px solid rgba(44, 62, 80, 0.08);
+    }
+    @media (min-width: 768px) {
+      .skills-section { padding: 5rem 3rem; }
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+    }
+    @media (min-width: 640px) {
+      .skills-grid { grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+    }
+    .skill-col h5 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+    .skill-col ul {
+      list-style: none;
+    }
+    .skill-col li {
+      font-weight: 300;
+      font-size: 0.95rem;
+      color: #2C3E50AA;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Education Block */
+    .education-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    @media (min-width: 640px) {
+      .education-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .edu-label {
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: #2C3E5070;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .edu-val {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      margin-top: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Slide-Down Top-Third Index Overlay Panel -->
+  <div id="index-overlay" class="index-overlay-panel">
+    <div class="overlay-top-bar">
+      <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6);">Index</span>
+      <button id="close-overlay-btn" style="background: none; border: none; cursor: pointer; color: white; display: flex; align-items: center;" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+          <line x1="4" y1="4" x2="20" y2="20"></line>
+          <line x1="20" y1="4" x2="4" y2="20"></line>
+        </svg>
+      </button>
+    </div>
+    <nav class="overlay-nav-links">
+      <div class="overlay-link-item">
+        <span>01</span>
+        <a href="work.html" class="overlay-link">Work</a>
+      </div>
+      <div class="overlay-link-item">
+        <span>02</span>
+        <a href="about.html" class="overlay-link">About</a>
+      </div>
+      <div class="overlay-link-item">
+        <span>03</span>
+        <button id="overlay-contact-link" class="overlay-link">Contact</button>
+      </div>
+    </nav>
+    <div class="overlay-footer-line">
+      <span>devin.sanders02@gmail.com</span>
+      <span>Rexburg, ID</span>
+    </div>
+  </div>
+
+  <!-- Floating Orange Peak Nav Button -->
+  <button id="floating-nav-btn" class="floating-peak-btn" aria-label="Open Navigation">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M2 14 L6.5 5 L10 10 L16 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+
+  <!-- Top Header Navigation -->
+  <header class="about-header">
+    <a href="index.html" class="brand-name">Devin Sanders</a>
+    <nav class="about-nav-links">
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="mailto:devin.sanders02@gmail.com">Resume</a>
+    </nav>
+  </header>
+
+  <!-- Hero Headline -->
+  <section class="about-hero">
+    <span class="uppercase-label">About</span>
+    <h1 class="about-title">I design brands that deserve to be believed in.</h1>
+    <p class="about-intro">
+      I'm a brand and graphic designer based in Rexburg, Idaho, currently finishing my BA in Graphic Design at BYU-Idaho. My work sits at the intersection of strategic thinking and visual craft.
+    </p>
+  </section>
+
+  <!-- Story & Philosophy 2-Column Section -->
+  <section class="content-grid-2col">
+    <div>
+      <span class="uppercase-label">My Story</span>
+      <h2 class="section-title">From curiosity to conviction</h2>
+      <p style="font-weight: 300; font-size: 1rem; line-height: 1.7; color: #2C3E50AA; margin-bottom: 1.25rem;">
+        Design wasn't something I discovered overnight — it was something that slowly revealed itself through years of noticing things other people didn't. The spacing on a sign. The weight of a typeface. The way a well-designed package made you trust what was inside before you ever opened it.
+      </p>
+      <p style="font-weight: 300; font-size: 1rem; line-height: 1.7; color: #2C3E50AA;">
+        That curiosity led me to BYU-Idaho, where I've been immersing myself in the fundamentals: typography, grid systems, brand architecture, and packaging.
+      </p>
+    </div>
+
+    <div>
+      <span class="uppercase-label">Philosophy</span>
+      <h2 class="section-title">What I believe</h2>
+
+      <div class="belief-item">
+        <div class="belief-num">01</div>
+        <div class="belief-content">
+          <h4>Integrity</h4>
+          <p>Doing the right work the right way, even when nobody is watching.</p>
+        </div>
+      </div>
+
+      <div class="belief-item">
+        <div class="belief-num">02</div>
+        <div class="belief-content">
+          <h4>Craft</h4>
+          <p>Sweating the details because details are what separate good from great.</p>
+        </div>
+      </div>
+
+      <div class="belief-item">
+        <div class="belief-num">03</div>
+        <div class="belief-content">
+          <h4>Growth</h4>
+          <p>Approaching every brief with a beginner's mind and an appetite for critique.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Career Timeline Section -->
+  <section class="timeline-section">
+    <span class="uppercase-label">Experience</span>
+    <h2 class="section-title" style="margin-bottom: 2rem;">Career Journey</h2>
+
+    <div class="timeline-row">
+      <div class="timeline-date">Jun 2025 — Present</div>
+      <div class="timeline-content">
+        <h4>Ecommerce Visual Designer</h4>
+        <div class="timeline-company">Rippl Marketing</div>
+        <p class="timeline-desc">Creating high-volume product infographics for major brands including WANDRD, Borka Tools, and KleenBore. Building complete Amazon Brand Stores and researching competitor content strategies.</p>
+      </div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="timeline-date">Apr 2023 — Jul 2024</div>
+      <div class="timeline-content">
+        <h4>Data Entry Specialist</h4>
+        <div class="timeline-company">BYU-Idaho Career Center</div>
+        <p class="timeline-desc">Organized and maintained alumni data with high accuracy, supporting targeted outreach and communication efforts.</p>
+      </div>
+    </div>
+
+    <div class="timeline-row" style="border-bottom: none;">
+      <div class="timeline-date">Apr 2021 — Mar 2023</div>
+      <div class="timeline-content">
+        <h4>Volunteer Representative</h4>
+        <div class="timeline-company">The Church of Jesus Christ of Latter-day Saints</div>
+        <p class="timeline-desc">Led a team of 14 volunteers, coordinating daily responsibilities and dedicating 30+ hours weekly to community outreach and teaching.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href="mailto:devin.sanders02@gmail.com" class="btn-primary" style="padding: 0.85rem 2rem;">View Full Resume</a>
+      <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; border-radius: 6px; border: 1px solid rgba(44,62,80,0.2); text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 0.875rem; background: #fff; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+        LinkedIn
+      </a>
+    </div>
+  </section>
+
+  <!-- Skills & Capabilities Section -->
+  <section class="skills-section">
+    <span class="uppercase-label">Capabilities</span>
+    <h2 class="section-title">Skills & Tools</h2>
+
+    <div class="skills-grid">
+      <div class="skill-col">
+        <h5>Design Tools</h5>
+        <ul>
+          <li>Illustrator</li>
+          <li>Photoshop</li>
+          <li>InDesign</li>
+          <li>After Effects</li>
+        </ul>
+      </div>
+
+      <div class="skill-col">
+        <h5>Design Focus</h5>
+        <ul>
+          <li>Brand Identity</li>
+          <li>Typography</li>
+          <li>Grid Systems</li>
+          <li>Packaging Design</li>
+          <li>E-Commerce Visual Design</li>
+        </ul>
+      </div>
+
+      <div class="skill-col">
+        <h5>Additional</h5>
+        <ul>
+          <li>Amazon A+ Content</li>
+          <li>Brand Stores</li>
+          <li>Client Communication</li>
+          <li>Research & Content Strategy</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section class="skills-section" style="border-bottom: 1px solid rgba(44, 62, 80, 0.08); padding-bottom: 6rem;">
+    <span class="uppercase-label">Education</span>
+    <h2 class="section-title">BYU-Idaho</h2>
+
+    <div class="education-grid">
+      <div>
+        <div class="edu-label">Degree</div>
+        <div class="edu-val">BA, Graphic Design</div>
+      </div>
+      <div>
+        <div class="edu-label">Location</div>
+        <div class="edu-val">Rexburg, ID</div>
+      </div>
+      <div>
+        <div class="edu-label">Expected</div>
+        <div class="edu-val">July 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dark Footer -->
+  <footer id="contact" class="site-footer">
+    <div class="footer-max-width">
+      <span class="uppercase-label">Get in Touch</span>
+      <h2 class="footer-heading">Let's build<br>something meaningful.</h2>
+
+      <div>
+        <a href="mailto:devin.sanders02@gmail.com" class="footer-link">devin.sanders02@gmail.com</a>
+      </div>
+      <div style="margin-top: 0.25rem;">
+        <a href="tel:+17206550390" class="footer-link">(720) 655-0390</a>
+      </div>
+
+      <div style="display: flex; gap: 1.5rem; margin-top: 1.25rem;">
+        <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer" class="footer-link" style="color: rgba(255,255,255,0.5);">LinkedIn</a>
+        <a href="https://www.behance.net/devinsanders" target="_blank" rel="noopener noreferrer" class="footer-link" style="color: rgba(255,255,255,0.5);">Behance</a>
+      </div>
+
+      <hr class="footer-divider">
+
+      <div class="footer-sub-row">
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="work.html" class="footer-link" style="color: rgba(255,255,255,0.5);">Work</a>
+          <a href="about.html" class="footer-link" style="color: rgba(255,255,255,0.5);">About</a>
+        </div>
+        <p style="font-weight: 300; font-size: 0.75rem; color: rgba(255,255,255,0.3);">
+          © <span id="copyright-year">2026</span> Devin Sanders. Crafted with intention.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
