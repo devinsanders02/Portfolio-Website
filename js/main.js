@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(scrollToContact, 450);
   });
 
-  // Render Alternating Project Cards with Interactive Galleries
+  // 1. Render Featured Work Feed (index.html)
   const container = document.getElementById('featured-work-container');
   if (container && typeof projects !== 'undefined') {
     const featuredProjects = projects.slice(0, 5);
@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
       card.className = 'project-card-wrapper';
       card.style.backgroundColor = bgColor;
 
-      // 1. Hero Gallery Image & Bars
       let barsHtml = '';
       if (allImages.length > 1) {
         barsHtml = `
@@ -77,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
-      // 2. Secondary 2-Image Grid
       let secondaryHtml = '';
       if (secondaryImages.length >= 2) {
         secondaryHtml = `
@@ -126,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       container.appendChild(card);
 
-      // Gallery Click / Indicator Event Binding
       let currentIdx = 0;
       const imgEl = document.getElementById(`img-display-${index}`);
       const boxEl = document.getElementById(`gallery-box-${index}`);
@@ -164,5 +161,90 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
     });
+  }
+
+  // 2. Render Full Archive Grid (work.html)
+  const workGrid = document.getElementById('work-grid');
+  if (workGrid && typeof projects !== 'undefined') {
+    projects.forEach((proj) => {
+      const item = document.createElement('a');
+      item.href = `project.html?slug=${proj.slug}`;
+      item.className = 'archive-card';
+      item.innerHTML = `
+        <div class="archive-thumb-box">
+          <img src="${proj.heroImage}" alt="${proj.title}">
+        </div>
+        <div class="archive-card-title">${proj.title}</div>
+        <div class="archive-card-meta">${proj.services} · ${proj.year}</div>
+      `;
+      workGrid.appendChild(item);
+    });
+  }
+
+  // 3. Render Dynamic Project Case Study (project.html)
+  const detailContainer = document.getElementById('project-detail-content');
+  if (detailContainer && typeof projects !== 'undefined') {
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentSlug = urlParams.get('slug');
+    const project = projects.find(p => p.slug === currentSlug) || projects[0];
+
+    if (project) {
+      document.title = `${project.title} | Devin Sanders`;
+
+      detailContainer.innerHTML = `
+        <section class="proj-hero-banner">
+          <img src="${project.heroImage}" alt="${project.title}">
+          <div class="proj-hero-title-overlay">
+            <h1 class="proj-big-title">${project.title}</h1>
+          </div>
+        </section>
+
+        <section class="proj-meta-grid">
+          <div>
+            <span class="uppercase-label" style="margin-bottom: 0.75rem;">${project.industry || 'Case Study'}</span>
+            <p class="proj-summary-text">${project.summary}</p>
+          </div>
+          <div>
+            <div class="meta-item">
+              <div class="meta-label">Client</div>
+              <div class="meta-val">${project.title}</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Services</div>
+              <div class="meta-val">${project.services}</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Year</div>
+              <div class="meta-val">${project.year}</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-narrative">
+          <div>
+            <h3>The Challenge</h3>
+            <p>${project.challenge || 'No challenge description provided.'}</p>
+          </div>
+          <div>
+            <h3>The Strategy</h3>
+            <p>${project.strategy || 'No strategy description provided.'}</p>
+          </div>
+          <div>
+            <h3>The Process</h3>
+            <p>${project.process || 'No process description provided.'}</p>
+          </div>
+          <div>
+            <h3>The Outcome</h3>
+            <p>${project.outcome || 'No outcome description provided.'}</p>
+          </div>
+        </section>
+
+        <section class="case-gallery-feed">
+          ${(project.galleryImages || []).map(img => `
+            <img src="${img}" alt="${project.title} image showcase">
+          `).join('')}
+        </section>
+      `;
+    }
   }
 });
