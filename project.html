@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details | Devin Sanders</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .proj-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 1.5rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+      .proj-header { padding: 2.5rem 3rem; }
+    }
+    .back-link {
+      font-weight: 300;
+      font-size: 0.875rem;
+      color: var(--text-dark);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 0.6; }
+
+    .proj-hero-banner {
+      width: 100%;
+      max-height: 80vh;
+      overflow: hidden;
+      background-color: #111;
+      position: relative;
+    }
+    .proj-hero-banner img {
+      width: 100%;
+      height: 100%;
+      max-height: 80vh;
+      object-fit: cover;
+      display: block;
+      opacity: 0.85;
+    }
+    .proj-hero-title-overlay {
+      position: absolute;
+      bottom: 2rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+      .proj-hero-title-overlay { bottom: 3rem; left: 3rem; right: 3rem; }
+    }
+    .proj-big-title {
+      font-size: clamp(2rem, 6vw, 4.5rem);
+      font-weight: 800;
+      color: #FFF;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .proj-meta-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+      border-bottom: 1px solid rgba(44, 62, 80, 0.08);
+    }
+    @media (min-width: 768px) {
+      .proj-meta-grid {
+        grid-template-columns: 2fr 1fr;
+        gap: 4rem;
+        padding: 5rem 3rem;
+      }
+    }
+    .proj-summary-text {
+      font-weight: 300;
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      line-height: 1.6;
+      color: #2C3E50CC;
+    }
+    .meta-item {
+      margin-bottom: 1.5rem;
+    }
+    .meta-item .meta-label {
+      font-size: 0.75rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 0.25rem;
+    }
+    .meta-item .meta-val {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    /* Case Study Narrative */
+    .case-narrative {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    @media (min-width: 768px) {
+      .case-narrative {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        padding: 5rem 3rem;
+      }
+    }
+    .case-narrative h3 {
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      margin-bottom: 0.75rem;
+    }
+    .case-narrative p {
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #2C3E50AA;
+    }
+
+    /* Gallery Feed */
+    .case-gallery-feed {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem 6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    @media (min-width: 768px) {
+      .case-gallery-feed { padding: 0 3rem 8rem; gap: 3rem; }
+    }
+    .case-gallery-feed img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+      background-color: #E2E8F0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="proj-header">
+    <a href="index.html" class="brand-name" style="font-weight:800; font-size:1.15rem; color:var(--text-dark); text-decoration:none;">Devin Sanders</a>
+    <a href="work.html" class="back-link">← All Work</a>
+  </header>
+
+  <main id="project-detail-content">
+    <!-- Rendered dynamically by main.js -->
+  </main>
+
+  <!-- Dark Footer -->
+  <footer id="contact" class="site-footer">
+    <div class="footer-max-width">
+      <span class="uppercase-label">Get in Touch</span>
+      <h2 class="footer-heading">Let's build<br>something meaningful.</h2>
+
+      <div>
+        <a href="mailto:devin.sanders02@gmail.com" class="footer-link">devin.sanders02@gmail.com</a>
+      </div>
+      <div style="margin-top: 0.25rem;">
+        <a href="tel:+17206550390" class="footer-link">(720) 655-0390</a>
+      </div>
+
+      <div style="display: flex; gap: 1.5rem; margin-top: 1.25rem;">
+        <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer" class="footer-link" style="color: rgba(255,255,255,0.5);">LinkedIn</a>
+        <a href="https://www.behance.net/devinsanders" target="_blank" rel="noopener noreferrer" class="footer-link" style="color: rgba(255,255,255,0.5);">Behance</a>
+      </div>
+
+      <hr class="footer-divider">
+
+      <div class="footer-sub-row">
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="work.html" class="footer-link" style="color: rgba(255,255,255,0.5);">Work</a>
+          <a href="about.html" class="footer-link" style="color: rgba(255,255,255,0.5);">About</a>
+        </div>
+        <p style="font-weight: 300; font-size: 0.75rem; color: rgba(255,255,255,0.3);">
+          © <span id="copyright-year">2026</span> Devin Sanders. Crafted with intention.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
