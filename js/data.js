@@ -16,7 +16,7 @@ const projects = [
       'https://media.base44.com/images/public/6a2996660aceb7da373642dc/f09202f31_generated_image.png',
       'https://media.base44.com/images/public/6a2996660aceb7da373642dc/39845e16c_generated_image.png',
     ],
-    challenge: 'Ridgeline Coffee wanted to differentiate in a saturated craft coffee market. They needed an identity that honored the quiet ritual of specialty coffee while standing apart from the rustic clichés common in the industry.',
+    challenge: 'Rexburg Rapids was dated, and felt corporate. From messaging to imagery, it was in need of something more fun and more energetic all while feeling safe and grounded.',
     strategy: 'Through competitive analysis and stakeholder interviews, we identified a positioning centered on "elevation through simplicity" — the idea that great coffee, like great design, requires removing the unnecessary.',
     process: 'We explored over 40 wordmark directions before landing on a custom Barlow-inspired letterform with subtle geometric modifications. The packaging system uses a restrained kraft palette with a single accent color per roast origin.',
     outcome: 'The rebrand launched across 12 retail locations and an e-commerce platform. Early feedback showed a 34% increase in shelf recognition and a stronger emotional connection with the target audience.',
