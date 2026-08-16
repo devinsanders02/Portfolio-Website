@@ -1,13 +1,13 @@
 const projects = [
   {
-    slug: 'ridgeline-coffee',
-    title: 'Ridgeline Coffee Co.',
-    summary: 'A complete brand identity for an artisanal coffee roaster rooted in mountain-town culture. From wordmark to packaging, every touchpoint reflects the craft and ritual of specialty coffee.',
-    industry: 'Food & Beverage',
-    services: 'Brand Identity, Packaging, Print',
-    year: '2025',
-    accentColor: '#8B6F47',
-    heroImage: 'https://media.base44.com/images/public/6a2996660aceb7da373642dc/794ce99fb_generated_cdb455f8.png',
+    slug: 'rexburg-rapids-rebrand',
+    title: 'Rexburg Rapids Rebrand',
+    summary: 'Rexburg Rapids had the essentials of a community splash park, but the brand felt dated and disconnected that the facility brings. This rebrand transforms Rexburg Rapids into an energetic and vibrant place based around fun, safety and community. The new brand celebrates making memories while reinforcing the park as the heart of summer in Rexburg.',
+    industry: 'Recreation',
+    services: 'Brand Identity, Typography, Branding',
+    year: '2026',
+    accentColor: '#0066cc',
+    heroImage: 'RexburgRapids-Hero.jpg',
     galleryImages: [
       'https://media.base44.com/images/public/6a2996660aceb7da373642dc/173892b0c_generated_5e8c4ec2.png',
       'https://media.base44.com/images/public/6a2996660aceb7da373642dc/3c82661c5_generated_image.png',
