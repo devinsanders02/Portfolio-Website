@@ -29,7 +29,7 @@ const projects = [
     services: 'Brand Strategy, Identity, E-Commerce',
     year: '2025',
     accentColor: '#121212',
-    heroImage: 'WANDRD-Hero.jpg',
+    heroImage: 'WANDRD-Hero.png',
     galleryImages: [
       'https://media.base44.com/images/public/6a2996660aceb7da373642dc/e1c6e35a7_generated_fc167436.png',
       'https://media.base44.com/images/public/6a2996660aceb7da373642dc/5afe61d09_generated_d4128b95.png',
