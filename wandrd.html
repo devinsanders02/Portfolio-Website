@@ -6,7 +6,7 @@
   <title>WANDRD Amazon Brand Store | Devin Sanders</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body style="background-color: #0d0e11; color: #fff;">
+<body style="background-color: #000000; color: #ffffff;">
 
   <!-- Sticky Morphing Logo Header -->
   <nav class="sticky-brand-nav">
@@ -21,55 +21,45 @@
     </div>
   </nav>
 
-  <!-- Turnstyle-Style 100vh Full Bleed Hero -->
+  <!-- 100vh Hero Banner (Scaled-down Typography) -->
   <header class="turnstyle-hero-banner">
-    <img src="WANDRD-Hero.png" alt="WANDRD Project Showcase" class="turnstyle-hero-bg">
+    <img src="wandrd-hero.jpg" alt="WANDRD Project Showcase" class="turnstyle-hero-bg">
     <div class="turnstyle-hero-overlay"></div>
     
     <div class="turnstyle-hero-content">
-      <h1 class="turnstyle-headline">Brand Ecosystem for Amazon</h1>
+      <h1 class="turnstyle-headline" style="font-size: clamp(2rem, 4.2vw, 3.75rem); max-width: 650px;">
+        Building an Elevated E-Commerce Storefront
+      </h1>
       
       <div class="turnstyle-caption-block">
         <div class="turnstyle-caption-title">WANDRD Brand Store</div>
-        <p class="turnstyle-caption-text">E-Commerce Visual Design & Amazon Store Strategy</p>
+        <p class="turnstyle-caption-text">Amazon Store Strategy & Product Graphic Systems</p>
       </div>
     </div>
   </header>
 
-  <!-- Main Case Study Content -->
-  <main class="case-dark-section">
+  <!-- Main Narrative & Showcase -->
+  <main class="case-dark-section" style="background-color: #000000; padding-top: 5rem;">
 
-    <!-- Component 1: Context Block ("Designed for Amazon") -->
-    <div class="case-section-header">
-      <div class="line"></div>
-      <span class="label">In Context</span>
-    </div>
-
-    <div class="case-context-block">
-      <div>
-        <img src="wandrd-laptop.jpg" alt="WANDRD Store on Laptop">
+    <!-- 1. Intro Narrative & Challenge Grid -->
+    <section class="case-intro-block" style="max-width: 1200px; margin: 0 auto 6rem;">
+      <div style="display: grid; grid-template-columns: 1fr; gap: 2.5rem;" class="intro-grid-responsive">
+        <div>
+          <span class="uppercase-label" style="margin-bottom: 0.75rem; color: var(--accent-orange);">Overview</span>
+          <p style="font-weight: 300; font-size: 1.15rem; line-height: 1.6; color: #ffffff;">
+            WANDRD designs versatile travel gear and camera bags for creatives. This project focused on structuring their comprehensive Amazon Brand Store into an intuitive, high-conversion visual ecosystem.
+          </p>
+        </div>
+        <div>
+          <span class="uppercase-label" style="margin-bottom: 0.75rem; color: rgba(255,255,255,0.45);">The Challenge</span>
+          <p style="font-weight: 300; font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.7);">
+            Amazon's rigid layout modules often dilute distinctive brand identities. The goal was to overcome these grid limitations through custom lifestyle tiles, bold typographic callouts, and tailored infographics that feel authentic to WANDRD.
+          </p>
+        </div>
       </div>
-      <div>
-        <h2 class="context-headline">
-          Designed<br>For<br><span class="outline-txt">Amazon</span>
-        </h2>
-        <p style="font-weight: 300; font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.7);">
-          The brand store operates within Amazon's tightly constrained template system. Every layout decision had to work within those boundaries while still feeling distinctly WANDRD.
-        </p>
-      </div>
-    </div>
+    </section>
 
-    <!-- Component 2: Infographics Showcase -->
-    <div class="case-section-header">
-      <div class="line"></div>
-      <span class="label">Infographics</span>
-    </div>
-
-    <div class="case-phone-showcase">
-      <img src="wandrd-phones.jpg" alt="WANDRD Amazon Mobile Infographics">
-    </div>
-
-    <!-- Component 3: Alternating Brand Store Feature Rows -->
+    <!-- 2. The Brand Store (3 Alternating Rows) -->
     <div class="case-section-header">
       <div class="line"></div>
       <span class="label">The Brand Store</span>
@@ -89,7 +79,7 @@
       </div>
     </div>
 
-    <!-- 02 Product Page (Reversed) -->
+    <!-- 02 Product Page (PRVKE) -->
     <div class="case-feature-split reverse">
       <div class="feature-media">
         <img src="wandrd-store-02.jpg" alt="WANDRD PRVKE Product Page">
@@ -103,7 +93,7 @@
       </div>
     </div>
 
-    <!-- 03 Fernweh Page -->
+    <!-- 03 Product Page (Fernweh) -->
     <div class="case-feature-split">
       <div class="feature-media">
         <img src="wandrd-store-03.jpg" alt="WANDRD Fernweh Product Page">
@@ -115,6 +105,36 @@
           The layout presents the travel bag line with a storytelling approach — place, mood, and product together.
         </p>
       </div>
+    </div>
+
+    <!-- 3. In Context (Designed for Amazon) -->
+    <div class="case-section-header" style="margin-top: 7rem;">
+      <div class="line"></div>
+      <span class="label">In Context</span>
+    </div>
+
+    <div class="case-context-block">
+      <div>
+        <img src="wandrd-laptop.jpg" alt="WANDRD Store on Laptop">
+      </div>
+      <div>
+        <h2 class="context-headline">
+          Designed<br>For<br><span class="outline-txt">Amazon</span>
+        </h2>
+        <p style="font-weight: 300; font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.7);">
+          The brand store operates within Amazon's tightly constrained template system. Every layout decision had to work within those boundaries while still feeling distinctly WANDRD.
+        </p>
+      </div>
+    </div>
+
+    <!-- 4. Infographics (Final Section) -->
+    <div class="case-section-header" style="margin-top: 7rem;">
+      <div class="line"></div>
+      <span class="label">Infographics</span>
+    </div>
+
+    <div class="case-phone-showcase">
+      <img src="wandrd-phones.jpg" alt="WANDRD Amazon Mobile Infographics">
     </div>
 
   </main>
