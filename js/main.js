@@ -51,9 +51,27 @@ document.addEventListener('DOMContentLoaded', () => {
       const allImages = [project.heroImage, ...(project.galleryImages || [])].filter(Boolean);
       const secondaryImages = (project.galleryImages || []).filter(Boolean).slice(0, 2);
 
-      const titleWords = project.title.split(' ');
-      const firstWord = titleWords[0];
-      const restTitle = titleWords.slice(1).join(' ');
+      // Smart Title Split: handles "Name - Subtitle", "Name — Subtitle", or single first word
+      let coloredPart = '';
+      let restPart = '';
+
+      if (project.title.includes('—')) {
+        const parts = project.title.split('—');
+        coloredPart = parts[0].trim();
+        restPart = parts.slice(1).join('—').trim();
+      } else if (project.title.includes(' - ')) {
+        const parts = project.title.split(' - ');
+        coloredPart = parts[0].trim();
+        restPart = parts.slice(1).join(' - ').trim();
+      } else if (project.title.includes('-')) {
+        const parts = project.title.split('-');
+        coloredPart = parts[0].trim();
+        restPart = parts.slice(1).join('-').trim();
+      } else {
+        const titleWords = project.title.split(' ');
+        coloredPart = titleWords[0];
+        restPart = titleWords.slice(1).join(' ');
+      }
 
       const bgColor = isAccentBg ? (project.accentColor || '#2C3E50') : '#F4F5F7';
       const textColor = isAccentBg ? '#FFFFFF' : '#2C3E50';
@@ -102,8 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="project-info-grid">
           <div>
             <h2 class="project-title" style="color: ${textColor};">
-              <span style="color: ${firstWordColor};">${firstWord}</span>
-              ${restTitle ? ` — ${restTitle}` : ''}
+              <span style="color: ${firstWordColor};">${coloredPart}</span>
+              ${restPart ? ` — ${restPart}` : ''}
             </h2>
             <p class="project-services" style="color: ${metaColor};">${project.services}</p>
           </div>
