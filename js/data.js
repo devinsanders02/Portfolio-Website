@@ -28,7 +28,7 @@ const projects = [
     industry: 'E-Commerce',
     services: 'Brand Strategy, Identity, E-Commerce',
     year: '2025',
-    accentColor: '#000000',
+    accentColor: '#121212',
     heroImage: 'https://media.base44.com/images/public/6a2996660aceb7da373642dc/19574786f_generated_010441bd.png',
     galleryImages: [
       'https://media.base44.com/images/public/6a2996660aceb7da373642dc/e1c6e35a7_generated_fc167436.png',
