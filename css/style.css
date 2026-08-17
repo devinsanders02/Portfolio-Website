@@ -737,3 +737,10 @@ footer.site-footer {
   border-radius: 8px;
   display: block;
 }
+
+@media (min-width: 768px) {
+  .intro-grid-responsive {
+    grid-template-columns: 1.25fr 1fr !important;
+    gap: 4.5rem !important;
+  }
+}
