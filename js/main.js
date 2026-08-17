@@ -41,6 +41,18 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(scrollToContact, 450);
   });
 
+  // Sticky Brand Logo Morph On Scroll
+  const brandNav = document.querySelector('.sticky-brand-nav');
+  if (brandNav) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        brandNav.classList.add('scrolled');
+      } else {
+        brandNav.classList.remove('scrolled');
+      }
+    }, { passive: true });
+  }
+
   // 1. Render Featured Work Feed (index.html)
   const container = document.getElementById('featured-work-container');
   if (container && typeof projects !== 'undefined') {
@@ -51,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const allImages = [project.heroImage, ...(project.galleryImages || [])].filter(Boolean);
       const secondaryImages = (project.galleryImages || []).filter(Boolean).slice(0, 2);
 
-      // Smart Title Split: handles "Name - Subtitle", "Name — Subtitle", or single first word
       let coloredPart = '';
       let restPart = '';
 
@@ -109,6 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
+      const projectUrl = project.slug === 'wandrd' ? 'wandrd.html' : `project.html?slug=${project.slug}`;
+
       card.innerHTML = `
         <div class="gallery-container">
           <div class="gallery-image-box" id="gallery-box-${index}">
@@ -127,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <div>
             <p class="project-summary" style="color: ${summaryColor};">${project.summary}</p>
-            <a href="project.html?slug=${project.slug}" class="project-link-btn" style="color: ${textColor};">
+            <a href="${projectUrl}" class="project-link-btn" style="color: ${textColor};">
               View Project Details
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -186,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (workGrid && typeof projects !== 'undefined') {
     projects.forEach((proj) => {
       const item = document.createElement('a');
-      item.href = `project.html?slug=${proj.slug}`;
+      item.href = proj.slug === 'wandrd' ? 'wandrd.html' : `project.html?slug=${proj.slug}`;
       item.className = 'archive-card';
       item.innerHTML = `
         <div class="archive-thumb-box">
@@ -197,72 +210,5 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       workGrid.appendChild(item);
     });
-  }
-
-  // 3. Render Dynamic Project Case Study (project.html)
-  const detailContainer = document.getElementById('project-detail-content');
-  if (detailContainer && typeof projects !== 'undefined') {
-    const urlParams = new URLSearchParams(window.location.search);
-    const currentSlug = urlParams.get('slug');
-    const project = projects.find(p => p.slug === currentSlug) || projects[0];
-
-    if (project) {
-      document.title = `${project.title} | Devin Sanders`;
-
-      detailContainer.innerHTML = `
-        <section class="proj-hero-banner">
-          <img src="${project.heroImage}" alt="${project.title}">
-          <div class="proj-hero-title-overlay">
-            <h1 class="proj-big-title">${project.title}</h1>
-          </div>
-        </section>
-
-        <section class="proj-meta-grid">
-          <div>
-            <span class="uppercase-label" style="margin-bottom: 0.75rem;">${project.industry || 'Case Study'}</span>
-            <p class="proj-summary-text">${project.summary}</p>
-          </div>
-          <div>
-            <div class="meta-item">
-              <div class="meta-label">Client</div>
-              <div class="meta-val">${project.title}</div>
-            </div>
-            <div class="meta-item">
-              <div class="meta-label">Services</div>
-              <div class="meta-val">${project.services}</div>
-            </div>
-            <div class="meta-item">
-              <div class="meta-label">Year</div>
-              <div class="meta-val">${project.year}</div>
-            </div>
-          </div>
-        </section>
-
-        <section class="case-narrative">
-          <div>
-            <h3>The Challenge</h3>
-            <p>${project.challenge || 'No challenge description provided.'}</p>
-          </div>
-          <div>
-            <h3>The Strategy</h3>
-            <p>${project.strategy || 'No strategy description provided.'}</p>
-          </div>
-          <div>
-            <h3>The Process</h3>
-            <p>${project.process || 'No process description provided.'}</p>
-          </div>
-          <div>
-            <h3>The Outcome</h3>
-            <p>${project.outcome || 'No outcome description provided.'}</p>
-          </div>
-        </section>
-
-        <section class="case-gallery-feed">
-          ${(project.galleryImages || []).map(img => `
-            <img src="${img}" alt="${project.title} image showcase">
-          `).join('')}
-        </section>
-      `;
-    }
   }
 });
