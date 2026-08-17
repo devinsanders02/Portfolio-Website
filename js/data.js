@@ -1,7 +1,7 @@
 const projects = [
   {
-    slug: 'rexburg-rapids-rebrand',
-    title: 'Rexburg Rapids Rebrand',
+    slug: 'rexburg-rapids',
+    title: 'Rexburg Rapids - Rebrand',
     summary: 'Rexburg Rapids had the essentials of a community splash park, but the brand felt dated and disconnected that the facility brings. This rebrand transforms Rexburg Rapids into an energetic and vibrant place based around fun, safety and community. The new brand celebrates making memories while reinforcing the park as the heart of summer in Rexburg.',
     industry: 'Recreation',
     services: 'Brand Identity, Typography, Branding',
