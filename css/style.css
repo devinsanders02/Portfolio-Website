@@ -257,7 +257,7 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
 .secondary-images-row {
   margin-top: 4rem;
   display: flex;
-  justify-content: flex-end; /* Right-aligned */
+  justify-content: flex-end;
   width: 100%;
 }
 
@@ -270,9 +270,9 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
 
 @media (min-width: 768px) {
   .secondary-images-grid {
-    width: 90%; /* Spans 90% across the container to the right edge */
-    grid-template-columns: 1.8fr 1fr; /* Left image wider, right image narrower */
-    height: 440px; /* Locked matching height */
+    width: 90%;
+    grid-template-columns: 1.8fr 1fr;
+    height: 440px;
     gap: 1.5rem;
   }
 }
@@ -466,4 +466,274 @@ footer.site-footer {
     justify-content: space-between;
     align-items: center;
   }
+}
+
+/* ==========================================================================
+   TURNSTYLE-STYLE FULL BLEED HERO & MORPHING LOGO
+   ========================================================================== */
+
+/* Fixed Top Brand Navigation */
+.sticky-brand-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 90;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+.brand-morph-link {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* Container holding both logos */
+.morph-logo-box {
+  position: relative;
+  height: 38px;
+  display: flex;
+  align-items: center;
+}
+
+.morph-logo-box .logo-full,
+.morph-logo-box .logo-mark {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* Initially: Full logo visible, Icon mark hidden */
+.morph-logo-box .logo-full {
+  opacity: 1;
+  transform: translateX(0);
+}
+.morph-logo-box .logo-mark {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transform: translateX(-8px) scale(0.9);
+}
+
+/* Scrolled State: Full logo fades, Icon mark pins */
+.sticky-brand-nav.scrolled {
+  padding: 1.25rem 2rem;
+}
+.sticky-brand-nav.scrolled .logo-full {
+  opacity: 0;
+  transform: translateX(-8px);
+  pointer-events: none;
+}
+.sticky-brand-nav.scrolled .logo-mark {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+/* Turnstyle 100vh Full-Bleed Hero */
+.turnstyle-hero-banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.turnstyle-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+}
+
+.turnstyle-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 45%, rgba(0,0,0,0.1) 100%);
+  z-index: 2;
+}
+
+.turnstyle-hero-content {
+  position: relative;
+  z-index: 3;
+  padding: 3.5rem 2rem;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .turnstyle-hero-content { padding: 4.5rem 3.5rem; }
+}
+
+.turnstyle-headline {
+  font-size: clamp(2.5rem, 6.5vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  max-width: 750px;
+  margin-bottom: 2rem;
+}
+
+.turnstyle-caption-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.turnstyle-caption-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+}
+
+.turnstyle-caption-text {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   REUSABLE CASE STUDY COMPONENTS (WANDRD, BISTRO, ETC.)
+   ========================================================================== */
+
+.case-dark-section {
+  background-color: #0d0e11;
+  color: #ffffff;
+  padding: 5rem 1.5rem;
+}
+@media (min-width: 768px) {
+  .case-dark-section { padding: 7rem 3rem; }
+}
+
+.case-section-header {
+  max-width: 1200px;
+  margin: 0 auto 3.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.case-section-header .line {
+  width: 40px;
+  height: 2px;
+  background-color: var(--accent-orange);
+}
+.case-section-header .label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+/* 1. Alternating Split Row */
+.case-feature-split {
+  max-width: 1200px;
+  margin: 0 auto 5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .case-feature-split {
+    grid-template-columns: 1.4fr 1fr;
+    gap: 4rem;
+  }
+  .case-feature-split.reverse {
+    grid-template-columns: 1fr 1.4fr;
+  }
+  .case-feature-split.reverse .feature-media {
+    order: 2;
+  }
+  .case-feature-split.reverse .feature-copy {
+    order: 1;
+  }
+}
+.feature-media img {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+}
+.feature-copy .step-num {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.feature-copy h3 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+.feature-copy p {
+  font-weight: 300;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.7);
+}
+
+/* 2. Side-by-Side Context Block */
+.case-context-block {
+  max-width: 1200px;
+  margin: 0 auto 6rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .case-context-block {
+    grid-template-columns: 1.3fr 1fr;
+    gap: 4.5rem;
+  }
+}
+.case-context-block img {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+}
+.context-headline {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+.context-headline .outline-txt {
+  -webkit-text-stroke: 1px rgba(255,255,255,0.6);
+  color: transparent;
+  display: block;
+}
+
+/* 3. Full-Bleed Infographic Showcase */
+.case-phone-showcase {
+  max-width: 1200px;
+  margin: 0 auto 5rem;
+}
+.case-phone-showcase img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
 }
