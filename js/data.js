@@ -24,7 +24,7 @@ const projects = [
   {
     slug: 'wandrd',
     title: 'WANDRD - Amazon Brand Store',
-    summary: 'Brand strategy and visual identity for a sustainable outdoor apparel company committed to ethical manufacturing and timeless design. The system spans from hangtags to digital storefronts.',
+    summary: 'A refreshed brand store built using Amazon modules with the goal to create a central hub for users to find all of the products that WANDRD has to offer on Amazon.',
     industry: 'E-Commerce',
     services: 'Brand Strategy, Identity, E-Commerce',
     year: '2025',
