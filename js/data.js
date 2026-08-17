@@ -46,7 +46,7 @@ const projects = [
   {
     slug: 'kindred-roots',
     title: 'Kindred Roots - Magazine',
-    summary: 'A bold visual identity and digital experience for an AI-powered analytics platform. The brand bridges the gap between cutting-edge technology and human-centered communication.',
+    summary: 'A magazine designed to capture the spirit of connection and wandering through a new age of technology.',
     industry: 'Print',
     services: 'Brand Identity, UI Design, Motion',
     year: '2024',
