@@ -120,7 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
-      const projectUrl = project.slug === 'wandrd' ? 'wandrd.html' : `project.html?slug=${project.slug}`;
+      // Dynamic page routing: routes custom-built case studies directly
+      const projectUrl = project.slug === 'wandrd' 
+        ? 'wandrd.html' 
+        : project.slug === 'rexburg-rapids' 
+        ? 'rexburg-rapids.html' 
+        : `project.html?slug=${project.slug}`;
 
       card.innerHTML = `
         <div class="gallery-container">
@@ -199,7 +204,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (workGrid && typeof projects !== 'undefined') {
     projects.forEach((proj) => {
       const item = document.createElement('a');
-      item.href = proj.slug === 'wandrd' ? 'wandrd.html' : `project.html?slug=${proj.slug}`;
+      item.href = proj.slug === 'wandrd' 
+        ? 'wandrd.html' 
+        : proj.slug === 'rexburg-rapids' 
+        ? 'rexburg-rapids.html' 
+        : `project.html?slug=${proj.slug}`;
       item.className = 'archive-card';
       item.innerHTML = `
         <div class="archive-thumb-box">
