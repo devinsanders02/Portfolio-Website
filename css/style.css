@@ -139,19 +139,20 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
 
 /* Project Section Cards */
 .project-card-wrapper {
-  padding: 3rem 1.5rem;
+  padding: 3.5rem 1.5rem;
   transition: background-color 0.7s ease;
+  overflow-x: hidden;
 }
 
 @media (min-width: 768px) {
-  .project-card-wrapper { padding: 5rem 3rem; }
+  .project-card-wrapper { padding: 6rem 3rem; }
 }
 
 @media (min-width: 1024px) {
-  .project-card-wrapper { padding: 5rem 5rem; }
+  .project-card-wrapper { padding: 6rem 5rem; }
 }
 
-/* 1. Hero Gallery Image & Bars (Fixed 16/10 Ratio) */
+/* 1. Hero Gallery Image & Bars (80% Left-Aligned) */
 .gallery-container {
   width: 100%;
 }
@@ -184,7 +185,7 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 1.25rem;
   width: 100%;
 }
 
@@ -197,9 +198,9 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
   transition: all 0.3s ease;
 }
 
-/* 2. Info Block */
+/* 2. Info Block (80% Left-Aligned) */
 .project-info-grid {
-  margin-top: 2.5rem;
+  margin-top: 2.75rem;
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
@@ -208,7 +209,7 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
 
 @media (min-width: 768px) {
   .project-info-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.1fr 1fr;
     gap: 4rem;
     width: 80%;
   }
@@ -216,8 +217,8 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
 
 .project-title {
   font-weight: 800;
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  line-height: 1.2;
+  font-size: clamp(1.6rem, 3.2vw, 2.35rem);
+  line-height: 1.18;
   letter-spacing: -0.02em;
 }
 
@@ -230,7 +231,7 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
 .project-summary {
   font-weight: 300;
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.65;
   margin-bottom: 1.25rem;
 }
 
@@ -252,46 +253,56 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
   transform: translateX(4px);
 }
 
-/* 3. Secondary Image Grid */
+/* 3. Secondary Image Grid (Right-Aligned, 90% Width, Asymmetric Split, Locked Height) */
 .secondary-images-row {
-  margin-top: 3rem;
+  margin-top: 4rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end; /* Right-aligned */
+  width: 100%;
 }
 
 .secondary-images-grid {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
 }
 
 @media (min-width: 768px) {
   .secondary-images-grid {
-    width: 65%;
-    gap: 1rem;
+    width: 90%; /* Spans 90% across the container to the right edge */
+    grid-template-columns: 1.8fr 1fr; /* Left image wider, right image narrower */
+    height: 440px; /* Locked matching height */
+    gap: 1.5rem;
   }
 }
 
 .secondary-img-wrapper {
   overflow: hidden;
   border-radius: 6px;
-  aspect-ratio: 4 / 3;
+  height: 100%;
   background-color: #E2E8F0;
+}
+
+@media (max-width: 767px) {
+  .secondary-img-wrapper {
+    aspect-ratio: 16 / 10;
+  }
 }
 
 .secondary-img-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
 /* Floating Peak Nav Button */
 .floating-peak-btn {
   position: fixed;
-  top: 1rem;
-  right: 1.25rem;
+  top: 1.5rem;
+  right: 1.5rem;
   z-index: 70;
   width: 44px;
   height: 44px;
