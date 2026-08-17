@@ -745,11 +745,29 @@ footer.site-footer {
   }
 }
 /* ==========================================================================
-   REXBURG RAPIDS CUSTOM CASE STUDY MODULES
+   REXBURG RAPIDS BALANCED ARTBOARD SIZING
    ========================================================================== */
 
-/* Full-Bleed Media Wrapper */
-.bleed-media-wrapper {
+.case-page-body {
+  background-color: #FFFFFF;
+  color: #2C3E50;
+  overflow-x: hidden;
+}
+
+/* Framed Container */
+.artboard-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+@media (min-width: 768px) {
+  .artboard-container {
+    padding: 0 2.5rem;
+  }
+}
+
+/* Constrained Full-Width Media (Caps extreme vertical stretch) */
+.artboard-bleed {
   width: 100vw;
   position: relative;
   left: 50%;
@@ -757,124 +775,108 @@ footer.site-footer {
   margin-left: -50vw;
   margin-right: -50vw;
   overflow: hidden;
-}
-.bleed-media-wrapper img {
-  width: 100%;
-  display: block;
-}
-
-/* Framed Section Container */
-.rapids-content-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 4rem 1.5rem;
-}
-@media (min-width: 768px) {
-  .rapids-content-container { padding: 6rem 3rem; }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Collateral Showcase Grids */
-.rapids-grid-2col {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-@media (min-width: 768px) {
-  .rapids-grid-2col {
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
-}
-.rapids-grid-2col img {
+.artboard-bleed img {
   width: 100%;
-  height: 100%;
+  max-height: 75vh; /* Prevents tall images from taking over the screen */
   object-fit: cover;
-  border-radius: 6px;
+  object-position: center;
   display: block;
 }
 
-.rapids-grid-3col {
+/* Spacers */
+.artboard-spacer-sm { margin-bottom: 1.5rem; }
+.artboard-spacer-md { margin-bottom: 3rem; }
+.artboard-spacer-lg { margin-bottom: 5rem; }
+
+/* Image Framing with Proportional Constraints */
+.artboard-frame {
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #F8F9FA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.artboard-frame img {
+  width: 100%;
+  height: auto;
+  max-height: 650px; /* Caps maximum individual frame height */
+  object-fit: contain;
+  display: block;
+}
+
+/* 2-Column Responsive Row (Locked height to keep side-by-side balanced) */
+.artboard-row-2 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  margin-bottom: 2rem;
 }
 @media (min-width: 768px) {
-  .rapids-grid-3col {
-    grid-template-columns: 1fr 1fr 1fr;
+  .artboard-row-2 {
+    grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
   }
-}
-.rapids-grid-3col img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 6px;
-  display: block;
+  .artboard-row-2 .artboard-frame {
+    height: 420px;
+  }
+  .artboard-row-2 .artboard-frame img {
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
-/* Live Interactive Swatch Cards */
-.swatch-grid {
+/* 3-Column Responsive Row */
+.artboard-row-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-  margin: 3rem 0 5rem;
-}
-.swatch-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-.swatch-glyph {
-  width: 130px;
-  height: 130px;
-  margin-bottom: 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.swatch-name {
-  font-size: 1.35rem;
-  font-weight: 800;
-  margin-bottom: 0.5rem;
-}
-.swatch-values {
-  font-size: 0.85rem;
-  font-weight: 400;
-  line-height: 1.6;
-  color: #2C3E50AA;
-  font-family: monospace;
-}
-
-/* Live Typography Specimen */
-.type-specimen-box {
-  background-color: #ffffff;
-  border-radius: 12px;
-  padding: 3rem 2rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-  margin-bottom: 5rem;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
 }
 @media (min-width: 768px) {
-  .type-specimen-box { padding: 4rem 3.5rem; }
+  .artboard-row-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .artboard-row-3 .artboard-frame {
+    height: 320px;
+  }
+  .artboard-row-3 .artboard-frame img {
+    height: 100%;
+    object-fit: cover;
+  }
 }
-.type-specimen-item {
-  margin-bottom: 3.5rem;
+
+/* Animated GIF Frame Container */
+.artboard-gif-box {
+  background-color: #FFFFFF;
+  padding: 3rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.type-specimen-item:last-child {
-  margin-bottom: 0;
+.artboard-gif-box img {
+  max-height: 450px;
+  width: auto;
+  object-fit: contain;
 }
-.type-specimen-item .font-label {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #2C3E50;
-  margin-bottom: 1rem;
+
+/* Typographic Banner Wash */
+.artboard-banner-bleed {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+.artboard-banner-bleed img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
   display: block;
-}
-.type-specimen-item .font-sample {
-  font-size: clamp(1.5rem, 3.5vw, 2.75rem);
-  line-height: 1.25;
-  color: #0066CC;
-  word-break: break-word;
 }
