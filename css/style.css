@@ -151,7 +151,7 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
   .project-card-wrapper { padding: 5rem 5rem; }
 }
 
-/* 1. Hero Gallery Image & Bars */
+/* 1. Hero Gallery Image & Bars (Fixed 16/10 Ratio) */
 .gallery-container {
   width: 100%;
 }
@@ -162,7 +162,7 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
 
 .gallery-image-box {
   width: 100%;
-  max-height: 74vh;
+  aspect-ratio: 16 / 10;
   position: relative;
   overflow: hidden;
   border-radius: 6px;
@@ -172,8 +172,9 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
 
 .gallery-image-box img {
   width: 100%;
-  max-height: 74vh;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
   border-radius: 6px;
   transition: opacity 0.4s ease;
