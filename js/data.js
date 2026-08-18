@@ -66,7 +66,7 @@ const projects = [
     outcome: 'Post-launch, Nexus reported improved investor confidence and a more cohesive internal culture around the brand. The design system now guides product development decisions.',
   },
   {
-    slug: 'Analog-reboot',
+    slug: 'analog-reboot',
     title: 'Analog Reboot - Branding',
     summary: 'A premium brand identity and packaging system for a botanical wellness line. The design balances scientific credibility with natural warmth and feminine sophistication.',
     industry: 'Health & Wellness',
