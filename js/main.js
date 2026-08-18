@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (slug === 'kindred-roots') return 'kindred-roots.html';
     if (slug === 'analog-reboot') return 'analog-reboot.html';
     if (slug === 'gerber-gear') return 'gerber-gear.html';
+    if (slug === 'motion-reel') return 'motion-reel.html';
     return `project.html?slug=${slug}`;
   };
 
