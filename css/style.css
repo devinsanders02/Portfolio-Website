@@ -745,29 +745,29 @@ footer.site-footer {
   }
 }
 /* ==========================================================================
-   REXBURG RAPIDS BALANCED ARTBOARD SIZING
+   REXBURG RAPIDS CUSTOM CASE STUDY
    ========================================================================== */
 
-.case-page-body {
+/* Page Base */
+.rapids-case-page {
   background-color: #FFFFFF;
   color: #2C3E50;
-  overflow-x: hidden;
 }
 
-/* Framed Container */
-.artboard-container {
-  max-width: 1100px;
+/* Matching WANDRD Container Margins */
+.case-content-wrap {
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 @media (min-width: 768px) {
-  .artboard-container {
-    padding: 0 2.5rem;
+  .case-content-wrap {
+    padding: 0 3rem;
   }
 }
 
-/* Constrained Full-Width Media (Caps extreme vertical stretch) */
-.artboard-bleed {
+/* Edge-to-Edge Full Screen Bleed (with auto zoom/cover) */
+.full-bleed-section {
   width: 100vw;
   position: relative;
   left: 50%;
@@ -775,108 +775,107 @@ footer.site-footer {
   margin-left: -50vw;
   margin-right: -50vw;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
-
-.artboard-bleed img {
+.full-bleed-section img {
   width: 100%;
-  max-height: 75vh; /* Prevents tall images from taking over the screen */
+  height: 100%;
+  max-height: 85vh;
   object-fit: cover;
   object-position: center;
   display: block;
 }
 
-/* Spacers */
-.artboard-spacer-sm { margin-bottom: 1.5rem; }
-.artboard-spacer-md { margin-bottom: 3rem; }
-.artboard-spacer-lg { margin-bottom: 5rem; }
-
-/* Image Framing with Proportional Constraints */
-.artboard-frame {
-  border-radius: 6px;
-  overflow: hidden;
-  background-color: #F8F9FA;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.artboard-frame img {
-  width: 100%;
-  height: auto;
-  max-height: 650px; /* Caps maximum individual frame height */
-  object-fit: contain;
-  display: block;
-}
-
-/* 2-Column Responsive Row (Locked height to keep side-by-side balanced) */
-.artboard-row-2 {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-@media (min-width: 768px) {
-  .artboard-row-2 {
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-  .artboard-row-2 .artboard-frame {
-    height: 420px;
-  }
-  .artboard-row-2 .artboard-frame img {
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
-/* 3-Column Responsive Row */
-.artboard-row-3 {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-}
-@media (min-width: 768px) {
-  .artboard-row-3 {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1.25rem;
-  }
-  .artboard-row-3 .artboard-frame {
-    height: 320px;
-  }
-  .artboard-row-3 .artboard-frame img {
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
-/* Animated GIF Frame Container */
-.artboard-gif-box {
-  background-color: #FFFFFF;
-  padding: 3rem 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.artboard-gif-box img {
-  max-height: 450px;
-  width: auto;
-  object-fit: contain;
-}
-
-/* Typographic Banner Wash */
-.artboard-banner-bleed {
+/* Full Bleed GIF Container */
+.full-bleed-gif {
   width: 100vw;
   position: relative;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+  background-color: #FFC93C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
-.artboard-banner-bleed img {
+.full-bleed-gif img {
   width: 100%;
-  max-height: 300px;
+  height: auto;
+  max-height: 80vh;
   object-fit: cover;
+  object-position: center;
   display: block;
+}
+
+/* Framed Image Container with Subtle Radius & Centered Crop */
+.case-img-box {
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #F4F5F7;
+}
+.case-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Multi-Column Layouts with Matching Gaps */
+.case-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 768px) {
+  .case-grid-2col {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    height: 440px;
+  }
+}
+
+.case-grid-3col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 768px) {
+  .case-grid-3col {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    height: 360px;
+  }
+}
+
+/* Typographic Repeating Pattern Banner */
+.rapids-type-strip {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: #0066CC;
+  padding: 4rem 1.5rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rapids-type-text {
+  font-family: 'Rubik', sans-serif;
+  font-size: clamp(3.5rem, 11vw, 9rem);
+  font-weight: 800;
+  color: #FFC93C;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  text-align: center;
+  user-select: none;
+  white-space: nowrap;
 }
