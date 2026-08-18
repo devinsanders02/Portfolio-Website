@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (slug === 'wandrd') return 'wandrd.html';
     if (slug === 'rexburg-rapids') return 'rexburg-rapids.html';
     if (slug === 'kindred-roots') return 'kindred-roots.html';
+    if (slug === 'analog-reboot') return 'analog-reboot.html';
     return `project.html?slug=${slug}`;
   };
 
