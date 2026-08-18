@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motion Reel 2026 | Devin Sanders</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: #0E131A; color: #FFFFFF;">
+
+  <!-- Sticky Morphing Logo Header -->
+  <nav class="sticky-brand-nav">
+    <a href="index.html" class="brand-morph-link" aria-label="Devin Sanders Home">
+      <div class="morph-logo-box">
+        <img src="LogoLong.png" alt="Devin Sanders" class="logo-full">
+        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="logo-mark">
+      </div>
+    </a>
+    <div style="pointer-events: auto;">
+      <a href="work.html" style="color: #FFFFFF; text-decoration: none; font-size: 0.875rem; font-weight: 500; opacity: 0.85; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">← All Work</a>
+    </div>
+  </nav>
+
+  <!-- 1. Universal 100vh Full-Bleed Hero -->
+  <header class="turnstyle-hero-banner">
+    <img src="motion-hero.jpg" alt="Motion Reel 2026 Showcase" class="turnstyle-hero-bg">
+    <div class="turnstyle-hero-overlay" style="background: linear-gradient(to top, rgba(14,19,26,0.95) 0%, rgba(14,19,26,0.4) 60%);"></div>
+    
+    <div class="turnstyle-hero-content">
+      <h1 class="turnstyle-headline" style="font-size: clamp(2rem, 4.2vw, 3.75rem); max-width: 750px; color: #FFFFFF;">
+        Exploring Rhythm, Kinetic Type, and Brand Choreography
+      </h1>
+      
+      <div class="turnstyle-caption-block">
+        <div class="turnstyle-caption-title" style="color: #FFFFFF;">Motion Reel</div>
+        <p class="turnstyle-caption-text" style="color: rgba(255,255,255,0.7);">Animation & Kinetic Direction · 2026</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Theater Stage -->
+  <main style="padding-top: 5rem; padding-bottom: 6rem;">
+
+    <!-- 2. Universal Overview & Approach Grid -->
+    <section class="case-content-wrap" style="margin-bottom: 5rem;">
+      <div style="display: grid; grid-template-columns: 1fr; gap: 2.5rem;" class="intro-grid-responsive">
+        <div>
+          <span class="uppercase-label" style="margin-bottom: 0.75rem; color: #F15B22;">The Focus</span>
+          <p style="font-weight: 300; font-size: 1.15rem; line-height: 1.6; color: #FFFFFF;">
+            A curated compilation of motion graphics exploring brand identity animation, typography in space, and rhythmic visual pacing. Every transition is timed to reinforce narrative momentum and tactile energy.
+          </p>
+        </div>
+        <div>
+          <span class="uppercase-label" style="margin-bottom: 0.75rem; color: rgba(255,255,255,0.5);">Tools & Exploration</span>
+          <p style="font-weight: 300; font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.8);">
+            Created in Adobe After Effects and Illustrator, focusing on spatial easing curves, kinetic type systems, morphing brand marks, and audio-reactive pacing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. The Theater Video Player -->
+    <div class="case-content-wrap" style="margin-bottom: 4rem;">
+      <div class="case-section-header">
+        <div class="line" style="background-color: #F15B22;"></div>
+        <span class="label" style="color: #FFFFFF;">Watch the Reel</span>
+      </div>
+
+      <div style="width: 100%; border-radius: 10px; overflow: hidden; background-color: #000000; box-shadow: 0 15px 40px rgba(0,0,0,0.6); position: relative;">
+        <video 
+          controls 
+          playsinline 
+          preload="metadata"
+          poster="motion-poster.jpg" 
+          style="width: 100%; height: auto; aspect-ratio: 16 / 9; display: block; object-fit: cover;">
+          <source src="motion-reel.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Global Dark Footer -->
+  <footer id="contact" class="site-footer">
+    <div class="footer-max-width">
+      <span class="uppercase-label">Get in Touch</span>
+      <h2 class="footer-heading">Let's build<br>something meaningful.</h2>
+
+      <div>
+        <a href="mailto:devin.sanders02@gmail.com" class="footer-link">devin.sanders02@gmail.com</a>
+      </div>
+      <div style="margin-top: 0.25rem;">
+        <a href="tel:+17206550390" class="footer-link">(720) 655-0390</a>
+      </div>
+
+      <hr class="footer-divider">
+
+      <div class="footer-sub-row">
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="work.html" class="footer-link" style="color: rgba(255,255,255,0.5);">Work</a>
+          <a href="about.html" class="footer-link" style="color: rgba(255,255,255,0.5);">About</a>
+        </div>
+        <p style="font-weight: 300; font-size: 0.75rem; color: rgba(255,255,255,0.3);">
+          © <span id="copyright-year">2026</span> Devin Sanders. Crafted with intention.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
