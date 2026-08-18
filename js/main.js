@@ -53,6 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
+  // Helper function to resolve dedicated project page URLs
+  const getProjectUrl = (slug) => {
+    if (slug === 'wandrd') return 'wandrd.html';
+    if (slug === 'rexburg-rapids') return 'rexburg-rapids.html';
+    if (slug === 'kindred-roots') return 'kindred-roots.html';
+    return `project.html?slug=${slug}`;
+  };
+
   // 1. Render Featured Work Feed (index.html)
   const container = document.getElementById('featured-work-container');
   if (container && typeof projects !== 'undefined') {
@@ -120,12 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
-      // Dynamic page routing: routes custom-built case studies directly
-      const projectUrl = project.slug === 'wandrd' 
-        ? 'wandrd.html' 
-        : project.slug === 'rexburg-rapids' 
-        ? 'rexburg-rapids.html' 
-        : `project.html?slug=${project.slug}`;
+      const projectUrl = getProjectUrl(project.slug);
 
       card.innerHTML = `
         <div class="gallery-container">
@@ -204,11 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (workGrid && typeof projects !== 'undefined') {
     projects.forEach((proj) => {
       const item = document.createElement('a');
-      item.href = proj.slug === 'wandrd' 
-        ? 'wandrd.html' 
-        : proj.slug === 'rexburg-rapids' 
-        ? 'rexburg-rapids.html' 
-        : `project.html?slug=${proj.slug}`;
+      item.href = getProjectUrl(proj.slug);
       item.className = 'archive-card';
       item.innerHTML = `
         <div class="archive-thumb-box">
