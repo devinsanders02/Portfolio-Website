@@ -947,3 +947,138 @@ footer.site-footer {
   color: #0066CC;
   word-break: break-word;
 }
+/* ==========================================================================
+   ANALOG REBOOT CUSTOM CASE STUDY
+   ========================================================================== */
+
+.analog-case-page {
+  background-color: #F7F2E6;
+  color: #0B1A33;
+}
+
+/* 12-Pattern Grid */
+.pattern-grid-12 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 5rem;
+}
+@media (min-width: 600px) {
+  .pattern-grid-12 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 992px) {
+  .pattern-grid-12 {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.pattern-tile-card {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(11, 26, 51, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+}
+.pattern-tile-card:hover {
+  transform: translateY(-4px);
+}
+.pattern-tile-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+.pattern-tile-info {
+  padding: 0.85rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(11, 26, 51, 0.06);
+}
+.pattern-tile-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0B1A33;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.pattern-tile-code {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #FF4D47;
+  font-family: monospace;
+}
+
+/* Retro Color Ribbon Stripe Divider */
+.retro-ribbon-divider {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 5rem 0;
+}
+.retro-ribbon-divider .stripe {
+  height: 8px;
+  width: 100%;
+}
+.stripe-green { background-color: #8CC865; }
+.stripe-red { background-color: #FF4D47; }
+.stripe-yellow { background-color: #FFC938; }
+
+/* 6-Color Swatch Grid for Analog Reboot */
+.analog-swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin: 2.5rem 0 5rem;
+}
+@media (min-width: 600px) {
+  .analog-swatch-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 992px) {
+  .analog-swatch-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.analog-swatch-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(11, 26, 51, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+.analog-swatch-preview {
+  height: 100px;
+  width: 100%;
+}
+.analog-swatch-body {
+  padding: 1rem 0.85rem;
+  background-color: #FFFFFF;
+}
+.analog-swatch-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #0B1A33;
+  margin-bottom: 0.25rem;
+}
+.analog-swatch-hex {
+  font-size: 0.75rem;
+  font-family: monospace;
+  color: rgba(11, 26, 51, 0.6);
+}
