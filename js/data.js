@@ -114,8 +114,8 @@ const projects = [
     accentColor: '#C9A24B',
     heroImage: 'MotionReel/Motion-Hero.png',
     galleryImages: [
-      'https://media.base44.com/images/public/6a2996660aceb7da373642dc/d05b0b378_generated_image.png',
-      'https://media.base44.com/images/public/6a2996660aceb7da373642dc/39845e16c_generated_image.png',
+      'MotionReel/Motion-Thumbnail1.png',
+      'MotionReel/Motion-Thumbnail2.png',
     ],
     challenge: 'Lumen struggled to communicate the craft behind their work; their existing brand felt generic and failed to reflect the sculptural quality of the fixtures themselves.',
     strategy: 'We positioned Lumen as a studio of "considered light," treating each fixture as a deliberate composition of material and shadow rather than a commodity product.',
