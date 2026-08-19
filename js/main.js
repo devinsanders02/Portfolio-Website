@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (slug === 'rustic-mountain' || slug === 'rustic-mountain-bistro') return 'rustic-mountain.html';
     if (slug === 'olly-packaging' || slug === 'olly') return 'olly-packaging.html';
     if (slug === 'about-face' || slug === 'aboutface') return 'about-face.html';
+    if (slug === 'rippl' || slug === 'rippl-hoodie') return 'rippl.html';
     return `project.html?slug=${slug}`;
   };
 
