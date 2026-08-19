@@ -1,4 +1,19 @@
+// Function to hide the loader immediately
+function dismissLoader() {
+  const loader = document.getElementById('site-loader');
+  if (loader) {
+    loader.classList.add('hidden');
+    // Remove from DOM completely after fade-out
+    setTimeout(() => {
+      loader.style.display = 'none';
+    }, 400);
+  }
+}
+
+// Trigger hide as soon as HTML is ready
 document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(dismissLoader, 250);
+
   // Set Dynamic Copyright Year
   const yearSpan = document.getElementById('copyright-year');
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
@@ -228,3 +243,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// Extra backup safety in case DOMContentLoaded fired early
+window.addEventListener('load', dismissLoader);
