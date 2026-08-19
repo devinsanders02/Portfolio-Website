@@ -213,7 +213,7 @@ const projects = [
   },
   {
     slug: 'rippl',
-    title: 'RIPPL -Branded Pattern',
+    title: 'RIPPL - Branded Pattern',
     summary: 'A structured, spatial identity for a contemporary architecture practice focused on residential and cultural projects. The brand translates their design philosophy into a flexible visual system.',
     industry: 'Architecture',
     services: 'Brand Identity, Print, Web',
