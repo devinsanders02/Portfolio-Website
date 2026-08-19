@@ -191,7 +191,7 @@ const projects = [
   },
   {
     slug: 'about-face',
-    title: 'About Face - Cover',
+    title: 'About Face - Journal Covers',
     summary: 'A calming, scientifically-grounded identity for a dermatologist-led skincare brand. The system balances clinical credibility with a serene, human visual language.',
     industry: 'Health & Beauty',
     services: 'Brand Identity, Packaging, Digital',
