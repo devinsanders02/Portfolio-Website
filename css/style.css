@@ -44,6 +44,36 @@ body {
   display: block;
 }
 
+/* Page Preloader */
+#site-loader {
+  position: fixed;
+  inset: 0;
+  background-color: #FAFAFA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+#site-loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-mark-pulse {
+  width: 54px;
+  height: auto;
+  animation: markPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes markPulse {
+  0% { transform: scale(0.92); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(0.92); opacity: 0.6; }
+}
+
 /* Header & Top Nav */
 header.navbar {
   display: flex;
@@ -478,13 +508,13 @@ footer.site-footer {
   top: 0;
   left: 0;
   right: 0;
-  padding: 2rem 2.5rem;
+  padding: 1.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 90;
   pointer-events: none;
-  transition: all 0.4s ease;
+  transition: padding 0.3s ease;
 }
 
 .brand-morph-link {
@@ -494,46 +524,53 @@ footer.site-footer {
   text-decoration: none;
 }
 
-/* Container holding both logos */
+/* Container holding both scaled logos */
 .morph-logo-box {
   position: relative;
-  height: 38px;
+  height: 48px;
   display: flex;
   align-items: center;
 }
 
-.morph-logo-box .logo-full,
-.morph-logo-box .logo-mark {
-  height: 100%;
+/* Full Logo (Initial State) */
+.morph-logo-box .logo-full {
+  height: 44px;
   width: auto;
   object-fit: contain;
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Initially: Full logo visible, Icon mark hidden */
-.morph-logo-box .logo-full {
-  opacity: 1;
-  transform: translateX(0);
-}
+/* Mark (Scrolled State) */
 .morph-logo-box .logo-mark {
   position: absolute;
   left: 0;
+  top: 50%;
+  height: 38px;
+  width: auto;
+  object-fit: contain;
   opacity: 0;
-  transform: translateX(-8px) scale(0.9);
+  pointer-events: none;
+  transform: translateY(-50%) scale(0.85);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Scrolled State: Full logo fades, Icon mark pins */
+/* Scrolled State */
 .sticky-brand-nav.scrolled {
-  padding: 1.25rem 2rem;
+  padding: 1rem 2rem;
 }
+
 .sticky-brand-nav.scrolled .logo-full {
   opacity: 0;
-  transform: translateX(-8px);
+  transform: translateY(-6px);
   pointer-events: none;
 }
+
 .sticky-brand-nav.scrolled .logo-mark {
   opacity: 1;
-  transform: translateX(0) scale(1);
+  transform: translateY(-50%) scale(1);
+  pointer-events: auto;
 }
 
 /* Turnstyle 100vh Full-Bleed Hero */
@@ -572,6 +609,7 @@ footer.site-footer {
   width: 100%;
   margin: 0 auto;
 }
+
 @media (min-width: 768px) {
   .turnstyle-hero-content { padding: 4.5rem 3.5rem; }
 }
@@ -616,6 +654,7 @@ footer.site-footer {
   color: #ffffff;
   padding: 5rem 1.5rem;
 }
+
 @media (min-width: 768px) {
   .case-dark-section { padding: 7rem 3rem; }
 }
@@ -627,11 +666,13 @@ footer.site-footer {
   align-items: center;
   gap: 1.5rem;
 }
+
 .case-section-header .line {
   width: 40px;
   height: 2px;
   background-color: var(--accent-orange);
 }
+
 .case-section-header .label {
   font-size: 0.8rem;
   font-weight: 700;
@@ -649,6 +690,7 @@ footer.site-footer {
   gap: 2.5rem;
   align-items: center;
 }
+
 @media (min-width: 768px) {
   .case-feature-split {
     grid-template-columns: 1.4fr 1fr;
@@ -664,11 +706,13 @@ footer.site-footer {
     order: 1;
   }
 }
+
 .feature-media img {
   width: 100%;
   border-radius: 6px;
   display: block;
 }
+
 .feature-copy .step-num {
   font-size: 0.8rem;
   font-weight: 300;
@@ -677,6 +721,7 @@ footer.site-footer {
   display: block;
   margin-bottom: 0.5rem;
 }
+
 .feature-copy h3 {
   font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: 800;
@@ -686,6 +731,7 @@ footer.site-footer {
   margin-bottom: 1rem;
   color: #fff;
 }
+
 .feature-copy p {
   font-weight: 300;
   font-size: 0.95rem;
@@ -702,17 +748,20 @@ footer.site-footer {
   gap: 3rem;
   align-items: center;
 }
+
 @media (min-width: 768px) {
   .case-context-block {
     grid-template-columns: 1.3fr 1fr;
     gap: 4.5rem;
   }
 }
+
 .case-context-block img {
   width: 100%;
   border-radius: 6px;
   display: block;
 }
+
 .context-headline {
   font-size: clamp(2rem, 4.5vw, 3.5rem);
   font-weight: 800;
@@ -721,6 +770,7 @@ footer.site-footer {
   text-transform: uppercase;
   margin-bottom: 1.25rem;
 }
+
 .context-headline .outline-txt {
   -webkit-text-stroke: 1px rgba(255,255,255,0.6);
   color: transparent;
@@ -732,6 +782,7 @@ footer.site-footer {
   max-width: 1200px;
   margin: 0 auto 5rem;
 }
+
 .case-phone-showcase img {
   width: 100%;
   border-radius: 8px;
@@ -744,29 +795,28 @@ footer.site-footer {
     gap: 4.5rem !important;
   }
 }
+
 /* ==========================================================================
    REXBURG RAPIDS CUSTOM CASE STUDY
    ========================================================================== */
 
-/* Page Base */
 .rapids-case-page {
   background-color: #FFFFFF;
   color: #2C3E50;
 }
 
-/* Expanded Container with Reduced Side Padding */
 .case-content-wrap {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 1rem;
 }
+
 @media (min-width: 768px) {
   .case-content-wrap {
     padding: 0 2rem;
   }
 }
 
-/* Edge-to-Edge Full Screen Bleed (with auto zoom/cover) */
 .full-bleed-section {
   width: 100vw;
   position: relative;
@@ -776,6 +826,7 @@ footer.site-footer {
   margin-right: -50vw;
   overflow: hidden;
 }
+
 .full-bleed-section img {
   width: 100%;
   height: 100%;
@@ -785,7 +836,6 @@ footer.site-footer {
   display: block;
 }
 
-/* Full Bleed GIF Container */
 .full-bleed-gif {
   width: 100vw;
   position: relative;
@@ -799,6 +849,7 @@ footer.site-footer {
   align-items: center;
   overflow: hidden;
 }
+
 .full-bleed-gif img {
   width: 100%;
   height: auto;
@@ -808,7 +859,6 @@ footer.site-footer {
   display: block;
 }
 
-/* Framed Image Container with Centered Crop */
 .case-img-box {
   width: 100%;
   border-radius: 6px;
@@ -818,6 +868,7 @@ footer.site-footer {
   justify-content: center;
   align-items: center;
 }
+
 .case-img-box img {
   width: 100%;
   height: 100%;
@@ -826,13 +877,13 @@ footer.site-footer {
   display: block;
 }
 
-/* Multi-Column Layouts with Proportionate Scaled Heights */
 .case-grid-2col {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
 }
+
 @media (min-width: 768px) {
   .case-grid-2col {
     grid-template-columns: 1fr 1fr;
@@ -847,6 +898,7 @@ footer.site-footer {
   gap: 1.5rem;
   margin-bottom: 1.5rem;
 }
+
 @media (min-width: 768px) {
   .case-grid-3col {
     grid-template-columns: 1fr 1fr 1fr;
@@ -855,7 +907,6 @@ footer.site-footer {
   }
 }
 
-/* Typographic Repeating Pattern Banner */
 .rapids-type-strip {
   width: 100vw;
   position: relative;
@@ -870,6 +921,7 @@ footer.site-footer {
   align-items: center;
   justify-content: center;
 }
+
 .rapids-type-text {
   font-family: 'Rubik', sans-serif;
   font-size: clamp(3.5rem, 11vw, 9.5rem);
@@ -883,19 +935,20 @@ footer.site-footer {
   white-space: nowrap;
 }
 
-/* Brand Swatch Cards (Original Layout) */
 .swatch-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 2.5rem;
   margin: 3rem 0 5rem;
 }
+
 .swatch-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
+
 .swatch-glyph {
   width: 130px;
   height: 130px;
@@ -904,11 +957,13 @@ footer.site-footer {
   align-items: center;
   justify-content: center;
 }
+
 .swatch-name {
   font-size: 1.35rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
 }
+
 .swatch-values {
   font-size: 0.85rem;
   font-weight: 400;
@@ -917,7 +972,6 @@ footer.site-footer {
   font-family: monospace;
 }
 
-/* Live Typography Specimen (Original Layout) */
 .type-specimen-box {
   background-color: #ffffff;
   border-radius: 12px;
@@ -925,15 +979,19 @@ footer.site-footer {
   box-shadow: 0 4px 20px rgba(0,0,0,0.04);
   margin-bottom: 5rem;
 }
+
 @media (min-width: 768px) {
   .type-specimen-box { padding: 4rem 3.5rem; }
 }
+
 .type-specimen-item {
   margin-bottom: 3.5rem;
 }
+
 .type-specimen-item:last-child {
   margin-bottom: 0;
 }
+
 .type-specimen-item .font-label {
   font-size: 1.1rem;
   font-weight: 700;
@@ -941,12 +999,14 @@ footer.site-footer {
   margin-bottom: 1rem;
   display: block;
 }
+
 .type-specimen-item .font-sample {
   font-size: clamp(1.5rem, 3.5vw, 2.75rem);
   line-height: 1.25;
   color: #0066CC;
   word-break: break-word;
 }
+
 /* ==========================================================================
    ANALOG REBOOT CUSTOM CASE STUDY
    ========================================================================== */
@@ -956,18 +1016,19 @@ footer.site-footer {
   color: #0B1A33;
 }
 
-/* 12-Pattern Grid */
 .pattern-grid-12 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
   margin-bottom: 5rem;
 }
+
 @media (min-width: 600px) {
   .pattern-grid-12 {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
 @media (min-width: 992px) {
   .pattern-grid-12 {
     grid-template-columns: repeat(4, 1fr);
@@ -984,15 +1045,18 @@ footer.site-footer {
   flex-direction: column;
   transition: transform 0.2s ease;
 }
+
 .pattern-tile-card:hover {
   transform: translateY(-4px);
 }
+
 .pattern-tile-img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   display: block;
 }
+
 .pattern-tile-info {
   padding: 0.85rem 1rem;
   display: flex;
@@ -1000,6 +1064,7 @@ footer.site-footer {
   align-items: center;
   border-top: 1px solid rgba(11, 26, 51, 0.06);
 }
+
 .pattern-tile-name {
   font-size: 0.85rem;
   font-weight: 700;
@@ -1007,6 +1072,7 @@ footer.site-footer {
   text-transform: uppercase;
   letter-spacing: 0.02em;
 }
+
 .pattern-tile-code {
   font-size: 0.75rem;
   font-weight: 600;
@@ -1014,7 +1080,7 @@ footer.site-footer {
   font-family: monospace;
 }
 
-/* Retro Color Ribbon Stripe Divider */
+/* Full Bleed Retro Color Ribbon Stripe Divider */
 .retro-ribbon-divider {
   width: 100vw;
   position: relative;
@@ -1028,26 +1094,29 @@ footer.site-footer {
   overflow: hidden;
   margin: 5rem 0;
 }
+
 .retro-ribbon-divider .stripe {
   height: 8px;
   width: 100%;
 }
+
 .stripe-green { background-color: #8CC865; }
 .stripe-red { background-color: #FF4D47; }
 .stripe-yellow { background-color: #FFC938; }
 
-/* 6-Color Swatch Grid for Analog Reboot */
 .analog-swatch-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
   margin: 2.5rem 0 5rem;
 }
+
 @media (min-width: 600px) {
   .analog-swatch-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
 @media (min-width: 992px) {
   .analog-swatch-grid {
     grid-template-columns: repeat(6, 1fr);
@@ -1062,14 +1131,17 @@ footer.site-footer {
   display: flex;
   flex-direction: column;
 }
+
 .analog-swatch-preview {
   height: 100px;
   width: 100%;
 }
+
 .analog-swatch-body {
   padding: 1rem 0.85rem;
   background-color: #FFFFFF;
 }
+
 .analog-swatch-title {
   font-size: 0.85rem;
   font-weight: 800;
@@ -1077,11 +1149,13 @@ footer.site-footer {
   color: #0B1A33;
   margin-bottom: 0.25rem;
 }
+
 .analog-swatch-hex {
   font-size: 0.75rem;
   font-family: monospace;
   color: rgba(11, 26, 51, 0.6);
 }
+
 /* ==========================================================================
    GERBER GEAR CUSTOM CASE STUDY
    ========================================================================== */
@@ -1091,12 +1165,10 @@ footer.site-footer {
   color: #1E2229;
 }
 
-/* Warm Earth Tone Callout Subtitles */
 .gerber-label {
   color: #D47A22;
 }
 
-/* Specific GIF Container for Unboxing */
 .gerber-gif-box {
   width: 100%;
   border-radius: 6px;
@@ -1106,6 +1178,7 @@ footer.site-footer {
   justify-content: center;
   align-items: center;
 }
+
 .gerber-gif-box img {
   width: 100%;
   height: 100%;
