@@ -112,7 +112,7 @@ const projects = [
     services: '2D Animation, Kinetic Type, Video Editing',
     year: '2025',
     accentColor: '#C9A24B',
-    heroImage: 'https://media.base44.com/images/public/6a2996660aceb7da373642dc/a6b9f4c24_generated_a3c63fb2.png',
+    heroImage: 'MotionReel/Motion-Hero.png',
     galleryImages: [
       'https://media.base44.com/images/public/6a2996660aceb7da373642dc/d05b0b378_generated_image.png',
       'https://media.base44.com/images/public/6a2996660aceb7da373642dc/39845e16c_generated_image.png',
