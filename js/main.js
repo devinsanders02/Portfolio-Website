@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (slug === 'analog-reboot') return 'analog-reboot.html';
     if (slug === 'gerber-gear') return 'gerber-gear.html';
     if (slug === 'motion-reel') return 'motion-reel.html';
-    if (slug === 'jared' || slug === 'jared-christensen') return 'jared.html';
+    if (slug === 'identity-system' || slug === 'jared' || slug === 'jared-christensen') return 'identity-system.html';
     return `project.html?slug=${slug}`;
   };
 
