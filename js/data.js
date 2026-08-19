@@ -69,7 +69,7 @@ const projects = [
     services: 'Brand Identity, Packaging, Social',
     year: '2025',
     accentColor: '#C4727F',
-    heroImage: 'https://media.base44.com/images/public/6a2996660aceb7da373642dc/2857bf1a8_generated_12be5c7a.png',
+    heroImage: 'AnalogReboot/AR-Hero.png',
     galleryImages: [
       'https://media.base44.com/images/public/6a2996660aceb7da373642dc/d5b704d35_generated_7167c360.png',
       'https://media.base44.com/images/public/6a2996660aceb7da373642dc/3c82661c5_generated_image.png',
