@@ -212,7 +212,7 @@ const projects = [
     outcome: 'Solace achieved strong repeat-purchase rates and earned editorial features in two beauty publications for its clear, trustworthy brand voice.',
   },
   {
-    slug: 'rippl-branded',
+    slug: 'rippl',
     title: 'RIPPL -Branded Pattern',
     summary: 'A structured, spatial identity for a contemporary architecture practice focused on residential and cultural projects. The brand translates their design philosophy into a flexible visual system.',
     industry: 'Architecture',
