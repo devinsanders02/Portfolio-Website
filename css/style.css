@@ -169,68 +169,47 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
 .hero-subtext .divider { display: none; }
 
 /* ==========================================================================
-   PROJECT SECTION CARDS (EDGE-TO-EDGE SPLIT SHOWCASE)
+   PROJECT SECTION CARDS (SPLIT ROW: HERO LEFT / 2-STACK RIGHT)
    ========================================================================== */
 
 .project-card-wrapper {
   width: 100%;
-  padding: 4.5rem 1.5rem;
+  padding: 4rem 1.5rem;
   transition: background-color 0.7s ease;
   overflow-x: hidden;
   box-sizing: border-box;
 }
 
-@media (min-width: 768px) {
-  .project-card-wrapper {
-    padding: 5.5rem 3.5rem;
-  }
-}
-
-@media (min-width: 1200px) {
-  .project-card-wrapper {
-    padding: 6rem 5rem;
-  }
-}
-
-/* Master 2-Column Split: Hero Gallery (Left) vs Stacked Grid (Right) */
-.project-card-inner {
-  max-width: 1500px;
-  margin: 0 auto;
-}
-
 @media (min-width: 900px) {
-  .project-media-split-row {
+  .project-card-wrapper {
+    padding: 5.5rem 4vw;
     display: grid;
-    grid-template-columns: 1.35fr 1fr;
-    gap: 1.75rem;
-    align-items: stretch;
+    grid-template-columns: 1.6fr 1fr;
+    grid-template-areas:
+      "hero secondary"
+      "info secondary";
+    column-gap: 2rem;
+    row-gap: 2.5rem;
+    align-items: start;
+    max-width: 1600px;
+    margin: 0 auto;
   }
 }
 
-/* 1. Hero Gallery (Left Column) */
+/* 1. Hero Gallery (Left Top Area) */
 .gallery-container {
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  grid-area: hero;
 }
 
 .gallery-image-box {
   width: 100%;
-  height: 100%;
-  min-height: 280px;
   aspect-ratio: 16 / 10;
   position: relative;
   overflow: hidden;
   border-radius: 6px;
   cursor: pointer;
   background-color: #E2E8F0;
-}
-
-@media (min-width: 900px) {
-  .gallery-image-box {
-    aspect-ratio: unset;
-    height: 480px;
-  }
 }
 
 .gallery-image-box img {
@@ -260,77 +239,27 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
   transition: all 0.3s ease;
 }
 
-/* 2. Secondary Images (Right Column - Stacked 2-High Matching Total Height) */
-.secondary-images-row {
-  margin-top: 1.5rem;
-  width: 100%;
-}
-
-@media (min-width: 900px) {
-  .secondary-images-row {
-    margin-top: 0;
-    height: 480px;
-  }
-}
-
-.secondary-images-grid {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-  height: 100%;
-}
-
-@media (min-width: 900px) {
-  .secondary-images-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 1.25rem;
-    height: 100%;
-  }
-}
-
-.secondary-img-wrapper {
-  overflow: hidden;
-  border-radius: 6px;
-  height: 100%;
-  background-color: #E2E8F0;
-}
-
-@media (max-width: 899px) {
-  .secondary-img-wrapper {
-    aspect-ratio: 16 / 10;
-  }
-}
-
-.secondary-img-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-/* 3. Project Info & Description */
+/* 2. Info Block (Left Bottom Area - directly under Hero) */
 .project-info-grid {
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
   width: 100%;
-  max-width: 1200px;
+  grid-area: info;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .project-info-grid {
-    grid-template-columns: 1.1fr 1fr;
-    gap: 4rem;
+    margin-top: 0;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
   }
 }
 
 .project-title {
   font-weight: 800;
-  font-size: clamp(1.6rem, 3.2vw, 2.35rem);
+  font-size: clamp(1.5rem, 2.5vw, 2.15rem);
   line-height: 1.18;
   letter-spacing: -0.02em;
 }
@@ -343,7 +272,7 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
 
 .project-summary {
   font-weight: 300;
-  font-size: 0.95rem;
+  font-size: 0.925rem;
   line-height: 1.65;
   margin-bottom: 1.25rem;
 }
@@ -364,6 +293,49 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
 }
 .project-link-btn:hover svg {
   transform: translateX(4px);
+}
+
+/* 3. Secondary Images (Right Side Stack) */
+.secondary-images-row {
+  margin-top: 3rem;
+  width: 100%;
+  grid-area: secondary;
+}
+
+@media (min-width: 900px) {
+  .secondary-images-row {
+    margin-top: 0;
+    height: 100%;
+  }
+}
+
+.secondary-images-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 900px) {
+  .secondary-images-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.secondary-img-wrapper {
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: #E2E8F0;
+  aspect-ratio: 16 / 10;
+}
+
+.secondary-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 /* Floating Peak Nav Button */
