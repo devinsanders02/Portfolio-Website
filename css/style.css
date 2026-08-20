@@ -546,7 +546,7 @@ footer.site-footer {
 /* Container holding both scaled logos */
 .morph-logo-box {
   position: relative;
-  height: 72px;
+  height: 86px;
   display: flex;
   align-items: center;
 }
@@ -562,12 +562,12 @@ footer.site-footer {
   transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Mark (Scrolled State) */
+/* Mark (Scrolled State - Scaled Up) */
 .morph-logo-box .logo-mark {
   position: absolute;
   left: 0;
   top: 50%;
-  height: 54px;
+  height: 78px;
   width: auto;
   object-fit: contain;
   opacity: 0;
