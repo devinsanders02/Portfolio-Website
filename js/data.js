@@ -32,7 +32,7 @@ const projects = [
       'WANDRD-HomePage.png',
       'WANDRD-PRVKE.png',
       'WANDRD-Fernweh.png',
-      'https://media.base44.com/images/public/6a2996660aceb7da373642dc/39845e16c_generated_image.png',
+      'WANDRD-Infographics.jpg',
     ],
     challenge: 'Terra needed to communicate sustainability without relying on green-washing tropes. Their audience is design-conscious and skeptical of performative environmentalism.',
     strategy: 'We positioned Terra around "material honesty" — letting the quality of materials, construction, and sourcing speak for itself through restrained, confident design language.',
