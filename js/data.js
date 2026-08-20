@@ -70,7 +70,7 @@ const projects = [
     heroImage: 'AnalogReboot/AR-Hero.png',
     galleryImages: [
       'AnalogReboot/AR-Pattern1.png',
-      'AnalogReboot/AR-Application1.png',
+      'AnalogReboot/AR-Application-1.png',
       'AnalogReboot/AR-Application-8.png',
       'AnalogReboot/AR-Pattern2.png',
     ],
