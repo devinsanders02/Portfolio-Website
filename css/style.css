@@ -546,19 +546,20 @@ footer.site-footer {
 /* Container holding both scaled logos */
 .morph-logo-box {
   position: relative;
-  height: 58px;
+  height: 72px;
   display: flex;
   align-items: center;
 }
 
 /* Full Logo (Initial State) */
 .morph-logo-box .logo-full {
-  height: 52px;
+  height: 64px;
   width: auto;
   object-fit: contain;
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: left center;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Mark (Scrolled State) */
@@ -566,29 +567,30 @@ footer.site-footer {
   position: absolute;
   left: 0;
   top: 50%;
-  height: 44px;
+  height: 54px;
   width: auto;
   object-fit: contain;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(-50%) scale(0.85);
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(-50%);
+  transform-origin: left center;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Scrolled State */
 .sticky-brand-nav.scrolled {
-  padding: 1rem 2rem;
+  padding: 1.25rem 2rem;
 }
 
 .sticky-brand-nav.scrolled .logo-full {
   opacity: 0;
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   pointer-events: none;
 }
 
 .sticky-brand-nav.scrolled .logo-mark {
   opacity: 1;
-  transform: translateY(-50%) scale(1);
+  transform: translateY(-50%);
   pointer-events: auto;
 }
 
