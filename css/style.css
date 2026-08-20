@@ -557,12 +557,15 @@ footer.site-footer {
   width: auto;
   object-fit: contain;
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0) scale(1);
   transform-origin: left center;
-  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 
+    opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform, opacity;
 }
 
-/* Mark (Scrolled State - Scaled Up) */
+/* Mark (Scrolled State) */
 .morph-logo-box .logo-mark {
   position: absolute;
   left: 0;
@@ -572,9 +575,13 @@ footer.site-footer {
   object-fit: contain;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(-50%);
+  /* Starts slightly offset to the right and slightly scaled down */
+  transform: translateY(-50%) translateX(12px) scale(0.92);
   transform-origin: left center;
-  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: 
+    opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform, opacity;
 }
 
 /* Scrolled State */
@@ -582,15 +589,17 @@ footer.site-footer {
   padding: 1.25rem 2rem;
 }
 
+/* Full logo slides left and compresses slightly as it fades */
 .sticky-brand-nav.scrolled .logo-full {
   opacity: 0;
-  transform: translateY(-4px);
+  transform: translateX(-18px) scale(0.95);
   pointer-events: none;
 }
 
+/* Standalone mark glides into place horizontally and expands to 100% */
 .sticky-brand-nav.scrolled .logo-mark {
   opacity: 1;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateX(0) scale(1);
   pointer-events: auto;
 }
 
