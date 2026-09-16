@@ -4,47 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Work | Devin Sanders</title>
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    .work-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 2rem 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    @media (min-width: 768px) {
-      .work-header { padding: 2.5rem 3rem; }
-    }
-    .brand-name {
-      font-weight: 800;
-      font-size: 1.15rem;
-      color: var(--text-dark);
-      text-decoration: none;
-      letter-spacing: -0.01em;
-    }
-    .work-nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-    .work-nav-links a {
-      font-weight: 300;
-      font-size: 0.875rem;
-      color: var(--text-dark);
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-    .work-nav-links a:hover { opacity: 0.6; }
+  
+  <!-- Favicon & Touch Icon -->
+  <link rel="icon" type="image/png" href="LogoBlue.png">
+  <link rel="apple-touch-icon" href="LogoBlue.png">
 
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
     .work-hero {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 3rem 1.5rem 2rem;
+      padding: 9rem 1.5rem 2rem;
     }
     @media (min-width: 768px) {
-      .work-hero { padding: 4rem 3rem 3rem; }
+      .work-hero { padding: 10rem 3rem 3rem; }
     }
     .work-title {
       font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -109,7 +86,12 @@
     }
   </style>
 </head>
-<body>
+<body style="background-color: #F4F5F7; color: #2C3E50; font-family: 'Barlow', sans-serif;">
+
+  <!-- Site Preloader -->
+  <div id="site-loader">
+    <img src="LogoBlue.png" alt="Loading..." class="loader-mark-pulse">
+  </div>
 
   <!-- Slide-Down Top-Third Index Overlay Panel -->
   <div id="index-overlay" class="index-overlay-panel">
@@ -125,7 +107,7 @@
     <nav class="overlay-nav-links">
       <div class="overlay-link-item">
         <span>01</span>
-        <a href="work.html" class="overlay-link">Work</a>
+        <a href="work.html" class="overlay-link" style="color: #F15B22;">Work</a>
       </div>
       <div class="overlay-link-item">
         <span>02</span>
@@ -149,16 +131,20 @@
     </svg>
   </button>
 
-  <!-- Top Header Navigation -->
-  <header class="work-header">
-    <a href="index.html" class="brand-name">Devin Sanders</a>
-    <nav class="work-nav-links">
-      <a href="index.html">Home</a>
-      <a href="ui-ux.html">UI/UX</a>
-      <a href="about.html">About</a>
-      <button id="top-contact-btn" style="background:none; border:none; cursor:pointer; font-family:var(--font-barlow); font-weight:300; font-size:0.875rem; color:var(--text-dark);">Contact</button>
-    </nav>
-  </header>
+  <!-- Sticky Morphing Logo Header -->
+  <nav class="sticky-brand-nav">
+    <a href="index.html" class="brand-morph-link" aria-label="Devin Sanders Home">
+      <div class="morph-logo-box">
+        <img src="LogoLong.png" alt="Devin Sanders" class="logo-full">
+        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="logo-mark">
+      </div>
+    </a>
+    <div style="pointer-events: auto; display: flex; gap: 1.5rem; align-items: center;">
+      <a href="work.html" style="color: #F15B22; text-decoration: none; font-size: 0.875rem; font-weight: 700;">Work</a>
+      <a href="ui-ux.html" style="color: #2C3E50; text-decoration: none; font-size: 0.875rem; font-weight: 500; opacity: 0.85; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">UI/UX</a>
+      <a href="about.html" style="color: #2C3E50; text-decoration: none; font-size: 0.875rem; font-weight: 500; opacity: 0.85; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">About</a>
+    </div>
+  </nav>
 
   <!-- Work Hero -->
   <section class="work-hero">
@@ -166,7 +152,7 @@
     <h1 class="work-title">Selected Projects</h1>
   </section>
 
-  <!-- Grid of All 11 Projects -->
+  <!-- Grid of All Projects (rendered via main.js) -->
   <main id="work-grid" class="projects-archive-grid"></main>
 
   <!-- Dark Footer -->
