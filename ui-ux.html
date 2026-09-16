@@ -44,41 +44,44 @@
     /* Full Bleed Banner Sections */
     .ux-banner {
       width: 100%;
-      padding: 5rem 1.5rem;
+      padding: 3rem 1.5rem; /* Tight vertical padding keeps colored box compact */
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      overflow: visible;
     }
     @media (min-width: 900px) {
       .ux-banner {
-        padding: 6.5rem 3rem;
+        padding: 4rem 2.5rem;
       }
     }
+    
+    /* Widened container so images have room to grow */
     .ux-banner-inner {
-      max-width: 1200px;
+      max-width: 1440px;
       width: 100%;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr;
-      gap: 3.5rem;
+      gap: 2.5rem;
       align-items: center;
     }
     @media (min-width: 900px) {
       .ux-banner-inner {
-        grid-template-columns: 1.1fr 0.9fr;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 3.5rem;
       }
       .ux-banner-inner.reverse {
-        grid-template-columns: 0.9fr 1.1fr;
+        grid-template-columns: 1fr 1.4fr;
       }
-      /* Expand the image column specifically for iOS */
+      /* Extra wide allocation specifically for the iOS screens */
       .ux-banner-inner.ios-banner-layout {
-        grid-template-columns: 1.35fr 0.85fr;
-        gap: 3rem;
+        grid-template-columns: 1.6fr 1fr;
+        gap: 2.5rem;
       }
     }
 
-    /* Banner Image Boxes */
+    /* Banner Graphic Containers */
     .ux-mockup-frame {
       width: 100%;
       display: flex;
@@ -89,26 +92,29 @@
       width: 100%;
       height: auto;
       object-fit: contain;
-      filter: drop-shadow(0 20px 30px rgba(0,0,0,0.22));
+      filter: drop-shadow(0 25px 35px rgba(0,0,0,0.28));
       display: block;
     }
 
-    /* Project-Specific Size Tuning */
+    /* Project-Specific PNG Sizes (Images enlarged, not the boxes) */
     .ux-mockup-ios img {
-      max-height: 620px;
+      max-width: 780px;
+      max-height: none;
       transform: scale(1.15);
       transform-origin: center center;
     }
 
     .ux-mockup-wise img {
-      max-height: 520px;
+      max-width: 720px;
+      max-height: none;
       transform: scale(1.08);
       transform-origin: center center;
     }
 
     .ux-mockup-kalorie img {
-      max-height: 540px;
-      transform: scale(1.08);
+      max-width: 680px;
+      max-height: none;
+      transform: scale(1.1);
       transform-origin: center center;
     }
 
@@ -117,7 +123,8 @@
       .ux-mockup-wise img,
       .ux-mockup-kalorie img {
         transform: none;
-        max-height: 420px;
+        max-width: 100%;
+        max-height: 440px;
       }
     }
 
