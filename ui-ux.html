@@ -48,6 +48,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
     @media (min-width: 900px) {
       .ux-banner {
@@ -70,9 +71,14 @@
       .ux-banner-inner.reverse {
         grid-template-columns: 0.9fr 1.1fr;
       }
+      /* Expand the image column specifically for iOS */
+      .ux-banner-inner.ios-banner-layout {
+        grid-template-columns: 1.35fr 0.85fr;
+        gap: 3rem;
+      }
     }
 
-    /* Banner Image Box */
+    /* Banner Image Boxes */
     .ux-mockup-frame {
       width: 100%;
       display: flex;
@@ -81,9 +87,38 @@
     }
     .ux-mockup-frame img {
       width: 100%;
-      max-height: 480px;
+      height: auto;
       object-fit: contain;
       filter: drop-shadow(0 20px 30px rgba(0,0,0,0.22));
+      display: block;
+    }
+
+    /* Project-Specific Size Tuning */
+    .ux-mockup-ios img {
+      max-height: 620px;
+      transform: scale(1.15);
+      transform-origin: center center;
+    }
+
+    .ux-mockup-wise img {
+      max-height: 520px;
+      transform: scale(1.08);
+      transform-origin: center center;
+    }
+
+    .ux-mockup-kalorie img {
+      max-height: 540px;
+      transform: scale(1.08);
+      transform-origin: center center;
+    }
+
+    @media (max-width: 899px) {
+      .ux-mockup-ios img,
+      .ux-mockup-wise img,
+      .ux-mockup-kalorie img {
+        transform: none;
+        max-height: 420px;
+      }
     }
 
     /* Typography inside Banners */
@@ -264,11 +299,11 @@
   </header>
 
   <!-- =========================================================================
-       PROJECT 01: iOS ECOSYSTEM (Dark Surface #000000)
+       PROJECT 01: iOS ECOSYSTEM (Charcoal Surface #161616)
        ========================================================================= -->
   <section class="ux-banner" style="background-color: #161616; color: #FFFFFF;">
-    <div class="ux-banner-inner">
-      <div class="ux-mockup-frame">
+    <div class="ux-banner-inner ios-banner-layout">
+      <div class="ux-mockup-frame ux-mockup-ios">
         <img src="UI-UX/iOS Thumbnail.png" alt="iOS Ecosystem Mockup" onerror="this.onerror=null; this.src='https://placehold.co/800x600/121212/FFFFFF?text=iOS+Ecosystem+Mockup';">
       </div>
       <div>
@@ -313,7 +348,7 @@
           </a>
         </div>
       </div>
-      <div class="ux-mockup-frame">
+      <div class="ux-mockup-frame ux-mockup-wise">
         <img src="UI-UX/WISE Thumbnail.png" alt="Wise Banking Dashboard Laptop" onerror="this.onerror=null; this.src='https://placehold.co/800x550/8CD55D/163300?text=Wise+Laptop+Dashboard';">
       </div>
     </div>
@@ -324,7 +359,7 @@
        ========================================================================= -->
   <section class="ux-banner" style="background-color: #0065ED; color: #FFFFFF;">
     <div class="ux-banner-inner">
-      <div class="ux-mockup-frame">
+      <div class="ux-mockup-frame ux-mockup-kalorie">
         <img src="UI-UX/KT Thumbnail.png" alt="KalorieTrak Mobile Interface" onerror="this.onerror=null; this.src='https://placehold.co/700x600/0052C2/FFFFFF?text=KalorieTrak+Mobile+UI';">
       </div>
       <div>
