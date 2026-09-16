@@ -17,7 +17,7 @@
   <style>
     /* Hero Header */
     .ux-hero {
-      padding: 9rem 1.5rem 4rem;
+      padding: 9rem 1.5rem 3.5rem;
       max-width: 1200px;
       margin: 0 auto;
       text-align: center;
@@ -41,52 +41,58 @@
       margin: 0 auto;
     }
 
-    /* Full Bleed Banner Sections */
+    /* Uniform Height Banner Sections across all 3 projects */
     .ux-banner {
       width: 100%;
-      padding: 3rem 1.5rem; /* Tight vertical padding keeps colored box compact */
+      height: 540px; /* Locks exact identical height for all 3 color containers */
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
       overflow: visible;
+      box-sizing: border-box;
+      padding: 0 2rem;
     }
-    @media (min-width: 900px) {
+    @media (max-width: 899px) {
       .ux-banner {
-        padding: 4rem 2.5rem;
+        height: auto;
+        min-height: auto;
+        padding: 4.5rem 1.5rem;
       }
     }
-    
-    /* Widened container so images have room to grow */
+
     .ux-banner-inner {
       max-width: 1440px;
       width: 100%;
+      height: 100%;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2.5rem;
+      gap: 2rem;
       align-items: center;
     }
     @media (min-width: 900px) {
       .ux-banner-inner {
-        grid-template-columns: 1.4fr 1fr;
+        grid-template-columns: 1.35fr 1fr;
         gap: 3.5rem;
       }
       .ux-banner-inner.reverse {
-        grid-template-columns: 1fr 1.4fr;
+        grid-template-columns: 1fr 1.35fr;
       }
-      /* Extra wide allocation specifically for the iOS screens */
       .ux-banner-inner.ios-banner-layout {
-        grid-template-columns: 1.6fr 1fr;
+        grid-template-columns: 1.45fr 1fr;
         gap: 2.5rem;
       }
     }
 
-    /* Banner Graphic Containers */
+    /* Mockup Graphic Presentation Frames */
     .ux-mockup-frame {
       width: 100%;
+      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
     }
     .ux-mockup-frame img {
       width: 100%;
@@ -94,27 +100,28 @@
       object-fit: contain;
       filter: drop-shadow(0 25px 35px rgba(0,0,0,0.28));
       display: block;
+      transition: transform 0.3s ease;
     }
 
-    /* Project-Specific PNG Sizes (Images enlarged, not the boxes) */
+    /* Visual Scale Tuning */
     .ux-mockup-ios img {
+      max-height: 520px;
       max-width: 780px;
-      max-height: none;
       transform: scale(1.15);
       transform-origin: center center;
     }
 
     .ux-mockup-wise img {
-      max-width: 720px;
-      max-height: none;
-      transform: scale(1.08);
+      max-height: 500px;
+      max-width: 860px; /* Scaled up to balance the iOS composition */
+      transform: scale(1.18);
       transform-origin: center center;
     }
 
     .ux-mockup-kalorie img {
-      max-width: 680px;
-      max-height: none;
-      transform: scale(1.1);
+      max-height: 520px;
+      max-width: 800px; /* Scaled up to match the dominant presence */
+      transform: scale(1.2);
       transform-origin: center center;
     }
 
@@ -124,42 +131,43 @@
       .ux-mockup-kalorie img {
         transform: none;
         max-width: 100%;
-        max-height: 440px;
+        max-height: 380px;
       }
     }
 
     /* Typography inside Banners */
     .ux-banner-title {
-      font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+      font-size: clamp(1.85rem, 3.2vw, 2.75rem);
       font-weight: 800;
       letter-spacing: -0.02em;
       line-height: 1.15;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
     }
     .ux-banner-desc {
-      font-size: 1rem;
+      font-size: 0.975rem;
       font-weight: 300;
       line-height: 1.65;
-      margin-bottom: 2rem;
-      max-width: 500px;
+      margin-bottom: 1.75rem;
+      max-width: 520px;
     }
 
     /* Button Groupings */
     .ux-btn-group {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 0.85rem;
       align-items: center;
     }
     .ux-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.75rem;
+      gap: 0.45rem;
+      padding: 0.7rem 1.4rem;
       border-radius: 9999px;
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       font-weight: 600;
       text-decoration: none;
+      white-space: nowrap;
       transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
       cursor: pointer;
     }
@@ -340,17 +348,18 @@
         <p class="ux-banner-desc" style="color: #163300CC;">
           Transforming Wise from a simple currency exchange app into a complete personal banking hub by blending checking, savings, and credit features directly into its existing international system.
         </p>
+        <!-- 3 Buttons in a row: Case Study (Solid Dark Green) -> Laptop -> Mobile (Both Hollow) -->
         <div class="ux-btn-group">
-          <a href="https://www.figma.com/proto/4qe0TRjqgTmGfm4kcG44uH/Wise-Design-System-MASTER?node-id=2150-2940&page-id=125%3A1802&starting-point-node-id=2150%3A2940&t=4SkG7lGFOJMhLwgp-1" target="_blank" rel="noopener noreferrer" class="ux-btn" style="background-color: #163300; color: #9FE870;">
+          <a href="https://www.figma.com/proto/e73lxstvISQ5uGFYnZOOOS/Wise-Banking-Dash-Case-Study?node-id=1-2&page-id=0%3A1&starting-point-node-id=1%3A2&scaling=scale-down-width&content-scaling=fixed&t=RoTTcpocSUe5iZQs-1" target="_blank" rel="noopener noreferrer" class="ux-btn" style="background-color: #163300; color: #9FE870; border: 1.5px solid #163300;">
+            <span>Case Study</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+          <a href="https://www.figma.com/proto/4qe0TRjqgTmGfm4kcG44uH/Wise-Design-System-MASTER?node-id=2150-2940&page-id=125%3A1802&starting-point-node-id=2150%3A2940&t=4SkG7lGFOJMhLwgp-1" target="_blank" rel="noopener noreferrer" class="ux-btn" style="background-color: transparent; border: 1.5px solid #163300; color: #163300;">
             <span>Laptop Prototype</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
           </a>
           <a href="https://www.figma.com/proto/06Z3boWDUoB3vxWtp3mjth/Wise-Mobile-Dashboard?node-id=3-3412&page-id=0%3A1&t=QcWfE70UrDFl6pip-1" target="_blank" rel="noopener noreferrer" class="ux-btn" style="background-color: transparent; border: 1.5px solid #163300; color: #163300;">
             <span>Mobile Prototype</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-          </a>
-          <a href="https://www.figma.com/proto/e73lxstvISQ5uGFYnZOOOS/Wise-Banking-Dash-Case-Study?node-id=1-2&page-id=0%3A1&starting-point-node-id=1%3A2&scaling=scale-down-width&content-scaling=fixed&t=RoTTcpocSUe5iZQs-1" target="_blank" rel="noopener noreferrer" class="ux-btn" style="background-color: transparent; border: 1.5px solid #163300; color: #163300;">
-            <span>Case Study</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
           </a>
         </div>
