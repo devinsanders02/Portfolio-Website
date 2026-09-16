@@ -603,6 +603,25 @@ footer.site-footer {
   pointer-events: auto;
 }
 
+/* Top-Right Nav Links: Initial visible state */
+.sticky-brand-nav > div:last-child {
+  transition: 
+    opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+    transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    visibility 0.3s;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Top-Right Nav Links: Scrolled out of view */
+.sticky-brand-nav.scrolled > div:last-child {
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  visibility: hidden;
+}
+
 /* Turnstyle 100vh Full-Bleed Hero */
 .turnstyle-hero-banner {
   position: relative;
