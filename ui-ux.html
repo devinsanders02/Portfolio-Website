@@ -41,10 +41,10 @@
       margin: 0 auto;
     }
 
-    /* Full Bleed Banner Sections: Just under full screen height (82vh) */
+    /* Full Bleed Banner Sections: 95% of viewport height */
     .ux-banner {
       width: 100%;
-      min-height: 82vh; /* Almost the full height of the viewport */
+      min-height: 95vh;
       padding: 3rem 2rem;
       display: flex;
       align-items: center;
@@ -80,7 +80,7 @@
         grid-template-columns: 1fr 1.4fr;
       }
       .ux-banner-inner.ios-banner-layout {
-        grid-template-columns: 1.5fr 1fr;
+        grid-template-columns: 1.55fr 1fr;
         gap: 3rem;
       }
     }
@@ -101,24 +101,24 @@
       transition: transform 0.3s ease;
     }
 
-    /* Image Scaling for High-Impact 82vh Presentation */
+    /* Restored Big Mockup Sizes */
     .ux-mockup-ios img {
-      max-width: 860px;
-      max-height: 70vh; /* Keeps the mockup from spilling outside the banner */
-      transform: scale(1.12);
+      max-width: 820px;
+      max-height: none;
+      transform: scale(1.15);
       transform-origin: center center;
     }
 
     .ux-mockup-wise img {
       max-width: 920px;
-      max-height: 68vh;
-      transform: scale(1.14);
+      max-height: none;
+      transform: scale(1.15);
       transform-origin: center center;
     }
 
     .ux-mockup-kalorie img {
-      max-width: 880px;
-      max-height: 70vh;
+      max-width: 860px;
+      max-height: none;
       transform: scale(1.15);
       transform-origin: center center;
     }
@@ -346,7 +346,6 @@
         <p class="ux-banner-desc" style="color: #163300CC;">
           Transforming Wise from a simple currency exchange app into a complete personal banking hub by blending checking, savings, and credit features directly into its existing international system.
         </p>
-        <!-- 3 Buttons in a row: Case Study (Solid Dark Green) -> Laptop -> Mobile (Both Hollow) -->
         <div class="ux-btn-group">
           <a href="https://www.figma.com/proto/e73lxstvISQ5uGFYnZOOOS/Wise-Banking-Dash-Case-Study?node-id=1-2&page-id=0%3A1&starting-point-node-id=1%3A2&scaling=scale-down-width&content-scaling=fixed&t=RoTTcpocSUe5iZQs-1" target="_blank" rel="noopener noreferrer" class="ux-btn" style="background-color: #163300; color: #9FE870; border: 1.5px solid #163300;">
             <span>Case Study</span>
