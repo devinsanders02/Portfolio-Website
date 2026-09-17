@@ -41,10 +41,10 @@
       margin: 0 auto;
     }
 
-    /* Banner Height: Split the difference between the old 82vh and 95vh */
+  /* Banner Height: Enforces identical fixed height across all 3 sections */
     .ux-banner {
       width: 100%;
-      min-height: 92vh; /* Exactly dialed between the two heights for all 3 boxes */
+      height: 92vh; /* Fixed height locks all 3 boxes to the exact same size */
       padding: 3rem 2rem;
       display: flex;
       align-items: center;
@@ -55,7 +55,7 @@
     }
     @media (max-width: 899px) {
       .ux-banner {
-        min-height: auto;
+        height: auto;
         padding: 5rem 1.5rem;
       }
     }
@@ -101,7 +101,7 @@
       transition: transform 0.3s ease;
     }
 
-    /* iOS Mockup: Scaled down slightly from 1.15 to 1.08 with a tighter max footprint */
+    /* iOS Mockup */
     .ux-mockup-ios img {
       max-width: 960px;
       max-height: none;
@@ -109,17 +109,19 @@
       transform-origin: center center;
     }
 
+    /* Wise Mockup: Scaled up to match iOS presence */
     .ux-mockup-wise img {
-      max-width: 920px;
+      max-width: 960px;
       max-height: none;
-      transform: scale(1.15);
+      transform: scale(1.22);
       transform-origin: center center;
     }
 
+    /* KalorieTrak Mockup: Scaled up to match iOS presence */
     .ux-mockup-kalorie img {
-      max-width: 860px;
+      max-width: 920px;
       max-height: none;
-      transform: scale(1.15);
+      transform: scale(1.22);
       transform-origin: center center;
     }
 
