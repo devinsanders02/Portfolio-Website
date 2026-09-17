@@ -41,13 +41,13 @@
       margin: 0 auto;
     }
 
-  /* Banner Height: Enforces identical fixed height across all 3 sections */
+  /* Banner Container: Standardized viewport height */
     .ux-banner {
       width: 100%;
-      height: 92vh; /* Fixed height locks all 3 boxes to the exact same size */
-      padding: 3rem 2rem;
+      height: 92vh;
+      padding: 2rem;
       display: flex;
-      align-items: center;
+      align-items: center;      /* Vertically centers the entire inner grid */
       justify-content: center;
       position: relative;
       overflow: visible;
@@ -60,16 +60,16 @@
       }
     }
 
-    /* Wide Canvas Layout */
+    /* Inner Grid: Allow it to center naturally without forced 100% height */
     .ux-banner-inner {
       max-width: 1440px;
       width: 100%;
-      height: 100%;
+      height: auto;             /* Removes height distortion so grid rows true-center */
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr;
       gap: 2.5rem;
-      align-items: center;
+      align-items: center;      /* Keeps both columns centered to each other */
     }
     @media (min-width: 900px) {
       .ux-banner-inner {
@@ -85,7 +85,7 @@
       }
     }
 
-    /* Mockup Frame & Image Display */
+    /* Mockup Graphic Presentation Frames */
     .ux-mockup-frame {
       width: 100%;
       display: flex;
@@ -96,32 +96,30 @@
       width: 100%;
       height: auto;
       object-fit: contain;
-      filter: drop-shadow(0 28px 40px rgba(0,0,0,0.28));
+      filter: drop-shadow(0 24px 36px rgba(0,0,0,0.26));
       display: block;
       transition: transform 0.3s ease;
     }
 
-    /* iOS Mockup */
+    /* Mockup Sizing: Contained within viewport boundaries so nothing spills or shifts */
     .ux-mockup-ios img {
-      max-width: 960px;
-      max-height: none;
-      transform: scale(1.18);
+      max-width: 840px;
+      max-height: 72vh;         /* Prevents vertical blowout that pushes the text down */
+      transform: scale(1.06);   /* Clean, prominent scale without clipping */
       transform-origin: center center;
     }
 
-    /* Wise Mockup: Scaled up to match iOS presence */
     .ux-mockup-wise img {
-      max-width: 960px;
-      max-height: none;
-      transform: scale(1.22);
+      max-width: 900px;
+      max-height: 70vh;
+      transform: scale(1.1);
       transform-origin: center center;
     }
 
-    /* KalorieTrak Mockup: Scaled up to match iOS presence */
     .ux-mockup-kalorie img {
-      max-width: 920px;
-      max-height: none;
-      transform: scale(1.22);
+      max-width: 860px;
+      max-height: 70vh;
+      transform: scale(1.1);
       transform-origin: center center;
     }
 
@@ -131,7 +129,7 @@
       .ux-mockup-kalorie img {
         transform: none;
         max-width: 100%;
-        max-height: 440px;
+        max-height: 420px;
       }
     }
 
