@@ -41,10 +41,10 @@
       margin: 0 auto;
     }
 
-    /* Full Bleed Banner Sections: 95% of viewport height */
+    /* Banner Height: Split the difference between the old 82vh and 95vh */
     .ux-banner {
       width: 100%;
-      min-height: 95vh;
+      min-height: 88vh; /* Exactly dialed between the two heights for all 3 boxes */
       padding: 3rem 2rem;
       display: flex;
       align-items: center;
@@ -101,11 +101,11 @@
       transition: transform 0.3s ease;
     }
 
-    /* Restored Big Mockup Sizes */
+    /* iOS Mockup: Scaled down slightly from 1.15 to 1.08 with a tighter max footprint */
     .ux-mockup-ios img {
-      max-width: 820px;
-      max-height: none;
-      transform: scale(1.15);
+      max-width: 780px;
+      max-height: 75vh;
+      transform: scale(1.08);
       transform-origin: center center;
     }
 
