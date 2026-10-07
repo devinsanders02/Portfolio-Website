@@ -7,7 +7,32 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Rubik:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================================
+       REXBURG RAPIDS CUSTOM TYPOGRAPHY OVERRIDES
+       ========================================================================= */
+
+    /* 1. All Section Headers & Titles -> Plus Jakarta Sans (Display) */
+    .rapids-case-page main h2,
+    .rapids-case-page main h3,
+    .rapids-case-page main h4,
+    .rapids-case-page .case-section-header .label,
+    .rapids-case-page .swatch-name {
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-weight: 700;
+    }
+
+    /* 2. All Body Copy, Paragraphs, Lists & Card Data -> Rubik (Body) */
+    .rapids-case-page main p,
+    .rapids-case-page main li,
+    .rapids-case-page .swatch-values,
+    .rapids-case-page .font-label {
+      font-family: 'Rubik', sans-serif !important;
+      font-weight: 400;
+    }
+  </style>
 </head>
 <body class="rapids-case-page">
 
@@ -24,7 +49,7 @@
     </div>
   </nav>
 
-  <!-- 1. Full-Bleed 100vh Hero Banner -->
+  <!-- 1. Full-Bleed 100vh Hero Banner (Untouched Default Font) -->
   <header class="turnstyle-hero-banner">
     <img src="RexburgRapids-Hero.jpg" alt="Rexburg Rapids Hero" class="turnstyle-hero-bg">
     <div class="turnstyle-hero-overlay" style="background: linear-gradient(to top, rgba(0,40,90,0.8) 0%, rgba(0,0,0,0.1) 60%);"></div>
@@ -190,7 +215,7 @@
         </div>
       </div>
 
-      <!-- Typography Specimen Box (Original Clean Styling) -->
+      <!-- Typography Specimen Box -->
       <div class="case-section-header">
         <div class="line" style="background-color: #0066CC;"></div>
         <span class="label" style="color: #2C3E50;">Typography System</span>
@@ -220,7 +245,7 @@
 
   </main>
 
-  <!-- Global Dark Footer -->
+  <!-- Global Dark Footer (Untouched) -->
   <footer id="contact" class="site-footer">
     <div class="footer-max-width">
       <span class="uppercase-label">Get in Touch</span>
