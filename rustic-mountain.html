@@ -7,22 +7,49 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Rubik:wght@600;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================================
+       RUSTIC MOUNTAIN BISTRO CUSTOM TYPOGRAPHY OVERRIDES
+       ========================================================================= */
+
+    /* 1. Case Study Headers, Section Titles, & Display -> Crete Round */
+    main h2,
+    main h3,
+    main h4,
+    main .case-section-header .label,
+    main .feature-copy h3,
+    main .uppercase-label,
+    main .swatch-name {
+      font-family: 'Crete Round', serif !important;
+      letter-spacing: -0.01em;
+    }
+
+    /* 2. Body Copy, Paragraphs, Lists & Details -> Onest */
+    main p:not(.pagination-title):not(.pagination-label),
+    main li,
+    main .feature-copy p,
+    main .feature-copy .step-num,
+    main .swatch-values {
+      font-family: 'Onest', sans-serif !important;
+    }
+  </style>
 </head>
 <body style="background-color: #F8F6F1; color: #2C2825;">
 
   <!-- Sticky Morphing Logo Header -->
-  <nav class="sticky-brand-nav">
+  <header class="sticky-brand-nav">
     <a href="index.html" class="brand-morph-link" aria-label="Devin Sanders Home">
       <div class="morph-logo-box">
         <img src="LogoLong.png" alt="Devin Sanders" class="logo-full">
         <img src="LogoBlue.png" alt="Devin Sanders Mark" class="logo-mark">
       </div>
     </a>
-    <div style="pointer-events: auto;">
-      <a href="work.html" style="color: #2C2825; text-decoration: none; font-size: 0.875rem; font-weight: 500; opacity: 0.85; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">← All Work</a>
+    <div class="nav-right-link">
+      <a href="work.html" class="back-work-link">← All Work</a>
     </div>
-  </nav>
+  </header>
 
   <!-- 1. Universal 100vh Full-Bleed Hero -->
   <header class="turnstyle-hero-banner">
@@ -49,13 +76,13 @@
       <div style="display: grid; grid-template-columns: 1fr; gap: 2.5rem;" class="intro-grid-responsive">
         <div>
           <span class="uppercase-label" style="margin-bottom: 0.75rem; color: #C27E5D;">The Concept</span>
-          <p style="font-weight: 300; font-size: 1.15rem; line-height: 1.6; color: #2C2825;">
+          <p style="font-weight: 400; font-size: 1.15rem; line-height: 1.6; color: #2C2825;">
             Nestled in the foothills of Lyons, Colorado, Rustic Mountain Bistro serves thoughtful, fire-cooked comfort food. The identity combines rugged mountain silhouettes with hearth flame negative space to reflect warmth, honest craft, and high-country charm.
           </p>
         </div>
         <div>
           <span class="uppercase-label" style="margin-bottom: 0.75rem; color: rgba(44,40,37,0.5);">The Experience</span>
-          <p style="font-weight: 300; font-size: 0.95rem; line-height: 1.7; color: rgba(44,40,37,0.8);">
+          <p style="font-weight: 400; font-size: 0.95rem; line-height: 1.7; color: rgba(44,40,37,0.8);">
             The visual system spans physical and tactile touchpoints—from cast wood dining room signage and timber clipboards to customer tickets and durable outdoor merchandise.
           </p>
         </div>
@@ -193,6 +220,43 @@
       </div>
 
     </div>
+
+    <!-- 8. Project Pagination Navigation -->
+    <nav class="project-pagination-nav" aria-label="Project Pagination">
+      <!-- Previous Project: Personal Identity -->
+      <a href="identity-system.html" class="pagination-card prev-card">
+        <div class="pagination-arrow-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display: block; overflow: visible;">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </div>
+        <div class="pagination-thumb">
+          <img src="Jared/IS-Hero.png" alt="Personal Identity System Thumbnail">
+        </div>
+        <div class="pagination-meta">
+          <span class="pagination-label">Previous Project</span>
+          <span class="pagination-title">Personal Brand Identity</span>
+        </div>
+      </a>
+
+      <!-- Next Project: Olly Vitamin Packaging -->
+      <a href="olly.html" class="pagination-card next-card">
+        <div class="pagination-meta text-right">
+          <span class="pagination-label">Next Project</span>
+          <span class="pagination-title">Olly Vitamin Packaging</span>
+        </div>
+        <div class="pagination-thumb">
+          <img src="Olly/Olly-Hero.png" alt="Olly Vitamin Packaging Thumbnail">
+        </div>
+        <div class="pagination-arrow-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display: block; overflow: visible;">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </div>
+      </a>
+    </nav>
 
   </main>
 
