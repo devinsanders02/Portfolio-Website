@@ -20,19 +20,17 @@
     main h4,
     main .context-headline,
     main .case-section-header .label,
-    main .feature-copy h3,
-    main .pagination-title {
+    main .feature-copy h3 {
       font-family: 'Zilla Slab', serif !important;
       font-weight: 700;
       letter-spacing: -0.01em;
     }
 
     /* 2. Body Text, Paragraphs, Lists & Meta Labels -> Syne */
-    main p,
+    main p:not(.pagination-title):not(.pagination-label),
     main li,
     main .feature-copy p,
     main .feature-copy .step-num,
-    main .pagination-label,
     main .uppercase-label {
       font-family: 'Syne', sans-serif !important;
     }
@@ -207,12 +205,12 @@
           <span class="pagination-title">Analog Reboot</span>
         </div>
         <div class="pagination-thumb">
-          <img src="AnalogReboot-Hero.png" alt="Analog Reboot Thumbnail">
+          <img src="AnalogReboot/AR-Hero.png" alt="Analog Reboot Thumbnail">
         </div>
         <div class="pagination-arrow-box">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
+            <polyline points="12 19 5 12 12 19"></polyline>
           </svg>
         </div>
       </a>
