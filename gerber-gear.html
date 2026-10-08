@@ -7,22 +7,48 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Rubik:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;1,700&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================================
+       GERBER GEAR CUSTOM TYPOGRAPHY OVERRIDES
+       ========================================================================= */
+
+    /* 1. Case Study Headers, Section Titles, & Display -> Archivo */
+    .gerber-case-page main h2,
+    .gerber-case-page main h3,
+    .gerber-case-page main h4,
+    .gerber-case-page main .case-section-header .label,
+    .gerber-case-page main .feature-copy h3,
+    .gerber-case-page main .uppercase-label {
+      font-family: 'Archivo', sans-serif !important;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    /* 2. Body Copy, Paragraphs, Lists & Details -> Figtree */
+    .gerber-case-page main p:not(.pagination-title):not(.pagination-label),
+    .gerber-case-page main li,
+    .gerber-case-page main .feature-copy p,
+    .gerber-case-page main .feature-copy .step-num {
+      font-family: 'Figtree', sans-serif !important;
+    }
+  </style>
 </head>
 <body class="gerber-case-page">
 
   <!-- Sticky Morphing Logo Header -->
-  <nav class="sticky-brand-nav">
+  <header class="sticky-brand-nav">
     <a href="index.html" class="brand-morph-link" aria-label="Devin Sanders Home">
       <div class="morph-logo-box">
         <img src="LogoLong.png" alt="Devin Sanders" class="logo-full">
         <img src="LogoBlue.png" alt="Devin Sanders Mark" class="logo-mark">
       </div>
     </a>
-    <div style="pointer-events: auto;">
-      <a href="work.html" style="color: #1E2229; text-decoration: none; font-size: 0.875rem; font-weight: 500; opacity: 0.85; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">← All Work</a>
+    <div class="nav-right-link">
+      <a href="work.html" class="back-work-link">← All Work</a>
     </div>
-  </nav>
+  </header>
 
   <!-- 1. Universal 100vh Full-Bleed Hero -->
   <header class="turnstyle-hero-banner">
@@ -49,13 +75,13 @@
       <div style="display: grid; grid-template-columns: 1fr; gap: 2.5rem;" class="intro-grid-responsive">
         <div>
           <span class="uppercase-label" style="margin-bottom: 0.75rem; color: #D47A22;">The System</span>
-          <p style="font-weight: 300; font-size: 1.15rem; line-height: 1.6; color: #1E2229;">
+          <p style="font-weight: 400; font-size: 1.15rem; line-height: 1.6; color: #1E2229;">
             This project develops a cohesive, physical packaging system for Gerber Gear. Spanning three core field tools—a pocket knife, a camp hatchet, and utility paracord—each package was engineered and laser-cut from raw kraft chipboard to balance retail durability with an authentic, tactile unboxing reveal.
           </p>
         </div>
         <div>
           <span class="uppercase-label" style="margin-bottom: 0.75rem; color: rgba(30,34,41,0.5);">The Challenge</span>
-          <p style="font-weight: 300; font-size: 0.95rem; line-height: 1.7; color: rgba(30,34,41,0.8);">
+          <p style="font-weight: 400; font-size: 0.95rem; line-height: 1.7; color: rgba(30,34,41,0.8);">
             Outdoor packaging frequently relies on non-recyclable plastic clamshells that obscure tactile quality. The goal was to build a sustainable, interlocking structural system with custom interior retention inserts that secure heavy steel tools while communicating rugged brand heritage through topographic linework.
           </p>
         </div>
@@ -180,43 +206,79 @@
           <div class="line" style="background-color: #D47A22;"></div>
           <span class="label" style="color: #1E2229;">Retail Environment</span>
         </div>
-        <h2 style="font-family: 'Barlow', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: #1E2229; margin-bottom: 1.5rem;">
+        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: #1E2229; margin-bottom: 1.5rem;">
           Point of Display Retail Unit
         </h2>
-        <p style="font-weight: 300; font-size: 1.05rem; line-height: 1.7; color: rgba(30,34,41,0.8); max-width: 800px; margin-bottom: 2.5rem;">
+        <p style="font-weight: 400; font-size: 1.05rem; line-height: 1.7; color: rgba(30,34,41,0.8); max-width: 800px; margin-bottom: 2.5rem;">
           The custom point-of-display housing was engineered to stage all three tools within a single compact footprint for outdoor retail counters. The tiered shelving ensures all items remain fully visible while guiding customer exploration.
         </p>
         <div class="case-img-box" style="height: auto; min-height: 550px;">
           <img src="GerberGear/GG-POS.jpg" alt="Point of Sale Display" style="width: 100%; height: auto; object-fit: contain;">
         </div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         THE UNBOXING EXPERIENCE (CONTAINED HERO & 2-COLUMN GRID)
+         ========================================================================= -->
+    <div class="case-content-wrap">
+      <div class="case-section-header">
+        <div class="line" style="background-color: #D47A22;"></div>
+        <span class="label" style="color: #1E2229;">The Unboxing Experience</span>
+      </div>
+
+      <!-- 1. Contained Margin-Locked Showcase Image -->
+      <div class="case-img-box" style="width: 100%; margin-bottom: 2rem; box-shadow: 0 8px 30px rgba(0,0,0,0.06);">
+        <img src="GerberGear/GG-Unboxing2.jpg" alt="Gerber Gear Master Box Unboxing Experience" style="width: 100%; height: auto; display: block; border-radius: 6px;">
+      </div>
+
+      <!-- 2. Supporting 2-Column Spread: Note & 1:1 Square GIF -->
+      <div class="case-grid-2col" style="margin-bottom: 5rem;">
+        <div class="case-img-box">
+          <img src="GerberGear/GG-Unboxing1.png" alt="Custom Note From The Creator Field Insert Card">
+        </div>
+        <div class="case-img-box">
+          <img src="GerberGear/Unboxing.gif" alt="Master Collector Box with All Three Packages Inside">
         </div>
       </div>
     </div>
 
-   <!-- =========================================================================
-       THE UNBOXING EXPERIENCE (CONTAINED HERO & 2-COLUMN GRID)
-       ========================================================================= -->
-  <div class="case-content-wrap">
-    <div class="case-section-header">
-      <div class="line" style="background-color: #D47A22;"></div>
-      <span class="label" style="color: #1E2229;">The Unboxing Experience</span>
-    </div>
+    <!-- Project Pagination Navigation -->
+    <nav class="project-pagination-nav" aria-label="Project Pagination">
+      <!-- Previous Project: Analog Reboot -->
+      <a href="analog-reboot.html" class="pagination-card prev-card">
+        <div class="pagination-arrow-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display: block; overflow: visible;">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </div>
+        <div class="pagination-thumb">
+          <img src="AnalogReboot/AR-Hero.png" alt="Analog Reboot Thumbnail">
+        </div>
+        <div class="pagination-meta">
+          <span class="pagination-label">Previous Project</span>
+          <span class="pagination-title">Analog Reboot</span>
+        </div>
+      </a>
 
-    <!-- 1. Contained Margin-Locked Showcase Image -->
-    <div class="case-img-box" style="width: 100%; margin-bottom: 2rem; box-shadow: 0 8px 30px rgba(0,0,0,0.06);">
-      <img src="GerberGear/GG-Unboxing2.jpg" alt="Gerber Gear Master Box Unboxing Experience" style="width: 100%; height: auto; display: block; border-radius: 6px;">
-    </div>
-
-    <!-- 2. Supporting 2-Column Spread: Note & 1:1 Square GIF -->
-    <div class="case-grid-2col" style="margin-bottom: 5rem;">
-      <div class="case-img-box">
-        <img src="GerberGear/GG-Unboxing1.png" alt="Custom Note From The Creator Field Insert Card">
-      </div>
-      <div class="case-img-box">
-        <img src="GerberGear/Unboxing.gif" alt="Master Collector Box with All Three Packages Inside">
-      </div>
-    </div>
-  </div>
+      <!-- Next Project: Motion Reel -->
+      <a href="motion-reel.html" class="pagination-card next-card">
+        <div class="pagination-meta text-right">
+          <span class="pagination-label">Next Project</span>
+          <span class="pagination-title">Motion Reel</span>
+        </div>
+        <div class="pagination-thumb">
+          <img src="MotionReel/Motion-Hero.png" alt="Motion Reel Thumbnail">
+        </div>
+        <div class="pagination-arrow-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display: block; overflow: visible;">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </div>
+      </a>
+    </nav>
 
   </main>
 
