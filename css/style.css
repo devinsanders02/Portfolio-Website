@@ -451,33 +451,75 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
 .overlay-link-item span {
   font-size: 11px;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.55);
   display: inline-block;
   line-height: 1;
 }
 
+/* Base Link & Button Styles: Always White & High Contrast */
 .overlay-link-item a, 
 .overlay-link-item button {
+  position: relative;
   background: none;
   border: none;
-  padding: 0;
+  padding: 0 0 6px 0;
   margin: 0;
   font-family: var(--font-barlow);
   font-weight: 800;
   font-size: clamp(1.75rem, 4vw, 2.25rem);
   line-height: 1;
-  color: #FFF;
-  text-decoration: none;
+  color: #FFFFFF !important;
+  text-decoration: none !important;
   cursor: pointer;
-  transition: opacity 0.2s;
   text-align: left;
   display: inline-block;
   vertical-align: middle;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
-.overlay-link-item a:hover, 
-.overlay-link-item button:hover { 
-  opacity: 0.7; 
+/* Left-to-Right Animated Underline */
+.overlay-link-item a::after,
+.overlay-link-item button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #FFFFFF;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: right center; /* Retracts and disappears left-to-right */
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Hover On: Expands left-to-right */
+.overlay-link-item a:hover::after,
+.overlay-link-item button:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Active State for Current Page (UI/UX, All Work, Branding, etc.) */
+.overlay-link-item a.active,
+.overlay-link-item a.current,
+.overlay-link-item a[aria-current="page"],
+.overlay-link-item button.active,
+.overlay-link-item button.current {
+  color: #FFFFFF !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Keep underline locked on for active page */
+.overlay-link-item a.active::after,
+.overlay-link-item a.current::after,
+.overlay-link-item a[aria-current="page"]::after,
+.overlay-link-item button.active::after,
+.overlay-link-item button.current::after {
+  transform: scaleX(1);
+  background-color: #FFFFFF;
 }
 
 /* Dark Footer */
@@ -713,7 +755,7 @@ footer.site-footer {
 
 /* ==========================================================================
    REUSABLE CASE STUDY COMPONENTS (WANDRD, BISTRO, ETC.)
-   ========================================================================== */
+   ========================================================================= */
 
 .case-dark-section {
   background-color: #0d0e11;
@@ -864,7 +906,7 @@ footer.site-footer {
 
 /* ==========================================================================
    REXBURG RAPIDS CUSTOM CASE STUDY
-   ========================================================================== */
+   ========================================================================= */
 
 .rapids-case-page {
   background-color: #FFFFFF;
@@ -1224,7 +1266,7 @@ footer.site-footer {
 
 /* ==========================================================================
    GERBER GEAR CUSTOM CASE STUDY
-   ========================================================================== */
+   ========================================================================= */
 
 .gerber-case-page {
   background-color: #F6F4F0;
@@ -1256,7 +1298,7 @@ footer.site-footer {
 
 /* ==========================================================================
    PROJECT PAGINATION NAVIGATION (PREVIOUS / NEXT)
-   ========================================================================== */
+   ========================================================================= */
 
 /* Ensure Pagination Arrows & Text Always Retain Brand Barlow */
 .project-pagination-nav,
