@@ -37,23 +37,23 @@
 <body class="rapids-case-page">
 
   <!-- Sticky Morphing Logo Header -->
-  <nav class="sticky-brand-nav">
+  <header class="sticky-brand-nav">
     <a href="index.html" class="brand-morph-link" aria-label="Devin Sanders Home">
       <div class="morph-logo-box">
         <img src="LogoLong.png" alt="Devin Sanders" class="logo-full">
         <img src="LogoBlue.png" alt="Devin Sanders Mark" class="logo-mark">
       </div>
     </a>
-    <div style="pointer-events: auto;">
-      <a href="work.html" style="color: #2C3E50; text-decoration: none; font-size: 0.875rem; font-weight: 500; opacity: 0.85; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">← All Work</a>
+    <div class="nav-right-link">
+      <a href="work.html" class="back-work-link">← All Work</a>
     </div>
-  </nav>
+  </header>
 
-  <!-- 1. Full-Bleed 100vh Hero Banner (Untouched Default Font) -->
+  <!-- 1. Full-Bleed 100vh Hero Banner -->
   <header class="turnstyle-hero-banner">
     <img src="RexburgRapids-Hero.jpg" alt="Rexburg Rapids Hero" class="turnstyle-hero-bg">
     <div class="turnstyle-hero-overlay" style="background: linear-gradient(to top, rgba(0,40,90,0.8) 0%, rgba(0,0,0,0.1) 60%);"></div>
-    
+
     <div class="turnstyle-hero-content">
       <h1 class="turnstyle-headline" style="font-size: clamp(2.5rem, 6vw, 4.5rem);">
         Bringing the splash back to Rexburg
@@ -91,7 +91,7 @@
 
     <!-- 5. Framed Applications & Collateral Grid -->
     <div class="case-content-wrap">
-      
+
       <div class="case-section-header">
         <div class="line" style="background-color: #0066CC;"></div>
         <span class="label" style="color: #2C3E50;">Environmental & Applications</span>
@@ -132,7 +132,7 @@
         <img src="RexburgRapids-Laptop.png" alt="Website on Laptop">
       </div>
 
-      <!-- 3-Tile Row: Lazy River, Waterslides, Die-Cut Stickers (Centered Alignment) -->
+      <!-- 3-Tile Row: Lazy River, Waterslides, Die-Cut Stickers -->
       <div class="case-grid-3col">
         <div class="case-img-box">
           <img src="RexburgRapids-Bucket.png" alt="Water Slide Detail">
@@ -164,7 +164,7 @@
 
     <!-- 7. Brand Standards (Color Codes & Typography) -->
     <div class="case-content-wrap">
-      
+
       <div class="case-section-header">
         <div class="line" style="background-color: #FFC93C;"></div>
         <span class="label" style="color: #2C3E50;">Color Palette</span>
@@ -215,7 +215,7 @@
         </div>
       </div>
 
-     <!-- Typography Specimen Box -->
+      <!-- Typography Specimen Box -->
       <div class="case-section-header">
         <div class="line" style="background-color: #0066CC;"></div>
         <span class="label" style="color: #2C3E50;">Typography System</span>
@@ -243,9 +243,9 @@
 
     </div>
 
-   <!-- 8. Project Pagination Navigation -->
+    <!-- 8. Project Pagination Navigation -->
     <nav class="project-pagination-nav" aria-label="Project Pagination">
-      <!-- Previous Project -->
+      <!-- Previous Project: Loops to RIPPL Hoodie -->
       <a href="rippl-hoodie.html" class="pagination-card prev-card">
         <div class="pagination-arrow-box">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -261,7 +261,7 @@
           <span class="pagination-title">RIPPL Heavyweight Hoodie</span>
         </div>
       </a>
-      
+
       <!-- Next Project -->
       <a href="wandrd.html" class="pagination-card next-card">
         <div class="pagination-meta text-right">
@@ -282,5 +282,30 @@
 
   </main>
 
-  <!-- Global Dark Footer (Untouched) -->
+  <!-- Global Dark Footer -->
   <footer id="contact" class="site-footer">
+    <div class="footer-max-width">
+      <span class="uppercase-label">Get in Touch</span>
+      <h2 class="footer-heading">Let's build<br>something meaningful.</h2>
+
+      <div>
+        <a href="mailto:devin.sanders02@gmail.com" class="footer-link">devin.sanders02@gmail.com</a>
+      </div>
+
+      <hr class="footer-divider">
+
+      <div class="footer-sub-row">
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="work.html" class="footer-link" style="color: rgba(255,255,255,0.5);">Work</a>
+          <a href="about.html" class="footer-link" style="color: rgba(255,255,255,0.5);">About</a>
+        </div>
+        <p style="font-weight: 300; font-size: 0.75rem; color: rgba(255,255,255,0.3);">
+          © <span id="copyright-year">2026</span> Devin Sanders. Crafted with intention.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
