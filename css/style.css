@@ -105,6 +105,26 @@ header.navbar a, header.navbar button {
 
 header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
 
+/* Sticky Header Link Specifics (Overrides Visited Purple / Underline) */
+.back-work-link,
+.back-work-link:visited,
+.back-work-link:active,
+.back-work-link:focus {
+  color: var(--text-dark) !important;
+  text-decoration: none !important;
+  font-size: 0.875rem;
+  font-weight: 500;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+  display: inline-block;
+}
+
+.back-work-link:hover {
+  opacity: 1;
+  color: var(--text-dark) !important;
+  text-decoration: none !important;
+}
+
 /* Hero Section */
 .hero-section {
   position: relative;
