@@ -5,21 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kindred Roots Magazine | Devin Sanders</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================================
+       KINDRED ROOTS CUSTOM TYPOGRAPHY OVERRIDES
+       ========================================================================= */
+
+    /* 1. Case Study Headers, Section Titles, & Display -> Zilla Slab */
+    main h2,
+    main h3,
+    main h4,
+    main .context-headline,
+    main .case-section-header .label,
+    main .feature-copy h3,
+    main .pagination-title {
+      font-family: 'Zilla Slab', serif !important;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    /* 2. Body Text, Paragraphs, Lists & Meta Labels -> Syne */
+    main p,
+    main li,
+    main .feature-copy p,
+    main .feature-copy .step-num,
+    main .pagination-label,
+    main .uppercase-label {
+      font-family: 'Syne', sans-serif !important;
+    }
+  </style>
 </head>
 <body style="background-color: #F9F9F8; color: #2C3E50;">
 
   <!-- Sticky Morphing Logo Header -->
-  <nav class="sticky-brand-nav">
+  <header class="sticky-brand-nav">
     <a href="index.html" class="brand-morph-link" aria-label="Devin Sanders Home">
       <div class="morph-logo-box">
         <img src="LogoLong.png" alt="Devin Sanders" class="logo-full">
         <img src="LogoBlue.png" alt="Devin Sanders Mark" class="logo-mark">
       </div>
     </a>
-    <div style="pointer-events: auto;">
-      <a href="work.html" style="color: #2C3E50; text-decoration: none; font-size: 0.875rem; font-weight: 500; opacity: 0.85; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">← All Work</a>
+    <div class="nav-right-link">
+      <a href="work.html" class="back-work-link">← All Work</a>
     </div>
-  </nav>
+  </header>
 
   <!-- 1. Universal 100vh Full Bleed Hero -->
   <header class="turnstyle-hero-banner">
@@ -46,13 +78,13 @@
       <div style="display: grid; grid-template-columns: 1fr; gap: 2.5rem;" class="intro-grid-responsive">
         <div>
           <span class="uppercase-label" style="margin-bottom: 0.75rem; color: #D4A359;">Overview</span>
-          <p style="font-weight: 300; font-size: 1.15rem; line-height: 1.6; color: #2C3E50;">
+          <p style="font-weight: 400; font-size: 1.12rem; line-height: 1.65; color: #2C3E50;">
             Kindred Roots is an exploration of community, belonging, and the spaces between people. This project centered on crafting an intentional editorial layout that balances bold display type with spacious, reflective reading spreads.
           </p>
         </div>
         <div>
           <span class="uppercase-label" style="margin-bottom: 0.75rem; color: #2C3E5070;">The Challenge</span>
-          <p style="font-weight: 300; font-size: 0.95rem; line-height: 1.7; color: #2C3E50CC;">
+          <p style="font-weight: 400; font-size: 0.95rem; line-height: 1.7; color: #2C3E50CC;">
             Multi-article publications require visual variety without losing structural harmony. The goal was to establish a clear grid system, warm earthy tones, and typographic pacing that gives each narrative article its own distinct atmosphere.
           </p>
         </div>
@@ -148,6 +180,43 @@
       </div>
 
     </div>
+
+    <!-- 7. Project Pagination Navigation -->
+    <nav class="project-pagination-nav" aria-label="Project Pagination">
+      <!-- Previous Project: WANDRD -->
+      <a href="wandrd.html" class="pagination-card prev-card">
+        <div class="pagination-arrow-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </div>
+        <div class="pagination-thumb">
+          <img src="WANDRD-Hero.png" alt="WANDRD Thumbnail">
+        </div>
+        <div class="pagination-meta">
+          <span class="pagination-label">Previous Project</span>
+          <span class="pagination-title">WANDRD E-Commerce</span>
+        </div>
+      </a>
+
+      <!-- Next Project: Analog Reboot -->
+      <a href="analog-reboot.html" class="pagination-card next-card">
+        <div class="pagination-meta text-right">
+          <span class="pagination-label">Next Project</span>
+          <span class="pagination-title">Analog Reboot</span>
+        </div>
+        <div class="pagination-thumb">
+          <img src="AnalogReboot-Hero.png" alt="Analog Reboot Thumbnail">
+        </div>
+        <div class="pagination-arrow-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </div>
+      </a>
+    </nav>
 
   </main>
 
