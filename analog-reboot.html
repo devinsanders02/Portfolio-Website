@@ -12,17 +12,17 @@
 <body class="analog-case-page">
 
   <!-- Sticky Morphing Logo Header -->
-  <nav class="sticky-brand-nav">
+  <header class="sticky-brand-nav">
     <a href="index.html" class="brand-morph-link" aria-label="Devin Sanders Home">
       <div class="morph-logo-box">
         <img src="LogoLong.png" alt="Devin Sanders" class="logo-full">
         <img src="LogoBlue.png" alt="Devin Sanders Mark" class="logo-mark">
       </div>
     </a>
-    <div style="pointer-events: auto;">
-      <a href="work.html" style="color: #0B1A33; text-decoration: none; font-size: 0.875rem; font-weight: 500; opacity: 0.85; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">← All Work</a>
+    <div class="nav-right-link">
+      <a href="work.html" class="back-work-link">← All Work</a>
     </div>
-  </nav>
+  </header>
 
   <!-- 1. Universal 100vh Full-Bleed Hero -->
   <header class="turnstyle-hero-banner">
@@ -352,6 +352,43 @@
       </div>
 
     </div>
+
+    <!-- 7. Project Pagination Navigation -->
+    <nav class="project-pagination-nav" aria-label="Project Pagination">
+      <!-- Previous Project: Kindred Roots -->
+      <a href="kindred-roots.html" class="pagination-card prev-card">
+        <div class="pagination-arrow-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display: block; overflow: visible;">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </div>
+        <div class="pagination-thumb">
+          <img src="KindredRoots/KindredRoots-Hero.png" alt="Kindred Roots Thumbnail">
+        </div>
+        <div class="pagination-meta">
+          <span class="pagination-label">Previous Project</span>
+          <span class="pagination-title">Kindred Roots</span>
+        </div>
+      </a>
+
+      <!-- Next Project: Gerber Gear Packaging -->
+      <a href="gerber-gear.html" class="pagination-card next-card">
+        <div class="pagination-meta text-right">
+          <span class="pagination-label">Next Project</span>
+          <span class="pagination-title">Gerber Gear Packaging</span>
+        </div>
+        <div class="pagination-thumb">
+          <img src="GerberGear/GG-Hero.png" alt="Gerber Gear Packaging Thumbnail">
+        </div>
+        <div class="pagination-arrow-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display: block; overflow: visible;">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </div>
+      </a>
+    </nav>
 
   </main>
 
