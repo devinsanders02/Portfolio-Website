@@ -1236,3 +1236,106 @@ footer.site-footer {
   object-position: center;
   display: block;
 }
+/* ==========================================================================
+   PROJECT PAGINATION NAVIGATION (PREVIOUS / NEXT)
+   ========================================================================== */
+
+.project-pagination-nav {
+  max-width: 1400px;
+  margin: 5rem auto 0;
+  padding: 3rem 1.5rem 0;
+  border-top: 1px solid rgba(44, 62, 80, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  box-sizing: border-box;
+}
+
+.pagination-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  text-decoration: none;
+  color: var(--text-dark);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  max-width: 48%;
+}
+
+.pagination-card:hover {
+  transform: translateY(-2px);
+  opacity: 0.85;
+}
+
+.pagination-arrow-box {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(44, 62, 80, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--text-dark);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.pagination-card:hover .pagination-arrow-box {
+  background-color: var(--text-dark);
+  color: #FFFFFF;
+  border-color: var(--text-dark);
+}
+
+.pagination-thumb {
+  width: 72px;
+  height: 52px;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #E2E8F0;
+  flex-shrink: 0;
+}
+
+.pagination-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pagination-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.pagination-meta.text-right {
+  text-align: right;
+}
+
+.pagination-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-orange);
+  font-weight: 600;
+}
+
+.pagination-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+@media (max-width: 640px) {
+  .project-pagination-nav {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+  }
+  .pagination-card {
+    max-width: 100%;
+  }
+  .next-card {
+    flex-direction: row-reverse;
+  }
+}
