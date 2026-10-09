@@ -86,16 +86,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =========================================================================
-  // TEXT DECRYPTION SCRAMBLE ANIMATION (HERO METADATA)
+  // TEXT DECRYPTION SCRAMBLE & LIVE TELEMETRY CYCLE
   // =========================================================================
   const glyphs = '0123456789ABCDEF#%&*+=-_/';
   const scrambleElements = document.querySelectorAll('.js-scramble-text');
 
   const runScramble = (el) => {
-    const originalText = el.getAttribute('data-original') || el.textContent;
+    const originalText = el.getAttribute('data-original') || el.textContent.trim();
+    const hasBeacon = el.classList.contains('meta-coords');
     let iteration = 0;
     const interval = setInterval(() => {
-      el.textContent = originalText
+      const generated = originalText
         .split('')
         .map((char, index) => {
           if (char === ' ' || char === '°') return char;
@@ -103,6 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
           return glyphs[Math.floor(Math.random() * glyphs.length)];
         })
         .join('');
+
+      el.innerHTML = hasBeacon ? `<span class="telemetry-beacon"></span>${generated}` : generated;
 
       if (iteration >= originalText.length) {
         clearInterval(interval);
@@ -120,6 +123,20 @@ document.addEventListener('DOMContentLoaded', () => {
   scrambleElements.forEach(el => {
     el.addEventListener('mouseenter', () => runScramble(el));
   });
+
+  // Continuous background pulse: coordinate micro-shift every 7 seconds
+  const coordEl = document.querySelector('.meta-coords');
+  if (coordEl) {
+    setInterval(() => {
+      const beacon = '<span class="telemetry-beacon"></span>';
+      const randomDecimals = Math.floor(Math.random() * 90 + 10);
+      coordEl.innerHTML = `${beacon}39.73${randomDecimals}° N`;
+
+      setTimeout(() => {
+        coordEl.innerHTML = `${beacon}39.7392° N`;
+      }, 1100);
+    }, 7000);
+  }
 
   // =========================================================================
   // TOPOGRAPHIC VECTOR AMBIENT PARALLAX DRIFT
