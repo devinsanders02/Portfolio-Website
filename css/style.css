@@ -1093,7 +1093,7 @@ footer.site-footer {
   }
 }
 
-/* Column Headers: Sized up & given heavier weight */
+/* Column Headers */
 .footer-col-header {
   font-family: var(--font-barlow);
   font-size: 0.92rem;
@@ -1141,8 +1141,14 @@ footer.site-footer {
   transition: color 0.2s ease;
 }
 
-.footer-nav-list a:hover,
+/* Keep underlined text white on hover */
+.footer-link-animated:hover,
 .footer-scroll-top-btn:hover {
+  color: #FFFFFF;
+}
+
+/* Target LinkedIn: turns orange with animated arrow */
+.footer-nav-list a[href*="linkedin"]:hover {
   color: var(--accent-orange);
 }
 
@@ -1150,7 +1156,7 @@ footer.site-footer {
   transition: transform 0.2s ease, stroke 0.2s ease;
 }
 
-.footer-nav-list a:hover svg {
+.footer-nav-list a[href*="linkedin"]:hover svg {
   transform: translate(2px, -2px);
   stroke: var(--accent-orange);
 }
