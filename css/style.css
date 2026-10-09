@@ -118,10 +118,65 @@ body {
 }
 
 /* ==========================================================================
-   STICKY HERO CANVAS & PERFECT LEFT-EDGE ALIGNMENT
+   SUBPAGE STANDARD NAVBAR (WORK.HTML, ABOUT.HTML, ETC.)
    ========================================================================== */
 
-/* Pinned Persistent Logo: Shares exact left margin (4vw) and stays on top */
+header.subpage-navbar {
+  position: relative;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 4vw 2rem;
+  background-color: transparent;
+}
+
+.subpage-nav-logo {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.subpage-nav-logo img {
+  width: 68px;
+  height: auto;
+  display: block;
+}
+
+.subpage-nav-links {
+  display: flex;
+  gap: 2.25rem;
+  align-items: center;
+}
+
+.subpage-nav-links a,
+.subpage-nav-links button {
+  background: none;
+  border: none;
+  font-family: var(--font-barlow);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.2s ease;
+}
+
+.subpage-nav-links a:hover,
+.subpage-nav-links button:hover {
+  color: var(--accent-orange);
+}
+
+.subpage-nav-links a.active {
+  color: var(--accent-orange);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   STICKY HERO CANVAS (INDEX.HTML ONLY)
+   ========================================================================== */
+
 .hero-persistent-logo {
   position: fixed;
   top: 3rem;
@@ -149,14 +204,13 @@ body {
   box-sizing: border-box;
   background: transparent;
   z-index: 1;
-  pointer-events: none; /* Allows scrolling directly through foreground */
+  pointer-events: none;
 }
 
 .hero-sticky-canvas > * {
   pointer-events: auto;
 }
 
-/* Top Row: Meta Block placed below the 68px logo + spacing */
 .hero-top-row {
   position: relative;
   z-index: 2;
@@ -164,10 +218,9 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   width: 100%;
-  padding-top: 5.5rem; /* Clears the logo sitting directly above it */
+  padding-top: 5.5rem;
 }
 
-/* Perfectly aligned vertical metadata stack */
 .hero-meta-block {
   display: flex;
   flex-direction: column;
@@ -205,7 +258,6 @@ body {
   line-height: 1.1;
 }
 
-/* Top-Right Vertical Menu Column */
 .hero-nav-col {
   display: flex;
   flex-direction: column;
@@ -263,7 +315,6 @@ body {
   transform-origin: left center;
 }
 
-/* Bottom Name Anchor: Perfectly aligns with Denver and Logo on the left */
 .hero-bottom-anchor {
   position: relative;
   z-index: 2;
@@ -294,7 +345,7 @@ body {
 }
 
 /* ==========================================================================
-   TRANSPARENT WIDE STAGE PROJECT CARDS
+   TRANSPARENT WIDE STAGE PROJECT CARDS (INDEX.HTML)
    ========================================================================== */
 
 .featured-work-feed {
@@ -309,7 +360,7 @@ body {
   width: 100%;
   padding: 3.5rem 4vw;
   box-sizing: border-box;
-  background: transparent !important; /* Fully reveals the topo background */
+  background: transparent !important;
   display: flex;
   justify-content: center;
 }
@@ -325,7 +376,7 @@ body {
   border-radius: 0px;
   cursor: pointer;
   background-color: #1a1e24;
-  box-shadow: 0 25px 50px -12px rgba(44, 62, 80, 0.18); /* Floating elevation */
+  box-shadow: 0 25px 50px -12px rgba(44, 62, 80, 0.18);
 }
 
 @media (max-width: 768px) {
@@ -509,6 +560,254 @@ body {
 
 .stage-action-btn:hover svg {
   transform: translate(2px, -2px);
+}
+
+/* ==========================================================================
+   2-COLUMN EDITORIAL ARCHIVE & FILTER BAR (WORK.HTML)
+   ========================================================================== */
+
+.archive-page-wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 1540px;
+  margin: 0 auto;
+  padding: 1.5rem 4vw 6rem;
+}
+
+.archive-header-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (min-width: 900px) {
+  .archive-header-block {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+.archive-header-text {
+  max-width: 680px;
+}
+
+.archive-page-title {
+  font-family: var(--font-barlow);
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+}
+
+.archive-page-sub {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Category Filter Bar */
+.work-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.filter-btn {
+  background: none;
+  border: 1px solid rgba(44, 62, 80, 0.2);
+  padding: 0.55rem 1.15rem;
+  font-family: var(--font-barlow);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
+}
+
+.filter-btn.active {
+  background-color: var(--accent-orange);
+  border-color: var(--accent-orange);
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.filter-btn span {
+  font-family: monospace;
+}
+
+/* 2-Column Wide Duo Layout */
+.work-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+@media (min-width: 860px) {
+  .work-grid-2col {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2.5rem;
+    row-gap: 3.5rem;
+  }
+}
+
+/* 2-Column Project Card (Matches Wide Stage Language) */
+.duo-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: #1a1e24;
+  border-radius: 0px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 15px 35px -10px rgba(44, 62, 80, 0.15);
+  display: block;
+}
+
+.duo-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.duo-card:hover .duo-card-img {
+  transform: scale(1.04);
+}
+
+.duo-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(14, 19, 26, 0.95) 0%,
+    rgba(14, 19, 26, 0.65) 30%,
+    rgba(14, 19, 26, 0.1) 60%,
+    transparent 85%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.duo-content-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.75rem 2rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  box-sizing: border-box;
+}
+
+.duo-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.duo-tag {
+  font-family: var(--font-barlow);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-orange);
+}
+
+.duo-year {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.duo-title {
+  font-family: var(--font-barlow);
+  font-weight: 800;
+  font-size: clamp(1.4rem, 2.2vw, 1.95rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Hover Drawer for 2-Column Cards */
+.duo-hover-drawer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 0.85rem;
+  opacity: 0;
+  transform: translateY(8px);
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease;
+}
+
+.duo-card:hover .duo-hover-drawer {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 80px;
+}
+
+@media (max-width: 860px) {
+  .duo-hover-drawer {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: none;
+  }
+}
+
+.duo-summary {
+  font-family: var(--font-barlow);
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.duo-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-barlow);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background-color: var(--accent-orange);
+  padding: 0.45rem 0.85rem;
+  border-radius: 2px;
+  flex-shrink: 0;
 }
 
 /* ==========================================================================
