@@ -189,4 +189,56 @@ document.addEventListener('DOMContentLoaded', () => {
       let currentIdx = 0;
       const imgEl = document.getElementById(`img-display-${index}`);
       const boxEl = document.getElementById(`gallery-box-${index}`);
-      const
+      const barsContainer = document.getElementById(`bars-${index}`);
+
+      const updateGallery = (nextIdx) => {
+        currentIdx = nextIdx;
+        imgEl.style.opacity = '0.35';
+        setTimeout(() => {
+          imgEl.src = allImages[currentIdx];
+          imgEl.style.opacity = '1';
+        }, 150);
+
+        if (barsContainer) {
+          const btns = barsContainer.querySelectorAll('.stage-bar-btn');
+          btns.forEach((btn, i) => {
+            btn.style.width = i === currentIdx ? '2.5rem' : '0.85rem';
+            btn.style.backgroundColor = i === currentIdx ? '#FFFFFF' : 'rgba(255, 255, 255, 0.35)';
+          });
+        }
+      };
+
+      boxEl?.addEventListener('click', (e) => {
+        if (e.target.closest('.stage-action-btn')) return;
+        const next = (currentIdx + 1) % allImages.length;
+        updateGallery(next);
+      });
+
+      barsContainer?.querySelectorAll('.stage-bar-btn').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const targetIdx = parseInt(btn.getAttribute('data-img-idx'), 10);
+          updateGallery(targetIdx);
+        });
+      });
+    });
+  }
+
+  // 2. Render Full Archive Grid (work.html)
+  const workGrid = document.getElementById('work-grid');
+  if (workGrid && typeof projects !== 'undefined') {
+    projects.forEach((proj) => {
+      const item = document.createElement('a');
+      item.href = getProjectUrl(proj.slug);
+      item.className = 'archive-card';
+      item.innerHTML = `
+        <div class="archive-thumb-box">
+          <img src="${proj.heroImage}" alt="${proj.title}">
+        </div>
+        <div class="archive-card-title">${proj.title}</div>
+        <div class="archive-card-meta">${proj.services} · ${proj.year}</div>
+      `;
+      workGrid.appendChild(item);
+    });
+  }
+});
