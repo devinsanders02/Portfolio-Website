@@ -1,5 +1,5 @@
 // =========================================================================
-// 0. ABSOLUTE BULLETPROOF PRELOADER KILLSWITCH
+// 0. BULLETPROOF PRELOADER DISMISS
 // =========================================================================
 function dismissLoader() {
   const loader = document.getElementById('site-loader');
@@ -14,14 +14,13 @@ function dismissLoader() {
   }
 }
 
-// Immediate execution guards
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
   setTimeout(dismissLoader, 100);
 } else {
   document.addEventListener('DOMContentLoaded', () => setTimeout(dismissLoader, 150));
 }
 window.addEventListener('load', dismissLoader);
-setTimeout(dismissLoader, 900); // hard cutoff failsafe
+setTimeout(dismissLoader, 900);
 
 // =========================================================================
 // MAIN APPLICATION RUNTIME
@@ -155,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // TOPOGRAPHIC VECTOR AMBIENT PARALLAX DRIFT
+  // TOPOGRAPHIC VECTOR PARALLAX DRIFT
   // =========================================================================
   const topoCanvas = document.querySelector('.hero-topography-canvas svg');
   if (topoCanvas) {
@@ -164,6 +163,46 @@ document.addEventListener('DOMContentLoaded', () => {
       const yOffset = (e.clientY / window.innerHeight - 0.5) * 8;
       topoCanvas.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
     }, { passive: true });
+  }
+
+  // =========================================================================
+  // PRECISION SURVEY RETICLE CURSOR
+  // =========================================================================
+  const cursor = document.getElementById('survey-cursor');
+  
+  if (cursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    let mouseX = -100;
+    let mouseY = -100;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+
+      // Proximity detection for summit pocket (Upper-Right Quadrant: X 68%-85%, Y 22%-48%)
+      const relX = mouseX / window.innerWidth;
+      const relY = mouseY / window.innerHeight;
+      const isNearPeak = window.scrollY < 300 && (relX > 0.68 && relX < 0.86) && (relY > 0.22 && relY < 0.48);
+
+      if (isNearPeak) {
+        cursor.classList.add('cursor-summit');
+      } else {
+        cursor.classList.remove('cursor-summit');
+      }
+    }, { passive: true });
+
+    const interactiveTargets = 'a, button, .stage-bar-btn, .hero-nav-item, .view-all-btn, .duo-card';
+    document.querySelectorAll(interactiveTargets).forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+    });
+
+    document.addEventListener('mouseleave', () => {
+      cursor.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+      cursor.style.opacity = '1';
+    });
   }
 
   // Helper function to resolve dedicated project page URLs
@@ -182,7 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return `project.html?slug=${slug}`;
   };
 
-  // Helper to categorize projects into non-UI/UX buckets
   const getProjectCategory = (proj) => {
     const text = `${proj.services || ''} ${proj.title || ''} ${proj.slug || ''}`.toLowerCase();
     if (text.includes('packag') || text.includes('dieline') || text.includes('can') || text.includes('sleeve')) {
