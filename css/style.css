@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&display=swap');
 
+/* =================== START: GLOBAL VARIABLES & FOUNDATIONS =================== */
 :root {
   --bg-main: #F4F5F7;
   --text-dark: #2C3E50;
   --text-muted: #2C3E50AA;
   --accent-orange: #F15B22;
-  --footer-bg: #2C3E50;
+  --footer-bg: #0B0E13;
   --font-barlow: 'Barlow', ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -28,7 +29,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Base Utility Classes */
+/* Base Typographic Utility Classes */
 .font-light { font-weight: 300; }
 .font-normal { font-weight: 400; }
 .font-medium { font-weight: 500; }
@@ -44,8 +45,10 @@ body {
   color: var(--accent-orange);
   display: block;
 }
+/* =================== END: GLOBAL VARIABLES & FOUNDATIONS =================== */
 
-/* Page Preloader */
+
+/* =================== START: SITE PRELOADER =================== */
 #site-loader {
   position: fixed;
   inset: 0;
@@ -74,11 +77,10 @@ body {
   50% { transform: scale(1.05); opacity: 1; }
   100% { transform: scale(0.92); opacity: 0.6; }
 }
+/* =================== END: SITE PRELOADER =================== */
 
-/* ==========================================================================
-   FIXED HERO BACKGROUND STAGE (PERSISTENT TOPO & DOT GRID)
-   ========================================================================== */
 
+/* =================== START: PERSISTENT BACKGROUND (TOPO & DOT GRID) =================== */
 .hero-fixed-background {
   position: fixed;
   top: 0;
@@ -116,11 +118,10 @@ body {
   width: 100%;
   height: 100%;
 }
+/* =================== END: PERSISTENT BACKGROUND =================== */
 
-/* ==========================================================================
-   SUBPAGE STANDARD NAVBAR (WORK.HTML, ABOUT.HTML, ETC.)
-   ========================================================================== */
 
+/* =================== START: SUBPAGE STANDARD NAVBAR =================== */
 header.subpage-navbar {
   position: relative;
   z-index: 50;
@@ -172,11 +173,10 @@ header.subpage-navbar {
   color: var(--accent-orange);
   font-weight: 700;
 }
+/* =================== END: SUBPAGE STANDARD NAVBAR =================== */
 
-/* ==========================================================================
-   STICKY HERO CANVAS (INDEX.HTML ONLY)
-   ========================================================================== */
 
+/* =================== START: HOMEPAGE STICKY HERO CANVAS =================== */
 .hero-persistent-logo {
   position: fixed;
   top: 3rem;
@@ -343,11 +343,10 @@ header.subpage-navbar {
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
+/* =================== END: HOMEPAGE STICKY HERO CANVAS =================== */
 
-/* ==========================================================================
-   TRANSPARENT WIDE STAGE PROJECT CARDS (INDEX.HTML)
-   ========================================================================== */
 
+/* =================== START: HOMEPAGE WIDE STAGE PROJECT CARDS =================== */
 .featured-work-feed {
   position: relative;
   z-index: 2;
@@ -561,11 +560,10 @@ header.subpage-navbar {
 .stage-action-btn:hover svg {
   transform: translate(2px, -2px);
 }
+/* =================== END: HOMEPAGE WIDE STAGE PROJECT CARDS =================== */
 
-/* ==========================================================================
-   2-COLUMN EDITORIAL ARCHIVE & FILTER BAR (WORK.HTML)
-   ========================================================================== */
 
+/* =================== START: WORK ARCHIVE 2-COLUMN GRID (WORK.HTML) =================== */
 .archive-page-wrap {
   position: relative;
   z-index: 2;
@@ -666,7 +664,6 @@ header.subpage-navbar {
   }
 }
 
-/* 2-Column Project Card (Matches Wide Stage Language) */
 .duo-card {
   position: relative;
   width: 100%;
@@ -752,7 +749,6 @@ header.subpage-navbar {
   text-transform: uppercase;
 }
 
-/* Hover Drawer for 2-Column Cards */
 .duo-hover-drawer {
   display: flex;
   justify-content: space-between;
@@ -809,11 +805,10 @@ header.subpage-navbar {
   border-radius: 2px;
   flex-shrink: 0;
 }
+/* =================== END: WORK ARCHIVE 2-COLUMN GRID =================== */
 
-/* ==========================================================================
-   VIEW ALL PROJECTS BUTTON & PHILOSOPHY SECTIONS
-   ========================================================================== */
 
+/* =================== START: HOMEPAGE CALL-TO-ACTION & PHILOSOPHY =================== */
 .view-all-projects-section {
   position: relative;
   z-index: 2;
@@ -863,11 +858,10 @@ header.subpage-navbar {
   margin: 0 auto;
   background: transparent;
 }
+/* =================== END: HOMEPAGE CALL-TO-ACTION & PHILOSOPHY =================== */
 
-/* ==========================================================================
-   FLOATING OVERLAY & FOOTER
-   ========================================================================== */
 
+/* =================== START: SLIDE-DOWN INDEX OVERLAY & PEAK NAV =================== */
 .floating-peak-btn {
   position: fixed;
   top: 1.5rem;
@@ -1012,60 +1006,196 @@ header.subpage-navbar {
   transform: scaleX(1);
   background-color: #FFFFFF;
 }
+/* =================== END: SLIDE-DOWN INDEX OVERLAY & PEAK NAV =================== */
 
+
+/* =================== START: GLOBAL EDITORIAL FOOTER =================== */
 footer.site-footer {
-  background-color: var(--footer-bg);
-  color: #FFF;
-  padding: 3.5rem 1.5rem 2rem;
   position: relative;
-  z-index: 2;
+  z-index: 20;
+  background-color: var(--footer-bg);
+  color: #FFFFFF;
+  padding: 5rem 4vw 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
 }
 
-@media (min-width: 768px) {
-  footer.site-footer { padding: 5rem 3rem 2.5rem; }
-}
-
-.footer-max-width {
-  max-width: 1280px;
+.footer-inner-shell {
+  max-width: 1540px;
   margin: 0 auto;
 }
 
-.footer-heading {
+.footer-tier-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.footer-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--accent-orange);
+  text-transform: uppercase;
+}
+
+.footer-hero-headline {
+  font-family: var(--font-barlow);
+  font-size: clamp(2.4rem, 6.5vw, 5.5rem);
   font-weight: 800;
-  font-size: clamp(1.85rem, 4vw, 3rem);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin: 0.75rem 0 1.25rem;
-  color: #FFF;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin: 0;
 }
 
-.footer-link {
+.footer-email-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.footer-email-link {
+  font-family: var(--font-barlow);
+  font-size: clamp(1.4rem, 3.2vw, 2.5rem);
   font-weight: 300;
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: #FFFFFF;
   text-decoration: none;
-  transition: color 0.2s;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: color 0.2s ease;
 }
 
-.footer-link:hover { color: rgba(255, 255, 255, 0.9); }
+.footer-email-link:hover {
+  color: var(--accent-orange);
+}
 
-.footer-divider {
-  margin: 2rem 0;
+.footer-email-link svg {
+  transition: transform 0.2s ease;
+}
+
+.footer-email-link:hover svg {
+  transform: translate(3px, -3px);
+}
+
+.footer-copy-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.75);
+  padding: 0.55rem 1rem;
+  border-radius: 4px;
+  font-family: var(--font-barlow);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.footer-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.footer-hairline {
   border: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 0 0 3.5rem;
 }
 
-.footer-sub-row {
+.footer-directory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 860px) {
+  .footer-directory-grid {
+    grid-template-columns: 1.2fr 1.2fr 1.5fr 1fr;
+    gap: 3.5rem;
+  }
+}
+
+.footer-col-header {
+  font-family: var(--font-barlow);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-orange);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-nav-list a,
+.footer-scroll-top-btn {
+  font-family: var(--font-barlow);
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.2s ease;
+}
+
+.footer-nav-list a:hover,
+.footer-scroll-top-btn:hover {
+  color: #FFFFFF;
+}
+
+.footer-spec-text {
+  font-family: monospace;
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-colophon-row {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 2rem;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 @media (min-width: 768px) {
-  .footer-sub-row {
+  .footer-colophon-row {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
 }
+/* =================== END: GLOBAL EDITORIAL FOOTER =================== */
