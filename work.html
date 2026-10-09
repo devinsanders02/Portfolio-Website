@@ -3,90 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Work | Devin Sanders</title>
-  
+  <title>Selected Work | Devin Sanders</title>
+
   <!-- Favicon & Touch Icon -->
   <link rel="icon" type="image/png" href="LogoBlue.png">
   <link rel="apple-touch-icon" href="LogoBlue.png">
 
   <link rel="stylesheet" href="css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <style>
-    .work-hero {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 9rem 1.5rem 2rem;
-    }
-    @media (min-width: 768px) {
-      .work-hero { padding: 10rem 3rem 3rem; }
-    }
-    .work-title {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      color: var(--text-dark);
-      margin-top: 1rem;
-    }
-
-    /* 2-Column Work Grid */
-    .projects-archive-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 6rem;
-    }
-    @media (min-width: 768px) {
-      .projects-archive-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 3.5rem 2.5rem;
-        padding: 2rem 3rem 8rem;
-      }
-    }
-
-    .archive-card {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-    .archive-thumb-box {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      border-radius: 6px;
-      overflow: hidden;
-      background-color: #E2E8F0;
-      margin-bottom: 1.25rem;
-    }
-    .archive-thumb-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-    .archive-card:hover .archive-thumb-box img {
-      transform: scale(1.03);
-    }
-    .archive-card-title {
-      font-weight: 800;
-      font-size: 1.35rem;
-      color: var(--text-dark);
-      letter-spacing: -0.01em;
-    }
-    .archive-card-meta {
-      font-weight: 300;
-      font-size: 0.85rem;
-      color: #2C3E5080;
-      margin-top: 0.25rem;
-    }
-  </style>
 </head>
-<body style="background-color: #F4F5F7; color: #2C3E50; font-family: 'Barlow', sans-serif;">
+<body>
 
   <!-- Site Preloader -->
   <div id="site-loader">
@@ -107,7 +32,7 @@
     <nav class="overlay-nav-links">
       <div class="overlay-link-item">
         <span>01</span>
-        <a href="work.html" class="overlay-link" style="color: #F15B22;">Work</a>
+        <a href="work.html" class="overlay-link active">Work</a>
       </div>
       <div class="overlay-link-item">
         <span>02</span>
@@ -123,7 +48,7 @@
       </div>
     </nav>
   </div>
-
+  
   <!-- Floating Orange Peak Nav Button -->
   <button id="floating-nav-btn" class="floating-peak-btn" aria-label="Open Navigation">
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -131,29 +56,64 @@
     </svg>
   </button>
 
-  <!-- Sticky Morphing Logo Header -->
-  <nav class="sticky-brand-nav">
-    <a href="index.html" class="brand-morph-link" aria-label="Devin Sanders Home">
-      <div class="morph-logo-box">
-        <img src="LogoLong.png" alt="Devin Sanders" class="logo-full">
-        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="logo-mark">
-      </div>
-    </a>
-    <div style="pointer-events: auto; display: flex; gap: 1.5rem; align-items: center;">
-      <a href="work.html" style="color: #F15B22; text-decoration: none; font-size: 0.875rem; font-weight: 700;">Work</a>
-      <a href="ui-ux.html" style="color: #2C3E50; text-decoration: none; font-size: 0.875rem; font-weight: 500; opacity: 0.85; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">UI/UX</a>
-      <a href="about.html" style="color: #2C3E50; text-decoration: none; font-size: 0.875rem; font-weight: 500; opacity: 0.85; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">About</a>
+  <!-- Pinned Persistent Background (Topo & Dot Grid) -->
+  <div class="hero-fixed-background" aria-hidden="true">
+    <div class="hero-dot-grid"></div>
+    <div class="hero-topography-canvas">
+      <svg viewBox="0 0 900 1200" fill="none" stroke="currentColor" stroke-width="1.3" preserveAspectRatio="none">
+        <polyline points="900,100 820,130 760,190 710,160 670,220 620,290 640,380 610,470 560,540 520,620 480,720 510,830 470,940 430,1050 400,1200" opacity="0.18" />
+        <polyline points="900,140 830,170 770,220 725,195 685,250 640,320 655,400 630,490 580,560 545,640 505,740 535,845 495,955 455,1065 425,1200" opacity="0.25" />
+        <polyline points="900,185 840,210 785,255 740,230 700,285 660,350 670,425 650,510 600,580 570,660 530,760 560,860 520,970 480,1080 450,1200" opacity="0.32" />
+        <polyline points="900,230 850,250 800,290 755,265 715,320 680,380 685,450 670,530 620,600 595,680 555,780 585,875 545,985 505,1095 475,1200" opacity="0.4" />
+        <polyline points="900,280 860,295 815,325 770,300 730,355 700,410 700,475 690,550 640,620 620,700 580,800 610,890 570,1000 530,1110 500,1200" opacity="0.5" />
+        <polyline points="900,330 870,340 830,365 790,340 750,390 720,445 720,505 710,575 665,645 645,725 610,820 635,910 600,1020 560,1125 530,1200" opacity="0.62" />
+        <polyline points="900,385 880,385 845,405 810,380 770,430 740,480 740,535 730,600 690,670 670,750 640,845 660,930 630,1040 590,1140 560,1200" opacity="0.75" />
+        <polyline points="900,440 865,450 830,425 790,470 765,515 760,565 750,625 715,695 695,775 670,870 690,950 660,1060 625,1155 595,1200" opacity="0.88" />
+        <polyline points="900,500 880,500 850,470 815,515 790,555 780,600 775,655 745,720 725,800 705,895 720,970 695,1080 660,1170 630,1200" opacity="1.0" />
+      </svg>
     </div>
-  </nav>
+  </div>
 
-  <!-- Work Hero -->
-  <section class="work-hero">
-    <span class="uppercase-label">Portfolio</span>
-    <h1 class="work-title">Selected Projects</h1>
-  </section>
+  <!-- Standard Subpage Header (Consistent alignment) -->
+  <header class="subpage-navbar">
+    <a href="index.html" class="subpage-nav-logo" aria-label="Devin Sanders Home">
+      <img src="LogoBlue.png" alt="Devin Sanders Mark">
+    </a>
 
-  <!-- Grid of All Projects (rendered via main.js) -->
-  <main id="work-grid" class="projects-archive-grid"></main>
+    <nav class="subpage-nav-links">
+      <a href="work.html" class="active">Work</a>
+      <a href="ui-ux.html">UI/UX</a>
+      <a href="about.html">About</a>
+      <button id="top-contact-btn">Contact</button>
+    </nav>
+  </header>
+
+  <!-- Work Archive Content -->
+  <main class="archive-page-wrap">
+    
+    <!-- Editorial Header Block with Category Filter -->
+    <header class="archive-header-block">
+      <div class="archive-header-text">
+        <span class="uppercase-label" style="margin-bottom: 0.75rem;">Archive // 2024–2026</span>
+        <h1 class="archive-page-title">Selected Work</h1>
+        <p class="archive-page-sub">
+          Brand architecture, packaging systems, and visual identity collateral built for physical and digital touchpoints.
+        </p>
+      </div>
+
+      <!-- Filter Tabs: Non-UI/UX Categories -->
+      <div class="work-filter-bar">
+        <button class="filter-btn active" data-filter="all">All [ <span id="count-all">0</span> ]</button>
+        <button class="filter-btn" data-filter="branding">Branding [ <span id="count-branding">0</span> ]</button>
+        <button class="filter-btn" data-filter="packaging">Packaging [ <span id="count-packaging">0</span> ]</button>
+        <button class="filter-btn" data-filter="other">Motion & System [ <span id="count-other">0</span> ]</button>
+      </div>
+    </header>
+
+    <!-- 2-Column Wide Duo Project Grid -->
+    <div id="work-grid" class="work-grid-2col"></div>
+
+  </main>
 
   <!-- Dark Footer -->
   <footer id="contact" class="site-footer">
@@ -174,7 +134,7 @@
 
       <div class="footer-sub-row">
         <div style="display: flex; gap: 1.5rem;">
-          <a href="work.html" class="footer-link" style="color: rgba(255,255,255,0.5);">Work</a>
+          <a href="work.html" class="footer-link" style="color: rgba(255,255,255,0.9);">Work</a>
           <a href="ui-ux.html" class="footer-link" style="color: rgba(255,255,255,0.5);">UI/UX</a>
           <a href="about.html" class="footer-link" style="color: rgba(255,255,255,0.5);">About</a>
         </div>
