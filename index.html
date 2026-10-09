@@ -160,7 +160,7 @@
   <!-- =================== START: HOMEPAGE ART PATTERN DIVIDER =================== -->
   <section class="home-pattern-divider" aria-hidden="true">
     <div class="pattern-shell">
-      <svg class="pattern-artwork" viewBox="0 0 1440 280" fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <svg class="pattern-artwork" viewBox="0 0 1440 180" fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <!-- Background Micro-Dots -->
         <defs>
           <pattern id="artwork-dots" width="26" height="26" patternUnits="userSpaceOnUse">
@@ -169,40 +169,32 @@
         </defs>
         <rect width="100%" height="100%" fill="url(#artwork-dots)" />
 
-        <!-- Linear Geometrics & Topography Overlays -->
-        <g opacity="0.12" stroke="#2C3E50" stroke-width="1.2">
-          <path d="M-100,220 C200,280 400,100 650,180 C900,260 1100,80 1350,140 C1450,160 1600,110 1700,180" />
-          <path d="M-100,250 C220,310 420,130 670,210 C920,290 1120,110 1370,170 C1470,190 1620,140 1720,210" />
-          <path d="M-100,190 C180,250 380,70 630,150 C880,230 1080,50 1330,110 C1430,130 1580,80 1680,150" />
-          <path d="M-100,160 C160,220 360,40 610,120 C860,200 1060,20 1310,80 C1410,100 1560,50 1660,120" />
+        <!-- Crisp Horizontal Drafting Rails -->
+        <g stroke="#2C3E50" stroke-width="1" opacity="0.1">
+          <line x1="0" y1="60" x2="1440" y2="60" />
+          <line x1="0" y1="120" x2="1440" y2="120" stroke-dasharray="4 8" />
         </g>
 
-        <!-- Angular Blueprint Layouts -->
-        <g stroke="#2C3E50" stroke-width="1" opacity="0.08">
-          <line x1="80" y1="-50" x2="480" y2="350" />
-          <line x1="280" y1="-50" x2="680" y2="350" />
-          <line x1="680" y1="-50" x2="280" y2="350" />
-          <line x1="1200" y1="-50" x2="800" y2="350" />
-          <line x1="1050" y1="-50" x2="1450" y2="350" />
+        <!-- Pure Geometric / Linear Accent Pips & Cuts -->
+        <g stroke="#F15B22" stroke-width="1.3" opacity="0.4">
+          <!-- Left cluster -->
+          <polyline points="120,40 160,80 320,80" />
+          <circle cx="160" cy="80" r="3" fill="#F15B22" stroke="none" />
           
-          <line x1="-50" y1="120" x2="1550" y2="120" stroke-dasharray="4 8" />
-          <line x1="-50" y1="160" x2="1550" y2="160" />
+          <!-- Center-right accent -->
+          <polyline points="780,140 820,100 960,100" stroke-dasharray="3 5" />
+          
+          <!-- Far-right cluster -->
+          <polyline points="1180,40 1220,80 1340,80" />
+          <circle cx="1220" cy="80" r="3" fill="#F15B22" stroke="none" />
         </g>
 
-        <!-- Brand Accent Lines & Angular Intersects (Accent Orange & Primary Blue) -->
-        <g stroke="#F15B22" stroke-width="1.3" opacity="0.32">
-          <polyline points="140,80 200,140 380,140" />
-          <polyline points="550,220 590,180 720,180" stroke-dasharray="2 4" />
-          <polyline points="1020,40 1080,100 1260,100" />
-          <line x1="420" y1="260" x2="490" y2="190" />
-          <line x1="880" y1="50" x2="950" y2="120" />
-          <circle cx="200" cy="140" r="3.5" fill="#F15B22" stroke="none" />
-          <circle cx="1080" cy="100" r="3.5" fill="#F15B22" stroke="none" />
-        </g>
-
-        <g stroke="#2C3E50" stroke-width="1.5" opacity="0.25">
-          <polyline points="280,240 340,180 500,180" />
-          <polyline points="820,100 860,60 1020,60" />
+        <!-- Subtle Deep Blue Secondary Geometry -->
+        <g stroke="#2C3E50" stroke-width="1.2" opacity="0.2">
+          <polyline points="280,140 320,100 460,100" />
+          <polyline points="980,40 1020,80 1120,80" />
+          <line x1="560" y1="20" x2="620" y2="80" />
+          <line x1="620" y1="80" x2="700" y2="80" />
         </g>
       </svg>
     </div>
