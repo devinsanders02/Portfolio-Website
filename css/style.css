@@ -810,12 +810,12 @@ header.subpage-navbar {
 /* =================== END: WORK ARCHIVE 2-COLUMN GRID =================== */
 
 
-/* =================== START: HOMEPAGE CALL-TO-ACTION & PHILOSOPHY =================== */
+/* =================== START: HOMEPAGE CALL-TO-ACTION & PATTERN DIVIDER =================== */
 .view-all-projects-section {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 3rem 1.5rem 5rem;
+  padding: 3rem 1.5rem 4rem;
   background: transparent;
 }
 
@@ -851,16 +851,33 @@ header.subpage-navbar {
   transform: translateX(4px);
 }
 
-.philosophy-section {
+/* Replaces .philosophy-section */
+.home-pattern-divider {
   position: relative;
   z-index: 2;
-  text-align: center;
-  padding: 5rem 1.5rem;
-  max-width: 800px;
-  margin: 0 auto;
+  width: 100%;
+  padding: 1.5rem 0 0;
   background: transparent;
+  overflow: hidden;
+  box-sizing: border-box;
 }
-/* =================== END: HOMEPAGE CALL-TO-ACTION & PHILOSOPHY =================== */
+
+.pattern-shell {
+  max-width: 1540px;
+  margin: 0 auto;
+  padding: 0 4vw;
+  border-top: 1px solid rgba(44, 62, 80, 0.08);
+  box-sizing: border-box;
+}
+
+.pattern-artwork {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  display: block;
+  pointer-events: none;
+}
+/* =================== END: HOMEPAGE CALL-TO-ACTION & PATTERN DIVIDER =================== */
 
 
 /* =================== START: SLIDE-DOWN INDEX OVERLAY & PEAK NAV =================== */
