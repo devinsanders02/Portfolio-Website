@@ -75,36 +75,6 @@ body {
   100% { transform: scale(0.92); opacity: 0.6; }
 }
 
-/* Header & Top Nav */
-header.navbar {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 1.5rem 2rem;
-  gap: 2rem;
-  position: relative;
-  z-index: 10;
-}
-
-@media (min-width: 768px) {
-  header.navbar { padding: 1.5rem 3.5rem; }
-}
-
-header.navbar a, header.navbar button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: var(--font-barlow);
-  text-decoration: none;
-  color: var(--text-dark);
-  font-size: 0.875rem;
-  font-weight: 300;
-  letter-spacing: 0.025em;
-  transition: opacity 0.3s;
-}
-
-header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
-
 /* Sticky Header Link Specifics (Overrides Visited Purple / Underline) */
 .back-work-link,
 .back-work-link:visited,
@@ -125,68 +95,199 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
   text-decoration: none !important;
 }
 
-/* Hero Section */
-.hero-section {
-  position: relative;
-  min-height: calc(100vh - 80px);
+/* ==========================================================================
+   STICKY HERO CANVAS & LINKEDIN-ALIGNED TOPOGRAPHY SPEC
+   ========================================================================== */
+
+.hero-sticky-canvas {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem 1rem 4rem;
+  justify-content: space-between;
+  padding: 2.5rem 3.5vw;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: var(--bg-main);
+  z-index: 1;
 }
 
-.hero-title {
-  font-family: var(--font-barlow);
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  user-select: none;
+/* 1. Micro Dot Grid Texture */
+.hero-dot-grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--text-dark) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 2. Top-to-Bottom Topographic Ridge Lines (Spans right half 100vh) */
+.hero-topography-canvas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 62vw;
+  height: 100%;
+  pointer-events: none;
   color: var(--text-dark);
-  margin-bottom: 2rem;
+  opacity: 0.14;
+  z-index: 1;
+  mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
 }
 
-.hero-title .title-sub {
+.hero-topography-canvas svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* 3. Top Row Navigation & Specs */
+.hero-top-row {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  column-gap: 2rem;
+  align-items: start;
+}
+
+/* Pinned Logo Mark */
+.hero-persistent-logo {
+  display: inline-block;
+  text-decoration: none;
+  z-index: 10;
+}
+
+.hero-logo-img {
+  width: 44px;
+  height: auto;
   display: block;
-  font-weight: 300;
-  font-size: clamp(1.9rem, 6.75vw, 7.1rem);
 }
 
-.hero-title .title-accent {
-  display: block;
-  font-weight: 800;
-  color: var(--accent-orange);
-  font-size: clamp(2.6rem, 9vw, 9.75rem);
-}
-
-.hero-subtext {
+/* Top-Left Metadata */
+.hero-meta-block {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  color: #2C3E50AA;
-  font-size: 1rem;
+  gap: 0.2rem;
+  will-change: opacity, transform;
+}
+
+.meta-location {
+  font-family: var(--font-barlow);
+  font-size: 1.25rem;
   font-weight: 300;
+  color: var(--text-dark);
+  line-height: 1.15;
 }
 
-@media (min-width: 640px) {
-  .hero-subtext {
-    flex-direction: row;
-    gap: 2.5rem;
-  }
-  .hero-subtext .left-txt { text-align: right; }
-  .hero-subtext .right-txt { text-align: left; }
-  .hero-subtext .divider {
-    width: 1px;
-    height: 40px;
-    background-color: #2C3E5020;
-    display: block;
-  }
+.meta-coords {
+  font-family: monospace;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text-muted);
 }
 
-.hero-subtext .divider { display: none; }
+.meta-discipline {
+  font-family: var(--font-barlow);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-orange);
+  margin-top: 0.35rem;
+}
+
+/* Top-Right Vertical Menu Column */
+.hero-nav-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  align-items: flex-end;
+  will-change: opacity, transform;
+}
+
+.hero-nav-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 0 2px 0;
+  margin: 0;
+}
+
+.hero-nav-item .nav-idx {
+  font-family: monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.hero-nav-item .nav-txt {
+  font-family: var(--font-barlow);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent-orange);
+  line-height: 1;
+}
+
+/* Left-to-Right Animated Underline */
+.hero-nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-orange);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hero-nav-item:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* 4. Bottom Name Anchor */
+.hero-bottom-anchor {
+  position: relative;
+  z-index: 2;
+  will-change: opacity, transform;
+}
+
+.hero-display-name {
+  font-family: var(--font-barlow);
+  font-weight: 800;
+  font-size: clamp(3.2rem, 11vw, 10.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  margin: 0 0 1rem 0;
+}
+
+.hero-scroll-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-barlow);
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
 
 /* ==========================================================================
    PROJECT SECTION CARDS (FULL-BLEED BACKGROUND & SPLIT CONTENT)
@@ -203,6 +304,8 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
   transition: background-color 0.7s ease;
   overflow-x: hidden;
   box-sizing: border-box;
+  z-index: 2; /* Ensures cards slide up over the sticky hero canvas */
+  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.04);
 }
 
 @media (min-width: 900px) {
@@ -490,18 +593,17 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
   background-color: #FFFFFF;
   border-radius: 2px;
   transform: scaleX(0);
-  transform-origin: right center; /* Retracts and disappears left-to-right */
+  transform-origin: right center;
   transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Hover On: Expands left-to-right */
 .overlay-link-item a:hover::after,
 .overlay-link-item button:hover::after {
   transform: scaleX(1);
   transform-origin: left center;
 }
 
-/* Active State for Current Page (UI/UX, All Work, Branding, etc.) */
+/* Active State for Current Page */
 .overlay-link-item a.active,
 .overlay-link-item a.current,
 .overlay-link-item a[aria-current="page"],
@@ -512,7 +614,6 @@ header.navbar a:hover, header.navbar button:hover { opacity: 0.6; }
   visibility: visible !important;
 }
 
-/* Keep underline locked on for active page */
 .overlay-link-item a.active::after,
 .overlay-link-item a.current::after,
 .overlay-link-item a[aria-current="page"]::after,
@@ -528,6 +629,7 @@ footer.site-footer {
   color: #FFF;
   padding: 3.5rem 1.5rem 2rem;
   position: relative;
+  z-index: 2;
 }
 
 @media (min-width: 768px) {
@@ -583,7 +685,6 @@ footer.site-footer {
    TURNSTYLE-STYLE FULL BLEED HERO & MORPHING LOGO
    ========================================================================== */
 
-/* Fixed Top Brand Navigation */
 .sticky-brand-nav {
   position: fixed;
   top: 0;
@@ -605,7 +706,6 @@ footer.site-footer {
   text-decoration: none;
 }
 
-/* Container holding both scaled logos */
 .morph-logo-box {
   position: relative;
   height: 86px;
@@ -613,7 +713,6 @@ footer.site-footer {
   align-items: center;
 }
 
-/* Full Logo (Initial State) */
 .morph-logo-box .logo-full {
   height: 64px;
   width: auto;
@@ -627,7 +726,6 @@ footer.site-footer {
   will-change: transform, opacity;
 }
 
-/* Mark (Scrolled State) */
 .morph-logo-box .logo-mark {
   position: absolute;
   left: 0;
@@ -645,7 +743,6 @@ footer.site-footer {
   will-change: transform, opacity;
 }
 
-/* Scrolled State */
 .sticky-brand-nav.scrolled {
   padding: 1.25rem 2rem;
 }
@@ -662,7 +759,6 @@ footer.site-footer {
   pointer-events: auto;
 }
 
-/* Top-Right Nav Links: Initial visible state */
 .sticky-brand-nav > div:last-child {
   transition: 
     opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
@@ -673,7 +769,6 @@ footer.site-footer {
   pointer-events: auto;
 }
 
-/* Top-Right Nav Links: Scrolled out of view */
 .sticky-brand-nav.scrolled > div:last-child {
   opacity: 0;
   transform: translateY(-8px);
@@ -681,7 +776,6 @@ footer.site-footer {
   visibility: hidden;
 }
 
-/* Turnstyle 100vh Full-Bleed Hero */
 .turnstyle-hero-banner {
   position: relative;
   width: 100%;
@@ -755,7 +849,7 @@ footer.site-footer {
 
 /* ==========================================================================
    REUSABLE CASE STUDY COMPONENTS (WANDRD, BISTRO, ETC.)
-   ========================================================================= */
+   ========================================================================== */
 
 .case-dark-section {
   background-color: #0d0e11;
@@ -789,7 +883,6 @@ footer.site-footer {
   color: #fff;
 }
 
-/* 1. Alternating Split Row */
 .case-feature-split {
   max-width: 1200px;
   margin: 0 auto 5rem;
@@ -847,7 +940,6 @@ footer.site-footer {
   color: rgba(255,255,255,0.7);
 }
 
-/* 2. Side-by-Side Context Block */
 .case-context-block {
   max-width: 1200px;
   margin: 0 auto 6rem;
@@ -885,7 +977,6 @@ footer.site-footer {
   display: block;
 }
 
-/* 3. Full-Bleed Infographic Showcase */
 .case-phone-showcase {
   max-width: 1200px;
   margin: 0 auto 5rem;
@@ -906,7 +997,7 @@ footer.site-footer {
 
 /* ==========================================================================
    REXBURG RAPIDS CUSTOM CASE STUDY
-   ========================================================================= */
+   ========================================================================== */
 
 .rapids-case-page {
   background-color: #FFFFFF;
@@ -1188,7 +1279,6 @@ footer.site-footer {
   font-family: monospace;
 }
 
-/* Full Bleed Retro Color Ribbon Stripe Divider */
 .retro-ribbon-divider {
   width: 100vw;
   position: relative;
@@ -1266,7 +1356,7 @@ footer.site-footer {
 
 /* ==========================================================================
    GERBER GEAR CUSTOM CASE STUDY
-   ========================================================================= */
+   ========================================================================== */
 
 .gerber-case-page {
   background-color: #F6F4F0;
@@ -1298,9 +1388,8 @@ footer.site-footer {
 
 /* ==========================================================================
    PROJECT PAGINATION NAVIGATION (PREVIOUS / NEXT)
-   ========================================================================= */
+   ========================================================================== */
 
-/* Ensure Pagination Arrows & Text Always Retain Brand Barlow */
 .project-pagination-nav,
 .project-pagination-nav * {
   font-family: var(--font-barlow) !important;
