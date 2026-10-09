@@ -56,18 +56,18 @@
     </svg>
   </button>
 
+  <!-- Pinned Top-Left Brand Logo (Always visible & perfectly aligned) -->
+  <a href="index.html" class="hero-persistent-logo" aria-label="Devin Sanders Home">
+    <img src="LogoBlue.png" alt="Devin Sanders Mark" class="hero-logo-img">
+  </a>
+
   <!-- =========================================================================
-       ASYMMETRIC STICKY HERO CANVAS (TOPOGRAPHIC & SPEC ARCHITECTURE)
+       FIXED HERO BACKGROUND STAGE (PERSISTENT TOPO & DOT GRID)
        ========================================================================= -->
-  <section id="hero-sticky-canvas" class="hero-sticky-canvas">
-
-    <!-- Layer 1: Technical Dot Grid -->
-    <div class="hero-dot-grid" aria-hidden="true"></div>
-
-    <!-- Layer 2: Full-Height Rugged Topographic Ridge Contours (Banner Geometry) -->
-    <div class="hero-topography-canvas" aria-hidden="true">
+  <div class="hero-fixed-background" aria-hidden="true">
+    <div class="hero-dot-grid"></div>
+    <div class="hero-topography-canvas">
       <svg viewBox="0 0 900 1200" fill="none" stroke="currentColor" stroke-width="1.3" preserveAspectRatio="none">
-        <!-- Peak Cluster Outer Ridge Lines -->
         <polyline points="900,100 820,130 760,190 710,160 670,220 620,290 640,380 610,470 560,540 520,620 480,720 510,830 470,940 430,1050 400,1200" opacity="0.18" />
         <polyline points="900,140 830,170 770,220 725,195 685,250 640,320 655,400 630,490 580,560 545,640 505,740 535,845 495,955 455,1065 425,1200" opacity="0.25" />
         <polyline points="900,185 840,210 785,255 740,230 700,285 660,350 670,425 650,510 600,580 570,660 530,760 560,860 520,970 480,1080 450,1200" opacity="0.32" />
@@ -82,15 +82,15 @@
         <polyline points="900,685 890,660 875,695 860,715 850,755 835,815 825,895 820,980 825,1050 805,1150 785,1200" opacity="0.4" />
       </svg>
     </div>
+  </div>
 
-    <!-- Top Region: Persistent Logo Mark & Fadeable Header Elements -->
+  <!-- =========================================================================
+       HERO CONTENT VIEWPORT (STICKY FADEABLE FOREGROUND)
+       ========================================================================= -->
+  <section id="hero-sticky-canvas" class="hero-sticky-canvas">
+    
     <div class="hero-top-row">
-      <!-- Pinned Standalone Logo Mark (Larger scale) -->
-      <a href="index.html" class="hero-persistent-logo" aria-label="Devin Sanders Home">
-        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="hero-logo-img">
-      </a>
-
-      <!-- Top Left: Fadeable Metadata Spec Block -->
+      <!-- Top Left: Metadata Stacked Directly Under Logo Alignment -->
       <div class="hero-meta-block js-fade-on-scroll">
         <div class="meta-location">DENVER, CO</div>
         <div class="meta-coords">39.7392° N</div>
@@ -132,18 +132,22 @@
 
   </section>
 
-  <!-- Featured Work (Wide Stage Single Canvas rendered via main.js) -->
-  <main id="featured-work-container"></main>
+  <!-- Featured Work (Transparent Card Staging) -->
+  <main id="featured-work-container" class="featured-work-feed"></main>
 
   <!-- View All Projects Button -->
-  <section style="text-align: center; padding: 4rem 1.5rem;">
-    <a href="work.html" style="display: inline-block; padding: 1rem 2.5rem; border-radius: 8px; font-weight: 600; font-size: 0.875rem; letter-spacing: 0.025em; text-decoration: none; color: #FFF; background-color: var(--accent-orange); transition: opacity 0.3s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-      View All Projects
+  <section class="view-all-projects-section">
+    <a href="work.html" class="view-all-btn">
+      <span>View All Projects</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
     </a>
   </section>
 
   <!-- Philosophy Section -->
-  <section style="text-align: center; padding: 5rem 1.5rem; max-width: 800px; margin: 0 auto;">
+  <section class="philosophy-section">
     <span class="uppercase-label" style="margin-bottom: 1rem;">Philosophy</span>
     <h2 style="font-weight: 800; font-size: clamp(1.75rem, 4vw, 2.75rem); line-height: 1.15; letter-spacing: -0.02em; color: var(--text-dark); margin-bottom: 1.5rem;">
       Design is how you think,<br>not just what you make.
