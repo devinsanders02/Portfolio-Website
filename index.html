@@ -90,12 +90,19 @@
   <!-- =================== START: HERO VIEWPORT (STICKY FADEABLE FOREGROUND) =================== -->
   <section id="hero-sticky-canvas" class="hero-sticky-canvas">
 
+    <!-- Blueprint Hairline Guides & Crosshair Alignment -->
+    <div class="blueprint-guides" aria-hidden="true">
+      <div class="guide-axis-h"></div>
+      <div class="guide-axis-v"></div>
+      <div class="guide-crosshair"></div>
+    </div>
+
     <div class="hero-top-row">
-      <!-- Top Left: Metadata Stacked Directly Under Logo Alignment -->
+      <!-- Top Left: Metadata with Text Decrypt / Scramble Hooks -->
       <div class="hero-meta-block js-fade-on-scroll">
         <div class="meta-location">DENVER, CO</div>
-        <div class="meta-coords">39.7392° N</div>
-        <div class="meta-discipline">VISUAL BRAND ARCHITECTURE & DESIGN</div>
+        <div class="meta-coords js-scramble-text" data-original="39.7392° N">39.7392° N</div>
+        <div class="meta-discipline js-scramble-text" data-original="VISUAL BRAND ARCHITECTURE & DESIGN">VISUAL BRAND ARCHITECTURE & DESIGN</div>
       </div>
 
       <!-- Top Right: Vertical Column Menu -->
@@ -203,82 +210,82 @@
   <!-- =================== END: HOMEPAGE ART PATTERN DIVIDER =================== -->
 
   <!-- =================== START: GLOBAL EDITORIAL FOOTER =================== -->
-<footer id="contact" class="site-footer">
-  <div class="footer-inner-shell">
+  <footer id="contact" class="site-footer">
+    <div class="footer-inner-shell">
 
-    <!-- Tier 1: Lead Statement & Direct Email -->
-    <div class="footer-tier-hero">
-      <h2 class="footer-hero-headline">Let's build something meaningful.</h2>
-      <a href="mailto:devin.sanders02@gmail.com" class="footer-email-link">
-        <span>devin.sanders02@gmail.com</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="7" y1="17" x2="17" y2="7"></line>
-          <polyline points="7 7 17 7 17 17"></polyline>
-        </svg>
-      </a>
-    </div>
-
-    <hr class="footer-hairline">
-
-    <!-- Tier 2: Studio Directory -->
-    <div class="footer-directory-grid">
-      <!-- 01 / Navigation -->
-      <div>
-        <span class="footer-col-header">01 /<span>Work</span></span>
-        <ul class="footer-nav-list">
-          <li><a href="work.html" class="footer-link-animated">Selected Work</a></li>
-          <li><a href="ui-ux.html" class="footer-link-animated">UI/UX & Systems</a></li>
-          <li><a href="about.html" class="footer-link-animated">About & Studio</a></li>
-        </ul>
-      </div>
-
-      <!-- 02 / Network -->
-      <div>
-        <span class="footer-col-header">02 /<span>Network</span></span>
-        <ul class="footer-nav-list">
-          <li>
-            <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer">
-              <span>LinkedIn</span>
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- 03 / Studio Specs -->
-      <div>
-        <span class="footer-col-header">03 /<span>Discipline</span></span>
-        <ul class="footer-discipline-list">
-          <li>Brand architecture & identity</li>
-          <li>Physical & digital commerce</li>
-        </ul>
-      </div>
-
-      <!-- 04 / Return Action -->
-      <div>
-        <span class="footer-col-header">04 /<span>Top</span></span>
-        <button id="footer-scroll-top-btn" class="footer-scroll-top-btn">
-          <span>Return to Top</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="19" x2="12" y2="5"></line>
-            <polyline points="5 12 12 5 19 12"></polyline>
+      <!-- Tier 1: Lead Statement & Direct Email -->
+      <div class="footer-tier-hero">
+        <h2 class="footer-hero-headline">Let's build something meaningful.</h2>
+        <a href="mailto:devin.sanders02@gmail.com" class="footer-email-link">
+          <span>devin.sanders02@gmail.com</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
           </svg>
-        </button>
+        </a>
       </div>
-    </div>
 
-    <!-- Tier 3: Colophon -->
-    <div class="footer-colophon-row">
-      <div>© <span id="copyright-year">2026</span> Devin Sanders. All Rights Reserved.</div>
-      <div>Barlow · Visual Brand Architecture</div>
-    </div>
+      <hr class="footer-hairline">
 
-  </div>
-</footer>
-<!-- =================== END: GLOBAL EDITORIAL FOOTER =================== -->
+      <!-- Tier 2: Studio Directory -->
+      <div class="footer-directory-grid">
+        <!-- 01 / Navigation -->
+        <div>
+          <span class="footer-col-header">01 /<span>Work</span></span>
+          <ul class="footer-nav-list">
+            <li><a href="work.html" class="footer-link-animated">Selected Work</a></li>
+            <li><a href="ui-ux.html" class="footer-link-animated">UI/UX & Systems</a></li>
+            <li><a href="about.html" class="footer-link-animated">About & Studio</a></li>
+          </ul>
+        </div>
+
+        <!-- 02 / Network -->
+        <div>
+          <span class="footer-col-header">02 /<span>Network</span></span>
+          <ul class="footer-nav-list">
+            <li>
+              <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer">
+                <span>LinkedIn</span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 03 / Studio Specs -->
+        <div>
+          <span class="footer-col-header">03 /<span>Discipline</span></span>
+          <ul class="footer-discipline-list">
+            <li>Brand architecture & identity</li>
+            <li>Physical & digital commerce</li>
+          </ul>
+        </div>
+
+        <!-- 04 / Return Action -->
+        <div>
+          <span class="footer-col-header">04 /<span>Top</span></span>
+          <button id="footer-scroll-top-btn" class="footer-scroll-top-btn">
+            <span>Return to Top</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tier 3: Colophon -->
+      <div class="footer-colophon-row">
+        <div>© <span id="copyright-year">2026</span> Devin Sanders. All Rights Reserved.</div>
+        <div>Barlow · Visual Brand Architecture</div>
+      </div>
+
+    </div>
+  </footer>
+  <!-- =================== END: GLOBAL EDITORIAL FOOTER =================== -->
 
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
