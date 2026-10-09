@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;300;400;500;600;700;800;900&display=swap');
 
 /* =================== START: GLOBAL VARIABLES & FOUNDATIONS =================== */
 :root {
@@ -9,7 +9,7 @@
   --footer-bg: #2C3E50;
   --card-dark-blue: #1F2D3D;
   --card-stage-blue: #16222F;
-  --font-barlow: 'Barlow', ui-sans-serif, system-ui, sans-serif;
+  --font-barlow: 'Barlow', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 * {
@@ -28,6 +28,7 @@ body {
   font-family: var(--font-barlow);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
@@ -49,7 +50,6 @@ body {
 }
 /* =================== END: GLOBAL VARIABLES & FOUNDATIONS =================== */
 
-
 /* =================== START: SITE PRELOADER =================== */
 #site-loader {
   position: fixed;
@@ -63,9 +63,9 @@ body {
 }
 
 #site-loader.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 .loader-mark-pulse {
@@ -81,8 +81,7 @@ body {
 }
 /* =================== END: SITE PRELOADER =================== */
 
-
-/* =================== START: PERSISTENT BACKGROUND (TOPO & DOT GRID) =================== */
+/* =================== START: PERSISTENT BACKGROUND =================== */
 .hero-fixed-background {
   position: fixed;
   top: 0;
@@ -111,17 +110,39 @@ body {
   width: 66vw;
   height: 100%;
   color: var(--text-dark);
-  opacity: 0.16;
-  mask-image: linear-gradient(to left, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
-  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
+  pointer-events: none;
 }
 
 .hero-topography-canvas svg {
   width: 100%;
   height: 100%;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.topo-line-solid {
+  stroke: var(--text-dark);
+  stroke-dasharray: none;
+}
+
+.topo-line-dashed {
+  stroke: var(--text-dark);
+  stroke-dasharray: 4 8;
+  animation: traceTransectTrails 45s linear infinite;
+}
+
+.topo-line-dashed:nth-of-type(2) {
+  animation-duration: 55s;
+  animation-direction: reverse;
+}
+
+@keyframes traceTransectTrails {
+  to {
+    stroke-dashoffset: 800;
+  }
 }
 /* =================== END: PERSISTENT BACKGROUND =================== */
-
 
 /* =================== START: SUBPAGE STANDARD NAVBAR =================== */
 header.subpage-navbar {
@@ -177,7 +198,6 @@ header.subpage-navbar {
 }
 /* =================== END: SUBPAGE STANDARD NAVBAR =================== */
 
-
 /* =================== START: HOMEPAGE STICKY HERO CANVAS =================== */
 .hero-persistent-logo {
   position: fixed;
@@ -213,7 +233,7 @@ header.subpage-navbar {
   pointer-events: auto;
 }
 
-/* --- Blueprint Drafting Hairlines & Crosshair --- */
+/* Blueprint Drafting Hairlines & Crosshair */
 .blueprint-guides {
   position: absolute;
   inset: 0;
@@ -271,7 +291,7 @@ header.subpage-navbar {
   100% { transform: scale(1); opacity: 0.25; }
 }
 
-/* --- Hero Layout Elements --- */
+/* Hero Layout Elements */
 .hero-top-row {
   position: relative;
   z-index: 2;
@@ -406,52 +426,98 @@ header.subpage-navbar {
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
-
-/* --- Topography Terrain Canvas & Dashed Survey Flow --- */
-.hero-topography-canvas {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
-}
-
-.hero-topography-canvas svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: transform;
-}
-
-.topo-line-solid {
-  stroke: var(--text-dark);
-  stroke-dasharray: none;
-  stroke-dashoffset: 0;
-}
-
-.topo-line-dashed {
-  stroke: var(--text-dark);
-  stroke-dasharray: 6 14;
-  animation: traceDashedContours 40s linear infinite;
-}
-
-.topo-line-dashed:nth-of-type(2) {
-  animation-duration: 50s;
-  animation-direction: reverse;
-}
-
-@keyframes traceDashedContours {
-  to {
-    stroke-dashoffset: 1000;
-  }
-}
 /* =================== END: HOMEPAGE STICKY HERO CANVAS =================== */
 
+/* =================== START: SURVEY RETICLE CURSOR =================== */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+
+  a, button, input, textarea, [role="button"] {
+    cursor: none;
+  }
+
+  .survey-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 999999;
+    will-change: transform;
+  }
+
+  .cursor-dot {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--text-dark);
+    transition: background-color 0.25s ease, transform 0.15s ease;
+  }
+
+  .cursor-ring {
+    position: absolute;
+    top: -11px;
+    left: -11px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1px solid rgba(44, 62, 80, 0.45);
+    transition: width 0.25s ease, height 0.25s ease, top 0.25s ease, left 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
+  }
+
+  .cursor-alt-tag {
+    position: absolute;
+    left: 16px;
+    top: -7px;
+    font-family: var(--font-barlow);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--accent-orange);
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .survey-cursor.cursor-hover .cursor-dot {
+    transform: scale(0.6);
+    background-color: var(--accent-orange);
+  }
+
+  .survey-cursor.cursor-hover .cursor-ring {
+    top: -16px;
+    left: -16px;
+    width: 32px;
+    height: 32px;
+    border-color: var(--accent-orange);
+    opacity: 0.8;
+  }
+
+  .survey-cursor.cursor-summit .cursor-dot {
+    background-color: var(--accent-orange);
+    transform: scale(1.3);
+  }
+
+  .survey-cursor.cursor-summit .cursor-ring {
+    top: -14px;
+    left: -14px;
+    width: 28px;
+    height: 28px;
+    border-color: var(--accent-orange);
+    border-width: 1.5px;
+  }
+
+  .survey-cursor.cursor-summit .cursor-alt-tag {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/* =================== END: SURVEY RETICLE CURSOR =================== */
 
 /* =================== START: HOMEPAGE WIDE STAGE PROJECT CARDS =================== */
 .featured-work-feed {
@@ -669,8 +735,7 @@ header.subpage-navbar {
 }
 /* =================== END: HOMEPAGE WIDE STAGE PROJECT CARDS =================== */
 
-
-/* =================== START: WORK ARCHIVE 2-COLUMN GRID (WORK.HTML) =================== */
+/* =================== START: WORK ARCHIVE 2-COLUMN GRID =================== */
 .archive-page-wrap {
   position: relative;
   z-index: 2;
@@ -716,7 +781,6 @@ header.subpage-navbar {
   line-height: 1.6;
 }
 
-/* Category Filter Bar */
 .work-filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -755,7 +819,6 @@ header.subpage-navbar {
   font-family: monospace;
 }
 
-/* 2-Column Wide Duo Layout */
 .work-grid-2col {
   display: grid;
   grid-template-columns: 1fr;
@@ -914,7 +977,6 @@ header.subpage-navbar {
 }
 /* =================== END: WORK ARCHIVE 2-COLUMN GRID =================== */
 
-
 /* =================== START: HOMEPAGE CALL-TO-ACTION & PATTERN DIVIDER =================== */
 .view-all-projects-section {
   position: relative;
@@ -956,7 +1018,6 @@ header.subpage-navbar {
   transform: translateX(4px);
 }
 
-/* Replaces .philosophy-section */
 .home-pattern-divider {
   position: relative;
   z-index: 2;
@@ -983,7 +1044,6 @@ header.subpage-navbar {
   pointer-events: none;
 }
 /* =================== END: HOMEPAGE CALL-TO-ACTION & PATTERN DIVIDER =================== */
-
 
 /* =================== START: SLIDE-DOWN INDEX OVERLAY & PEAK NAV =================== */
 .floating-peak-btn {
@@ -1132,7 +1192,6 @@ header.subpage-navbar {
 }
 /* =================== END: SLIDE-DOWN INDEX OVERLAY & PEAK NAV =================== */
 
-
 /* =================== START: GLOBAL EDITORIAL FOOTER =================== */
 footer.site-footer {
   position: relative;
@@ -1149,7 +1208,6 @@ footer.site-footer {
   margin: 0 auto;
 }
 
-/* Tier 1: Lead Statement & Direct Email */
 .footer-tier-hero {
   display: flex;
   flex-direction: column;
@@ -1193,14 +1251,12 @@ footer.site-footer {
   transform: translate(2px, -2px);
 }
 
-/* Hairline Divider */
 .footer-hairline {
   border: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   margin: 0 0 2rem;
 }
 
-/* Tier 2: 4-Column Directory Grid */
 .footer-directory-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1215,7 +1271,6 @@ footer.site-footer {
   }
 }
 
-/* Column Headers */
 .footer-col-header {
   font-family: var(--font-barlow);
   font-size: 0.92rem;
@@ -1243,7 +1298,6 @@ footer.site-footer {
   gap: 0.5rem;
 }
 
-/* Base link and button styling */
 .footer-nav-list a,
 .footer-scroll-top-btn {
   font-family: var(--font-barlow);
@@ -1263,13 +1317,11 @@ footer.site-footer {
   transition: color 0.2s ease;
 }
 
-/* Keep underlined text white on hover */
 .footer-link-animated:hover,
 .footer-scroll-top-btn:hover {
   color: #FFFFFF;
 }
 
-/* Target LinkedIn: turns orange with animated arrow */
 .footer-nav-list a[href*="linkedin"]:hover {
   color: var(--accent-orange);
 }
@@ -1283,7 +1335,6 @@ footer.site-footer {
   stroke: var(--accent-orange);
 }
 
-/* Animated Orange Underline */
 .footer-link-animated,
 .footer-scroll-top-btn {
   padding-bottom: 2px;
@@ -1310,7 +1361,6 @@ footer.site-footer {
   transform-origin: left center;
 }
 
-/* Discipline Text List */
 .footer-discipline-list {
   list-style: none;
   padding: 0;
@@ -1327,7 +1377,6 @@ footer.site-footer {
   color: rgba(255, 255, 255, 0.65);
 }
 
-/* Tier 3: Bottom Colophon */
 .footer-colophon-row {
   display: flex;
   flex-direction: column;
