@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearSpan = document.getElementById('copyright-year');
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-  // Scroll to Contact Button Handlers (Safely guarded)
+  // Scroll to Contact Button Handlers
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -80,18 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(scrollToContact, 450);
   });
 
-  // Sticky Brand Logo Morph On Scroll (for case study pages)
-  const brandNav = document.querySelector('.sticky-brand-nav');
-  if (brandNav) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 80) {
-        brandNav.classList.add('scrolled');
-      } else {
-        brandNav.classList.remove('scrolled');
-      }
-    }, { passive: true });
-  }
-
   // Helper function to resolve dedicated project page URLs
   const getProjectUrl = (slug) => {
     if (slug === 'wandrd') return 'wandrd.html';
@@ -108,6 +96,18 @@ document.addEventListener('DOMContentLoaded', () => {
     return `project.html?slug=${slug}`;
   };
 
+  // Helper to categorize projects into non-UI/UX buckets
+  const getProjectCategory = (proj) => {
+    const text = `${proj.services || ''} ${proj.title || ''} ${proj.slug || ''}`.toLowerCase();
+    if (text.includes('packag') || text.includes('dieline') || text.includes('can') || text.includes('sleeve')) {
+      return 'packaging';
+    }
+    if (text.includes('brand') || text.includes('identity') || text.includes('logo') || text.includes('visual system')) {
+      return 'branding';
+    }
+    return 'other'; // Motion, surface patterns, print, environmental, etc.
+  };
+
   // 1. Render Featured Work Feed (index.html) - Wide Stage Single Canvas
   const container = document.getElementById('featured-work-container');
   if (container && typeof projects !== 'undefined') {
@@ -117,7 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const allImages = [project.heroImage, ...(project.galleryImages || [])].filter(Boolean);
       const projectUrl = getProjectUrl(project.slug);
 
-      // Clean title splitting
       let mainTitle = project.title;
       let subTitle = '';
       if (project.title.includes('—')) {
@@ -130,7 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
         subTitle = parts.slice(1).join(' - ').trim();
       }
 
-      // Generate Indicator Bars
       let barsHtml = '';
       if (allImages.length > 1) {
         barsHtml = `
@@ -147,16 +145,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       card.innerHTML = `
         <div class="stage-canvas-box" id="gallery-box-${index}">
-          <!-- Active Carousel Image -->
           <img id="img-display-${index}" class="stage-image" src="${allImages[0]}" alt="${project.title}">
-
-          <!-- Dark Scrim Gradient for permanent text legibility -->
           <div class="stage-scrim"></div>
-
-          <!-- Bottom In-Image Overlay -->
           <div class="stage-content-overlay">
-            
-            <!-- Top Line of Overlay: Meta & Title -->
             <div class="stage-header-row">
               <div class="stage-title-group">
                 <span class="stage-category-label">${project.services}</span>
@@ -166,8 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
               </div>
               ${barsHtml}
             </div>
-
-            <!-- Bottom Line of Overlay (Reveals on Hover): Left Summary, Right Button -->
             <div class="stage-hover-drawer">
               <p class="stage-summary-text">${project.summary}</p>
               <a href="${projectUrl}" class="stage-action-btn">
@@ -178,14 +167,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 </svg>
               </a>
             </div>
-
           </div>
         </div>
       `;
 
       container.appendChild(card);
 
-      // Carousel Image Switcher
       let currentIdx = 0;
       const imgEl = document.getElementById(`img-display-${index}`);
       const boxEl = document.getElementById(`gallery-box-${index}`);
@@ -224,21 +211,87 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. Render Full Archive Grid (work.html)
+  // 2. Render 2-Column Wide Archive with Filter (work.html)
   const workGrid = document.getElementById('work-grid');
   if (workGrid && typeof projects !== 'undefined') {
-    projects.forEach((proj) => {
-      const item = document.createElement('a');
-      item.href = getProjectUrl(proj.slug);
-      item.className = 'archive-card';
-      item.innerHTML = `
-        <div class="archive-thumb-box">
-          <img src="${proj.heroImage}" alt="${proj.title}">
-        </div>
-        <div class="archive-card-title">${proj.title}</div>
-        <div class="archive-card-meta">${proj.services} · ${proj.year}</div>
-      `;
-      workGrid.appendChild(item);
+    
+    // Filter out purely dedicated UI/UX projects (since they belong on ui-ux.html)
+    const workProjects = projects.filter(p => {
+      const lower = `${p.services || ''} ${p.slug || ''}`.toLowerCase();
+      return !lower.includes('ui/ux') && !lower.includes('app prototype') && !lower.includes('interface');
+    });
+
+    // Populate category counts
+    let brandingCount = 0;
+    let packagingCount = 0;
+    let otherCount = 0;
+
+    workProjects.forEach(p => {
+      const cat = getProjectCategory(p);
+      if (cat === 'branding') brandingCount++;
+      else if (cat === 'packaging') packagingCount++;
+      else otherCount++;
+    });
+
+    const countAllEl = document.getElementById('count-all');
+    const countBrandingEl = document.getElementById('count-branding');
+    const countPackagingEl = document.getElementById('count-packaging');
+    const countOtherEl = document.getElementById('count-other');
+
+    if (countAllEl) countAllEl.textContent = workProjects.length;
+    if (countBrandingEl) countBrandingEl.textContent = brandingCount;
+    if (countPackagingEl) countPackagingEl.textContent = packagingCount;
+    if (countOtherEl) countOtherEl.textContent = otherCount;
+
+    // Render 2-Column Duo Cards
+    const renderCards = (filter = 'all') => {
+      workGrid.innerHTML = '';
+      const visible = filter === 'all' 
+        ? workProjects 
+        : workProjects.filter(p => getProjectCategory(p) === filter);
+
+      visible.forEach(p => {
+        const card = document.createElement('a');
+        card.href = getProjectUrl(p.slug);
+        card.className = 'duo-card';
+        card.setAttribute('data-category', getProjectCategory(p));
+
+        card.innerHTML = `
+          <img class="duo-card-img" src="${p.heroImage}" alt="${p.title}">
+          <div class="duo-scrim"></div>
+          <div class="duo-content-overlay">
+            <div class="duo-meta-row">
+              <span class="duo-tag">${p.services}</span>
+              <span class="duo-year">${p.year || '2026'}</span>
+            </div>
+            <h2 class="duo-title">${p.title}</h2>
+            <div class="duo-hover-drawer">
+              <p class="duo-summary">${p.summary}</p>
+              <span class="duo-arrow-btn">
+                <span>View</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </span>
+            </div>
+          </div>
+        `;
+        workGrid.appendChild(card);
+      });
+    };
+
+    renderCards('all');
+
+    // Filter Buttons Click Listeners
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filterVal = btn.getAttribute('data-filter');
+        renderCards(filterVal);
+      });
     });
   }
 });
