@@ -407,50 +407,47 @@ header.subpage-navbar {
   text-transform: uppercase;
 }
 
-/* --- Continuous Isobar Drift & Telemetry Beacon --- */
-.hero-topography-canvas svg polyline {
-  stroke-dasharray: 45 160;
-  animation: continuousContourFlow 38s linear infinite;
-}
-
-.hero-topography-canvas svg polyline:nth-child(even) {
-  animation-duration: 52s;
-  animation-direction: reverse;
-}
-
-@keyframes continuousContourFlow {
-  from {
-    stroke-dashoffset: 0;
-  }
-  to {
-    stroke-dashoffset: 1200;
-  }
-}
-
+/* --- Topography Terrain Canvas & Dashed Survey Flow --- */
 .hero-topography-canvas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-topography-canvas svg {
+  width: 100%;
+  height: 100%;
+  display: block;
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform;
 }
 
-.telemetry-beacon {
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  background-color: var(--accent-orange);
-  border-radius: 50%;
-  margin-right: 6px;
-  vertical-align: middle;
-  animation: ambientBeaconPulse 2.4s ease-in-out infinite;
+.topo-line-solid {
+  stroke: var(--text-dark);
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
 }
 
-@keyframes ambientBeaconPulse {
-  0%, 100% {
-    opacity: 0.35;
-    transform: scale(0.9);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.25);
+.topo-line-dashed {
+  stroke: var(--text-dark);
+  stroke-dasharray: 6 14;
+  animation: traceDashedContours 40s linear infinite;
+}
+
+.topo-line-dashed:nth-of-type(2) {
+  animation-duration: 50s;
+  animation-direction: reverse;
+}
+
+@keyframes traceDashedContours {
+  to {
+    stroke-dashoffset: 1000;
   }
 }
 /* =================== END: HOMEPAGE STICKY HERO CANVAS =================== */
