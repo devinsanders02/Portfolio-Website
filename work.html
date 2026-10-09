@@ -13,12 +13,13 @@
 </head>
 <body>
 
-  <!-- Site Preloader -->
+  <!-- =================== START: SITE PRELOADER =================== -->
   <div id="site-loader">
     <img src="LogoBlue.png" alt="Loading..." class="loader-mark-pulse">
   </div>
+  <!-- =================== END: SITE PRELOADER =================== -->
 
-  <!-- Slide-Down Top-Third Index Overlay Panel -->
+  <!-- =================== START: SLIDE-DOWN INDEX OVERLAY =================== -->
   <div id="index-overlay" class="index-overlay-panel">
     <div class="overlay-top-bar">
       <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6);">Index</span>
@@ -48,15 +49,17 @@
       </div>
     </nav>
   </div>
-  
-  <!-- Floating Orange Peak Nav Button -->
+  <!-- =================== END: SLIDE-DOWN INDEX OVERLAY =================== -->
+
+  <!-- =================== START: FLOATING PEAK NAV BUTTON =================== -->
   <button id="floating-nav-btn" class="floating-peak-btn" aria-label="Open Navigation">
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
       <path d="M2 14 L6.5 5 L10 10 L16 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   </button>
+  <!-- =================== END: FLOATING PEAK NAV BUTTON =================== -->
 
-  <!-- Pinned Persistent Background (Topo & Dot Grid) -->
+  <!-- =================== START: PERSISTENT BACKGROUND (TOPO & DOT GRID) =================== -->
   <div class="hero-fixed-background" aria-hidden="true">
     <div class="hero-dot-grid"></div>
     <div class="hero-topography-canvas">
@@ -73,8 +76,9 @@
       </svg>
     </div>
   </div>
+  <!-- =================== END: PERSISTENT BACKGROUND =================== -->
 
-  <!-- Standard Subpage Header (Consistent alignment) -->
+  <!-- =================== START: SUBPAGE STANDARD NAVBAR =================== -->
   <header class="subpage-navbar">
     <a href="index.html" class="subpage-nav-logo" aria-label="Devin Sanders Home">
       <img src="LogoBlue.png" alt="Devin Sanders Mark">
@@ -87,8 +91,9 @@
       <button id="top-contact-btn">Contact</button>
     </nav>
   </header>
+  <!-- =================== END: SUBPAGE STANDARD NAVBAR =================== -->
 
-  <!-- Work Archive Content -->
+  <!-- =================== START: WORK ARCHIVE CONTENT =================== -->
   <main class="archive-page-wrap">
     
     <!-- Editorial Header Block with Category Filter -->
@@ -114,36 +119,85 @@
     <div id="work-grid" class="work-grid-2col"></div>
 
   </main>
+  <!-- =================== END: WORK ARCHIVE CONTENT =================== -->
 
-  <!-- Dark Footer -->
+  <!-- =================== START: GLOBAL EDITORIAL FOOTER =================== -->
   <footer id="contact" class="site-footer">
-    <div class="footer-max-width">
-      <span class="uppercase-label">Get in Touch</span>
-      <h2 class="footer-heading">Let's build<br>something meaningful.</h2>
+    <div class="footer-inner-shell">
 
-      <div>
-        <a href="mailto:devin.sanders02@gmail.com" class="footer-link">devin.sanders02@gmail.com</a>
+      <!-- Tier 1: Lead Statement & Direct Email -->
+      <div class="footer-tier-hero">
+        <h2 class="footer-hero-headline">Let's build something meaningful.</h2>
+        <a href="mailto:devin.sanders02@gmail.com" class="footer-email-link">
+          <span>devin.sanders02@gmail.com</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
       </div>
 
-      <div style="display: flex; gap: 1.5rem; margin-top: 1.25rem;">
-        <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer" class="footer-link" style="color: rgba(255,255,255,0.5);">LinkedIn</a>
-        <a href="https://www.behance.net/devinsanders" target="_blank" rel="noopener noreferrer" class="footer-link" style="color: rgba(255,255,255,0.5);">Behance</a>
-      </div>
+      <hr class="footer-hairline">
 
-      <hr class="footer-divider">
-
-      <div class="footer-sub-row">
-        <div style="display: flex; gap: 1.5rem;">
-          <a href="work.html" class="footer-link" style="color: rgba(255,255,255,0.9);">Work</a>
-          <a href="ui-ux.html" class="footer-link" style="color: rgba(255,255,255,0.5);">UI/UX</a>
-          <a href="about.html" class="footer-link" style="color: rgba(255,255,255,0.5);">About</a>
+      <!-- Tier 2: Studio Directory -->
+      <div class="footer-directory-grid">
+        <!-- 01 / Navigation -->
+        <div>
+          <span class="footer-col-header">01 /<span>Work</span></span>
+          <ul class="footer-nav-list">
+            <li><a href="work.html" class="footer-link-animated">Selected Work</a></li>
+            <li><a href="ui-ux.html" class="footer-link-animated">UI/UX & Systems</a></li>
+            <li><a href="about.html" class="footer-link-animated">About & Studio</a></li>
+          </ul>
         </div>
-        <p style="font-weight: 300; font-size: 0.75rem; color: rgba(255,255,255,0.3);">
-          © <span id="copyright-year">2026</span> Devin Sanders. Crafted with intention.
-        </p>
+
+        <!-- 02 / Network -->
+        <div>
+          <span class="footer-col-header">02 /<span>Network</span></span>
+          <ul class="footer-nav-list">
+            <li>
+              <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer">
+                <span>LinkedIn</span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 03 / Studio Specs -->
+        <div>
+          <span class="footer-col-header">03 /<span>Discipline</span></span>
+          <ul class="footer-discipline-list">
+            <li>Brand architecture & identity</li>
+            <li>Physical & digital commerce</li>
+          </ul>
+        </div>
+
+        <!-- 04 / Return Action -->
+        <div>
+          <span class="footer-col-header">04 /<span>Top</span></span>
+          <button id="footer-scroll-top-btn" class="footer-scroll-top-btn">
+            <span>Return to Top</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </button>
+        </div>
       </div>
+
+      <!-- Tier 3: Colophon -->
+      <div class="footer-colophon-row">
+        <div>© <span id="copyright-year">2026</span> Devin Sanders. All Rights Reserved.</div>
+        <div>Barlow · Visual Brand Architecture</div>
+      </div>
+
     </div>
   </footer>
+  <!-- =================== END: GLOBAL EDITORIAL FOOTER =================== -->
 
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
