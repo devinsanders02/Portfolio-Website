@@ -15,9 +15,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    /* Hero Header */
+    /* =================== START: UI/UX PAGE INLINE STYLES =================== */
+
+    /* Hero Intro */
     .ux-hero {
-      padding: 9rem 1.5rem 4rem;
+      position: relative;
+      z-index: 2;
+      padding: 3rem 1.5rem 4rem;
       max-width: 1200px;
       margin: 0 auto;
       text-align: center;
@@ -28,7 +32,7 @@
       line-height: 1.05;
       letter-spacing: -0.02em;
       text-transform: uppercase;
-      color: #2C3E50;
+      color: var(--text-dark);
       margin-top: 0.75rem;
       margin-bottom: 1.25rem;
     }
@@ -36,20 +40,22 @@
       font-weight: 300;
       font-size: clamp(1rem, 1.5vw, 1.2rem);
       line-height: 1.6;
-      color: #2C3E50AA;
+      color: var(--text-muted);
       max-width: 720px;
       margin: 0 auto;
     }
 
-  /* Banner Container: Standardized viewport height */
+    /* Banner Stage Containers */
     .ux-banner {
       width: 100%;
       height: 92vh;
+      min-height: 600px;
       padding: 2rem;
       display: flex;
-      align-items: center;      /* Vertically centers the entire inner grid */
+      align-items: center;
       justify-content: center;
       position: relative;
+      z-index: 2;
       overflow: visible;
       box-sizing: border-box;
     }
@@ -60,16 +66,16 @@
       }
     }
 
-    /* Inner Grid: Allow it to center naturally without forced 100% height */
+    /* Inner 2-Column Stage Grid */
     .ux-banner-inner {
       max-width: 1440px;
       width: 100%;
-      height: auto;             /* Removes height distortion so grid rows true-center */
+      height: auto;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr;
       gap: 2.5rem;
-      align-items: center;      /* Keeps both columns centered to each other */
+      align-items: center;
     }
     @media (min-width: 900px) {
       .ux-banner-inner {
@@ -85,7 +91,7 @@
       }
     }
 
-    /* Mockup Graphic Presentation Frames */
+    /* Mockup Frame Displays */
     .ux-mockup-frame {
       width: 100%;
       display: flex;
@@ -101,11 +107,10 @@
       transition: transform 0.3s ease;
     }
 
-    /* Mockup Sizing: Contained within viewport boundaries so nothing spills or shifts */
     .ux-mockup-ios img {
       max-width: 900px;
-      max-height: 72vh;         /* Prevents vertical blowout that pushes the text down */
-      transform: scale(1.15);   /* Clean, prominent scale without clipping */
+      max-height: 72vh;
+      transform: scale(1.15);
       transform-origin: center center;
     }
 
@@ -133,13 +138,14 @@
       }
     }
 
-    /* Typography inside Banners */
+    /* Banner Typography */
     .ux-banner-title {
       font-size: clamp(2rem, 3.5vw, 3rem);
       font-weight: 800;
       letter-spacing: -0.02em;
       line-height: 1.15;
       margin-bottom: 1.25rem;
+      text-transform: uppercase;
     }
     .ux-banner-desc {
       font-size: 1.05rem;
@@ -176,6 +182,8 @@
 
     /* Micro-Interactions 3-Column Grid */
     .activities-section {
+      position: relative;
+      z-index: 2;
       max-width: 1200px;
       margin: 6.5rem auto 5rem;
       padding: 0 1.5rem;
@@ -194,12 +202,17 @@
     }
     .activity-card {
       background: #FFFFFF;
-      border-radius: 12px;
+      border-radius: 0px; /* Sharp corners consistent with site design */
       overflow: hidden;
       border: 1px solid rgba(44,62,80,0.08);
       display: flex;
       flex-direction: column;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .activity-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(44,62,80,0.08);
     }
     .activity-thumb {
       width: 100%;
@@ -240,16 +253,19 @@
       margin-bottom: 1.5rem;
       flex-grow: 1;
     }
+
+    /* =================== END: UI/UX PAGE INLINE STYLES =================== */
   </style>
 </head>
-<body style="background-color: #F4F5F7; color: #2C3E50; font-family: 'Barlow', sans-serif;">
+<body>
 
-  <!-- Site Preloader -->
+  <!-- =================== START: SITE PRELOADER =================== -->
   <div id="site-loader">
     <img src="LogoBlue.png" alt="Loading..." class="loader-mark-pulse">
   </div>
+  <!-- =================== END: SITE PRELOADER =================== -->
 
-  <!-- Slide-Down Top-Third Index Overlay Panel -->
+  <!-- =================== START: SLIDE-DOWN INDEX OVERLAY =================== -->
   <div id="index-overlay" class="index-overlay-panel">
     <div class="overlay-top-bar">
       <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6);">Index</span>
@@ -279,30 +295,51 @@
       </div>
     </nav>
   </div>
+  <!-- =================== END: SLIDE-DOWN INDEX OVERLAY =================== -->
 
-  <!-- Floating Orange Peak Nav Button -->
+  <!-- =================== START: FLOATING PEAK NAV BUTTON =================== -->
   <button id="floating-nav-btn" class="floating-peak-btn" aria-label="Open Navigation">
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
       <path d="M2 14 L6.5 5 L10 10 L16 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   </button>
+  <!-- =================== END: FLOATING PEAK NAV BUTTON =================== -->
 
-  <!-- Sticky Morphing Logo Header -->
-  <nav class="sticky-brand-nav">
-    <a href="index.html" class="brand-morph-link" aria-label="Devin Sanders Home">
-      <div class="morph-logo-box">
-        <img src="LogoLong.png" alt="Devin Sanders" class="logo-full">
-        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="logo-mark">
-      </div>
-    </a>
-    <div style="pointer-events: auto; display: flex; gap: 1.5rem; align-items: center;">
-      <a href="work.html" style="color: #2C3E50; text-decoration: none; font-size: 0.875rem; font-weight: 500; opacity: 0.85; transition: opacity 0.2s;">Work</a>
-      <a href="ui-ux.html" style="color: #F15B22; text-decoration: none; font-size: 0.875rem; font-weight: 700;">UI/UX</a>
-      <a href="about.html" style="color: #2C3E50; text-decoration: none; font-size: 0.875rem; font-weight: 500; opacity: 0.85; transition: opacity 0.2s;">About</a>
+  <!-- =================== START: PERSISTENT BACKGROUND (TOPO & DOT GRID) =================== -->
+  <div class="hero-fixed-background" aria-hidden="true">
+    <div class="hero-dot-grid"></div>
+    <div class="hero-topography-canvas">
+      <svg viewBox="0 0 900 1200" fill="none" stroke="currentColor" stroke-width="1.3" preserveAspectRatio="none">
+        <polyline points="900,100 820,130 760,190 710,160 670,220 620,290 640,380 610,470 560,540 520,620 480,720 510,830 470,940 430,1050 400,1200" opacity="0.18" />
+        <polyline points="900,140 830,170 770,220 725,195 685,250 640,320 655,400 630,490 580,560 545,640 505,740 535,845 495,955 455,1065 425,1200" opacity="0.25" />
+        <polyline points="900,185 840,210 785,255 740,230 700,285 660,350 670,425 650,510 600,580 570,660 530,760 560,860 520,970 480,1080 450,1200" opacity="0.32" />
+        <polyline points="900,230 850,250 800,290 755,265 715,320 680,380 685,450 670,530 620,600 595,680 555,780 585,875 545,985 505,1095 475,1200" opacity="0.4" />
+        <polyline points="900,280 860,295 815,325 770,300 730,355 700,410 700,475 690,550 640,620 620,700 580,800 610,890 570,1000 530,1110 500,1200" opacity="0.5" />
+        <polyline points="900,330 870,340 830,365 790,340 750,390 720,445 720,505 710,575 665,645 645,725 610,820 635,910 600,1020 560,1125 530,1200" opacity="0.62" />
+        <polyline points="900,385 880,385 845,405 810,380 770,430 740,480 740,535 730,600 690,670 670,750 640,845 660,930 630,1040 590,1140 560,1200" opacity="0.75" />
+        <polyline points="900,440 865,450 830,425 790,470 765,515 760,565 750,625 715,695 695,775 670,870 690,950 660,1060 625,1155 595,1200" opacity="0.88" />
+        <polyline points="900,500 880,500 850,470 815,515 790,555 780,600 775,655 745,720 725,800 705,895 720,970 695,1080 660,1170 630,1200" opacity="1.0" />
+      </svg>
     </div>
-  </nav>
+  </div>
+  <!-- =================== END: PERSISTENT BACKGROUND =================== -->
 
-  <!-- Page Introduction -->
+  <!-- =================== START: STANDARD SUBPAGE NAVBAR =================== -->
+  <header class="subpage-navbar">
+    <a href="index.html" class="subpage-nav-logo" aria-label="Devin Sanders Home">
+      <img src="LogoBlue.png" alt="Devin Sanders Mark">
+    </a>
+
+    <nav class="subpage-nav-links">
+      <a href="work.html">Work</a>
+      <a href="ui-ux.html" class="active">UI/UX</a>
+      <a href="about.html">About</a>
+      <button id="top-contact-btn">Contact</button>
+    </nav>
+  </header>
+  <!-- =================== END: STANDARD SUBPAGE NAVBAR =================== -->
+
+  <!-- =================== START: PAGE HEADER INTRODUCTION =================== -->
   <header class="ux-hero">
     <span class="uppercase-label">UI/UX & Interactive Systems</span>
     <h1 class="ux-hero-headline">Raw ideas to working interfaces.</h1>
@@ -310,10 +347,9 @@
       Exploring user habits, complex workflows, and cohesive screen architectures across web and mobile.
     </p>
   </header>
+  <!-- =================== END: PAGE HEADER INTRODUCTION =================== -->
 
-  <!-- =========================================================================
-       PROJECT 01: iOS ECOSYSTEM (Charcoal Surface #161616)
-       ========================================================================= -->
+  <!-- =================== START: PROJECT 01 (iOS ECOSYSTEM) =================== -->
   <section class="ux-banner" style="background-color: #161616; color: #FFFFFF;">
     <div class="ux-banner-inner ios-banner-layout">
       <div class="ux-mockup-frame ux-mockup-ios">
@@ -334,10 +370,9 @@
       </div>
     </div>
   </section>
+  <!-- =================== END: PROJECT 01 (iOS ECOSYSTEM) =================== -->
 
-  <!-- =========================================================================
-       PROJECT 02: WISE BANKING DASHBOARD (Vibrant Green #9FE870)
-       ========================================================================= -->
+  <!-- =================== START: PROJECT 02 (WISE BANKING DASHBOARD) =================== -->
   <section class="ux-banner" style="background-color: #9FE870; color: #163300;">
     <div class="ux-banner-inner reverse">
       <div>
@@ -366,10 +401,9 @@
       </div>
     </div>
   </section>
+  <!-- =================== END: PROJECT 02 (WISE BANKING DASHBOARD) =================== -->
 
-  <!-- =========================================================================
-       PROJECT 03: REFRESHED KALORIETRAK APP (Cobalt Blue #0065ED)
-       ========================================================================= -->
+  <!-- =================== START: PROJECT 03 (KALORIETRAK APP) =================== -->
   <section class="ux-banner" style="background-color: #0065ED; color: #FFFFFF;">
     <div class="ux-banner-inner">
       <div class="ux-mockup-frame ux-mockup-kalorie">
@@ -394,71 +428,71 @@
       </div>
     </div>
   </section>
+  <!-- =================== END: PROJECT 03 (KALORIETRAK APP) =================== -->
 
- <!-- =========================================================================
-     ACTIVITIES / MICRO-INTERACTIONS (3 Cards)
-     ========================================================================= -->
-<section class="activities-section">
-  <div class="case-section-header" style="margin-bottom: 2rem;">
-    <div class="line" style="background-color: #F15B22;"></div>
-    <span class="label" style="color: #2C3E50;">Micro-Interactions & Quick Labs</span>
-  </div>
-
-  <div class="activities-grid">
-    <!-- Card 01: Smart Home Screen -->
-    <div class="activity-card">
-      <div class="activity-thumb">
-        <img src="UI-UX/SmartHome.png" alt="Smart Home Screen UI" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=Smart+Home+UI';">
-      </div>
-      <div class="activity-body">
-        <h3 class="activity-title">Smart Home Screen</h3>
-        <p class="activity-desc">
-          A smart home interface designed to balance visual hierarchy, glanceable room controls, and clean layout structure.
-        </p>
-        <a href="https://www.figma.com/proto/H3dsTS4sKsFdt8Mj8jP62n/Smart-Home-Screen?node-id=1-2&p=f&viewport=125%2C-33%2C0.81&t=bJVffbagub2tABmI-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1" target="_blank" rel="noopener noreferrer" class="ux-btn" style="background-color: #C08039; color: #FFFFFF; align-self: flex-start;">
-          <span>Prototype</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-        </a>
-      </div>
+  <!-- =================== START: MICRO-INTERACTIONS & QUICK LABS =================== -->
+  <section class="activities-section">
+    <div class="case-section-header" style="margin-bottom: 2rem;">
+      <div class="line" style="background-color: #F15B22;"></div>
+      <span class="label" style="color: #2C3E50;">Micro-Interactions & Quick Labs</span>
     </div>
 
-    <!-- Card 02: One Tap Purchase Screen -->
-    <div class="activity-card">
-      <div class="activity-thumb">
-        <img src="UI-UX/OneTap.png" alt="One Tap Purchase Screen" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=One+Tap+Purchase';">
+    <div class="activities-grid">
+      <!-- Card 01: Smart Home Screen -->
+      <div class="activity-card">
+        <div class="activity-thumb">
+          <img src="UI-UX/SmartHome.png" alt="Smart Home Screen UI" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=Smart+Home+UI';">
+        </div>
+        <div class="activity-body">
+          <h3 class="activity-title">Smart Home Screen</h3>
+          <p class="activity-desc">
+            A smart home interface designed to balance visual hierarchy, glanceable room controls, and clean layout structure.
+          </p>
+          <a href="https://www.figma.com/proto/H3dsTS4sKsFdt8Mj8jP62n/Smart-Home-Screen?node-id=1-2&p=f&viewport=125%2C-33%2C0.81&t=bJVffbagub2tABmI-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1" target="_blank" rel="noopener noreferrer" class="ux-btn" style="background-color: #C08039; color: #FFFFFF; align-self: flex-start;">
+            <span>Prototype</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+        </div>
       </div>
-      <div class="activity-body">
-        <h3 class="activity-title">One Tap Purchase</h3>
-        <p class="activity-desc">
-          An efficient, single-surface checkout screen designed to streamline the purchasing flow and eliminate friction.
-        </p>
-        <a href="https://www.figma.com/make/hBfsKObrnzYV7OVkhdcA56/Mobile-App-Prototype-Design?fullscreen=1&t=ayey4knAqwlkAHdd-1&code-node-id=0-9" target="_blank" rel="noopener noreferrer" class="ux-btn" style="background-color: #B8594D; color: #FFFFFF; align-self: flex-start;">
-          <span>Prototype</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-        </a>
+
+      <!-- Card 02: One Tap Purchase Screen -->
+      <div class="activity-card">
+        <div class="activity-thumb">
+          <img src="UI-UX/OneTap.png" alt="One Tap Purchase Screen" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=One+Tap+Purchase';">
+        </div>
+        <div class="activity-body">
+          <h3 class="activity-title">One Tap Purchase</h3>
+          <p class="activity-desc">
+            An efficient, single-surface checkout screen designed to streamline the purchasing flow and eliminate friction.
+          </p>
+          <a href="https://www.figma.com/make/hBfsKObrnzYV7OVkhdcA56/Mobile-App-Prototype-Design?fullscreen=1&t=ayey4knAqwlkAHdd-1&code-node-id=0-9" target="_blank" rel="noopener noreferrer" class="ux-btn" style="background-color: #B8594D; color: #FFFFFF; align-self: flex-start;">
+            <span>Prototype</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 03: Onboarding Screen -->
+      <div class="activity-card">
+        <div class="activity-thumb">
+          <img src="UI-UX/Onboard.png" alt="Onboarding Mobile Screen" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=Onboarding+Screen';">
+        </div>
+        <div class="activity-body">
+          <h3 class="activity-title">Onboarding Screen</h3>
+          <p class="activity-desc">
+            A streamlined onboarding flow designed to guide new users through setup quickly and highlight core app value.
+          </p>
+          <a href="https://www.figma.com/proto/j7WV1YWcnsGuorRJ9HIFVw/Onboarding-Screen?node-id=7-12&p=f&viewport=-32%2C-533%2C0.62&t=gI2LM5w897hNEAiP-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=7%3A12&page-id=0%3A1" target="_blank" rel="noopener noreferrer" class="ux-btn" style="background-color: #385E42; color: #FFFFFF; align-self: flex-start;">
+            <span>Prototype</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+        </div>
       </div>
     </div>
+  </section>
+  <!-- =================== END: MICRO-INTERACTIONS & QUICK LABS =================== -->
 
-    <!-- Card 03: Onboarding Screen -->
-    <div class="activity-card">
-      <div class="activity-thumb">
-        <img src="UI-UX/Onboard.png" alt="Onboarding Mobile Screen" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=Onboarding+Screen';">
-      </div>
-      <div class="activity-body">
-        <h3 class="activity-title">Onboarding Screen</h3>
-        <p class="activity-desc">
-          A streamlined onboarding flow designed to guide new users through setup quickly and highlight core app value.
-        </p>
-        <a href="https://www.figma.com/proto/j7WV1YWcnsGuorRJ9HIFVw/Onboarding-Screen?node-id=7-12&p=f&viewport=-32%2C-533%2C0.62&t=gI2LM5w897hNEAiP-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=7%3A12&page-id=0%3A1" target="_blank" rel="noopener noreferrer" class="ux-btn" style="background-color: #385E42; color: #FFFFFF; align-self: flex-start;">
-          <span>Prototype</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <!-- Global Dark Footer -->
+  <!-- =================== START: GLOBAL SITE FOOTER =================== -->
   <footer id="contact" class="site-footer">
     <div class="footer-max-width">
       <span class="uppercase-label">Get in Touch</span>
@@ -478,7 +512,7 @@
       <div class="footer-sub-row">
         <div style="display: flex; gap: 1.5rem;">
           <a href="work.html" class="footer-link" style="color: rgba(255,255,255,0.5);">Work</a>
-          <a href="ui-ux.html" class="footer-link" style="color: rgba(255,255,255,0.5);">UI/UX</a>
+          <a href="ui-ux.html" class="footer-link" style="color: rgba(255,255,255,0.9);">UI/UX</a>
           <a href="about.html" class="footer-link" style="color: rgba(255,255,255,0.5);">About</a>
         </div>
         <p style="font-weight: 300; font-size: 0.75rem; color: rgba(255,255,255,0.3);">
@@ -487,6 +521,7 @@
       </div>
     </div>
   </footer>
+  <!-- =================== END: GLOBAL SITE FOOTER =================== -->
 
   <script src="js/main.js"></script>
 </body>
