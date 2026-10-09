@@ -29,25 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   document.getElementById('top-contact-btn')?.addEventListener('click', scrollToContact);
 
-  // 1-Click Copy Email Handler
-  const copyBtn = document.getElementById('footer-copy-email-btn');
-  if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText('devin.sanders02@gmail.com').then(() => {
-        const originalText = copyBtn.textContent;
-        copyBtn.textContent = 'Copied to Clipboard!';
-        copyBtn.style.borderColor = 'var(--accent-orange)';
-        copyBtn.style.color = 'var(--accent-orange)';
-        setTimeout(() => {
-          copyBtn.textContent = originalText;
-          copyBtn.style.borderColor = '';
-          copyBtn.style.color = '';
-        }, 2200);
-      });
-    });
-  }
-
-  // Smooth Scroll to Top ("Return to Peak")
+  // Smooth Scroll to Top ("Return to Top")
   document.getElementById('footer-scroll-top-btn')?.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
@@ -102,6 +84,54 @@ document.addEventListener('DOMContentLoaded', () => {
     closeOverlay();
     setTimeout(scrollToContact, 450);
   });
+
+  // =========================================================================
+  // TEXT DECRYPTION SCRAMBLE ANIMATION (HERO METADATA)
+  // =========================================================================
+  const glyphs = '0123456789ABCDEF#%&*+=-_/';
+  const scrambleElements = document.querySelectorAll('.js-scramble-text');
+
+  const runScramble = (el) => {
+    const originalText = el.getAttribute('data-original') || el.textContent;
+    let iteration = 0;
+    const interval = setInterval(() => {
+      el.textContent = originalText
+        .split('')
+        .map((char, index) => {
+          if (char === ' ' || char === '°') return char;
+          if (index < iteration) return originalText[index];
+          return glyphs[Math.floor(Math.random() * glyphs.length)];
+        })
+        .join('');
+
+      if (iteration >= originalText.length) {
+        clearInterval(interval);
+      }
+      iteration += 1;
+    }, 28);
+  };
+
+  // Trigger automatically after initial load lift
+  setTimeout(() => {
+    scrambleElements.forEach(el => runScramble(el));
+  }, 400);
+
+  // Re-trigger on hover for tactile interaction
+  scrambleElements.forEach(el => {
+    el.addEventListener('mouseenter', () => runScramble(el));
+  });
+
+  // =========================================================================
+  // TOPOGRAPHIC VECTOR AMBIENT PARALLAX DRIFT
+  // =========================================================================
+  const topoCanvas = document.querySelector('.hero-topography-canvas');
+  if (topoCanvas) {
+    window.addEventListener('mousemove', (e) => {
+      const xOffset = (e.clientX / window.innerWidth - 0.5) * 12;
+      const yOffset = (e.clientY / window.innerHeight - 0.5) * 8;
+      topoCanvas.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+    }, { passive: true });
+  }
 
   // Helper function to resolve dedicated project page URLs
   const getProjectUrl = (slug) => {
@@ -265,8 +295,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const renderCards = (filter = 'all') => {
       workGrid.innerHTML = '';
-      const visible = filter === 'all' 
-        ? workProjects 
+      const visible = filter === 'all'
+        ? workProjects
         : workProjects.filter(p => getProjectCategory(p) === filter);
 
       visible.forEach(p => {
