@@ -13,12 +13,13 @@
 </head>
 <body>
 
-  <!-- Site Preloader -->
+  <!-- =================== START: SITE PRELOADER =================== -->
   <div id="site-loader">
     <img src="LogoBlue.png" alt="Loading..." class="loader-mark-pulse">
   </div>
+  <!-- =================== END: SITE PRELOADER =================== -->
 
-  <!-- Slide-Down Top-Third Index Overlay Panel -->
+  <!-- =================== START: SLIDE-DOWN INDEX OVERLAY =================== -->
   <div id="index-overlay" class="index-overlay-panel">
     <div class="overlay-top-bar">
       <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6);">Index</span>
@@ -48,22 +49,23 @@
       </div>
     </nav>
   </div>
-  
-  <!-- Floating Orange Peak Nav Button -->
+  <!-- =================== END: SLIDE-DOWN INDEX OVERLAY =================== -->
+
+  <!-- =================== START: FLOATING PEAK NAV BUTTON =================== -->
   <button id="floating-nav-btn" class="floating-peak-btn" aria-label="Open Navigation">
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
       <path d="M2 14 L6.5 5 L10 10 L16 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   </button>
+  <!-- =================== END: FLOATING PEAK NAV BUTTON =================== -->
 
-  <!-- Pinned Top-Left Brand Logo (Always visible & perfectly aligned) -->
+  <!-- =================== START: PINNED PERSISTENT LOGO =================== -->
   <a href="index.html" class="hero-persistent-logo" aria-label="Devin Sanders Home">
     <img src="LogoBlue.png" alt="Devin Sanders Mark" class="hero-logo-img">
   </a>
+  <!-- =================== END: PINNED PERSISTENT LOGO =================== -->
 
-  <!-- =========================================================================
-       FIXED HERO BACKGROUND STAGE (PERSISTENT TOPO & DOT GRID)
-       ========================================================================= -->
+  <!-- =================== START: PERSISTENT BACKGROUND (TOPO & DOT GRID) =================== -->
   <div class="hero-fixed-background" aria-hidden="true">
     <div class="hero-dot-grid"></div>
     <div class="hero-topography-canvas">
@@ -83,12 +85,11 @@
       </svg>
     </div>
   </div>
+  <!-- =================== END: PERSISTENT BACKGROUND =================== -->
 
-  <!-- =========================================================================
-       HERO CONTENT VIEWPORT (STICKY FADEABLE FOREGROUND)
-       ========================================================================= -->
+  <!-- =================== START: HERO VIEWPORT (STICKY FADEABLE FOREGROUND) =================== -->
   <section id="hero-sticky-canvas" class="hero-sticky-canvas">
-    
+
     <div class="hero-top-row">
       <!-- Top Left: Metadata Stacked Directly Under Logo Alignment -->
       <div class="hero-meta-block js-fade-on-scroll">
@@ -131,11 +132,13 @@
     </div>
 
   </section>
+  <!-- =================== END: HERO VIEWPORT =================== -->
 
-  <!-- Featured Work (Transparent Card Staging) -->
+  <!-- =================== START: FEATURED WORK FEED =================== -->
   <main id="featured-work-container" class="featured-work-feed"></main>
+  <!-- =================== END: FEATURED WORK FEED =================== -->
 
-  <!-- View All Projects Button -->
+  <!-- =================== START: VIEW ALL PROJECTS BUTTON =================== -->
   <section class="view-all-projects-section">
     <a href="work.html" class="view-all-btn">
       <span>View All Projects</span>
@@ -145,47 +148,107 @@
       </svg>
     </a>
   </section>
+  <!-- =================== END: VIEW ALL PROJECTS BUTTON =================== -->
 
-  <!-- Philosophy Section -->
+  <!-- =================== START: STUDIO PHILOSOPHY SECTION =================== -->
   <section class="philosophy-section">
     <span class="uppercase-label" style="margin-bottom: 1rem;">Philosophy</span>
     <h2 style="font-weight: 800; font-size: clamp(1.75rem, 4vw, 2.75rem); line-height: 1.15; letter-spacing: -0.02em; color: var(--text-dark); margin-bottom: 1.5rem;">
       Design is how you think,<br>not just what you make.
     </h2>
-    <p style="font-weight: 300; font-size: clamp(1rem, 1.5vw, 1.125rem); line-height: 1.7; color: #2C3E50AA;">
+    <p style="font-weight: 300; font-size: clamp(1rem, 1.5vw, 1.125rem); line-height: 1.7; color: var(--text-muted);">
       Every project is an opportunity to solve real problems with clarity and craft. I believe in asking better questions, embracing constraints, and staying curious long after the brief is written.
     </p>
   </section>
+  <!-- =================== END: STUDIO PHILOSOPHY SECTION =================== -->
 
-  <!-- Dark Footer -->
+  <!-- =================== START: GLOBAL EDITORIAL FOOTER =================== -->
   <footer id="contact" class="site-footer">
-    <div class="footer-max-width">
-      <span class="uppercase-label">Get in Touch</span>
-      <h2 class="footer-heading">Let's build<br>something meaningful.</h2>
+    <div class="footer-inner-shell">
 
-      <div>
-        <a href="mailto:devin.sanders02@gmail.com" class="footer-link">devin.sanders02@gmail.com</a>
-      </div>
-
-      <div style="display: flex; gap: 1.5rem; margin-top: 1.25rem;">
-        <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer" class="footer-link" style="color: rgba(255,255,255,0.5);">LinkedIn</a>
-        <a href="https://www.behance.net/devinsanders" target="_blank" rel="noopener noreferrer" class="footer-link" style="color: rgba(255,255,255,0.5);">Behance</a>
-      </div>
-
-      <hr class="footer-divider">
-
-      <div class="footer-sub-row">
-        <div style="display: flex; gap: 1.5rem;">
-          <a href="work.html" class="footer-link" style="color: rgba(255,255,255,0.5);">Work</a>
-          <a href="ui-ux.html" class="footer-link" style="color: rgba(255,255,255,0.5);">UI/UX</a>
-          <a href="about.html" class="footer-link" style="color: rgba(255,255,255,0.5);">About</a>
+      <!-- Tier 1: Hero Contact Prompt -->
+      <div class="footer-tier-hero">
+        <div class="footer-status-row">
+          <span>DENVER, CO // 39.7392° N</span>
+          <span>STATUS: OPEN FOR NEW OPPORTUNITIES</span>
         </div>
-        <p style="font-weight: 300; font-size: 0.75rem; color: rgba(255,255,255,0.3);">
-          © <span id="copyright-year">2026</span> Devin Sanders. Crafted with intention.
-        </p>
+
+        <h2 class="footer-hero-headline">Let's build something<br>meaningful together.</h2>
+
+        <div class="footer-email-cluster">
+          <a href="mailto:devin.sanders02@gmail.com" class="footer-email-link">
+            <span>devin.sanders02@gmail.com</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+          <button id="footer-copy-email-btn" class="footer-copy-btn" aria-label="Copy email address">
+            Copy Email
+          </button>
+        </div>
       </div>
+
+      <hr class="footer-hairline">
+
+      <!-- Tier 2: Studio Directory -->
+      <div class="footer-directory-grid">
+        <!-- 01 / Navigation -->
+        <div>
+          <span class="footer-col-header">01 // Navigation</span>
+          <ul class="footer-nav-list">
+            <li><a href="work.html">Selected Work</a></li>
+            <li><a href="ui-ux.html">UI/UX & Systems</a></li>
+            <li><a href="about.html">About & Studio</a></li>
+          </ul>
+        </div>
+
+        <!-- 02 / Network -->
+        <div>
+          <span class="footer-col-header">02 // Network</span>
+          <ul class="footer-nav-list">
+            <li>
+              <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer">
+                <span>LinkedIn</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+            </li>
+            <li><span style="color: rgba(255,255,255,0.45); font-size: 0.95rem;">Denver Front Range</span></li>
+          </ul>
+        </div>
+
+        <!-- 03 / Studio Specs -->
+        <div>
+          <span class="footer-col-header">03 // Specification</span>
+          <div class="footer-spec-text">
+            <div>DISCIPLINE: BRAND & IDENTITY SYSTEMS</div>
+            <div>FOCUS: PHYSICAL & DIGITAL COMMERCE</div>
+            <div>ALTITUDE: 5,280 FT // MILE HIGH</div>
+          </div>
+        </div>
+
+        <!-- 04 / Return Action -->
+        <div>
+          <span class="footer-col-header">04 // Navigation</span>
+          <button id="footer-scroll-top-btn" class="footer-scroll-top-btn">
+            <span>Return to Peak</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tier 3: Colophon -->
+      <div class="footer-colophon-row">
+        <div>© <span id="copyright-year">2026</span> Devin Sanders. Crafted with intention.</div>
+        <div>Typeface: Barlow · Monospace Data Architecture</div>
+      </div>
+
     </div>
   </footer>
+  <!-- =================== END: GLOBAL EDITORIAL FOOTER =================== -->
 
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
