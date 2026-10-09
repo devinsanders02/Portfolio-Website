@@ -56,33 +56,80 @@
     </svg>
   </button>
 
-  <!-- Top Navigation Header -->
-  <header class="navbar">
-    <nav style="display: flex; gap: 2rem; align-items: center;">
-      <a href="work.html">Work</a>
-      <a href="ui-ux.html">UI/UX</a>
-      <a href="about.html">About</a>
-      <button id="top-contact-btn">Contact</button>
-    </nav>
-  </header>
+  <!-- =========================================================================
+       NEW ASYMMETRIC STICKY HERO CANVAS (TOPOGRAPHIC & SPEC ARCHITECTURE)
+       ========================================================================= -->
+  <section id="hero-sticky-canvas" class="hero-sticky-canvas">
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <h1 class="hero-title">
-      <span class="title-sub">Integrity</span>
-      <span class="title-sub">at every</span>
-      <span class="title-accent">Altitude.</span>
-    </h1>
+    <!-- Layer 1: Technical Dot Grid -->
+    <div class="hero-dot-grid" aria-hidden="true"></div>
 
-    <div class="hero-subtext">
-      <div class="left-txt">
-        <p>Brand & Graphic Designer<br>Denver, CO</p>
+    <!-- Layer 2: Full-Height Topographic Ridge Contour (Top to Bottom) -->
+    <div class="hero-topography-canvas" aria-hidden="true">
+      <svg viewBox="0 0 1000 1200" fill="none" stroke="currentColor" stroke-width="1.4" preserveAspectRatio="none">
+        <path d="M550,0 C620,120 720,180 820,140 C920,100 980,180 1000,240" opacity="0.3" />
+        <path d="M500,0 C580,140 680,220 790,180 C890,140 960,240 1000,320" opacity="0.4" />
+        <path d="M450,0 C540,160 640,260 760,220 C860,180 940,300 1000,400" opacity="0.5" />
+        <path d="M400,0 C500,180 600,300 730,260 C830,220 920,360 1000,480" opacity="0.6" />
+        <path d="M350,0 C460,200 560,340 700,300 C800,260 900,420 1000,560" opacity="0.75" />
+        <path d="M300,0 C420,220 520,380 670,340 C770,300 880,480 1000,640" opacity="0.9" />
+        <path d="M250,0 C380,240 480,420 640,380 C740,340 860,540 1000,720" opacity="1.0" />
+        <path d="M200,0 C340,260 440,460 610,420 C710,380 840,600 1000,800" opacity="0.85" />
+        <path d="M150,0 C300,280 400,500 580,460 C680,420 820,660 1000,880" opacity="0.7" />
+        <path d="M100,0 C260,300 360,540 550,500 C650,460 800,720 1000,960" opacity="0.55" />
+        <path d="M50,0 C220,320 320,580 520,540 C620,500 780,780 1000,1040" opacity="0.4" />
+        <path d="M0,0 C180,340 280,620 490,580 C590,540 760,840 1000,1120" opacity="0.3" />
+        <path d="M0,100 C140,360 240,660 460,620 C560,580 740,900 1000,1200" opacity="0.2" />
+      </svg>
+    </div>
+
+    <!-- Top Region: Persistent Logo Mark & Fadeable Header Elements -->
+    <div class="hero-top-row">
+      <!-- Pinned Standalone Logo Mark -->
+      <a href="index.html" class="hero-persistent-logo" aria-label="Devin Sanders Home">
+        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="hero-logo-img">
+      </a>
+
+      <!-- Top Left: Fadeable Metadata Spec Block -->
+      <div class="hero-meta-block js-fade-on-scroll">
+        <div class="meta-location">Denver, CO</div>
+        <div class="meta-coords">39.7392° N</div>
+        <div class="meta-discipline">Visual Brand Architecture & Design</div>
       </div>
-      <div class="divider"></div>
-      <div class="right-txt">
-        <p>Creating thoughtful identities, systems,<br>and experiences that help organizations<br>reach higher.</p>
+
+      <!-- Top Right: Fadeable Vertical Menu Column -->
+      <nav class="hero-nav-col js-fade-on-scroll" aria-label="Hero Navigation">
+        <a href="work.html" class="hero-nav-item">
+          <span class="nav-idx">01 /</span>
+          <span class="nav-txt">Work</span>
+        </a>
+        <a href="ui-ux.html" class="hero-nav-item">
+          <span class="nav-idx">02 /</span>
+          <span class="nav-txt">UI/UX</span>
+        </a>
+        <a href="about.html" class="hero-nav-item">
+          <span class="nav-idx">03 /</span>
+          <span class="nav-txt">About</span>
+        </a>
+        <button id="top-contact-btn" class="hero-nav-item hero-nav-btn">
+          <span class="nav-idx">04 /</span>
+          <span class="nav-txt">Contact</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Bottom Left: Massive Display Name Anchor (Fades as you scroll) -->
+    <div class="hero-bottom-anchor js-fade-on-scroll">
+      <h1 class="hero-display-name">Devin Sanders</h1>
+      <div class="hero-scroll-cue">
+        <span>Selected Work 2024–2026</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <polyline points="19 12 12 19 5 12"></polyline>
+        </svg>
       </div>
     </div>
+
   </section>
 
   <!-- Featured Work (Alternating Cards rendered via main.js) -->
