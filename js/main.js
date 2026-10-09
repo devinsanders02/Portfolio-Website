@@ -86,17 +86,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =========================================================================
-  // TEXT DECRYPTION SCRAMBLE & LIVE TELEMETRY CYCLE
+  // RESPONSIVE COORDINATE DECRYPT & TELEMETRY ENGINE
   // =========================================================================
   const glyphs = '0123456789ABCDEF#%&*+=-_/';
   const scrambleElements = document.querySelectorAll('.js-scramble-text');
+  const coordEl = document.querySelector('.meta-coords');
 
-  const runScramble = (el) => {
+  const runScramble = (el, speed = 26) => {
+    if (!el) return;
     const originalText = el.getAttribute('data-original') || el.textContent.trim();
-    const hasBeacon = el.classList.contains('meta-coords');
     let iteration = 0;
-    const interval = setInterval(() => {
-      const generated = originalText
+
+    if (el._scrambleTimer) clearInterval(el._scrambleTimer);
+
+    el._scrambleTimer = setInterval(() => {
+      el.textContent = originalText
         .split('')
         .map((char, index) => {
           if (char === ' ' || char === '°') return char;
@@ -105,46 +109,48 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .join('');
 
-      el.innerHTML = hasBeacon ? `<span class="telemetry-beacon"></span>${generated}` : generated;
-
       if (iteration >= originalText.length) {
-        clearInterval(interval);
+        clearInterval(el._scrambleTimer);
+        el._scrambleTimer = null;
       }
       iteration += 1;
-    }, 28);
+    }, speed);
   };
 
-  // Trigger automatically after initial load lift
+  // 1. Instant Arrival Decrypt on page load
   setTimeout(() => {
-    scrambleElements.forEach(el => runScramble(el));
-  }, 400);
+    scrambleElements.forEach(el => runScramble(el, 26));
+  }, 250);
 
-  // Re-trigger on hover for tactile interaction
+  // 2. Hover Interaction: Re-scramble on direct cursor contact
   scrambleElements.forEach(el => {
-    el.addEventListener('mouseenter', () => runScramble(el));
+    el.addEventListener('mouseenter', () => runScramble(el, 20));
   });
 
-  // Continuous background pulse: coordinate micro-shift every 7 seconds
-  const coordEl = document.querySelector('.meta-coords');
+  // 3. Proactive Initial Scroll Trigger (fires once when visitor begins scrolling)
+  let hasScrolledOnce = false;
+  window.addEventListener('scroll', () => {
+    if (!hasScrolledOnce && window.scrollY > 20 && window.scrollY < 200) {
+      hasScrolledOnce = true;
+      runScramble(coordEl, 18);
+    }
+  }, { passive: true });
+
+  // 4. Calm 4.5s Idle Pulse: brief numeric telemetry cycle
   if (coordEl) {
     setInterval(() => {
-      const beacon = '<span class="telemetry-beacon"></span>';
-      const randomDecimals = Math.floor(Math.random() * 90 + 10);
-      coordEl.innerHTML = `${beacon}39.73${randomDecimals}° N`;
-
-      setTimeout(() => {
-        coordEl.innerHTML = `${beacon}39.7392° N`;
-      }, 1100);
-    }, 7000);
+      if (window.scrollY > 300) return;
+      runScramble(coordEl, 22);
+    }, 4500);
   }
 
   // =========================================================================
   // TOPOGRAPHIC VECTOR AMBIENT PARALLAX DRIFT
   // =========================================================================
-  const topoCanvas = document.querySelector('.hero-topography-canvas');
+  const topoCanvas = document.querySelector('.hero-topography-canvas svg');
   if (topoCanvas) {
     window.addEventListener('mousemove', (e) => {
-      const xOffset = (e.clientX / window.innerWidth - 0.5) * 12;
+      const xOffset = (e.clientX / window.innerWidth - 0.5) * 14;
       const yOffset = (e.clientY / window.innerHeight - 0.5) * 8;
       topoCanvas.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
     }, { passive: true });
