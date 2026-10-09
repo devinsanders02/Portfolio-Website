@@ -213,6 +213,65 @@ header.subpage-navbar {
   pointer-events: auto;
 }
 
+/* --- Blueprint Drafting Hairlines & Crosshair --- */
+.blueprint-guides {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.guide-axis-h {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2.5rem;
+  height: 1px;
+  background: rgba(44, 62, 80, 0.12);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: sweepH 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+.guide-axis-v {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 4vw;
+  width: 1px;
+  background: rgba(44, 62, 80, 0.12);
+  transform: scaleY(0);
+  transform-origin: top center;
+  animation: sweepV 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+.guide-crosshair {
+  position: absolute;
+  left: calc(4vw - 5px);
+  bottom: calc(2.5rem - 5px);
+  width: 11px;
+  height: 11px;
+  border: 1px solid var(--accent-orange);
+  opacity: 0;
+  animation: pulseCrosshair 1s ease-out 1.5s forwards;
+}
+
+@keyframes sweepH {
+  to { transform: scaleX(1); }
+}
+
+@keyframes sweepV {
+  to { transform: scaleY(1); }
+}
+
+@keyframes pulseCrosshair {
+  0% { transform: scale(0.5); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 0.25; }
+}
+
+/* --- Hero Layout Elements --- */
 .hero-top-row {
   position: relative;
   z-index: 2;
@@ -248,6 +307,7 @@ header.subpage-navbar {
   color: var(--text-dark);
   opacity: 0.75;
   line-height: 1;
+  cursor: default;
 }
 
 .meta-discipline {
@@ -258,6 +318,7 @@ header.subpage-navbar {
   text-transform: uppercase;
   color: var(--accent-orange);
   line-height: 1.1;
+  cursor: default;
 }
 
 .hero-nav-col {
@@ -344,6 +405,29 @@ header.subpage-navbar {
   color: var(--text-muted);
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+/* --- Vector Path Draw & Topographic Drift --- */
+.hero-topography-canvas svg polyline {
+  stroke-dasharray: 2400;
+  stroke-dashoffset: 2400;
+  animation: drawContours 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-topography-canvas svg polyline:nth-child(even) {
+  animation-duration: 2.8s;
+  animation-delay: 0.15s;
+}
+
+@keyframes drawContours {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.hero-topography-canvas {
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
 }
 /* =================== END: HOMEPAGE STICKY HERO CANVAS =================== */
 
