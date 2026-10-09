@@ -30,13 +30,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.getElementById('close-overlay-btn');
   const overlayContact = document.getElementById('overlay-contact-link');
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > window.innerHeight * 0.5) {
-      floatBtn?.classList.add('visible');
-    } else {
-      floatBtn?.classList.remove('visible');
+  // Unified Scroll Handler: Fade Hero Elements & Toggle Floating Orange Button
+  const handleScrollDynamics = () => {
+    const scrollY = window.scrollY;
+    const fadeThreshold = 360; // Distance in pixels before hero text completely vanishes
+
+    // Calculate fade progress: 1 (at top) down to 0 (at threshold)
+    const fadeProgress = Math.max(0, 1 - (scrollY / fadeThreshold));
+    const translateY = -(scrollY * 0.14); // Subtle, organic upward drift
+
+    // 1. Fade the hero metadata block, top-right menu, and bottom display name
+    const fadeElements = document.querySelectorAll('.js-fade-on-scroll');
+    fadeElements.forEach(el => {
+      el.style.opacity = fadeProgress;
+      el.style.transform = `translateY(${translateY}px)`;
+      el.style.pointerEvents = fadeProgress < 0.1 ? 'none' : 'auto';
+    });
+
+    // 2. Toggle the floating orange navigation button
+    // Reveals as the hero menu finishes fading out (around 240px)
+    if (floatBtn) {
+      if (scrollY > 240) {
+        floatBtn.classList.add('visible');
+      } else {
+        floatBtn.classList.remove('visible');
+      }
     }
-  }, { passive: true });
+  };
+
+  window.addEventListener('scroll', handleScrollDynamics, { passive: true });
+  handleScrollDynamics(); // Initial check on page load / position restore
 
   const openOverlay = () => {
     overlay?.classList.add('open');
@@ -56,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(scrollToContact, 450);
   });
 
-  // Sticky Brand Logo Morph On Scroll
+  // Sticky Brand Logo Morph On Scroll (for case study pages)
   const brandNav = document.querySelector('.sticky-brand-nav');
   if (brandNav) {
     window.addEventListener('scroll', () => {
@@ -130,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         barsHtml = `
           <div class="indicator-bars" id="bars-${index}">
             ${allImages.map((_, i) => `
-              <button class="indicator-bar-btn" data-img-idx="${i}" style="width: ${i === 0 ? '2.25rem' : '0.85rem'}; background-color: ${i === 0 ? (isAccentBg ? '#fff' : (project.accentColor || '#F15B22')) : (isAccentBg ? 'rgba(255,255,255,0.25)' : '#2C3E5020')};" aria-label="Slide ${i + 1}"></button>
+              <button class="indicator-bar-btn" data-img-idx="${i}" style="width: ${i === 0 ? '2.25rem' : '0.85rem'}; background-color: ${i === 0 ? (isAccentBg ? '#fff' : (project.accentColor \vert{}\vert{} '#F15B22')) : (isAccentBg ? 'rgba(255,255,255,0.25)' : '#2C3E5020')};" aria-label="Slide ${i + 1}"></button>
             `).join('')}
           </div>
         `;
@@ -143,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="secondary-images-grid">
               ${secondaryImages.map((img, i) => `
                 <div class="secondary-img-wrapper">
-                  <img src="${img}" alt="${project.title} detail ${i + 1}">
+                  <img src="${img}" alt="${project.title} detail${i + 1}">
                 </div>
               `).join('')}
             </div>
