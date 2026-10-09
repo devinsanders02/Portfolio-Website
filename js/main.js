@@ -1,24 +1,29 @@
-// Function to hide the loader immediately
+// Function to hide the loader cleanly
 function dismissLoader() {
   const loader = document.getElementById('site-loader');
-  if (loader) {
+  if (loader && !loader.classList.contains('hidden')) {
     loader.classList.add('hidden');
-    // Remove from DOM completely after fade-out
     setTimeout(() => {
       loader.style.display = 'none';
     }, 400);
   }
 }
 
-// Trigger hide as soon as HTML is ready
+// Immediate failsafe: never let the screen lock up for more than 1 second
+setTimeout(dismissLoader, 1000);
+
+// Extra backup safety when full window assets finish loading
+window.addEventListener('load', dismissLoader);
+
 document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(dismissLoader, 250);
+  // Dismiss preloader promptly once DOM structure is intact
+  setTimeout(dismissLoader, 150);
 
   // Set Dynamic Copyright Year
   const yearSpan = document.getElementById('copyright-year');
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-  // Scroll to Contact Button Handlers
+  // Scroll to Contact Button Handlers (Safely guarded)
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -33,13 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Unified Scroll Handler: Fade Hero Elements & Toggle Floating Orange Button
   const handleScrollDynamics = () => {
     const scrollY = window.scrollY;
-    const fadeThreshold = 360; // Distance in pixels before hero text completely vanishes
+    const fadeThreshold = 360;
 
-    // Calculate fade progress: 1 (at top) down to 0 (at threshold)
     const fadeProgress = Math.max(0, 1 - (scrollY / fadeThreshold));
-    const translateY = -(scrollY * 0.14); // Subtle, organic upward drift
+    const translateY = -(scrollY * 0.14);
 
-    // 1. Fade the hero metadata block, top-right menu, and bottom display name
     const fadeElements = document.querySelectorAll('.js-fade-on-scroll');
     fadeElements.forEach(el => {
       el.style.opacity = fadeProgress;
@@ -47,8 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
       el.style.pointerEvents = fadeProgress < 0.1 ? 'none' : 'auto';
     });
 
-    // 2. Toggle the floating orange navigation button
-    // Reveals as the hero menu finishes fading out (around 240px)
     if (floatBtn) {
       if (scrollY > 240) {
         floatBtn.classList.add('visible');
@@ -59,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.addEventListener('scroll', handleScrollDynamics, { passive: true });
-  handleScrollDynamics(); // Initial check on page load / position restore
+  handleScrollDynamics();
 
   const openOverlay = () => {
     overlay?.classList.add('open');
@@ -107,165 +108,85 @@ document.addEventListener('DOMContentLoaded', () => {
     return `project.html?slug=${slug}`;
   };
 
-  // 1. Render Featured Work Feed (index.html)
+  // 1. Render Featured Work Feed (index.html) - Wide Stage Single Canvas
   const container = document.getElementById('featured-work-container');
   if (container && typeof projects !== 'undefined') {
     const featuredProjects = projects.slice(0, 5);
 
     featuredProjects.forEach((project, index) => {
-      const isAccentBg = index % 2 === 1;
       const allImages = [project.heroImage, ...(project.galleryImages || [])].filter(Boolean);
-      const secondaryImages = (project.galleryImages || []).filter(Boolean).slice(0, 2);
+      const projectUrl = getProjectUrl(project.slug);
 
-      let coloredPart = '';
-      let restPart = '';
-
+      // Clean title splitting
+      let mainTitle = project.title;
+      let subTitle = '';
       if (project.title.includes('—')) {
         const parts = project.title.split('—');
-        coloredPart = parts[0].trim();
-        restPart = parts.slice(1).join('—').trim();
+        mainTitle = parts[0].trim();
+        subTitle = parts.slice(1).join('—').trim();
       } else if (project.title.includes(' - ')) {
         const parts = project.title.split(' - ');
-        coloredPart = parts[0].trim();
-        restPart = parts.slice(1).join(' - ').trim();
-      } else if (project.title.includes('-')) {
-        const parts = project.title.split('-');
-        coloredPart = parts[0].trim();
-        restPart = parts.slice(1).join('-').trim();
-      } else {
-        const titleWords = project.title.split(' ');
-        coloredPart = titleWords[0];
-        restPart = titleWords.slice(1).join(' ');
+        mainTitle = parts[0].trim();
+        subTitle = parts.slice(1).join(' - ').trim();
       }
 
-      const bgColor = isAccentBg ? (project.accentColor || '#2C3E50') : '#F4F5F7';
-      const textColor = isAccentBg ? '#FFFFFF' : '#2C3E50';
-      const metaColor = isAccentBg ? 'rgba(255,255,255,0.55)' : '#2C3E5070';
-      const summaryColor = isAccentBg ? 'rgba(255,255,255,0.8)' : '#2C3E50CC';
-      const firstWordColor = isAccentBg ? 'rgba(255,255,255,0.75)' : (project.accentColor || '#F15B22');
-
-      const card = document.createElement('section');
-      card.className = 'project-card-wrapper';
-      card.style.backgroundColor = bgColor;
-
+      // Generate Indicator Bars
       let barsHtml = '';
       if (allImages.length > 1) {
         barsHtml = `
-          <div class="indicator-bars" id="bars-${index}">
+          <div class="stage-indicator-bars" id="bars-${index}">
             ${allImages.map((_, i) => `
-              <button class="indicator-bar-btn" data-img-idx="${i}" style="width: ${i === 0 ? '2.25rem' : '0.85rem'}; background-color: ${i === 0 ? (isAccentBg ? '#fff' : (project.accentColor \vert{}\vert{} '#F15B22')) : (isAccentBg ? 'rgba(255,255,255,0.25)' : '#2C3E5020')};" aria-label="Slide ${i + 1}"></button>
+              <button class="stage-bar-btn" data-img-idx="${i}" style="width: ${i === 0 ? '2.5rem' : '0.85rem'}; background-color: ${i === 0 ? '#FFFFFF' : 'rgba(255, 255, 255, 0.35)'};" aria-label="Slide ${i + 1}"></button>
             `).join('')}
           </div>
         `;
       }
 
-      let secondaryHtml = '';
-      if (secondaryImages.length >= 2) {
-        secondaryHtml = `
-          <div class="secondary-images-row">
-            <div class="secondary-images-grid">
-              ${secondaryImages.map((img, i) => `
-                <div class="secondary-img-wrapper">
-                  <img src="${img}" alt="${project.title} detail${i + 1}">
-                </div>
-              `).join('')}
-            </div>
-          </div>
-        `;
-      }
-
-      const projectUrl = getProjectUrl(project.slug);
+      const card = document.createElement('section');
+      card.className = 'project-card-wrapper';
 
       card.innerHTML = `
-        <div class="gallery-container">
-          <div class="gallery-image-box" id="gallery-box-${index}">
-            <img id="img-display-${index}" src="${allImages[0]}" alt="${project.title}">
-          </div>
-          ${barsHtml}
-        </div>
+        <div class="stage-canvas-box" id="gallery-box-${index}">
+          <!-- Active Carousel Image -->
+          <img id="img-display-${index}" class="stage-image" src="${allImages[0]}" alt="${project.title}">
 
-        <div class="project-info-grid">
-          <div>
-            <h2 class="project-title" style="color: ${textColor};">
-              <span style="color: ${firstWordColor};">${coloredPart}</span>
-              ${restPart ? ` — ${restPart}` : ''}
-            </h2>
-            <p class="project-services" style="color: ${metaColor};">${project.services}</p>
-          </div>
-          <div>
-            <p class="project-summary" style="color: ${summaryColor};">${project.summary}</p>
-            <a href="${projectUrl}" class="project-link-btn" style="color: ${textColor};">
-              View Project Details
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </a>
+          <!-- Dark Scrim Gradient for permanent text legibility -->
+          <div class="stage-scrim"></div>
+
+          <!-- Bottom In-Image Overlay -->
+          <div class="stage-content-overlay">
+            
+            <!-- Top Line of Overlay: Meta & Title -->
+            <div class="stage-header-row">
+              <div class="stage-title-group">
+                <span class="stage-category-label">${project.services}</span>
+                <h2 class="stage-title">
+                  ${mainTitle}${subTitle ? ` <span class="stage-subtitle">— ${subTitle}</span>` : ''}
+                </h2>
+              </div>
+              ${barsHtml}
+            </div>
+
+            <!-- Bottom Line of Overlay (Reveals on Hover): Left Summary, Right Button -->
+            <div class="stage-hover-drawer">
+              <p class="stage-summary-text">${project.summary}</p>
+              <a href="${projectUrl}" class="stage-action-btn">
+                <span>View Project</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </div>
+
           </div>
         </div>
-
-        ${secondaryHtml}
       `;
 
       container.appendChild(card);
 
+      // Carousel Image Switcher
       let currentIdx = 0;
       const imgEl = document.getElementById(`img-display-${index}`);
       const boxEl = document.getElementById(`gallery-box-${index}`);
-      const barsContainer = document.getElementById(`bars-${index}`);
-
-      const updateGallery = (nextIdx) => {
-        currentIdx = nextIdx;
-        imgEl.style.opacity = '0.3';
-        setTimeout(() => {
-          imgEl.src = allImages[currentIdx];
-          imgEl.style.opacity = '1';
-        }, 150);
-
-        if (barsContainer) {
-          const btns = barsContainer.querySelectorAll('.indicator-bar-btn');
-          btns.forEach((btn, i) => {
-            btn.style.width = i === currentIdx ? '2.25rem' : '0.85rem';
-            btn.style.backgroundColor = i === currentIdx
-              ? (isAccentBg ? '#fff' : (project.accentColor || '#F15B22'))
-              : (isAccentBg ? 'rgba(255,255,255,0.25)' : '#2C3E5020');
-          });
-        }
-      };
-
-      boxEl?.addEventListener('click', () => {
-        const next = (currentIdx + 1) % allImages.length;
-        updateGallery(next);
-      });
-
-      barsContainer?.querySelectorAll('.indicator-bar-btn').forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const targetIdx = parseInt(btn.getAttribute('data-img-idx'), 10);
-          updateGallery(targetIdx);
-        });
-      });
-    });
-  }
-
-  // 2. Render Full Archive Grid (work.html)
-  const workGrid = document.getElementById('work-grid');
-  if (workGrid && typeof projects !== 'undefined') {
-    projects.forEach((proj) => {
-      const item = document.createElement('a');
-      item.href = getProjectUrl(proj.slug);
-      item.className = 'archive-card';
-      item.innerHTML = `
-        <div class="archive-thumb-box">
-          <img src="${proj.heroImage}" alt="${proj.title}">
-        </div>
-        <div class="archive-card-title">${proj.title}</div>
-        <div class="archive-card-meta">${proj.services} · ${proj.year}</div>
-      `;
-      workGrid.appendChild(item);
-    });
-  }
-});
-
-// Extra backup safety in case DOMContentLoaded fired early
-window.addEventListener('load', dismissLoader);
+      const
