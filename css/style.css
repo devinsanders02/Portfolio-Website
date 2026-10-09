@@ -107,7 +107,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2.5rem 3.5vw;
+  padding: 3rem 4vw 2.5rem;
   box-sizing: border-box;
   overflow: hidden;
   background-color: var(--bg-main);
@@ -120,24 +120,24 @@ body {
   inset: 0;
   background-image: radial-gradient(circle, var(--text-dark) 1px, transparent 1px);
   background-size: 26px 26px;
-  opacity: 0.06;
+  opacity: 0.05;
   pointer-events: none;
   z-index: 0;
 }
 
-/* 2. Top-to-Bottom Topographic Ridge Lines (Spans right half 100vh) */
+/* 2. Top-to-Bottom Rugged Mountain Ridges (Right 65% Viewport) */
 .hero-topography-canvas {
   position: absolute;
   top: 0;
   right: 0;
-  width: 62vw;
+  width: 66vw;
   height: 100%;
   pointer-events: none;
   color: var(--text-dark);
-  opacity: 0.14;
+  opacity: 0.16;
   z-index: 1;
-  mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
-  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to left, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
 }
 
 .hero-topography-canvas svg {
@@ -151,11 +151,11 @@ body {
   z-index: 2;
   display: grid;
   grid-template-columns: auto 1fr auto;
-  column-gap: 2rem;
+  column-gap: 2.75rem;
   align-items: start;
 }
 
-/* Pinned Logo Mark */
+/* Enlarged Logo Mark Anchor */
 .hero-persistent-logo {
   display: inline-block;
   text-decoration: none;
@@ -163,42 +163,48 @@ body {
 }
 
 .hero-logo-img {
-  width: 44px;
+  width: 68px;
   height: auto;
   display: block;
 }
 
-/* Top-Left Metadata */
+/* Top-Left Metadata Stack (Evenly Spaced) */
 .hero-meta-block {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.65rem;
   will-change: opacity, transform;
 }
 
+/* London-Sized Denver CO */
 .meta-location {
   font-family: var(--font-barlow);
-  font-size: 1.25rem;
+  font-size: clamp(1.85rem, 3.2vw, 2.75rem);
   font-weight: 300;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--text-dark);
-  line-height: 1.15;
+  line-height: 1;
 }
 
 .meta-coords {
-  font-family: monospace;
-  font-size: 0.8rem;
-  font-weight: 400;
-  color: var(--text-muted);
+  font-family: var(--font-barlow);
+  font-size: 1.05rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: var(--text-dark);
+  opacity: 0.75;
+  line-height: 1;
 }
 
 .meta-discipline {
   font-family: var(--font-barlow);
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: 0.92rem;
+  font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent-orange);
-  margin-top: 0.35rem;
+  line-height: 1.1;
 }
 
 /* Top-Right Vertical Menu Column */
@@ -213,10 +219,9 @@ body {
 .hero-nav-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   text-decoration: none;
   position: relative;
-  padding-bottom: 2px;
   background: none;
   border: none;
   cursor: pointer;
@@ -224,17 +229,21 @@ body {
   margin: 0;
 }
 
+/* Pencil-Thin Barlow Numbers */
 .hero-nav-item .nav-idx {
-  font-family: monospace;
+  font-family: var(--font-barlow);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 300;
+  letter-spacing: 0.02em;
   color: var(--text-dark);
+  opacity: 0.85;
 }
 
+/* Refined Proportionate Nav Text */
 .hero-nav-item .nav-txt {
   font-family: var(--font-barlow);
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: 0.95rem;
+  font-weight: 500;
   color: var(--accent-orange);
   line-height: 1;
 }
@@ -269,7 +278,7 @@ body {
 .hero-display-name {
   font-family: var(--font-barlow);
   font-weight: 800;
-  font-size: clamp(3.2rem, 11vw, 10.5rem);
+  font-size: clamp(3.4rem, 11vw, 10.5rem);
   line-height: 0.88;
   letter-spacing: -0.035em;
   text-transform: uppercase;
@@ -290,82 +299,137 @@ body {
 }
 
 /* ==========================================================================
-   PROJECT SECTION CARDS (FULL-BLEED BACKGROUND & SPLIT CONTENT)
+   WIDE STAGE PROJECT CARDS (IN-IMAGE METADATA & HOVER DRAWER)
    ========================================================================== */
 
 .project-card-wrapper {
-  width: 100vw;
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  padding: 4.5rem 1.5rem;
-  transition: background-color 0.7s ease;
-  overflow-x: hidden;
+  z-index: 2;
+  width: 100%;
+  padding: 3.5rem 4vw;
   box-sizing: border-box;
-  z-index: 2; /* Ensures cards slide up over the sticky hero canvas */
+  background-color: var(--bg-main);
+  display: flex;
+  justify-content: center;
   box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.04);
 }
 
-@media (min-width: 900px) {
-  .project-card-wrapper {
-    padding: 5.5rem 4vw;
-    display: grid;
-    grid-template-columns: 1.55fr 1fr;
-    grid-template-areas:
-      "hero secondary"
-      "info secondary";
-    column-gap: 2.5rem;
-    row-gap: 2.5rem;
-    align-items: start;
-    max-width: 100vw;
-    margin-left: -50vw;
-    margin-right: -50vw;
-  }
-}
-
-@media (min-width: 1400px) {
-  .project-card-wrapper {
-    padding: 6rem calc((100vw - 1400px) / 2 + 2rem);
-  }
-}
-
-/* 1. Hero Gallery (Left Top Area) */
-.gallery-container {
-  width: 100%;
-  grid-area: hero;
-}
-
-.gallery-image-box {
-  width: 100%;
-  aspect-ratio: 16 / 10;
+.stage-canvas-box {
   position: relative;
+  width: 100%;
+  max-width: 1540px;
+  aspect-ratio: 16 / 9;
+  min-height: 480px;
+  max-height: 820px;
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: 0px;
   cursor: pointer;
-  background-color: #E2E8F0;
+  background-color: #1a1e24;
 }
 
-.gallery-image-box img {
+@media (max-width: 768px) {
+  .stage-canvas-box {
+    aspect-ratio: 4 / 3;
+    min-height: 420px;
+  }
+}
+
+.stage-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
-  border-radius: 6px;
-  transition: opacity 0.4s ease;
+  border-radius: 0px;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+  will-change: transform, opacity;
 }
 
-.indicator-bars {
+.stage-canvas-box:hover .stage-image {
+  transform: scale(1.02);
+}
+
+.stage-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(14, 19, 26, 0.94) 0%,
+    rgba(14, 19, 26, 0.65) 28%,
+    rgba(14, 19, 26, 0.15) 55%,
+    transparent 80%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.stage-content-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2.25rem 3rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+  .stage-content-overlay {
+    padding: 1.5rem 1.5rem;
+    gap: 1rem;
+  }
+}
+
+.stage-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+}
+
+.stage-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stage-category-label {
+  font-family: var(--font-barlow);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-orange);
+}
+
+.stage-title {
+  font-family: var(--font-barlow);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 3.2vw, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.stage-subtitle {
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.stage-indicator-bars {
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  margin-top: 1rem;
-  width: 100%;
+  flex-shrink: 0;
+  margin-bottom: 0.4rem;
 }
 
-.indicator-bar-btn {
+.stage-bar-btn {
   height: 2px;
   border-radius: 9999px;
   border: none;
@@ -374,103 +438,76 @@ body {
   transition: all 0.3s ease;
 }
 
-/* 2. Info Block (Left Bottom Area) */
-.project-info-grid {
-  margin-top: 2.5rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  width: 100%;
-  grid-area: info;
+.stage-hover-drawer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 1.25rem;
+  opacity: 0;
+  transform: translateY(12px);
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.35s ease, transform 0.35s ease, max-height 0.35s ease;
 }
 
-@media (min-width: 900px) {
-  .project-info-grid {
-    margin-top: 0;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
+.stage-canvas-box:hover .stage-hover-drawer {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 120px;
+}
+
+@media (max-width: 900px) {
+  .stage-hover-drawer {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
   }
 }
 
-.project-title {
-  font-weight: 800;
-  font-size: clamp(1.5rem, 2.5vw, 2.15rem);
-  line-height: 1.18;
-  letter-spacing: -0.02em;
-}
-
-.project-services {
+.stage-summary-text {
+  font-family: var(--font-barlow);
   font-weight: 300;
-  font-size: 0.875rem;
-  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 720px;
+  margin: 0;
 }
 
-.project-summary {
-  font-weight: 300;
-  font-size: 0.925rem;
-  line-height: 1.65;
-  margin-bottom: 1.25rem;
-}
-
-.project-link-btn {
+.stage-action-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 500;
+  background-color: var(--accent-orange);
+  color: #FFFFFF;
   text-decoration: none;
-  transition: opacity 0.3s;
+  font-family: var(--font-barlow);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.4rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.project-link-btn:hover { opacity: 0.6; }
-.project-link-btn svg {
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-.project-link-btn:hover svg {
-  transform: translateX(4px);
+.stage-action-btn:hover {
+  background-color: #d84b16;
+  transform: translateY(-2px);
 }
 
-/* 3. Secondary Images (Right Side Stack) */
-.secondary-images-row {
-  margin-top: 3rem;
-  width: 100%;
-  grid-area: secondary;
+.stage-action-btn svg {
+  transition: transform 0.2s ease;
 }
 
-@media (min-width: 900px) {
-  .secondary-images-row {
-    margin-top: 0;
-    height: 100%;
-  }
-}
-
-.secondary-images-grid {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-}
-
-@media (min-width: 900px) {
-  .secondary-images-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-}
-
-.secondary-img-wrapper {
-  overflow: hidden;
-  border-radius: 6px;
-  background-color: #E2E8F0;
-  aspect-ratio: 16 / 10;
-}
-
-.secondary-img-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
+.stage-action-btn:hover svg {
+  transform: translate(2px, -2px);
 }
 
 /* Floating Peak Nav Button */
@@ -559,7 +596,6 @@ body {
   line-height: 1;
 }
 
-/* Base Link & Button Styles: Always White & High Contrast */
 .overlay-link-item a, 
 .overlay-link-item button {
   position: relative;
@@ -581,7 +617,6 @@ body {
   visibility: visible !important;
 }
 
-/* Left-to-Right Animated Underline */
 .overlay-link-item a::after,
 .overlay-link-item button::after {
   content: '';
@@ -603,7 +638,6 @@ body {
   transform-origin: left center;
 }
 
-/* Active State for Current Page */
 .overlay-link-item a.active,
 .overlay-link-item a.current,
 .overlay-link-item a[aria-current="page"],
