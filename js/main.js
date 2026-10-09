@@ -29,6 +29,29 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   document.getElementById('top-contact-btn')?.addEventListener('click', scrollToContact);
 
+  // 1-Click Copy Email Handler
+  const copyBtn = document.getElementById('footer-copy-email-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('devin.sanders02@gmail.com').then(() => {
+        const originalText = copyBtn.textContent;
+        copyBtn.textContent = 'Copied to Clipboard!';
+        copyBtn.style.borderColor = 'var(--accent-orange)';
+        copyBtn.style.color = 'var(--accent-orange)';
+        setTimeout(() => {
+          copyBtn.textContent = originalText;
+          copyBtn.style.borderColor = '';
+          copyBtn.style.color = '';
+        }, 2200);
+      });
+    });
+  }
+
+  // Smooth Scroll to Top ("Return to Peak")
+  document.getElementById('footer-scroll-top-btn')?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
   // Floating Nav & Index Overlay Handlers
   const floatBtn = document.getElementById('floating-nav-btn');
   const overlay = document.getElementById('index-overlay');
@@ -105,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (text.includes('brand') || text.includes('identity') || text.includes('logo') || text.includes('visual system')) {
       return 'branding';
     }
-    return 'other'; // Motion, surface patterns, print, environmental, etc.
+    return 'other';
   };
 
   // 1. Render Featured Work Feed (index.html) - Wide Stage Single Canvas
@@ -214,14 +237,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. Render 2-Column Wide Archive with Filter (work.html)
   const workGrid = document.getElementById('work-grid');
   if (workGrid && typeof projects !== 'undefined') {
-    
-    // Filter out purely dedicated UI/UX projects (since they belong on ui-ux.html)
     const workProjects = projects.filter(p => {
       const lower = `${p.services || ''} ${p.slug || ''}`.toLowerCase();
       return !lower.includes('ui/ux') && !lower.includes('app prototype') && !lower.includes('interface');
     });
 
-    // Populate category counts
     let brandingCount = 0;
     let packagingCount = 0;
     let otherCount = 0;
@@ -243,7 +263,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (countPackagingEl) countPackagingEl.textContent = packagingCount;
     if (countOtherEl) countOtherEl.textContent = otherCount;
 
-    // Render 2-Column Duo Cards
     const renderCards = (filter = 'all') => {
       workGrid.innerHTML = '';
       const visible = filter === 'all' 
@@ -283,7 +302,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderCards('all');
 
-    // Filter Buttons Click Listeners
     const filterBtns = document.querySelectorAll('.filter-btn');
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
