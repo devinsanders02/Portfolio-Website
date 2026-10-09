@@ -1,25 +1,35 @@
-// Function to hide the loader cleanly
+// =========================================================================
+// 0. ABSOLUTE BULLETPROOF PRELOADER KILLSWITCH
+// =========================================================================
 function dismissLoader() {
   const loader = document.getElementById('site-loader');
-  if (loader && !loader.classList.contains('hidden')) {
+  if (loader) {
     loader.classList.add('hidden');
+    loader.style.opacity = '0';
+    loader.style.visibility = 'hidden';
+    loader.style.pointerEvents = 'none';
     setTimeout(() => {
       loader.style.display = 'none';
     }, 400);
   }
 }
 
-// Immediate failsafe: never let the screen lock up for more than 1 second
-setTimeout(dismissLoader, 1000);
-
-// Extra backup safety when full window assets finish loading
+// Immediate execution guards
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  setTimeout(dismissLoader, 100);
+} else {
+  document.addEventListener('DOMContentLoaded', () => setTimeout(dismissLoader, 150));
+}
 window.addEventListener('load', dismissLoader);
+setTimeout(dismissLoader, 900); // hard cutoff failsafe
 
+// =========================================================================
+// MAIN APPLICATION RUNTIME
+// =========================================================================
 document.addEventListener('DOMContentLoaded', () => {
-  // Dismiss preloader promptly once DOM structure is intact
-  setTimeout(dismissLoader, 150);
+  dismissLoader();
 
-  // Set Dynamic Copyright Year
+  // Dynamic Copyright Year
   const yearSpan = document.getElementById('copyright-year');
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
@@ -29,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   document.getElementById('top-contact-btn')?.addEventListener('click', scrollToContact);
 
-  // Smooth Scroll to Top ("Return to Top")
+  // Return to Top Handler
   document.getElementById('footer-scroll-top-btn')?.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
@@ -40,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.getElementById('close-overlay-btn');
   const overlayContact = document.getElementById('overlay-contact-link');
 
-  // Unified Scroll Handler: Fade Hero Elements & Toggle Floating Orange Button
+  // Unified Scroll Handler: Fade Hero Elements & Toggle Floating Button
   const handleScrollDynamics = () => {
     const scrollY = window.scrollY;
     const fadeThreshold = 360;
@@ -117,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, speed);
   };
 
-  // 1. Instant Arrival Decrypt on page load
+  // 1. Initial Arrival Decrypt
   setTimeout(() => {
     scrambleElements.forEach(el => runScramble(el, 26));
   }, 250);
@@ -127,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('mouseenter', () => runScramble(el, 20));
   });
 
-  // 3. Proactive Initial Scroll Trigger (fires once when visitor begins scrolling)
+  // 3. Proactive Initial Scroll Trigger
   let hasScrolledOnce = false;
   window.addEventListener('scroll', () => {
     if (!hasScrolledOnce && window.scrollY > 20 && window.scrollY < 200) {
@@ -136,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
-  // 4. Calm 4.5s Idle Pulse: brief numeric telemetry cycle
+  // 4. Calm 4.5s Idle Pulse
   if (coordEl) {
     setInterval(() => {
       if (window.scrollY > 300) return;
