@@ -166,35 +166,39 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // PRECISION SURVEY RETICLE CURSOR
+  // PRECISION SURVEY RETICLE CURSOR (No Hand Cursor, Orange Only On Clickables)
   // =========================================================================
   const cursor = document.getElementById('survey-cursor');
   
   if (cursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    let mouseX = -100;
-    let mouseY = -100;
-
     window.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-
-      // Proximity detection for summit pocket (Upper-Right Quadrant: X 68%-85%, Y 22%-48%)
-      const relX = mouseX / window.innerWidth;
-      const relY = mouseY / window.innerHeight;
-      const isNearPeak = window.scrollY < 300 && (relX > 0.68 && relX < 0.86) && (relY > 0.22 && relY < 0.48);
-
-      if (isNearPeak) {
-        cursor.classList.add('cursor-summit');
-      } else {
-        cursor.classList.remove('cursor-summit');
-      }
+      cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
     }, { passive: true });
 
-    const interactiveTargets = 'a, button, .stage-bar-btn, .hero-nav-item, .view-all-btn, .duo-card';
-    document.querySelectorAll(interactiveTargets).forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+    // Interactive clickable targets
+    const interactiveTargets = [
+      'a',
+      'button',
+      '.stage-canvas-box',
+      '.stage-bar-btn',
+      '.hero-nav-item',
+      '.view-all-btn',
+      '.duo-card',
+      '.filter-btn',
+      '[role="button"]'
+    ].join(', ');
+
+    // Event delegation for static and dynamically added elements
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest(interactiveTargets)) {
+        cursor.classList.add('cursor-hover');
+      }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      if (e.target.closest(interactiveTargets)) {
+        cursor.classList.remove('cursor-hover');
+      }
     });
 
     document.addEventListener('mouseleave', () => {
