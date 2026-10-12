@@ -6,7 +6,8 @@
   <title>Devin Sanders | Brand & Graphic Designer</title>
 
   <!-- Favicon & Touch Icon -->
-  <link rel="icon" type="image/png" href="LogoBlue.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/png" href="LogoBlue.png">
   <link rel="apple-touch-icon" href="LogoBlue.png">
 
   <!-- Direct Font Links (Backup & Speed Optimization) -->
@@ -70,23 +71,22 @@
   </a>
   <!-- =================== END: PINNED PERSISTENT LOGO =================== -->
 
-  <!-- =================== START: TOPOGRAPHY VECTOR FIELD =================== -->
-  <div class="hero-topography-canvas" aria-hidden="true">
-    <svg id="topo-svg-mount" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none" stroke="currentColor" stroke-linejoin="miter" stroke-miterlimit="3">
-      <!-- Rendered dynamically by js/main.js with zero overlaps -->
+  <!-- =================== START: ARCHITECTURAL MONOGRAM WATERMARK =================== -->
+  <div class="hero-brand-watermark-container" aria-hidden="true">
+    <svg class="watermark-svg" viewBox="0 0 587.86 587.86" preserveAspectRatio="xMidYMid meet">
+      <!-- 1. Ambient Wash Fill (Fades in smoothly) -->
+      <path class="mark-vector-fill"
+            d="M403.77,303.53c-4.05-7.62-11.58-12.81-20.14-13.89l-169.32-21.4,43.26-85.82,26.47,21.91c2.87,2.37,6.38,3.56,9.88,3.56s7.02-1.19,9.88-3.56l26.47-21.91,39.59,78.54c3.85,7.65,13.18,10.71,20.82,6.86,7.64-3.85,10.72-13.17,6.86-20.82l-69.72-138.3c-6.49-12.88-19.48-20.88-33.91-20.88s-27.41,8-33.91,20.88l-76.21,151.16c-3.88,7.7-3.78,16.85.27,24.46,4.05,7.61,11.58,12.81,20.14,13.89l169.32,21.4-41.96,83.22-27.78-22.99c-5.73-4.75-14.03-4.75-19.77,0l-27.78,22.99-39.49-78.32c-3.85-7.64-13.17-10.71-20.82-6.86-7.64,3.85-10.72,13.17-6.86,20.82l70.93,140.69c6.49,12.88,19.48,20.88,33.91,20.88s27.41-8,33.91-20.88l76.21-151.16c3.88-7.7,3.78-16.84-.27-24.46ZM293.93,118.83c1.6,0,4.54.5,6.22,3.83l15.82,31.38-22.04,18.24-22.04-18.24,15.82-31.38c1.68-3.33,4.62-3.83,6.22-3.83ZM293.93,469.03c-1.6,0-4.54-.5-6.22-3.83l-17.13-33.97,23.35-19.33,23.35,19.33-17.13,33.97c-1.68,3.33-4.62,3.83-6.22,3.83Z" />
+
+      <!-- 2. CAD Precision Outline Draw -->
+      <path class="mark-vector-stroke"
+            d="M403.77,303.53c-4.05-7.62-11.58-12.81-20.14-13.89l-169.32-21.4,43.26-85.82,26.47,21.91c2.87,2.37,6.38,3.56,9.88,3.56s7.02-1.19,9.88-3.56l26.47-21.91,39.59,78.54c3.85,7.65,13.18,10.71,20.82,6.86,7.64-3.85,10.72-13.17,6.86-20.82l-69.72-138.3c-6.49-12.88-19.48-20.88-33.91-20.88s-27.41,8-33.91,20.88l-76.21,151.16c-3.88,7.7-3.78,16.85.27,24.46,4.05,7.61,11.58,12.81,20.14,13.89l169.32,21.4-41.96,83.22-27.78-22.99c-5.73-4.75-14.03-4.75-19.77,0l-27.78,22.99-39.49-78.32c-3.85-7.64-13.17-10.71-20.82-6.86-7.64,3.85-10.72,13.17-6.86,20.82l70.93,140.69c6.49,12.88,19.48,20.88,33.91,20.88s27.41-8,33.91-20.88l76.21-151.16c3.88-7.7,3.78-16.84-.27-24.46ZM293.93,118.83c1.6,0,4.54.5,6.22,3.83l15.82,31.38-22.04,18.24-22.04-18.24,15.82-31.38c1.68-3.33,4.62-3.83,6.22-3.83ZM293.93,469.03c-1.6,0-4.54-.5-6.22-3.83l-17.13-33.97,23.35-19.33,23.35,19.33-17.13,33.97c-1.68,3.33-4.62,3.83-6.22,3.83Z" />
     </svg>
   </div>
-  <!-- =================== END: TOPOGRAPHY VECTOR FIELD =================== -->
+  <!-- =================== END: ARCHITECTURAL MONOGRAM WATERMARK =================== -->
 
   <!-- =================== START: HERO VIEWPORT =================== -->
   <section id="hero-sticky-canvas" class="hero-sticky-canvas">
-
-    <!-- Blueprint Hairline Guides & Crosshair Alignment -->
-    <div class="blueprint-guides" aria-hidden="true">
-      <div class="guide-axis-h"></div>
-      <div class="guide-axis-v"></div>
-      <div class="guide-crosshair"></div>
-    </div>
 
     <div class="hero-top-row">
       <!-- Top Left: Metadata Stack -->
@@ -263,6 +263,6 @@
   </div>
 
   <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=5.0"></script>
 </body>
 </html>
