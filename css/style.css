@@ -106,19 +106,21 @@ body {
 .hero-topography-canvas {
   position: absolute;
   top: 0;
+  left: 0;
   right: 0;
-  width: 66vw;
-  height: 100%;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
   color: var(--text-dark);
   pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
 }
 
 .hero-topography-canvas svg {
   width: 100%;
   height: 100%;
   display: block;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: transform;
 }
 
 .topo-line-solid {
@@ -430,10 +432,10 @@ header.subpage-navbar {
 
 /* =================== START: SURVEY RETICLE CURSOR =================== */
 @media (hover: hover) and (pointer: fine) {
-  /* 1. Globally suppress the OS pointer and hand cursors */
+  /* 1. Suppress native OS pointer and hand cursors everywhere */
   html, body, 
   a, button, input, textarea, select, 
-  [role="button"], [onclick], .stage-canvas-box, .stage-bar-btn, .filter-btn {
+  [role="button"], [onclick], .stage-canvas-box, .stage-bar-btn, .filter-btn, .view-all-btn {
     cursor: none !important;
   }
 
@@ -446,7 +448,7 @@ header.subpage-navbar {
     will-change: transform;
   }
 
-  /* Core Precision Center Dot */
+  /* Center Precision Point */
   .cursor-dot {
     position: absolute;
     top: -3px;
@@ -455,10 +457,10 @@ header.subpage-navbar {
     height: 6px;
     border-radius: 50%;
     background-color: var(--text-dark, #2C3E50);
-    transition: background-color 0.2s cubic-bezier(0.25, 1, 0.5, 1), transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: background-color 0.2s ease, transform 0.2s ease;
   }
 
-  /* Outer Drafting Reticle Ring */
+  /* Drafting Reticle Ring */
   .cursor-ring {
     position: absolute;
     top: -11px;
@@ -467,18 +469,14 @@ header.subpage-navbar {
     height: 22px;
     border-radius: 50%;
     border: 1px solid rgba(44, 62, 80, 0.45);
-    transition: width 0.2s cubic-bezier(0.25, 1, 0.5, 1), 
-                height 0.2s cubic-bezier(0.25, 1, 0.5, 1), 
-                top 0.2s cubic-bezier(0.25, 1, 0.5, 1), 
-                left 0.2s cubic-bezier(0.25, 1, 0.5, 1), 
-                border-color 0.2s cubic-bezier(0.25, 1, 0.5, 1), 
-                opacity 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: width 0.2s ease, height 0.2s ease, top 0.2s ease, left 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
   }
 
-  /* 2. Interactive Clickable Hover State (Only triggers over actual links/actions) */
+  /* Interactive Hover: Crisp White on orange buttons & dark cards */
   .survey-cursor.cursor-hover .cursor-dot {
-    background-color: var(--accent-orange, #F15B22);
     transform: scale(0.65);
+    background-color: #FFFFFF;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
   }
 
   .survey-cursor.cursor-hover .cursor-ring {
@@ -486,9 +484,21 @@ header.subpage-navbar {
     left: -15px;
     width: 30px;
     height: 30px;
-    border-color: var(--accent-orange, #F15B22);
+    border-color: #FFFFFF;
     border-width: 1.5px;
-    opacity: 0.9;
+    opacity: 1;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Interactive Hover: Brand Orange on light backgrounds */
+  .survey-cursor.cursor-hover-dark .cursor-dot {
+    background-color: var(--accent-orange, #F15B22);
+    box-shadow: none;
+  }
+
+  .survey-cursor.cursor-hover-dark .cursor-ring {
+    border-color: var(--accent-orange, #F15B22);
+    box-shadow: none;
   }
 }
 /* =================== END: SURVEY RETICLE CURSOR =================== */
