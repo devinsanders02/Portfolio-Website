@@ -70,102 +70,89 @@
   </a>
   <!-- =================== END: PINNED PERSISTENT LOGO =================== -->
 
- <!-- =================== START: PERSISTENT BACKGROUND (TOPO & DOT GRID) =================== -->
-  <div class="hero-fixed-background" aria-hidden="true">
-    <div class="hero-dot-grid"></div>
-    <div class="hero-topography-canvas">
+<!-- =================== START: TOPOGRAPHY VECTOR FIELD =================== -->
+    <div class="hero-topography-canvas" aria-hidden="true">
       <svg viewBox="0 0 1440 900" fill="none" stroke="currentColor" stroke-linejoin="miter" stroke-miterlimit="3" stroke-linecap="square" preserveAspectRatio="none">
         
-        <!-- Cartographic Registration Crosses (+) & Benchmark Pips -->
-        <g stroke="currentColor" stroke-width="1" opacity="0.32">
-          <!-- Summit Saddle Point -->
-          <line x1="1100" y1="410" x2="1112" y2="410" />
-          <line x1="1106" y1="404" x2="1106" y2="416" />
-          <!-- Basin Bench -->
-          <line x1="860" y1="580" x2="872" y2="580" />
-          <line x1="866" y1="574" x2="866" y2="586" />
-          <!-- Elevation Pips -->
-          <rect x="1135" y="425" width="3.5" height="3.5" fill="currentColor" stroke="none" opacity="0.4" />
-          <rect x="780" y="660" width="4" height="4" fill="currentColor" stroke="none" opacity="0.25" />
+        <!-- Cartographic Benchmarks -->
+        <g stroke="currentColor" stroke-width="1" opacity="0.35">
+          <line x1="980" y1="410" x2="992" y2="410" />
+          <line x1="986" y1="404" x2="986" y2="416" />
+          <line x1="820" y1="580" x2="832" y2="580" />
+          <line x1="826" y1="574" x2="826" y2="586" />
+          <rect x="1010" y="430" width="3.5" height="3.5" fill="currentColor" stroke="none" opacity="0.4" />
+          <rect x="760" y="660" width="4" height="4" fill="currentColor" stroke="none" opacity="0.25" />
         </g>
 
-        <!-- Traversing Dashed Transect Trail (Spur ridge crosscut) -->
+        <!-- Traversing Survey Transect (Crosscut trail) -->
         <polyline class="topo-line-dashed" stroke-width="1.1" opacity="0.38"
-                  points="1440,370 1320,410 1190,465 1060,535 920,620 780,720 640,815 480,900" />
+                  points="1440,360 1260,400 1100,470 960,560 840,670 720,780 580,900" />
 
         <!-- 
-          MATHEMATICAL NON-INTERSECTING ELEVATION FIELD:
-          Peak Apex anchored at X: 1100, Y: 400 (well below menu at Y: 0-300).
-          Each contour steps strictly OUTWARD with uniform topological clearance.
+          DIRECTIONAL TOPOGRAPHIC STRATA:
+          Every line originates at the East/Right margin (Y > 340, below menu)
+          and sweeps across the mountain spur down to the South/West margin.
+          Zero loops, zero spiderweb pinching, zero line crossings.
         -->
 
-        <!-- ELEVATION 1: Peak Summit Core Ring (Enclosed within contour 3) -->
-        <polygon class="topo-line-solid" stroke-width="1.5" opacity="0.8"
-                 points="1100,388 1125,398 1135,415 1118,428 1092,425 1082,410 1090,395" />
+        <!-- ELEVATION 1: Peak Summit Crest (Tightest high spur) -->
+        <polyline class="topo-line-solid" stroke-width="1.5" opacity="0.85"
+                  points="1440,345 1320,350 1210,365 1110,390 1020,400 985,415 1010,435 1080,445 1160,455 1250,470 1340,490 1440,510" />
 
-        <!-- ELEVATION 2: Summit Crown Ring -->
-        <polygon class="topo-line-solid" stroke-width="1.1" opacity="0.65"
-                 points="1100,372 1138,385 1152,415 1130,438 1085,434 1068,412 1080,385" />
+        <!-- ELEVATION 2: Steep Crest Face (15px clearance) -->
+        <polyline class="topo-line-solid" stroke-width="1.1" opacity="0.65"
+                  points="1440,360 1315,365 1200,380 1095,406 1005,416 970,431 995,452 1068,463 1150,473 1240,490 1330,510 1440,530" />
 
-        <!-- ELEVATION 3: Summit Base Ring (Dashed Index) -->
-        <polygon class="topo-line-dashed" stroke-width="1.2" opacity="0.6"
-                 points="1100,356 1150,372 1168,415 1142,448 1078,444 1055,414 1070,375" />
+        <!-- ELEVATION 3: Crest Index (Dashed Accent) -->
+        <polyline class="topo-line-dashed" stroke-width="1.2" opacity="0.65"
+                  points="1440,378 1310,382 1190,398 1080,424 990,434 955,449 980,470 1055,482 1140,492 1230,510 1320,530 1440,552" />
 
-        <!-- ELEVATION 4: Upper Mountain Shoulder (Tight steep interval: 14px) -->
+        <!-- ELEVATION 4: Upper Spur Escarpment -->
         <polyline class="topo-line-solid" stroke-width="1.2" opacity="0.55"
-                  points="1440,335 1320,335 1230,345 1165,360 1100,340 1040,365 1018,415 1055,462 1155,466 1188,415 1250,400 1345,395 1440,395" />
+                  points="1440,398 1305,402 1180,418 1065,444 972,454 938,470 965,492 1042,504 1130,514 1220,532 1310,552 1440,575" />
 
-        <!-- ELEVATION 5: Heavy Arête Index Ridge (Thick Primary Escarpment) -->
+        <!-- ELEVATION 5: Heavy Arête Index Ridge (Bolder Reference Line) -->
         <polyline class="topo-line-solid" stroke-width="2.2" opacity="0.85"
-                  points="1440,350 1315,350 1220,362 1150,378 1100,324 1025,355 998,418 1042,476 1168,480 1205,422 1268,412 1360,410 1440,410" />
+                  points="1440,420 1300,424 1170,440 1048,468 952,478 918,495 948,518 1028,530 1118,540 1210,558 1300,578 1440,602" />
 
-        <!-- ELEVATION 6: Steep Slope Step 1 -->
-        <polyline class="topo-line-solid" stroke-width="1.1" opacity="0.45"
-                  points="1440,370 1310,370 1210,382 1135,400 1100,306 1008,342 976,420 1028,490 1182,494 1222,430 1286,425 1375,425 1440,425" />
+        <!-- ELEVATION 6: Mid-Slope Escarpment 1 -->
+        <polyline class="topo-line-solid" stroke-width="1.1" opacity="0.48"
+                  points="1440,446 1292,450 1158,466 1030,495 930,505 895,524 928,548 1012,560 1105,570 1198,588 1288,608 1440,634" />
 
-        <!-- ELEVATION 7: Steep Slope Step 2 (Dashed Survey Contour) -->
+        <!-- ELEVATION 7: Mid-Slope Step (Dashed Survey Contour) -->
         <polyline class="topo-line-dashed" stroke-width="1.2" opacity="0.55"
-                  points="1440,392 1305,390 1198,404 1118,422 1100,286 988,328 952,422 1012,506 1198,510 1240,440 1305,440 1390,440 1440,440" />
+                  points="1440,475 1284,480 1144,496 1010,526 905,536 870,556 905,582 994,594 1090,604 1185,622 1275,642 1440,670" />
 
         <!-- ELEVATION 8: Intermediate Ridge Index -->
-        <polyline class="topo-line-solid" stroke-width="1.8" opacity="0.7"
-                  points="1440,418 1300,412 1184,428 1100,446 1100,264 966,312 926,425 994,524 1214,528 1260,452 1326,456 1406,456 1440,456" />
+        <polyline class="topo-line-solid" stroke-width="1.8" opacity="0.70"
+                  points="1440,508 1275,514 1128,530 988,562 878,572 840,593 880,620 972,632 1072,642 1170,660 1260,682 1440,710" />
 
-        <!-- ELEVATION 9: Widening Western Cirque Flank -->
+        <!-- ELEVATION 9: Widening Cirque Flank (Spacing expanding) -->
         <polyline class="topo-line-solid" stroke-width="1.1" opacity="0.38"
-                  points="1440,448 1295,436 1168,454 1080,472 1100,240 942,294 898,428 974,544 1232,548 1282,466 1348,474 1422,474 1440,474" />
+                  points="1440,546 1264,554 1110,570 962,604 848,614 808,636 850,664 948,676 1052,686 1152,704 1245,726 1440,755" />
 
-        <!-- ELEVATION 10: Intermediate Valley Step -->
+        <!-- ELEVATION 10: Lower Mountain Spur -->
         <polyline class="topo-line-solid" stroke-width="1.0" opacity="0.32"
-                  points="1440,482 1290,462 1150,482 1058,500 1100,214 916,274 868,432 952,566 1252,570 1306,482 1372,494 1440,494" />
+                  points="1440,590 1250,600 1090,616 932,652 812,662 770,686 815,715 920,726 1030,736 1132,754 1228,776 1440,808" />
 
-        <!-- ELEVATION 11: Southwest Basin Ridge (Dashed Survey Contour) -->
+        <!-- ELEVATION 11: Broad Intermediate Slope (Dashed Accent) -->
         <polyline class="topo-line-dashed" stroke-width="1.2" opacity="0.45"
-                  points="1440,520 1285,490 1130,512 1034,530 1100,186 888,252 836,436 928,590 1274,594 1332,500 1398,516 1440,516" />
+                  points="1440,640 1234,652 1065,670 898,708 770,718 725,744 775,774 888,784 1005,794 1110,812 1210,834 1440,868" />
 
-        <!-- ELEVATION 12: Western Basin Heavy Index -->
+        <!-- ELEVATION 12: Western Basin Index Escarpment -->
         <polyline class="topo-line-solid" stroke-width="1.6" opacity="0.55"
-                  points="1440,562 1280,520 1108,544 1008,562 1100,156 858,228 802,440 902,616 1298,620 1360,520 1426,540 1440,540" />
+                  points="1440,698 1215,712 1038,732 860,772 722,782 675,810 730,840 850,850 975,860 1085,876 1190,896 1440,930" />
 
         <!-- ELEVATION 13: Gentle Valley Slope 1 -->
         <polyline class="topo-line-solid" stroke-width="1.1" opacity="0.25"
-                  points="1440,610 1275,555 1084,580 980,598 1100,124 826,202 766,446 874,644 1324,648 1390,542 1440,566" />
+                  points="1440,764 1192,780 1005,802 815,845 668,854 618,884 678,915 808,924 940,932 1055,948 1165,966 1440,998" />
 
         <!-- ELEVATION 14: Gentle Valley Slope 2 -->
-        <polyline class="topo-line-solid" stroke-width="1.0" opacity="0.2"
-                  points="1440,664 1270,595 1058,620 950,638 1100,90 792,174 728,452 844,674 1352,678 1422,566 1440,594" />
-
-        <!-- ELEVATION 15: Base Valley Flank -->
-        <polyline class="topo-line-solid" stroke-width="1.2" opacity="0.16"
-                  points="1440,724 1265,640 1030,664 918,682 1100,54 756,144 688,458 812,706 1382,710 1440,594 1440,624" />
-
-        <!-- ELEVATION 16: Outer Basin Boundary Line -->
-        <polyline class="topo-line-solid" stroke-width="1.0" opacity="0.1"
-                  points="1440,790 1260,690 1000,712 884,730 1100,16 718,112 646,466 778,740 1414,744 1440,624 1440,656" />
+        <polyline class="topo-line-solid" stroke-width="1.0" opacity="0.18"
+                  points="1440,838 1165,858 968,882 764,928 606,936 552,968 620,998 760,1006 898,1014 1020,1028 1135,1044" />
       </svg>
     </div>
-  </div>
-  <!-- =================== END: PERSISTENT BACKGROUND =================== -->
+    <!-- =================== END: TOPOGRAPHY VECTOR FIELD =================== -->
 
   <!-- =================== START: HERO VIEWPORT =================== -->
   <section id="hero-sticky-canvas" class="hero-sticky-canvas">
