@@ -78,81 +78,90 @@
         
         <!-- Cartographic Registration Crosses (+) & Benchmark Pips -->
         <g stroke="currentColor" stroke-width="1" opacity="0.32">
-          <line x1="1020" y1="410" x2="1032" y2="410" />
-          <line x1="1026" y1="404" x2="1026" y2="416" />
-          <line x1="780" y1="560" x2="792" y2="560" />
-          <line x1="786" y1="554" x2="786" y2="566" />
-          <rect x="1055" y="425" width="3.5" height="3.5" fill="currentColor" stroke="none" opacity="0.4" />
-          <rect x="710" y="660" width="4" height="4" fill="currentColor" stroke="none" opacity="0.25" />
+          <!-- Summit Saddle Point -->
+          <line x1="1100" y1="410" x2="1112" y2="410" />
+          <line x1="1106" y1="404" x2="1106" y2="416" />
+          <!-- Basin Bench -->
+          <line x1="860" y1="580" x2="872" y2="580" />
+          <line x1="866" y1="574" x2="866" y2="586" />
+          <!-- Elevation Pips -->
+          <rect x="1135" y="425" width="3.5" height="3.5" fill="currentColor" stroke="none" opacity="0.4" />
+          <rect x="780" y="660" width="4" height="4" fill="currentColor" stroke="none" opacity="0.25" />
         </g>
 
-        <!-- Traversing Dashed Transect Trail (Cross-contour spur pass) -->
-        <polyline class="topo-line-dashed" stroke-width="1.1" opacity="0.4"
-                  points="1440,380 1300,420 1160,470 1020,530 880,610 740,710 600,810 460,900" />
+        <!-- Traversing Dashed Transect Trail (Spur ridge crosscut) -->
+        <polyline class="topo-line-dashed" stroke-width="1.1" opacity="0.38"
+                  points="1440,370 1320,410 1190,465 1060,535 920,620 780,720 640,815 480,900" />
 
-        <!-- ELEVATION 1: Summit Core Apex (X: 1020, Y: 410) -->
-        <polygon class="topo-line-solid" stroke-width="1.4" opacity="0.8"
-                 points="1020,395 1045,405 1055,422 1038,435 1012,432 1002,418 1010,402" />
+        <!-- 
+          MATHEMATICAL NON-INTERSECTING ELEVATION FIELD:
+          Peak Apex anchored at X: 1100, Y: 400 (well below menu at Y: 0-300).
+          Each contour steps strictly OUTWARD with uniform topological clearance.
+        -->
 
-        <!-- ELEVATION 2: Summit Crown -->
+        <!-- ELEVATION 1: Peak Summit Core Ring (Enclosed within contour 3) -->
+        <polygon class="topo-line-solid" stroke-width="1.5" opacity="0.8"
+                 points="1100,388 1125,398 1135,415 1118,428 1092,425 1082,410 1090,395" />
+
+        <!-- ELEVATION 2: Summit Crown Ring -->
         <polygon class="topo-line-solid" stroke-width="1.1" opacity="0.65"
-                 points="1020,380 1058,392 1072,422 1050,446 1005,442 988,420 1000,392" />
+                 points="1100,372 1138,385 1152,415 1130,438 1085,434 1068,412 1080,385" />
 
-        <!-- ELEVATION 3: Crest Saddle (Dashed Accent) -->
+        <!-- ELEVATION 3: Summit Base Ring (Dashed Index) -->
         <polygon class="topo-line-dashed" stroke-width="1.2" opacity="0.6"
-                 points="1020,365 1070,378 1090,422 1062,458 998,454 975,422 990,380" />
+                 points="1100,356 1150,372 1168,415 1142,448 1078,444 1055,414 1070,375" />
 
-        <!-- ELEVATION 4: Upper Escarpment Rim -->
-        <polygon class="topo-line-solid" stroke-width="1.2" opacity="0.55"
-                 points="1020,350 1082,365 1108,422 1074,470 990,466 962,424 980,368" />
+        <!-- ELEVATION 4: Upper Mountain Shoulder (Tight steep interval: 14px) -->
+        <polyline class="topo-line-solid" stroke-width="1.2" opacity="0.55"
+                  points="1440,335 1320,335 1230,345 1165,360 1100,340 1040,365 1018,415 1055,462 1155,466 1188,415 1250,400 1345,395 1440,395" />
 
-        <!-- ELEVATION 5: Heavy Arête Index Ridge -->
+        <!-- ELEVATION 5: Heavy Arête Index Ridge (Thick Primary Escarpment) -->
         <polyline class="topo-line-solid" stroke-width="2.2" opacity="0.85"
-                  points="1440,340 1280,340 1190,348 1095,350 1020,332 968,354 948,426 982,480 1088,484 1130,424 1210,410 1310,405 1440,405" />
+                  points="1440,350 1315,350 1220,362 1150,378 1100,324 1025,355 998,418 1042,476 1168,480 1205,422 1268,412 1360,410 1440,410" />
 
-        <!-- ELEVATION 6: Steep Slope Contour 1 -->
+        <!-- ELEVATION 6: Steep Slope Step 1 -->
         <polyline class="topo-line-solid" stroke-width="1.1" opacity="0.45"
-                  points="1440,365 1290,365 1205,372 1110,370 1020,314 952,340 930,428 972,494 1102,498 1150,432 1228,422 1325,420 1440,420" />
+                  points="1440,370 1310,370 1210,382 1135,400 1100,306 1008,342 976,420 1028,490 1182,494 1222,430 1286,425 1375,425 1440,425" />
 
-        <!-- ELEVATION 7: Steep Slope Contour 2 (Dashed Accent) -->
+        <!-- ELEVATION 7: Steep Slope Step 2 (Dashed Survey Contour) -->
         <polyline class="topo-line-dashed" stroke-width="1.2" opacity="0.55"
-                  points="1440,390 1300,390 1220,396 1125,390 1020,296 936,326 912,430 962,508 1116,512 1170,440 1246,434 1340,435 1440,435" />
+                  points="1440,392 1305,390 1198,404 1118,422 1100,286 988,328 952,422 1012,506 1198,510 1240,440 1305,440 1390,440 1440,440" />
 
-        <!-- ELEVATION 8: Intermediate Slope Index -->
+        <!-- ELEVATION 8: Intermediate Ridge Index -->
         <polyline class="topo-line-solid" stroke-width="1.8" opacity="0.7"
-                  points="1440,420 1312,420 1238,422 1142,412 1020,276 918,310 892,432 950,524 1132,528 1192,450 1266,448 1358,452 1440,452" />
+                  points="1440,418 1300,412 1184,428 1100,446 1100,264 966,312 926,425 994,524 1214,528 1260,452 1326,456 1406,456 1440,456" />
 
-        <!-- ELEVATION 9: Widening Cirque Step -->
+        <!-- ELEVATION 9: Widening Western Cirque Flank -->
         <polyline class="topo-line-solid" stroke-width="1.1" opacity="0.38"
-                  points="1440,455 1325,455 1258,450 1160,436 1020,254 898,292 870,434 936,542 1150,546 1216,462 1288,464 1378,470 1440,470" />
+                  points="1440,448 1295,436 1168,454 1080,472 1100,240 942,294 898,428 974,544 1232,548 1282,466 1348,474 1422,474 1440,474" />
 
-        <!-- ELEVATION 10: Southwest Flank Contour -->
+        <!-- ELEVATION 10: Intermediate Valley Step -->
         <polyline class="topo-line-solid" stroke-width="1.0" opacity="0.32"
-                  points="1440,495 1340,492 1280,480 1180,462 1020,230 876,272 846,436 920,562 1170,566 1242,476 1312,482 1400,490 1440,490" />
+                  points="1440,482 1290,462 1150,482 1058,500 1100,214 916,274 868,432 952,566 1252,570 1306,482 1372,494 1440,494" />
 
-        <!-- ELEVATION 11: Broad Intermediate Flank (Dashed Accent) -->
+        <!-- ELEVATION 11: Southwest Basin Ridge (Dashed Survey Contour) -->
         <polyline class="topo-line-dashed" stroke-width="1.2" opacity="0.45"
-                  points="1440,540 1358,532 1304,512 1202,490 1020,204 852,250 820,438 902,584 1192,588 1270,492 1338,502 1422,512 1440,512" />
+                  points="1440,520 1285,490 1130,512 1034,530 1100,186 888,252 836,436 928,590 1274,594 1332,500 1398,516 1440,516" />
 
-        <!-- ELEVATION 12: Western Basin Index Escarpment -->
+        <!-- ELEVATION 12: Western Basin Heavy Index -->
         <polyline class="topo-line-solid" stroke-width="1.6" opacity="0.55"
-                  points="1440,590 1378,575 1330,546 1226,520 1020,176 826,226 792,442 882,608 1216,612 1300,510 1366,524 1440,536 1440,536" />
+                  points="1440,562 1280,520 1108,544 1008,562 1100,156 858,228 802,440 902,616 1298,620 1360,520 1426,540 1440,540" />
 
-        <!-- ELEVATION 13: Gentle Valley Contour 1 -->
+        <!-- ELEVATION 13: Gentle Valley Slope 1 -->
         <polyline class="topo-line-solid" stroke-width="1.1" opacity="0.25"
-                  points="1440,645 1400,620 1358,582 1252,552 1020,146 798,200 762,446 860,634 1242,638 1332,530 1396,548 1440,562" />
+                  points="1440,610 1275,555 1084,580 980,598 1100,124 826,202 766,446 874,644 1324,648 1390,542 1440,566" />
 
-        <!-- ELEVATION 14: Gentle Valley Contour 2 -->
+        <!-- ELEVATION 14: Gentle Valley Slope 2 -->
         <polyline class="topo-line-solid" stroke-width="1.0" opacity="0.2"
-                  points="1440,705 1422,668 1388,620 1280,586 1020,114 768,172 730,450 836,662 1270,666 1366,552 1428,574 1440,590" />
+                  points="1440,664 1270,595 1058,620 950,638 1100,90 792,174 728,452 844,674 1352,678 1422,566 1440,594" />
 
         <!-- ELEVATION 15: Base Valley Flank -->
         <polyline class="topo-line-solid" stroke-width="1.2" opacity="0.16"
-                  points="1440,770 1440,720 1420,660 1310,622 1020,80  736,142 696,456 810,692 1300,696 1402,576 1440,602 1440,620" />
+                  points="1440,724 1265,640 1030,664 918,682 1100,54 756,144 688,458 812,706 1382,710 1440,594 1440,624" />
 
         <!-- ELEVATION 16: Outer Basin Boundary Line -->
         <polyline class="topo-line-solid" stroke-width="1.0" opacity="0.1"
-                  points="1440,840 1440,775 1440,702 1342,660 1020,44  702,110 660,462 782,724 1332,728 1440,602 1440,632 1440,652" />
+                  points="1440,790 1260,690 1000,712 884,730 1100,16 718,112 646,466 778,740 1414,744 1440,624 1440,656" />
       </svg>
     </div>
   </div>
