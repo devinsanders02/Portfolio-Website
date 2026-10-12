@@ -154,89 +154,27 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // ARCHITECTURAL NON-INTERSECTING TOPOGRAPHY ENGINE
+  // MONOGRAM WATERMARK VECTOR DRAW ENGINE
   // =========================================================================
-  const topoMount = document.getElementById('topo-svg-mount');
-  if (topoMount) {
-    // Structural Spine Base Points (Anchored safely below Y: 380 to protect nav menu)
-    const baseSpur = [
-      { x: 1440, y: 390 }, // Enters below top-right navigation
-      { x: 1320, y: 395 },
-      { x: 1210, y: 410 },
-      { x: 1110, y: 435 },
-      { x: 1030, y: 450 }, // Crest high point
-      { x: 975,  y: 475 }, // Ridge apex spur
-      { x: 1005, y: 505 }, // South face switchback
-      { x: 1070, y: 525 },
-      { x: 1160, y: 545 },
-      { x: 1270, y: 575 },
-      { x: 1440, y: 620 }  // Exits lower right
-    ];
+  const markPath = document.getElementById('mark-stroke');
+  const markFill = document.getElementById('mark-fill');
 
-    // Mathematical displacement vectors per vertex (Guarantees parallel expansion with ZERO overlap)
-    const normalOffsets = [
-      { dx: 0,   dy: 24 },
-      { dx: -10, dy: 22 },
-      { dx: -18, dy: 20 },
-      { dx: -24, dy: 16 },
-      { dx: -28, dy: 10 },
-      { dx: -30, dy: 12 },
-      { dx: -22, dy: 24 },
-      { dx: -14, dy: 26 },
-      { dx: -8,  dy: 28 },
-      { dx: -2,  dy: 30 },
-      { dx: 0,   dy: 32 }
-    ];
+  if (markPath) {
+    const pathLength = markPath.getTotalLength();
 
-    const totalLines = 14;
-    let topoMarkup = `
-      <!-- Cartographic Benchmark Details -->
-      <g stroke="currentColor" stroke-width="1" opacity="0.3">
-        <line x1="970" y1="475" x2="982" y2="475" />
-        <line x1="976" y1="469" x2="976" y2="481" />
-        <line x1="820" y1="620" x2="832" y2="620" />
-        <line x1="826" y1="614" x2="826" y2="626" />
-        <rect x="1040" y="440" width="3.5" height="3.5" fill="currentColor" stroke="none" opacity="0.35" />
-        <rect x="760" y="700" width="4" height="4" fill="currentColor" stroke="none" opacity="0.25" />
-      </g>
-    `;
+    // Hide stroke behind dashoffset before drawing
+    markPath.style.strokeDasharray = pathLength;
+    markPath.style.strokeDashoffset = pathLength;
 
-    for (let i = 0; i < totalLines; i++) {
-      const points = baseSpur.map((pt, idx) => {
-        const off = normalOffsets[idx];
-        const px = Math.round(pt.x + (off.dx * i));
-        const py = Math.round(pt.y + (off.dy * i));
-        return `${px},${py}`;
-      }).join(' ');
+    // Trigger mechanical plotter line-draw once page clears loader
+    setTimeout(() => {
+      markPath.style.strokeDashoffset = '0';
 
-      const isIndex = (i === 0 || i === 4 || i === 9);
-      const isDashed = (i === 2 || i === 7 || i === 11);
-
-      const strokeWidth = isIndex ? '2.0' : '1.0';
-      const opacity = isIndex ? '0.75' : Math.max(0.12, 0.55 - (i * 0.035)).toFixed(2);
-      const strokeClass = isDashed ? 'topo-line-dashed' : 'topo-line-solid';
-
-      topoMarkup += `
-        <polyline class="${strokeClass}" 
-                  points="${points}" 
-                  stroke-width="${strokeWidth}" 
-                  opacity="${opacity}" />
-      `;
-    }
-
-    topoMount.innerHTML = topoMarkup;
-  }
-
-  // =========================================================================
-  // TOPOGRAPHIC VECTOR PARALLAX DRIFT
-  // =========================================================================
-  const topoCanvas = document.querySelector('.hero-topography-canvas svg');
-  if (topoCanvas) {
-    window.addEventListener('mousemove', (e) => {
-      const xOffset = (e.clientX / window.innerWidth - 0.5) * 14;
-      const yOffset = (e.clientY / window.innerHeight - 0.5) * 8;
-      topoCanvas.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
-    }, { passive: true });
+      // Wash in soft tone-on-tone environmental fill
+      setTimeout(() => {
+        if (markFill) markFill.classList.add('is-visible');
+      }, 1800);
+    }, 350);
   }
 
   // =========================================================================
