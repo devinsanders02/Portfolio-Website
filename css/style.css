@@ -106,23 +106,31 @@ body {
 /* Architectural Monogram Watermark Container */
 .hero-brand-watermark-container {
   position: fixed;
-  right: -6vw;
-  bottom: -8vh;
-  width: min(740px, 58vw);
-  height: min(740px, 58vw);
+  right: 0;
+  bottom: 0;
+  width: 62vw;
+  height: 115vh;
+  max-width: 1100px;
+  max-height: 1100px;
   pointer-events: none;
   z-index: 0;
   overflow: visible;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 .watermark-svg {
   width: 100%;
   height: 100%;
   display: block;
+  /* Shifts the mark down and right: cuts bottom half off-screen, positions upper crest */
+  transform: translate(14%, 48%);
+  transform-origin: center center;
   overflow: visible;
 }
 
-/* 1. Technical CAD Plotter Stroke Draw */
+/* 1. Technical CAD Plotter Stroke Draw (Normalized 0 -> 1) */
 .mark-vector-stroke {
   fill: none;
   stroke: var(--text-dark, #2C3E50);
@@ -130,10 +138,10 @@ body {
   stroke-miterlimit: 10;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-dasharray: 2600;
-  stroke-dashoffset: 2600;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
   opacity: 0.35;
-  animation: traceMonogramCad 2.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  animation: traceMonogramCad 2.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
 }
 
 @keyframes traceMonogramCad {
@@ -147,18 +155,15 @@ body {
   fill: var(--text-dark, #2C3E50);
   stroke: none;
   opacity: 0;
-  transform-origin: center bottom;
-  animation: washInMonogramFill 2.2s cubic-bezier(0.22, 1, 0.36, 1) 1.8s forwards;
+  animation: washInMonogramFill 2.4s cubic-bezier(0.22, 1, 0.36, 1) 1.6s forwards;
 }
 
 @keyframes washInMonogramFill {
   0% {
     opacity: 0;
-    transform: translateY(16px);
   }
   100% {
     opacity: 0.055;
-    transform: translateY(0);
   }
 }
 /* =================== END: PERSISTENT BACKGROUND & WATERMARK =================== */
