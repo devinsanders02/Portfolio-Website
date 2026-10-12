@@ -81,7 +81,7 @@ body {
 }
 /* =================== END: SITE PRELOADER =================== */
 
-/* =================== START: PERSISTENT BACKGROUND =================== */
+/* =================== START: PERSISTENT BACKGROUND & WATERMARK =================== */
 .hero-fixed-background {
   position: fixed;
   top: 0;
@@ -103,48 +103,65 @@ body {
   opacity: 0.05;
 }
 
-.hero-topography-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100vw;
-  height: 100vh;
-  color: var(--text-dark);
+/* Architectural Monogram Watermark Container */
+.hero-brand-watermark-container {
+  position: fixed;
+  right: -6vw;
+  bottom: -8vh;
+  width: min(740px, 58vw);
+  height: min(740px, 58vw);
   pointer-events: none;
-  overflow: hidden;
   z-index: 0;
+  overflow: visible;
 }
 
-.hero-topography-canvas svg {
+.watermark-svg {
   width: 100%;
   height: 100%;
   display: block;
+  overflow: visible;
 }
 
-.topo-line-solid {
-  stroke: var(--text-dark);
-  stroke-dasharray: none;
+/* 1. Technical CAD Plotter Stroke Draw */
+.mark-vector-stroke {
+  fill: none;
+  stroke: var(--text-dark, #2C3E50);
+  stroke-width: 2.5px;
+  stroke-miterlimit: 10;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 2600;
+  stroke-dashoffset: 2600;
+  opacity: 0.35;
+  animation: traceMonogramCad 2.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
 }
 
-.topo-line-dashed {
-  stroke: var(--text-dark);
-  stroke-dasharray: 4 8;
-  animation: traceTransectTrails 45s linear infinite;
-}
-
-.topo-line-dashed:nth-of-type(2) {
-  animation-duration: 55s;
-  animation-direction: reverse;
-}
-
-@keyframes traceTransectTrails {
+@keyframes traceMonogramCad {
   to {
-    stroke-dashoffset: 800;
+    stroke-dashoffset: 0;
   }
 }
-/* =================== END: PERSISTENT BACKGROUND =================== */
+
+/* 2. Quiet Environmental Tone-on-Tone Wash */
+.mark-vector-fill {
+  fill: var(--text-dark, #2C3E50);
+  stroke: none;
+  opacity: 0;
+  transform-origin: center bottom;
+  animation: washInMonogramFill 2.2s cubic-bezier(0.22, 1, 0.36, 1) 1.8s forwards;
+}
+
+@keyframes washInMonogramFill {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 0.055;
+    transform: translateY(0);
+  }
+}
+/* =================== END: PERSISTENT BACKGROUND & WATERMARK =================== */
 
 /* =================== START: SUBPAGE STANDARD NAVBAR =================== */
 header.subpage-navbar {
@@ -233,64 +250,6 @@ header.subpage-navbar {
 
 .hero-sticky-canvas > * {
   pointer-events: auto;
-}
-
-/* Blueprint Drafting Hairlines & Crosshair */
-.blueprint-guides {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.guide-axis-h {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 2.5rem;
-  height: 1px;
-  background: rgba(44, 62, 80, 0.12);
-  transform: scaleX(0);
-  transform-origin: left center;
-  animation: sweepH 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-}
-
-.guide-axis-v {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 4vw;
-  width: 1px;
-  background: rgba(44, 62, 80, 0.12);
-  transform: scaleY(0);
-  transform-origin: top center;
-  animation: sweepV 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-}
-
-.guide-crosshair {
-  position: absolute;
-  left: calc(4vw - 5px);
-  bottom: calc(2.5rem - 5px);
-  width: 11px;
-  height: 11px;
-  border: 1px solid var(--accent-orange);
-  opacity: 0;
-  animation: pulseCrosshair 1s ease-out 1.5s forwards;
-}
-
-@keyframes sweepH {
-  to { transform: scaleX(1); }
-}
-
-@keyframes sweepV {
-  to { transform: scaleY(1); }
-}
-
-@keyframes pulseCrosshair {
-  0% { transform: scale(0.5); opacity: 0; }
-  50% { transform: scale(1.2); opacity: 0.7; }
-  100% { transform: scale(1); opacity: 0.25; }
 }
 
 /* Hero Layout Elements */
@@ -432,7 +391,6 @@ header.subpage-navbar {
 
 /* =================== START: SURVEY RETICLE CURSOR =================== */
 @media (hover: hover) and (pointer: fine) {
-  /* 1. Suppress native OS pointer and hand cursors everywhere */
   html, body, 
   a, button, input, textarea, select, 
   [role="button"], [onclick], .stage-canvas-box, .stage-bar-btn, .filter-btn, .view-all-btn {
@@ -448,7 +406,6 @@ header.subpage-navbar {
     will-change: transform;
   }
 
-  /* Center Precision Point */
   .cursor-dot {
     position: absolute;
     top: -3px;
@@ -460,7 +417,6 @@ header.subpage-navbar {
     transition: background-color 0.2s ease, transform 0.2s ease;
   }
 
-  /* Drafting Reticle Ring */
   .cursor-ring {
     position: absolute;
     top: -11px;
@@ -472,7 +428,6 @@ header.subpage-navbar {
     transition: width 0.2s ease, height 0.2s ease, top 0.2s ease, left 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
   }
 
-  /* Interactive Hover: Crisp White on orange buttons & dark cards */
   .survey-cursor.cursor-hover .cursor-dot {
     transform: scale(0.65);
     background-color: #FFFFFF;
@@ -490,7 +445,6 @@ header.subpage-navbar {
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
   }
 
-  /* Interactive Hover: Brand Orange on light backgrounds */
   .survey-cursor.cursor-hover-dark .cursor-dot {
     background-color: var(--accent-orange, #F15B22);
     box-shadow: none;
