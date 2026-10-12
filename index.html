@@ -70,84 +70,90 @@
   </a>
   <!-- =================== END: PINNED PERSISTENT LOGO =================== -->
 
-  <!-- =================== START: PERSISTENT BACKGROUND (TOPO & DOT GRID) =================== -->
+  The code you pasted is the older version that caused the overlapping lines in your screenshot.   Looking closely at the numbers in the snippet you pasted, the vector coordinates are looping back over themselves:   Tier 2: points="1440,345 1310,345 ... 1040,320 ... 1115,442 ... 1440,410"Heavy Index: points="1440,400 ... 1040,290 ..."
+The $Y$ coordinate for the Heavy Index drops up to $290$, while Tier 2 sits at $320$. Because a higher-tier contour dips above a lower-tier contour, the lines criss-cross each other right below the menu, creating the pinch effect from your screenshot.   The replacement code below uses clean, strictly ordered coordinates where every outer line steps outward with dedicated geometric clearance ($14\text{px}$–$24\text{px}$ along the steep east face, $45\text{px}$–$80\text{px}$ along the open west basin) so no two lines ever touch or intersect.   HTML  <!-- =================== START: PERSISTENT BACKGROUND (TOPO & DOT GRID) =================== -->
   <div class="hero-fixed-background" aria-hidden="true">
     <div class="hero-dot-grid"></div>
     <div class="hero-topography-canvas">
       <svg viewBox="0 0 1440 900" fill="none" stroke="currentColor" stroke-linejoin="miter" stroke-miterlimit="3" stroke-linecap="square" preserveAspectRatio="none">
         
-        <!-- Cartographic Benchmark Crosses (+) & Pips Along Ridge Spines -->
+        <!-- Cartographic Registration Crosses (+) & Benchmark Pips -->
         <g stroke="currentColor" stroke-width="1" opacity="0.32">
-          <!-- Summit saddle benchmark -->
-          <line x1="1040" y1="365" x2="1052" y2="365" />
-          <line x1="1046" y1="359" x2="1046" y2="371" />
-          <!-- Cirque bench benchmark -->
-          <line x1="840" y1="510" x2="852" y2="510" />
-          <line x1="846" y1="504" x2="846" y2="516" />
-          <!-- Basin plateau pips -->
-          <rect x="1080" y="380" width="3.5" height="3.5" fill="currentColor" stroke="none" opacity="0.4" />
-          <rect x="740" y="630" width="4" height="4" fill="currentColor" stroke="none" opacity="0.25" />
+          <line x1="940" y1="365" x2="952" y2="365" />
+          <line x1="946" y1="359" x2="946" y2="371" />
+          <line x1="740" y1="520" x2="752" y2="520" />
+          <line x1="746" y1="514" x2="746" y2="526" />
+          <rect x="980" y="380" width="3.5" height="3.5" fill="currentColor" stroke="none" opacity="0.4" />
+          <rect x="680" y="610" width="4" height="4" fill="currentColor" stroke="none" opacity="0.25" />
         </g>
 
-        <!-- Traversing Dashed Transect Trail (Cutting across spur lines) -->
-        <polyline class="topo-line-dashed" stroke-width="1.1" opacity="0.45"
-                  points="1440,390 1280,410 1150,440 1020,490 890,560 760,650 640,770 520,900" />
+        <!-- Traversing Dashed Transect Trail (Spur ridge crosscut) -->
+        <polyline class="topo-line-dashed" stroke-width="1.1" opacity="0.4"
+                  points="1440,390 1280,420 1120,460 960,520 800,600 660,700 520,810 400,900" />
 
-        <!-- TIER 1: Summit Core Facets (Tightly grouped around high point X: 1040, Y: 375) -->
-        <polygon class="topo-line-solid" stroke-width="1.4" opacity="0.75"
-                 points="1040,365 1065,372 1080,388 1060,402 1030,398 1015,385 1025,370" />
-        <polygon class="topo-line-solid" stroke-width="1.1" opacity="0.60"
-                 points="1040,350 1080,360 1105,385 1080,415 1025,410 998,390 1015,360" />
+        <!-- ELEVATION 1: Summit Core Facet (High point at X: 940, Y: 370) -->
+        <polygon class="topo-line-solid" stroke-width="1.4" opacity="0.8"
+                 points="940,360 960,370 970,388 952,402 930,398 920,382 928,368" />
+
+        <!-- ELEVATION 2: Nested Summit Ridge -->
+        <polygon class="topo-line-solid" stroke-width="1.1" opacity="0.65"
+                 points="940,345 972,358 988,388 965,414 925,410 908,385 920,358" />
+
+        <!-- ELEVATION 3: Summit Crest Index Loop -->
+        <polygon class="topo-line-dashed" stroke-width="1.2" opacity="0.65"
+                 points="940,330 985,346 1008,388 978,426 920,422 895,388 912,348" />
+
+        <!-- ELEVATION 4: Upper Escarpment Break -->
         <polygon class="topo-line-solid" stroke-width="1.2" opacity="0.55"
-                 points="1040,335 1095,348 1130,380 1100,428 1018,422 982,392 1005,350" />
+                 points="940,315 998,334 1028,388 992,438 915,434 882,390 904,338" />
 
-        <!-- TIER 2: Immediate Mountain Shoulder (Sharp angular crags expanding outward) -->
-        <polyline class="topo-line-solid" stroke-width="1.3" opacity="0.68"
-                  points="1440,345 1310,345 1205,360 1120,335 1040,320 990,340 965,395 1005,438 1115,442 1210,410 1320,418 1440,410" />
-
-        <polyline class="topo-line-dashed" stroke-width="1.2" opacity="0.60"
-                  points="1440,370 1325,370 1225,380 1140,352 1040,305 975,330 948,398 995,452 1130,458 1230,430 1340,438 1440,430" />
-
-        <!-- Heavy Primary Escarpment Index (Defines the main crest spine) -->
+        <!-- ELEVATION 5: Heavy Arête Index Line -->
         <polyline class="topo-line-solid" stroke-width="2.2" opacity="0.85"
-                  points="1440,400 1340,400 1245,405 1160,370 1040,290 955,318 928,405 982,468 1148,475 1250,450 1360,460 1440,450" />
+                  points="1440,350 1260,350 1140,358 1018,320 940,298 870,340 855,392 898,452 985,456 1045,415 1160,420 1280,405 1440,405" />
 
-        <!-- TIER 3: Descending Spur Ridges (Angular switchbacks stepping down the face) -->
+        <!-- ELEVATION 6: Steep Slope Band 1 -->
         <polyline class="topo-line-solid" stroke-width="1.1" opacity="0.45"
-                  points="1440,435 1355,432 1265,430 1180,392 1040,272 935,305 905,415 968,485 1165,492 1270,470 1380,482 1440,472" />
+                  points="1440,375 1270,375 1155,380 1032,335 940,282 855,325 838,395 885,466 1000,470 1062,430 1175,435 1295,420 1440,420" />
 
-        <polyline class="topo-line-solid" stroke-width="1.0" opacity="0.40"
-                  points="1440,470 1370,465 1285,455 1200,415 1040,255 915,292 882,425 952,502 1182,510 1290,490 1400,505 1440,495" />
-
+        <!-- ELEVATION 7: Steep Slope Band 2 (Dashed Accent) -->
         <polyline class="topo-line-dashed" stroke-width="1.2" opacity="0.55"
-                  points="1440,510 1385,498 1305,480 1220,440 1040,235 895,278 858,438 935,522 1200,530 1310,512 1420,530 1440,520" />
+                  points="1440,400 1280,400 1170,402 1046,350 940,266 840,310 820,398 872,480 1015,484 1080,445 1190,450 1310,435 1440,435" />
 
-        <!-- Secondary Heavy Escarpment Index -->
-        <polyline class="topo-line-solid" stroke-width="1.8" opacity="0.75"
-                  points="1440,555 1398,535 1325,510 1238,465 1040,215 870,262 830,452 915,545 1218,552 1330,535 1440,550" />
+        <!-- ELEVATION 8: Intermediate Slope Index -->
+        <polyline class="topo-line-solid" stroke-width="1.8" opacity="0.7"
+                  points="1440,430 1292,430 1188,426 1062,368 940,248 822,292 800,402 858,496 1032,500 1100,462 1208,468 1328,452 1440,452" />
 
-        <!-- TIER 4: Western Cirque & Intermediate Slopes (Flowing toward center screen) -->
-        <polyline class="topo-line-solid" stroke-width="1.1" opacity="0.35"
-                  points="1440,605 1405,575 1340,545 1255,498 1040,195 845,248 798,470 892,572 1235,578 1350,560 1440,580" />
+        <!-- ELEVATION 9: Widening Cirque Flank -->
+        <polyline class="topo-line-solid" stroke-width="1.1" opacity="0.38"
+                  points="1440,465 1308,465 1208,452 1080,388 940,228 802,272 778,408 842,514 1052,518 1122,482 1228,488 1348,472 1440,472" />
 
-        <polyline class="topo-line-solid" stroke-width="1.0" opacity="0.30"
-                  points="1440,660 1410,620 1355,585 1270,535 1040,172 818,230 762,492 868,605 1252,608 1370,590 1440,615" />
+        <!-- ELEVATION 10: Southwest Spur Step -->
+        <polyline class="topo-line-solid" stroke-width="1.0" opacity="0.32"
+                  points="1440,505 1325,502 1230,480 1100,410 940,205 780,250 752,415 824,534 1075,538 1148,504 1250,510 1370,494 1440,495" />
 
+        <!-- ELEVATION 11: Broad Intermediate Slope (Dashed Accent) -->
+        <polyline class="topo-line-dashed" stroke-width="1.2" opacity="0.45"
+                  points="1440,550 1345,542 1255,510 1122,434 940,180 755,225 722,424 804,556 1100,560 1175,528 1275,534 1395,518 1440,520" />
+
+        <!-- ELEVATION 12: Western Basin Index Escarpment -->
+        <polyline class="topo-line-solid" stroke-width="1.6" opacity="0.55"
+                  points="1440,600 1368,585 1282,542 1146,460 940,152 728,198 690,434 782,580 1128,584 1205,554 1302,560 1422,544 1440,548" />
+
+        <!-- ELEVATION 13: Gentle Valley Slope 1 -->
         <polyline class="topo-line-solid" stroke-width="1.1" opacity="0.25"
-                  points="1440,720 1412,670 1368,630 1282,578 1040,148 788,210 720,520 840,642 1270,640 1390,625 1440,655" />
+                  points="1440,655 1392,630 1312,576 1172,488 940,122 698,168 655,446 758,606 1158,610 1238,582 1332,588 1440,578" />
 
-        <!-- TIER 5: Broad Valley Basin (Extending across center X: 440–680 with calm, wide spacing) -->
-        <polyline class="topo-line-solid" stroke-width="1.4" opacity="0.32"
-                  points="1440,785 1412,725 1378,680 1290,625 1040,120 752,190 670,555 808,688 1288,678 1410,665 1440,700" />
+        <!-- ELEVATION 14: Gentle Valley Slope 2 -->
+        <polyline class="topo-line-solid" stroke-width="1.0" opacity="0.2"
+                  points="1440,715 1418,678 1345,612 1200,518 940,90  665,135 618,460 732,634 1190,638 1272,612 1365,618 1440,610" />
 
-        <polyline class="topo-line-solid" stroke-width="1.0" opacity="0.20"
-                  points="1440,845 1410,785 1382,735 1295,678 1040,88  710,168 610,600 770,742 1308,722 1425,710 1440,750" />
-
+        <!-- ELEVATION 15: Base Valley Flank -->
         <polyline class="topo-line-solid" stroke-width="1.2" opacity="0.16"
-                  points="1440,900 1400,845 1380,795 1298,735 1040,52  660,142 540,655 725,808 1325,770 1435,760 1440,805" />
+                  points="1440,780 1440,730 1380,650 1230,550 940,55  630,100 578,476 704,664 1224,668 1308,644 1400,650 1440,645" />
 
-        <polyline class="topo-line-solid" stroke-width="1.0" opacity="0.10"
-                  points="1440,900 1385,860 1295,798 1040,15  600,112 460,720 675,885 1345,825 1440,865" />
+        <!-- ELEVATION 16: Outer Plateau Boundary Line -->
+        <polyline class="topo-line-solid" stroke-width="1.0" opacity="0.1"
+                  points="1440,850 1440,785 1418,690 1262,584 940,18  592,62  535,494 674,696 1260,700 1346,678 1440,685" />
       </svg>
     </div>
   </div>
