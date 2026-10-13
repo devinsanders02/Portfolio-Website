@@ -128,7 +128,14 @@ body {
   stroke-linejoin: round;
   stroke-dasharray: 1800;
   stroke-dashoffset: 1800;
-  animation: drawContourLine 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: drawContourLine 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Fallback: if animations are delayed or skipped, show lines permanently */
+@media (prefers-reduced-motion: reduce) {
+  .topo-contour {
+    stroke-dashoffset: 0 !important;
+  }
 }
 
 /* Cartographic Line Hierarchy */
@@ -243,8 +250,8 @@ header.subpage-navbar {
 }
 
 .hero-sticky-canvas {
-  position: sticky;
-  top: 0;
+  position: relative;
+  min-height: 100vh;
   height: 100vh;
   width: 100%;
   display: flex;
@@ -254,7 +261,6 @@ header.subpage-navbar {
   box-sizing: border-box;
   background: transparent;
   z-index: 1;
-  pointer-events: none;
 }
 
 .hero-sticky-canvas > * {
