@@ -69,50 +69,58 @@
   <div class="hero-fixed-background" aria-hidden="true">
     <div class="hero-dot-grid"></div>
 
-    <!-- Topography Plate Anchored in Fixed Layer (Outside Document Flow) -->
-    <div class="hero-topography-plate" aria-hidden="true">
-      <svg class="topo-svg-canvas" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
-        <!-- Cartographic Elevation Benchmark Marker -->
-        <g class="topo-benchmark" stroke="#2C3E50" opacity="0.4" stroke-width="1">
-          <line x1="1040" y1="460" x2="1056" y2="460" />
-          <line x1="1048" y1="452" x2="1048" y2="468" />
-          <circle cx="1048" cy="460" r="1.5" fill="#2C3E50" stroke="none" />
-          <text x="1062" y="464" font-family="monospace" font-size="9" fill="#2C3E50" letter-spacing="1">BM 5280'</text>
+    <!-- Angular Faceted Topographic Plate (Locked inside fixed viewport) -->
+    <div class="hero-topography-plate">
+      <svg class="topo-svg-canvas" viewBox="0 0 1440 900" preserveAspectRatio="none" fill="none">
+        
+        <!-- Subtle Cartographic Datum / Peak Coordinate Tag -->
+        <g class="topo-datum" stroke="#2C3E50" opacity="0.4" stroke-width="1">
+          <line x1="1130" y1="316" x2="1146" y2="316" />
+          <line x1="1138" y1="308" x2="1138" y2="324" />
+          <circle cx="1138" cy="316" r="1.5" fill="#2C3E50" stroke="none" />
+          <text x="1152" y="320" font-family="monospace" font-size="9" fill="#2C3E50" letter-spacing="1">PK ELEV 6420'</text>
         </g>
 
-        <!-- 11 Clean Spline Contours -->
-        <path class="topo-contour topo-index"
-              d="M 1440,395 C 1310,400 1205,420 1120,442 C 1045,462 1010,488 1025,518 C 1042,548 1115,565 1220,585 C 1320,605 1395,625 1440,638" />
+        <!-- 10 Faceted Angular Contours: Tight Summit Spur (Right) -> Wide Flats (Left) -->
+        <!-- Contour 01 (Summit Apex - Index Contour) -->
+        <polyline class="topo-contour topo-index"
+                  points="1440,320 1260,314 1138,328 1020,380 780,450 440,510 0,540" />
 
-        <path class="topo-contour topo-hairline"
-              d="M 1440,412 C 1298,418 1185,438 1098,462 C 1020,484 982,512 1000,544 C 1018,576 1098,594 1205,616 C 1308,638 1385,658 1440,672" />
+        <!-- Contour 02 (Steep Ridge Tier) -->
+        <polyline class="topo-contour topo-hairline"
+                  points="1440,336 1264,331 1142,347 1018,402 770,476 430,540 0,572" />
 
-        <path class="topo-contour topo-dashed"
-              d="M 1440,430 C 1285,436 1165,458 1075,482 C 995,504 955,536 974,570 C 994,604 1080,624 1190,646 C 1295,668 1378,690 1440,705" />
+        <!-- Contour 03 (Dashed Fault Line) -->
+        <polyline class="topo-contour topo-dashed"
+                  points="1440,354 1268,350 1146,368 1016,426 760,504 420,572 0,606" />
 
-        <path class="topo-contour topo-hairline"
-              d="M 1440,450 C 1272,456 1144,478 1052,504 C 970,528 928,560 948,596 C 970,632 1062,652 1175,676 C 1282,700 1370,722 1440,738" />
+        <!-- Contour 04 (Shoulder Tier) -->
+        <polyline class="topo-contour topo-hairline"
+                  points="1440,374 1272,371 1150,391 1014,452 750,534 410,606 0,642" />
 
-        <path class="topo-contour topo-index"
-              d="M 1440,472 C 1258,478 1122,500 1028,526 C 944,550 900,586 922,624 C 945,662 1042,682 1160,708 C 1270,732 1362,755 1440,772" />
+        <!-- Contour 05 (Mid Slope - Index Contour) -->
+        <polyline class="topo-contour topo-index"
+                  points="1440,396 1276,394 1154,416 1012,480 740,566 400,642 0,680" />
 
-        <path class="topo-contour topo-hairline"
-              d="M 1440,496 C 1242,502 1100,524 1002,550 C 916,576 870,612 894,652 C 920,692 1022,714 1145,740 C 1256,766 1352,788 1440,806" />
+        <!-- Contour 06 (Expanding Bench) -->
+        <polyline class="topo-contour topo-hairline"
+                  points="1440,420 1280,419 1158,443 1010,510 730,600 390,680 0,720" />
 
-        <path class="topo-contour topo-dashed"
-              d="M 1440,522 C 1226,528 1076,550 975,576 C 888,602 840,640 866,682 C 894,724 1002,746 1128,774 C 1242,800 1342,822 1440,840" />
+        <!-- Contour 07 (Dashed Structural Step) -->
+        <polyline class="topo-contour topo-dashed"
+                  points="1440,446 1284,446 1162,472 1008,542 720,636 380,720 0,762" />
 
-        <path class="topo-contour topo-hairline"
-              d="M 1440,550 C 1208,556 1050,578 946,604 C 858,630 808,670 836,714 C 866,758 980,780 1110,810 C 1228,836 1332,858 1440,876" />
+        <!-- Contour 08 (Low Terrace) -->
+        <polyline class="topo-contour topo-hairline"
+                  points="1440,474 1288,475 1166,503 1006,576 710,674 370,762 0,806" />
 
-        <path class="topo-contour topo-hairline"
-              d="M 1440,580 C 1188,586 1022,608 915,634 C 826,660 774,702 804,748 C 838,794 956,816 1090,846 C 1212,872 1320,895 1440,912" />
+        <!-- Contour 09 (Valley Transition) -->
+        <polyline class="topo-contour topo-hairline"
+                  points="1440,504 1292,506 1170,536 1004,612 700,714 360,806 0,852" />
 
-        <path class="topo-contour topo-index"
-              d="M 1440,614 C 1166,620 992,642 880,668 C 790,694 736,736 770,784 C 806,832 930,854 1068,884 C 1195,910 1308,932 1440,950" />
-
-        <path class="topo-contour topo-hairline"
-              d="M 1440,650 C 1140,656 960,678 842,704 C 750,730 695,774 732,822 C 772,872 902,894 1045,924 C 1175,950 1295,972 1440,990" />
+        <!-- Contour 10 (Basal Plain - Index Contour) -->
+        <polyline class="topo-contour topo-index"
+                  points="1440,536 1296,539 1174,571 1002,650 690,756 350,852 0,900" />
       </svg>
     </div>
   </div>
