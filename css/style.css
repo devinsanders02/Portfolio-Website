@@ -119,34 +119,33 @@ body {
   display: block;
 }
 
-/* Static Faceted Lines - Direct Hex Color & Non-Scaling Stroke */
+/* Refined Cartographic Hierarchy */
 .topo-contour {
   fill: none !important;
-  stroke: #2C3E50 !important;
+  stroke: var(--text-dark, #2C3E50) !important;
   stroke-linejoin: miter;
   stroke-miterlimit: 4;
   vector-effect: non-scaling-stroke;
 }
 
-/* High-Contrast Cartographic Hierarchy */
 .topo-index {
-  stroke-width: 2px !important;
-  opacity: 0.55 !important;
-}
-
-.topo-hairline {
-  stroke-width: 1.2px !important;
+  stroke-width: 1.4px !important;
   opacity: 0.28 !important;
 }
 
+.topo-hairline {
+  stroke-width: 0.85px !important;
+  opacity: 0.12 !important;
+}
+
 .topo-dashed {
-  stroke-width: 1.2px !important;
-  stroke-dasharray: 6 8 !important;
-  opacity: 0.35 !important;
+  stroke-width: 0.95px !important;
+  stroke-dasharray: 5 6 !important;
+  opacity: 0.18 !important;
 }
 
 .topo-datum {
-  opacity: 0.7 !important;
+  opacity: 0.45 !important;
 }
 
 .topo-datum text {
