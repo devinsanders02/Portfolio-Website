@@ -49,26 +49,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.getElementById('close-overlay-btn');
   const overlayContact = document.getElementById('overlay-contact-link');
 
-// Disable browser automatic scroll restoration on reload
+  // Disable browser automatic scroll restoration on reload
   if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
   }
   window.scrollTo(0, 0);
 
-  // Unified Scroll Handler: Fade Hero Elements & Toggle Floating Button
+  // Unified Scroll Handler: Float Nav Toggle & Optional Parallax
   const handleScrollDynamics = () => {
     const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
-    const fadeThreshold = 360;
-
-    // Hard clamp: if user is at top of screen, force full 1.0 opacity
-    const fadeProgress = scrollY <= 10 ? 1 : Math.max(0, 1 - (scrollY / fadeThreshold));
-    const translateY = scrollY <= 10 ? 0 : -(scrollY * 0.14);
 
     const fadeElements = document.querySelectorAll('.js-fade-on-scroll');
     fadeElements.forEach(el => {
-      el.style.opacity = fadeProgress;
-      el.style.transform = `translateY(${translateY}px)`;
-      el.style.pointerEvents = fadeProgress < 0.1 ? 'none' : 'auto';
+      // Keep opacity locked to full visibility on arrival:
+      el.style.opacity = '1';
+      el.style.pointerEvents = 'auto';
     });
 
     if (floatBtn) {
@@ -81,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.addEventListener('scroll', handleScrollDynamics, { passive: true });
-  // Ensure top state on initial paint
   handleScrollDynamics();
 
   const openOverlay = () => {
