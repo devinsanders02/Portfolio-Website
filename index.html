@@ -65,16 +65,11 @@
   </button>
   <!-- =================== END: FLOATING PEAK NAV BUTTON =================== -->
 
-  <!-- =================== START: PINNED PERSISTENT LOGO =================== -->
-  <a href="index.html" class="hero-persistent-logo" aria-label="Devin Sanders Home">
-    <img src="LogoBlue.png" alt="Devin Sanders Mark" class="hero-logo-img">
-  </a>
-  <!-- =================== END: PINNED PERSISTENT LOGO =================== -->
+  <!-- =================== START: PERSISTENT BACKGROUND =================== -->
+  <div class="hero-fixed-background" aria-hidden="true">
+    <div class="hero-dot-grid"></div>
 
-  <!-- =================== START: HERO VIEWPORT =================== -->
-  <section id="hero-sticky-canvas" class="hero-sticky-canvas">
-
-    <!-- Topography Vector Plate (Embedded inside hero canvas to preserve 100vh layout) -->
+    <!-- Topography Plate Anchored in Fixed Layer (Outside Document Flow) -->
     <div class="hero-topography-plate" aria-hidden="true">
       <svg class="topo-svg-canvas" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
         <!-- Cartographic Elevation Benchmark Marker -->
@@ -120,6 +115,17 @@
               d="M 1440,650 C 1140,656 960,678 842,704 C 750,730 695,774 732,822 C 772,872 902,894 1045,924 C 1175,950 1295,972 1440,990" />
       </svg>
     </div>
+  </div>
+  <!-- =================== END: PERSISTENT BACKGROUND =================== -->
+
+  <!-- =================== START: PINNED PERSISTENT LOGO =================== -->
+  <a href="index.html" class="hero-persistent-logo" aria-label="Devin Sanders Home">
+    <img src="LogoBlue.png" alt="Devin Sanders Mark" class="hero-logo-img">
+  </a>
+  <!-- =================== END: PINNED PERSISTENT LOGO =================== -->
+
+  <!-- =================== START: HERO VIEWPORT =================== -->
+  <section id="hero-sticky-canvas" class="hero-sticky-canvas">
 
     <div class="hero-top-row">
       <!-- Top Left: Metadata Stack -->
