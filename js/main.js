@@ -154,30 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // MONOGRAM WATERMARK VECTOR DRAW ENGINE
-  // =========================================================================
-  const markPath = document.getElementById('mark-stroke');
-  const markFill = document.getElementById('mark-fill');
-
-  if (markPath) {
-    const pathLength = markPath.getTotalLength();
-
-    // Hide stroke behind dashoffset before drawing
-    markPath.style.strokeDasharray = pathLength;
-    markPath.style.strokeDashoffset = pathLength;
-
-    // Trigger mechanical plotter line-draw once page clears loader
-    setTimeout(() => {
-      markPath.style.strokeDashoffset = '0';
-
-      // Wash in soft tone-on-tone environmental fill
-      setTimeout(() => {
-        if (markFill) markFill.classList.add('is-visible');
-      }, 1800);
-    }, 350);
-  }
-
-  // =========================================================================
   // PRECISION SURVEY RETICLE CURSOR (Self-Injecting, High-Contrast)
   // =========================================================================
   if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
