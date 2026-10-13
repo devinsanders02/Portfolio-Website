@@ -103,12 +103,12 @@ body {
   opacity: 0.05;
 }
 
-/* Cartographic Topography Canvas (Fixed viewport, zero overflow) */
+/* Cartographic Topography Canvas (Pinned inside hero canvas) */
 .hero-topography-plate {
-  position: fixed;
+  position: absolute;
   inset: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
@@ -120,46 +120,46 @@ body {
   display: block;
 }
 
-/* Base Contour Trajectory (Normalized 0 -> 1 for instant, flicker-free line draw) */
+/* Base Contour Trajectory (Explicit Coordinate Dash Offset) */
 .topo-contour {
   fill: none;
   stroke: var(--text-dark, #2C3E50);
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
+  stroke-dasharray: 1800;
+  stroke-dashoffset: 1800;
   animation: drawContourLine 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* USGS Cartographic Line Hierarchy */
+/* Cartographic Line Hierarchy */
 .topo-index {
-  stroke-width: 1.4px;
-  opacity: 0.22;
+  stroke-width: 1.5px;
+  opacity: 0.28;
 }
 
 .topo-hairline {
   stroke-width: 0.85px;
-  opacity: 0.085;
-}
-
-.topo-dashed {
-  stroke-width: 0.95px;
-  stroke-dasharray: 0.005 0.008;
   opacity: 0.12;
 }
 
-/* Staggered CAD plotter stroke arrival */
-.topo-contour:nth-of-type(1) { animation-delay: 0.15s; }
-.topo-contour:nth-of-type(2) { animation-delay: 0.22s; }
-.topo-contour:nth-of-type(3) { animation-delay: 0.29s; }
-.topo-contour:nth-of-type(4) { animation-delay: 0.36s; }
-.topo-contour:nth-of-type(5) { animation-delay: 0.43s; }
+.topo-dashed {
+  stroke-width: 1px;
+  stroke-dasharray: 6 8;
+  opacity: 0.18;
+}
+
+/* Staggered CAD Plotter Line Arrival */
+.topo-contour:nth-of-type(1) { animation-delay: 0.10s; }
+.topo-contour:nth-of-type(2) { animation-delay: 0.18s; }
+.topo-contour:nth-of-type(3) { animation-delay: 0.26s; }
+.topo-contour:nth-of-type(4) { animation-delay: 0.34s; }
+.topo-contour:nth-of-type(5) { animation-delay: 0.42s; }
 .topo-contour:nth-of-type(6) { animation-delay: 0.50s; }
-.topo-contour:nth-of-type(7) { animation-delay: 0.57s; }
-.topo-contour:nth-of-type(8) { animation-delay: 0.64s; }
-.topo-contour:nth-of-type(9) { animation-delay: 0.71s; }
-.topo-contour:nth-of-type(10) { animation-delay: 0.78s; }
-.topo-contour:nth-of-type(11) { animation-delay: 0.85s; }
+.topo-contour:nth-of-type(7) { animation-delay: 0.58s; }
+.topo-contour:nth-of-type(8) { animation-delay: 0.66s; }
+.topo-contour:nth-of-type(9) { animation-delay: 0.74s; }
+.topo-contour:nth-of-type(10) { animation-delay: 0.82s; }
+.topo-contour:nth-of-type(11) { animation-delay: 0.90s; }
 
 @keyframes drawContourLine {
   to {
@@ -168,16 +168,10 @@ body {
 }
 
 .topo-benchmark {
-  animation: fadeInBenchmark 1.2s ease-out 1.2s forwards;
-  opacity: 0;
-}
-
-@keyframes fadeInBenchmark {
-  to {
-    opacity: 0.32;
-  }
+  opacity: 0.35;
 }
 /* =================== END: PERSISTENT BACKGROUND & CARTOGRAPHY =================== */
+
 /* =================== START: SUBPAGE STANDARD NAVBAR =================== */
 header.subpage-navbar {
   position: relative;
