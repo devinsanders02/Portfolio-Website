@@ -103,10 +103,11 @@ body {
   opacity: 0.05;
 }
 
-/* Cartographic Topography Canvas (Pinned inside hero canvas) */
+/* Cartographic Topography Canvas (Pinned inside hero canvas, zero flex interference) */
 .hero-topography-plate {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
@@ -120,25 +121,14 @@ body {
   display: block;
 }
 
-/* Base Contour Trajectory (Explicit Coordinate Dash Offset) */
+/* Static Elevation Contours (Visible immediately, zero animation blocks) */
 .topo-contour {
   fill: none;
   stroke: var(--text-dark, #2C3E50);
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-dasharray: 1800;
-  stroke-dashoffset: 1800;
-  animation: drawContourLine 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Fallback: if animations are delayed or skipped, show lines permanently */
-@media (prefers-reduced-motion: reduce) {
-  .topo-contour {
-    stroke-dashoffset: 0 !important;
-  }
-}
-
-/* Cartographic Line Hierarchy */
 .topo-index {
   stroke-width: 1.5px;
   opacity: 0.28;
@@ -153,25 +143,6 @@ body {
   stroke-width: 1px;
   stroke-dasharray: 6 8;
   opacity: 0.18;
-}
-
-/* Staggered CAD Plotter Line Arrival */
-.topo-contour:nth-of-type(1) { animation-delay: 0.10s; }
-.topo-contour:nth-of-type(2) { animation-delay: 0.18s; }
-.topo-contour:nth-of-type(3) { animation-delay: 0.26s; }
-.topo-contour:nth-of-type(4) { animation-delay: 0.34s; }
-.topo-contour:nth-of-type(5) { animation-delay: 0.42s; }
-.topo-contour:nth-of-type(6) { animation-delay: 0.50s; }
-.topo-contour:nth-of-type(7) { animation-delay: 0.58s; }
-.topo-contour:nth-of-type(8) { animation-delay: 0.66s; }
-.topo-contour:nth-of-type(9) { animation-delay: 0.74s; }
-.topo-contour:nth-of-type(10) { animation-delay: 0.82s; }
-.topo-contour:nth-of-type(11) { animation-delay: 0.90s; }
-
-@keyframes drawContourLine {
-  to {
-    stroke-dashoffset: 0;
-  }
 }
 
 .topo-benchmark {
@@ -251,7 +222,6 @@ header.subpage-navbar {
 
 .hero-sticky-canvas {
   position: relative;
-  min-height: 100vh;
   height: 100vh;
   width: 100%;
   display: flex;
@@ -261,13 +231,14 @@ header.subpage-navbar {
   box-sizing: border-box;
   background: transparent;
   z-index: 1;
+  overflow: hidden;
 }
 
 .hero-sticky-canvas > * {
   pointer-events: auto;
 }
 
-/* Hero Layout Elements */
+/* Hero Layout Elements: Explicitly Layered and Visible */
 .hero-top-row {
   position: relative;
   z-index: 2;
@@ -276,6 +247,7 @@ header.subpage-navbar {
   align-items: flex-start;
   width: 100%;
   padding-top: 5.5rem;
+  opacity: 1;
 }
 
 .hero-meta-block {
@@ -377,6 +349,7 @@ header.subpage-navbar {
 .hero-bottom-anchor {
   position: relative;
   z-index: 2;
+  opacity: 1;
   will-change: opacity, transform;
 }
 
