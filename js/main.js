@@ -49,21 +49,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.getElementById('close-overlay-btn');
   const overlayContact = document.getElementById('overlay-contact-link');
 
-  // Disable browser automatic scroll restoration on reload
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-  }
-  window.scrollTo(0, 0);
-
-  // Unified Scroll Handler: Float Nav Toggle & Optional Parallax
+  // Unified Scroll Handler: Fade Hero Elements & Toggle Floating Button
   const handleScrollDynamics = () => {
-    const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+    const scrollY = window.scrollY;
+    const fadeThreshold = 360;
+
+    const fadeProgress = Math.max(0, 1 - (scrollY / fadeThreshold));
+    const translateY = -(scrollY * 0.14);
 
     const fadeElements = document.querySelectorAll('.js-fade-on-scroll');
     fadeElements.forEach(el => {
-      // Keep opacity locked to full visibility on arrival:
-      el.style.opacity = '1';
-      el.style.pointerEvents = 'auto';
+      el.style.opacity = fadeProgress;
+      el.style.transform = `translateY(${translateY}px)`;
+      el.style.pointerEvents = fadeProgress < 0.1 ? 'none' : 'auto';
     });
 
     if (floatBtn) {
