@@ -65,62 +65,62 @@
   </button>
   <!-- =================== END: FLOATING PEAK NAV BUTTON =================== -->
 
-  <!-- =================== START: PERSISTENT BACKGROUND =================== -->
+<!-- =================== START: PERSISTENT BACKGROUND =================== -->
   <div class="hero-fixed-background" aria-hidden="true">
     <div class="hero-dot-grid"></div>
 
-    <!-- Angular Faceted Topographic Plate (Locked inside fixed viewport) -->
-    <div class="hero-topography-plate">
-      <svg class="topo-svg-canvas" viewBox="0 0 1440 900" preserveAspectRatio="none" fill="none">
+    <!-- Angular Faceted Topographic Plate (True Summit Peak & Fanned Ridges) -->
+    <div class="hero-topography-plate" aria-hidden="true">
+      <svg class="topo-svg-canvas" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
         
-        <!-- Subtle Cartographic Datum / Peak Coordinate Tag -->
-        <g class="topo-datum" stroke="#2C3E50" opacity="0.4" stroke-width="1">
-          <line x1="1130" y1="316" x2="1146" y2="316" />
-          <line x1="1138" y1="308" x2="1138" y2="324" />
-          <circle cx="1138" cy="316" r="1.5" fill="#2C3E50" stroke="none" />
-          <text x="1152" y="320" font-family="monospace" font-size="9" fill="#2C3E50" letter-spacing="1">PK ELEV 6420'</text>
+        <!-- Cartographic Peak Datum Benchmark -->
+        <g class="topo-datum" stroke="#2C3E50" opacity="0.65" stroke-width="1.2">
+          <line x1="1230" y1="310" x2="1246" y2="310" />
+          <line x1="1238" y1="302" x2="1238" y2="318" />
+          <circle cx="1238" cy="310" r="2" fill="#2C3E50" stroke="none" />
+          <text x="1254" y="314" font-family="monospace" font-size="9" fill="#2C3E50" letter-spacing="1">PK ELEV 5280'</text>
         </g>
 
-        <!-- 10 Faceted Angular Contours: Tight Summit Spur (Right) -> Wide Flats (Left) -->
-        <!-- Contour 01 (Summit Apex - Index Contour) -->
+        <!-- Peak Crest Enclosures (Tight Concentric Angular Caps on Right) -->
+        <!-- Tier 01: Summit Apex Enclosure -->
+        <polygon class="topo-contour topo-index"
+                 points="1238,292 1275,310 1262,332 1215,330 1198,312" />
+
+        <!-- Tier 02: Upper Crest Ring -->
+        <polygon class="topo-contour topo-hairline"
+                 points="1238,278 1292,302 1282,344 1205,342 1182,312" />
+
+        <!-- Tier 03: Dashed Ridge Fault Ring -->
+        <polygon class="topo-contour topo-dashed"
+                 points="1238,264 1312,295 1302,360 1192,356 1165,314" />
+
+        <!-- Tier 04: Outer Summit Cap -->
+        <polygon class="topo-contour topo-hairline"
+                 points="1238,248 1335,286 1324,378 1178,372 1145,316" />
+
+        <!-- Tier 05: Mid Shoulder (Opens to East Face & Descends to Plain) -->
         <polyline class="topo-contour topo-index"
-                  points="1440,320 1260,314 1138,328 1020,380 780,450 440,510 0,540" />
+                  points="1440,320 1358,278 1238,232 1125,318 1162,390 1280,410 1440,430" />
 
-        <!-- Contour 02 (Steep Ridge Tier) -->
+        <!-- Tier 06: Expanded Terrace (Reaches Toward Mid-Canvas) -->
         <polyline class="topo-contour topo-hairline"
-                  points="1440,336 1264,331 1142,347 1018,402 770,476 430,540 0,572" />
+                  points="1440,342 1380,270 1238,212 1100,322 1142,410 1240,436 1440,470" />
 
-        <!-- Contour 03 (Dashed Fault Line) -->
+        <!-- Tier 07: Dashed Shelf Fault -->
         <polyline class="topo-contour topo-dashed"
-                  points="1440,354 1268,350 1146,368 1016,426 760,504 420,572 0,606" />
+                  points="1440,370 1400,260 1238,190 1070,328 1118,432 1195,468 1440,515" />
 
-        <!-- Contour 04 (Shoulder Tier) -->
+        <!-- Tier 08: Lower Mountain Spur (Sweeps South-West) -->
         <polyline class="topo-contour topo-hairline"
-                  points="1440,374 1272,371 1150,391 1014,452 750,534 410,606 0,642" />
+                  points="1440,405 1370,300 1238,165 1035,335 1090,460 1140,505 1310,555 1440,568" />
 
-        <!-- Contour 05 (Mid Slope - Index Contour) -->
+        <!-- Tier 09: Valley Foot (Fanning Broadly Toward Screen Base) -->
+        <polyline class="topo-contour topo-hairline"
+                  points="1440,448 1320,345 1238,138 995,344 1055,492 1080,550 1220,610 1440,630" />
+
+        <!-- Tier 10: Basal Plain Traverse (Wide Flank Across Lower Canvas) -->
         <polyline class="topo-contour topo-index"
-                  points="1440,396 1276,394 1154,416 1012,480 740,566 400,642 0,680" />
-
-        <!-- Contour 06 (Expanding Bench) -->
-        <polyline class="topo-contour topo-hairline"
-                  points="1440,420 1280,419 1158,443 1010,510 730,600 390,680 0,720" />
-
-        <!-- Contour 07 (Dashed Structural Step) -->
-        <polyline class="topo-contour topo-dashed"
-                  points="1440,446 1284,446 1162,472 1008,542 720,636 380,720 0,762" />
-
-        <!-- Contour 08 (Low Terrace) -->
-        <polyline class="topo-contour topo-hairline"
-                  points="1440,474 1288,475 1166,503 1006,576 710,674 370,762 0,806" />
-
-        <!-- Contour 09 (Valley Transition) -->
-        <polyline class="topo-contour topo-hairline"
-                  points="1440,504 1292,506 1170,536 1004,612 700,714 360,806 0,852" />
-
-        <!-- Contour 10 (Basal Plain - Index Contour) -->
-        <polyline class="topo-contour topo-index"
-                  points="1440,536 1296,539 1174,571 1002,650 690,756 350,852 0,900" />
+                  points="1440,500 1280,395 1238,105 950,355 1015,530 1010,600 1120,670 1320,720 1440,735" />
       </svg>
     </div>
   </div>
