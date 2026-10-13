@@ -103,16 +103,12 @@ body {
   opacity: 0.05;
 }
 
-/* Placed strictly in fixed layer behind all DOM flow */
+/* Faceted Topographic Canvas (Fixed Viewport Layer) */
 .hero-topography-plate {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   overflow: hidden;
 }
@@ -123,31 +119,32 @@ body {
   display: block;
 }
 
-/* Crisp, zero-animation baseline paths (cannot fail invisible) */
+/* Static Faceted Lines */
 .topo-contour {
   fill: none;
   stroke: var(--text-dark, #2C3E50);
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  stroke-linejoin: miter;
+  stroke-miterlimit: 4;
 }
 
+/* Cartographic Hierarchy */
 .topo-index {
   stroke-width: 1.4px;
-  stroke-opacity: 0.28;
+  stroke-opacity: 0.22;
 }
 
 .topo-hairline {
   stroke-width: 0.85px;
-  stroke-opacity: 0.12;
+  stroke-opacity: 0.09;
 }
 
 .topo-dashed {
-  stroke-width: 1px;
-  stroke-dasharray: 6 8;
-  stroke-opacity: 0.20;
+  stroke-width: 0.95px;
+  stroke-dasharray: 4 6;
+  stroke-opacity: 0.16;
 }
 
-.topo-benchmark {
+.topo-datum {
   opacity: 0.35;
 }
 /* =================== END: PERSISTENT BACKGROUND & CARTOGRAPHY =================== */
