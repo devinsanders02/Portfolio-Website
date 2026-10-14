@@ -103,21 +103,18 @@ body {
   opacity: 0.05;
 }
 
-/* Fixed Vector Container (Right-Anchored) */
+/* Full Bleed: Eliminates the hard vertical cutoff at 75vw */
 .hero-topography-plate {
   position: absolute;
   top: 0;
-  right: 0;
-  width: 75vw;
+  left: 0;
+  width: 100vw;
   height: 100vh;
   pointer-events: none;
   overflow: hidden;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
 }
 
-/* Original Clean State */
+/* Option B: Glacial Cyan & Technical Blue */
 .topo-external-asset {
   width: 100%;
   height: 100%;
@@ -125,8 +122,9 @@ body {
   object-position: top right;
   pointer-events: none;
   mix-blend-mode: multiply;
-  filter: invert(1) brightness(0.25) sepia(1) hue-rotate(175deg) saturate(2);
-  opacity: 0.22;
+  /* Inverts black to clear, boosts saturation, and rotates hue directly into Glacial Cyan / Deep Blue */
+  filter: invert(1) brightness(0.65) hue-rotate(185deg) saturate(3.8);
+  opacity: 0.38;
 }
 /* =================== END: PERSISTENT BACKGROUND & CARTOGRAPHY =================== */
 
