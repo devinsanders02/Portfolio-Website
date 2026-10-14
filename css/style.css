@@ -123,8 +123,8 @@ body {
   pointer-events: none;
   mix-blend-mode: multiply;
   /* Inverts black to clear, boosts saturation, and rotates hue directly into Amber Field / Alpine Sage */
-  filter: invert(1) brightness(0.68) hue-rotate(285deg) saturate(2.2);
-  opacity: 0.38;
+  filter: invert(1) brightness(0.42) hue-rotate(285deg) saturate(3.2);
+  opacity: 0.52;
 }
 /* =================== END: PERSISTENT BACKGROUND & CARTOGRAPHY =================== */
 
