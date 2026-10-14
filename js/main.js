@@ -416,9 +416,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     const drawerContainer = document.getElementById('filter-drawer-container');
     const drawerToggle = document.getElementById('filter-drawer-toggle');
-    const activeLabel = document.getElementById('filter-active-label');
 
-    // 1. Toggle Open / Close with 180deg Spin
+    // 1. Toggle Open / Close with 180deg Spin (Funnel <-> X)
     if (drawerToggle && drawerContainer) {
       drawerToggle.addEventListener('click', () => {
         const isOpen = drawerContainer.classList.toggle('is-open');
@@ -436,15 +435,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const filterVal = btn.getAttribute('data-filter');
         renderCards(filterVal);
 
-        if (activeLabel) {
-          activeLabel.textContent = `Filter [ ${filterVal.toUpperCase()} ]`;
-        }
-
+        // Retract drawer smoothly after selecting a filter
         if (drawerContainer && drawerToggle) {
           setTimeout(() => {
             drawerContainer.classList.remove('is-open');
             drawerToggle.setAttribute('aria-expanded', 'false');
-          }, 280);
+          }, 240);
         }
       });
     });
