@@ -708,8 +708,12 @@ header.subpage-navbar {
 }
 
 .filter-btn {
-  background-color: var(--bg-main, #F4F5F7); /* Solid backplate occludes background contours */
-  border: 1px solid rgba(44, 62, 80, 0.28);
+  /* Semi-transparent off-white base */
+  background-color: rgba(244, 245, 247, 0.76);
+  /* Optical blur engine: diffuses lines passing underneath */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(44, 62, 80, 0.22);
   padding: 0.55rem 1.15rem;
   font-family: var(--font-barlow);
   font-size: 0.8rem;
@@ -719,11 +723,12 @@ header.subpage-navbar {
   color: var(--text-dark);
   cursor: pointer;
   border-radius: 2px;
-  box-shadow: 0 1px 3px rgba(44, 62, 80, 0.06);
+  box-shadow: 0 1px 3px rgba(44, 62, 80, 0.05);
   transition: all 0.2s ease;
 }
 
 .filter-btn:hover {
+  background-color: rgba(244, 245, 247, 0.92);
   border-color: var(--accent-orange);
   color: var(--accent-orange);
 }
@@ -733,6 +738,8 @@ header.subpage-navbar {
   border-color: var(--accent-orange);
   color: #FFFFFF;
   font-weight: 700;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .filter-btn span {
