@@ -186,16 +186,17 @@ header.subpage-navbar {
 .hero-persistent-logo {
   position: fixed;
   top: 3rem;
-  left: 4vw;
-  z-index: 999; /* Highest priority: guarantees clickable logo at all times */
+  left: 4vw; /* Exactly matches the 4vw padding of the hero text */
+  z-index: 999;
   display: inline-block;
   text-decoration: none;
   cursor: pointer;
   pointer-events: auto;
+  line-height: 0;
 }
 
 .hero-logo-img {
-  width: 68px;
+  width: 58px;
   height: auto;
   display: block;
 }
@@ -211,22 +212,21 @@ header.subpage-navbar {
   box-sizing: border-box;
   background: transparent;
   z-index: 1;
-  overflow: visible; /* Allows native wheel scroll to pass freely down the page */
+  overflow: visible;
 }
 
 .hero-sticky-canvas > * {
   pointer-events: auto;
 }
 
-/* Hero Layout Elements: Explicitly Layered and Visible */
+/* Hero Layout Elements: Consolidated Left Stack */
 .hero-top-row {
   position: relative;
   z-index: 2;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: flex-start;
   width: 100%;
-  padding-top: 5.5rem;
+  padding-top: 5rem; /* Clears the persistent logo directly above */
   opacity: 1;
 }
 
@@ -234,6 +234,7 @@ header.subpage-navbar {
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
+  align-items: flex-start; /* Guarantees flush-left alignment */
   will-change: opacity, transform;
 }
 
@@ -269,11 +270,14 @@ header.subpage-navbar {
   cursor: default;
 }
 
+/* Re-anchored Left Navigation Column */
 .hero-nav-col {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
-  align-items: flex-end;
+  gap: 0.55rem;
+  align-items: flex-start; /* Changed from flex-end to flex-start */
+  margin-top: 1.25rem; /* Spacing below the orange discipline line */
+  padding-left: 0;
   will-change: opacity, transform;
 }
 
@@ -296,7 +300,7 @@ header.subpage-navbar {
   font-weight: 300;
   letter-spacing: 0.02em;
   color: var(--text-dark);
-  opacity: 0.85;
+  opacity: 0.75;
 }
 
 .hero-nav-item .nav-txt {
