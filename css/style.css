@@ -113,25 +113,25 @@ body {
   overflow: hidden;
 }
 
-/* Base Topo Asset: Direct Native White-Base Multiplication */
+/* Uses CSS Mask: Renders pure lines with zero chance of a gray background */
 .topo-external-asset {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top right;
   pointer-events: none;
-  mix-blend-mode: multiply;
-  opacity: 0.45;
+  background-color: var(--text-dark, #2C3E50);
+  -webkit-mask-image: url('../topography.svg');
+  mask-image: url('../topography.svg');
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: top right;
+  mask-position: top right;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  opacity: 0.32;
 }
 
-/* Softened lines on subpages */
 .topo-external-asset.subpage-topo {
-  opacity: 0.18;
-}
-
-/* Subpage Isolation: Softened lines so work/about pages stay fully legible */
-.topo-external-asset.subpage-topo {
-  opacity: 0.16;
+  opacity: 0.14;
 }
 /* =================== END: PERSISTENT BACKGROUND & CARTOGRAPHY =================== */
 
