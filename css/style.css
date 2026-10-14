@@ -103,17 +103,21 @@ body {
   opacity: 0.05;
 }
 
-/* Full-bleed Container: Eliminates hard crop at 75vw */
+/* Fixed Vector Container (Right-Anchored) */
 .hero-topography-plate {
   position: absolute;
-  inset: 0;
-  width: 100vw;
+  top: 0;
+  right: 0;
+  width: 75vw;
   height: 100vh;
   pointer-events: none;
   overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
 }
 
-/* Option B: Glacial Cyan & Technical Blue Profile */
+/* Original Clean State */
 .topo-external-asset {
   width: 100%;
   height: 100%;
@@ -121,9 +125,8 @@ body {
   object-position: top right;
   pointer-events: none;
   mix-blend-mode: multiply;
-  /* Inverts black to clear, shifts strokes into vivid Glacial Cyan & Navy */
-  filter: invert(1) brightness(0.7) hue-rotate(195deg) saturate(3.5);
-  opacity: 0.45;
+  filter: invert(1) brightness(0.25) sepia(1) hue-rotate(175deg) saturate(2);
+  opacity: 0.22;
 }
 /* =================== END: PERSISTENT BACKGROUND & CARTOGRAPHY =================== */
 
