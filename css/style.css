@@ -130,6 +130,12 @@ body {
   filter: invert(1) contrast(1.35) brightness(0.42) sepia(0.35) hue-rotate(318deg) saturate(2.4);
   opacity: 0.52;
 }
+
+/* Strategy 2: De-escalate Topo Opacity on Subpages for Enhanced Legibility */
+body:has(.subpage-navbar) .topo-external-asset,
+body:has(.archive-page-wrap) .topo-external-asset {
+  opacity: 0.18 !important;
+}
 /* =================== END: PERSISTENT BACKGROUND & CARTOGRAPHY =================== */
 
 /* =================== START: SUBPAGE STANDARD NAVBAR =================== */
@@ -708,8 +714,8 @@ header.subpage-navbar {
 }
 
 .filter-btn {
-  background: none;
-  border: 1px solid rgba(44, 62, 80, 0.2);
+  background-color: var(--bg-main, #F4F5F7); /* Solid backplate occludes background contours */
+  border: 1px solid rgba(44, 62, 80, 0.28);
   padding: 0.55rem 1.15rem;
   font-family: var(--font-barlow);
   font-size: 0.8rem;
@@ -719,6 +725,7 @@ header.subpage-navbar {
   color: var(--text-dark);
   cursor: pointer;
   border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(44, 62, 80, 0.06);
   transition: all 0.2s ease;
 }
 
