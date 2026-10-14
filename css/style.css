@@ -113,21 +113,22 @@ body {
   overflow: hidden;
 }
 
-/* Base Topo Asset: Explicitly visible on Homepage */
+/* Base Topo Asset */
 .topo-external-asset {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top right;
   pointer-events: none;
-  mix-blend-mode: multiply;
-  filter: invert(1) brightness(0.65) hue-rotate(185deg) saturate(3.8);
-  opacity: 0.38 !important;
+  /* Strip out invert, hue-rotate, and multiply */
+  filter: contrast(1.15) saturate(1.2);
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
 }
 
 /* Subpage Opacity Softening */
 .topo-external-asset.subpage-topo {
-  opacity: 0.16 !important;
+  opacity: 0.45;
 }
 /* =================== END: PERSISTENT BACKGROUND & CARTOGRAPHY =================== */
 
