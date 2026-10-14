@@ -183,12 +183,15 @@ header.subpage-navbar {
 /* =================== END: SUBPAGE STANDARD NAVBAR =================== */
 
 /* =================== START: HOMEPAGE STICKY HERO CANVAS =================== */
+/* =================== PINNED PERSISTENT LOGO =================== */
 .hero-persistent-logo {
   position: fixed;
-  top: 3rem;
-  left: 4vw; /* Exactly matches the 4vw padding of the hero text */
+  top: 1.5rem; /* Exactly matches the top edge of .floating-peak-btn (1.5rem) */
+  left: 4vw;   /* Perfectly flush with the 4vw canvas padding of the text below */
   z-index: 999;
-  display: inline-block;
+  display: block;
+  padding: 0;
+  margin: 0;
   text-decoration: none;
   cursor: pointer;
   pointer-events: auto;
@@ -196,9 +199,11 @@ header.subpage-navbar {
 }
 
 .hero-logo-img {
-  width: 58px;
+  width: 72px; /* Increased size for strong branding presence */
   height: auto;
   display: block;
+  margin: 0;
+  padding: 0;
 }
 
 .hero-sticky-canvas {
