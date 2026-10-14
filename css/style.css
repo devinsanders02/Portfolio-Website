@@ -114,7 +114,7 @@ body {
   overflow: hidden;
 }
 
-/* Amber Field Accent + Desaturated Alpine Sage */
+/* Calibrated Raster PNG Filter: Warm Amber + Desaturated Alpine Sage */
 .topo-external-asset {
   width: 100%;
   height: 100%;
@@ -122,9 +122,15 @@ body {
   object-position: top right;
   pointer-events: none;
   mix-blend-mode: multiply;
-  /* Inverts black to clear, boosts saturation, and rotates hue directly into Amber Field / Alpine Sage */
-  filter: invert(1) brightness(0.48) hue-rotate(95deg) saturate(2.4);
-  opacity: 0.44;
+  /* 
+     1. invert(1): makes the black raster field transparent under multiply
+     2. contrast(1.4): strengthens the line pixels so they never fade to white
+     3. brightness(0.40): ensures dense color pigment
+     4. hue-rotate(275deg): rotates blue into warm amber and green into muted sage
+     5. saturate(2.8): enriches both channels without blowing out luminance
+  */
+  filter: invert(1) contrast(1.4) brightness(0.40) hue-rotate(275deg) saturate(2.8);
+  opacity: 0.55;
 }
 /* =================== END: PERSISTENT BACKGROUND & CARTOGRAPHY =================== */
 
