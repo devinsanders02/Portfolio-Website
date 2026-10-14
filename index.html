@@ -69,67 +69,11 @@
   <div class="hero-fixed-background" aria-hidden="true">
     <div class="hero-dot-grid"></div>
 
-    <!-- Angular Faceted Topographic Plate (Deep Cirques, Saw-Tooth Ridges & Zigzag Spurs) -->
-    <div class="hero-topography-plate" aria-hidden="true">
-      <svg class="topo-svg-canvas" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
-        
-        <!-- Cartographic Peak Datum Benchmark -->
-        <g class="topo-datum" stroke="#2C3E50" opacity="0.65" stroke-width="1.2">
-          <line x1="1242" y1="288" x2="1258" y2="288" />
-          <line x1="1250" y1="280" x2="1250" y2="296" />
-          <circle cx="1250" cy="288" r="2" fill="#2C3E50" stroke="none" />
-          <text x="1266" y="292" font-family="monospace" font-size="9" fill="#2C3E50" letter-spacing="1">PK ELEV 5280'</text>
-        </g>
-
-        <!-- Tier 01: Jagged Horn Cap (Index) -->
-        <polygon class="topo-contour topo-index"
-                 points="1250,268 1282,272 1318,298 1290,320 1262,330 1238,318 1224,328 1212,306 1222,284 1216,274" />
-
-        <!-- Tier 02: Headwall Fracture Notch (Hairline) -->
-        <polygon class="topo-contour topo-hairline"
-                 points="1252,246 1294,252 1344,294 1308,332 1266,350 1228,332 1208,348 1192,304 1210,274 1202,256" />
-
-        <!-- Tier 03: Arête Scarp (Dashed) -->
-        <polygon class="topo-contour topo-dashed"
-                 points="1254,222 1308,232 1372,290 1326,346 1270,372 1218,348 1190,370 1168,302 1194,262 1184,236" />
-
-        <!-- Tier 04: Couloir Notch Wall (Hairline) -->
-        <polygon class="topo-contour topo-hairline"
-                 points="1256,194 1322,208 1404,284 1346,364 1274,396 1206,366 1170,396 1142,298 1176,248 1162,212" />
-
-        <!-- Tier 05: Deep Hanging Cirque Pocket (Index - Promontory Cut-in) -->
-        <polygon class="topo-contour topo-index"
-                 points="1258,164 1338,182 1440,278 1370,384 1278,424 1190,388 1144,428 1110,294 1154,232 1136,184" />
-
-        <!-- Tier 06: Expanded Terrace with Sharp Northwest Dogleg (Hairline) -->
-        <polyline class="topo-contour topo-hairline"
-                  points="1440,146 1358,154 1256,128 1184,158 1120,136 1046,274 1112,336 1076,416 1174,458 1284,456 1396,412 1440,400" />
-
-        <!-- Tier 07: Fault Notch with Western Spur Re-entrant (Dashed) -->
-        <polyline class="topo-contour topo-dashed"
-                  points="1440,108 1380,122 1258,92 1158,126 1084,98 998,270 1084,348 1032,448 1152,492 1290,492 1426,442 1440,432" />
-
-        <!-- Tier 08: Major Amphitheater Inversion (Hairline - Deep Notch) -->
-        <polyline class="topo-contour topo-hairline"
-                  points="1440,68 1404,88 1260,52 1128,92 1044,56 942,264 1052,362 984,484 1126,532 1298,534 1440,472" />
-
-        <!-- Tier 09: Valley Foot S-Bends (Hairline) -->
-        <polyline class="topo-contour topo-hairline"
-                  points="1440,24 1426,50 1262,8 1094,56 1000,10 882,256 1014,380 930,524 1096,576 1306,580 1440,514" />
-
-        <!-- Tier 10: Deep Basin Promontory Spur (Index - Reaching Center X: 818) -->
-        <polyline class="topo-contour topo-index"
-                  points="1440,-24 1354,-8 1264,-42 1056,18 952,-38 818,246 972,400 870,568 1060,626 1316,632 1440,560" />
-
-        <!-- Tier 11: Foothill Canyon Inversion (Hairline - Reaching X: 748) -->
-        <polyline class="topo-contour topo-hairline"
-                  points="1400,-60 1266,-94 1012,-24 898,-90 748,234 924,424 804,618 1018,682 1326,688 1440,610" />
-
-        <!-- Tier 12: Basal Outwash Cliff Edge (Hairline - Reaching X: 672) -->
-        <polyline class="topo-contour topo-hairline"
-                  points="1268,-150 962,-72 838,-148 672,220 870,452 732,674 970,744 1338,750 1440,664" />
-      </svg>
+    <!-- Native Topographic Vector Asset Layer -->
+    <div class="hero-topography-plate">
+      <img src="topography.svg" alt="" class="topo-external-asset" aria-hidden="true">
     </div>
+  </div>
   <!-- =================== END: PERSISTENT BACKGROUND =================== -->
 
   <!-- =================== START: PINNED PERSISTENT LOGO =================== -->
