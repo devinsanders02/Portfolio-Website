@@ -103,26 +103,17 @@ body {
   opacity: 0.05;
 }
 
-/* Fixed Vector Container (Right-Anchored) */
+/* Full-bleed Container: Eliminates hard crop at 75vw */
 .hero-topography-plate {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 75vw;
+  inset: 0;
+  width: 100vw;
   height: 100vh;
   pointer-events: none;
   overflow: hidden;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
 }
 
-/* 
-   Transforms the raw SVG:
-   1. Inverts black (#000) to white/transparent
-   2. Colors the lines directly to brand navy (#2C3E50)
-   3. mix-blend-mode: multiply seamlessly embeds it onto #F4F5F7
-*/
+/* Option B: Glacial Cyan & Technical Blue Profile */
 .topo-external-asset {
   width: 100%;
   height: 100%;
@@ -130,8 +121,9 @@ body {
   object-position: top right;
   pointer-events: none;
   mix-blend-mode: multiply;
-  filter: invert(1) brightness(0.25) sepia(1) hue-rotate(175deg) saturate(2);
-  opacity: 0.22;
+  /* Inverts black to clear, shifts strokes into vivid Glacial Cyan & Navy */
+  filter: invert(1) brightness(0.7) hue-rotate(195deg) saturate(3.5);
+  opacity: 0.45;
 }
 /* =================== END: PERSISTENT BACKGROUND & CARTOGRAPHY =================== */
 
