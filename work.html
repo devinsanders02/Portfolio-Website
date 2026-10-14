@@ -11,7 +11,7 @@
 
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="page-subpage">
 
   <!-- =================== START: SITE PRELOADER =================== -->
   <div id="site-loader">
@@ -51,13 +51,13 @@
   </div>
   <!-- =================== END: SLIDE-DOWN INDEX OVERLAY =================== -->
 
-  <!-- =================== START: FLOATING PEAK NAV BUTTON =================== -->
-  <button id="floating-nav-btn" class="floating-peak-btn" aria-label="Open Navigation">
+  <!-- =================== START: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
+  <button id="floating-nav-btn" class="floating-peak-btn subpage-permanent-btn" aria-label="Open Navigation">
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
       <path d="M2 14 L6.5 5 L10 10 L16 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   </button>
-  <!-- =================== END: FLOATING PEAK NAV BUTTON =================== -->
+  <!-- =================== END: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
 
   <!-- =================== START: PERSISTENT BACKGROUND =================== -->
   <div class="hero-fixed-background" aria-hidden="true">
@@ -65,30 +65,23 @@
 
     <!-- Shared Topographic Vector Asset Layer -->
     <div class="hero-topography-plate">
-      <img src="topography.svg" alt="" class="topo-external-asset subpage-topo" aria-hidden="true">
+      <img src="topography.svg" alt="" class="topo-external-asset" aria-hidden="true">
     </div>
   </div>
   <!-- =================== END: PERSISTENT BACKGROUND =================== -->
 
-  <!-- =================== START: SUBPAGE STANDARD NAVBAR =================== -->
+  <!-- =================== START: SUBPAGE STANDARD NAVBAR (Logo Only) =================== -->
   <header class="subpage-navbar">
     <a href="index.html" class="subpage-nav-logo" aria-label="Devin Sanders Home">
       <img src="LogoBlue.png" alt="Devin Sanders Mark">
     </a>
-
-    <nav class="subpage-nav-links">
-      <a href="work.html" class="active">Work</a>
-      <a href="ui-ux.html">UI/UX</a>
-      <a href="about.html">About</a>
-      <button id="top-contact-btn">Contact</button>
-    </nav>
   </header>
   <!-- =================== END: SUBPAGE STANDARD NAVBAR =================== -->
 
   <!-- =================== START: WORK ARCHIVE CONTENT =================== -->
   <main class="archive-page-wrap">
     
-    <!-- Editorial Header Block with Category Filter -->
+    <!-- Editorial Header Block (Stacked on Left) -->
     <header class="archive-header-block">
       <div class="archive-header-text">
         <span class="uppercase-label" style="margin-bottom: 0.75rem;">Archive // 2024–2026</span>
@@ -98,12 +91,33 @@
         </p>
       </div>
 
-      <!-- Filter Tabs: Non-UI/UX Categories -->
-      <div class="work-filter-bar">
-        <button class="filter-btn active" data-filter="all">All [ <span id="count-all">0</span> ]</button>
-        <button class="filter-btn" data-filter="branding">Branding [ <span id="count-branding">0</span> ]</button>
-        <button class="filter-btn" data-filter="packaging">Packaging [ <span id="count-packaging">0</span> ]</button>
-        <button class="filter-btn" data-filter="other">Motion & System [ <span id="count-other">0</span> ]</button>
+      <!-- Interactive Mechanical Filter Drawer -->
+      <div class="filter-drawer-container" id="filter-drawer-container">
+        
+        <!-- Toggle Trigger Button -->
+        <button id="filter-drawer-toggle" class="filter-toggle-btn" aria-expanded="false" aria-label="Toggle Category Filters">
+          <span class="filter-toggle-icon">
+            <!-- Filter Funnel Icon -->
+            <svg class="icon-funnel" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+            <!-- Close X Icon -->
+            <svg class="icon-close" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </span>
+          <span class="filter-toggle-label" id="filter-active-label">Filter</span>
+        </button>
+
+        <!-- Horizontal Slide-Out Options Drawer -->
+        <div class="filter-drawer-track" id="filter-drawer-track">
+          <button class="filter-btn active" data-filter="all">All [ <span id="count-all">0</span> ]</button>
+          <button class="filter-btn" data-filter="branding">Branding [ <span id="count-branding">0</span> ]</button>
+          <button class="filter-btn" data-filter="packaging">Packaging [ <span id="count-packaging">0</span> ]</button>
+          <button class="filter-btn" data-filter="other">Motion & System [ <span id="count-other">0</span> ]</button>
+        </div>
+
       </div>
     </header>
 
@@ -191,7 +205,7 @@
   </footer>
   <!-- =================== END: GLOBAL EDITORIAL FOOTER =================== -->
 
-  <!-- Survey Reticle Cursor -->
+  <!-- Custom Survey Reticle Cursor -->
   <div id="survey-cursor" class="survey-cursor" aria-hidden="true">
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
