@@ -103,7 +103,7 @@ body {
   opacity: 0.05;
 }
 
-/* Full Bleed: Eliminates the hard vertical cutoff at 75vw */
+/* Full Bleed Container */
 .hero-topography-plate {
   position: absolute;
   top: 0;
@@ -114,7 +114,7 @@ body {
   overflow: hidden;
 }
 
-/* Calibrated Amber/Orange + Muted Alpine Sage (No Purple/Blue Cast) */
+/* Base Topo Asset: Direct Working Filter Stack */
 .topo-external-asset {
   width: 100%;
   height: 100%;
@@ -122,19 +122,13 @@ body {
   object-position: top right;
   pointer-events: none;
   mix-blend-mode: multiply;
-  /* 
-     - sepia(0.35): strips the cold violet/purple wavelengths out of the cool channel
-     - hue-rotate(318deg): shifts the former cyan into golden amber/orange
-     - saturate(2.4): keeps the green grounded and desaturated like alpine sage
-  */
-  filter: invert(1) contrast(1.35) brightness(0.42) sepia(0.35) hue-rotate(318deg) saturate(2.4);
-  opacity: 0.52;
+  filter: invert(1) brightness(0.65) hue-rotate(185deg) saturate(3.8);
+  opacity: 0.38;
 }
 
-/* Strategy 2: De-escalate Topo Opacity on Subpages for Enhanced Legibility */
-body:has(.subpage-navbar) .topo-external-asset,
-body:has(.archive-page-wrap) .topo-external-asset {
-  opacity: 0.18 !important;
+/* Softened Topo Opacity on Subpages Only */
+.subpage-topo {
+  opacity: 0.14 !important;
 }
 /* =================== END: PERSISTENT BACKGROUND & CARTOGRAPHY =================== */
 
