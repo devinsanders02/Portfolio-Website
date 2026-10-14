@@ -123,8 +123,8 @@ body {
   pointer-events: none;
   mix-blend-mode: multiply;
   /* Inverts black to clear, boosts saturation, and rotates hue directly into Glacial Cyan / Deep Blue */
-  filter: invert(1) brightness(0.65) hue-rotate(185deg) saturate(3.8);
-  opacity: 0.38;
+  filter: invert(1) brightness(0.75) hue-rotate(330deg) saturate(3.5);
+  opacity: 0.30;
 }
 /* =================== END: PERSISTENT BACKGROUND & CARTOGRAPHY =================== */
 
