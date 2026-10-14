@@ -410,13 +410,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderCards('all');
 
+    // =========================================================================
+    // MECHANICAL FILTER DRAWER CONTROLLER
+    // =========================================================================
+    const drawerContainer = document.getElementById('filter-drawer-container');
+    const drawerToggle = document.getElementById('filter-drawer-toggle');
+    const activeLabel = document.getElementById('filter-active-label');
+
+    // 1. Toggle Open / Close with 180deg Spin
+    if (drawerToggle && drawerContainer) {
+      drawerToggle.addEventListener('click', () => {
+        const isOpen = drawerContainer.classList.toggle('is-open');
+        drawerToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+
+    // 2. Filter Button Handlers: Render Grid + Retract Drawer
     const filterBtns = document.querySelectorAll('.filter-btn');
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+        
         const filterVal = btn.getAttribute('data-filter');
         renderCards(filterVal);
+
+        // Update drawer button label (e.g. FILTER [ BRANDING ])
+        if (activeLabel) {
+          activeLabel.textContent = `Filter [ ${filterVal.toUpperCase()} ]`;
+        }
+
+        // Brief delay so the active highlight registers, then retract
+        if (drawerContainer && drawerToggle) {
+          setTimeout(() => {
+            drawerContainer.classList.remove('is-open');
+            drawerToggle.setAttribute('aria-expanded', 'false');
+          }, 280);
+        }
       });
     });
   }
