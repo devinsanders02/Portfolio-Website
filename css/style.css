@@ -113,7 +113,7 @@ body {
   overflow: hidden;
 }
 
-/* Base Topo Asset: Pure white multiplier guarantees zero gray background haze */
+/* Base Topo Asset: Direct Native White-Base Multiplication */
 .topo-external-asset {
   width: 100%;
   height: 100%;
@@ -121,8 +121,12 @@ body {
   object-position: top right;
   pointer-events: none;
   mix-blend-mode: multiply;
-  filter: invert(1) hue-rotate(185deg) saturate(3.8);
-  opacity: 0.38;
+  opacity: 0.45;
+}
+
+/* Softened lines on subpages */
+.topo-external-asset.subpage-topo {
+  opacity: 0.18;
 }
 
 /* Subpage Isolation: Softened lines so work/about pages stay fully legible */
