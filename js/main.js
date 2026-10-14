@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.getElementById('close-overlay-btn');
   const overlayContact = document.getElementById('overlay-contact-link');
 
-  // Unified Scroll Handler: Fade Hero Elements & Toggle Floating Button
+  // Unified Scroll Handler: Fade Hero Elements & Toggle Floating Button (Homepage only)
   const handleScrollDynamics = () => {
     const scrollY = window.scrollY;
     const fadeThreshold = 360;
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
       el.style.pointerEvents = fadeProgress < 0.1 ? 'none' : 'auto';
     });
 
-    if (floatBtn) {
+    if (floatBtn && !floatBtn.classList.contains('subpage-permanent-btn')) {
       if (scrollY > 240) {
         floatBtn.classList.add('visible');
       } else {
@@ -180,6 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
       '.view-all-btn',
       '.duo-card',
       '.filter-btn',
+      '.filter-toggle-btn',
       '[role="button"]'
     ].join(', ');
 
@@ -435,12 +436,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const filterVal = btn.getAttribute('data-filter');
         renderCards(filterVal);
 
-        // Update drawer button label (e.g. FILTER [ BRANDING ])
         if (activeLabel) {
           activeLabel.textContent = `Filter [ ${filterVal.toUpperCase()} ]`;
         }
 
-        // Brief delay so the active highlight registers, then retract
         if (drawerContainer && drawerToggle) {
           setTimeout(() => {
             drawerContainer.classList.remove('is-open');
