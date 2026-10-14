@@ -113,25 +113,21 @@ body {
   overflow: hidden;
 }
 
-/* Uses CSS Mask: Renders pure lines with zero chance of a gray background */
+/* Proven Working Line Filter: Crisp lines with ZERO gray background */
 .topo-external-asset {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: top right;
   pointer-events: none;
-  background-color: var(--text-dark, #2C3E50);
-  -webkit-mask-image: url('../topography.svg');
-  mask-image: url('../topography.svg');
-  -webkit-mask-size: cover;
-  mask-size: cover;
-  -webkit-mask-position: top right;
-  mask-position: top right;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  opacity: 0.32;
+  mix-blend-mode: multiply;
+  filter: invert(1) brightness(0.65) hue-rotate(185deg) saturate(3.8);
+  opacity: 0.38;
 }
 
+/* Softened lines on subpages */
 .topo-external-asset.subpage-topo {
-  opacity: 0.14;
+  opacity: 0.16;
 }
 /* =================== END: PERSISTENT BACKGROUND & CARTOGRAPHY =================== */
 
