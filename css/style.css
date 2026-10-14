@@ -113,7 +113,7 @@ body {
   overflow: hidden;
 }
 
-/* Base Topo Asset: LOCKED to working values */
+/* Base Topo Asset: Pure white multiplier guarantees zero gray background haze */
 .topo-external-asset {
   width: 100%;
   height: 100%;
@@ -121,10 +121,11 @@ body {
   object-position: top right;
   pointer-events: none;
   mix-blend-mode: multiply;
-  filter: invert(1) brightness(0.65) hue-rotate(185deg) saturate(3.8);
+  filter: invert(1) hue-rotate(185deg) saturate(3.8);
   opacity: 0.38;
 }
 
+/* Subpage Isolation: Softened lines so work/about pages stay fully legible */
 .topo-external-asset.subpage-topo {
   opacity: 0.16;
 }
@@ -137,7 +138,7 @@ header.subpage-navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3rem 4vw 2rem;
+  padding: 1.5rem 4vw 2rem;
   background-color: transparent;
 }
 
@@ -147,49 +148,17 @@ header.subpage-navbar {
 }
 
 .subpage-nav-logo img {
-  width: 68px;
+  width: 72px;
   height: auto;
   display: block;
-}
-
-.subpage-nav-links {
-  display: flex;
-  gap: 2.25rem;
-  align-items: center;
-}
-
-.subpage-nav-links a,
-.subpage-nav-links button {
-  background: none;
-  border: none;
-  font-family: var(--font-barlow);
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--text-dark);
-  text-decoration: none;
-  cursor: pointer;
-  position: relative;
-  padding-bottom: 2px;
-  transition: color 0.2s ease;
-}
-
-.subpage-nav-links a:hover,
-.subpage-nav-links button:hover {
-  color: var(--accent-orange);
-}
-
-.subpage-nav-links a.active {
-  color: var(--accent-orange);
-  font-weight: 700;
 }
 /* =================== END: SUBPAGE STANDARD NAVBAR =================== */
 
 /* =================== START: HOMEPAGE STICKY HERO CANVAS =================== */
-/* =================== PINNED PERSISTENT LOGO =================== */
 .hero-persistent-logo {
   position: fixed;
-  top: 1.5rem; /* Exactly matches the top edge of .floating-peak-btn (1.5rem) */
-  left: 4vw;   /* Perfectly flush with the 4vw canvas padding of the text below */
+  top: 1.5rem;
+  left: 4vw;
   z-index: 999;
   display: block;
   padding: 0;
@@ -201,7 +170,7 @@ header.subpage-navbar {
 }
 
 .hero-logo-img {
-  width: 72px; /* Increased size for strong branding presence */
+  width: 72px;
   height: auto;
   display: block;
   margin: 0;
@@ -233,7 +202,7 @@ header.subpage-navbar {
   display: flex;
   justify-content: flex-start;
   width: 100%;
-  padding-top: 5rem; /* Clears the persistent logo directly above */
+  padding-top: 5rem;
   opacity: 1;
 }
 
@@ -241,7 +210,7 @@ header.subpage-navbar {
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
-  align-items: flex-start; /* Guarantees flush-left alignment */
+  align-items: flex-start;
   will-change: opacity, transform;
 }
 
@@ -282,8 +251,8 @@ header.subpage-navbar {
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
-  align-items: flex-start; /* Changed from flex-end to flex-start */
-  margin-top: 1.25rem; /* Spacing below the orange discipline line */
+  align-items: flex-start;
+  margin-top: 1.25rem;
   padding-left: 0;
   will-change: opacity, transform;
 }
@@ -661,7 +630,6 @@ header.subpage-navbar {
   padding: 1.5rem 4vw 6rem;
 }
 
-/* Single-Column Stack: Clears the Right Field Completely */
 .archive-header-block {
   display: flex;
   flex-direction: column;
@@ -692,7 +660,7 @@ header.subpage-navbar {
   line-height: 1.6;
 }
 
-/* =================== MECHANICAL FILTER DRAWER =================== */
+/* Mechanical Filter Drawer */
 .filter-drawer-container {
   display: flex;
   align-items: center;
@@ -700,7 +668,6 @@ header.subpage-navbar {
   position: relative;
 }
 
-/* The Trigger Button */
 .filter-toggle-btn {
   display: inline-flex;
   align-items: center;
@@ -726,7 +693,6 @@ header.subpage-navbar {
   color: var(--accent-orange);
 }
 
-/* Spinning Icon Mechanism */
 .filter-toggle-icon {
   position: relative;
   width: 14px;
@@ -750,7 +716,6 @@ header.subpage-navbar {
   transform: rotate(-90deg) scale(0.6);
 }
 
-/* Active State: Rotates and switches funnel to X */
 .filter-drawer-container.is-open .filter-toggle-btn {
   border-color: var(--accent-orange);
   background-color: #FFFFFF;
@@ -771,7 +736,6 @@ header.subpage-navbar {
   stroke: var(--accent-orange);
 }
 
-/* Horizontal Slide-Out Drawer Track */
 .filter-drawer-track {
   display: flex;
   align-items: center;
@@ -793,7 +757,6 @@ header.subpage-navbar {
   pointer-events: auto;
 }
 
-/* Individual Filter Badges */
 .filter-btn {
   background-color: var(--bg-main, #F4F5F7);
   border: 1px solid rgba(44, 62, 80, 0.22);
@@ -827,13 +790,6 @@ header.subpage-navbar {
   font-family: monospace;
 }
 
-/* Make Subpage Floating Nav Circle Permanent (No 240px Scroll Delay) */
-.floating-peak-btn.subpage-permanent-btn {
-  opacity: 1 !important;
-  pointer-events: auto !important;
-}
-
-/* 2-Column Wide Project Grid */
 .work-grid-2col {
   display: grid;
   grid-template-columns: 1fr;
@@ -992,12 +948,12 @@ header.subpage-navbar {
 }
 /* =================== END: WORK ARCHIVE 2-COLUMN GRID =================== */
 
-/* =================== START: HOMEPAGE CALL-TO-ACTION & PATTERN DIVIDER =================== */
+/* =================== START: HOMEPAGE CALL-TO-ACTION BUTTON =================== */
 .view-all-projects-section {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 3rem 1.5rem 4rem;
+  padding: 3rem 1.5rem 5rem;
   background: transparent;
 }
 
@@ -1032,33 +988,7 @@ header.subpage-navbar {
 .view-all-btn:hover svg {
   transform: translateX(4px);
 }
-
-.home-pattern-divider {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  padding: 1.5rem 0 0;
-  background: transparent;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-.pattern-shell {
-  max-width: 1540px;
-  margin: 0 auto;
-  padding: 0 4vw;
-  border-top: 1px solid rgba(44, 62, 80, 0.08);
-  box-sizing: border-box;
-}
-
-.pattern-artwork {
-  width: 100%;
-  height: auto;
-  max-height: 180px;
-  display: block;
-  pointer-events: none;
-}
-/* =================== END: HOMEPAGE CALL-TO-ACTION & PATTERN DIVIDER =================== */
+/* =================== END: HOMEPAGE CALL-TO-ACTION BUTTON =================== */
 
 /* =================== START: SLIDE-DOWN INDEX OVERLAY & PEAK NAV =================== */
 .floating-peak-btn {
@@ -1084,6 +1014,12 @@ header.subpage-navbar {
 .floating-peak-btn.visible {
   opacity: 1;
   pointer-events: auto;
+}
+
+/* Subpage: Permanent Navigation Anchor */
+.floating-peak-btn.subpage-permanent-btn {
+  opacity: 1 !important;
+  pointer-events: auto !important;
 }
 
 .floating-peak-btn:hover { transform: scale(1.1); }
