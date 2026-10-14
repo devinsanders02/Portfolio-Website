@@ -103,7 +103,7 @@ body {
   opacity: 0.05;
 }
 
-/* Full Bleed Container */
+/* Full Bleed Container: Zero clipping */
 .hero-topography-plate {
   position: absolute;
   top: 0;
@@ -114,7 +114,7 @@ body {
   overflow: hidden;
 }
 
-/* Base Topo Asset: Direct Working Filter Stack */
+/* Homepage Baseline: Glacial Cyan & Technical Blue */
 .topo-external-asset {
   width: 100%;
   height: 100%;
@@ -126,9 +126,9 @@ body {
   opacity: 0.38;
 }
 
-/* Softened Topo Opacity on Subpages Only */
-.subpage-topo {
-  opacity: 0.14 !important;
+/* Subpage Isolation: Softened lines so work/about pages stay fully legible */
+.topo-external-asset.subpage-topo {
+  opacity: 0.14;
 }
 /* =================== END: PERSISTENT BACKGROUND & CARTOGRAPHY =================== */
 
@@ -708,9 +708,7 @@ header.subpage-navbar {
 }
 
 .filter-btn {
-  /* Semi-transparent off-white base */
   background-color: rgba(244, 245, 247, 0.76);
-  /* Optical blur engine: diffuses lines passing underneath */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(44, 62, 80, 0.22);
