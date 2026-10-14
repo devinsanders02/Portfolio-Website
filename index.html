@@ -69,61 +69,67 @@
   <div class="hero-fixed-background" aria-hidden="true">
     <div class="hero-dot-grid"></div>
 
-    <!-- Angular Faceted Topographic Plate (True Summit Peak & Fanned Ridges) -->
+    <!-- Angular Faceted Topographic Plate (Non-Intersecting Radial Framework) -->
     <div class="hero-topography-plate" aria-hidden="true">
       <svg class="topo-svg-canvas" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
         
         <!-- Cartographic Peak Datum Benchmark -->
         <g class="topo-datum" stroke="#2C3E50" opacity="0.65" stroke-width="1.2">
-          <line x1="1230" y1="310" x2="1246" y2="310" />
-          <line x1="1238" y1="302" x2="1238" y2="318" />
-          <circle cx="1238" cy="310" r="2" fill="#2C3E50" stroke="none" />
-          <text x="1254" y="314" font-family="monospace" font-size="9" fill="#2C3E50" letter-spacing="1">PK ELEV 5280'</text>
+          <line x1="1260" y1="302" x2="1276" y2="302" />
+          <line x1="1268" y1="294" x2="1268" y2="310" />
+          <circle cx="1268" cy="302" r="2" fill="#2C3E50" stroke="none" />
+          <text x="1284" y="306" font-family="monospace" font-size="9" fill="#2C3E50" letter-spacing="1">PK ELEV 5280'</text>
         </g>
 
-        <!-- Peak Crest Enclosures (Tight Concentric Angular Caps on Right) -->
-        <!-- Tier 01: Summit Apex Enclosure -->
+        <!-- Tier 01: Summit Core Cap (Index) -->
         <polygon class="topo-contour topo-index"
-                 points="1238,292 1275,310 1262,332 1215,330 1198,312" />
+                 points="1268,272 1308,284 1324,312 1296,336 1264,342 1234,324 1232,294" />
 
-        <!-- Tier 02: Upper Crest Ring -->
+        <!-- Tier 02: Summit Crest (Hairline) -->
         <polygon class="topo-contour topo-hairline"
-                 points="1238,278 1292,302 1282,344 1205,342 1182,312" />
+                 points="1268,248 1326,268 1352,316 1312,356 1260,366 1214,338 1210,286" />
 
-        <!-- Tier 03: Dashed Ridge Fault Ring -->
+        <!-- Tier 03: Upper Ridge (Dashed) -->
         <polygon class="topo-contour topo-dashed"
-                 points="1238,264 1312,295 1302,360 1192,356 1165,314" />
+                 points="1268,222 1346,250 1382,322 1330,378 1254,394 1190,356 1184,276" />
 
-        <!-- Tier 04: Outer Summit Cap -->
+        <!-- Tier 04: Shoulder Shelf (Hairline) -->
         <polygon class="topo-contour topo-hairline"
-                 points="1238,248 1335,286 1324,378 1178,372 1145,316" />
+                 points="1268,192 1368,230 1416,328 1350,402 1246,424 1162,376 1154,264" />
 
-        <!-- Tier 05: Mid Shoulder (Opens to East Face & Descends to Plain) -->
-        <polyline class="topo-contour topo-index"
-                  points="1440,320 1358,278 1238,232 1125,318 1162,390 1280,410 1440,430" />
+        <!-- Tier 05: Mid-Elevation Ring (Index) -->
+        <polygon class="topo-contour topo-index"
+                 points="1268,160 1392,208 1440,326 1374,430 1236,458 1128,400 1118,250" />
 
-        <!-- Tier 06: Expanded Terrace (Reaches Toward Mid-Canvas) -->
+        <!-- Tier 06: Outer Crest (Reaching Behind Navigation) -->
         <polyline class="topo-contour topo-hairline"
-                  points="1440,342 1380,270 1238,212 1100,322 1142,410 1240,436 1440,470" />
+                  points="1440,164 1268,124 1078,232 1088,428 1224,494 1402,460 1440,450" />
 
-        <!-- Tier 07: Dashed Shelf Fault -->
+        <!-- Tier 07: Upper Flank (Dashed - Reaching Mid-Screen) -->
         <polyline class="topo-contour topo-dashed"
-                  points="1440,370 1400,260 1238,190 1070,328 1118,432 1195,468 1440,515" />
+                  points="1440,122 1268,84 1032,212 1042,460 1208,534 1440,480" />
 
-        <!-- Tier 08: Lower Mountain Spur (Sweeps South-West) -->
+        <!-- Tier 08: Main Mountain Spur (Hairline - Stretching toward Center) -->
         <polyline class="topo-contour topo-hairline"
-                  points="1440,405 1370,300 1238,165 1035,335 1090,460 1140,505 1310,555 1440,568" />
+                  points="1440,78 1268,42 982,190 990,496 1188,578 1440,515" />
 
-        <!-- Tier 09: Valley Foot (Fanning Broadly Toward Screen Base) -->
+        <!-- Tier 09: Lower Basin Flank (Hairline - Center Incursion) -->
         <polyline class="topo-contour topo-hairline"
-                  points="1440,448 1320,345 1238,138 995,344 1055,492 1080,550 1220,610 1440,630" />
+                  points="1440,32 1268,-2 926,166 932,536 1164,624 1440,552" />
 
-        <!-- Tier 10: Basal Plain Traverse (Wide Flank Across Lower Canvas) -->
+        <!-- Tier 10: Deep Basin Traverse (Index - Reaching X: 864 & Y: 580) -->
         <polyline class="topo-contour topo-index"
-                  points="1440,500 1280,395 1238,105 950,355 1015,530 1010,600 1120,670 1320,720 1440,735" />
+                  points="1440,-16 1268,-50 864,140 868,580 1136,674 1440,592" />
+
+        <!-- Tier 11: Continental Plain Step (Hairline - Crossing into Center Field) -->
+        <polyline class="topo-contour topo-hairline"
+                  points="1380,-70 1268,-100 796,110 798,628 1102,728 1440,634" />
+
+        <!-- Tier 12: Basal Apron (Hairline - Deepest Center Ridge at X: 720) -->
+        <polyline class="topo-contour topo-hairline"
+                  points="1268,-154 720,78 722,680 1064,786 1440,680" />
       </svg>
     </div>
-  </div>
   <!-- =================== END: PERSISTENT BACKGROUND =================== -->
 
   <!-- =================== START: PINNED PERSISTENT LOGO =================== -->
