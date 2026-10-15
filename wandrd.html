@@ -4,237 +4,846 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WANDRD Amazon Brand Store | Devin Sanders</title>
+
+  <!-- Favicon & Touch Icon -->
+  <link rel="icon" type="image/png" href="LogoBlue.png">
+  <link rel="apple-touch-icon" href="LogoBlue.png">
+
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
   <style>
     /* =========================================================================
-       WANDRD CUSTOM TYPOGRAPHY OVERRIDES
+       WANDRD CUSTOM SPECIFICATION & BRAND SYSTEM (Dark Tech / Tactical)
        ========================================================================= */
 
-    /* 1. Case Study Headers, Section Titles, & Display -> Chakra Petch */
-    main h2,
-    main h3,
-    main h4,
-    main .context-headline,
-    main .case-section-header .label,
-    main .feature-copy h3,
-    main .uppercase-label {
-      font-family: 'Chakra Petch', sans-serif !important;
-      letter-spacing: -0.01em;
+    :root {
+      --wandrd-orange: #F15B22;
+      --wandrd-dark: #07090C;
+      --wandrd-card-bg: #0E1217;
+      --wandrd-border: rgba(255, 255, 255, 0.12);
+      --wandrd-text-dim: rgba(255, 255, 255, 0.7);
     }
 
-    /* 2. Body Text, Metadata, & Step Counters -> Schibsted Grotesk */
-    main p:not(.pagination-title):not(.pagination-label),
-    main li,
-    main .feature-copy p,
-    main .feature-copy .step-num,
-    .case-dark-section p:not(.pagination-title):not(.pagination-label) {
+    /* Page Canvas Override: Deep Obsidian Dark Mode */
+    body.wandrd-case-page {
+      background-color: var(--wandrd-dark) !important;
+      color: #FFFFFF !important;
+    }
+
+    /* Shell & Hero -> Pure Barlow */
+    .turnstyle-headline {
+      font-family: var(--font-barlow) !important;
+      font-weight: 800 !important;
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    .turnstyle-caption-title,
+    .turnstyle-caption-text,
+    .case-section-header .label,
+    .more-projects-title,
+    .more-projects-all,
+    .more-project-name,
+    .more-project-tag,
+    .spec-telemetry-item .label,
+    .spec-telemetry-item .val {
+      font-family: var(--font-barlow) !important;
+    }
+
+    /* Project Artwork Typography -> Chakra Petch (Display) & Schibsted Grotesk (Body) */
+    .wandrd-case-page main h2,
+    .wandrd-case-page main h3,
+    .wandrd-case-page main h4,
+    .wandrd-case-page .context-headline,
+    .wandrd-case-page .step-num {
+      font-family: 'Chakra Petch', sans-serif !important;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+
+    .wandrd-case-page main p,
+    .wandrd-case-page main li,
+    .wandrd-case-page .feature-copy p {
       font-family: 'Schibsted Grotesk', sans-serif !important;
     }
 
-    /* White styling for back link to match dark backdrop */
-    .sticky-brand-nav .back-work-link {
-      color: #FFFFFF !important;
+    /* Hero Banner */
+    .turnstyle-hero-banner {
+      position: relative;
+      width: 100%;
+      min-height: 85vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 4.5rem 4vw;
+      box-sizing: border-box;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .turnstyle-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 1;
+    }
+
+    .turnstyle-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(7, 9, 12, 0.96) 0%,
+        rgba(7, 9, 12, 0.65) 40%,
+        rgba(7, 9, 12, 0.2) 75%,
+        transparent 100%
+      );
+      z-index: 2;
+    }
+
+    .turnstyle-hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 950px;
+      color: #FFFFFF;
+    }
+
+    .turnstyle-headline {
+      font-size: clamp(2.5rem, 6vw, 4.75rem);
+      margin: 0 0 1.5rem 0;
+      color: #FFFFFF;
+    }
+
+    .turnstyle-caption-block {
+      border-left: 2px solid var(--wandrd-orange);
+      padding-left: 1.25rem;
+    }
+
+    .turnstyle-caption-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+
+    .turnstyle-caption-text {
+      font-size: 0.95rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      opacity: 0.85;
+      margin: 0.35rem 0 0 0;
+      color: #FFFFFF;
+    }
+
+    /* Main Container Shell */
+    .case-content-wrap {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 4vw;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Technical Spec Telemetry Bar */
+    .spec-telemetry-strip {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      background: var(--wandrd-card-bg);
+      border: 1px solid var(--wandrd-border);
+      padding: 1.75rem 2rem;
+      margin: 0 auto 5rem;
+      box-sizing: border-box;
+    }
+
+    @media (min-width: 860px) {
+      .spec-telemetry-strip {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+    }
+
+    .spec-telemetry-item .label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--wandrd-orange);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .spec-telemetry-item .val {
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: #FFFFFF;
+    }
+
+    /* Section Headers */
+    .case-section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .case-section-header .line {
+      width: 32px;
+      height: 2px;
+      background-color: var(--wandrd-orange);
+    }
+
+    .case-section-header .label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+
+    /* Intro Narrative Grid */
+    .wandrd-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-bottom: 5.5rem;
+    }
+
+    @media (min-width: 860px) {
+      .wandrd-intro-grid {
+        grid-template-columns: 1.2fr 1fr;
+        gap: 4.5rem;
+      }
+    }
+
+    .wandrd-intro-title {
+      font-family: var(--font-barlow);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--wandrd-orange);
+      margin-bottom: 0.65rem;
+      display: block;
+    }
+
+    .wandrd-intro-lead {
+      font-size: 1.18rem;
+      font-weight: 300;
+      line-height: 1.6;
+      color: #FFFFFF;
+      margin: 0;
+    }
+
+    .wandrd-intro-body {
+      font-size: 0.98rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--wandrd-text-dim);
+      margin: 0;
+    }
+
+    /* Alternating Store Feature Stages (01, 02, 03) */
+    .case-feature-split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      margin-bottom: 5.5rem;
+      background: var(--wandrd-card-bg);
+      border: 1px solid var(--wandrd-border);
+      padding: 2.5rem;
+      box-sizing: border-box;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
+    }
+
+    @media (min-width: 960px) {
+      .case-feature-split {
+        grid-template-columns: 1.45fr 1fr;
+        gap: 4rem;
+        padding: 3rem;
+      }
+      .case-feature-split.reverse {
+        grid-template-columns: 1fr 1.45fr;
+      }
+      .case-feature-split.reverse .feature-media {
+        order: 2;
+      }
+      .case-feature-split.reverse .feature-copy {
+        order: 1;
+      }
+    }
+
+    .feature-media {
+      width: 100%;
+      overflow: hidden;
+      background: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-media img {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .feature-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .step-num {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--wandrd-orange);
+      letter-spacing: 0.15em;
+    }
+
+    .feature-copy h3 {
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      font-weight: 800;
+      margin: 0;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+    }
+
+    .feature-copy p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--wandrd-text-dim);
+      margin: 0;
+    }
+
+    /* In-Context Block */
+    .case-context-block {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      background: var(--wandrd-card-bg);
+      border: 1px solid var(--wandrd-border);
+      padding: 2.5rem;
+      margin-bottom: 5.5rem;
+      box-sizing: border-box;
+    }
+
+    @media (min-width: 960px) {
+      .case-context-block {
+        grid-template-columns: 1.35fr 1fr;
+        gap: 4rem;
+        padding: 3.5rem;
+      }
+    }
+
+    .case-context-block img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .context-headline {
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      line-height: 0.95;
+      font-weight: 800;
+      margin: 0 0 1rem 0;
+      color: #FFFFFF;
+    }
+
+    .outline-txt {
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--wandrd-orange);
+    }
+
+    /* Infographic Showcase */
+    .case-phone-showcase {
+      width: 100%;
+      background: var(--wandrd-card-bg);
+      border: 1px solid var(--wandrd-border);
+      padding: 2rem;
+      box-sizing: border-box;
+      margin-bottom: 5.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .case-phone-showcase img {
+      width: 100%;
+      max-width: 1100px;
+      height: auto;
+      display: block;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Fixed Topo Subdued Dark Styling */
+    .topo-external-asset.subpage-topo-dark {
+      opacity: 0.12 !important;
+      filter: invert(1) brightness(0.4) contrast(1.2);
+    }
+
+    /* More Projects Reel (Dark Mode Variant) */
+    .more-projects-section {
+      position: relative;
+      z-index: 2;
+      max-width: 1440px;
+      margin: 4rem auto 2rem;
+      padding: 0 4vw;
+      box-sizing: border-box;
+    }
+
+    .more-projects-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding-bottom: 1rem;
+    }
+
+    .more-projects-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+
+    .more-projects-all {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--wandrd-orange);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .more-projects-all:hover {
+      color: #d84b16;
+    }
+
+    .more-projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .more-projects-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .more-project-card {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .more-project-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      margin-bottom: 0.85rem;
+    }
+
+    .more-project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+      transition: transform 0.4s ease, opacity 0.3s ease;
+    }
+
+    .more-project-card:hover .more-project-thumb img {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+
+    .more-project-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--wandrd-orange);
+      margin-bottom: 0.2rem;
+    }
+
+    .more-project-name {
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .overlay-brand-stamp {
+      width: 32px;
+      height: auto;
+      filter: brightness(0) invert(1);
+      display: inline-block;
+      vertical-align: middle;
     }
   </style>
 </head>
-<body style="background-color: #000000; color: #ffffff;">
+<body class="wandrd-case-page page-subpage">
 
-  <!-- Sticky Morphing Logo Header -->
-  <header class="sticky-brand-nav">
-    <a href="index.html" class="brand-morph-link" aria-label="Devin Sanders Home">
-      <div class="morph-logo-box">
-        <img src="LogoLong.png" alt="Devin Sanders" class="logo-full">
-        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="logo-mark">
+  <!-- =================== START: SITE PRELOADER =================== -->
+  <div id="site-loader">
+    <img src="LogoBlue.png" alt="Loading..." class="loader-mark-pulse">
+  </div>
+  <!-- =================== END: SITE PRELOADER =================== -->
+
+  <!-- =================== START: SLIDE-DOWN INDEX OVERLAY =================== -->
+  <div id="index-overlay" class="index-overlay-panel">
+    <div class="overlay-top-bar">
+      <div style="display: flex; align-items: center; gap: 0.85rem;">
+        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="overlay-brand-stamp">
+        <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.75);">Index</span>
       </div>
-    </a>
-    <div class="nav-right-link">
-      <a href="work.html" class="back-work-link">← All Work</a>
+      <button id="close-overlay-btn" style="background: none; border: none; cursor: pointer; color: white; display: flex; align-items: center;" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="4" x2="20" y2="20"></line>
+          <line x1="20" y1="4" x2="4" y2="20"></line>
+        </svg>
+      </button>
     </div>
-  </header>
+    <nav class="overlay-nav-links">
+      <div class="overlay-link-item">
+        <span>01</span>
+        <a href="index.html" class="overlay-link">Home</a>
+      </div>
+      <div class="overlay-link-item">
+        <span>02</span>
+        <a href="work.html" class="overlay-link">Work</a>
+      </div>
+      <div class="overlay-link-item">
+        <span>03</span>
+        <a href="ui-ux.html" class="overlay-link">UI/UX Work</a>
+      </div>
+      <div class="overlay-link-item">
+        <span>04</span>
+        <a href="about.html" class="overlay-link">About</a>
+      </div>
+      <div class="overlay-link-item">
+        <span>05</span>
+        <button id="overlay-contact-link" class="overlay-link">Contact</button>
+      </div>
+    </nav>
+  </div>
+  <!-- =================== END: SLIDE-DOWN INDEX OVERLAY =================== -->
 
-  <!-- 100vh Hero Banner (Scaled-down Typography) -->
+  <!-- =================== START: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
+  <button id="floating-nav-btn" class="floating-peak-btn subpage-permanent-btn" aria-label="Open Navigation">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M2 14 L6.5 5 L10 10 L16 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+  <!-- =================== END: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
+
+  <!-- =================== START: PERSISTENT BACKGROUND =================== -->
+  <div class="hero-fixed-background" aria-hidden="true">
+    <div class="hero-dot-grid"></div>
+    <div class="hero-topography-plate">
+      <img src="topography.svg" alt="" class="topo-external-asset subpage-topo-dark" aria-hidden="true">
+    </div>
+  </div>
+  <!-- =================== END: PERSISTENT BACKGROUND =================== -->
+
+  <!-- 1. Full-Bleed 100vh Hero Banner (Barlow Typographic Anchor) -->
   <header class="turnstyle-hero-banner">
-    <img src="WANDRD-Hero.png" alt="WANDRD Project Showcase" class="turnstyle-hero-bg">
+    <img src="WANDRD-Hero.png" alt="WANDRD Hero Showcase" class="turnstyle-hero-bg" fetchpriority="high">
     <div class="turnstyle-hero-overlay"></div>
-    
+
     <div class="turnstyle-hero-content">
-      <h1 class="turnstyle-headline" style="font-size: clamp(2rem, 4.2vw, 3.75rem); max-width: 650px;">
+      <h1 class="turnstyle-headline">
         Building an Elevated E-Commerce Storefront
       </h1>
-      
       <div class="turnstyle-caption-block">
         <div class="turnstyle-caption-title">WANDRD Brand Store</div>
-        <p class="turnstyle-caption-text">Amazon Store Strategy & Product Graphic Systems</p>
+        <p class="turnstyle-caption-text">Amazon Store Strategy & Product Graphic Systems · 2025</p>
       </div>
     </div>
   </header>
 
-  <!-- Main Narrative & Showcase -->
-  <main class="case-dark-section" style="background-color: #000000; padding-top: 5rem;">
+  <!-- Main Narrative & Content Blocks -->
+  <main style="padding-top: 5rem; padding-bottom: 5rem;">
 
-    <!-- 1. Intro Narrative & Challenge Grid -->
-    <section class="case-intro-block" style="max-width: 1200px; margin: 0 auto 6rem;">
-      <div style="display: grid; grid-template-columns: 1fr; gap: 2.5rem;" class="intro-grid-responsive">
+    <!-- 2. Technical Telemetry Spec Strip -->
+    <div class="case-content-wrap">
+      <div class="spec-telemetry-strip">
+        <div class="spec-telemetry-item">
+          <span class="label">Discipline</span>
+          <span class="val">Technical Carry & E-Commerce</span>
+        </div>
+        <div class="spec-telemetry-item">
+          <span class="label">Platform</span>
+          <span class="val">Amazon Storefront & A+ System</span>
+        </div>
+        <div class="spec-telemetry-item">
+          <span class="label">Architecture</span>
+          <span class="val">3 Sub-Stores · Mobile Infographics</span>
+        </div>
+        <div class="spec-telemetry-item">
+          <span class="label">Timeline</span>
+          <span class="val">Live Production · 2025</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Intro Narrative & Challenge Grid -->
+    <div class="case-content-wrap">
+      <div class="wandrd-intro-grid">
         <div>
-          <span class="uppercase-label" style="margin-bottom: 0.75rem; color: var(--accent-orange);">Overview</span>
-          <p style="font-weight: 300; font-size: 1.15rem; line-height: 1.6; color: #ffffff;">
+          <span class="wandrd-intro-title">Project Overview</span>
+          <p class="wandrd-intro-lead">
             WANDRD designs versatile travel gear and camera bags for creatives. This project focused on structuring their comprehensive Amazon Brand Store into an intuitive, high-conversion visual ecosystem.
           </p>
         </div>
         <div>
-          <span class="uppercase-label" style="margin-bottom: 0.75rem; color: rgba(255,255,255,0.45);">The Challenge</span>
-          <p style="font-weight: 300; font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.7);">
+          <span class="wandrd-intro-title">The Amazon Challenge</span>
+          <p class="wandrd-intro-body">
             Amazon's rigid layout modules often dilute distinctive brand identities. The goal was to overcome these grid limitations through custom lifestyle tiles, bold typographic callouts, and tailored infographics that feel authentic to WANDRD.
           </p>
         </div>
       </div>
+    </div>
+
+    <!-- 4. The Brand Store (3 Alternating Modular Rows) -->
+    <div class="case-content-wrap">
+
+      <div class="case-section-header">
+        <div class="line"></div>
+        <span class="label">The Brand Store Architecture</span>
+      </div>
+
+      <!-- 01 Home Page -->
+      <article class="case-feature-split">
+        <div class="feature-media">
+          <img src="WANDRD-HomePage.png" alt="WANDRD Home Page Store" loading="lazy" decoding="async">
+        </div>
+        <div class="feature-copy">
+          <span class="step-num">01 / 03</span>
+          <h3>Home Page Architecture</h3>
+          <p>
+            The primary landing portal leading with category tiles to direct travelers and photographers quickly toward their specific carry volume.
+          </p>
+        </div>
+      </article>
+
+      <!-- 02 Product Page (PRVKE) -->
+      <article class="case-feature-split reverse">
+        <div class="feature-media">
+          <img src="WANDRD-PRVKE.png" alt="WANDRD PRVKE Product Page" loading="lazy" decoding="async">
+        </div>
+        <div class="feature-copy">
+          <span class="step-num">02 / 03</span>
+          <h3>Product Page — The PRVKE</h3>
+          <p>
+            Pairs moody lifestyle field imagery with high-contrast callouts to highlight the expandable roll-top and dedicated quick-draw camera access.
+          </p>
+        </div>
+      </article>
+
+      <!-- 03 Product Page (Fernweh) -->
+      <article class="case-feature-split">
+        <div class="feature-media">
+          <img src="WANDRD-Fernweh.png" alt="WANDRD Fernweh Product Page" loading="lazy" decoding="async">
+        </div>
+        <div class="feature-copy">
+          <span class="step-num">03 / 03</span>
+          <h3>Product Page — The Fernweh</h3>
+          <p>
+            A high-capacity backpacking layout structured around adventure storytelling—balancing terrain scale, carrying comfort, and technical specs.
+          </p>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- 5. In Context: Designed For Amazon -->
+    <div class="case-content-wrap">
+
+      <div class="case-section-header">
+        <div class="line"></div>
+        <span class="label">In Context // Amazon Ecosystem</span>
+      </div>
+
+      <div class="case-context-block">
+        <div>
+          <img src="WANDRD-Lifestyle.jpg" alt="WANDRD Store on Laptop" loading="lazy" decoding="async">
+        </div>
+        <div>
+          <h2 class="context-headline">
+            Designed<br>For<br><span class="outline-txt">Amazon</span>
+          </h2>
+          <p style="font-weight: 300; font-size: 0.98rem; line-height: 1.65; color: var(--wandrd-text-dim); margin: 0;">
+            Operating within Amazon's strict template limits required precision. Every modular banner was engineered to scale seamlessly between desktop browsers and the Amazon mobile app without losing legibility.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 6. Mobile Infographics Showcase -->
+    <div class="case-content-wrap">
+
+      <div class="case-section-header">
+        <div class="line"></div>
+        <span class="label">Mobile A+ Infographic Graphics</span>
+      </div>
+
+      <div class="case-phone-showcase">
+        <img src="WANDRD-Infographics.jpg" alt="WANDRD Amazon Mobile Infographics" loading="lazy" decoding="async">
+      </div>
+
+    </div>
+
+    <!-- =========================================================================
+         MORE PROJECTS THUMBNAIL REEL (Interactive Discovery Strip)
+         ========================================================================= -->
+    <section class="more-projects-section">
+      <div class="more-projects-header">
+        <span class="more-projects-title">More Selected Projects</span>
+        <a href="work.html" class="more-projects-all">View All Work →</a>
+      </div>
+
+      <div class="more-projects-grid">
+        <!-- Project 1: Rexburg Rapids -->
+        <a href="rexburg-rapids.html" class="more-project-card">
+          <div class="more-project-thumb">
+            <img src="RexburgRapids-Hero.jpg" alt="Rexburg Rapids Identity" loading="lazy" decoding="async">
+          </div>
+          <span class="more-project-tag">Brand Identity</span>
+          <span class="more-project-name">Rexburg Rapids</span>
+        </a>
+
+        <!-- Project 2: Kindred Roots -->
+        <a href="kindred-roots.html" class="more-project-card">
+          <div class="more-project-thumb">
+            <img src="KindredRoots/KindredRoots-Hero.png" alt="Kindred Roots Publication" loading="lazy" decoding="async">
+          </div>
+          <span class="more-project-tag">Editorial & Print</span>
+          <span class="more-project-name">Kindred Roots</span>
+        </a>
+
+        <!-- Project 3: Gerber Gear -->
+        <a href="gerber-gear.html" class="more-project-card">
+          <div class="more-project-thumb">
+            <img src="GerberGear/GG-Hero.png" alt="Gerber Gear Packaging" loading="lazy" decoding="async">
+          </div>
+          <span class="more-project-tag">Packaging Suite</span>
+          <span class="more-project-name">Gerber Gear</span>
+        </a>
+
+        <!-- Project 4: Analog Reboot -->
+        <a href="analog-reboot.html" class="more-project-card">
+          <div class="more-project-thumb">
+            <img src="AnalogReboot/AR-Hero.png" alt="Analog Reboot Apparel" loading="lazy" decoding="async">
+          </div>
+          <span class="more-project-tag">Pattern & Apparel</span>
+          <span class="more-project-name">Analog Reboot</span>
+        </a>
+      </div>
     </section>
-
-    <!-- 2. The Brand Store (3 Alternating Rows) -->
-    <div class="case-section-header">
-      <div class="line"></div>
-      <span class="label">The Brand Store</span>
-    </div>
-
-    <!-- 01 Home Page -->
-    <div class="case-feature-split">
-      <div class="feature-media">
-        <img src="WANDRD-HomePage.png" alt="WANDRD Home Page Store">
-      </div>
-      <div class="feature-copy">
-        <span class="step-num">01 / 03</span>
-        <h3>Home Page</h3>
-        <p>
-          The storefront landing, leading with product category tiles to direct users quickly toward their area of interest.
-        </p>
-      </div>
-    </div>
-
-    <!-- 02 Product Page (PRVKE) -->
-    <div class="case-feature-split reverse">
-      <div class="feature-media">
-        <img src="WANDRD-PRVKE.png" alt="WANDRD PRVKE Product Page">
-      </div>
-      <div class="feature-copy">
-        <span class="step-num">02 / 03</span>
-        <h3>Product Page — The PRVKE</h3>
-        <p>
-          The PRVKE page pairs lifestyle imagery with bold callouts, reinforcing the product personality.
-        </p>
-      </div>
-    </div>
-
-    <!-- 03 Product Page (Fernweh) -->
-    <div class="case-feature-split">
-      <div class="feature-media">
-        <img src="WANDRD-Fernweh.png" alt="WANDRD Fernweh Product Page">
-      </div>
-      <div class="feature-copy">
-        <span class="step-num">03 / 03</span>
-        <h3>Product Page — The Fernweh</h3>
-        <p>
-          The layout presents the travel bag line with a storytelling approach — place, mood, and product together.
-        </p>
-      </div>
-    </div>
-
-    <!-- 3. In Context (Designed for Amazon) -->
-    <div class="case-section-header" style="margin-top: 7rem;">
-      <div class="line"></div>
-      <span class="label">In Context</span>
-    </div>
-
-    <div class="case-context-block">
-      <div>
-        <img src="WANDRD-Lifestyle.jpg" alt="WANDRD Store on Laptop">
-      </div>
-      <div>
-        <h2 class="context-headline">
-          Designed<br>For<br><span class="outline-txt">Amazon</span>
-        </h2>
-        <p style="font-weight: 300; font-size: 0.95rem; line-height: 1.7; color: rgba(255,255,255,0.7);">
-          The brand store operates within Amazon's tightly constrained template system. Every layout decision had to work within those boundaries while still feeling distinctly WANDRD.
-        </p>
-      </div>
-    </div>
-
-    <!-- 4. Infographics (Final Section) -->
-    <div class="case-section-header" style="margin-top: 7rem;">
-      <div class="line"></div>
-      <span class="label">Infographics</span>
-    </div>
-
-    <div class="case-phone-showcase" style="margin-bottom: 5rem;">
-      <img src="WANDRD-Infographics.jpg" alt="WANDRD Amazon Mobile Infographics">
-    </div>
-
-    <!-- 5. Project Pagination Navigation -->
-    <nav class="project-pagination-nav" aria-label="Project Pagination" style="border-top: 1px solid rgba(255, 255, 255, 0.12);">
-      <!-- Previous Project: Rexburg Rapids -->
-      <a href="rexburg-rapids.html" class="pagination-card prev-card" style="color: #ffffff;">
-        <div class="pagination-arrow-box" style="border-color: rgba(255, 255, 255, 0.2); color: #ffffff;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-        </div>
-        <div class="pagination-thumb">
-          <img src="RexburgRapids-Hero.jpg" alt="Rexburg Rapids Thumbnail">
-        </div>
-        <div class="pagination-meta">
-          <span class="pagination-label">Previous Project</span>
-          <span class="pagination-title">Rexburg Rapids</span>
-        </div>
-      </a>
-
-      <!-- Next Project: Kindred Roots -->
-      <a href="kindred-roots.html" class="pagination-card next-card" style="color: #ffffff;">
-        <div class="pagination-meta text-right">
-          <span class="pagination-label">Next Project</span>
-          <span class="pagination-title">Kindred Roots</span>
-        </div>
-        <div class="pagination-thumb">
-          <img src="KindredRoots/KindredRoots-Hero.png" alt="Kindred Roots Thumbnail">
-        </div>
-        <div class="pagination-arrow-box" style="border-color: rgba(255, 255, 255, 0.2); color: #ffffff;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </div>
-      </a>
-    </nav>
 
   </main>
 
-  <!-- Footer -->
+  <!-- =================== START: GLOBAL EDITORIAL FOOTER =================== -->
   <footer id="contact" class="site-footer">
-    <div class="footer-max-width">
-      <span class="uppercase-label">Get in Touch</span>
-      <h2 class="footer-heading">Let's build<br>something meaningful.</h2>
+    <div class="footer-inner-shell">
 
-      <div>
-        <a href="mailto:devin.sanders02@gmail.com" class="footer-link">devin.sanders02@gmail.com</a>
+      <div class="footer-tier-hero">
+        <h2 class="footer-hero-headline">Let's build something meaningful.</h2>
+        <a href="mailto:devin.sanders02@gmail.com" class="footer-email-link">
+          <span>devin.sanders02@gmail.com</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
       </div>
 
-      <hr class="footer-divider">
+      <hr class="footer-hairline">
 
-      <div class="footer-sub-row">
-        <div style="display: flex; gap: 1.5rem;">
-          <a href="work.html" class="footer-link" style="color: rgba(255,255,255,0.5);">Work</a>
-          <a href="about.html" class="footer-link" style="color: rgba(255,255,255,0.5);">About</a>
+      <div class="footer-directory-grid">
+        <div>
+          <span class="footer-col-header">01 /<span>Work</span></span>
+          <ul class="footer-nav-list">
+            <li><a href="work.html" class="footer-link-animated">Selected Work</a></li>
+            <li><a href="ui-ux.html" class="footer-link-animated">UI/UX & Systems</a></li>
+            <li><a href="about.html" class="footer-link-animated">About & Studio</a></li>
+          </ul>
         </div>
-        <p style="font-weight: 300; font-size: 0.75rem; color: rgba(255,255,255,0.3);">
-          © <span id="copyright-year">2026</span> Devin Sanders. Crafted with intention.
-        </p>
+
+        <div>
+          <span class="footer-col-header">02 /<span>Network</span></span>
+          <ul class="footer-nav-list">
+            <li>
+              <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer">
+                <span>LinkedIn</span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <span class="footer-col-header">03 /<span>Discipline</span></span>
+          <ul class="footer-discipline-list">
+            <li>Brand architecture & identity</li>
+            <li>Physical & digital commerce</li>
+          </ul>
+        </div>
+
+        <div>
+          <span class="footer-col-header">04 /<span>Top</span></span>
+          <button id="footer-scroll-top-btn" class="footer-scroll-top-btn">
+            <span>Return to Top</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </button>
+        </div>
       </div>
+
+      <div class="footer-colophon-row">
+        <div>© <span id="copyright-year">2026</span> Devin Sanders. All Rights Reserved.</div>
+        <div>Barlow · Visual Brand Architecture</div>
+      </div>
+
     </div>
   </footer>
+  <!-- =================== END: GLOBAL EDITORIAL FOOTER =================== -->
 
+  <!-- Custom Survey Reticle Cursor -->
+  <div id="survey-cursor" class="survey-cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+  </div>
+
+  <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
