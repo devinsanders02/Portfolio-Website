@@ -453,34 +453,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   const moreGrid = document.getElementById('more-projects-grid');
   if (moreGrid && typeof projects !== 'undefined') {
-    // 1. Detect current project slug from URL (e.g. 'analog-reboot.html' -> 'analog-reboot')
-    const currentPath = window.location.pathname;
-    let currentSlug = currentPath.substring(currentPath.lastIndexOf('/') + 1).replace('.html', '').trim();
-    if (!currentSlug || currentSlug === 'index') currentSlug = 'analog-reboot';
+    // Robust slug extraction: strips folders, hashes, queries, and extensions
+    const cleanPath = window.location.pathname.split('/').pop().split('?')[0].split('#')[0];
+    const pageSlug = cleanPath.replace('.html', '').trim();
 
-    // 2. Match index in data.js
-    let currentIndex = projects.findIndex(p => p.slug === currentSlug);
+    let currentIndex = projects.findIndex(p => p.slug === pageSlug);
     if (currentIndex === -1) currentIndex = 0;
     const total = projects.length;
 
-    // 3. Pick next 4 chronological projects sequentially (loops back seamlessly)
-    const nextProjects = [];
-    for (let i = 1; i <= 4; i++) {
-      const nextIdx = (currentIndex + i) % total;
-      nextProjects.push(projects[nextIdx]);
-    }
-
-    // 4. Render cards into the grid
     moreGrid.innerHTML = '';
-    nextProjects.forEach(p => {
+    for (let i = 1; i <= 4; i++) {
+      const p = projects[(currentIndex + i) % total];
       const card = document.createElement('a');
       card.href = getProjectUrl(p.slug);
       card.className = 'more-project-card';
       
-      const cleanTitle = p.title.includes('—') 
-        ? p.title.split('—')[0].trim() 
-        : p.title.split(' - ')[0].trim();
-      
+      const cleanTitle = p.title.split('—')[0].split(' - ')[0].trim();
       const cleanTag = p.services ? p.services.split(',')[0].trim() : 'Selected Work';
 
       card.innerHTML = `
@@ -491,6 +479,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <span class="more-project-name">${cleanTitle}</span>
       `;
       moreGrid.appendChild(card);
-    });
+    }
   }
 });
