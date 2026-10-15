@@ -16,7 +16,7 @@
 
   <style>
     /* =========================================================================
-       KINDRED ROOTS CUSTOM SPECIFICATION & EDITORIAL SYSTEM
+       KINDRED ROOTS EDITORIAL ARCHITECTURE & SPREAD SYSTEM
        ========================================================================= */
 
     :root {
@@ -24,6 +24,7 @@
       --roots-bg: #F9F9F8;
       --roots-ink: #2C3E50;
       --roots-border: rgba(44, 62, 80, 0.12);
+      --roots-muted: rgba(44, 62, 80, 0.72);
     }
 
     body.roots-case-page {
@@ -47,25 +48,24 @@
     .more-projects-all,
     .more-project-name,
     .more-project-tag,
-    .spec-telemetry-item .label,
-    .spec-telemetry-item .val {
+    .editorial-colophon-tag,
+    .spread-meta-tag {
       font-family: var(--font-barlow) !important;
     }
 
-    /* 2. Editorial Artwork Typography -> Zilla Slab (Display) & Syne (Body) */
+    /* 2. Editorial Typography -> Zilla Slab (Display / Pull-quotes) & Syne (Body) */
     .roots-case-page main h2,
     .roots-case-page main h3,
     .roots-case-page main h4,
-    .roots-case-page .feature-copy h3 {
+    .roots-pull-quote,
+    .spread-title {
       font-family: 'Zilla Slab', serif !important;
-      font-weight: 700;
       letter-spacing: -0.01em;
     }
 
     .roots-case-page main p,
     .roots-case-page main li,
-    .roots-case-page .feature-copy p,
-    .roots-case-page .step-num {
+    .spread-caption {
       font-family: 'Syne', sans-serif !important;
     }
 
@@ -97,7 +97,7 @@
       inset: 0;
       background: linear-gradient(
         to top,
-        rgba(30, 25, 20, 0.9) 0%,
+        rgba(30, 25, 20, 0.92) 0%,
         rgba(30, 25, 20, 0.5) 45%,
         transparent 75%
       );
@@ -107,7 +107,7 @@
     .turnstyle-hero-content {
       position: relative;
       z-index: 3;
-      max-width: 1020px;
+      max-width: 1040px;
       color: #FFFFFF;
     }
 
@@ -149,43 +149,6 @@
       z-index: 2;
     }
 
-    /* Technical Spec Telemetry Bar */
-    .spec-telemetry-strip {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      background: #FFFFFF;
-      border: 1px solid var(--roots-border);
-      padding: 1.75rem 2rem;
-      margin: 0 auto 5rem;
-      box-shadow: 0 10px 30px rgba(44, 62, 80, 0.04);
-      box-sizing: border-box;
-    }
-
-    @media (min-width: 860px) {
-      .spec-telemetry-strip {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
-      }
-    }
-
-    .spec-telemetry-item .label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--roots-gold);
-      display: block;
-      margin-bottom: 0.35rem;
-    }
-
-    .spec-telemetry-item .val {
-      font-size: 0.95rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: var(--roots-ink);
-    }
-
     /* Section Headers */
     .case-section-header {
       display: flex;
@@ -208,63 +171,53 @@
       color: var(--roots-ink);
     }
 
-    /* Intro Narrative Grid */
-    .roots-intro-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-      margin-bottom: 5.5rem;
+    /* Editorial Opening Narrative */
+    .editorial-statement-block {
+      max-width: 820px;
+      margin: 0 auto 6.5rem;
+      text-align: left;
     }
 
-    @media (min-width: 860px) {
-      .roots-intro-grid {
-        grid-template-columns: 1.25fr 1fr;
-        gap: 4.5rem;
-      }
-    }
-
-    .roots-intro-title {
-      font-family: var(--font-barlow);
-      font-size: 0.78rem;
+    .editorial-colophon-tag {
+      font-size: 0.76rem;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--roots-gold);
-      margin-bottom: 0.65rem;
       display: block;
+      margin-bottom: 1rem;
     }
 
-    .roots-intro-lead {
-      font-size: 1.15rem;
-      font-weight: 400;
-      line-height: 1.65;
+    .editorial-lead-quote {
+      font-family: 'Zilla Slab', serif !important;
+      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+      font-weight: 600;
+      line-height: 1.25;
       color: var(--roots-ink);
-      margin: 0;
+      margin: 0 0 1.75rem 0;
     }
 
-    .roots-intro-body {
-      font-size: 0.98rem;
+    .editorial-body-narrative {
+      font-size: 1.05rem;
       font-weight: 400;
       line-height: 1.7;
-      color: var(--text-muted);
+      color: var(--roots-muted);
       margin: 0;
     }
 
-    /* Image Display Boxes */
-    .case-img-box {
+    /* Shared Stage Framing (Simulating Print Paper Elevation) */
+    .editorial-stage-frame {
       width: 100%;
-      max-width: 100%;
-      overflow: hidden;
-      background-color: #FFFFFF;
+      background: #FFFFFF;
       border: 1px solid var(--roots-border);
-      box-sizing: border-box;
+      box-shadow: 0 16px 40px -15px rgba(44, 62, 80, 0.08);
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 10px 30px rgba(44, 62, 80, 0.04);
     }
 
-    .case-img-box img {
+    .editorial-stage-frame img {
       width: 100%;
       height: 100%;
       max-width: 100%;
@@ -272,89 +225,139 @@
       display: block;
     }
 
-    /* Alternating Spread Feature Rows */
-    .case-feature-split {
+    /* Layout Moment A: Master Spread Canvas (Table of Contents) */
+    .master-spread-stage {
+      margin-bottom: 7.5rem;
+    }
+
+    .spread-caption-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--roots-border);
+      margin-top: 1.25rem;
+    }
+
+    .spread-meta-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--roots-gold);
+    }
+
+    .spread-caption {
+      font-size: 0.92rem;
+      font-weight: 400;
+      color: var(--roots-muted);
+      margin: 0;
+      max-width: 600px;
+      text-align: right;
+    }
+
+    @media (max-width: 768px) {
+      .spread-caption-strip {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      .spread-caption {
+        text-align: left;
+      }
+    }
+
+    /* Layout Moment B: Asymmetric Editorial Pair (Pull-Quote + Major Spread) */
+    .editorial-asymmetric-pair {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2.5rem;
+      gap: 3rem;
       align-items: center;
-      margin-bottom: 5.5rem;
-      background: #FFFFFF;
-      border: 1px solid var(--roots-border);
-      padding: 2.5rem;
-      box-sizing: border-box;
-      box-shadow: 0 12px 30px rgba(44, 62, 80, 0.05);
+      margin-bottom: 7.5rem;
     }
 
     @media (min-width: 960px) {
-      .case-feature-split {
-        grid-template-columns: 1.45fr 1fr;
-        gap: 4rem;
-        padding: 3rem;
-      }
-      .case-feature-split.reverse {
-        grid-template-columns: 1fr 1.45fr;
-      }
-      .case-feature-split.reverse .feature-media {
-        order: 2;
-      }
-      .case-feature-split.reverse .feature-copy {
-        order: 1;
+      .editorial-asymmetric-pair {
+        grid-template-columns: 1fr 1.55fr;
+        gap: 4.5rem;
       }
     }
 
-    .feature-media {
-      width: 100%;
-      overflow: hidden;
-      background: #FFFFFF;
-      border: 1px solid rgba(44, 62, 80, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .feature-media img {
-      width: 100%;
-      height: auto;
-      max-width: 100%;
-      display: block;
-      object-fit: cover;
-    }
-
-    .feature-copy {
+    .roots-pull-quote-box {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 1.25rem;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--roots-gold);
     }
 
-    .step-num {
-      font-size: 0.85rem;
-      font-weight: 700;
+    .roots-pull-quote {
+      font-size: clamp(1.8rem, 2.6vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--roots-ink);
+      margin: 0;
+    }
+
+    .roots-pull-quote em {
+      font-style: italic;
       color: var(--roots-gold);
-      letter-spacing: 0.15em;
     }
 
-    .feature-copy h3 {
-      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
-      line-height: 1.1;
+    .roots-pull-author {
+      font-family: var(--font-barlow);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--roots-muted);
+    }
+
+    /* Layout Moment C: Feature Article Sequence (Full-Bleed Spread Cards) */
+    .article-spread-sequence {
+      display: flex;
+      flex-direction: column;
+      gap: 6.5rem;
+      margin-bottom: 7.5rem;
+    }
+
+    .article-spread-entry {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .spread-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.5rem;
+      border-bottom: 1px solid var(--roots-border);
+      padding-bottom: 0.85rem;
+    }
+
+    .spread-title {
+      font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+      font-weight: 700;
       margin: 0;
       color: var(--roots-ink);
     }
 
-    .feature-copy p {
-      font-size: 0.95rem;
-      font-weight: 400;
-      line-height: 1.65;
-      color: var(--text-muted);
-      margin: 0;
+    .spread-number {
+      font-family: var(--font-barlow);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--roots-gold);
+      letter-spacing: 0.1em;
     }
 
-    /* 2-Column & 3-Column Spread Grids */
+    /* Layout Moment D: Dual Typesetting Details */
     .case-grid-2col {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
+      gap: 1.75rem;
+      margin-bottom: 2rem;
     }
 
     @media (min-width: 768px) {
@@ -363,11 +366,12 @@
       }
     }
 
+    /* Layout Moment E: 3-Spread Horizontal Rhythm */
     .case-grid-3col {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
+      gap: 1.75rem;
+      margin-bottom: 3rem;
     }
 
     @media (min-width: 768px) {
@@ -562,143 +566,117 @@
     </div>
   </header>
 
-  <!-- Main Narrative & Spreads Showcase -->
-  <main style="padding-top: 5rem; padding-bottom: 5rem;">
+  <!-- Main Editorial Canvas -->
+  <main style="padding-top: 5.5rem; padding-bottom: 5rem;">
 
-    <!-- 2. Technical Telemetry Spec Strip -->
-    <div class="case-content-wrap">
-      <div class="spec-telemetry-strip">
-        <div class="spec-telemetry-item">
-          <span class="label">Discipline</span>
-          <span class="val">Publication & Editorial Design</span>
-        </div>
-        <div class="spec-telemetry-item">
-          <span class="label">Typography</span>
-          <span class="val">Zilla Slab & Syne System</span>
-        </div>
-        <div class="spec-telemetry-item">
-          <span class="label">Medium</span>
-          <span class="val">Print Publication & Spread Grid</span>
-        </div>
-        <div class="spec-telemetry-item">
-          <span class="label">Timeline</span>
-          <span class="val">Conceptual Edition · 2026</span>
-        </div>
+    <!-- 2. Literary Intro Narrative & Opening Statement (No Telemetry Box) -->
+    <section class="case-content-wrap">
+      <div class="editorial-statement-block">
+        <span class="editorial-colophon-tag">Editorial Statement // Human Friction</span>
+        <h2 class="editorial-lead-quote">
+          "A study on physical print as an intentional counterweight to frictionless screen consumption."
+        </h2>
+        <p class="editorial-body-narrative">
+          Kindred Roots explores community, belonging, and the spaces between people in an increasingly isolated culture. This project centered on crafting an intentional editorial architecture that balances bold display typography with spacious, quiet reading spreads—establishing clear grid pacing and warm earthy tones so each multi-page narrative develops its own distinct atmosphere.
+        </p>
       </div>
-    </div>
+    </section>
 
-    <!-- 3. Overview & Challenge Grid -->
-    <div class="case-content-wrap">
-      <div class="roots-intro-grid">
-        <div>
-          <span class="roots-intro-title">Project Overview</span>
-          <p class="roots-intro-lead">
-            Kindred Roots is an exploration of community, belonging, and the spaces between people. This project centered on crafting an intentional editorial layout that balances bold display type with spacious, reflective reading spreads.
-          </p>
-        </div>
-        <div>
-          <span class="roots-intro-title">The Editorial Challenge</span>
-          <p class="roots-intro-body">
-            Multi-article publications require visual variety without losing structural harmony. The goal was to establish a clear grid system, warm earthy tones, and typographic pacing that gives each narrative article its own distinct atmosphere.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 4. Featured Hero Magazine Mockup (Table of Contents) -->
-    <div class="case-content-wrap" style="margin-bottom: 6rem;">
+    <!-- 3. Master Spread Stage: Table of Contents -->
+    <section class="case-content-wrap master-spread-stage">
       <div class="case-section-header">
         <div class="line"></div>
-        <span class="label">Table of Contents // Architecture</span>
-      </div>
-      <div class="case-img-box" style="aspect-ratio: 16 / 10;">
-        <img src="KindredRoots/KindredRoots-ToC.jpg" alt="Table of Contents Spread" loading="lazy" decoding="async">
-      </div>
-    </div>
-
-    <!-- 5. Alternating Spread Features -->
-    <div class="case-content-wrap">
-
-      <div class="case-section-header">
-        <div class="line"></div>
-        <span class="label">Featured Narrative Spreads</span>
+        <span class="label">Editorial Hierarchy</span>
       </div>
 
-      <!-- Spread 01: Letter from the Editor -->
-      <article class="case-feature-split">
-        <div class="feature-media">
-          <img src="KindredRoots/KindredRoots-LFE.jpg" alt="Letter from the Editor Spread" loading="lazy" decoding="async">
+      <div class="editorial-stage-frame" style="aspect-ratio: 16 / 10;">
+        <img src="KindredRoots/KindredRoots-ToC.jpg" alt="Kindred Roots Table of Contents Spread" loading="lazy" decoding="async">
+      </div>
+
+      <div class="spread-caption-strip">
+        <span class="spread-meta-tag">Table of Contents // Architecture</span>
+        <p class="spread-caption">
+          Establishing typographic pacing through spacious numerical margins, structured category dividers, and warm uncoated paper stock.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. Asymmetric Editorial Pair: Pull-Quote + Editor's Letter -->
+    <section class="case-content-wrap editorial-asymmetric-pair">
+      <div class="roots-pull-quote-box">
+        <blockquote class="roots-pull-quote">
+          "Great publications do not fill space; they <em>frame silence</em> so the story can breathe."
+        </blockquote>
+        <span class="roots-pull-author">Letter From the Editor · Issue 01</span>
+      </div>
+
+      <div class="editorial-stage-frame" style="aspect-ratio: 4 / 3;">
+        <img src="KindredRoots/KindredRoots-LFE.jpg" alt="Letter from the Editor Spread" loading="lazy" decoding="async">
+      </div>
+    </section>
+
+    <!-- 5. Feature Narrative Spreads (Sequential Editorial Flatlays) -->
+    <section class="case-content-wrap article-spread-sequence">
+
+      <!-- Feature Article 01: 404 Connection Not Found -->
+      <article class="article-spread-entry">
+        <div class="spread-header-row">
+          <h3 class="spread-title">404: Connection Not Found</h3>
+          <span class="spread-number">Feature Article // 01</span>
         </div>
-        <div class="feature-copy">
-          <span class="step-num">01 / 03</span>
-          <h3>Letter From<br>The Editor</h3>
-          <p>
-            A balanced combination of typography, portraiture, and ample whitespace that creates an inviting, grounded introduction to the publication.
-          </p>
-        </div>
-      </article>
-
-      <!-- Spread 02: 404 Connection Not Found (Reversed) -->
-      <article class="case-feature-split reverse">
-        <div class="feature-media">
+        <div class="editorial-stage-frame" style="aspect-ratio: 16 / 10;">
           <img src="KindredRoots/KindredRoots-FeatArt1.jpg" alt="404 Connection Not Found Spread" loading="lazy" decoding="async">
         </div>
-        <div class="feature-copy">
-          <span class="step-num">02 / 03</span>
-          <h3>404: Connection<br>Not Found</h3>
-          <p>
-            Uses digital error syntax and moody, nocturnal illustration to highlight the growing emotional disconnect between screen habits and human interaction.
-          </p>
-        </div>
+        <p class="editorial-body-narrative" style="max-width: 680px;">
+          Using digital error syntax, dark nocturnal color grading, and asymmetric multi-column text blocks to explore the quiet breakdown of conversational presence in digital spaces.
+        </p>
       </article>
 
-      <!-- Spread 03: Unmapped -->
-      <article class="case-feature-split">
-        <div class="feature-media">
+      <!-- Feature Article 02: Un-Mapped -->
+      <article class="article-spread-entry">
+        <div class="spread-header-row">
+          <h3 class="spread-title">Un-Mapped // Terrain & Reflection</h3>
+          <span class="spread-number">Feature Article // 02</span>
+        </div>
+        <div class="editorial-stage-frame" style="aspect-ratio: 16 / 10;">
           <img src="KindredRoots/KindredRoots-FeatArt2.jpg" alt="Unmapped Feature Spread" loading="lazy" decoding="async">
         </div>
-        <div class="feature-copy">
-          <span class="step-num">03 / 03</span>
-          <h3>Un-Mapped<br>Feature</h3>
-          <p>
-            Full-bleed aerial photography paired with prominent geometric title framing and topographical line accents to evoke quiet exploration.
-          </p>
-        </div>
+        <p class="editorial-body-narrative" style="max-width: 680px;">
+          Expansive aerial landscapes framed by bold geometric title bars and subtle topographic vector elevations to evoke physical isolation and wilderness solitude.
+        </p>
       </article>
 
-    </div>
+    </section>
 
-    <!-- 6. Secondary Detail Spreads (2-Column Pair) -->
-    <div class="case-content-wrap">
-
+    <!-- 6. Typesetting Details & Macro Typography -->
+    <section class="case-content-wrap" style="margin-bottom: 7.5rem;">
       <div class="case-section-header">
         <div class="line"></div>
         <span class="label">Typesetting Detail & Pacing</span>
       </div>
 
       <div class="case-grid-2col">
-        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+        <div class="editorial-stage-frame" style="aspect-ratio: 4 / 3;">
           <img src="KindredRoots/KindredRoots-Detail1.png" alt="Magazine Detail Spread 1" loading="lazy" decoding="async">
         </div>
-        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+        <div class="editorial-stage-frame" style="aspect-ratio: 4 / 3;">
           <img src="KindredRoots/KindredRoots-Detail2.png" alt="Magazine Detail Spread 2" loading="lazy" decoding="async">
         </div>
       </div>
 
-      <!-- 7. Additional 3-Column Page Spread Showcase -->
+      <!-- 7. 3-Spread Horizontal Rhythm Showcase -->
       <div class="case-grid-3col">
-        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+        <div class="editorial-stage-frame" style="aspect-ratio: 4 / 3;">
           <img src="KindredRoots/KindredRoots-Spread1.jpg" alt="Editorial Page Feature 1" loading="lazy" decoding="async">
         </div>
-        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+        <div class="editorial-stage-frame" style="aspect-ratio: 4 / 3;">
           <img src="KindredRoots/KindredRoots-FeatArt1.2.jpg" alt="Editorial Page Feature 2" loading="lazy" decoding="async">
         </div>
-        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+        <div class="editorial-stage-frame" style="aspect-ratio: 4 / 3;">
           <img src="KindredRoots/KindredRoots-FeatArt2.2.jpg" alt="Editorial Page Feature 3" loading="lazy" decoding="async">
         </div>
       </div>
-
-    </div>
+    </section>
 
     <!-- =========================================================================
          MORE PROJECTS THUMBNAIL REEL (Interactive Discovery Strip)
