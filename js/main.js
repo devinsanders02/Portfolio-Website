@@ -78,11 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const openOverlay = () => {
     overlay?.classList.add('open');
+    document.body.classList.add('overlay-is-open');
     document.body.style.overflow = 'hidden';
   };
 
   const closeOverlay = () => {
     overlay?.classList.remove('open');
+    document.body.classList.remove('overlay-is-open');
     document.body.style.overflow = '';
   };
 
