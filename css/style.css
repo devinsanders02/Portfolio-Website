@@ -113,22 +113,20 @@ body {
   overflow: hidden;
 }
 
-/* Base Topo Asset: Vibrant and sharp across all pages */
 .topo-external-asset {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top right;
   pointer-events: none;
-  /* Retain true vector stroke colors without inverting or washing out */
-  filter: contrast(1.2) saturate(1.3);
-  opacity: 0.85;
+  /* Shifts lime green toward earthy amber and subdued rust */
+  filter: hue-rotate(295deg) saturate(0.8) brightness(0.65) contrast(1.15);
+  opacity: 0.5;
   transition: opacity 0.3s ease;
 }
 
-/* Subpage Opacity Softening (work.html) */
 .topo-external-asset.subpage-topo {
-  opacity: 0.45;
+  opacity: 0.25;
 }
 /* =================== END: PERSISTENT BACKGROUND & CARTOGRAPHY =================== */
 
