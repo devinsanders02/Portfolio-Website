@@ -4,85 +4,610 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rustic Mountain Bistro | Devin Sanders</title>
+
+  <!-- Favicon & Touch Icon -->
+  <link rel="icon" type="image/png" href="LogoBlue.png">
+  <link rel="apple-touch-icon" href="LogoBlue.png">
+
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Crete+Round:ital@0;1&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* =========================================================================
-       RUSTIC MOUNTAIN BISTRO CUSTOM TYPOGRAPHY OVERRIDES
+       RUSTIC MOUNTAIN BISTRO BRAND & HOSPITALITY SPECIFICATION
        ========================================================================= */
 
-    /* 1. Case Study Headers, Section Titles, & Display -> Crete Round */
-    main h2,
-    main h3,
-    main h4,
-    main .case-section-header .label,
-    main .feature-copy h3,
-    main .uppercase-label,
-    main .swatch-name {
+    :root {
+      --rmb-terracotta: #C27E5D;
+      --rmb-charcoal: #2C2825;
+      --rmb-cream: #F8F6F1;
+      --rmb-border: rgba(44, 40, 37, 0.12);
+      --rmb-muted: rgba(44, 40, 37, 0.72);
+    }
+
+    body.rustic-case-page {
+      background-color: transparent !important;
+      color: var(--rmb-charcoal) !important;
+    }
+
+    /* Tuned Topo Background Blur */
+    .rustic-case-page .hero-topography-plate {
+      filter: blur(2px);
+      -webkit-filter: blur(2px);
+      opacity: 0.22 !important;
+      transform: scale(1.02);
+    }
+
+    /* 1. Shell & Hero -> Pure Barlow */
+    .turnstyle-headline {
+      font-family: var(--font-barlow) !important;
+      font-weight: 800 !important;
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    .turnstyle-caption-title,
+    .turnstyle-caption-text,
+    .case-section-header .label,
+    .more-projects-title,
+    .more-projects-all,
+    .more-project-name,
+    .more-project-tag,
+    .swatch-meta-name,
+    .service-tag {
+      font-family: var(--font-barlow) !important;
+    }
+
+    /* 2. Restaurant Artwork Typography -> Crete Round (Display) & Onest (Body) */
+    .rustic-case-page main h2,
+    .rustic-case-page main h3,
+    .rustic-case-page main h4,
+    .service-title {
       font-family: 'Crete Round', serif !important;
       letter-spacing: -0.01em;
     }
 
-    /* 2. Body Copy, Paragraphs, Lists & Details -> Onest */
-    main p:not(.pagination-title):not(.pagination-label),
-    main li,
-    main .feature-copy p,
-    main .feature-copy .step-num,
-    main .swatch-values {
+    .rustic-case-page main p,
+    .rustic-case-page main li,
+    .service-desc,
+    .rustic-intro-p,
+    .swatch-meta-val {
       font-family: 'Onest', sans-serif !important;
+      line-height: 1.65;
+    }
+
+    /* Hero Banner */
+    .turnstyle-hero-banner {
+      position: relative;
+      width: 100%;
+      min-height: 85vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 4.5rem 4vw;
+      box-sizing: border-box;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .turnstyle-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 1;
+    }
+
+    .turnstyle-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(35, 30, 28, 0.94) 0%,
+        rgba(35, 30, 28, 0.55) 45%,
+        transparent 75%
+      );
+      z-index: 2;
+    }
+
+    .turnstyle-hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 1040px;
+      color: #FFFFFF;
+    }
+
+    .turnstyle-headline {
+      font-size: clamp(2.5rem, 6vw, 4.75rem);
+      margin: 0 0 1.5rem 0;
+      color: #FFFFFF;
+    }
+
+    .turnstyle-caption-block {
+      border-left: 2px solid var(--rmb-terracotta);
+      padding-left: 1.25rem;
+    }
+
+    .turnstyle-caption-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+
+    .turnstyle-caption-text {
+      font-size: 0.95rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      opacity: 0.85;
+      margin: 0.35rem 0 0 0;
+      color: #FFFFFF;
+    }
+
+    /* Main Container Shell */
+    .case-content-wrap {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 4vw;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Section Headers */
+    .case-section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .case-section-header .line {
+      width: 32px;
+      height: 2px;
+      background-color: var(--rmb-terracotta);
+    }
+
+    .case-section-header .label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--rmb-charcoal);
+    }
+
+    /* Narrative Overview */
+    .rustic-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-bottom: 6rem;
+    }
+
+    @media (min-width: 860px) {
+      .rustic-intro-grid {
+        grid-template-columns: 1.3fr 1fr;
+        gap: 4.5rem;
+      }
+    }
+
+    .intro-eyebrow {
+      font-family: var(--font-barlow);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--rmb-terracotta);
+      display: block;
+      margin-bottom: 0.65rem;
+    }
+
+    .rustic-intro-lead {
+      font-size: 1.15rem;
+      color: var(--rmb-charcoal);
+      margin: 0;
+    }
+
+    .rustic-intro-sub {
+      font-size: 0.98rem;
+      color: var(--rmb-muted);
+      margin: 0;
+    }
+
+    /* Full-Bleed Restaurant Interior Spread */
+    .full-bleed-spread {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      background-color: #231E1C;
+      overflow: hidden;
+      margin-bottom: 6.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .full-bleed-spread img {
+      width: 100%;
+      max-width: 1540px;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Grid Formats */
+    .case-grid-3col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      margin-bottom: 6rem;
+    }
+
+    @media (min-width: 768px) {
+      .case-grid-3col {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .case-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .case-grid-2col {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .case-img-box {
+      width: 100%;
+      background: #FFFFFF;
+      border: 1px solid var(--rmb-border);
+      box-shadow: 0 10px 30px rgba(35, 30, 28, 0.05);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .case-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Table Service Suite */
+    .service-suite-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      margin-bottom: 6.5rem;
+    }
+
+    @media (min-width: 960px) {
+      .service-suite-grid {
+        grid-template-columns: 1.45fr 1fr;
+        gap: 4.5rem;
+      }
+    }
+
+    .service-media-frame {
+      width: 100%;
+      background: #FFFFFF;
+      border: 1px solid var(--rmb-border);
+      box-shadow: 0 16px 40px -15px rgba(35, 30, 28, 0.08);
+      overflow: hidden;
+    }
+
+    .service-media-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .service-copy-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .service-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rmb-terracotta);
+    }
+
+    .service-title {
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      margin: 0;
+      line-height: 1.1;
+      color: var(--rmb-charcoal);
+    }
+
+    .service-desc {
+      font-size: 0.98rem;
+      color: var(--rmb-muted);
+      margin: 0;
+    }
+
+    /* Process: Mark Evolution Matrix */
+    .evolution-matrix-stage {
+      width: 100%;
+      background: #FFFFFF;
+      border: 1px solid var(--rmb-border);
+      box-shadow: 0 16px 40px -15px rgba(35, 30, 28, 0.08);
+      padding: 2.5rem;
+      box-sizing: border-box;
+      margin-bottom: 6.5rem;
+    }
+
+    .evolution-matrix-stage img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    /* Minimalist Hearth Color Palette Strip */
+    .rmb-palette-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 6.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .rmb-palette-strip {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .swatch-pillar {
+      background: #FFFFFF;
+      border: 1px solid var(--rmb-border);
+      box-shadow: 0 8px 24px -10px rgba(35, 30, 28, 0.06);
+      overflow: hidden;
+    }
+
+    .swatch-top-bar {
+      width: 100%;
+      height: 120px;
+    }
+
+    .swatch-info-wrap {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      background: #FFFFFF;
+      border-top: 1px solid var(--rmb-border);
+    }
+
+    .swatch-meta-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--rmb-charcoal);
+    }
+
+    .swatch-meta-val {
+      font-size: 0.8rem;
+      color: var(--rmb-muted);
+    }
+
+    /* Dynamic Bottom Project Reel */
+    .more-projects-section {
+      position: relative;
+      z-index: 2;
+      max-width: 1440px;
+      margin: 5rem auto 2rem;
+      padding: 0 4vw;
+      box-sizing: border-box;
+    }
+
+    .more-projects-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--rmb-border);
+      padding-bottom: 1rem;
+    }
+
+    .more-projects-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rmb-charcoal);
+    }
+
+    .more-projects-all {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-orange);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .more-projects-all:hover {
+      color: #d84b16;
+    }
+
+    .more-projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .more-projects-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .more-project-card {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .more-project-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: var(--card-stage-blue);
+      border: 1px solid rgba(44, 62, 80, 0.1);
+      margin-bottom: 0.85rem;
+    }
+
+    .more-project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.75;
+      transition: transform 0.4s ease, opacity 0.3s ease;
+    }
+
+    .more-project-card:hover .more-project-thumb img {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+
+    .more-project-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 0.2rem;
+    }
+
+    .more-project-name {
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--rmb-charcoal);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .overlay-brand-stamp {
+      width: 32px;
+      height: auto;
+      filter: brightness(0) invert(1);
+      display: inline-block;
+      vertical-align: middle;
     }
   </style>
 </head>
-<body style="background-color: #F8F6F1; color: #2C2825;">
+<body class="rustic-case-page page-subpage">
 
-  <!-- Sticky Morphing Logo Header -->
-  <header class="sticky-brand-nav">
-    <a href="index.html" class="brand-morph-link" aria-label="Devin Sanders Home">
-      <div class="morph-logo-box">
-        <img src="LogoLong.png" alt="Devin Sanders" class="logo-full">
-        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="logo-mark">
+  <!-- =================== START: SITE PRELOADER =================== -->
+  <div id="site-loader">
+    <img src="LogoBlue.png" alt="Loading..." class="loader-mark-pulse">
+  </div>
+  <!-- =================== END: SITE PRELOADER =================== -->
+
+  <!-- =================== START: SLIDE-DOWN INDEX OVERLAY =================== -->
+  <div id="index-overlay" class="index-overlay-panel">
+    <div class="overlay-top-bar">
+      <div style="display: flex; align-items: center; gap: 0.85rem;">
+        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="overlay-brand-stamp">
+        <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.75);">Index</span>
       </div>
-    </a>
-    <div class="nav-right-link">
-      <a href="work.html" class="back-work-link">← All Work</a>
+      <button id="close-overlay-btn" style="background: none; border: none; cursor: pointer; color: white; display: flex; align-items: center;" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="4" x2="20" y2="20"></line>
+          <line x1="20" y1="4" x2="4" y2="20"></line>
+        </svg>
+      </button>
     </div>
-  </header>
+    <nav class="overlay-nav-links">
+      <div class="overlay-link-item">
+        <span>01</span>
+        <a href="index.html" class="overlay-link">Home</a>
+      </div>
+      <div class="overlay-link-item">
+        <span>02</span>
+        <a href="work.html" class="overlay-link">Work</a>
+      </div>
+      <div class="overlay-link-item">
+        <span>03</span>
+        <a href="ui-ux.html" class="overlay-link">UI/UX Work</a>
+      </div>
+      <div class="overlay-link-item">
+        <span>04</span>
+        <a href="about.html" class="overlay-link">About</a>
+      </div>
+      <div class="overlay-link-item">
+        <span>05</span>
+        <button id="overlay-contact-link" class="overlay-link">Contact</button>
+      </div>
+    </nav>
+  </div>
+  <!-- =================== END: SLIDE-DOWN INDEX OVERLAY =================== -->
 
-  <!-- 1. Universal 100vh Full-Bleed Hero -->
+  <!-- =================== START: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
+  <button id="floating-nav-btn" class="floating-peak-btn subpage-permanent-btn" aria-label="Open Navigation">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M2 14 L6.5 5 L10 10 L16 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+  <!-- =================== END: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
+
+  <!-- =================== START: PERSISTENT BACKGROUND =================== -->
+  <div class="hero-fixed-background" aria-hidden="true">
+    <div class="hero-dot-grid"></div>
+    <div class="hero-topography-plate">
+      <img src="topography.svg" alt="" class="topo-external-asset subpage-topo" aria-hidden="true">
+    </div>
+  </div>
+  <!-- =================== END: PERSISTENT BACKGROUND =================== -->
+
+  <!-- 1. Full-Bleed 100vh Hero Banner -->
   <header class="turnstyle-hero-banner">
-    <img src="RusticMountain/RMB-Hero.png" alt="Rustic Mountain Bistro Identity" class="turnstyle-hero-bg">
-    <div class="turnstyle-hero-overlay" style="background: linear-gradient(to top, rgba(35,30,28,0.88) 0%, rgba(0,0,0,0.2) 60%);"></div>
-    
+    <img src="RusticMountain/RMB-Hero.png" alt="Rustic Mountain Bistro Identity" class="turnstyle-hero-bg" fetchpriority="high">
+    <div class="turnstyle-hero-overlay"></div>
+
     <div class="turnstyle-hero-content">
-      <h1 class="turnstyle-headline" style="font-size: clamp(2rem, 4.2vw, 3.75rem); max-width: 750px; color: #FFFFFF;">
+      <h1 class="turnstyle-headline">
         Grounding Mountain Hospitality in Fire and Craft
       </h1>
-      
       <div class="turnstyle-caption-block">
-        <div class="turnstyle-caption-title" style="color: #FFFFFF;">Rustic Mountain Bistro</div>
-        <p class="turnstyle-caption-text" style="color: rgba(255,255,255,0.75);">Identity System, Menu Design & Architectural Collateral · Lyons, CO</p>
+        <div class="turnstyle-caption-title">Rustic Mountain Bistro</div>
+        <p class="turnstyle-caption-text">Identity System, Menu Design & Architectural Collateral · Lyons, CO</p>
       </div>
     </div>
   </header>
 
-  <!-- Main Content Showcase -->
-  <main style="padding-top: 5rem; padding-bottom: 5rem;">
+  <!-- Main Narrative & Content Blocks -->
+  <main style="padding-top: 5.5rem; padding-bottom: 5rem;">
 
-    <!-- 2. Universal Overview & Challenge Grid -->
-    <section class="case-content-wrap" style="margin-bottom: 6rem;">
-      <div style="display: grid; grid-template-columns: 1fr; gap: 2.5rem;" class="intro-grid-responsive">
+    <!-- 2. Concept Overview Grid (No Spec Bars) -->
+    <section class="case-content-wrap">
+      <div class="rustic-intro-grid">
         <div>
-          <span class="uppercase-label" style="margin-bottom: 0.75rem; color: #C27E5D;">The Concept</span>
-          <p style="font-weight: 400; font-size: 1.15rem; line-height: 1.6; color: #2C2825;">
-            Nestled in the foothills of Lyons, Colorado, Rustic Mountain Bistro serves thoughtful, fire-cooked comfort food. The identity combines rugged mountain silhouettes with hearth flame negative space to reflect warmth, honest craft, and high-country charm.
+          <span class="intro-eyebrow">The Culinary Hearth</span>
+          <p class="rustic-intro-lead">
+            Nestled in the foothills of Lyons, Colorado, Rustic Mountain Bistro serves thoughtful, fire-cooked comfort food. The identity combines rugged mountain silhouettes with hearth flame negative space to reflect warmth, honest craft, and high-country hospitality.
           </p>
         </div>
         <div>
-          <span class="uppercase-label" style="margin-bottom: 0.75rem; color: rgba(44,40,37,0.5);">The Experience</span>
-          <p style="font-weight: 400; font-size: 0.95rem; line-height: 1.7; color: rgba(44,40,37,0.8);">
+          <span class="intro-eyebrow">Tactile Guest Experience</span>
+          <p class="rustic-intro-sub">
             The visual system spans physical and tactile touchpoints—from cast wood dining room signage and timber clipboards to customer tickets and durable outdoor merchandise.
           </p>
         </div>
@@ -90,200 +615,232 @@
     </section>
 
     <!-- 3. Full-Bleed Restaurant Interior Spread -->
-    <div class="full-bleed-section" style="margin-bottom: 6rem; background-color: #231E1C;">
-      <img src="RusticMountain/RMB-Interior.png" alt="Rustic Mountain Bistro Interior Dining Room and Signage">
+    <div class="full-bleed-spread">
+      <img src="RusticMountain/RMB-Interior.png" alt="Rustic Mountain Bistro Dining Room and Signage" loading="lazy" decoding="async">
     </div>
 
     <!-- 4. Core Lockups & Mark System (3-Tile Grid) -->
-    <div class="case-content-wrap" style="margin-bottom: 6rem;">
+    <section class="case-content-wrap">
       <div class="case-section-header">
-        <div class="line" style="background-color: #C27E5D;"></div>
-        <span class="label" style="color: #2C2825;">Mark & Lockup Variations</span>
+        <div class="line"></div>
+        <span class="label">Mark & Lockup Variations</span>
       </div>
 
       <div class="case-grid-3col">
-        <div class="case-img-box">
-          <img src="RusticMountain/RMB-Logo1.png" alt="Flame Mountain Icon on Charcoal">
+        <div class="case-img-box" style="aspect-ratio: 1 / 1;">
+          <img src="RusticMountain/RMB-Logo1.png" alt="Flame Mountain Icon on Charcoal" loading="lazy" decoding="async">
         </div>
-        <div class="case-img-box">
-          <img src="RusticMountain/RMB-Logo2.png" alt="Circular Bistro Badge on Terracotta">
+        <div class="case-img-box" style="aspect-ratio: 1 / 1;">
+          <img src="RusticMountain/RMB-Logo2.png" alt="Circular Bistro Badge on Terracotta" loading="lazy" decoding="async">
         </div>
-        <div class="case-img-box">
-          <img src="RusticMountain/RMB-Logo3.png" alt="Horizontal Wordmark Lockup on Off-White">
+        <div class="case-img-box" style="aspect-ratio: 1 / 1;">
+          <img src="RusticMountain/RMB-Logo3.png" alt="Horizontal Wordmark Lockup on Off-White" loading="lazy" decoding="async">
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- 5. Editorial Menu & Collateral System (WANDRD Layout) -->
-    <div class="case-content-wrap">
+    <!-- 5. Table Service & Print Collateral (Unified Suite) -->
+    <section class="case-content-wrap">
       <div class="case-section-header">
-        <div class="line" style="background-color: #C27E5D;"></div>
-        <span class="label" style="color: #2C2825;">Menu & Printed Collateral</span>
+        <div class="line"></div>
+        <span class="label">Table Service & Printed Collateral</span>
       </div>
 
-      <!-- Feature Split: Clipboard Menu System -->
-      <div class="case-feature-split" style="margin-bottom: 3rem;">
-        <div class="feature-media">
-          <img src="RusticMountain/RMB-Menu.png" alt="Rustic Mountain Bistro Clipboard Menu Layout">
+      <!-- Clipboard Menu & Story -->
+      <article class="service-suite-grid">
+        <div class="service-media-frame">
+          <img src="RusticMountain/RMB-Menu.png" alt="Timber Clipboard Menu System" loading="lazy" decoding="async">
         </div>
-        <div class="feature-copy">
-          <span class="step-num" style="color: #C27E5D;">01 / 02</span>
-          <h3 style="color: #2C2825;">Tactile Menu System</h3>
-          <p style="color: rgba(44,40,37,0.75);">
+        <div class="service-copy-block">
+          <span class="service-tag">Tabletop Service // 01</span>
+          <h3 class="service-title">Tactile Menu System</h3>
+          <p class="service-desc">
             Engineered with clear typographic hierarchy and bold section dividers ("From the Fire", "Between Bread", "Bakery & Mornings"), printed on heavy natural kraft stock mounted to custom timber boards.
           </p>
         </div>
-      </div>
+      </article>
 
-      <!-- Feature Split: Invoice & Ticket (Reversed) -->
-      <div class="case-feature-split reverse" style="margin-bottom: 6rem;">
-        <div class="feature-media">
-          <img src="RusticMountain/RMB-Invoice.png" alt="Bistro Order Ticket and Receipt Layout">
+      <!-- Guest Ticket & Billing Pair -->
+      <article class="service-suite-grid" style="margin-bottom: 6rem;">
+        <div class="service-media-frame">
+          <img src="RusticMountain/RMB-Invoice.png" alt="Bistro Order Ticket and Receipt Layout" loading="lazy" decoding="async">
         </div>
-        <div class="feature-copy">
-          <span class="step-num" style="color: #C27E5D;">02 / 02</span>
-          <h3 style="color: #2C2825;">Guest Ticket & Billing</h3>
-          <p style="color: rgba(44,40,37,0.75);">
+        <div class="service-copy-block">
+          <span class="service-tag">Guest Billing // 02</span>
+          <h3 class="service-title">Guest Ticket & Accounting</h3>
+          <p class="service-desc">
             Even the functional billing paperwork consistently carries the brand voice through structured data tables, warm terracotta accents, and localized detail tags.
           </p>
         </div>
-      </div>
+      </article>
+    </section>
 
-      <!-- 6. Merchandise & Lifestyle Spreads -->
+    <!-- 6. Merchandise & Staff Uniforms -->
+    <section class="case-content-wrap">
       <div class="case-section-header">
-        <div class="line" style="background-color: #C27E5D;"></div>
-        <span class="label" style="color: #2C2825;">Merchandise & Staff Uniforms</span>
+        <div class="line"></div>
+        <span class="label">Merchandise & Field Goods</span>
       </div>
 
-      <!-- 2-Column Apparel Spread -->
-      <div class="case-grid-2col" style="margin-bottom: 1.5rem;">
-        <div class="case-img-box">
-          <img src="RusticMountain/RMB-Hat.jpg" alt="Folded Bistro Tee and Two-Tone Trucker Hat">
+      <!-- Spread 1: Hat & Campfire Mug -->
+      <div class="case-grid-2col">
+        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+          <img src="RusticMountain/RMB-Hat.jpg" alt="Two-Tone Bistro Trucker Hat" loading="lazy" decoding="async">
         </div>
-        <div class="case-img-box">
-          <img src="RusticMountain/RMB-Mug.jpg" alt="Matte Black Campfire Ceramic Mug">
-        </div>
-      </div>
-
-      <!-- 2-Column Detail Spread -->
-      <div class="case-grid-2col" style="margin-bottom: 6rem;">
-        <div class="case-img-box">
-          <img src="RusticMountain/RMB-Sticker.jpg" alt="Weathered Bistro Outdoor Street Sticker">
-        </div>
-        <div class="case-img-box">
-          <img src="RusticMountain/RMB-Shirt3.jpg" alt="Staff Uniform T-Shirt Back Application">
+        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+          <img src="RusticMountain/RMB-Mug.jpg" alt="Matte Black Campfire Ceramic Mug" loading="lazy" decoding="async">
         </div>
       </div>
 
-      <!-- 7. Design System & Logo Iterations (Bottom) -->
+      <!-- Spread 2: Weathered Sticker & Staff Tee -->
+      <div class="case-grid-2col" style="margin-bottom: 6.5rem;">
+        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+          <img src="RusticMountain/RMB-Sticker.jpg" alt="Outdoor Weathered Street Sticker" loading="lazy" decoding="async">
+        </div>
+        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+          <img src="RusticMountain/RMB-Shirt3.jpg" alt="Staff Uniform T-Shirt Back Application" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Process Showcase: Mark Evolution & Iteration Matrix -->
+    <section class="case-content-wrap">
       <div class="case-section-header">
-        <div class="line" style="background-color: #C27E5D;"></div>
-        <span class="label" style="color: #2C2825;">Design System & Exploration</span>
+        <div class="line"></div>
+        <span class="label">Process // Mark Evolution & Geometry</span>
       </div>
 
-      <!-- Color Palette Cards -->
-      <div class="swatch-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 4rem;">
-        <!-- Warm Terracotta -->
-        <div class="swatch-card">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background-color: #C27E5D; margin-bottom: 1.25rem;"></div>
-          <div class="swatch-name" style="color: #C27E5D;">Terracotta</div>
-          <div class="swatch-values">
-            HEX #C27E5D<br>
-            CMYK 24 55 69 7
+      <div class="evolution-matrix-stage">
+        <img src="rustic-iterations.jpg" alt="Rustic Mountain Bistro Logo Exploration and Iterations Matrix" loading="lazy" decoding="async">
+      </div>
+    </section>
+
+    <!-- 8. Minimalist Hearth Color Palette Strip -->
+    <section class="case-content-wrap">
+      <div class="case-section-header">
+        <div class="line"></div>
+        <span class="label">Hearth Color Architecture</span>
+      </div>
+
+      <div class="rmb-palette-strip">
+        <!-- Terracotta -->
+        <article class="swatch-pillar">
+          <div class="swatch-top-bar" style="background-color: #C27E5D;"></div>
+          <div class="swatch-info-wrap">
+            <span class="swatch-meta-name">Terracotta</span>
+            <span class="swatch-meta-val">#C27E5D · CMYK 24 55 69 7</span>
           </div>
-        </div>
+        </article>
 
         <!-- Charcoal Gray -->
-        <div class="swatch-card">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background-color: #4A4A4A; margin-bottom: 1.25rem;"></div>
-          <div class="swatch-name" style="color: #2C2825;">Charcoal</div>
-          <div class="swatch-values">
-            HEX #4A4A4A<br>
-            CMYK 62 53 52 26
+        <article class="swatch-pillar">
+          <div class="swatch-top-bar" style="background-color: #4A4A4A;"></div>
+          <div class="swatch-info-wrap">
+            <span class="swatch-meta-name">Charcoal</span>
+            <span class="swatch-meta-val">#4A4A4A · CMYK 62 53 52 26</span>
           </div>
-        </div>
+        </article>
 
-        <!-- Natural Warm White -->
-        <div class="swatch-card">
-          <div style="width: 80px; height: 80px; border-radius: 50%; background-color: #F8F6F1; border: 1px solid rgba(0,0,0,0.1); margin-bottom: 1.25rem;"></div>
-          <div class="swatch-name" style="color: #2C2825;">Hearth Cream</div>
-          <div class="swatch-values">
-            HEX #F8F6F1<br>
-            CMYK 2 2 4 0
+        <!-- Hearth Cream -->
+        <article class="swatch-pillar">
+          <div class="swatch-top-bar" style="background-color: #F8F6F1; border-bottom: 1px solid var(--rmb-border);"></div>
+          <div class="swatch-info-wrap">
+            <span class="swatch-meta-name">Hearth Cream</span>
+            <span class="swatch-meta-val">#F8F6F1 · CMYK 2 2 4 0</span>
           </div>
-        </div>
+        </article>
       </div>
+    </section>
 
-      <!-- Logo Exploration Spread -->
-      <div class="case-img-box" style="margin-bottom: 4rem; background-color: #FFFFFF; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
-        <img src="rustic-iterations.jpg" alt="Rustic Mountain Bistro Logo Exploration and Iterations Matrix">
+    <!-- 9. Dynamic Bottom Project Reel (Option B: Automatically pulls Olly, AboutFace, RIPPL, Rexburg Rapids) -->
+    <section class="more-projects-section">
+      <div class="more-projects-header">
+        <span class="more-projects-title">More Selected Projects</span>
+        <a href="work.html" class="more-projects-all">View All Work →</a>
       </div>
-
-    </div>
-
-    <!-- 8. Project Pagination Navigation -->
-    <nav class="project-pagination-nav" aria-label="Project Pagination">
-      <!-- Previous Project: Personal Identity -->
-      <a href="identity-system.html" class="pagination-card prev-card">
-        <div class="pagination-arrow-box">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display: block; overflow: visible;">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-        </div>
-        <div class="pagination-thumb">
-          <img src="Jared/IS-Hero.png" alt="Personal Identity System Thumbnail">
-        </div>
-        <div class="pagination-meta">
-          <span class="pagination-label">Previous Project</span>
-          <span class="pagination-title">Personal Brand Identity</span>
-        </div>
-      </a>
-
-      <!-- Next Project: Olly Vitamin Packaging -->
-      <a href="olly.html" class="pagination-card next-card">
-        <div class="pagination-meta text-right">
-          <span class="pagination-label">Next Project</span>
-          <span class="pagination-title">Olly Vitamin Packaging</span>
-        </div>
-        <div class="pagination-thumb">
-          <img src="Olly/Olly-Hero.png" alt="Olly Vitamin Packaging Thumbnail">
-        </div>
-        <div class="pagination-arrow-box">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display: block; overflow: visible;">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </div>
-      </a>
-    </nav>
+      <div id="more-projects-grid" class="more-projects-grid"></div>
+    </section>
 
   </main>
 
-  <!-- Global Dark Footer -->
+  <!-- =================== START: GLOBAL EDITORIAL FOOTER =================== -->
   <footer id="contact" class="site-footer">
-    <div class="footer-max-width">
-      <span class="uppercase-label">Get in Touch</span>
-      <h2 class="footer-heading">Let's build<br>something meaningful.</h2>
+    <div class="footer-inner-shell">
 
-      <div>
-        <a href="mailto:devin.sanders02@gmail.com" class="footer-link">devin.sanders02@gmail.com</a>
+      <div class="footer-tier-hero">
+        <h2 class="footer-hero-headline">Let's build something meaningful.</h2>
+        <a href="mailto:devin.sanders02@gmail.com" class="footer-email-link">
+          <span>devin.sanders02@gmail.com</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
       </div>
 
-      <hr class="footer-divider">
+      <hr class="footer-hairline">
 
-      <div class="footer-sub-row">
-        <div style="display: flex; gap: 1.5rem;">
-          <a href="work.html" class="footer-link" style="color: rgba(255,255,255,0.5);">Work</a>
-          <a href="about.html" class="footer-link" style="color: rgba(255,255,255,0.5);">About</a>
+      <div class="footer-directory-grid">
+        <div>
+          <span class="footer-col-header">01 /<span>Work</span></span>
+          <ul class="footer-nav-list">
+            <li><a href="work.html" class="footer-link-animated">Selected Work</a></li>
+            <li><a href="ui-ux.html" class="footer-link-animated">UI/UX & Systems</a></li>
+            <li><a href="about.html" class="footer-link-animated">About & Studio</a></li>
+          </ul>
         </div>
-        <p style="font-weight: 300; font-size: 0.75rem; color: rgba(255,255,255,0.3);">
-          © <span id="copyright-year">2026</span> Devin Sanders. Crafted with intention.
-        </p>
+
+        <div>
+          <span class="footer-col-header">02 /<span>Network</span></span>
+          <ul class="footer-nav-list">
+            <li>
+              <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer">
+                <span>LinkedIn</span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <span class="footer-col-header">03 /<span>Discipline</span></span>
+          <ul class="footer-discipline-list">
+            <li>Brand architecture & identity</li>
+            <li>Physical & digital commerce</li>
+          </ul>
+        </div>
+
+        <div>
+          <span class="footer-col-header">04 /<span>Top</span></span>
+          <button id="footer-scroll-top-btn" class="footer-scroll-top-btn">
+            <span>Return to Top</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </button>
+        </div>
       </div>
+
+      <div class="footer-colophon-row">
+        <div>© <span id="copyright-year">2026</span> Devin Sanders. All Rights Reserved.</div>
+        <div>Barlow · Visual Brand Architecture</div>
+      </div>
+
     </div>
   </footer>
+  <!-- =================== END: GLOBAL EDITORIAL FOOTER =================== -->
 
+  <!-- Custom Survey Reticle Cursor -->
+  <div id="survey-cursor" class="survey-cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+  </div>
+
+  <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
