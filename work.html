@@ -10,6 +10,22 @@
   <link rel="apple-touch-icon" href="LogoBlue.png">
 
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    .archive-page-wrap {
+      padding-top: 3.5rem !important;
+    }
+    .overlay-brand-stamp {
+      width: 32px;
+      height: auto;
+      filter: brightness(0) invert(1);
+      display: inline-block;
+      vertical-align: middle;
+    }
+  </style>
 </head>
 <body class="page-subpage">
 
@@ -22,7 +38,10 @@
   <!-- =================== START: SLIDE-DOWN INDEX OVERLAY =================== -->
   <div id="index-overlay" class="index-overlay-panel">
     <div class="overlay-top-bar">
-      <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6);">Index</span>
+      <div style="display: flex; align-items: center; gap: 0.85rem;">
+        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="overlay-brand-stamp">
+        <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.75);">Index</span>
+      </div>
       <button id="close-overlay-btn" style="background: none; border: none; cursor: pointer; color: white; display: flex; align-items: center;" aria-label="Close">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <line x1="4" y1="4" x2="20" y2="20"></line>
@@ -33,18 +52,22 @@
     <nav class="overlay-nav-links">
       <div class="overlay-link-item">
         <span>01</span>
-        <a href="work.html" class="overlay-link active">Work</a>
+        <a href="index.html" class="overlay-link">Home</a>
       </div>
       <div class="overlay-link-item">
         <span>02</span>
-        <a href="ui-ux.html" class="overlay-link">UI/UX Work</a>
+        <a href="work.html" class="overlay-link active">Work</a>
       </div>
       <div class="overlay-link-item">
         <span>03</span>
-        <a href="about.html" class="overlay-link">About</a>
+        <a href="ui-ux.html" class="overlay-link">UI/UX Work</a>
       </div>
       <div class="overlay-link-item">
         <span>04</span>
+        <a href="about.html" class="overlay-link">About</a>
+      </div>
+      <div class="overlay-link-item">
+        <span>05</span>
         <button id="overlay-contact-link" class="overlay-link">Contact</button>
       </div>
     </nav>
@@ -60,21 +83,13 @@
   <!-- =================== END: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
 
   <!-- =================== START: PERSISTENT BACKGROUND =================== -->
-<div class="hero-fixed-background" aria-hidden="true">
-  <div class="hero-dot-grid"></div>
-  <div class="hero-topography-plate">
-    <img src="topography.svg" alt="" class="topo-external-asset subpage-topo" aria-hidden="true">
+  <div class="hero-fixed-background" aria-hidden="true">
+    <div class="hero-dot-grid"></div>
+    <div class="hero-topography-plate">
+      <img src="topography.svg" alt="" class="topo-external-asset subpage-topo" aria-hidden="true">
+    </div>
   </div>
-</div>
-<!-- =================== END: PERSISTENT BACKGROUND =================== -->
-
-  <!-- =================== START: SUBPAGE NAVBAR (Logo Only) =================== -->
-  <header class="subpage-navbar">
-    <a href="index.html" class="subpage-nav-logo" aria-label="Devin Sanders Home">
-      <img src="LogoBlue.png" alt="Devin Sanders Mark">
-    </a>
-  </header>
-  <!-- =================== END: SUBPAGE NAVBAR =================== -->
+  <!-- =================== END: PERSISTENT BACKGROUND =================== -->
 
   <!-- =================== START: WORK ARCHIVE CONTENT =================== -->
   <main class="archive-page-wrap">
@@ -94,11 +109,9 @@
         <!-- Singular Orange Trigger Button -->
         <button id="filter-drawer-toggle" class="filter-toggle-btn" aria-expanded="false" aria-label="Toggle Filters">
           <span class="filter-toggle-icon">
-            <!-- Filter Funnel Icon -->
             <svg class="icon-funnel" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
               <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
             </svg>
-            <!-- Close X Icon -->
             <svg class="icon-close" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -106,7 +119,7 @@
           </span>
         </button>
 
-        <!-- Horizontal Slide-Out Drawer Track (Hidden until clicked) -->
+        <!-- Horizontal Slide-Out Drawer Track -->
         <div class="filter-drawer-track" id="filter-drawer-track">
           <button class="filter-btn active" data-filter="all">All [ <span id="count-all">0</span> ]</button>
           <button class="filter-btn" data-filter="branding">Branding [ <span id="count-branding">0</span> ]</button>
