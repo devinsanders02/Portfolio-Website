@@ -35,6 +35,14 @@
       color: var(--ar-midnight) !important;
     }
 
+    /* Tuned Topo Blur: Softens contour vectors into atmospheric texture */
+    .analog-case-page .hero-topography-plate {
+      filter: blur(4px);
+      -webkit-filter: blur(4px);
+      opacity: 0.22 !important;
+      transform: scale(1.02);
+    }
+
     /* Typography Foundations */
     .turnstyle-headline,
     .analog-case-page main h2,
@@ -427,58 +435,142 @@
       display: block;
     }
 
-    /* 6-Color Retro Tech Palette & Specimen */
-    .analog-swatch-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-      margin-bottom: 6rem;
-    }
-
-    @media (min-width: 640px) {
-      .analog-swatch-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .analog-swatch-grid {
-        grid-template-columns: repeat(6, 1fr);
-      }
-    }
-
-    .analog-swatch-card {
+    /* =========================================================================
+       GRAPHIC ART POSTER SPECIMEN (Replaces Old Swatch Grid)
+       ========================================================================= */
+    .color-poster-stage {
+      max-width: 1100px;
+      margin: 0 auto 6.5rem;
       background: #FFFFFF;
       border: 1px solid var(--ar-border);
-      overflow: hidden;
-      box-shadow: 0 8px 24px -10px rgba(11, 26, 51, 0.05);
+      box-shadow: 0 20px 48px -15px rgba(11, 26, 51, 0.08);
+      padding: 3rem;
+      box-sizing: border-box;
     }
 
-    .analog-swatch-preview {
-      width: 100%;
-      height: 110px;
+    @media (max-width: 768px) {
+      .color-poster-stage {
+        padding: 1.5rem;
+      }
     }
 
-    .analog-swatch-body {
-      padding: 1.15rem 1rem;
+    .poster-header-meta {
       display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      background: #FFFFFF;
-      border-top: 1px solid var(--ar-border);
-    }
-
-    .analog-swatch-title {
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--ar-border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
       font-family: var(--font-barlow);
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       font-weight: 700;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--ar-midnight);
     }
 
-    .analog-swatch-hex {
+    .poster-art-canvas {
+      width: 100%;
+      aspect-ratio: 21 / 9;
+      min-height: 240px;
+      background-color: var(--ar-midnight);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .poster-art-canvas {
+        aspect-ratio: 16 / 9;
+      }
+    }
+
+    .art-geom-ring {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      border: 24px solid var(--ar-blue);
+      left: 12%;
+      opacity: 0.9;
+    }
+
+    .art-geom-disc {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background-color: var(--ar-yellow);
+      right: 18%;
+      mix-blend-mode: screen;
+    }
+
+    .art-geom-slash {
+      position: absolute;
+      width: 120%;
+      height: 28px;
+      background-color: var(--ar-red);
+      transform: rotate(-14deg);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .art-geom-accent {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 12px;
+      background-color: var(--ar-green);
+    }
+
+    .poster-color-key {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem 2rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--ar-border);
+    }
+
+    @media (min-width: 768px) {
+      .poster-color-key {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 1rem;
+      }
+    }
+
+    .color-key-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .key-pip {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .key-meta {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .key-name {
+      font-family: var(--font-barlow);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--ar-midnight);
+      line-height: 1.1;
+    }
+
+    .key-hex {
       font-family: monospace;
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       color: var(--ar-text-muted);
     }
 
@@ -944,67 +1036,70 @@
       </div>
     </section>
 
-    <!-- 7. Hardware Specimen System (6-Color Retro Palette) -->
+    <!-- 7. Graphic Art Poster Specimen (Replaces Old Swatch Cards) -->
     <section class="case-content-wrap">
       <div class="case-section-header">
         <div class="line" style="background-color: var(--ar-midnight);"></div>
-        <span class="label">Color Architecture // 6-Channel System</span>
+        <span class="label">Color Architecture</span>
       </div>
 
-      <div class="analog-swatch-grid">
-        <!-- Midnight Blue -->
-        <article class="analog-swatch-card">
-          <div class="analog-swatch-preview" style="background-color: #0B1A33;"></div>
-          <div class="analog-swatch-body">
-            <span class="analog-swatch-title">Midnight</span>
-            <span class="analog-swatch-hex">#0B1A33</span>
-          </div>
-        </article>
+      <div class="color-poster-stage">
+        <div class="poster-header-meta">
+          <span>Analog Reboot Chromatic System</span>
+          <span>Screenprint Edition 01</span>
+        </div>
 
-        <!-- Ivory White -->
-        <article class="analog-swatch-card">
-          <div class="analog-swatch-preview" style="background-color: #F7F2E6; border-bottom: 1px solid var(--ar-border);"></div>
-          <div class="analog-swatch-body">
-            <span class="analog-swatch-title">Ivory</span>
-            <span class="analog-swatch-hex">#F7F2E6</span>
-          </div>
-        </article>
+        <div class="poster-art-canvas" aria-hidden="true">
+          <div class="art-geom-ring"></div>
+          <div class="art-geom-disc"></div>
+          <div class="art-geom-slash"></div>
+          <div class="art-geom-accent"></div>
+        </div>
 
-        <!-- Signal Red -->
-        <article class="analog-swatch-card">
-          <div class="analog-swatch-preview" style="background-color: #FF4D47;"></div>
-          <div class="analog-swatch-body">
-            <span class="analog-swatch-title">Signal Red</span>
-            <span class="analog-swatch-hex">#FF4D47</span>
+        <div class="poster-color-key">
+          <div class="color-key-item">
+            <span class="key-pip" style="background-color: #0B1A33; border: 1px solid var(--ar-border);"></span>
+            <div class="key-meta">
+              <span class="key-name">Midnight</span>
+              <span class="key-hex">#0B1A33</span>
+            </div>
           </div>
-        </article>
-
-        <!-- Solar Yellow -->
-        <article class="analog-swatch-card">
-          <div class="analog-swatch-preview" style="background-color: #FFC938;"></div>
-          <div class="analog-swatch-body">
-            <span class="analog-swatch-title">Solar Yellow</span>
-            <span class="analog-swatch-hex">#FFC938</span>
+          <div class="color-key-item">
+            <span class="key-pip" style="background-color: #F7F2E6; border: 1px solid var(--ar-border);"></span>
+            <div class="key-meta">
+              <span class="key-name">Ivory</span>
+              <span class="key-hex">#F7F2E6</span>
+            </div>
           </div>
-        </article>
-
-        <!-- Neon Green -->
-        <article class="analog-swatch-card">
-          <div class="analog-swatch-preview" style="background-color: #8CC865;"></div>
-          <div class="analog-swatch-body">
-            <span class="analog-swatch-title">Neon Green</span>
-            <span class="analog-swatch-hex">#8CC865</span>
+          <div class="color-key-item">
+            <span class="key-pip" style="background-color: #FF4D47;"></span>
+            <div class="key-meta">
+              <span class="key-name">Signal Red</span>
+              <span class="key-hex">#FF4D47</span>
+            </div>
           </div>
-        </article>
-
-        <!-- Electric Blue -->
-        <article class="analog-swatch-card">
-          <div class="analog-swatch-preview" style="background-color: #3C7CFF;"></div>
-          <div class="analog-swatch-body">
-            <span class="analog-swatch-title">Electric Blue</span>
-            <span class="analog-swatch-hex">#3C7CFF</span>
+          <div class="color-key-item">
+            <span class="key-pip" style="background-color: #FFC938;"></span>
+            <div class="key-meta">
+              <span class="key-name">Solar Yellow</span>
+              <span class="key-hex">#FFC938</span>
+            </div>
           </div>
-        </article>
+          <div class="color-key-item">
+            <span class="key-pip" style="background-color: #8CC865;"></span>
+            <div class="key-meta">
+              <span class="key-name">Neon Green</span>
+              <span class="key-hex">#8CC865</span>
+            </div>
+          </div>
+          <div class="color-key-item">
+            <span class="key-pip" style="background-color: #3C7CFF;"></span>
+            <div class="key-meta">
+              <span class="key-name">Electric Blue</span>
+              <span class="key-hex">#3C7CFF</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
