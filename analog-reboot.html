@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Analog Reboot | Devin Sanders</title>
 
-  <!-- Favicon & Touch Icon -->
   <link rel="icon" type="image/png" href="LogoBlue.png">
   <link rel="apple-touch-icon" href="LogoBlue.png">
 
@@ -16,7 +15,7 @@
 
   <style>
     /* =========================================================================
-       ANALOG REBOOT CUSTOM SPECIFICATION & LOOKBOOK SYSTEM
+       ANALOG REBOOT EDITORIAL LOOKBOOK SYSTEM
        ========================================================================= */
 
     :root {
@@ -30,26 +29,25 @@
       --ar-text-muted: rgba(11, 26, 51, 0.72);
     }
 
+    /* Transparent Canvas: Let persistent lines and dots breathe */
     body.analog-case-page {
-      background-color: var(--ar-ivory) !important;
+      background-color: transparent !important;
       color: var(--ar-midnight) !important;
     }
 
-    /* Tuned Topo Blur: Softens contour vectors into atmospheric texture */
     .analog-case-page .hero-topography-plate {
-      filter: blur(4px);
-      -webkit-filter: blur(4px);
-      opacity: 0.22 !important;
+      filter: blur(2px);
+      -webkit-filter: blur(2px);
+      opacity: 0.28 !important;
       transform: scale(1.02);
     }
 
-    /* Typography Foundations */
+    /* Typography */
     .turnstyle-headline,
     .analog-case-page main h2,
     .analog-case-page main h3,
-    .analog-case-page main h4,
-    .pattern-tile-name,
-    .lookbook-title {
+    .lookbook-title,
+    .contact-sheet-name {
       font-family: var(--font-barlow) !important;
       font-weight: 800 !important;
       text-transform: uppercase;
@@ -59,18 +57,18 @@
     .turnstyle-caption-title,
     .turnstyle-caption-text,
     .case-section-header .label,
-    .pattern-tile-code,
+    .contact-sheet-code,
     .more-projects-title,
     .more-projects-all,
     .more-project-name,
     .more-project-tag,
-    .lookbook-tag {
+    .ink-label-title {
       font-family: var(--font-barlow) !important;
     }
 
     .analog-case-page main p,
-    .analog-case-page main li,
-    .lookbook-caption {
+    .lookbook-caption,
+    .capsule-statement-body {
       font-family: var(--font-barlow) !important;
       font-weight: 400 !important;
       line-height: 1.6;
@@ -178,128 +176,124 @@
       color: var(--ar-midnight);
     }
 
-    /* Intro Narrative Grid */
-    .analog-intro-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-      margin-bottom: 6rem;
+    /* Streetwear Capsule Manifesto */
+    .capsule-statement-wrap {
+      max-width: 880px;
+      margin: 0 auto 6.5rem;
+      text-align: left;
     }
 
-    @media (min-width: 860px) {
-      .analog-intro-grid {
-        grid-template-columns: 1.35fr 1fr;
-        gap: 4.5rem;
-      }
+    .capsule-eyebrow {
+      font-family: var(--font-barlow);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ar-red);
+      display: block;
+      margin-bottom: 0.75rem;
     }
 
-    .intro-lead-title {
-      font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+    .capsule-statement-lead {
+      font-size: clamp(2rem, 3.8vw, 3.1rem);
       font-weight: 900;
       line-height: 1.05;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
       color: var(--ar-midnight);
-      margin: 0.5rem 0 1rem 0;
+      margin: 0 0 1.25rem 0;
     }
 
-    .intro-lead-title span {
+    .capsule-statement-lead span {
       color: var(--ar-blue);
     }
 
-    .intro-lead-p {
+    .capsule-statement-body {
       font-size: 1.15rem;
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--ar-midnight);
+      line-height: 1.65;
+      color: var(--ar-text-muted);
       margin: 0;
     }
 
-    .intro-body-p {
-      font-size: 0.98rem;
-      font-weight: 400;
-      line-height: 1.7;
-      color: var(--ar-text-muted);
-      margin: 0.5rem 0 0 0;
-    }
-
-    /* 12-Pattern Catalog Grid */
-    .pattern-grid-12 {
+    /* =========================================================================
+       TEXTILE CONTACT SHEET (12 Patterns with Interactive Focus)
+       ========================================================================= */
+    .pattern-contact-sheet {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 6rem;
+      gap: 1.25rem;
+      margin-bottom: 6.5rem;
     }
 
     @media (min-width: 640px) {
-      .pattern-grid-12 {
+      .pattern-contact-sheet {
         grid-template-columns: repeat(3, 1fr);
       }
     }
 
     @media (min-width: 1024px) {
-      .pattern-grid-12 {
+      .pattern-contact-sheet {
         grid-template-columns: repeat(4, 1fr);
-        gap: 1.75rem;
+        gap: 1.5rem;
       }
     }
 
-    .pattern-tile-card {
-      background: #FFFFFF;
-      border: 1px solid var(--ar-border);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 8px 24px -10px rgba(11, 26, 51, 0.06);
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .pattern-tile-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--ar-blue);
-      box-shadow: 0 16px 32px -10px rgba(60, 124, 255, 0.16);
-    }
-
-    .pattern-tile-img-box {
-      width: 100%;
+    .contact-tile {
+      position: relative;
       aspect-ratio: 1 / 1;
       overflow: hidden;
       background: #FFFFFF;
+      border: 1px solid var(--ar-border);
+      box-shadow: 0 8px 24px -10px rgba(11, 26, 51, 0.08);
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease, border-color 0.35s ease;
     }
 
-    .pattern-tile-img-box img {
+    .contact-tile img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.4s ease;
+      transition: transform 0.5s ease;
     }
 
-    .pattern-tile-card:hover .pattern-tile-img-box img {
-      transform: scale(1.05);
-    }
-
-    .pattern-tile-info {
-      padding: 1rem 1.25rem;
+    .contact-tile-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(11, 26, 51, 0.85) 0%, rgba(11, 26, 51, 0.2) 35%, transparent 60%);
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      background: #FFFFFF;
-      border-top: 1px solid var(--ar-border);
+      align-items: flex-end;
+      padding: 1rem 1.15rem;
+      box-sizing: border-box;
+      opacity: 0.95;
+      transition: opacity 0.3s ease;
     }
 
-    .pattern-tile-name {
+    .contact-sheet-name {
       font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--ar-midnight);
+      color: #FFFFFF;
+      line-height: 1;
     }
 
-    .pattern-tile-code {
+    .contact-sheet-code {
       font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.08em;
-      color: var(--ar-blue);
+      color: var(--ar-yellow);
     }
 
-    /* Full-Bleed Retro Stripe Tape Banner */
+    .contact-tile:hover {
+      transform: translateY(-5px) scale(1.02);
+      border-color: var(--ar-blue);
+      box-shadow: 0 16px 36px -10px rgba(60, 124, 255, 0.22);
+      z-index: 3;
+    }
+
+    .contact-tile:hover img {
+      transform: scale(1.06);
+    }
+
+    /* Full-Bleed Retro Stripe Tape Divider */
     .retro-stripe-banner {
       width: 100vw;
       margin-left: calc(-50vw + 50%);
@@ -317,15 +311,18 @@
       height: 100%;
     }
 
-    /* Capsule Lookbook Stages (Streetwear in Context) */
-    .lookbook-capsule-grid {
+    /* =========================================================================
+       EDITORIAL FASHION LOOKBOOK (Asymmetric & Side-by-Side Spreads)
+       ========================================================================= */
+    .lookbook-section {
       display: flex;
       flex-direction: column;
-      gap: 6rem;
-      margin-bottom: 6.5rem;
+      gap: 6.5rem;
+      margin-bottom: 7.5rem;
     }
 
-    .lookbook-entry {
+    /* Spread 1: Asymmetric Bucket Hat Hero */
+    .lookbook-hero-spread {
       display: grid;
       grid-template-columns: 1fr;
       gap: 2.5rem;
@@ -333,64 +330,94 @@
     }
 
     @media (min-width: 960px) {
-      .lookbook-entry {
-        grid-template-columns: 1.45fr 1fr;
-        gap: 4rem;
-      }
-      .lookbook-entry.reverse {
-        grid-template-columns: 1fr 1.45fr;
-      }
-      .lookbook-entry.reverse .lookbook-media {
-        order: 2;
-      }
-      .lookbook-entry.reverse .lookbook-copy {
-        order: 1;
+      .lookbook-hero-spread {
+        grid-template-columns: 1.55fr 1fr;
+        gap: 4.5rem;
       }
     }
 
-    .lookbook-media {
+    .lookbook-hero-media {
       width: 100%;
       background: #FFFFFF;
       border: 1px solid var(--ar-border);
-      box-shadow: 0 16px 40px -15px rgba(11, 26, 51, 0.08);
+      box-shadow: 0 18px 45px -15px rgba(11, 26, 51, 0.1);
       overflow: hidden;
     }
 
-    .lookbook-media img {
+    .lookbook-hero-media img {
       width: 100%;
       height: auto;
       display: block;
       object-fit: cover;
     }
 
-    .lookbook-copy {
+    .lookbook-story-side {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .lookbook-tag {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      gap: 1rem;
     }
 
     .lookbook-title {
-      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-size: clamp(1.8rem, 2.8vw, 2.5rem);
       margin: 0;
-      line-height: 1.1;
+      line-height: 1.05;
       color: var(--ar-midnight);
     }
 
     .lookbook-caption {
-      font-size: 0.98rem;
+      font-size: 1.05rem;
       color: var(--ar-text-muted);
       margin: 0;
-      max-width: 520px;
     }
 
-    /* Secondary Merch Gallery Layouts */
+    /* Spread 2: Side-by-Side Lookbook Outerwear Duo */
+    .lookbook-duo-spread {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .lookbook-duo-spread {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .lookbook-duo-item {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .lookbook-duo-media {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: #FFFFFF;
+      border: 1px solid var(--ar-border);
+      box-shadow: 0 14px 34px -12px rgba(11, 26, 51, 0.08);
+      overflow: hidden;
+    }
+
+    .lookbook-duo-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .lookbook-duo-caption {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--ar-midnight);
+      margin: 0;
+    }
+
+    .lookbook-duo-caption span {
+      color: var(--ar-red);
+      font-weight: 700;
+    }
+
+    /* Spread 3: Curated Accessories Flatlay */
     .case-grid-2col {
       display: grid;
       grid-template-columns: 1fr;
@@ -436,145 +463,68 @@
     }
 
     /* =========================================================================
-       GRAPHIC ART POSTER SPECIMEN (Replaces Old Swatch Grid)
+       SCREENPRINT INK ACCORDION STRIP
        ========================================================================= */
-    .color-poster-stage {
-      max-width: 1100px;
-      margin: 0 auto 6.5rem;
-      background: #FFFFFF;
-      border: 1px solid var(--ar-border);
-      box-shadow: 0 20px 48px -15px rgba(11, 26, 51, 0.08);
-      padding: 3rem;
-      box-sizing: border-box;
+    .screenprint-strip-stage {
+      margin-bottom: 6.5rem;
     }
 
-    @media (max-width: 768px) {
-      .color-poster-stage {
-        padding: 1.5rem;
-      }
-    }
-
-    .poster-header-meta {
+    .ink-accordion-track {
       display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      border-bottom: 1px solid var(--ar-border);
-      padding-bottom: 1rem;
-      margin-bottom: 2rem;
-      font-family: var(--font-barlow);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--ar-midnight);
-    }
-
-    .poster-art-canvas {
       width: 100%;
-      aspect-ratio: 21 / 9;
-      min-height: 240px;
-      background-color: var(--ar-midnight);
-      position: relative;
+      height: 140px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border: 1px solid var(--ar-border);
+      box-shadow: 0 12px 30px -10px rgba(11, 26, 51, 0.08);
+      margin-bottom: 1.5rem;
     }
 
-    @media (max-width: 768px) {
-      .poster-art-canvas {
-        aspect-ratio: 16 / 9;
-      }
+    .ink-channel {
+      flex: 1;
+      height: 100%;
+      position: relative;
+      cursor: pointer;
+      transition: flex 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    .art-geom-ring {
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      border: 24px solid var(--ar-blue);
-      left: 12%;
-      opacity: 0.9;
+    .ink-channel:hover {
+      flex: 2.2;
     }
 
-    .art-geom-disc {
-      position: absolute;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      background-color: var(--ar-yellow);
-      right: 18%;
-      mix-blend-mode: screen;
-    }
-
-    .art-geom-slash {
-      position: absolute;
-      width: 120%;
-      height: 28px;
-      background-color: var(--ar-red);
-      transform: rotate(-14deg);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-
-    .art-geom-accent {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 12px;
-      background-color: var(--ar-green);
-    }
-
-    .poster-color-key {
+    .ink-labels-row {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem 2rem;
-      margin-top: 2rem;
-      padding-top: 1.5rem;
+      gap: 1rem;
+      padding-top: 1rem;
       border-top: 1px solid var(--ar-border);
     }
 
     @media (min-width: 768px) {
-      .poster-color-key {
+      .ink-labels-row {
         grid-template-columns: repeat(6, 1fr);
-        gap: 1rem;
       }
     }
 
-    .color-key-item {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
-
-    .key-pip {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .key-meta {
+    .ink-label-col {
       display: flex;
       flex-direction: column;
+      gap: 0.2rem;
     }
 
-    .key-name {
-      font-family: var(--font-barlow);
-      font-size: 0.8rem;
+    .ink-label-title {
+      font-size: 0.85rem;
       font-weight: 700;
       text-transform: uppercase;
       color: var(--ar-midnight);
-      line-height: 1.1;
     }
 
-    .key-hex {
+    .ink-label-hex {
       font-family: monospace;
-      font-size: 0.72rem;
+      font-size: 0.76rem;
       color: var(--ar-text-muted);
     }
 
-    /* Dynamic Bottom Project Reel */
+    /* More Projects Reel */
     .more-projects-section {
       position: relative;
       z-index: 2;
@@ -763,164 +713,132 @@
   <!-- Main Narrative & Showcase -->
   <main style="padding-top: 5.5rem; padding-bottom: 5rem;">
 
-    <!-- 2. Overview & Solution Grid -->
+    <!-- 2. Streetwear Capsule Manifesto (No Spec Bars) -->
     <section class="case-content-wrap">
-      <div class="analog-intro-grid">
-        <div>
-          <span class="uppercase-label" style="margin-bottom: 0.5rem; color: var(--ar-red);">The Collection</span>
-          <h2 class="intro-lead-title">
-            12 Patterns · <span>One Cohesive System</span>
-          </h2>
-          <p class="intro-lead-p">
-            Analog Reboot explores rhythm, retro electronics iconography, and bold color blocking through 12 modular surface patterns designed for apparel, accessories, and print merchandise.
-          </p>
-        </div>
-        <div>
-          <span class="uppercase-label" style="margin-bottom: 0.5rem; color: var(--ar-text-muted);">The Foundation</span>
-          <p class="intro-body-p">
-            Each repeating graphic derives from vintage tech—cassette ribbons, circuit traces, CRT signal sweeps, and floppy disks—unified by a calibrated six-color palette and high-impact Barlow typography.
-          </p>
-        </div>
+      <div class="capsule-statement-wrap">
+        <span class="capsule-eyebrow">Capsule Release // Collection Overview</span>
+        <h2 class="capsule-statement-lead">
+          12 Modular Surface Studies <span>Sampling Vintage Electronics</span> into Wearable Prints
+        </h2>
+        <p class="capsule-statement-body">
+          80s cassette ribbon tension. PCB motherboards. CRT signal sweeps. Analog Reboot explores repeat rhythm and high-voltage color blocking across 12 modular surface patterns engineered for cut-and-sew streetwear, technical outerwear, and daily lifestyle carry.
+        </p>
       </div>
     </section>
 
-    <!-- 3. The 12 Patterns Catalog Matrix -->
+    <!-- 3. The 12 Patterns Textile Contact Sheet -->
     <section class="case-content-wrap">
       <div class="case-section-header">
         <div class="line" style="background-color: var(--ar-blue);"></div>
-        <span class="label">Pattern Catalog // 12-Part Matrix</span>
+        <span class="label">Pattern Archive // 12-Part Matrix</span>
       </div>
 
-      <div class="pattern-grid-12">
+      <div class="pattern-contact-sheet">
         <!-- 01 Retro Blueprint -->
-        <article class="pattern-tile-card">
-          <div class="pattern-tile-img-box">
-            <img src="AnalogReboot/AR-Pattern1.png" alt="Retro Blueprint Pattern" loading="lazy" decoding="async">
-          </div>
-          <div class="pattern-tile-info">
-            <span class="pattern-tile-name">Retro Blueprint</span>
-            <span class="pattern-tile-code">AR-001</span>
+        <article class="contact-tile">
+          <img src="AnalogReboot/AR-Pattern1.png" alt="Retro Blueprint Pattern" loading="lazy" decoding="async">
+          <div class="contact-tile-scrim">
+            <span class="contact-sheet-name">Retro Blueprint</span>
+            <span class="contact-sheet-code">AR-001</span>
           </div>
         </article>
 
         <!-- 02 Polaroid Archive -->
-        <article class="pattern-tile-card">
-          <div class="pattern-tile-img-box">
-            <img src="AnalogReboot/AR-Pattern2.png" alt="Polaroid Archive Pattern" loading="lazy" decoding="async">
-          </div>
-          <div class="pattern-tile-info">
-            <span class="pattern-tile-name">Polaroid Archive</span>
-            <span class="pattern-tile-code">AR-002</span>
+        <article class="contact-tile">
+          <img src="AnalogReboot/AR-Pattern2.png" alt="Polaroid Archive Pattern" loading="lazy" decoding="async">
+          <div class="contact-tile-scrim">
+            <span class="contact-sheet-name">Polaroid Archive</span>
+            <span class="contact-sheet-code">AR-002</span>
           </div>
         </article>
 
         <!-- 03 Signal Arc -->
-        <article class="pattern-tile-card">
-          <div class="pattern-tile-img-box">
-            <img src="AnalogReboot/AR-Pattern3.png" alt="Signal Arc Pattern" loading="lazy" decoding="async">
-          </div>
-          <div class="pattern-tile-info">
-            <span class="pattern-tile-name">Signal Arc</span>
-            <span class="pattern-tile-code">AR-003</span>
+        <article class="contact-tile">
+          <img src="AnalogReboot/AR-Pattern3.png" alt="Signal Arc Pattern" loading="lazy" decoding="async">
+          <div class="contact-tile-scrim">
+            <span class="contact-sheet-name">Signal Arc</span>
+            <span class="contact-sheet-code">AR-003</span>
           </div>
         </article>
 
         <!-- 04 Signal Sweep -->
-        <article class="pattern-tile-card">
-          <div class="pattern-tile-img-box">
-            <img src="AnalogReboot/AR-Pattern4.png" alt="Signal Sweep Pattern" loading="lazy" decoding="async">
-          </div>
-          <div class="pattern-tile-info">
-            <span class="pattern-tile-name">Signal Sweep</span>
-            <span class="pattern-tile-code">AR-004</span>
+        <article class="contact-tile">
+          <img src="AnalogReboot/AR-Pattern4.png" alt="Signal Sweep Pattern" loading="lazy" decoding="async">
+          <div class="contact-tile-scrim">
+            <span class="contact-sheet-name">Signal Sweep</span>
+            <span class="contact-sheet-code">AR-004</span>
           </div>
         </article>
 
         <!-- 05 Mag Tape Repeat -->
-        <article class="pattern-tile-card">
-          <div class="pattern-tile-img-box">
-            <img src="AnalogReboot/AR-Pattern5.png" alt="Mag Tape Repeat Pattern" loading="lazy" decoding="async">
-          </div>
-          <div class="pattern-tile-info">
-            <span class="pattern-tile-name">Mag Tape Repeat</span>
-            <span class="pattern-tile-code">AR-005</span>
+        <article class="contact-tile">
+          <img src="AnalogReboot/AR-Pattern5.png" alt="Mag Tape Repeat Pattern" loading="lazy" decoding="async">
+          <div class="contact-tile-scrim">
+            <span class="contact-sheet-name">Mag Tape Repeat</span>
+            <span class="contact-sheet-code">AR-005</span>
           </div>
         </article>
 
         <!-- 06 Playback Grid -->
-        <article class="pattern-tile-card">
-          <div class="pattern-tile-img-box">
-            <img src="AnalogReboot/AR-Pattern6.png" alt="Playback Grid Pattern" loading="lazy" decoding="async">
-          </div>
-          <div class="pattern-tile-info">
-            <span class="pattern-tile-name">Playback Grid</span>
-            <span class="pattern-tile-code">AR-006</span>
+        <article class="contact-tile">
+          <img src="AnalogReboot/AR-Pattern6.png" alt="Playback Grid Pattern" loading="lazy" decoding="async">
+          <div class="contact-tile-scrim">
+            <span class="contact-sheet-name">Playback Grid</span>
+            <span class="contact-sheet-code">AR-006</span>
           </div>
         </article>
 
         <!-- 07 Node Line -->
-        <article class="pattern-tile-card">
-          <div class="pattern-tile-img-box">
-            <img src="AnalogReboot/AR-Pattern7.png" alt="Node Line Pattern" loading="lazy" decoding="async">
-          </div>
-          <div class="pattern-tile-info">
-            <span class="pattern-tile-name">Node Line</span>
-            <span class="pattern-tile-code">AR-007</span>
+        <article class="contact-tile">
+          <img src="AnalogReboot/AR-Pattern7.png" alt="Node Line Pattern" loading="lazy" decoding="async">
+          <div class="contact-tile-scrim">
+            <span class="contact-sheet-name">Node Line</span>
+            <span class="contact-sheet-code">AR-007</span>
           </div>
         </article>
 
         <!-- 08 Ivory Circuit -->
-        <article class="pattern-tile-card">
-          <div class="pattern-tile-img-box">
-            <img src="AnalogReboot/AR-Pattern8.png" alt="Ivory Circuit Pattern" loading="lazy" decoding="async">
-          </div>
-          <div class="pattern-tile-info">
-            <span class="pattern-tile-name">Ivory Circuit</span>
-            <span class="pattern-tile-code">AR-008</span>
+        <article class="contact-tile">
+          <img src="AnalogReboot/AR-Pattern8.png" alt="Ivory Circuit Pattern" loading="lazy" decoding="async">
+          <div class="contact-tile-scrim">
+            <span class="contact-sheet-name">Ivory Circuit</span>
+            <span class="contact-sheet-code">AR-008</span>
           </div>
         </article>
 
         <!-- 09 Blue Circuit -->
-        <article class="pattern-tile-card">
-          <div class="pattern-tile-img-box">
-            <img src="AnalogReboot/AR-Pattern9.png" alt="Blue Circuit Pattern" loading="lazy" decoding="async">
-          </div>
-          <div class="pattern-tile-info">
-            <span class="pattern-tile-name">Blue Circuit</span>
-            <span class="pattern-tile-code">AR-009</span>
+        <article class="contact-tile">
+          <img src="AnalogReboot/AR-Pattern9.png" alt="Blue Circuit Pattern" loading="lazy" decoding="async">
+          <div class="contact-tile-scrim">
+            <span class="contact-sheet-name">Blue Circuit</span>
+            <span class="contact-sheet-code">AR-009</span>
           </div>
         </article>
 
         <!-- 10 Midnight Circuit -->
-        <article class="pattern-tile-card">
-          <div class="pattern-tile-img-box">
-            <img src="AnalogReboot/AR-Pattern10.png" alt="Midnight Circuit Pattern" loading="lazy" decoding="async">
-          </div>
-          <div class="pattern-tile-info">
-            <span class="pattern-tile-name">Midnight Circuit</span>
-            <span class="pattern-tile-code">AR-010</span>
+        <article class="contact-tile">
+          <img src="AnalogReboot/AR-Pattern10.png" alt="Midnight Circuit Pattern" loading="lazy" decoding="async">
+          <div class="contact-tile-scrim">
+            <span class="contact-sheet-name">Midnight Circuit</span>
+            <span class="contact-sheet-code">AR-010</span>
           </div>
         </article>
 
         <!-- 11 Frequency Grain -->
-        <article class="pattern-tile-card">
-          <div class="pattern-tile-img-box">
-            <img src="AnalogReboot/AR-Pattern11.png" alt="Frequency Grain Pattern" loading="lazy" decoding="async">
-          </div>
-          <div class="pattern-tile-info">
-            <span class="pattern-tile-name">Frequency Grain</span>
-            <span class="pattern-tile-code">AR-011</span>
+        <article class="contact-tile">
+          <img src="AnalogReboot/AR-Pattern11.png" alt="Frequency Grain Pattern" loading="lazy" decoding="async">
+          <div class="contact-tile-scrim">
+            <span class="contact-sheet-name">Frequency Grain</span>
+            <span class="contact-sheet-code">AR-011</span>
           </div>
         </article>
 
         <!-- 12 Color Horizon -->
-        <article class="pattern-tile-card">
-          <div class="pattern-tile-img-box">
-            <img src="AnalogReboot/AR-Pattern12.png" alt="Color Horizon Pattern" loading="lazy" decoding="async">
-          </div>
-          <div class="pattern-tile-info">
-            <span class="pattern-tile-name">Color Horizon</span>
-            <span class="pattern-tile-code">AR-012</span>
+        <article class="contact-tile">
+          <img src="AnalogReboot/AR-Pattern12.png" alt="Color Horizon Pattern" loading="lazy" decoding="async">
+          <div class="contact-tile-scrim">
+            <span class="contact-sheet-name">Color Horizon</span>
+            <span class="contact-sheet-code">AR-012</span>
           </div>
         </article>
       </div>
@@ -933,186 +851,148 @@
       <div class="stripe-segment" style="background-color: var(--ar-yellow);"></div>
     </div>
 
-    <!-- 5. Capsule Lookbook (Streetwear in Context) -->
-    <section class="case-content-wrap">
-      <div class="case-section-header">
-        <div class="line" style="background-color: var(--ar-red);"></div>
-        <span class="label">Apparel Lookbook // In Context</span>
+    <!-- 5. Editorial Fashion Lookbook Spreads -->
+    <section class="case-content-wrap lookbook-section">
+      
+      <!-- Spread 1: Asymmetric Bucket Hat Hero -->
+      <article class="lookbook-hero-spread">
+        <div class="lookbook-hero-media">
+          <img src="AnalogReboot/AR-Application-1.png" alt="Retro Blueprint Bucket Hat" loading="lazy" decoding="async">
+        </div>
+        <div class="lookbook-story-side">
+          <h3 class="lookbook-title">Retro Blueprint Silhouette</h3>
+          <p class="lookbook-caption">
+            Primary icon repeats and circuit geometries engineered across all-over headwear prints, turning retro graphics into high-contrast street volume.
+          </p>
+        </div>
+      </article>
+
+      <!-- Spread 2: Side-by-Side Outerwear Lookbook Duo -->
+      <div>
+        <div class="case-section-header">
+          <div class="line" style="background-color: var(--ar-green);"></div>
+          <span class="label">Outerwear & Technical Shells</span>
+        </div>
+
+        <div class="lookbook-duo-spread">
+          <div class="lookbook-duo-item">
+            <div class="lookbook-duo-media">
+              <img src="AnalogReboot/AR-Application-8.png" alt="Circuit Windbreakers" loading="lazy" decoding="async">
+            </div>
+            <p class="lookbook-duo-caption"><span>01 /</span> Motherboard Circuit Shells on Technical Nylon</p>
+          </div>
+          <div class="lookbook-duo-item">
+            <div class="lookbook-duo-media">
+              <img src="AnalogReboot/AR-Application-12.png" alt="Color Horizon Carry Goods" loading="lazy" decoding="async">
+            </div>
+            <p class="lookbook-duo-caption"><span>02 /</span> Color Horizon Modular Daily Carry</p>
+          </div>
+        </div>
       </div>
 
-      <div class="lookbook-capsule-grid">
-        <!-- Entry 01: Retro Blueprint -->
-        <article class="lookbook-entry">
-          <div class="lookbook-media">
-            <img src="AnalogReboot/AR-Application-1.png" alt="Retro Blueprint Bucket Hat" loading="lazy" decoding="async">
-          </div>
-          <div class="lookbook-copy">
-            <span class="lookbook-tag" style="color: var(--ar-blue);">Streetwear Headwear // AR-001</span>
-            <h3 class="lookbook-title">Retro Blueprint Silhouette</h3>
-            <p class="lookbook-caption">
-              High-contrast primary linework and repeating electronics iconography engineered across an all-over bucket hat print.
-            </p>
-          </div>
-        </article>
+      <!-- Spread 3: Accessories & Merchandise Flatlay -->
+      <div>
+        <div class="case-section-header">
+          <div class="line" style="background-color: var(--ar-red);"></div>
+          <span class="label">Curated Merchandise Capsule</span>
+        </div>
 
-        <!-- Entry 02: Circuit Collection Windbreakers (Reversed) -->
-        <article class="lookbook-entry reverse">
-          <div class="lookbook-media">
-            <img src="AnalogReboot/AR-Application-8.png" alt="Circuit Windbreakers" loading="lazy" decoding="async">
+        <!-- Row 1: Sling Bag & Air Freshener -->
+        <div class="case-grid-2col">
+          <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+            <img src="AnalogReboot/AR-Application-2.png" alt="Crossbody Sling Bag" loading="lazy" decoding="async">
           </div>
-          <div class="lookbook-copy">
-            <span class="lookbook-tag" style="color: var(--ar-green);">Technical Outerwear // AR-008–010</span>
-            <h3 class="lookbook-title">Motherboard Circuit Shells</h3>
-            <p class="lookbook-caption">
-              Ivory, Blue, and Midnight circuit variants translating PCB trace schematics into lightweight, weather-resistant nylon outerwear.
-            </p>
+          <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+            <img src="AnalogReboot/AR-Application-3.png" alt="Automotive Air Freshener" loading="lazy" decoding="async">
           </div>
-        </article>
+        </div>
 
-        <!-- Entry 03: Color Horizon -->
-        <article class="lookbook-entry">
-          <div class="lookbook-media">
-            <img src="AnalogReboot/AR-Application-12.png" alt="Color Horizon Carry Goods" loading="lazy" decoding="async">
+        <!-- Row 2: Socks & Cut-and-Sew Knit -->
+        <div class="case-grid-2col">
+          <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+            <img src="AnalogReboot/AR-Application-4.png" alt="Apparel Application 4" loading="lazy" decoding="async">
           </div>
-          <div class="lookbook-copy">
-            <span class="lookbook-tag" style="color: var(--ar-yellow);">Travel & Carry // AR-012</span>
-            <h3 class="lookbook-title">Color Horizon Pack System</h3>
-            <p class="lookbook-caption">
-              Curved magnetic tape ribbons applied to carry goods, balancing vibrant warm hues against clean off-white foundations.
-            </p>
+          <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+            <img src="AnalogReboot/AR-Application-5.png" alt="Pattern Knit Socks" loading="lazy" decoding="async">
           </div>
-        </article>
+        </div>
+
+        <!-- Row 3: Bandana, Skate Deck, Lifestyle Print -->
+        <div class="case-grid-3col">
+          <div class="case-img-box" style="aspect-ratio: 1 / 1;">
+            <img src="AnalogReboot/AR-Application-6.png" alt="Printed Checkered Bandana" loading="lazy" decoding="async">
+          </div>
+          <div class="case-img-box" style="aspect-ratio: 1 / 1;">
+            <img src="AnalogReboot/AR-Application-7.png" alt="Skateboard Deck" loading="lazy" decoding="async">
+          </div>
+          <div class="case-img-box" style="aspect-ratio: 1 / 1;">
+            <img src="AnalogReboot/AR-Application-9.png" alt="Pattern Application 9" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <!-- Row 4: Final Accessory Pair -->
+        <div class="case-grid-2col">
+          <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+            <img src="AnalogReboot/AR-Application-10.png" alt="Pattern Application 10" loading="lazy" decoding="async">
+          </div>
+          <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+            <img src="AnalogReboot/AR-Application-11.png" alt="Pattern Application 11" loading="lazy" decoding="async">
+          </div>
+        </div>
       </div>
+
     </section>
 
-    <!-- 6. Complete Lifestyle & Merchandise Gallery -->
-    <section class="case-content-wrap">
-      <div class="case-section-header">
-        <div class="line" style="background-color: var(--ar-blue);"></div>
-        <span class="label">Merchandise & Lifestyle Details</span>
-      </div>
-
-      <!-- Spread Pair 1 (Applications 2 & 3) -->
-      <div class="case-grid-2col">
-        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
-          <img src="AnalogReboot/AR-Application-2.png" alt="Crossbody Sling Bag" loading="lazy" decoding="async">
-        </div>
-        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
-          <img src="AnalogReboot/AR-Application-3.png" alt="Automotive Air Freshener" loading="lazy" decoding="async">
-        </div>
-      </div>
-
-      <!-- Spread Pair 2 (Applications 4 & 5) -->
-      <div class="case-grid-2col">
-        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
-          <img src="AnalogReboot/AR-Application-4.png" alt="Apparel Application 4" loading="lazy" decoding="async">
-        </div>
-        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
-          <img src="AnalogReboot/AR-Application-5.png" alt="Pattern Knit Socks" loading="lazy" decoding="async">
-        </div>
-      </div>
-
-      <!-- 3-Column Spread (Applications 6, 7 & 9) -->
-      <div class="case-grid-3col">
-        <div class="case-img-box" style="aspect-ratio: 1 / 1;">
-          <img src="AnalogReboot/AR-Application-6.png" alt="Printed Checkered Bandana" loading="lazy" decoding="async">
-        </div>
-        <div class="case-img-box" style="aspect-ratio: 1 / 1;">
-          <img src="AnalogReboot/AR-Application-7.png" alt="Skateboard Deck" loading="lazy" decoding="async">
-        </div>
-        <div class="case-img-box" style="aspect-ratio: 1 / 1;">
-          <img src="AnalogReboot/AR-Application-9.png" alt="Pattern Application 9" loading="lazy" decoding="async">
-        </div>
-      </div>
-
-      <!-- Spread Pair 3 (Applications 10 & 11) -->
-      <div class="case-grid-2col" style="margin-bottom: 6.5rem;">
-        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
-          <img src="AnalogReboot/AR-Application-10.png" alt="Pattern Application 10" loading="lazy" decoding="async">
-        </div>
-        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
-          <img src="AnalogReboot/AR-Application-11.png" alt="Pattern Application 11" loading="lazy" decoding="async">
-        </div>
-      </div>
-    </section>
-
-    <!-- 7. Graphic Art Poster Specimen (Replaces Old Swatch Cards) -->
-    <section class="case-content-wrap">
+    <!-- 6. Screenprint Ink Accordion Strip -->
+    <section class="case-content-wrap screenprint-strip-stage">
       <div class="case-section-header">
         <div class="line" style="background-color: var(--ar-midnight);"></div>
-        <span class="label">Color Architecture</span>
+        <span class="label">Screenprint Inks</span>
       </div>
 
-      <div class="color-poster-stage">
-        <div class="poster-header-meta">
-          <span>Analog Reboot Chromatic System</span>
-          <span>Screenprint Edition 01</span>
-        </div>
+      <div class="ink-accordion-track">
+        <div class="ink-channel" style="background-color: #0B1A33;" title="Midnight Blue"></div>
+        <div class="ink-channel" style="background-color: #F7F2E6;" title="Ivory White"></div>
+        <div class="ink-channel" style="background-color: #FF4D47;" title="Signal Red"></div>
+        <div class="ink-channel" style="background-color: #FFC938;" title="Solar Yellow"></div>
+        <div class="ink-channel" style="background-color: #8CC865;" title="Neon Green"></div>
+        <div class="ink-channel" style="background-color: #3C7CFF;" title="Electric Blue"></div>
+      </div>
 
-        <div class="poster-art-canvas" aria-hidden="true">
-          <div class="art-geom-ring"></div>
-          <div class="art-geom-disc"></div>
-          <div class="art-geom-slash"></div>
-          <div class="art-geom-accent"></div>
+      <div class="ink-labels-row">
+        <div class="ink-label-col">
+          <span class="ink-label-title">Midnight</span>
+          <span class="ink-label-hex">#0B1A33</span>
         </div>
-
-        <div class="poster-color-key">
-          <div class="color-key-item">
-            <span class="key-pip" style="background-color: #0B1A33; border: 1px solid var(--ar-border);"></span>
-            <div class="key-meta">
-              <span class="key-name">Midnight</span>
-              <span class="key-hex">#0B1A33</span>
-            </div>
-          </div>
-          <div class="color-key-item">
-            <span class="key-pip" style="background-color: #F7F2E6; border: 1px solid var(--ar-border);"></span>
-            <div class="key-meta">
-              <span class="key-name">Ivory</span>
-              <span class="key-hex">#F7F2E6</span>
-            </div>
-          </div>
-          <div class="color-key-item">
-            <span class="key-pip" style="background-color: #FF4D47;"></span>
-            <div class="key-meta">
-              <span class="key-name">Signal Red</span>
-              <span class="key-hex">#FF4D47</span>
-            </div>
-          </div>
-          <div class="color-key-item">
-            <span class="key-pip" style="background-color: #FFC938;"></span>
-            <div class="key-meta">
-              <span class="key-name">Solar Yellow</span>
-              <span class="key-hex">#FFC938</span>
-            </div>
-          </div>
-          <div class="color-key-item">
-            <span class="key-pip" style="background-color: #8CC865;"></span>
-            <div class="key-meta">
-              <span class="key-name">Neon Green</span>
-              <span class="key-hex">#8CC865</span>
-            </div>
-          </div>
-          <div class="color-key-item">
-            <span class="key-pip" style="background-color: #3C7CFF;"></span>
-            <div class="key-meta">
-              <span class="key-name">Electric Blue</span>
-              <span class="key-hex">#3C7CFF</span>
-            </div>
-          </div>
+        <div class="ink-label-col">
+          <span class="ink-label-title">Ivory</span>
+          <span class="ink-label-hex">#F7F2E6</span>
+        </div>
+        <div class="ink-label-col">
+          <span class="ink-label-title">Signal Red</span>
+          <span class="ink-label-hex">#FF4D47</span>
+        </div>
+        <div class="ink-label-col">
+          <span class="ink-label-title">Solar Yellow</span>
+          <span class="ink-label-hex">#FFC938</span>
+        </div>
+        <div class="ink-label-col">
+          <span class="ink-label-title">Neon Green</span>
+          <span class="ink-label-hex">#8CC865</span>
+        </div>
+        <div class="ink-label-col">
+          <span class="ink-label-title">Electric Blue</span>
+          <span class="ink-label-hex">#3C7CFF</span>
         </div>
       </div>
     </section>
 
-    <!-- =========================================================================
-         DYNAMIC BOTTOM PROJECT REEL (Option B: Powered by data.js in main.js)
-         ========================================================================= -->
+    <!-- 7. Dynamic Bottom Project Reel (Option B) -->
     <section class="more-projects-section">
       <div class="more-projects-header">
         <span class="more-projects-title">More Selected Projects</span>
         <a href="work.html" class="more-projects-all">View All Work →</a>
       </div>
-
-      <!-- Populated dynamically by main.js with next 4 chronological projects -->
       <div id="more-projects-grid" class="more-projects-grid"></div>
     </section>
 
