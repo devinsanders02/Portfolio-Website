@@ -841,8 +841,9 @@ header.subpage-navbar {
   background: linear-gradient(
     to top,
     rgba(22, 34, 47, 0.95) 0%,
-    rgba(22, 34, 47, 0.55) 35%,
-    transparent 70%
+    rgba(22, 34, 47, 0.6) 38%,
+    rgba(22, 34, 47, 0.15) 65%,
+    transparent 85%
   );
   pointer-events: none;
   z-index: 1;
@@ -857,59 +858,49 @@ header.subpage-navbar {
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0;
+  box-sizing: border-box;
 }
 
-.duo-meta-row {
+@media (max-width: 640px) {
+  .duo-content-overlay {
+    padding: 1.25rem 1.25rem;
+  }
+}
+
+/* Permanently Visible Bar: Title + Discipline + View Button */
+.duo-visible-bar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.duo-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .duo-tag {
-  font-family: var(--font-barlow);
+  font-family: var(--font-barlow) !important;
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent-orange);
 }
 
-.duo-year {
-  font-family: monospace;
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.6);
-}
-
 .duo-title {
-  font-family: var(--font-barlow);
+  font-family: var(--font-barlow) !important;
   font-weight: 800;
-  font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
   line-height: 1.1;
   color: #FFFFFF;
   margin: 0;
   text-transform: uppercase;
   letter-spacing: -0.01em;
-}
-
-.duo-hover-drawer {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding-top: 0.85rem;
-  margin-top: 0.35rem;
-}
-
-.duo-summary {
-  font-family: var(--font-barlow);
-  font-weight: 300;
-  font-size: 0.85rem;
-  line-height: 1.45;
-  color: rgba(255, 255, 255, 0.8);
-  max-width: 440px;
-  margin: 0;
 }
 
 .duo-arrow-btn {
@@ -918,19 +909,70 @@ header.subpage-navbar {
   gap: 0.35rem;
   background-color: var(--accent-orange);
   color: #FFFFFF;
-  font-family: var(--font-barlow);
-  font-weight: 600;
+  font-family: var(--font-barlow) !important;
+  font-weight: 700;
   font-size: 0.75rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 0.5rem 0.95rem;
-  border-radius: 2px;
+  padding: 0.55rem 1.05rem;
+  border-radius: 3px;
   flex-shrink: 0;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .duo-card:hover .duo-arrow-btn {
   background-color: #d84b16;
+  transform: translateY(-2px);
+}
+
+.duo-arrow-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.duo-card:hover .duo-arrow-btn svg {
+  transform: translate(2px, -2px);
+}
+
+/* Summary Drawer: Hidden by default, pops up on hover */
+.duo-hover-drawer {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(8px);
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.3s ease,
+              transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              margin-top 0.35s ease;
+}
+
+.duo-card:hover .duo-hover-drawer {
+  max-height: 120px;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  /* On touch devices, keep the summary visible so mobile users aren't locked out */
+  .duo-hover-drawer {
+    max-height: none;
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 0.65rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 0.65rem;
+  }
+}
+
+.duo-summary {
+  font-family: var(--font-barlow) !important;
+  font-weight: 400;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
 }
 /* =================== END: WORK GRID 2-COLUMN LAYOUT =================== */
 
