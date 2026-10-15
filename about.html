@@ -17,33 +17,13 @@
   <style>
     /* =================== START: ABOUT EDITORIAL STYLES =================== */
 
-    /* Fixed Persistent Logo (Pins to top-left across all scrolling) */
-    .subpage-persistent-logo {
-      position: fixed;
-      top: 1.5rem;
-      left: 4vw;
-      z-index: 999;
-      display: block;
-      padding: 0;
-      margin: 0;
-      text-decoration: none;
-      cursor: pointer;
-      line-height: 0;
-    }
-
-    .subpage-persistent-logo img {
-      width: 72px;
-      height: auto;
-      display: block;
-    }
-
-    /* Main Container Shell */
+    /* Main Container Shell: Normalized top padding */
     .about-wrap {
       position: relative;
       z-index: 2;
       max-width: 1540px;
       margin: 0 auto;
-      padding: 6.5rem 4vw 6rem;
+      padding: 3.5rem 4vw 6rem;
       box-sizing: border-box;
     }
 
@@ -353,6 +333,14 @@
     .about-resume-btn:hover svg {
       transform: translateY(2px);
     }
+
+    .overlay-brand-stamp {
+      width: 32px;
+      height: auto;
+      filter: brightness(0) invert(1);
+      display: inline-block;
+      vertical-align: middle;
+    }
     /* =================== END: ABOUT EDITORIAL STYLES =================== */
   </style>
 </head>
@@ -367,7 +355,10 @@
   <!-- =================== START: SLIDE-DOWN INDEX OVERLAY =================== -->
   <div id="index-overlay" class="index-overlay-panel">
     <div class="overlay-top-bar">
-      <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6);">Index</span>
+      <div style="display: flex; align-items: center; gap: 0.85rem;">
+        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="overlay-brand-stamp">
+        <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.75);">Index</span>
+      </div>
       <button id="close-overlay-btn" style="background: none; border: none; cursor: pointer; color: white; display: flex; align-items: center;" aria-label="Close">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <line x1="4" y1="4" x2="20" y2="20"></line>
@@ -378,29 +369,27 @@
     <nav class="overlay-nav-links">
       <div class="overlay-link-item">
         <span>01</span>
-        <a href="work.html" class="overlay-link">Work</a>
+        <a href="index.html" class="overlay-link">Home</a>
       </div>
       <div class="overlay-link-item">
         <span>02</span>
-        <a href="ui-ux.html" class="overlay-link">UI/UX Work</a>
+        <a href="work.html" class="overlay-link">Work</a>
       </div>
       <div class="overlay-link-item">
         <span>03</span>
-        <a href="about.html" class="overlay-link active">About</a>
+        <a href="ui-ux.html" class="overlay-link">UI/UX Work</a>
       </div>
       <div class="overlay-link-item">
         <span>04</span>
+        <a href="about.html" class="overlay-link active">About</a>
+      </div>
+      <div class="overlay-link-item">
+        <span>05</span>
         <button id="overlay-contact-link" class="overlay-link">Contact</button>
       </div>
     </nav>
   </div>
   <!-- =================== END: SLIDE-DOWN INDEX OVERLAY =================== -->
-
-  <!-- =================== START: PINNED PERSISTENT LOGO =================== -->
-  <a href="index.html" class="subpage-persistent-logo" aria-label="Devin Sanders Home">
-    <img src="LogoBlue.png" alt="Devin Sanders Mark">
-  </a>
-  <!-- =================== END: PINNED PERSISTENT LOGO =================== -->
 
   <!-- =================== START: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
   <button id="floating-nav-btn" class="floating-peak-btn subpage-permanent-btn" aria-label="Open Navigation">
