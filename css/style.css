@@ -977,12 +977,6 @@ header.subpage-navbar {
 /* =================== END: HOMEPAGE CALL-TO-ACTION BUTTON =================== */
 
 /* =================== START: SLIDE-DOWN INDEX OVERLAY & PEAK NAV =================== */
-
-/* Prevent horizontal viewport jump/shift when overflow is locked */
-html {
-  scrollbar-gutter: stable;
-}
-
 .floating-peak-btn {
   position: fixed;
   top: 1.5rem;
@@ -1021,7 +1015,7 @@ html {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10000; /* Elevated above all persistent logos (z-index: 999) */
+  z-index: 100;
   background-color: var(--accent-orange);
   transform: translateY(-100%);
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1029,16 +1023,6 @@ html {
 
 .index-overlay-panel.open {
   transform: translateY(0);
-}
-
-/* Auto-hide persistent logos when overlay is active */
-body.overlay-is-open .subpage-persistent-logo,
-body.overlay-is-open .hero-persistent-logo,
-.index-overlay-panel.open ~ .subpage-persistent-logo,
-.index-overlay-panel.open ~ .hero-persistent-logo {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transition: opacity 0.2s ease;
 }
 
 .overlay-top-bar {
