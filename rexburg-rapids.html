@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -12,41 +12,60 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* =========================================================================
-       REXBURG RAPIDS CUSTOM TYPOGRAPHY & IDENTITY SPEC
+       REXBURG RAPIDS CUSTOM SPECIFICATION & BRAND SYSTEM
        ========================================================================= */
 
     :root {
       --rapids-blue: #0066CC;
       --rapids-cyan: #2DD4FF;
       --rapids-yellow: #FFC93C;
+      --rapids-dark: #002244;
     }
 
-    /* Headings & Display Typography */
-    .rapids-case-page main h1,
-    .rapids-case-page main h2,
-    .rapids-case-page main h3,
-    .rapids-case-page main h4,
-    .rapids-case-page .case-section-header .label,
-    .rapids-case-page .swatch-name,
-    .rapids-case-page .turnstyle-headline {
+    /* 1. Shell & Hero -> Pure Barlow */
+    .turnstyle-headline {
+      font-family: var(--font-barlow) !important;
+      font-weight: 800 !important;
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    .turnstyle-caption-title,
+    .turnstyle-caption-text,
+    .case-section-header .label,
+    .more-projects-title,
+    .more-projects-all,
+    .more-project-name,
+    .more-project-tag {
+      font-family: var(--font-barlow) !important;
+    }
+
+    /* 2. Project Artwork Typography -> Jakarta Sans (Display) & Rubik (Body) */
+    .rapids-case-page .case-artwork-heading {
       font-family: 'Plus Jakarta Sans', sans-serif !important;
       font-weight: 700;
     }
 
-    /* Body Typography */
-    .rapids-case-page main p,
-    .rapids-case-page main li,
-    .rapids-case-page .swatch-values,
-    .rapids-case-page .font-label {
+    .rapids-case-page .case-artwork-body,
+    .rapids-case-page .swatch-meta-block {
       font-family: 'Rubik', sans-serif !important;
-      font-weight: 400;
     }
 
-    /* Constrain all case images so they never blow out or cause zoom bugs */
+    /* Image Boundaries (Zero Layout Blowout) */
+    .case-content-wrap {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 4vw;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 2;
+    }
+
     .case-img-box {
       width: 100%;
       max-width: 100%;
@@ -67,15 +86,6 @@
       display: block;
     }
 
-    .case-content-wrap {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 4vw;
-      box-sizing: border-box;
-      position: relative;
-      z-index: 2;
-    }
-
     .case-section-header {
       display: flex;
       align-items: center;
@@ -91,11 +101,12 @@
     .case-section-header .label {
       font-size: 0.85rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
+      color: var(--text-dark);
     }
 
-    /* Responsive Grid Handlers */
+    /* Responsive Media Grid Layouts */
     .case-grid-2col {
       display: grid;
       grid-template-columns: 1fr;
@@ -129,7 +140,7 @@
       min-height: 85vh;
       display: flex;
       align-items: flex-end;
-      padding: 4rem 4vw;
+      padding: 4.5rem 4vw;
       box-sizing: border-box;
       overflow: hidden;
       z-index: 2;
@@ -148,21 +159,26 @@
     .turnstyle-hero-overlay {
       position: absolute;
       inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0, 34, 68, 0.92) 0%,
+        rgba(0, 34, 68, 0.5) 45%,
+        transparent 75%
+      );
       z-index: 2;
     }
 
     .turnstyle-hero-content {
       position: relative;
       z-index: 3;
-      max-width: 1000px;
+      max-width: 1080px;
       color: #FFFFFF;
     }
 
     .turnstyle-headline {
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin: 0 0 1.25rem 0;
-      text-transform: uppercase;
+      font-size: clamp(2.75rem, 6.5vw, 5.25rem);
+      margin: 0 0 1.5rem 0;
+      color: #FFFFFF;
     }
 
     .turnstyle-caption-block {
@@ -171,21 +187,23 @@
     }
 
     .turnstyle-caption-title {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: #FFFFFF;
     }
 
     .turnstyle-caption-text {
       font-size: 0.95rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
       opacity: 0.85;
-      margin: 0.25rem 0 0 0;
+      margin: 0.35rem 0 0 0;
       color: #FFFFFF;
     }
 
-    /* Full-Bleed Moments */
+    /* Full-Bleed Media Breakouts */
     .full-bleed-gif,
     .full-bleed-section {
       width: 100%;
@@ -207,97 +225,254 @@
       object-fit: contain;
     }
 
-    /* Typography Pattern Strip */
-    .rapids-type-strip {
-      width: 100%;
+    /* =========================================================================
+       MASSIVE FULL-BLEED TYPOGRAPHIC STRIP
+       ========================================================================= */
+    .rapids-type-strip-wrap {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
       background-color: var(--rapids-blue);
-      color: #FFFFFF;
-      padding: 1.75rem 2rem;
-      box-sizing: border-box;
       overflow: hidden;
-      white-space: nowrap;
-      text-align: center;
+      padding: 2.25rem 0;
+      display: flex;
+      justify-content: center;
       position: relative;
       z-index: 2;
     }
 
-    .rapids-type-text {
-      font-family: 'Plus Jakarta Sans', sans-serif !important;
-      font-weight: 800;
-      font-size: clamp(2rem, 5vw, 4rem);
-      letter-spacing: 0.15em;
-      opacity: 0.9;
+    .rapids-type-bleed-row {
+      display: flex;
+      gap: 3rem;
+      white-space: nowrap;
+      user-select: none;
     }
 
-    /* Color Swatches */
-    .swatch-grid {
+    .rapids-giant-text {
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-weight: 800;
+      font-size: clamp(4.5rem, 11vw, 9.5rem);
+      line-height: 0.88;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      opacity: 0.95;
+    }
+
+    /* =========================================================================
+       ELEVATED COLOR ARCHITECTURE & STANDARDS
+       ========================================================================= */
+    .rapids-color-system {
       display: grid;
       grid-template-columns: 1fr;
       gap: 1.5rem;
-      margin-bottom: 4rem;
-    }
-
-    @media (min-width: 768px) {
-      .swatch-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .swatch-card {
-      background: #FFFFFF;
-      padding: 2.25rem 2rem;
-      border: 1px solid rgba(44, 62, 80, 0.1);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-    }
-
-    .swatch-glyph {
-      width: 50px;
-      height: 50px;
-      margin-bottom: 1.5rem;
-    }
-
-    .swatch-name {
-      font-size: 1.3rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .swatch-values {
-      font-size: 0.9rem;
-      line-height: 1.7;
-      color: var(--text-dark);
-      opacity: 0.8;
-    }
-
-    /* Typography Specimen Box */
-    .type-specimen-box {
-      background: #FFFFFF;
-      padding: 3rem 2.5rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
       margin-bottom: 5rem;
     }
 
-    .type-specimen-item .font-label {
-      font-size: 0.82rem;
+    @media (min-width: 900px) {
+      .rapids-color-system {
+        grid-template-columns: 1.35fr 1fr 1fr;
+      }
+    }
+
+    .color-pillar-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(44, 62, 80, 0.1);
+      box-shadow: 0 12px 30px -10px rgba(44, 62, 80, 0.06);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .color-swatch-canvas {
+      width: 100%;
+      height: 180px;
+      position: relative;
+      padding: 1.5rem;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .color-swatch-badge {
+      font-family: var(--font-barlow);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.65rem;
+      border-radius: 2px;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+      color: #FFFFFF;
+    }
+
+    .color-swatch-badge.dark-badge {
+      background: rgba(0, 0, 0, 0.18);
+      color: #002244;
+    }
+
+    .color-glyph-ghost {
+      width: 42px;
+      height: 42px;
+      opacity: 0.45;
+    }
+
+    .color-spec-body {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      background: #FFFFFF;
+    }
+
+    .color-name-group .title {
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-size: 1.45rem;
+      font-weight: 800;
+      margin: 0 0 0.25rem 0;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+
+    .color-name-group .role {
+      font-family: var(--font-barlow);
+      font-size: 0.78rem;
+      font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-muted);
       display: block;
-      margin-bottom: 1rem;
     }
 
-    .type-specimen-item .font-sample {
-      font-size: clamp(1.1rem, 2vw, 1.4rem);
-      line-height: 1.6;
-      word-break: break-all;
+    .color-telemetry-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(44, 62, 80, 0.08);
+      font-family: 'Rubik', sans-serif !important;
+      font-size: 0.82rem;
+      color: var(--text-dark);
+    }
+
+    .color-telemetry-grid .label {
+      font-weight: 600;
+      color: var(--text-muted);
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.15rem;
+    }
+
+    .color-telemetry-grid .val {
+      font-weight: 500;
+      letter-spacing: 0.02em;
     }
 
     /* =========================================================================
-       MORE PROJECTS THUMBNAIL REEL (Interactive Bottom Strip)
+       TYPOGRAPHY SPECIMEN BOARD
+       ========================================================================= */
+    .type-specimen-board {
+      background: #FFFFFF;
+      border: 1px solid rgba(44, 62, 80, 0.1);
+      box-shadow: 0 12px 30px -10px rgba(44, 62, 80, 0.06);
+      padding: 3.5rem 3rem;
+      box-sizing: border-box;
+      margin-bottom: 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .type-specimen-board {
+        padding: 2rem 1.5rem;
+        gap: 2.5rem;
+      }
+    }
+
+    .type-family-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 900px) {
+      .type-family-row {
+        grid-template-columns: 280px 1fr;
+        gap: 3.5rem;
+      }
+    }
+
+    .type-meta-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .type-role-tag {
+      font-family: var(--font-barlow);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--rapids-blue);
+    }
+
+    .type-family-name {
+      font-family: var(--font-barlow);
+      font-size: 1.6rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--text-dark);
+      margin: 0;
+    }
+
+    .type-usage-desc {
+      font-family: var(--font-barlow);
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin: 0.5rem 0 0 0;
+    }
+
+    .type-display-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .type-hero-glyph {
+      font-size: clamp(3.2rem, 7vw, 5.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+    }
+
+    .type-alphabet-block {
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      line-height: 1.6;
+      word-break: break-all;
+      opacity: 0.9;
+    }
+
+    .type-divider-hairline {
+      border: 0;
+      border-top: 1px solid rgba(44, 62, 80, 0.08);
+      margin: 0;
+    }
+
+    /* =========================================================================
+       MORE PROJECTS THUMBNAIL REEL (Interactive Discovery Strip)
        ========================================================================= */
     .more-projects-section {
       position: relative;
       z-index: 2;
-      max-width: 1540px;
+      max-width: 1440px;
       margin: 4rem auto 2rem;
       padding: 0 4vw;
       box-sizing: border-box;
@@ -313,7 +488,6 @@
     }
 
     .more-projects-title {
-      font-family: var(--font-barlow);
       font-size: 0.9rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -322,7 +496,6 @@
     }
 
     .more-projects-all {
-      font-family: var(--font-barlow);
       font-size: 0.85rem;
       font-weight: 600;
       color: var(--accent-orange);
@@ -350,7 +523,6 @@
       text-decoration: none;
       display: flex;
       flex-direction: column;
-      group: cursor-pointer;
     }
 
     .more-project-thumb {
@@ -376,7 +548,6 @@
     }
 
     .more-project-tag {
-      font-family: var(--font-barlow);
       font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 0.1em;
@@ -386,7 +557,6 @@
     }
 
     .more-project-name {
-      font-family: var(--font-barlow);
       font-size: 1rem;
       font-weight: 800;
       text-transform: uppercase;
@@ -468,13 +638,13 @@
   </div>
   <!-- =================== END: PERSISTENT BACKGROUND =================== -->
 
-  <!-- 1. Full-Bleed Hero Banner -->
+  <!-- 1. Full-Bleed 100vh Hero Banner (Barlow Typographic Anchor) -->
   <header class="turnstyle-hero-banner">
-    <img src="RexburgRapids-Hero.jpg" alt="Rexburg Rapids Hero" class="turnstyle-hero-bg">
-    <div class="turnstyle-hero-overlay" style="background: linear-gradient(to top, rgba(0,40,90,0.88) 0%, rgba(0,0,0,0.15) 60%);"></div>
+    <img src="RexburgRapids-Hero.jpg" alt="Rexburg Rapids Hero" class="turnstyle-hero-bg" fetchpriority="high">
+    <div class="turnstyle-hero-overlay"></div>
 
     <div class="turnstyle-hero-content">
-      <h1 class="turnstyle-headline" style="font-size: clamp(2.5rem, 5.5vw, 4.5rem);">
+      <h1 class="turnstyle-headline">
         Bringing the splash back to Rexburg
       </h1>
       <div class="turnstyle-caption-block">
@@ -491,21 +661,21 @@
     <div class="case-content-wrap" style="margin-bottom: 5rem;">
       <div class="case-section-header">
         <div class="line" style="background-color: var(--rapids-blue);"></div>
-        <span class="label" style="color: var(--text-dark);">Visual Foundation</span>
+        <span class="label">Visual Foundation</span>
       </div>
       <div class="case-img-box" style="box-shadow: 0 8px 30px rgba(0,0,0,0.04);">
-        <img src="RexburgRapids-Swatch.png" alt="Brand Mood Collage">
+        <img src="RexburgRapids-Swatch.png" alt="Brand Mood Collage" loading="lazy" decoding="async">
       </div>
     </div>
 
     <!-- 3. Full-Bleed Animated Logo Mark GIF -->
     <div class="full-bleed-gif" style="margin-bottom: 5rem;">
-      <img src="Logo.gif" alt="Rexburg Rapids Animated Mark">
+      <img src="Logo.gif" alt="Rexburg Rapids Animated Mark" loading="lazy">
     </div>
 
     <!-- 4. Full-Bleed Brand Guide Rulebook Spread -->
     <div class="full-bleed-section" style="margin-bottom: 5rem; background-color: var(--rapids-blue);">
-      <img src="RexburgRapids-Guide.png" alt="The Rapids Rulebook Brand Guidelines">
+      <img src="RexburgRapids-Guide.png" alt="The Rapids Rulebook Brand Guidelines" loading="lazy" decoding="async">
     </div>
 
     <!-- 5. Framed Applications & Collateral Grid -->
@@ -513,151 +683,247 @@
 
       <div class="case-section-header">
         <div class="line" style="background-color: var(--rapids-blue);"></div>
-        <span class="label" style="color: var(--text-dark);">Environmental & Applications</span>
+        <span class="label">Environmental & Applications</span>
       </div>
 
       <!-- Facility Entrance Sign -->
       <div class="case-img-box" style="aspect-ratio: 16 / 9; max-height: 640px; margin-bottom: 1.5rem;">
-        <img src="RexburgRapids-Signage.png" alt="Facility Entrance Sign">
+        <img src="RexburgRapids-Signage.png" alt="Facility Entrance Sign" loading="lazy" decoding="async">
       </div>
 
       <!-- One Day Pass & Wristband Split -->
       <div class="case-grid-2col">
         <div class="case-img-box" style="aspect-ratio: 4 / 3;">
-          <img src="RexburgRapids-Ticket.png" alt="One Day Pass Ticket">
+          <img src="RexburgRapids-Ticket.png" alt="One Day Pass Ticket" loading="lazy" decoding="async">
         </div>
         <div class="case-img-box" style="aspect-ratio: 4 / 3;">
-          <img src="RexburgRapids-Wristband.jpeg" alt="Park Wristband">
+          <img src="RexburgRapids-Wristband.jpeg" alt="Park Wristband" loading="lazy" decoding="async">
         </div>
       </div>
 
       <!-- Highway Billboard -->
       <div class="case-img-box" style="aspect-ratio: 16 / 8; max-height: 560px; margin-bottom: 1.5rem;">
-        <img src="RexburgRapids-Billboard.png" alt="Promotional Billboard">
+        <img src="RexburgRapids-Billboard.png" alt="Promotional Billboard" loading="lazy" decoding="async">
       </div>
 
       <!-- Street Banners & Staff Hat -->
       <div class="case-grid-2col">
         <div class="case-img-box" style="aspect-ratio: 4 / 3;">
-          <img src="RexburgRapids-Banners.png" alt="Street Lamp Banners">
+          <img src="RexburgRapids-Banners.png" alt="Street Lamp Banners" loading="lazy" decoding="async">
         </div>
         <div class="case-img-box" style="aspect-ratio: 4 / 3;">
-          <img src="RexburgRapids-Hat.png" alt="Staff Hat Mockup">
+          <img src="RexburgRapids-Hat.png" alt="Staff Hat Mockup" loading="lazy" decoding="async">
         </div>
       </div>
 
       <!-- Website Laptop Mockup -->
       <div class="case-img-box" style="aspect-ratio: 16 / 9; max-height: 640px; margin-bottom: 1.5rem;">
-        <img src="RexburgRapids-Laptop.png" alt="Website on Laptop">
+        <img src="RexburgRapids-Laptop.png" alt="Website on Laptop" loading="lazy" decoding="async">
       </div>
 
       <!-- 3-Tile Row: Waterslide Detail, Rules Sign, Stickers -->
       <div class="case-grid-3col">
         <div class="case-img-box" style="aspect-ratio: 1 / 1;">
-          <img src="RexburgRapids-Bucket.png" alt="Water Slide Detail">
+          <img src="RexburgRapids-Bucket.png" alt="Water Slide Detail" loading="lazy" decoding="async">
         </div>
         <div class="case-img-box" style="aspect-ratio: 1 / 1;">
-          <img src="RexburgRapids-Rules.png" alt="Lazy River Safety Sign">
+          <img src="RexburgRapids-Rules.png" alt="Lazy River Safety Sign" loading="lazy" decoding="async">
         </div>
         <div class="case-img-box" style="aspect-ratio: 1 / 1;">
-          <img src="RexburgRapids-Stickers.png" alt="Die-Cut Brand Stickers">
+          <img src="RexburgRapids-Stickers.png" alt="Die-Cut Brand Stickers" loading="lazy" decoding="async">
         </div>
       </div>
 
       <!-- Social Media & Staff T-Shirt -->
       <div class="case-grid-2col" style="margin-bottom: 5rem;">
         <div class="case-img-box" style="aspect-ratio: 4 / 3;">
-          <img src="RexburgRapids-SocMed.jpg" alt="Social Media Templates">
+          <img src="RexburgRapids-SocMed.jpg" alt="Social Media Templates" loading="lazy" decoding="async">
         </div>
         <div class="case-img-box" style="aspect-ratio: 4 / 3;">
-          <img src="RexburgRapids-Shirt.png" alt="Apparel T-Shirt Mockup">
+          <img src="RexburgRapids-Shirt.png" alt="Apparel T-Shirt Mockup" loading="lazy" decoding="async">
         </div>
       </div>
 
     </div>
 
-    <!-- 6. Typographic Pattern Banner ("RAPIDS") -->
-    <div class="rapids-type-strip" style="margin-bottom: 5rem;">
-      <span class="rapids-type-text">RAPIDS RAPIDS RAPIDS</span>
+    <!-- 6. Massive Full-Bleed Typographic Pattern Strip -->
+    <div class="rapids-type-strip-wrap" style="margin-bottom: 5rem;">
+      <div class="rapids-type-bleed-row" aria-hidden="true">
+        <span class="rapids-giant-text">RAPIDS</span>
+        <span class="rapids-giant-text">·</span>
+        <span class="rapids-giant-text">RAPIDS</span>
+        <span class="rapids-giant-text">·</span>
+        <span class="rapids-giant-text">RAPIDS</span>
+        <span class="rapids-giant-text">·</span>
+        <span class="rapids-giant-text">RAPIDS</span>
+      </div>
     </div>
 
-    <!-- 7. Brand Standards (Color Codes & Typography) -->
+    <!-- 7. Elevated Brand Standards (Architectural Color Palette & Typography) -->
     <div class="case-content-wrap">
 
       <div class="case-section-header">
-        <div class="line" style="background-color: var(--rapids-yellow);"></div>
-        <span class="label" style="color: var(--text-dark);">Color Palette</span>
+        <div class="line" style="background-color: var(--rapids-blue);"></div>
+        <span class="label">Color Palette & System Architecture</span>
       </div>
 
-      <!-- Color Palette Cards -->
-      <div class="swatch-grid">
-        <!-- Deep Blue -->
-        <div class="swatch-card">
-          <svg class="swatch-glyph" viewBox="0 0 100 100" fill="#0066CC">
-            <path d="M50,15 C69.3,15 85,30.7 85,50 C85,69.3 69.3,85 50,85 C30.7,85 15,69.3 15,50 C15,35 25,23 38,18 C28,26 25,38 28,49 C32,63 46,71 60,67 C74,63 82,49 78,35 C74,21 59,13 46,16 C48,15.3 49,15 50,15 Z"/>
-          </svg>
-          <div class="swatch-name" style="color: var(--rapids-blue);">Deep Blue</div>
-          <div class="swatch-values">
-            HEX #0066CC<br>
-            Pantone 285 C<br>
-            RGB 0 102 204<br>
-            CMYK 100 50 0 0
+      <!-- Architectural Swatch Strip -->
+      <div class="rapids-color-system">
+        
+        <!-- Color 1: Deep Blue -->
+        <article class="color-pillar-card">
+          <div class="color-swatch-canvas" style="background-color: #0066CC;">
+            <span class="color-swatch-badge">Primary Anchor</span>
+            <svg class="color-glyph-ghost" viewBox="0 0 100 100" fill="#FFFFFF">
+              <path d="M50,15 C69.3,15 85,30.7 85,50 C85,69.3 69.3,85 50,85 C30.7,85 15,69.3 15,50 C15,35 25,23 38,18 C28,26 25,38 28,49 C32,63 46,71 60,67 C74,63 82,49 78,35 C74,21 59,13 46,16 C48,15.3 49,15 50,15 Z"/>
+            </svg>
           </div>
-        </div>
+          <div class="color-spec-body">
+            <div class="color-name-group">
+              <h3 class="title" style="color: #0066CC;">Deep Blue</h3>
+              <span class="role">Facility Wayfinding & Signage Base</span>
+            </div>
+            <div class="color-telemetry-grid">
+              <div>
+                <span class="label">HEX</span>
+                <span class="val">#0066CC</span>
+              </div>
+              <div>
+                <span class="label">Pantone</span>
+                <span class="val">285 C</span>
+              </div>
+              <div>
+                <span class="label">RGB</span>
+                <span class="val">0 · 102 · 204</span>
+              </div>
+              <div>
+                <span class="label">CMYK</span>
+                <span class="val">100 · 50 · 0 · 0</span>
+              </div>
+            </div>
+          </div>
+        </article>
 
-        <!-- Light Blue -->
-        <div class="swatch-card">
-          <svg class="swatch-glyph" viewBox="0 0 100 100" fill="#2DD4FF">
-            <path d="M50,15 C69.3,15 85,30.7 85,50 C85,69.3 69.3,85 50,85 C30.7,85 15,69.3 15,50 C15,35 25,23 38,18 C28,26 25,38 28,49 C32,63 46,71 60,67 C74,63 82,49 78,35 C74,21 59,13 46,16 C48,15.3 49,15 50,15 Z"/>
-          </svg>
-          <div class="swatch-name" style="color: #0294cc;">Light Blue</div>
-          <div class="swatch-values">
-            HEX #2DD4FF<br>
-            Pantone 298 C<br>
-            RGB 45 212 255<br>
-            CMYK 60 0 0 0
+        <!-- Color 2: Light Blue -->
+        <article class="color-pillar-card">
+          <div class="color-swatch-canvas" style="background-color: #2DD4FF;">
+            <span class="color-swatch-badge dark-badge">Secondary Accent</span>
+            <svg class="color-glyph-ghost" viewBox="0 0 100 100" fill="#002244">
+              <path d="M50,15 C69.3,15 85,30.7 85,50 C85,69.3 69.3,85 50,85 C30.7,85 15,69.3 15,50 C15,35 25,23 38,18 C28,26 25,38 28,49 C32,63 46,71 60,67 C74,63 82,49 78,35 C74,21 59,13 46,16 C48,15.3 49,15 50,15 Z"/>
+            </svg>
           </div>
-        </div>
+          <div class="color-spec-body">
+            <div class="color-name-group">
+              <h3 class="title" style="color: #0294cc;">Light Blue</h3>
+              <span class="role">Surface Highlights & Water Rails</span>
+            </div>
+            <div class="color-telemetry-grid">
+              <div>
+                <span class="label">HEX</span>
+                <span class="val">#2DD4FF</span>
+              </div>
+              <div>
+                <span class="label">Pantone</span>
+                <span class="val">298 C</span>
+              </div>
+              <div>
+                <span class="label">RGB</span>
+                <span class="val">45 · 212 · 255</span>
+              </div>
+              <div>
+                <span class="label">CMYK</span>
+                <span class="val">60 · 0 · 0 · 0</span>
+              </div>
+            </div>
+          </div>
+        </article>
 
-        <!-- Sun Yellow -->
-        <div class="swatch-card">
-          <svg class="swatch-glyph" viewBox="0 0 100 100" fill="#FFC93C">
-            <path d="M50,15 C69.3,15 85,30.7 85,50 C85,69.3 69.3,85 50,85 C30.7,85 15,69.3 15,50 C15,35 25,23 38,18 C28,26 25,38 28,49 C32,63 46,71 60,67 C74,63 82,49 78,35 C74,21 59,13 46,16 C48,15.3 49,15 50,15 Z"/>
-          </svg>
-          <div class="swatch-name" style="color: #D99B00;">Sun Yellow</div>
-          <div class="swatch-values">
-            HEX #FFC93C<br>
-            Pantone 123 C<br>
-            RGB 255 201 60<br>
-            CMYK 0 21 89 0
+        <!-- Color 3: Sun Yellow -->
+        <article class="color-pillar-card">
+          <div class="color-swatch-canvas" style="background-color: #FFC93C;">
+            <span class="color-swatch-badge dark-badge">Warm Contrast</span>
+            <svg class="color-glyph-ghost" viewBox="0 0 100 100" fill="#002244">
+              <path d="M50,15 C69.3,15 85,30.7 85,50 C85,69.3 69.3,85 50,85 C30.7,85 15,69.3 15,50 C15,35 25,23 38,18 C28,26 25,38 28,49 C32,63 46,71 60,67 C74,63 82,49 78,35 C74,21 59,13 46,16 C48,15.3 49,15 50,15 Z"/>
+            </svg>
           </div>
-        </div>
+          <div class="color-spec-body">
+            <div class="color-name-group">
+              <h3 class="title" style="color: #D99B00;">Sun Yellow</h3>
+              <span class="role">Passes, Wristbands & Callouts</span>
+            </div>
+            <div class="color-telemetry-grid">
+              <div>
+                <span class="label">HEX</span>
+                <span class="val">#FFC93C</span>
+              </div>
+              <div>
+                <span class="label">Pantone</span>
+                <span class="val">123 C</span>
+              </div>
+              <div>
+                <span class="label">RGB</span>
+                <span class="val">255 · 201 · 60</span>
+              </div>
+              <div>
+                <span class="label">CMYK</span>
+                <span class="val">0 · 21 · 89 · 0</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
       </div>
 
-      <!-- Typography Specimen Box -->
+      <!-- Typography Specimen Board -->
       <div class="case-section-header">
         <div class="line" style="background-color: var(--rapids-blue);"></div>
-        <span class="label" style="color: var(--text-dark);">Typography System</span>
+        <span class="label">Typography System</span>
       </div>
 
-      <div class="type-specimen-box" style="border: 1px solid #E2E8F0;">
-        <div class="type-specimen-item" style="font-family: 'Plus Jakarta Sans', sans-serif;">
-          <span class="font-label">Plus Jakarta Sans · Primary Display & Body</span>
-          <div class="font-sample" style="font-weight: 700; color: var(--rapids-blue);">
-            AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz<br>
-            0123456789 !@#$%^&*()?+
+      <div class="type-specimen-board">
+        
+        <!-- Font 1: Plus Jakarta Sans -->
+        <div class="type-family-row">
+          <div class="type-meta-col">
+            <span class="type-role-tag">Primary Display & Headlines</span>
+            <h3 class="type-family-name">Plus Jakarta Sans</h3>
+            <p class="type-usage-desc">
+              Geometric, warm modern grotesk built for impactful park displays, facility entrance portals, and dynamic digital banners.
+            </p>
+          </div>
+          <div class="type-display-col" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+            <div class="type-hero-glyph" style="font-weight: 800; color: var(--rapids-blue);">
+              Aa Bb Gg 78
+            </div>
+            <div class="type-alphabet-block" style="font-weight: 700; color: var(--text-dark);">
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+              abcdefghijklmnopqrstuvwxyz · 0123456789 (!@#$%&*)
+            </div>
           </div>
         </div>
 
-        <hr style="border: 0; border-top: 1px solid #E2E8F0; margin: 2.5rem 0;">
+        <hr class="type-divider-hairline">
 
-        <div class="type-specimen-item" style="font-family: 'Rubik', sans-serif;">
-          <span class="font-label">Rubik · Secondary & Wayfinding Accent</span>
-          <div class="font-sample" style="font-weight: 600; color: var(--rapids-blue);">
-            AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz<br>
-            0123456789 !@#$%^&*()?+
+        <!-- Font 2: Rubik -->
+        <div class="type-family-row">
+          <div class="type-meta-col">
+            <span class="type-role-tag">Wayfinding, Rules & Tickets</span>
+            <h3 class="type-family-name">Rubik</h3>
+            <p class="type-usage-desc">
+              Slightly rounded sans-serif maximizing legibility across distance, printed waterpark tickets, and safety guidelines.
+            </p>
+          </div>
+          <div class="type-display-col" style="font-family: 'Rubik', sans-serif;">
+            <div class="type-hero-glyph" style="font-weight: 600; color: var(--rapids-blue);">
+              Aa Bb Rr 45
+            </div>
+            <div class="type-alphabet-block" style="font-weight: 400; color: var(--text-dark);">
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+              abcdefghijklmnopqrstuvwxyz · 0123456789 (!@#$%&*)
+            </div>
           </div>
         </div>
+
       </div>
 
     </div>
@@ -675,7 +941,7 @@
         <!-- Project 1: WANDRD -->
         <a href="wandrd.html" class="more-project-card">
           <div class="more-project-thumb">
-            <img src="WANDRD-Hero.png" alt="WANDRD E-Commerce">
+            <img src="WANDRD-Hero.png" alt="WANDRD E-Commerce" loading="lazy" decoding="async">
           </div>
           <span class="more-project-tag">E-Commerce & A+</span>
           <span class="more-project-name">WANDRD Storefront</span>
@@ -684,7 +950,7 @@
         <!-- Project 2: Kindred Roots -->
         <a href="kindred-roots.html" class="more-project-card">
           <div class="more-project-thumb">
-            <img src="KindredRoots/KindredRoots-Hero.png" alt="Kindred Roots Publication">
+            <img src="KindredRoots/KindredRoots-Hero.png" alt="Kindred Roots Publication" loading="lazy" decoding="async">
           </div>
           <span class="more-project-tag">Editorial & Print</span>
           <span class="more-project-name">Kindred Roots</span>
@@ -693,7 +959,7 @@
         <!-- Project 3: Gerber Gear -->
         <a href="gerber-gear.html" class="more-project-card">
           <div class="more-project-thumb">
-            <img src="GerberGear/GG-Hero.png" alt="Gerber Gear Packaging">
+            <img src="GerberGear/GG-Hero.png" alt="Gerber Gear Packaging" loading="lazy" decoding="async">
           </div>
           <span class="more-project-tag">Packaging Suite</span>
           <span class="more-project-name">Gerber Gear</span>
@@ -702,7 +968,7 @@
         <!-- Project 4: Analog Reboot -->
         <a href="analog-reboot.html" class="more-project-card">
           <div class="more-project-thumb">
-            <img src="AnalogReboot/AR-Hero.png" alt="Analog Reboot Apparel">
+            <img src="AnalogReboot/AR-Hero.png" alt="Analog Reboot Apparel" loading="lazy" decoding="async">
           </div>
           <span class="more-project-tag">Pattern & Apparel</span>
           <span class="more-project-name">Analog Reboot</span>
