@@ -447,4 +447,50 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // =========================================================================
+  // DYNAMIC BOTTOM PROJECT REEL (OPTION B: CHRONOLOGICAL ROTATION)
+  // =========================================================================
+  const moreGrid = document.getElementById('more-projects-grid');
+  if (moreGrid && typeof projects !== 'undefined') {
+    // 1. Detect current project slug from URL (e.g. 'analog-reboot.html' -> 'analog-reboot')
+    const currentPath = window.location.pathname;
+    let currentSlug = currentPath.substring(currentPath.lastIndexOf('/') + 1).replace('.html', '').trim();
+    if (!currentSlug || currentSlug === 'index') currentSlug = 'analog-reboot';
+
+    // 2. Match index in data.js
+    let currentIndex = projects.findIndex(p => p.slug === currentSlug);
+    if (currentIndex === -1) currentIndex = 0;
+    const total = projects.length;
+
+    // 3. Pick next 4 chronological projects sequentially (loops back seamlessly)
+    const nextProjects = [];
+    for (let i = 1; i <= 4; i++) {
+      const nextIdx = (currentIndex + i) % total;
+      nextProjects.push(projects[nextIdx]);
+    }
+
+    // 4. Render cards into the grid
+    moreGrid.innerHTML = '';
+    nextProjects.forEach(p => {
+      const card = document.createElement('a');
+      card.href = getProjectUrl(p.slug);
+      card.className = 'more-project-card';
+      
+      const cleanTitle = p.title.includes('—') 
+        ? p.title.split('—')[0].trim() 
+        : p.title.split(' - ')[0].trim();
+      
+      const cleanTag = p.services ? p.services.split(',')[0].trim() : 'Selected Work';
+
+      card.innerHTML = `
+        <div class="more-project-thumb">
+          <img src="${p.heroImage}" alt="${cleanTitle}" loading="lazy" decoding="async">
+        </div>
+        <span class="more-project-tag">${cleanTag}</span>
+        <span class="more-project-name">${cleanTitle}</span>
+      `;
+      moreGrid.appendChild(card);
+    });
+  }
 });
