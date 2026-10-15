@@ -386,17 +386,19 @@ document.addEventListener('DOMContentLoaded', () => {
         card.className = 'duo-card';
         card.setAttribute('data-category', getProjectCategory(p));
 
+        const cleanTitle = p.title.includes('—') 
+          ? p.title.split('—')[0].trim() 
+          : p.title.split(' - ')[0].trim();
+
         card.innerHTML = `
-          <img class="duo-card-img" src="${p.heroImage}" alt="${p.title}">
+          <img class="duo-card-img" src="${p.heroImage}" alt="${p.title}" loading="lazy" decoding="async">
           <div class="duo-scrim"></div>
           <div class="duo-content-overlay">
-            <div class="duo-meta-row">
-              <span class="duo-tag">${p.services}</span>
-              <span class="duo-year">${p.year || '2026'}</span>
-            </div>
-            <h2 class="duo-title">${p.title}</h2>
-            <div class="duo-hover-drawer">
-              <p class="duo-summary">${p.summary}</p>
+            <div class="duo-visible-bar">
+              <div class="duo-title-group">
+                <span class="duo-tag">${p.services}</span>
+                <h2 class="duo-title">${cleanTitle}</h2>
+              </div>
               <span class="duo-arrow-btn">
                 <span>View</span>
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -404,6 +406,9 @@ document.addEventListener('DOMContentLoaded', () => {
                   <polyline points="7 7 17 7 17 17"></polyline>
                 </svg>
               </span>
+            </div>
+            <div class="duo-hover-drawer">
+              <p class="duo-summary">${p.summary}</p>
             </div>
           </div>
         `;
