@@ -16,6 +16,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .overlay-brand-stamp {
+      width: 32px;
+      height: auto;
+      filter: brightness(0) invert(1);
+      display: inline-block;
+      vertical-align: middle;
+    }
+    /* Normalized top spacing without pinned logo collision */
+    .hero-top-row {
+      padding-top: 2rem !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -28,7 +41,10 @@
   <!-- =================== START: SLIDE-DOWN INDEX OVERLAY =================== -->
   <div id="index-overlay" class="index-overlay-panel">
     <div class="overlay-top-bar">
-      <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6);">Index</span>
+      <div style="display: flex; align-items: center; gap: 0.85rem;">
+        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="overlay-brand-stamp">
+        <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.75);">Index</span>
+      </div>
       <button id="close-overlay-btn" style="background: none; border: none; cursor: pointer; color: white; display: flex; align-items: center;" aria-label="Close">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <line x1="4" y1="4" x2="20" y2="20"></line>
@@ -39,46 +55,44 @@
     <nav class="overlay-nav-links">
       <div class="overlay-link-item">
         <span>01</span>
-        <a href="work.html" class="overlay-link">Work</a>
+        <a href="index.html" class="overlay-link active">Home</a>
       </div>
       <div class="overlay-link-item">
         <span>02</span>
-        <a href="ui-ux.html" class="overlay-link">UI/UX Work</a>
+        <a href="work.html" class="overlay-link">Work</a>
       </div>
       <div class="overlay-link-item">
         <span>03</span>
-        <a href="about.html" class="overlay-link">About</a>
+        <a href="ui-ux.html" class="overlay-link">UI/UX Work</a>
       </div>
       <div class="overlay-link-item">
         <span>04</span>
+        <a href="about.html" class="overlay-link">About</a>
+      </div>
+      <div class="overlay-link-item">
+        <span>05</span>
         <button id="overlay-contact-link" class="overlay-link">Contact</button>
       </div>
     </nav>
   </div>
   <!-- =================== END: SLIDE-DOWN INDEX OVERLAY =================== -->
 
-  <!-- =================== START: FLOATING PEAK NAV BUTTON =================== -->
+  <!-- =================== START: DYNAMIC FLOATING PEAK NAV BUTTON (Scroll Triggered) =================== -->
   <button id="floating-nav-btn" class="floating-peak-btn" aria-label="Open Navigation">
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
       <path d="M2 14 L6.5 5 L10 10 L16 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   </button>
-  <!-- =================== END: FLOATING PEAK NAV BUTTON =================== -->
+  <!-- =================== END: DYNAMIC FLOATING PEAK NAV BUTTON =================== -->
 
   <!-- =================== START: PERSISTENT BACKGROUND =================== -->
   <div class="hero-fixed-background" aria-hidden="true">
-  <div class="hero-dot-grid"></div>
-  <div class="hero-topography-plate">
-    <img src="topography.svg" alt="" class="topo-external-asset" aria-hidden="true">
+    <div class="hero-dot-grid"></div>
+    <div class="hero-topography-plate">
+      <img src="topography.svg" alt="" class="topo-external-asset" aria-hidden="true">
+    </div>
   </div>
-</div>
   <!-- =================== END: PERSISTENT BACKGROUND =================== -->
-
-  <!-- =================== START: PINNED PERSISTENT LOGO =================== -->
-  <a href="index.html" class="hero-persistent-logo" aria-label="Devin Sanders Home">
-    <img src="LogoBlue.png" alt="Devin Sanders Mark" class="hero-logo-img">
-  </a>
-  <!-- =================== END: PINNED PERSISTENT LOGO =================== -->
 
   <!-- =================== START: HERO VIEWPORT =================== -->
   <section id="hero-sticky-canvas" class="hero-sticky-canvas">
@@ -214,13 +228,13 @@
   </footer>
   <!-- =================== END: GLOBAL EDITORIAL FOOTER =================== -->
 
-  <!-- =================== CUSTOM SURVEY RETICLE CURSOR =================== -->
+  <!-- Custom Survey Reticle Cursor -->
   <div id="survey-cursor" class="survey-cursor" aria-hidden="true">
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
   </div>
 
   <script src="js/data.js"></script>
-  <script src="js/main.js?v=5.0"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
