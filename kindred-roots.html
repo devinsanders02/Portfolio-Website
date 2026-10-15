@@ -16,16 +16,15 @@
 
   <style>
     /* =========================================================================
-       KINDRED ROOTS EDITORIAL ARCHITECTURE & FROSTED PAPER PLINTHS
+       KINDRED ROOTS EDITORIAL ARCHITECTURE & OPEN CANVAS SYSTEM
        ========================================================================= */
 
     :root {
       --roots-gold: #B87D28;
       --roots-bg: #F9F9F8;
       --roots-ink: #16222F;
-      --roots-border: rgba(44, 62, 80, 0.14);
+      --roots-border: rgba(44, 62, 80, 0.12);
       --roots-muted: #2C3E50;
-      --roots-plinth-bg: rgba(255, 255, 255, 0.78);
     }
 
     body.roots-case-page {
@@ -33,7 +32,15 @@
       color: var(--roots-ink) !important;
     }
 
-    /* 1. Shell & Hero -> Pure Barlow */
+    /* 1. Global Background Topo Blur (Blurs the lines across the entire page) */
+    .roots-case-page .hero-topography-plate {
+      filter: blur(8px);
+      -webkit-filter: blur(8px);
+      opacity: 0.18 !important;
+      transform: scale(1.04); /* Prevents blur fringe along screen edges */
+    }
+
+    /* 2. Shell & Hero -> Pure Barlow */
     .turnstyle-headline {
       font-family: var(--font-barlow) !important;
       font-weight: 800 !important;
@@ -56,7 +63,7 @@
       font-family: var(--font-barlow) !important;
     }
 
-    /* 2. Editorial Typography -> Zilla Slab (Display / Pull-quotes) & Syne (Body) */
+    /* 3. Editorial Typography -> Zilla Slab (Display / Quotes) & Syne (Body) */
     .roots-case-page main h2,
     .roots-case-page main h3,
     .roots-case-page main h4,
@@ -178,23 +185,11 @@
       color: var(--roots-ink);
     }
 
-    /* Frosted Paper Plinth 1: Editorial Opening Narrative Block */
+    /* Free-Floating Editorial Intro Block */
     .editorial-statement-block {
       max-width: 860px;
       margin: 0 auto 6.5rem;
-      padding: 3rem 2.75rem;
-      background: var(--roots-plinth-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--roots-border);
-      box-shadow: 0 14px 34px -10px rgba(44, 62, 80, 0.06);
-      box-sizing: border-box;
-    }
-
-    @media (max-width: 768px) {
-      .editorial-statement-block {
-        padding: 2rem 1.75rem;
-      }
+      text-align: left;
     }
 
     .editorial-colophon-tag {
@@ -242,25 +237,20 @@
       display: block;
     }
 
-    /* Master Spread Canvas */
+    /* Master Spread Stage */
     .master-spread-stage {
       margin-bottom: 7.5rem;
     }
 
-    /* Frosted Paper Plinth 2: Master Caption Strip */
+    /* Clean Open Caption Strip */
     .spread-caption-strip {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: baseline;
       gap: 2rem;
-      padding: 1.5rem 2rem;
-      margin-top: 1.5rem;
-      background: var(--roots-plinth-bg);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--roots-border);
-      box-shadow: 0 10px 25px -8px rgba(44, 62, 80, 0.05);
-      box-sizing: border-box;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--roots-border);
+      margin-top: 1.25rem;
     }
 
     .spread-meta-tag {
@@ -283,15 +273,14 @@
       .spread-caption-strip {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.75rem;
-        padding: 1.5rem 1.25rem;
+        gap: 0.5rem;
       }
       .spread-caption {
         text-align: left;
       }
     }
 
-    /* Frosted Paper Plinth 3: Asymmetric Editorial Pair */
+    /* Open Asymmetric Editorial Pair */
     .editorial-asymmetric-pair {
       display: grid;
       grid-template-columns: 1fr;
@@ -308,23 +297,17 @@
     }
 
     .roots-pull-quote-box {
-      background: var(--roots-plinth-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      padding: 3rem 2.5rem;
-      border: 1px solid var(--roots-border);
-      border-left: 4px solid var(--roots-gold);
-      box-shadow: 0 12px 32px -10px rgba(44, 62, 80, 0.06);
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
-      box-sizing: border-box;
+      gap: 1.25rem;
+      padding-left: 1.75rem;
+      border-left: 3px solid var(--roots-gold);
     }
 
     .roots-pull-quote {
       font-size: clamp(1.75rem, 2.5vw, 2.35rem);
       font-weight: 700;
-      line-height: 1.25;
+      line-height: 1.22;
       color: var(--roots-ink);
       margin: 0;
     }
@@ -342,7 +325,7 @@
       color: var(--roots-gold);
     }
 
-    /* Frosted Paper Plinth 4: Sequential Feature Entries */
+    /* Feature Article Sequence */
     .article-spread-sequence {
       display: flex;
       flex-direction: column;
@@ -380,22 +363,16 @@
       text-transform: uppercase;
     }
 
-    .article-desc-plinth {
-      background: var(--roots-plinth-bg);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--roots-border);
-      padding: 1.5rem 2rem;
-      max-width: 720px;
-      box-shadow: 0 8px 24px -8px rgba(44, 62, 80, 0.04);
-      box-sizing: border-box;
+    /* Free-floating article description */
+    .article-desc-wrap {
+      max-width: 680px;
     }
 
-    .article-desc-plinth p {
+    .article-desc-wrap p {
       margin: 0;
     }
 
-    /* Layout Moments D & E: Spreads & Rhythm */
+    /* Secondary Detail & Rhythm Grids */
     .case-grid-2col {
       display: grid;
       grid-template-columns: 1fr;
@@ -611,7 +588,7 @@
   <!-- Main Editorial Canvas -->
   <main style="padding-top: 5.5rem; padding-bottom: 5rem;">
 
-    <!-- 2. Literary Intro Narrative in Frosted Paper Plinth -->
+    <!-- 2. Literary Opening Statement (Open, Free-Floating) -->
     <section class="case-content-wrap">
       <div class="editorial-statement-block">
         <span class="editorial-colophon-tag">Editorial Statement // Human Friction</span>
@@ -643,7 +620,7 @@
       </div>
     </section>
 
-    <!-- 4. Asymmetric Editorial Pair: Pull-Quote Plinth + Editor's Letter -->
+    <!-- 4. Asymmetric Editorial Pair: Open Pull-Quote + Editor's Letter -->
     <section class="case-content-wrap editorial-asymmetric-pair">
       <div class="roots-pull-quote-box">
         <blockquote class="roots-pull-quote">
@@ -657,7 +634,7 @@
       </div>
     </section>
 
-    <!-- 5. Feature Narrative Spreads with Text Plinths -->
+    <!-- 5. Feature Narrative Spreads with Clean Open Text -->
     <section class="case-content-wrap article-spread-sequence">
 
       <!-- Feature Article 01: 404 Connection Not Found -->
@@ -669,7 +646,7 @@
         <div class="editorial-stage-frame" style="aspect-ratio: 16 / 10;">
           <img src="KindredRoots/KindredRoots-FeatArt1.jpg" alt="404 Connection Not Found Spread" loading="lazy" decoding="async">
         </div>
-        <div class="article-desc-plinth">
+        <div class="article-desc-wrap">
           <p class="editorial-body-narrative">
             Using digital error syntax, dark nocturnal color grading, and asymmetric multi-column text blocks to explore the quiet breakdown of conversational presence in digital spaces.
           </p>
@@ -685,7 +662,7 @@
         <div class="editorial-stage-frame" style="aspect-ratio: 16 / 10;">
           <img src="KindredRoots/KindredRoots-FeatArt2.jpg" alt="Unmapped Feature Spread" loading="lazy" decoding="async">
         </div>
-        <div class="article-desc-plinth">
+        <div class="article-desc-wrap">
           <p class="editorial-body-narrative">
             Expansive aerial landscapes framed by bold geometric title bars and subtle topographic vector elevations to evoke physical isolation and wilderness solitude.
           </p>
