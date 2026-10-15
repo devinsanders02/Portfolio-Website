@@ -15,13 +15,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    /* =================== START: UI/UX REDESIGN STYLES =================== */
+    /* =================== START: UI/UX FROSTED GLASS & EDITORIAL STYLES =================== */
 
     /* Hero Header */
     .ux-header-stage {
       position: relative;
       z-index: 2;
-      padding: 2rem 4vw 4.5rem;
+      padding: 2rem 4vw 4rem;
       max-width: 1540px;
       margin: 0 auto;
     }
@@ -39,6 +39,7 @@
     }
 
     .ux-header-desc {
+      font-family: var(--font-barlow);
       font-size: 1.05rem;
       font-weight: 300;
       line-height: 1.6;
@@ -47,7 +48,7 @@
       margin: 0;
     }
 
-    /* Flagship Workbench Stage Wrapper */
+    /* Flagship Workbench Stage Feed */
     .ux-stage-feed {
       position: relative;
       z-index: 2;
@@ -60,22 +61,34 @@
       box-sizing: border-box;
     }
 
-    /* Individual Flagship Card */
+    /* Apple-Style Frosted Translucent Card */
     .ux-workbench-card {
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
       min-height: 520px;
       max-height: 820px;
-      background-color: #0E1217;
-      border: 1px solid rgba(44, 62, 80, 0.12);
-      border-radius: 0px;
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 4px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 24px 48px -12px rgba(44, 62, 80, 0.16);
+      box-shadow: 
+        0 24px 48px -12px rgba(44, 62, 80, 0.08),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
       box-sizing: border-box;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+
+    .ux-workbench-card:hover {
+      box-shadow: 
+        0 30px 60px -15px rgba(44, 62, 80, 0.12),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 1);
+      border-color: rgba(241, 91, 34, 0.35);
     }
 
     @media (max-width: 860px) {
@@ -85,43 +98,14 @@
       }
     }
 
-    /* Top Metadata Spec Bar inside Card */
-    .ux-workbench-spec-bar {
-      position: relative;
-      z-index: 3;
-      padding: 1.5rem 2.25rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(14, 18, 23, 0.65);
-      backdrop-filter: blur(8px);
-    }
-
-    .ux-spec-tag {
-      font-family: var(--font-barlow);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent-orange);
-    }
-
-    .ux-spec-meta {
-      font-family: monospace;
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.55);
-      letter-spacing: 0.04em;
-    }
-
-    /* Central Mockup Stage */
+    /* Device Mockup Canvas */
     .ux-workbench-viewport {
       position: absolute;
       inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem 1.5rem 4.5rem; /* Compact padding so graphics expand */
+      padding: 2.5rem 2rem 6.5rem;
       z-index: 1;
     }
 
@@ -129,96 +113,120 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 24px 36px rgba(0, 0, 0, 0.45));
+      filter: drop-shadow(0 20px 30px rgba(44, 62, 80, 0.16));
       transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    /* --- Individual Project Image Scale Adjustments --- */
-
-    /* 1. iOS: Prominent, full-height multi-device presence */
+    /* Image Framing Multipliers */
     .ux-viewport-ios img {
-      transform: scale(1.56) translateY(-22px);
-      transform-origin: center center;
+      transform: scale(1.42) translateY(-14px);
     }
     .ux-workbench-card:hover .ux-viewport-ios img {
-      transform: scale(1.52) translateY(-22px);
+      transform: scale(1.45) translateY(-14px);
     }
 
-    /* 2. Wise Banking: Wide desktop laptop framing */
     .ux-viewport-wise img {
-      transform: scale(1.15) translateY(-8px);
-      transform-origin: center center;
+      transform: scale(1.12) translateY(-6px);
     }
     .ux-workbench-card:hover .ux-viewport-wise img {
-      transform: scale(1.19) translateY(-8px);
+      transform: scale(1.15) translateY(-6px);
     }
 
-    /* 3. KalorieTrak: Expanded mobile dashboard display */
     .ux-viewport-kalorie img {
-      transform: scale(1.22) translateY(-14px);
-      transform-origin: center center;
+      transform: scale(1.18) translateY(-10px);
     }
     .ux-workbench-card:hover .ux-viewport-kalorie img {
-      transform: scale(1.26) translateY(-14px);
+      transform: scale(1.22) translateY(-10px);
     }
 
-    /* Scrim to ensure bottom overlay text is crisp */
-    .ux-workbench-scrim {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(10, 13, 17, 0.96) 0%, rgba(10, 13, 17, 0.5) 25%, transparent 60%);
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    /* Bottom Info & Action Drawer */
+    /* Frosted Bottom Content Drawer */
     .ux-workbench-footer {
       position: relative;
       z-index: 3;
-      padding: 2rem 2.5rem;
+      margin-top: auto;
+      padding: 1.75rem 2.5rem;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      gap: 2rem;
+      gap: 2.5rem;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-top: 1px solid rgba(255, 255, 255, 0.75);
     }
 
     @media (max-width: 860px) {
       .ux-workbench-footer {
         flex-direction: column;
         align-items: flex-start;
-        padding: 1.5rem 1.5rem;
+        padding: 1.5rem;
+        gap: 1.25rem;
       }
     }
 
     .ux-workbench-title-group {
-      max-width: 650px;
+      max-width: 700px;
     }
 
+    /* Metadata Tag Row (Barlow-Only) */
+    .ux-meta-pill-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .ux-index-tag {
+      font-family: var(--font-barlow);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+    }
+
+    .ux-year-tag {
+      font-family: var(--font-barlow);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    /* Two-Tone Barlow Title */
     .ux-workbench-title {
       font-family: var(--font-barlow);
-      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+      font-size: clamp(1.4rem, 2.4vw, 2.1rem);
       font-weight: 800;
-      line-height: 1.05;
+      line-height: 1.1;
       letter-spacing: -0.02em;
       text-transform: uppercase;
-      color: #FFFFFF;
+      color: var(--text-dark);
       margin: 0 0 0.5rem 0;
+    }
+
+    .ux-title-light {
+      font-weight: 300;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      opacity: 0.75;
     }
 
     .ux-workbench-desc {
       font-family: var(--font-barlow);
-      font-size: 0.95rem;
-      font-weight: 300;
-      line-height: 1.55;
-      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.92rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--text-dark);
+      opacity: 0.85;
       margin: 0;
     }
 
-    /* Button Cluster */
+    /* Buttons */
     .ux-workbench-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 0.65rem;
       align-items: center;
       flex-shrink: 0;
     }
@@ -227,7 +235,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.75rem 1.4rem;
+      padding: 0.7rem 1.35rem;
       background-color: var(--accent-orange);
       color: #FFFFFF;
       text-decoration: none;
@@ -237,22 +245,24 @@
       letter-spacing: 0.05em;
       text-transform: uppercase;
       border-radius: 4px;
-      transition: background-color 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 4px 12px rgba(241, 91, 34, 0.22);
+      transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .ux-btn-primary:hover {
       background-color: #d84b16;
       transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(241, 91, 34, 0.32);
     }
 
-    .ux-btn-secondary {
+    .ux-btn-glass {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.75rem 1.4rem;
-      background-color: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #FFFFFF;
+      padding: 0.7rem 1.25rem;
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(44, 62, 80, 0.18);
+      color: var(--text-dark);
       text-decoration: none;
       font-family: var(--font-barlow);
       font-size: 0.82rem;
@@ -260,16 +270,18 @@
       letter-spacing: 0.05em;
       text-transform: uppercase;
       border-radius: 4px;
-      transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+      backdrop-filter: blur(10px);
+      transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
     }
 
-    .ux-btn-secondary:hover {
-      background-color: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.45);
+    .ux-btn-glass:hover {
+      background-color: #FFFFFF;
+      border-color: var(--accent-orange);
+      color: var(--accent-orange);
       transform: translateY(-2px);
     }
 
-    /* Micro-Interactions & Quick Labs Section */
+    /* Interaction Labs Section */
     .ux-lab-section {
       position: relative;
       z-index: 2;
@@ -314,25 +326,28 @@
     }
 
     .ux-lab-card {
-      background-color: #0E1217;
-      border: 1px solid rgba(44, 62, 80, 0.12);
-      border-radius: 0px;
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 4px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 12px 28px -8px rgba(44, 62, 80, 0.12);
-      transition: transform 0.3s ease, border-color 0.3s ease;
+      box-shadow: 0 16px 32px -10px rgba(44, 62, 80, 0.08);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .ux-lab-card:hover {
       transform: translateY(-4px);
-      border-color: rgba(241, 91, 34, 0.4);
+      border-color: rgba(241, 91, 34, 0.45);
+      box-shadow: 0 20px 40px -12px rgba(44, 62, 80, 0.12);
     }
 
     .ux-lab-thumb {
       width: 100%;
       aspect-ratio: 16 / 11;
-      background-color: #090B0E;
+      background-color: rgba(255, 255, 255, 0.3);
       overflow: hidden;
       position: relative;
     }
@@ -346,7 +361,7 @@
     }
 
     .ux-lab-card:hover .ux-lab-thumb img {
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
 
     .ux-lab-body {
@@ -354,14 +369,17 @@
       display: flex;
       flex-direction: column;
       flex-grow: 1;
-      background: #0E1217;
+      background: rgba(255, 255, 255, 0.65);
     }
 
     .ux-lab-tag {
-      font-family: monospace;
+      font-family: var(--font-barlow);
       font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       color: var(--accent-orange);
       margin-bottom: 0.35rem;
+      text-transform: uppercase;
     }
 
     .ux-lab-title {
@@ -370,16 +388,17 @@
       font-weight: 800;
       letter-spacing: -0.01em;
       text-transform: uppercase;
-      color: #FFFFFF;
+      color: var(--text-dark);
       margin: 0 0 0.5rem 0;
     }
 
     .ux-lab-desc {
       font-family: var(--font-barlow);
       font-size: 0.88rem;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.5;
-      color: rgba(255, 255, 255, 0.7);
+      color: var(--text-dark);
+      opacity: 0.8;
       margin: 0 0 1.5rem 0;
       flex-grow: 1;
     }
@@ -389,11 +408,10 @@
       font-size: 0.75rem;
       padding: 0.6rem 1.15rem;
     }
-
-/* =================== END: UI/UX REDESIGN STYLES =================== */
+    /* =================== END: UI/UX FROSTED GLASS & EDITORIAL STYLES =================== */
   </style>
 </head>
-<body>
+<body class="page-subpage">
 
   <!-- =================== START: SITE PRELOADER =================== -->
   <div id="site-loader">
@@ -433,45 +451,28 @@
   </div>
   <!-- =================== END: SLIDE-DOWN INDEX OVERLAY =================== -->
 
-  <!-- =================== START: FLOATING PEAK NAV BUTTON =================== -->
-  <button id="floating-nav-btn" class="floating-peak-btn" aria-label="Open Navigation">
+  <!-- =================== START: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
+  <button id="floating-nav-btn" class="floating-peak-btn subpage-permanent-btn" aria-label="Open Navigation">
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
       <path d="M2 14 L6.5 5 L10 10 L16 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   </button>
-  <!-- =================== END: FLOATING PEAK NAV BUTTON =================== -->
+  <!-- =================== END: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
 
-  <!-- =================== START: PERSISTENT BACKGROUND (TOPO & DOT GRID) =================== -->
+  <!-- =================== START: PERSISTENT BACKGROUND =================== -->
   <div class="hero-fixed-background" aria-hidden="true">
     <div class="hero-dot-grid"></div>
-    <div class="hero-topography-canvas">
-      <svg viewBox="0 0 900 1200" fill="none" stroke="currentColor" stroke-width="1.3" preserveAspectRatio="none">
-        <polyline points="900,100 820,130 760,190 710,160 670,220 620,290 640,380 610,470 560,540 520,620 480,720 510,830 470,940 430,1050 400,1200" opacity="0.18" />
-        <polyline points="900,140 830,170 770,220 725,195 685,250 640,320 655,400 630,490 580,560 545,640 505,740 535,845 495,955 455,1065 425,1200" opacity="0.25" />
-        <polyline points="900,185 840,210 785,255 740,230 700,285 660,350 670,425 650,510 600,580 570,660 530,760 560,860 520,970 480,1080 450,1200" opacity="0.32" />
-        <polyline points="900,230 850,250 800,290 755,265 715,320 680,380 685,450 670,530 620,600 595,680 555,780 585,875 545,985 505,1095 475,1200" opacity="0.4" />
-        <polyline points="900,280 860,295 815,325 770,300 730,355 700,410 700,475 690,550 640,620 620,700 580,800 610,890 570,1000 530,1110 500,1200" opacity="0.5" />
-        <polyline points="900,330 870,340 830,365 790,340 750,390 720,445 720,505 710,575 665,645 645,725 610,820 635,910 600,1020 560,1125 530,1200" opacity="0.62" />
-        <polyline points="900,385 880,385 845,405 810,380 770,430 740,480 740,535 730,600 690,670 670,750 640,845 660,930 630,1040 590,1140 560,1200" opacity="0.75" />
-        <polyline points="900,440 865,450 830,425 790,470 765,515 760,565 750,625 715,695 695,775 670,870 690,950 660,1060 625,1155 595,1200" opacity="0.88" />
-        <polyline points="900,500 880,500 850,470 815,515 790,555 780,600 775,655 745,720 725,800 705,895 720,970 695,1080 660,1170 630,1200" opacity="1.0" />
-      </svg>
+    <div class="hero-topography-plate">
+      <img src="topography.svg" alt="" class="topo-external-asset subpage-topo" aria-hidden="true">
     </div>
   </div>
   <!-- =================== END: PERSISTENT BACKGROUND =================== -->
 
-  <!-- =================== START: STANDARD SUBPAGE NAVBAR =================== -->
+  <!-- =================== START: STANDARD SUBPAGE NAVBAR (Logo Only) =================== -->
   <header class="subpage-navbar">
     <a href="index.html" class="subpage-nav-logo" aria-label="Devin Sanders Home">
       <img src="LogoBlue.png" alt="Devin Sanders Mark">
     </a>
-
-    <nav class="subpage-nav-links">
-      <a href="work.html">Work</a>
-      <a href="ui-ux.html" class="active">UI/UX</a>
-      <a href="about.html">About</a>
-      <button id="top-contact-btn">Contact</button>
-    </nav>
   </header>
   <!-- =================== END: STANDARD SUBPAGE NAVBAR =================== -->
 
@@ -480,7 +481,7 @@
     <span class="uppercase-label">UI/UX & Interactive Systems</span>
     <h1 class="ux-header-title">Raw ideas to working interfaces.</h1>
     <p class="ux-header-desc">
-      Exploring user habits, complex multi-surface workflows, and cohesive screen architectures across web and mobile ecosystems.
+      Exploring user habits, multi-device ecosystems, and scalable interaction design across responsive web and mobile platforms.
     </p>
   </header>
   <!-- =================== END: PAGE HEADER INTRODUCTION =================== -->
@@ -490,22 +491,21 @@
 
     <!-- STAGE 01: iOS ECOSYSTEM -->
     <article class="ux-workbench-card">
-      <div class="ux-workbench-spec-bar">
-        <span class="ux-spec-tag">SYS.01 // APPLE ARCHITECTURE</span>
-        <span class="ux-spec-meta">CROSS-DEVICE ECOSYSTEM · 2026</span>
+      <div class="ux-workbench-viewport ux-viewport-ios">
+        <img src="UI-UX/iOS Thumbnail.png" alt="iOS Ecosystem Interface" onerror="this.onerror=null; this.src='https://placehold.co/1200x800/2C3E50/FFFFFF?text=iOS+Ecosystem';">
       </div>
-
-      <div class="ux-workbench-viewport">
-        <img src="UI-UX/iOS Thumbnail.png" alt="iOS Ecosystem Mockup" onerror="this.onerror=null; this.src='https://placehold.co/1200x800/121212/FFFFFF?text=iOS+Ecosystem+Mockup';">
-      </div>
-
-      <div class="ux-workbench-scrim"></div>
 
       <div class="ux-workbench-footer">
         <div class="ux-workbench-title-group">
-          <h2 class="ux-workbench-title">iOS Ecosystem</h2>
+          <div class="ux-meta-pill-row">
+            <span class="ux-index-tag">01 // ECOSYSTEM ARCHITECTURE</span>
+            <span class="ux-year-tag">2026</span>
+          </div>
+          <h2 class="ux-workbench-title">
+            Unified Habit Architecture <span class="ux-title-light">— Cross-Device Flow & Task States</span>
+          </h2>
           <p class="ux-workbench-desc">
-            Deep multi-device task synchronization connecting Reminders, Widgets, Focus States, and Calendar events into a single unified flow.
+            Deep multi-device task synchronization connecting Reminders, Lock Screen widgets, and Focus sessions into a frictionless habit loop.
           </p>
         </div>
         <div class="ux-workbench-actions">
@@ -519,22 +519,21 @@
 
     <!-- STAGE 02: WISE BANKING DASHBOARD -->
     <article class="ux-workbench-card">
-      <div class="ux-workbench-spec-bar">
-        <span class="ux-spec-tag">SYS.02 // FINTECH & DESIGN SYSTEMS</span>
-        <span class="ux-spec-meta">DESKTOP & MOBILE APPS · 2025</span>
-      </div>
-
-      <div class="ux-workbench-viewport">
+      <div class="ux-workbench-viewport ux-viewport-wise">
         <img src="UI-UX/WISE Thumbnail.png" alt="Wise Banking Dashboard Laptop" onerror="this.onerror=null; this.src='https://placehold.co/1200x800/163300/9FE870?text=Wise+Banking+Dashboard';">
       </div>
 
-      <div class="ux-workbench-scrim"></div>
-
       <div class="ux-workbench-footer">
         <div class="ux-workbench-title-group">
-          <h2 class="ux-workbench-title">Wise Banking Dashboard</h2>
+          <div class="ux-meta-pill-row">
+            <span class="ux-index-tag">02 // FINTECH PLATFORM</span>
+            <span class="ux-year-tag">2025</span>
+          </div>
+          <h2 class="ux-workbench-title">
+            Fintech at Scale <span class="ux-title-light">— Multi-Rail Account Architecture</span>
+          </h2>
           <p class="ux-workbench-desc">
-            Transforming Wise from a currency transfer tool into a comprehensive personal banking platform with integrated checking, savings, and card rails.
+            Expanding Wise from single-action currency transfers into an integrated financial dashboard with multi-currency accounts and card rails.
           </p>
         </div>
         <div class="ux-workbench-actions">
@@ -542,11 +541,11 @@
             <span>Case Study</span>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
           </a>
-          <a href="https://www.figma.com/proto/4qe0TRjqgTmGfm4kcG44uH/Wise-Design-System-MASTER?node-id=2150-2940&page-id=125%3A1802&starting-point-node-id=2150%3A2940&t=4SkG7lGFOJMhLwgp-1" target="_blank" rel="noopener noreferrer" class="ux-btn-secondary">
-            <span>Laptop Prototype</span>
+          <a href="https://www.figma.com/proto/4qe0TRjqgTmGfm4kcG44uH/Wise-Design-System-MASTER?node-id=2150-2940&page-id=125%3A1802&starting-point-node-id=2150%3A2940&t=4SkG7lGFOJMhLwgp-1" target="_blank" rel="noopener noreferrer" class="ux-btn-glass">
+            <span>Desktop Prototype</span>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
           </a>
-          <a href="https://www.figma.com/proto/06Z3boWDUoB3vxWtp3mjth/Wise-Mobile-Dashboard?node-id=3-3412&page-id=0%3A1&t=QcWfE70UrDFl6pip-1" target="_blank" rel="noopener noreferrer" class="ux-btn-secondary">
+          <a href="https://www.figma.com/proto/06Z3boWDUoB3vxWtp3mjth/Wise-Mobile-Dashboard?node-id=3-3412&page-id=0%3A1&t=QcWfE70UrDFl6pip-1" target="_blank" rel="noopener noreferrer" class="ux-btn-glass">
             <span>Mobile Prototype</span>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
           </a>
@@ -556,22 +555,21 @@
 
     <!-- STAGE 03: KALORIETRAK APP -->
     <article class="ux-workbench-card">
-      <div class="ux-workbench-spec-bar">
-        <span class="ux-spec-tag">SYS.03 // HEALTH & INTERACTION</span>
-        <span class="ux-spec-meta">MOBILE INTERFACE · 2025</span>
-      </div>
-
-      <div class="ux-workbench-viewport">
+      <div class="ux-workbench-viewport ux-viewport-kalorie">
         <img src="UI-UX/KT Thumbnail.png" alt="KalorieTrak Mobile Interface" onerror="this.onerror=null; this.src='https://placehold.co/1200x800/0043A4/FFFFFF?text=KalorieTrak+Mobile+Interface';">
       </div>
 
-      <div class="ux-workbench-scrim"></div>
-
       <div class="ux-workbench-footer">
         <div class="ux-workbench-title-group">
-          <h2 class="ux-workbench-title">Refreshed KalorieTrak App</h2>
+          <div class="ux-meta-pill-row">
+            <span class="ux-index-tag">03 // HEALTH & UTILITY</span>
+            <span class="ux-year-tag">2025</span>
+          </div>
+          <h2 class="ux-workbench-title">
+            Glanceable Nutrition <span class="ux-title-light">— Zero-Friction Daily Logging</span>
+          </h2>
           <p class="ux-workbench-desc">
-            Redesigned mobile health interface prioritizing glanceable nutritional time-scales and friction-free daily logging.
+            A high-efficiency mobile tracking system designed around glanceable nutritional timelines and reduced input fatigue.
           </p>
         </div>
         <div class="ux-workbench-actions">
@@ -579,8 +577,8 @@
             <span>Case Study</span>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
           </a>
-          <a href="https://www.figma.com/proto/lE2UR9lkQUrgT1mAOOBCQK/KalorieTrak?node-id=45-2&p=f&viewport=565%2C25%2C0.09&t=5YI8JYTytwQhwWar-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=103%3A27&show-proto-sidebar=1&page-id=0%3A1" target="_blank" rel="noopener noreferrer" class="ux-btn-secondary">
-            <span>Prototype</span>
+          <a href="https://www.figma.com/proto/lE2UR9lkQUrgT1mAOOBCQK/KalorieTrak?node-id=45-2&p=f&viewport=565%2C25%2C0.09&t=5YI8JYTytwQhwWar-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=103%3A27&show-proto-sidebar=1&page-id=0%3A1" target="_blank" rel="noopener noreferrer" class="ux-btn-glass">
+            <span>Interactive Prototype</span>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
           </a>
         </div>
@@ -594,20 +592,20 @@
   <section class="ux-lab-section">
     <div class="ux-lab-header">
       <div class="line"></div>
-      <span class="label">Micro-Interactions & Quick Labs</span>
+      <span class="label">Micro-Interactions & Interaction Labs</span>
     </div>
 
     <div class="ux-lab-grid">
       <!-- Card 01: Smart Home Screen -->
       <article class="ux-lab-card">
         <div class="ux-lab-thumb">
-          <img src="UI-UX/SmartHome.png" alt="Smart Home Screen UI" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=Smart+Home+UI';">
+          <img src="UI-UX/SmartHome.png" alt="Smart Home Screen UI" onerror="this.onerror=null; this.src='https://placehold.co/600x400/2C3E50/ffffff?text=Smart+Home+UI';">
         </div>
         <div class="ux-lab-body">
           <span class="ux-lab-tag">LAB.01 // IOT INTERACTION</span>
           <h3 class="ux-lab-title">Smart Home Screen</h3>
           <p class="ux-lab-desc">
-            A balanced smart home interface optimizing glanceable room controls, card elevation, and quick ambient toggles.
+            A balanced smart home interface optimizing glanceable room controls, card elevation, and ambient toggles.
           </p>
           <a href="https://www.figma.com/proto/H3dsTS4sKsFdt8Mj8jP62n/Smart-Home-Screen?node-id=1-2&p=f&viewport=125%2C-33%2C0.81&t=bJVffbagub2tABmI-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1" target="_blank" rel="noopener noreferrer" class="ux-btn-primary">
             <span>Test Prototype</span>
@@ -619,13 +617,13 @@
       <!-- Card 02: One Tap Purchase Screen -->
       <article class="ux-lab-card">
         <div class="ux-lab-thumb">
-          <img src="UI-UX/OneTap.png" alt="One Tap Purchase Screen" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=One+Tap+Purchase';">
+          <img src="UI-UX/OneTap.png" alt="One Tap Purchase Screen" onerror="this.onerror=null; this.src='https://placehold.co/600x400/2C3E50/ffffff?text=One+Tap+Purchase';">
         </div>
         <div class="ux-lab-body">
           <span class="ux-lab-tag">LAB.02 // CHECKOUT FUNNEL</span>
           <h3 class="ux-lab-title">One Tap Purchase</h3>
           <p class="ux-lab-desc">
-            A single-surface checkout interaction designed to eliminate multi-step cart friction and reduce cart abandonment.
+            A single-surface checkout interaction designed to eliminate multi-step cart friction and drop-off.
           </p>
           <a href="https://www.figma.com/make/hBfsKObrnzYV7OVkhdcA56/Mobile-App-Prototype-Design?fullscreen=1&t=ayey4knAqwlkAHdd-1&code-node-id=0-9" target="_blank" rel="noopener noreferrer" class="ux-btn-primary">
             <span>Test Prototype</span>
@@ -637,13 +635,13 @@
       <!-- Card 03: Onboarding Screen -->
       <article class="ux-lab-card">
         <div class="ux-lab-thumb">
-          <img src="UI-UX/Onboard.png" alt="Onboarding Mobile Screen" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=Onboarding+Screen';">
+          <img src="UI-UX/Onboard.png" alt="Onboarding Mobile Screen" onerror="this.onerror=null; this.src='https://placehold.co/600x400/2C3E50/ffffff?text=Onboarding+Screen';">
         </div>
         <div class="ux-lab-body">
           <span class="ux-lab-tag">LAB.03 // RETENTION FUNNEL</span>
           <h3 class="ux-lab-title">Onboarding Screen</h3>
           <p class="ux-lab-desc">
-            A progressive setup flow engineered to guide first-time mobile users through permissions while demonstrating core value.
+            A progressive setup flow engineered to guide first-time mobile users through system permissions.
           </p>
           <a href="https://www.figma.com/proto/j7WV1YWcnsGuorRJ9HIFVw/Onboarding-Screen?node-id=7-12&p=f&viewport=-32%2C-533%2C0.62&t=gI2LM5w897hNEAiP-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=7%3A12&page-id=0%3A1" target="_blank" rel="noopener noreferrer" class="ux-btn-primary">
             <span>Test Prototype</span>
@@ -655,84 +653,84 @@
   </section>
   <!-- =================== END: MICRO-INTERACTIONS & QUICK LABS =================== -->
 
- <!-- =================== START: GLOBAL EDITORIAL FOOTER =================== -->
-<footer id="contact" class="site-footer">
-  <div class="footer-inner-shell">
+  <!-- =================== START: GLOBAL EDITORIAL FOOTER =================== -->
+  <footer id="contact" class="site-footer">
+    <div class="footer-inner-shell">
 
-    <!-- Tier 1: Lead Statement & Direct Email -->
-    <div class="footer-tier-hero">
-      <h2 class="footer-hero-headline">Let's build something meaningful.</h2>
-      <a href="mailto:devin.sanders02@gmail.com" class="footer-email-link">
-        <span>devin.sanders02@gmail.com</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="7" y1="17" x2="17" y2="7"></line>
-          <polyline points="7 7 17 7 17 17"></polyline>
-        </svg>
-      </a>
-    </div>
-
-    <hr class="footer-hairline">
-
-    <!-- Tier 2: Studio Directory -->
-    <div class="footer-directory-grid">
-      <!-- 01 / Navigation -->
-      <div>
-        <span class="footer-col-header">01 /<span>Work</span></span>
-        <ul class="footer-nav-list">
-          <li><a href="work.html" class="footer-link-animated">Selected Work</a></li>
-          <li><a href="ui-ux.html" class="footer-link-animated">UI/UX & Systems</a></li>
-          <li><a href="about.html" class="footer-link-animated">About & Studio</a></li>
-        </ul>
-      </div>
-
-      <!-- 02 / Network -->
-      <div>
-        <span class="footer-col-header">02 /<span>Network</span></span>
-        <ul class="footer-nav-list">
-          <li>
-            <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer">
-              <span>LinkedIn</span>
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- 03 / Studio Specs -->
-      <div>
-        <span class="footer-col-header">03 /<span>Discipline</span></span>
-        <ul class="footer-discipline-list">
-          <li>Brand architecture & identity</li>
-          <li>Physical & digital commerce</li>
-        </ul>
-      </div>
-
-      <!-- 04 / Return Action -->
-      <div>
-        <span class="footer-col-header">04 /<span>Top</span></span>
-        <button id="footer-scroll-top-btn" class="footer-scroll-top-btn">
-          <span>Return to Top</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="19" x2="12" y2="5"></line>
-            <polyline points="5 12 12 5 19 12"></polyline>
+      <div class="footer-tier-hero">
+        <h2 class="footer-hero-headline">Let's build something meaningful.</h2>
+        <a href="mailto:devin.sanders02@gmail.com" class="footer-email-link">
+          <span>devin.sanders02@gmail.com</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
           </svg>
-        </button>
+        </a>
       </div>
-    </div>
 
-    <!-- Tier 3: Colophon -->
-    <div class="footer-colophon-row">
-      <div>© <span id="copyright-year">2026</span> Devin Sanders. All Rights Reserved.</div>
-      <div>Barlow · Visual Brand Architecture</div>
-    </div>
+      <hr class="footer-hairline">
 
+      <div class="footer-directory-grid">
+        <div>
+          <span class="footer-col-header">01 /<span>Work</span></span>
+          <ul class="footer-nav-list">
+            <li><a href="work.html" class="footer-link-animated">Selected Work</a></li>
+            <li><a href="ui-ux.html" class="footer-link-animated">UI/UX & Systems</a></li>
+            <li><a href="about.html" class="footer-link-animated">About & Studio</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <span class="footer-col-header">02 /<span>Network</span></span>
+          <ul class="footer-nav-list">
+            <li>
+              <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer">
+                <span>LinkedIn</span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <span class="footer-col-header">03 /<span>Discipline</span></span>
+          <ul class="footer-discipline-list">
+            <li>Brand architecture & identity</li>
+            <li>Physical & digital commerce</li>
+          </ul>
+        </div>
+
+        <div>
+          <span class="footer-col-header">04 /<span>Top</span></span>
+          <button id="footer-scroll-top-btn" class="footer-scroll-top-btn">
+            <span>Return to Top</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="footer-colophon-row">
+        <div>© <span id="copyright-year">2026</span> Devin Sanders. All Rights Reserved.</div>
+        <div>Barlow · Visual Brand Architecture</div>
+      </div>
+
+    </div>
+  </footer>
+  <!-- =================== END: GLOBAL EDITORIAL FOOTER =================== -->
+
+  <!-- Custom Survey Reticle Cursor -->
+  <div id="survey-cursor" class="survey-cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
   </div>
-</footer>
-<!-- =================== END: GLOBAL EDITORIAL FOOTER =================== -->
 
+  <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
