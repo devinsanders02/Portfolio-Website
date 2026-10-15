@@ -4,62 +4,591 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gerber Gear Packaging | Devin Sanders</title>
+
+  <!-- Favicon & Touch Icon -->
+  <link rel="icon" type="image/png" href="LogoBlue.png">
+  <link rel="apple-touch-icon" href="LogoBlue.png">
+
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;1,700&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Archivo:ital,wght@0,600;0,700;0,800;1,700&family=Figtree:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
   <style>
     /* =========================================================================
-       GERBER GEAR CUSTOM TYPOGRAPHY OVERRIDES
+       GERBER GEAR STRUCTURAL PACKAGING SPECIFICATION
        ========================================================================= */
 
-    /* 1. Case Study Headers, Section Titles, & Display -> Archivo */
+    :root {
+      --gg-amber: #D47A22;
+      --gg-kraft: #B69B7D;
+      --gg-dark: #1E2229;
+      --gg-border: rgba(30, 34, 41, 0.12);
+      --gg-muted: rgba(30, 34, 41, 0.72);
+    }
+
+    body.gerber-case-page {
+      background-color: transparent !important;
+      color: var(--gg-dark) !important;
+    }
+
+    .gerber-case-page .hero-topography-plate {
+      filter: blur(2px);
+      -webkit-filter: blur(2px);
+      opacity: 0.22 !important;
+      transform: scale(1.02);
+    }
+
+    /* 1. Shell & Hero -> Pure Barlow */
+    .turnstyle-headline {
+      font-family: var(--font-barlow) !important;
+      font-weight: 800 !important;
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    .turnstyle-caption-title,
+    .turnstyle-caption-text,
+    .case-section-header .label,
+    .more-projects-title,
+    .more-projects-all,
+    .more-project-name,
+    .more-project-tag,
+    .unit-tag {
+      font-family: var(--font-barlow) !important;
+    }
+
+    /* 2. Packaging Artwork Typography -> Archivo (Display) & Figtree (Body) */
     .gerber-case-page main h2,
     .gerber-case-page main h3,
     .gerber-case-page main h4,
-    .gerber-case-page main .case-section-header .label,
-    .gerber-case-page main .feature-copy h3,
-    .gerber-case-page main .uppercase-label {
+    .unit-title {
       font-family: 'Archivo', sans-serif !important;
-      font-weight: 700;
       letter-spacing: -0.01em;
+      text-transform: uppercase;
     }
 
-    /* 2. Body Copy, Paragraphs, Lists & Details -> Figtree */
-    .gerber-case-page main p:not(.pagination-title):not(.pagination-label),
+    .gerber-case-page main p,
     .gerber-case-page main li,
-    .gerber-case-page main .feature-copy p,
-    .gerber-case-page main .feature-copy .step-num {
+    .unit-caption {
       font-family: 'Figtree', sans-serif !important;
+      line-height: 1.6;
+    }
+
+    /* Hero Banner */
+    .turnstyle-hero-banner {
+      position: relative;
+      width: 100%;
+      min-height: 85vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 4.5rem 4vw;
+      box-sizing: border-box;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .turnstyle-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 1;
+    }
+
+    .turnstyle-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(20, 24, 30, 0.92) 0%,
+        rgba(20, 24, 30, 0.5) 45%,
+        transparent 75%
+      );
+      z-index: 2;
+    }
+
+    .turnstyle-hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 1060px;
+      color: #FFFFFF;
+    }
+
+    .turnstyle-headline {
+      font-size: clamp(2.5rem, 6vw, 4.75rem);
+      margin: 0 0 1.5rem 0;
+      color: #FFFFFF;
+    }
+
+    .turnstyle-caption-block {
+      border-left: 2px solid var(--gg-amber);
+      padding-left: 1.25rem;
+    }
+
+    .turnstyle-caption-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+
+    .turnstyle-caption-text {
+      font-size: 0.95rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      opacity: 0.85;
+      margin: 0.35rem 0 0 0;
+      color: #FFFFFF;
+    }
+
+    /* Container Shell */
+    .case-content-wrap {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 4vw;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Section Headers */
+    .case-section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .case-section-header .line {
+      width: 32px;
+      height: 2px;
+      background-color: var(--gg-amber);
+    }
+
+    .case-section-header .label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gg-dark);
+    }
+
+    /* Packaging Narrative Overview (No Spec Bars) */
+    .gerber-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-bottom: 6rem;
+    }
+
+    @media (min-width: 860px) {
+      .gerber-intro-grid {
+        grid-template-columns: 1.35fr 1fr;
+        gap: 4.5rem;
+      }
+    }
+
+    .intro-title-tag {
+      font-family: var(--font-barlow);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gg-amber);
+      display: block;
+      margin-bottom: 0.65rem;
+    }
+
+    .intro-lead-body {
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--gg-dark);
+      margin: 0;
+    }
+
+    .intro-sec-body {
+      font-size: 0.98rem;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--gg-muted);
+      margin: 0;
+    }
+
+    /* Packaging Product Units */
+    .packaging-system-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 7rem;
+      margin-bottom: 7.5rem;
+    }
+
+    .packaging-unit-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .unit-meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.5rem;
+      border-bottom: 1px solid var(--gg-border);
+      padding-bottom: 0.85rem;
+    }
+
+    .unit-title {
+      font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+      font-weight: 800;
+      margin: 0;
+      color: var(--gg-dark);
+    }
+
+    .unit-tag {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--gg-amber);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .unit-hero-stage {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #FFFFFF;
+      border: 1px solid var(--gg-border);
+      box-shadow: 0 16px 40px -15px rgba(30, 34, 41, 0.08);
+      overflow: hidden;
+    }
+
+    .unit-hero-stage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .unit-caption-row {
+      max-width: 820px;
+    }
+
+    .unit-caption {
+      font-size: 1.05rem;
+      color: var(--gg-muted);
+      margin: 0;
+    }
+
+    /* Dieline & Construction Pair */
+    .case-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      margin-top: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .case-grid-2col {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .case-img-box {
+      width: 100%;
+      background: #FFFFFF;
+      border: 1px solid var(--gg-border);
+      box-shadow: 0 10px 30px rgba(30, 34, 41, 0.05);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .case-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Full-Bleed Wash Section */
+    .full-bleed-spread {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      background-color: var(--gg-dark);
+      overflow: hidden;
+      margin-bottom: 7.5rem;
+    }
+
+    .full-bleed-spread img {
+      width: 100%;
+      height: auto;
+      max-height: 820px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Retail Point of Display */
+    .retail-pos-section {
+      margin-bottom: 7.5rem;
+    }
+
+    .retail-pos-card {
+      background: #FFFFFF;
+      border: 1px solid var(--gg-border);
+      box-shadow: 0 18px 45px -15px rgba(30, 34, 41, 0.08);
+      padding: 3rem;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .retail-pos-card {
+        padding: 1.75rem;
+      }
+    }
+
+    .pos-heading-group {
+      max-width: 760px;
+    }
+
+    .pos-heading-group h3 {
+      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+      font-weight: 800;
+      color: var(--gg-dark);
+      margin: 0 0 0.75rem 0;
+    }
+
+    .pos-heading-group p {
+      font-size: 1.05rem;
+      color: var(--gg-muted);
+      margin: 0;
+    }
+
+    .pos-stage-box {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: #F7F5F0;
+      border: 1px solid var(--gg-border);
+    }
+
+    .pos-stage-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Collector Unboxing Kit */
+    .unboxing-kit-section {
+      margin-bottom: 6.5rem;
+    }
+
+    .unboxing-master-stage {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #FFFFFF;
+      border: 1px solid var(--gg-border);
+      box-shadow: 0 16px 40px -15px rgba(30, 34, 41, 0.08);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .unboxing-master-stage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Dynamic Bottom Project Reel */
+    .more-projects-section {
+      position: relative;
+      z-index: 2;
+      max-width: 1440px;
+      margin: 5rem auto 2rem;
+      padding: 0 4vw;
+      box-sizing: border-box;
+    }
+
+    .more-projects-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--gg-border);
+      padding-bottom: 1rem;
+    }
+
+    .more-projects-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gg-dark);
+    }
+
+    .more-projects-all {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-orange);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .more-projects-all:hover {
+      color: #d84b16;
+    }
+
+    .more-projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .more-projects-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .more-project-card {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .more-project-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: var(--card-stage-blue);
+      border: 1px solid rgba(44, 62, 80, 0.1);
+      margin-bottom: 0.85rem;
+    }
+
+    .more-project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.75;
+      transition: transform 0.4s ease, opacity 0.3s ease;
+    }
+
+    .more-project-card:hover .more-project-thumb img {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+
+    .more-project-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-orange);
+      margin-bottom: 0.2rem;
+    }
+
+    .more-project-name {
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--gg-dark);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .overlay-brand-stamp {
+      width: 32px;
+      height: auto;
+      filter: brightness(0) invert(1);
+      display: inline-block;
+      vertical-align: middle;
     }
   </style>
 </head>
-<body class="gerber-case-page">
+<body class="gerber-case-page page-subpage">
 
-  <!-- Sticky Morphing Logo Header -->
-  <header class="sticky-brand-nav">
-    <a href="index.html" class="brand-morph-link" aria-label="Devin Sanders Home">
-      <div class="morph-logo-box">
-        <img src="LogoLong.png" alt="Devin Sanders" class="logo-full">
-        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="logo-mark">
+  <!-- =================== START: SITE PRELOADER =================== -->
+  <div id="site-loader">
+    <img src="LogoBlue.png" alt="Loading..." class="loader-mark-pulse">
+  </div>
+  <!-- =================== END: SITE PRELOADER =================== -->
+
+  <!-- =================== START: SLIDE-DOWN INDEX OVERLAY =================== -->
+  <div id="index-overlay" class="index-overlay-panel">
+    <div class="overlay-top-bar">
+      <div style="display: flex; align-items: center; gap: 0.85rem;">
+        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="overlay-brand-stamp">
+        <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.75);">Index</span>
       </div>
-    </a>
-    <div class="nav-right-link">
-      <a href="work.html" class="back-work-link">← All Work</a>
+      <button id="close-overlay-btn" style="background: none; border: none; cursor: pointer; color: white; display: flex; align-items: center;" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="4" x2="20" y2="20"></line>
+          <line x1="20" y1="4" x2="4" y2="20"></line>
+        </svg>
+      </button>
     </div>
-  </header>
+    <nav class="overlay-nav-links">
+      <div class="overlay-link-item">
+        <span>01</span>
+        <a href="index.html" class="overlay-link">Home</a>
+      </div>
+      <div class="overlay-link-item">
+        <span>02</span>
+        <a href="work.html" class="overlay-link">Work</a>
+      </div>
+      <div class="overlay-link-item">
+        <span>03</span>
+        <a href="ui-ux.html" class="overlay-link">UI/UX Work</a>
+      </div>
+      <div class="overlay-link-item">
+        <span>04</span>
+        <a href="about.html" class="overlay-link">About</a>
+      </div>
+      <div class="overlay-link-item">
+        <span>05</span>
+        <button id="overlay-contact-link" class="overlay-link">Contact</button>
+      </div>
+    </nav>
+  </div>
+  <!-- =================== END: SLIDE-DOWN INDEX OVERLAY =================== -->
 
-  <!-- 1. Universal 100vh Full-Bleed Hero -->
+  <!-- =================== START: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
+  <button id="floating-nav-btn" class="floating-peak-btn subpage-permanent-btn" aria-label="Open Navigation">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <path d="M2 14 L6.5 5 L10 10 L16 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+  <!-- =================== END: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
+
+  <!-- =================== START: PERSISTENT BACKGROUND =================== -->
+  <div class="hero-fixed-background" aria-hidden="true">
+    <div class="hero-dot-grid"></div>
+    <div class="hero-topography-plate">
+      <img src="topography.svg" alt="" class="topo-external-asset subpage-topo" aria-hidden="true">
+    </div>
+  </div>
+  <!-- =================== END: PERSISTENT BACKGROUND =================== -->
+
+  <!-- 1. Full-Bleed 100vh Hero Banner -->
   <header class="turnstyle-hero-banner">
-    <img src="GerberGear/GG-Hero.png" alt="Gerber Gear Packaging Forest Shoot" class="turnstyle-hero-bg">
-    <div class="turnstyle-hero-overlay" style="background: linear-gradient(to top, rgba(20,24,30,0.85) 0%, rgba(0,0,0,0.2) 60%);"></div>
-    
+    <img src="GerberGear/GG-Hero.png" alt="Gerber Gear Packaging Forest Shoot" class="turnstyle-hero-bg" fetchpriority="high">
+    <div class="turnstyle-hero-overlay"></div>
+
     <div class="turnstyle-hero-content">
-      <h1 class="turnstyle-headline" style="font-size: clamp(2rem, 4.2vw, 3.75rem); max-width: 750px;">
+      <h1 class="turnstyle-headline">
         Unifying Outdoor Utility Through Modular Structural Packaging
       </h1>
-      
       <div class="turnstyle-caption-block">
         <div class="turnstyle-caption-title">Gerber Gear</div>
         <p class="turnstyle-caption-text">Structural Packaging, Prototyping & Retail Identity · 2026</p>
@@ -68,244 +597,238 @@
   </header>
 
   <!-- Main Narrative & Product System -->
-  <main style="padding-top: 5rem; padding-bottom: 5rem;">
+  <main style="padding-top: 5.5rem; padding-bottom: 5rem;">
 
-    <!-- 2. Universal Overview & Challenge Grid -->
-    <section class="case-content-wrap" style="margin-bottom: 6rem;">
-      <div style="display: grid; grid-template-columns: 1fr; gap: 2.5rem;" class="intro-grid-responsive">
+    <!-- 2. Packaging Narrative Overview (No Spec Bars) -->
+    <section class="case-content-wrap">
+      <div class="gerber-intro-grid">
         <div>
-          <span class="uppercase-label" style="margin-bottom: 0.75rem; color: #D47A22;">The System</span>
-          <p style="font-weight: 400; font-size: 1.15rem; line-height: 1.6; color: #1E2229;">
+          <span class="intro-title-tag">The Structural System</span>
+          <p class="intro-lead-body">
             This project develops a cohesive, physical packaging system for Gerber Gear. Spanning three core field tools—a pocket knife, a camp hatchet, and utility paracord—each package was engineered and laser-cut from raw kraft chipboard to balance retail durability with an authentic, tactile unboxing reveal.
           </p>
         </div>
         <div>
-          <span class="uppercase-label" style="margin-bottom: 0.75rem; color: rgba(30,34,41,0.5);">The Challenge</span>
-          <p style="font-weight: 400; font-size: 0.95rem; line-height: 1.7; color: rgba(30,34,41,0.8);">
-            Outdoor packaging frequently relies on non-recyclable plastic clamshells that obscure tactile quality. The goal was to build a sustainable, interlocking structural system with custom interior retention inserts that secure heavy steel tools while communicating rugged brand heritage through topographic linework.
+          <span class="intro-title-tag">The Sustainable Challenge</span>
+          <p class="intro-sec-body">
+            Outdoor retail packaging frequently relies on non-recyclable plastic clamshells that obscure tactile quality. The goal was to build a sustainable, interlocking structural system with custom interior retention inserts that secure heavy steel tools while communicating rugged brand heritage through topographic linework.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- =========================================================================
-         01. THE POCKET KNIFE (TRAIL EDGE)
-         ========================================================================= -->
-    <div class="case-content-wrap" style="margin-bottom: 6rem;">
-      <div class="case-section-header">
-        <div class="line" style="background-color: #D47A22;"></div>
-        <span class="label" style="color: #1E2229;">01 / 03 · Pocket Knife Package</span>
-      </div>
+    <!-- 3. The Tool Trio (Product Breakdown Units) -->
+    <section class="case-content-wrap packaging-system-flow">
 
-      <!-- Feature Split (Hero Reveal) -->
-      <div class="case-feature-split" style="margin-bottom: 2rem;">
-        <div class="feature-media">
-          <img src="GerberGear/GG-Knife1.jpg" alt="Pocket Knife Drawer Reveal Packaging">
+      <!-- 01. TRAIL EDGE POCKET KNIFE -->
+      <article class="packaging-unit-block">
+        <div class="unit-meta-bar">
+          <h3 class="unit-title">Trail Edge Pocket Knife</h3>
+          <span class="unit-tag">Unit 01 // Drawer Reveal</span>
         </div>
-        <div class="feature-copy">
-          <span class="step-num" style="color: #D47A22;">01 / 03</span>
-          <h3 style="color: #1E2229;">Trail Edge<br>Pocket Knife</h3>
-          <p style="color: rgba(30,34,41,0.75);">
+        <div class="unit-hero-stage">
+          <img src="GerberGear/GG-Knife1.jpg" alt="Pocket Knife Drawer Reveal Packaging" loading="lazy" decoding="async">
+        </div>
+        <div class="unit-caption-row">
+          <p class="unit-caption">
             A two-piece slide drawer construction featuring a custom woven pull tab, allowing effortless access to the knife nestled inside a precision-cut cardboard cavity tray.
           </p>
         </div>
-      </div>
-
-      <!-- 2-Column Detail & Dieline Grid -->
-      <div class="case-grid-2col">
-        <div class="case-img-box">
-          <img src="GerberGear/GG-Knife2.jpg" alt="Laser-Cut Cardboard Cavity Insert Detail">
+        <div class="case-grid-2col">
+          <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+            <img src="GerberGear/GG-Knife2.jpg" alt="Laser-Cut Cardboard Cavity Insert Detail" loading="lazy" decoding="async">
+          </div>
+          <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+            <img src="GerberGear/GG-DielineKnife.png" alt="Pocket Knife Packaging Dieline" loading="lazy" decoding="async">
+          </div>
         </div>
-        <div class="case-img-box">
-          <img src="GerberGear/GG-DielineKnife.png" alt="Pocket Knife Packaging Dieline and Typography">
-        </div>
-      </div>
-    </div>
+      </article>
 
-    <!-- =========================================================================
-         02. THE PACK HATCHET
-         ========================================================================= -->
-    <div class="case-content-wrap" style="margin-bottom: 6rem;">
-      <div class="case-section-header">
-        <div class="line" style="background-color: #D47A22;"></div>
-        <span class="label" style="color: #1E2229;">02 / 03 · Camp Hatchet Package</span>
-      </div>
-
-      <!-- Feature Split (Hero Reveal - Reversed) -->
-      <div class="case-feature-split reverse" style="margin-bottom: 2rem;">
-        <div class="feature-media">
-          <img src="GerberGear/GG-Hatchet1.jpg" alt="Camp Hatchet Package Presentation">
+      <!-- 02. CAMP & PACK HATCHET -->
+      <article class="packaging-unit-block">
+        <div class="unit-meta-bar">
+          <h3 class="unit-title">Camp & Pack Hatchet</h3>
+          <span class="unit-tag">Unit 02 // Blade-Lock Sheath</span>
         </div>
-        <div class="feature-copy">
-          <span class="step-num" style="color: #D47A22;">02 / 03</span>
-          <h3 style="color: #1E2229;">Camp & Pack<br>Hatchet</h3>
-          <p style="color: rgba(30,34,41,0.75);">
+        <div class="unit-hero-stage">
+          <img src="GerberGear/GG-Hatchet1.jpg" alt="Camp Hatchet Package Presentation" loading="lazy" decoding="async">
+        </div>
+        <div class="unit-caption-row">
+          <p class="unit-caption">
             Designed for substantial heft, this package utilizes reinforced dual-ply kraft board and an interlocking head retention sleeve that keeps the blade safely locked during handling.
           </p>
         </div>
-      </div>
-
-      <!-- 2-Column Detail & Structural Grid -->
-      <div class="case-grid-2col">
-        <div class="case-img-box">
-          <img src="GerberGear/GG-Hatchet2.jpg" alt="Hatchet Sheath Locking Detail">
+        <div class="case-grid-2col">
+          <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+            <img src="GerberGear/GG-Hatchet2.jpg" alt="Hatchet Sheath Locking Detail" loading="lazy" decoding="async">
+          </div>
+          <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+            <img src="GerberGear/GG-DielineHatchet.png" alt="Hatchet Packaging Flat Dieline" loading="lazy" decoding="async">
+          </div>
         </div>
-        <div class="case-img-box">
-          <img src="GerberGear/GG-DielineHatchet.png" alt="Hatchet Packaging Flat Dieline">
-        </div>
-      </div>
-    </div>
+      </article>
 
-    <!-- =========================================================================
-         03. UTILITY PARACORD
-         ========================================================================= -->
-    <div class="case-content-wrap" style="margin-bottom: 6rem;">
-      <div class="case-section-header">
-        <div class="line" style="background-color: #D47A22;"></div>
-        <span class="label" style="color: #1E2229;">03 / 03 · Paracord Package</span>
-      </div>
-
-      <!-- Feature Split (Hero Reveal) -->
-      <div class="case-feature-split" style="margin-bottom: 2rem;">
-        <div class="feature-media">
-          <img src="GerberGear/GG-Paracord1.jpg" alt="Utility Paracord Spool Packaging">
+      <!-- 03. HEAVY-DUTY UTILITY PARACORD -->
+      <article class="packaging-unit-block">
+        <div class="unit-meta-bar">
+          <h3 class="unit-title">Heavy-Duty Utility Paracord</h3>
+          <span class="unit-tag">Unit 03 // Spool Sleeve</span>
         </div>
-        <div class="feature-copy">
-          <span class="step-num" style="color: #D47A22;">03 / 03</span>
-          <h3 style="color: #1E2229;">Heavy-Duty<br>Utility Paracord</h3>
-          <p style="color: rgba(30,34,41,0.75);">
+        <div class="unit-hero-stage">
+          <img src="GerberGear/GG-Paracord1.jpg" alt="Utility Paracord Spool Packaging" loading="lazy" decoding="async">
+        </div>
+        <div class="unit-caption-row">
+          <p class="unit-caption">
             A minimal wraparound sleeve locking mechanism engineered for high-density 550 cord spools, providing structural stability while keeping the textured cord accessible to touch.
           </p>
         </div>
-      </div>
+        <div class="case-grid-2col">
+          <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+            <img src="GerberGear/GG-Paracord2.jpg" alt="Paracord Sleeve Texture Detail" loading="lazy" decoding="async">
+          </div>
+          <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+            <img src="GerberGear/GG-DielineParacord.png" alt="Paracord Flat Dieline & Specs" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </article>
 
-      <!-- 2-Column Detail Grid -->
-      <div class="case-grid-2col">
-        <div class="case-img-box">
-          <img src="GerberGear/GG-Paracord2.jpg" alt="Paracord Sleeve Texture Detail">
-        </div>
-        <div class="case-img-box">
-          <img src="GerberGear/GG-DielineParacord.png" alt="Paracord Flat Dieline & Specs">
-        </div>
-      </div>
+    </section>
+
+    <!-- 4. Full-Bleed Environmental Spread (Field Wash) -->
+    <div class="full-bleed-spread">
+      <img src="GerberGear/GG-Packages.jpg" alt="Gerber Packaging in Natural Forest Environment" loading="lazy" decoding="async">
     </div>
 
-    <!-- =========================================================================
-         FULL-BLEED WASH: HATCHET IN THE FIELD
-         ========================================================================= -->
-    <div class="full-bleed-section" style="margin-bottom: 6rem; background-color: #1E2229;">
-      <img src="GerberGear/GG-Packages.jpg" alt="Gerber Hatchet Packaging in Natural Forest Environment">
-    </div>
-    
-    <!-- =========================================================================
-         POINT OF DISPLAY (RETAIL COUNTERTOP ENVIRONMENT)
-         ========================================================================= -->
-    <div class="full-bleed-section" style="margin-bottom: 5rem; background-color: #EFECE6; padding: 4rem 0;">
-      <div class="case-content-wrap">
-        <div class="case-section-header">
-          <div class="line" style="background-color: #D47A22;"></div>
-          <span class="label" style="color: #1E2229;">Retail Environment</span>
-        </div>
-        <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; color: #1E2229; margin-bottom: 1.5rem;">
-          Point of Display Retail Unit
-        </h2>
-        <p style="font-weight: 400; font-size: 1.05rem; line-height: 1.7; color: rgba(30,34,41,0.8); max-width: 800px; margin-bottom: 2.5rem;">
-          The custom point-of-display housing was engineered to stage all three tools within a single compact footprint for outdoor retail counters. The tiered shelving ensures all items remain fully visible while guiding customer exploration.
-        </p>
-        <div class="case-img-box" style="height: auto; min-height: 550px;">
-          <img src="GerberGear/GG-POS.jpg" alt="Point of Sale Display" style="width: 100%; height: auto; object-fit: contain;">
-        </div>
-      </div>
-    </div>
-
-    <!-- =========================================================================
-         THE UNBOXING EXPERIENCE (CONTAINED HERO & 2-COLUMN GRID)
-         ========================================================================= -->
-    <div class="case-content-wrap">
+    <!-- 5. Retail Countertop Point of Display (POS) -->
+    <section class="case-content-wrap retail-pos-section">
       <div class="case-section-header">
-        <div class="line" style="background-color: #D47A22;"></div>
-        <span class="label" style="color: #1E2229;">The Unboxing Experience</span>
+        <div class="line"></div>
+        <span class="label">Retail Merchandising Environment</span>
       </div>
 
-      <!-- 1. Contained Margin-Locked Showcase Image -->
-      <div class="case-img-box" style="width: 100%; margin-bottom: 2rem; box-shadow: 0 8px 30px rgba(0,0,0,0.06);">
-        <img src="GerberGear/GG-Unboxing2.jpg" alt="Gerber Gear Master Box Unboxing Experience" style="width: 100%; height: auto; display: block; border-radius: 6px;">
-      </div>
-
-      <!-- 2. Supporting 2-Column Spread: Note & 1:1 Square GIF -->
-      <div class="case-grid-2col" style="margin-bottom: 5rem;">
-        <div class="case-img-box">
-          <img src="GerberGear/GG-Unboxing1.png" alt="Custom Note From The Creator Field Insert Card">
+      <div class="retail-pos-card">
+        <div class="pos-heading-group">
+          <h3>Point of Display Retail Unit</h3>
+          <p>
+            The custom point-of-display housing was engineered to stage all three tools within a single compact footprint for outdoor retail counters. Tiered shelving ensures every item remains fully visible while guiding customer tactile exploration.
+          </p>
         </div>
-        <div class="case-img-box">
-          <img src="GerberGear/Unboxing.gif" alt="Master Collector Box with All Three Packages Inside">
+        <div class="pos-stage-box">
+          <img src="GerberGear/GG-POS.jpg" alt="Point of Sale Display Unit" loading="lazy" decoding="async">
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Project Pagination Navigation -->
-    <nav class="project-pagination-nav" aria-label="Project Pagination">
-      <!-- Previous Project: Analog Reboot -->
-      <a href="analog-reboot.html" class="pagination-card prev-card">
-        <div class="pagination-arrow-box">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display: block; overflow: visible;">
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-        </div>
-        <div class="pagination-thumb">
-          <img src="AnalogReboot/AR-Hero.png" alt="Analog Reboot Thumbnail">
-        </div>
-        <div class="pagination-meta">
-          <span class="pagination-label">Previous Project</span>
-          <span class="pagination-title">Analog Reboot</span>
-        </div>
-      </a>
+    <!-- 6. Master Collector Unboxing Kit -->
+    <section class="case-content-wrap unboxing-kit-section">
+      <div class="case-section-header">
+        <div class="line"></div>
+        <span class="label">The Collector Unboxing Experience</span>
+      </div>
 
-      <!-- Next Project: Motion Reel -->
-      <a href="motion-reel.html" class="pagination-card next-card">
-        <div class="pagination-meta text-right">
-          <span class="pagination-label">Next Project</span>
-          <span class="pagination-title">Motion Reel</span>
+      <div class="unboxing-master-stage">
+        <img src="GerberGear/GG-Unboxing2.jpg" alt="Gerber Gear Master Box Unboxing Experience" loading="lazy" decoding="async">
+      </div>
+
+      <div class="case-grid-2col">
+        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+          <img src="GerberGear/GG-Unboxing1.png" alt="Field Insert Creator Note Card" loading="lazy" decoding="async">
         </div>
-        <div class="pagination-thumb">
-          <img src="MotionReel/Motion-Hero.png" alt="Motion Reel Thumbnail">
+        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
+          <img src="GerberGear/Unboxing.gif" alt="Master Collector Box Unboxing GIF" loading="lazy">
         </div>
-        <div class="pagination-arrow-box">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display: block; overflow: visible;">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </div>
-      </a>
-    </nav>
+      </div>
+    </section>
+
+    <!-- 7. Dynamic Bottom Project Reel (Option B: Automatically pulls Motion Reel, Jared, Rustic, Olly) -->
+    <section class="more-projects-section">
+      <div class="more-projects-header">
+        <span class="more-projects-title">More Selected Projects</span>
+        <a href="work.html" class="more-projects-all">View All Work →</a>
+      </div>
+      <div id="more-projects-grid" class="more-projects-grid"></div>
+    </section>
 
   </main>
 
-  <!-- Global Dark Footer -->
+  <!-- =================== START: GLOBAL EDITORIAL FOOTER =================== -->
   <footer id="contact" class="site-footer">
-    <div class="footer-max-width">
-      <span class="uppercase-label">Get in Touch</span>
-      <h2 class="footer-heading">Let's build<br>something meaningful.</h2>
+    <div class="footer-inner-shell">
 
-      <div>
-        <a href="mailto:devin.sanders02@gmail.com" class="footer-link">devin.sanders02@gmail.com</a>
+      <div class="footer-tier-hero">
+        <h2 class="footer-hero-headline">Let's build something meaningful.</h2>
+        <a href="mailto:devin.sanders02@gmail.com" class="footer-email-link">
+          <span>devin.sanders02@gmail.com</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
       </div>
 
-      <hr class="footer-divider">
+      <hr class="footer-hairline">
 
-      <div class="footer-sub-row">
-        <div style="display: flex; gap: 1.5rem;">
-          <a href="work.html" class="footer-link" style="color: rgba(255,255,255,0.5);">Work</a>
-          <a href="about.html" class="footer-link" style="color: rgba(255,255,255,0.5);">About</a>
+      <div class="footer-directory-grid">
+        <div>
+          <span class="footer-col-header">01 /<span>Work</span></span>
+          <ul class="footer-nav-list">
+            <li><a href="work.html" class="footer-link-animated">Selected Work</a></li>
+            <li><a href="ui-ux.html" class="footer-link-animated">UI/UX & Systems</a></li>
+            <li><a href="about.html" class="footer-link-animated">About & Studio</a></li>
+          </ul>
         </div>
-        <p style="font-weight: 300; font-size: 0.75rem; color: rgba(255,255,255,0.3);">
-          © <span id="copyright-year">2026</span> Devin Sanders. Crafted with intention.
-        </p>
+
+        <div>
+          <span class="footer-col-header">02 /<span>Network</span></span>
+          <ul class="footer-nav-list">
+            <li>
+              <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer">
+                <span>LinkedIn</span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <span class="footer-col-header">03 /<span>Discipline</span></span>
+          <ul class="footer-discipline-list">
+            <li>Brand architecture & identity</li>
+            <li>Physical & digital commerce</li>
+          </ul>
+        </div>
+
+        <div>
+          <span class="footer-col-header">04 /<span>Top</span></span>
+          <button id="footer-scroll-top-btn" class="footer-scroll-top-btn">
+            <span>Return to Top</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </button>
+        </div>
       </div>
+
+      <div class="footer-colophon-row">
+        <div>© <span id="copyright-year">2026</span> Devin Sanders. All Rights Reserved.</div>
+        <div>Barlow · Visual Brand Architecture</div>
+      </div>
+
     </div>
   </footer>
+  <!-- =================== END: GLOBAL EDITORIAL FOOTER =================== -->
 
+  <!-- Custom Survey Reticle Cursor -->
+  <div id="survey-cursor" class="survey-cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+  </div>
+
+  <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
