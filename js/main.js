@@ -186,24 +186,40 @@ document.addEventListener('DOMContentLoaded', () => {
       '[role="button"]'
     ].join(', ');
 
+    const darkSurfaces = '.site-footer, .full-bleed-spread, .turnstyle-hero-banner, .stage-canvas-box, .duo-card, .cinema-player-stage, .case-dark-section, body.wandrd-case-page, body.motion-case-page';
+    const orangeSurfaces = '.floating-peak-btn, .filter-toggle-btn, .view-all-btn, .stage-action-btn, .ux-btn-primary, .dossier-resume-btn, .about-resume-btn';
+
     document.addEventListener('mouseover', (e) => {
       const target = e.target.closest(interactiveTargets);
+      const isDark = e.target.closest(darkSurfaces);
+      const isOrange = e.target.closest(orangeSurfaces);
+
       if (target) {
         cursor.classList.add('cursor-hover');
-        const compBg = window.getComputedStyle(target).backgroundColor;
-        const isOrange = compBg.includes('241, 91, 34') || target.classList.contains('view-all-btn') || target.classList.contains('stage-action-btn');
-        if (!isOrange) {
-          cursor.classList.add('cursor-hover-dark');
-        } else {
-          cursor.classList.remove('cursor-hover-dark');
-        }
+      }
+
+      if (isDark) {
+        cursor.classList.add('cursor-on-dark');
+      } else {
+        cursor.classList.remove('cursor-on-dark');
+      }
+
+      if (isOrange) {
+        cursor.classList.add('cursor-on-orange');
+      } else {
+        cursor.classList.remove('cursor-on-orange');
       }
     });
 
     document.addEventListener('mouseout', (e) => {
       if (e.target.closest(interactiveTargets)) {
         cursor.classList.remove('cursor-hover');
-        cursor.classList.remove('cursor-hover-dark');
+      }
+      if (!e.relatedTarget || !e.relatedTarget.closest(darkSurfaces)) {
+        cursor.classList.remove('cursor-on-dark');
+      }
+      if (!e.relatedTarget || !e.relatedTarget.closest(orangeSurfaces)) {
+        cursor.classList.remove('cursor-on-orange');
       }
     });
 
