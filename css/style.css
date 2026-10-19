@@ -197,7 +197,7 @@ header.subpage-navbar {
   display: flex;
   justify-content: flex-start;
   width: 100%;
-  padding-top: 5rem;
+  padding-top: 7.25rem !important; /* Pushes Denver, CO down gracefully */
   opacity: 1;
 }
 
@@ -336,7 +336,7 @@ header.subpage-navbar {
 @media (hover: hover) and (pointer: fine) {
   html, body, 
   a, button, input, textarea, select, 
-  [role="button"], [onclick], .stage-canvas-box, .stage-bar-btn, .filter-btn, .view-all-btn {
+  [role="button"], [onclick], .stage-canvas-box, .stage-bar-btn, .filter-btn, .view-all-btn, .duo-card {
     cursor: none !important;
   }
 
@@ -345,10 +345,12 @@ header.subpage-navbar {
     top: 0;
     left: 0;
     pointer-events: none;
-    z-index: 999999;
+    z-index: 9999999;
     will-change: transform;
+    transition: opacity 0.2s ease;
   }
 
+  /* Default on light page canvas: crisp dark navy dot */
   .cursor-dot {
     position: absolute;
     top: -3px;
@@ -357,7 +359,7 @@ header.subpage-navbar {
     height: 6px;
     border-radius: 50%;
     background-color: var(--text-dark, #2C3E50);
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   }
 
   .cursor-ring {
@@ -368,13 +370,14 @@ header.subpage-navbar {
     height: 22px;
     border-radius: 50%;
     border: 1px solid rgba(44, 62, 80, 0.45);
-    transition: width 0.2s ease, height 0.2s ease, top 0.2s ease, left 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+    transition: width 0.15s ease, height 0.15s ease, top 0.15s ease, left 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
   }
 
+  /* Universal Hover expansion */
   .survey-cursor.cursor-hover .cursor-dot {
     transform: scale(0.65);
-    background-color: #FFFFFF;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    background-color: #FFFFFF !important;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
   }
 
   .survey-cursor.cursor-hover .cursor-ring {
@@ -382,20 +385,23 @@ header.subpage-navbar {
     left: -15px;
     width: 30px;
     height: 30px;
-    border-color: #FFFFFF;
+    border-color: #FFFFFF !important;
     border-width: 1.5px;
     opacity: 1;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Dark Background / Footer / Orange Target Contrast Lock */
+  .survey-cursor.cursor-on-dark .cursor-dot,
+  .survey-cursor.cursor-on-orange .cursor-dot {
+    background-color: #FFFFFF !important;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  }
+
+  .survey-cursor.cursor-on-dark .cursor-ring,
+  .survey-cursor.cursor-on-orange .cursor-ring {
+    border-color: rgba(255, 255, 255, 0.85) !important;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
-  }
-
-  .survey-cursor.cursor-hover-dark .cursor-dot {
-    background-color: var(--accent-orange, #F15B22);
-    box-shadow: none;
-  }
-
-  .survey-cursor.cursor-hover-dark .cursor-ring {
-    border-color: var(--accent-orange, #F15B22);
-    box-shadow: none;
   }
 }
 /* =================== END: SURVEY RETICLE CURSOR =================== */
@@ -1022,7 +1028,7 @@ header.subpage-navbar {
 .floating-peak-btn {
   position: fixed;
   top: 1.5rem;
-  right: 1.5rem;
+  left: 1.5rem;
   z-index: 99;
   width: 44px;
   height: 44px;
