@@ -23,10 +23,10 @@
     .home-hero { position: relative; min-height: 100vh; min-height: 100svh; display: grid; grid-template-rows: auto 1fr auto; padding: calc(var(--nav-h) + 3vh) var(--gutter) clamp(28px, 5vh, 56px); overflow: hidden; }
     .home-hero__meta { position: relative; display: grid; gap: 6px; align-content: start; }
     .home-hero__meta .loc { font-family: var(--f-cond); font-weight: 500; font-size: clamp(22px, 2vw, 30px); letter-spacing: .08em; text-transform: uppercase; }
-    .home-hero__name { position: relative; align-self: end; margin: 0 0 clamp(18px, 3vh, 32px); color: var(--ink); font-size: clamp(84px, 15.5vw, 300px); }
+    .home-hero__name { position: relative; align-self: end; margin: 0 0 clamp(16px, 2.6vh, 28px); color: var(--ink); font-size: clamp(64px, 11.2vw, 210px); line-height: .8; }
     .home-hero__name span { display: block; }
     .home-hero__foot { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 48px; align-items: end; }
-    .home-hero__foot .lede { max-width: 34ch; }
+    .home-hero__foot .lede { max-width: 36ch; line-height: 1.3; }
     .home-hero__cue { display: flex; gap: 12px; align-items: center; }
     .home-hero__cue i { width: 1px; height: 48px; background: var(--ink); transform-origin: top; animation: cue 2.4s var(--ease) infinite; }
     @keyframes cue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
@@ -52,17 +52,55 @@
     .more { padding: clamp(90px, 12vw, 170px) 0 clamp(60px, 8vw, 110px); }
     .more__head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 24px; margin-bottom: clamp(28px, 4vw, 56px); }
 
+    /* Chapters 02-06: each one slides up over the last, image held still inside it (a wipe). */
+    .chap { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; color: #fff; background: var(--night); --p: 1; --cover: 0; }
+    .js .chap { --p: 0; }
+    .chap__media { position: absolute; inset: 0; transform: translate3d(0, calc((1 - var(--p)) * -42vh), 0); }
+    .chap__media img, .chap__media .slot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .chap__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 14, 20, 0) 35%, rgba(10, 14, 20, .74) 100%); }
+    .chap::before { content: ''; position: absolute; inset: 0; z-index: 4; background: #000; opacity: calc(var(--cover) * .55); pointer-events: none; }
+    .chap__over { position: absolute; left: var(--gutter); right: var(--gutter); top: calc(var(--nav-h) + 8px); display: flex; justify-content: space-between; z-index: 2; }
+    .chap__over .label { color: rgba(255, 255, 255, .72); }
+    .chap__title { position: absolute; left: var(--gutter); right: var(--gutter); bottom: clamp(28px, 6vh, 64px); z-index: 2; }
+    .chap .stage__info { opacity: 1; transform: none; }
+    .chap .slot.is-empty { justify-content: center; align-items: center; text-align: center; color: #E9EDF2; background: repeating-linear-gradient(135deg, transparent 0 10px, rgba(255, 255, 255, .05) 10px 11px), #1B2530; outline: 0; }
+    /* Titles sit on one line and are sized from their own length, so long names never overflow. */
+    @media (prefers-reduced-motion: reduce) { .chap__media { transform: none; } .chap::before { display: none; } }
+
+    .rail { position: fixed; right: var(--gutter); top: 50%; z-index: 60; transform: translateY(-50%); display: grid; gap: 4px; opacity: 0; visibility: hidden; transition: opacity var(--t-med) var(--ease), visibility 0s linear var(--t-med); color: #fff; mix-blend-mode: difference; }
+    .rail.is-on { opacity: 1; visibility: visible; transition: opacity var(--t-med) var(--ease); }
+    .rail a { display: flex; align-items: center; justify-content: flex-end; gap: 12px; padding: 6px 0; font-size: 12px; }
+    .rail b { font-family: var(--f-label); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; opacity: 0; transform: translateX(6px); transition: opacity var(--t-fast) linear, transform var(--t-fast) var(--ease); }
+    .rail a:hover b, .rail a.is-active b { opacity: 1; transform: none; }
+    .rail .num { opacity: .55; transition: opacity var(--t-fast) linear; }
+    .rail a.is-active .num { opacity: 1; }
+    .rail a::after { content: ''; width: 18px; height: 1px; background: currentColor; opacity: .5; transition: width var(--t-med) var(--ease), opacity var(--t-fast) linear; }
+    .rail a.is-active::after { width: 34px; opacity: 1; }
+    @media (max-width: 760px) { .rail { display: none; } }
+
     .aside { position: relative; padding: clamp(90px, 12vw, 180px) 0; background: var(--ink); color: #EEF1F4; overflow: hidden; }
-    .aside blockquote { margin: 0; font-family: var(--f-sans); font-weight: 500; font-size: clamp(28px, 3.6vw, 60px); line-height: 1.12; letter-spacing: -.015em; max-width: 22ch; }
+    .aside .wrap { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 110px); align-items: center; }
+    .aside blockquote { margin: 22px 0 0; font-family: var(--f-sans); font-weight: 500; font-size: clamp(28px, 3.4vw, 56px); line-height: 1.12; letter-spacing: -.015em; max-width: 22ch; }
+    .aside blockquote::before { content: '“'; display: block; font-family: var(--f-cond); font-weight: 700; font-size: 1.9em; line-height: .6; color: var(--accent); margin-bottom: .1em; }
     .aside .label { color: rgba(238, 241, 244, .6); }
     .aside__foot { margin-top: clamp(36px, 5vw, 64px); display: flex; flex-wrap: wrap; gap: 18px 40px; align-items: center; }
+    .aside__mark { position: relative; justify-self: center; width: min(100%, 300px); }
+    .aside__mark svg { width: 100%; height: auto; overflow: visible; }
+    .aside__mark path { fill: none; stroke: var(--accent); stroke-width: 2.6; }
+    @media (prefers-reduced-motion: no-preference) {
+      .js .aside__mark path { stroke-dasharray: 1 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2600ms var(--ease-in-out) 200ms; }
+      .js .aside__mark.is-in path { stroke-dashoffset: 0; }
+    }
+    .now { list-style: none; margin: clamp(36px, 4vw, 56px) 0 0; padding: 0; border-top: 1px solid rgba(255, 255, 255, .16); }
+    .now li { display: grid; grid-template-columns: 90px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, .16); font-size: clamp(16px, 1.15vw, 19px); }
+    @media (max-width: 860px) { .aside .wrap { grid-template-columns: 1fr; } .aside__mark { width: 160px; justify-self: start; order: -1; } }
   </style>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
   <header class="nav" data-tone="light">
-    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><span class="nav__name">Devin Sanders</span></a>
+    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="nav__name">Devin Sanders</span></a>
     <nav aria-label="Main">
       <ul class="nav__links">
         <li><a href="work.html"><span class="idx">01</span><span class="txt">Work</span></a></li>
@@ -81,15 +119,15 @@
 
       <div class="home-hero__meta">
         <span class="loc">Denver, CO</span>
-        <span class="label" data-scramble>39.7392° N · 104.9903° W</span>
-        <span class="label label--accent">Graphic designer — brand · packaging · e-commerce</span>
+        <span class="label coord" data-scramble title="Summit of Mount Bierstadt, 14,060 ft">39.5826° N · 105.6688° W</span>
+        <span class="label label--accent">Graphic designer · information design, e-commerce, identity</span>
       </div>
 
       <h1 class="home-hero__name display display--xl"><span>Devin</span><span>Sanders</span></h1>
 
       <div class="home-hero__foot">
         <!-- DRAFT COPY: rewrite in your own words. Built from your About page. -->
-        <p class="lede">I design brands, packaging and Amazon storefronts. My favorite part is watching a blank page turn into a whole system that actually works.</p>
+        <p class="lede">I design infographics, Amazon storefronts and brand identities. My favorite part is watching a blank page turn into a whole system that actually works.</p>
         <a class="home-hero__cue label" href="#work"><i aria-hidden="true"></i>Selected work</a>
       </div>
     </section>
@@ -119,7 +157,7 @@
         <div class="stage__ticks" aria-hidden="true"></div>
         <div class="stage__over" aria-hidden="true"><span class="label">01 / 06</span><span class="label">Client work · RIPPL</span></div>
         <div class="stage__title">
-          <h2 class="display display--xl" id="ch1">WANDRD</h2>
+          <h2 class="display fit" id="ch1" style="--chars:6">WANDRD</h2>
           <div class="stage__info">
             <span class="label">Amazon Brand Store · Infographics · 2025</span>
             <p>The live Amazon Brand Store, plus the product infographics and graphics around it.</p>
@@ -130,90 +168,86 @@
       </div>
     </section>
 
-    <section class="stage" id="ch-kleenbore" data-tone="dark" aria-labelledby="ch2">
-      <div class="stage__sticky">
-        <div class="stage__frame" style="view-transition-name: hero-kleenbore"><div class="slot" data-asset="kb-cover"></div></div>
-        <div class="stage__ticks" aria-hidden="true"></div>
-        <div class="stage__over" aria-hidden="true"><span class="label">02 / 06</span><span class="label">Client work · RIPPL</span></div>
-        <div class="stage__title">
-          <h2 class="display display--xl" id="ch2">KleenBore</h2>
-          <div class="stage__info">
+    <div class="chapters">
+    <section class="chap" id="ch-kleenbore" data-tone="dark" aria-labelledby="ch2">
+      <div class="chap__media" style="view-transition-name: hero-kleenbore"><div class="slot" data-asset="kb-cover"></div></div>
+      <div class="chap__over" aria-hidden="true"><span class="label">02 / 06</span><span class="label">Client work · RIPPL</span></div>
+      <div class="chap__title">
+        <h2 class="display fit" id="ch2" style="--chars:9">KleenBore</h2>
+        <div class="stage__info">
             <span class="label">Amazon infographic system · 2026</span>
             <p>Listing graphics for a firearm-cleaning brand, built from one template system and scaled across the catalog.</p>
             <span class="link-arrow">View project</span>
           </div>
-        </div>
-        <a class="stage__link" href="kleenbore.html"><span class="sr-only">View the KleenBore project</span></a>
       </div>
+      <a class="stage__link" href="kleenbore.html"><span class="sr-only">View the KleenBore project</span></a>
     </section>
 
-    <section class="stage" id="ch-gerber" data-tone="dark" aria-labelledby="ch3">
-      <div class="stage__sticky">
-        <div class="stage__frame" style="view-transition-name: hero-gerber"><img src="GerberGear/GG-Hero.webp" alt="Gerber kraft packaging on a forest floor" loading="lazy" decoding="async"></div>
-        <div class="stage__ticks" aria-hidden="true"></div>
-        <div class="stage__over" aria-hidden="true"><span class="label">03 / 06</span><span class="label">Packaging</span></div>
-        <div class="stage__title">
-          <h2 class="display display--xl" id="ch3">Gerber Gear</h2>
-          <div class="stage__info">
+    <section class="chap" id="ch-gerber" data-tone="dark" aria-labelledby="ch3">
+      <div class="chap__media" style="view-transition-name: hero-gerber"><img src="GerberGear/GG-Hero.webp" alt="Gerber kraft packaging on a forest floor" loading="lazy" decoding="async"></div>
+      <div class="chap__over" aria-hidden="true"><span class="label">03 / 06</span><span class="label">Packaging</span></div>
+      <div class="chap__title">
+        <h2 class="display fit" id="ch3" style="--chars:11">Gerber Gear</h2>
+        <div class="stage__info">
             <span class="label">Structural packaging · 2026</span>
             <p>Laser-cut kraft packaging for three field tools: a pocket knife, a hatchet and paracord. No plastic clamshells.</p>
             <span class="link-arrow">View project</span>
           </div>
-        </div>
-        <a class="stage__link" href="gerber-gear.html"><span class="sr-only">View the Gerber Gear project</span></a>
       </div>
+      <a class="stage__link" href="gerber-gear.html"><span class="sr-only">View the Gerber Gear project</span></a>
     </section>
 
-    <section class="stage" id="ch-rexburg" data-tone="dark" aria-labelledby="ch4">
-      <div class="stage__sticky">
-        <div class="stage__frame" style="view-transition-name: hero-rexburg"><img src="RexburgRapids-Hero.webp" alt="A rider coming off a yellow and blue water slide" loading="lazy" decoding="async"></div>
-        <div class="stage__ticks" aria-hidden="true"></div>
-        <div class="stage__over" aria-hidden="true"><span class="label">04 / 06</span><span class="label">Identity</span></div>
-        <div class="stage__title">
-          <h2 class="display display--xl" id="ch4">Rexburg Rapids</h2>
-          <div class="stage__info">
+    <section class="chap" id="ch-rexburg" data-tone="dark" aria-labelledby="ch4">
+      <div class="chap__media" style="view-transition-name: hero-rexburg"><img src="RexburgRapids-Hero.webp" alt="A rider coming off a yellow and blue water slide" loading="lazy" decoding="async"></div>
+      <div class="chap__over" aria-hidden="true"><span class="label">04 / 06</span><span class="label">Identity</span></div>
+      <div class="chap__title">
+        <h2 class="display fit" id="ch4" style="--chars:14">Rexburg Rapids</h2>
+        <div class="stage__info">
             <span class="label">Brand identity · 2026</span>
             <p>A full identity for a summer waterpark, from the R mark to the wristbands, signs and billboards.</p>
             <span class="link-arrow">View project</span>
           </div>
-        </div>
-        <a class="stage__link" href="rexburg-rapids.html"><span class="sr-only">View the Rexburg Rapids project</span></a>
       </div>
+      <a class="stage__link" href="rexburg-rapids.html"><span class="sr-only">View the Rexburg Rapids project</span></a>
     </section>
 
-    <section class="stage" id="ch-aboutface" data-tone="dark" aria-labelledby="ch5">
-      <div class="stage__sticky">
-        <div class="stage__frame" style="view-transition-name: hero-aboutface"><img src="AboutFace/AF-Hero.webp" alt="AboutFace journal covers on a blue surface" loading="lazy" decoding="async"></div>
-        <div class="stage__ticks" aria-hidden="true"></div>
-        <div class="stage__over" aria-hidden="true"><span class="label">05 / 06</span><span class="label">Typography</span></div>
-        <div class="stage__title">
-          <h2 class="display display--xl" id="ch5">AboutFace</h2>
-          <div class="stage__info">
+    <section class="chap" id="ch-aboutface" data-tone="dark" aria-labelledby="ch5">
+      <div class="chap__media" style="view-transition-name: hero-aboutface"><img src="AboutFace/AF-Hero2.webp" alt="AboutFace journal covers on a blue surface" loading="lazy" decoding="async"></div>
+      <div class="chap__over" aria-hidden="true"><span class="label">05 / 06</span><span class="label">Typography</span></div>
+      <div class="chap__title">
+        <h2 class="display fit" id="ch5" style="--chars:9">AboutFace</h2>
+        <div class="stage__info">
             <span class="label">Editorial typography · 2026</span>
             <p>Five journal covers. Each one unlocks one more typographic variable, from a single size and weight to full freedom.</p>
             <span class="link-arrow">View project</span>
           </div>
-        </div>
-        <a class="stage__link" href="about-face.html"><span class="sr-only">View the AboutFace project</span></a>
       </div>
+      <a class="stage__link" href="about-face.html"><span class="sr-only">View the AboutFace project</span></a>
     </section>
 
-    <section class="stage" id="ch-motion" data-tone="dark" aria-labelledby="ch6">
-      <div class="stage__sticky">
-        <div class="stage__frame" style="view-transition-name: hero-motion"><img src="MotionReel/Motion-Hero.webp" alt="Glowing kinetic type frame from the motion reel" loading="lazy" decoding="async"></div>
-        <div class="stage__ticks" aria-hidden="true"></div>
-        <div class="stage__over" aria-hidden="true"><span class="label">06 / 06</span><span class="label">Motion</span></div>
-        <div class="stage__title">
-          <h2 class="display display--xl" id="ch6">Motion Reel</h2>
-          <div class="stage__info">
+    <section class="chap" id="ch-motion" data-tone="dark" aria-labelledby="ch6">
+      <div class="chap__media" style="view-transition-name: hero-motion"><img src="MotionReel/Motion-Hero.webp" alt="Glowing kinetic type frame from the motion reel" loading="lazy" decoding="async"></div>
+      <div class="chap__over" aria-hidden="true"><span class="label">06 / 06</span><span class="label">Motion</span></div>
+      <div class="chap__title">
+        <h2 class="display fit" id="ch6" style="--chars:11">Motion Reel</h2>
+        <div class="stage__info">
             <span class="label">Motion design · 2026</span>
             <p>Kinetic type and logo animation, made in After Effects.</p>
             <span class="link-arrow">Watch the reel</span>
           </div>
-        </div>
-        <a class="stage__link" href="motion-reel.html"><span class="sr-only">Watch the motion reel</span></a>
       </div>
+      <a class="stage__link" href="motion-reel.html"><span class="sr-only">Watch the motion reel</span></a>
     </section>
+    </div>
+
+    <nav class="rail" aria-label="Chapters">
+      <a href="#ch-wandrd"><b>WANDRD</b><span class="num">01</span></a>
+      <a href="#ch-kleenbore"><b>KleenBore</b><span class="num">02</span></a>
+      <a href="#ch-gerber"><b>Gerber Gear</b><span class="num">03</span></a>
+      <a href="#ch-rexburg"><b>Rexburg Rapids</b><span class="num">04</span></a>
+      <a href="#ch-aboutface"><b>AboutFace</b><span class="num">05</span></a>
+      <a href="#ch-motion"><b>Motion Reel</b><span class="num">06</span></a>
+    </nav>
 
     <!-- 03 MORE WORK: typographic index ------------------------------------>
     <section class="more" data-tone="light" aria-labelledby="more-title">
@@ -223,25 +257,33 @@
           <a class="link-arrow label" href="work.html">Full index</a>
         </div>
         <ul class="index">
-          <li><a href="olly-packaging.html" data-peek="Olly/Olly-Hero.webp"><span class="i-num label">07</span><span class="i-name">Olly</span><span class="i-disc">Packaging extension</span><span class="i-year label">2026</span><img class="i-thumb" src="Olly/Olly-Hero.webp" alt="" loading="lazy"></a></li>
-          <li><a href="identity-system.html" data-peek="Jared/IS-Hero.webp"><span class="i-num label">08</span><span class="i-name">Jared Christensen</span><span class="i-disc">Personal identity &amp; stationery</span><span class="i-year label">2026</span><img class="i-thumb" src="Jared/IS-Hero.webp" alt="" loading="lazy"></a></li>
-          <li><a href="analog-reboot.html" data-peek="AnalogReboot/AR-Hero.webp"><span class="i-num label">09</span><span class="i-name">Analog Reboot</span><span class="i-disc">Pattern design &amp; apparel</span><span class="i-year label">2026</span><img class="i-thumb" src="AnalogReboot/AR-Hero.webp" alt="" loading="lazy"></a></li>
-          <li><a href="kindred-roots.html" data-peek="KindredRoots/KindredRoots-Hero.webp"><span class="i-num label">10</span><span class="i-name">Kindred Roots</span><span class="i-disc">Magazine layout</span><span class="i-year label">2026</span><img class="i-thumb" src="KindredRoots/KindredRoots-Hero.webp" alt="" loading="lazy"></a></li>
-          <li><a href="ui-ux.html" data-peek="UI-UX/iOS Thumbnail.webp"><span class="i-num label">11</span><span class="i-name">Interface concepts</span><span class="i-disc">UI / UX</span><span class="i-year label">2026</span><img class="i-thumb" src="UI-UX/iOS Thumbnail.webp" alt="" loading="lazy"></a></li>
+          <li><a href="olly-packaging.html"><img class="i-bg" src="Olly/Olly-Hero.webp" alt="" loading="lazy" decoding="async"><span class="i-num label">07</span><span class="i-name">Olly</span><span class="i-disc">Packaging extension</span><span class="i-year label">2026</span><img class="i-thumb" src="Olly/Olly-Hero.webp" alt="" loading="lazy"></a></li>
+          <li><a href="identity-system.html"><img class="i-bg" src="Jared/IS-Hero.webp" alt="" loading="lazy" decoding="async"><span class="i-num label">08</span><span class="i-name">Jared Christensen</span><span class="i-disc">Personal identity &amp; stationery</span><span class="i-year label">2026</span><img class="i-thumb" src="Jared/IS-Hero.webp" alt="" loading="lazy"></a></li>
+          <li><a href="analog-reboot.html"><img class="i-bg" src="AnalogReboot/AR-Hero.webp" alt="" loading="lazy" decoding="async"><span class="i-num label">09</span><span class="i-name">Analog Reboot</span><span class="i-disc">Pattern design &amp; apparel</span><span class="i-year label">2026</span><img class="i-thumb" src="AnalogReboot/AR-Hero.webp" alt="" loading="lazy"></a></li>
+          <li><a href="kindred-roots.html"><img class="i-bg" src="KindredRoots/KindredRoots-Hero.webp" alt="" loading="lazy" decoding="async"><span class="i-num label">10</span><span class="i-name">Kindred Roots</span><span class="i-disc">Magazine layout</span><span class="i-year label">2026</span><img class="i-thumb" src="KindredRoots/KindredRoots-Hero.webp" alt="" loading="lazy"></a></li>
         </ul>
       </div>
     </section>
-    <div class="peek" aria-hidden="true"><img alt=""></div>
 
-    <!-- 04 A LINE FROM THE ABOUT PAGE -------------------------------------->
+    <!-- 04 ABOUT BAND ---------------------------------------------------->
     <section class="aside" data-tone="dark" aria-label="About">
       <div class="wrap">
-        <span class="label">About</span>
-        <!-- Your own line, from the About page. -->
-        <blockquote class="reveal" style="margin-top: 22px;">I am definitely that person who stops in grocery store aisles just to pick up a box and admire the packaging.</blockquote>
-        <div class="aside__foot reveal" style="--d: 120ms">
-          <a class="btn" href="about.html">More about me</a>
-          <a class="link-arrow u-line" href="Resume.pdf">Résumé (PDF)</a>
+        <div>
+          <span class="label">About</span>
+          <!-- Your own line, from the About page. -->
+          <blockquote class="reveal">I am definitely that person who stops in grocery store aisles just to pick up a box and admire the packaging.</blockquote>
+          <ul class="now reveal" style="--d: 100ms">
+            <li><span class="label">Now</span><span>Designer at RIPPL. I started there in Rexburg and now work remotely.</span></li>
+            <li><span class="label">Based</span><span>Denver, Colorado</span></li>
+            <li><span class="label">Into</span><span>Information design: taking a lot of information and making it quick to read.</span></li>
+          </ul>
+          <div class="aside__foot reveal" style="--d: 160ms">
+            <a class="btn" href="about.html">More about me</a>
+            <a class="link-arrow u-line" href="Resume.pdf">Résumé (PDF)</a>
+          </div>
+        </div>
+        <div class="aside__mark reveal" aria-hidden="true">
+          <svg viewBox="176 80 236 428"><path pathLength="1"d="M403.77,303.53c-4.05-7.61-11.58-12.81-20.14-13.89l-169.32-21.4,43.26-85.82,26.47,21.91c2.87,2.37,6.38,3.56,9.88,3.56s7.02-1.19,9.88-3.56l26.47-21.91,39.59,78.54c3.85,7.64,13.18,10.72,20.82,6.86,7.64-3.85,10.72-13.17,6.86-20.82l-69.72-138.3c-6.49-12.88-19.48-20.88-33.91-20.88s-27.41,8-33.91,20.88l-76.21,151.16c-3.88,7.7-3.78,16.85.27,24.46,4.05,7.61,11.58,12.81,20.14,13.89l169.32,21.4-41.96,83.22-27.78-22.99c-5.73-4.75-14.03-4.75-19.77,0l-27.78,22.99-39.49-78.32c-3.85-7.64-13.17-10.72-20.82-6.86-7.64,3.85-10.72,13.17-6.86,20.82l70.92,140.69c6.49,12.88,19.48,20.88,33.91,20.88s27.41-8,33.91-20.88l76.21-151.17c3.88-7.7,3.78-16.84-.27-24.46ZM293.93,118.83c1.6,0,4.54.5,6.22,3.83l15.82,31.38-22.04,18.24-22.04-18.24,15.82-31.38c1.68-3.33,4.62-3.83,6.22-3.83ZM293.93,469.03c-1.6,0-4.54-.5-6.22-3.83l-17.13-33.97,23.35-19.33,23.35,19.33-17.13,33.97c-1.68,3.33-4.62,3.83-6.22,3.83Z"/></svg>
         </div>
       </div>
     </section>
@@ -257,7 +299,8 @@
 
   <footer class="footer">
     <div class="wrap">
-      <span class="label">© <span data-year>2026</span> Devin Sanders · Denver, Colorado</span>
+      <a class="footer__brand" href="index.html"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="label">© <span data-year>2026</span> Devin Sanders · Denver, Colorado</span></a>
+      <span class="label footer__sign" title="The contour lines on the homepage are this mountain"><span class="coord">39.5826° N 105.6688° W</span> · Mt. Bierstadt, 14,060 ft · My first fourteener</span>
       <ul class="label">
         <li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li>
         <li><a class="u-line" href="Resume.pdf">Résumé</a></li>

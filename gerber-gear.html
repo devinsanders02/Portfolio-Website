@@ -42,7 +42,7 @@
     /* Dielines on kraft: the flat construction drawings */
     .g-dielines { background: var(--kraft); color: var(--ink); }
     .g-dielines__row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.4vw, 24px); }
-    .g-dielines__row img { mix-blend-mode: multiply; aspect-ratio: 3 / 2; object-fit: cover; width: 100%; }
+    .g-dielines__row img { aspect-ratio: 3 / 2; object-fit: contain; width: 100%; background: #FBF8F2; padding: clamp(8px, 1vw, 16px); box-shadow: 0 20px 40px -28px rgba(40, 28, 10, .5); }
     @media (max-width: 900px) { .g-dielines__row { grid-template-columns: 1fr; } }
 
     .g-bleed { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; color: #fff; overflow: hidden; }
@@ -50,7 +50,8 @@
     .g-bleed::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(10, 14, 11, .78)); }
     .g-bleed__body { position: relative; z-index: 2; padding: 0 var(--gutter) clamp(32px, 7vh, 80px); max-width: 760px; }
     .g-bleed__body p { color: rgba(255, 255, 255, .84); }
-    .g-unbox { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(12px, 1.6vw, 24px); align-items: end; }
+    .g-unbox { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(12px, 1.6vw, 24px); align-items: start; }
+    .g-unbox-sec { padding-bottom: clamp(48px, 6vw, 90px); }
     .g-unbox img { width: 100%; object-fit: cover; }
     @media (max-width: 900px) { .g-unbox { grid-template-columns: 1fr; } }
   </style>
@@ -58,7 +59,7 @@
 <body class="p-gerber">
   <a class="skip" href="#main">Skip to content</a>
   <header class="nav" data-tone="dark">
-    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><span class="nav__name">Devin Sanders</span><span class="nav__coord">03 / Gerber Gear</span></a>
+    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="nav__name">Devin Sanders</span><span class="nav__coord">03 / Gerber Gear</span></a>
     <nav aria-label="Main"><ul class="nav__links">
       <li><a href="work.html"><span class="idx">01</span><span class="txt">Work</span></a></li>
       <li><a href="about.html"><span class="idx">02</span><span class="txt">About</span></a></li>
@@ -72,22 +73,24 @@
     <section class="p-hero" data-tone="dark" aria-labelledby="title">
       <div class="p-hero__media" style="view-transition-name: hero-gerber"><img src="GerberGear/GG-Hero.webp" alt="Gerber kraft packaging resting on a forest floor" fetchpriority="high"></div>
       <div class="p-hero__body">
-        <div class="p-hero__kicker"><span class="label" style="color: var(--kraft)">03 / Packaging</span></div>
+        <div class="p-hero__kicker"><span class="label" style="color: var(--kraft)">03 / Packaging</span><span class="label">School project</span></div>
         <h1 class="display display--xl" id="title">Gerber Gear</h1>
         <p class="label" style="margin: 18px 0 clamp(28px, 5vh, 52px); color: rgba(255,255,255,.82); font-size: 13px;">Structural packaging · Prototyping · Retail display</p>
         <dl class="meta" style="border-color: rgba(255,255,255,.2)">
           <div><dt class="label">Brand</dt><dd>Gerber Gear</dd></div>
           <div><dt class="label">Products</dt><dd>Knife · Hatchet · Paracord</dd></div>
-          <div><dt class="label">Material</dt><dd>Laser-cut kraft chipboard</dd></div>
+          <div><dt class="label">Material</dt><dd>Cardboard · heavy paper stock</dd></div>
           <div><dt class="label">Year</dt><dd>2026</dd></div>
         </dl>
-        <span class="note" style="margin-top: 18px; max-width: 560px; color: #FFB494; border-color: #FFB494;">Add a line saying this was a concept project (school or self-initiated) if it was, so nobody mistakes it for a Gerber commission.</span>
       </div>
     </section>
 
     <section class="section" data-tone="light" aria-label="Overview">
       <div class="wrap g-intro">
-        <p class="lede reveal">Three field tools, three boxes, one system. Each package is laser-cut from raw kraft chipboard, with no plastic clamshell anywhere.</p>
+        <div>
+          <p class="lede reveal">Three field tools, three packages, made to bundle together as one set. Built as prototypes from cardboard and thick paper stock.</p>
+          <p class="reveal muted" style="--d: 80ms; margin: 22px 0 0; max-width: 46ch; font-size: 15px;">A school project. I’m not affiliated with Gerber: the tools, including the hatchet and its sheath, are theirs. The packaging around them is mine.</p>
+        </div>
         <div class="reveal prose" style="--d: 120ms">
           <span class="label">The problem</span>
           <!-- Your existing copy, trimmed. -->
@@ -99,14 +102,14 @@
     <section data-tone="light" aria-label="The three tools">
       <div class="wrap">
         <article class="g-unit">
-          <div class="g-unit__text"><div class="g-unit__no">01</div><span class="label">Drawer reveal</span><h2 class="g-h" style="font-size: clamp(30px, 3.4vw, 56px); margin-top: 10px;">Trail Edge<br>Pocket Knife</h2><p>A two-piece slide drawer with a woven pull tab. The knife sits in a precision-cut cardboard tray.</p></div>
+          <div class="g-unit__text"><div class="g-unit__no">01</div><span class="label">Drawer reveal</span><h2 class="g-h" style="font-size: clamp(30px, 3.4vw, 56px); margin-top: 10px;">Trail Edge<br>Pocket Knife</h2><p>A slide-out drawer with a ribbon pull tab. The insert is layered cardboard, laser-engraved, so the knife sits in its own cut-out.</p></div>
           <div class="g-unit__media" data-gallery>
             <div class="wide reveal-img"><img src="GerberGear/GG-Knife1.webp" alt="Pocket knife in its slide-drawer box" loading="lazy" data-lightbox></div>
             <div class="wide reveal-img" data-from="left"><img src="GerberGear/GG-Knife2.webp" alt="Laser-cut cavity insert" loading="lazy" data-lightbox></div>
           </div>
         </article>
         <article class="g-unit">
-          <div class="g-unit__text"><div class="g-unit__no">02</div><span class="label">Blade-lock sheath</span><h2 class="g-h" style="font-size: clamp(30px, 3.4vw, 56px); margin-top: 10px;">Camp &amp; Pack<br>Hatchet</h2><p>Reinforced two-ply kraft with an interlocking sleeve that keeps the blade locked while it’s handled.</p></div>
+          <div class="g-unit__text"><div class="g-unit__no">02</div><span class="label">Paper wrap</span><h2 class="g-h" style="font-size: clamp(30px, 3.4vw, 56px); margin-top: 10px;">Camp &amp; Pack<br>Hatchet</h2><p>Paper glued back to back, with zip ties hidden between the layers to hold it onto the hatchet. The hatchet and sheath are Gerber’s.</p></div>
           <div class="g-unit__media" data-gallery>
             <div class="wide reveal-img"><img src="GerberGear/GG-Hatchet1.webp" alt="Hatchet package" loading="lazy" data-lightbox></div>
             <div class="wide reveal-img" data-from="left"><img src="GerberGear/GG-Hatchet2.webp" alt="Hatchet sheath locking detail" loading="lazy" data-lightbox></div>
@@ -126,14 +129,13 @@
       <div class="wrap">
         <div style="display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 20px; margin-bottom: clamp(32px, 4vw, 56px);">
           <h2 class="g-h" id="die-title" style="font-size: clamp(44px, 6vw, 110px);">Flat, before<br>it’s a box</h2>
-          <p style="max-width: 38ch; margin: 0;">The dielines for all three. Every fold and lock is cut from a single sheet.</p>
+          <p style="max-width: 38ch; margin: 0;">The dielines for all three, flat before anything is folded or glued.</p>
         </div>
         <div class="g-dielines__row" data-gallery>
           <figure style="margin: 0;" class="reveal"><img src="GerberGear/GG-DielineKnife.webp" alt="Pocket knife packaging dieline" loading="lazy" data-lightbox><figcaption class="cap" style="color: var(--ink)">01 · Knife</figcaption></figure>
           <figure style="margin: 0; --d: 100ms;" class="reveal"><img src="GerberGear/GG-DielineHatchet.webp" alt="Hatchet packaging dieline" loading="lazy" data-lightbox><figcaption class="cap" style="color: var(--ink)">02 · Hatchet</figcaption></figure>
           <figure style="margin: 0;" class="reveal"><img src="GerberGear/GG-DielineParacord.webp" alt="Paracord sleeve dieline" loading="lazy" data-lightbox><figcaption class="cap" style="color: var(--ink)">03 · Paracord</figcaption></figure>
         </div>
-        <div style="margin-top: clamp(40px, 6vw, 90px); max-width: 720px;" class="reveal"><div class="slot" data-asset="gg-process"></div></div>
       </div>
     </section>
 
@@ -142,11 +144,11 @@
       <div class="g-bleed__body">
         <span class="label" style="color: var(--kraft)">On the shelf</span>
         <h2 class="g-h" id="pos-title" style="font-size: clamp(40px, 5vw, 92px); margin: 12px 0 14px;">Counter display</h2>
-        <p>One small counter unit holds all three tools. Tiered shelves keep every package visible and easy to pick up.</p>
+        <p>A cardboard counter unit that holds all three tools, with tiered shelves so every package stays visible and easy to pick up.</p>
       </div>
     </section>
 
-    <section class="section tone-dark" data-tone="dark" aria-labelledby="unbox-title">
+    <section class="section tone-dark g-unbox-sec" data-tone="dark" aria-labelledby="unbox-title">
       <div class="wrap">
         <span class="label" style="color: var(--kraft)">Collector box</span>
         <h2 class="g-h" id="unbox-title" style="font-size: clamp(40px, 5vw, 92px); margin: 12px 0 clamp(32px, 4vw, 56px); color: #fff;">The unboxing</h2>
@@ -174,6 +176,16 @@
       <div class="wrap"><h2 class="label" id="contact-title">Say hello</h2><p style="margin: 18px 0 0;"><a class="contact__mail" href="mailto:devin.sanders02@gmail.com">devin.sanders02@gmail.com</a></p></div>
     </section>
   </main>
-  <footer class="footer"><div class="wrap"><span class="label">© <span data-year>2026</span> Devin Sanders · Denver, Colorado</span><ul class="label"><li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li><li><a class="u-line" href="Resume.pdf">Résumé</a></li><li><a class="u-line" href="#main">Back to top ↑</a></li></ul></div></footer>
+  <footer class="footer">
+    <div class="wrap">
+      <a class="footer__brand" href="index.html"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="label">© <span data-year>2026</span> Devin Sanders · Denver, Colorado</span></a>
+      <span class="label footer__sign" title="The contour lines on the homepage are this mountain"><span class="coord">39.5826° N 105.6688° W</span> · Mt. Bierstadt, 14,060 ft · My first fourteener</span>
+      <ul class="label">
+        <li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li>
+        <li><a class="u-line" href="Resume.pdf">Résumé</a></li>
+        <li><a class="u-line" href="#main">Back to top ↑</a></li>
+      </ul>
+    </div>
+  </footer>
 </body>
 </html>

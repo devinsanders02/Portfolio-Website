@@ -49,7 +49,21 @@
   if (topo) {
     fetch(topo.dataset.src).then(r => r.ok ? r.text() : Promise.reject()).then(svg => {
       topo.innerHTML = svg;
-      if (!reduce && !sessionStorageGet('topoDrawn')) { topo.classList.add('is-drawing'); sessionStorageSet('topoDrawn', '1'); }
+      if (reduce || sessionStorageGet('topoDrawn')) return;
+      sessionStorageSet('topoDrawn', '1');
+      // Measure each line on screen so the dash covers it end to end (pathLength is
+      // unreliable with non-scaling strokes), then clear the dash once the draw is done.
+      const el = topo.querySelector('svg'), m = el && el.getScreenCTM();
+      const scale = m ? Math.hypot(m.a, m.b) : 1;
+      let maxK = 0;
+      topo.querySelectorAll('.tp-c').forEach(p => {
+        p.removeAttribute('pathLength');
+        p.style.setProperty('--len', (p.getTotalLength() * scale + 8).toFixed(1) + 'px');
+        maxK = Math.max(maxK, parseFloat(p.style.getPropertyValue('--k')) || 0);
+      });
+      const dur = parseFloat(getComputedStyle(doc).getPropertyValue('--topo-draw')) || 2400;
+      topo.classList.add('is-drawing');
+      setTimeout(() => topo.classList.remove('is-drawing'), dur + maxK * 28 + 300);
     }).catch(() => {});
   }
   function sessionStorageGet(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }
@@ -73,7 +87,6 @@
   /* ----------------------------------------------------------------- nav */
   const nav = $('.nav');
   const toned = $$('[data-tone]');
-  let lastY = scrollY;
   function navTone() {
     if (!nav) return;
     const probe = 30; let tone = 'light';
@@ -84,9 +97,6 @@
     if (!nav) return;
     const y = scrollY;
     nav.classList.toggle('is-solid', y > 40 && !nav.hasAttribute('data-transparent'));
-    nav.classList.toggle('is-hidden', y > 400 && y > lastY + 4 && !nav.contains(document.activeElement));
-    if (y < lastY - 4) nav.classList.remove('is-hidden');
-    lastY = y;
     const bar = $('.nav__progress', nav);
     if (bar) bar.style.setProperty('--progress', Math.min(1, y / Math.max(1, doc.scrollHeight - innerHeight)).toFixed(4));
   }
@@ -107,9 +117,52 @@
     }
   }
 
+  /* ------------------------------------------------- stacked chapters
+     Each .chap is sticky; --p (0 → 1) tracks it sliding up into place, which
+     holds its image still (a wipe). The chapter it covers gets --cover. */
+  const chaps = $$('.chap');
+  // Where a section sits in the page when nothing is stuck (sticky rects stop moving once stuck)
+  function flowTop(el) {
+    if (!el.classList.contains('chap')) return el.getBoundingClientRect().top + scrollY;
+    const box = el.parentElement.getBoundingClientRect().top + scrollY;
+    let y = box; for (const c of el.parentElement.children) { if (c === el) break; y += c.offsetHeight; }
+    return y;
+  }
+  function chapProgress() {
+    if (reduce || !chaps.length) return;
+    chaps.forEach((c, i) => {
+      const p = Math.min(1, Math.max(0, 1 - (flowTop(c) - scrollY) / innerHeight));
+      c.style.setProperty('--p', p.toFixed(4));
+      if (i) chaps[i - 1].style.setProperty('--cover', p.toFixed(4));
+    });
+  }
+
+  /* ---------------------------------------------------------- chapter rail */
+  const rail = $('.rail');
+  const railLinks = rail ? $$('a', rail) : [];
+  const railTargets = railLinks.map(a => $(a.getAttribute('href'))).filter(Boolean);
+  function railState() {
+    if (!rail || !railTargets.length) return;
+    const start = flowTop(railTargets[0]);
+    const end = railTargets[railTargets.length - 1].parentElement.getBoundingClientRect().bottom + scrollY;
+    const mid = scrollY + innerHeight * .5;
+    rail.classList.toggle('is-on', mid > start + innerHeight * .1 && scrollY + innerHeight * .4 < end);
+    let active = 0;
+    railTargets.forEach((t, i) => { if (flowTop(t) <= mid) active = i; });
+    railLinks.forEach((a, i) => a.classList.toggle('is-active', i === active));
+  }
+
+  // Jump links to chapters land where the chapter is fully in place
+  $$('a[href^="#ch-"]').forEach(a => a.addEventListener('click', e => {
+    const t = $(a.getAttribute('href')); if (!t) return;
+    e.preventDefault();
+    const extra = t.classList.contains('stage') ? (t.offsetHeight - innerHeight) * .62 : 0;
+    scrollTo({ top: flowTop(t) + extra, behavior: reduce ? 'auto' : 'smooth' });
+  }));
+
   /* ------------------------------------------------------ scroll handler */
   let ticking = false;
-  function onScroll() { if (ticking) return; ticking = true; requestAnimationFrame(() => { navTone(); navState(); stageProgress(); ticking = false; }); }
+  function onScroll() { if (ticking) return; ticking = true; requestAnimationFrame(() => { navTone(); navState(); stageProgress(); chapProgress(); railState(); ticking = false; }); }
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('resize', onScroll);
   onScroll();

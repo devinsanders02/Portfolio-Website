@@ -29,6 +29,7 @@
   --f-sans: 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --f-cond: 'Barlow Condensed', 'Barlow', system-ui, sans-serif;
   --f-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --f-label: var(--f-sans);            /* small caps labels: Barlow, not mono */
   --f-guest: var(--f-sans);            /* per-project brand face, set by page themes */
 
   /* Scale */
@@ -47,13 +48,13 @@
   /* ---- TOPOGRAPHIC BACKGROUND CONTROLS (homepage) ------------------------
      Everything about the contour lines' look lives here. The shape of the
      terrain lives in tools/terrain/config.json (rebuild to change it).      */
-  --topo-low: #B9CDEA;          /* lowest lines */
-  --topo-mid: #D6BFE3;          /* middle elevations */
-  --topo-high: #F1B9A8;         /* near the summit */
+  --topo-low: #B4BCC6;          /* lowest lines (cool grey-blue) */
+  --topo-mid: #8F9BA9;          /* middle elevations (house blue, softened) */
+  --topo-high: #F15B22;         /* near the summit (house orange) */
   --topo-label: #2C3E50;        /* summit marker text (real-data version) */
   --topo-width: 1.05;           /* line weight in px */
   --topo-index-weight: 1.9;     /* every 5th (index) line = width x this */
-  --topo-opacity: .95;
+  --topo-opacity: .62;
   --topo-fade-x: 80%;           /* centre of the visible area */
   --topo-fade-y: 12%;
   --topo-fade-w: 70%;           /* size of the visible area before it fades */
@@ -94,10 +95,10 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 /* 03 TYPE ------------------------------------------------------------------ */
 .label {
-  font-family: var(--f-mono);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: .12em;
+  font-family: var(--f-label);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--ink-soft);
 }
@@ -113,6 +114,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .display--xl { font-size: clamp(64px, 13vw, 240px); }
 .display--l { font-size: clamp(48px, 8.5vw, 150px); }
 .display--m { font-size: clamp(36px, 5vw, 84px); }
+/* One-line titles sized from their own length (set --chars), so long names never wrap or overflow. */
+.fit { white-space: nowrap; font-size: min(12.5vw, 230px, calc((100vw - 2 * var(--gutter)) / (var(--chars, 8) * .54))); }
 .h2 { font-family: var(--f-sans); font-weight: 700; font-size: clamp(28px, 3.2vw, 52px); line-height: 1.05; letter-spacing: -.015em; margin: 0; }
 .h3 { font-family: var(--f-sans); font-weight: 600; font-size: clamp(20px, 1.7vw, 28px); line-height: 1.15; margin: 0; }
 .lede { font-size: clamp(19px, 1.6vw, 26px); line-height: 1.42; font-weight: 400; max-width: 38ch; margin: 0; }
@@ -121,6 +124,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .prose p:last-child { margin-bottom: 0; }
 .muted { color: var(--ink-soft); }
 .num { font-family: var(--f-mono); font-feature-settings: 'tnum' 1; }
+.coord { font-family: var(--f-mono); font-weight: 500; letter-spacing: .1em; }
 
 .link-arrow { display: inline-flex; align-items: center; gap: .6em; font-weight: 600; letter-spacing: .02em; }
 .link-arrow::after { content: '→'; transition: transform var(--t-fast) var(--ease); }
@@ -147,24 +151,30 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 var(--gutter);
   color: var(--ink);
-  transition: color var(--t-med) var(--ease), background-color var(--t-med) var(--ease), transform var(--t-med) var(--ease);
+  transition: color var(--t-med) var(--ease), background-color var(--t-med) var(--ease);
 }
 .nav[data-tone="dark"] { color: #fff; }
 .nav.is-solid { background: color-mix(in srgb, var(--paper) 86%, transparent); -webkit-backdrop-filter: blur(14px) saturate(1.2); backdrop-filter: blur(14px) saturate(1.2); }
 .nav.is-solid[data-tone="dark"] { background: color-mix(in srgb, var(--night) 70%, transparent); }
-.nav.is-hidden { transform: translateY(-100%); }
-.nav__brand { display: flex; align-items: baseline; gap: 14px; }
+.nav__brand { display: flex; align-items: center; gap: 12px; }
+.mark { width: auto; height: 28px; fill: currentColor; flex: none; }
+.nav__brand:hover .mark { color: var(--accent); }
 .nav__name { font-family: var(--f-cond); font-weight: 700; font-size: 22px; letter-spacing: .02em; text-transform: uppercase; }
 .nav__coord { font-family: var(--f-mono); font-size: 11px; letter-spacing: .1em; opacity: .7; }
 .nav__links { display: flex; gap: clamp(18px, 2.4vw, 40px); list-style: none; margin: 0; padding: 0; }
-.nav__links a { font-family: var(--f-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; display: inline-flex; gap: .5em; padding: 10px 0; }
+.nav__links a { font-family: var(--f-label); font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; display: inline-flex; gap: .5em; padding: 10px 0; }
 .nav__links .idx { opacity: .5; }
 .nav__links a[aria-current="page"] .txt { color: var(--accent); }
 .nav__progress { position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--accent); transform-origin: 0 50%; transform: scaleX(var(--progress, 0)); }
 @media (max-width: 640px) {
   .nav__coord, .nav__links .idx { display: none; }
-  .nav__links { gap: 18px; }
+  .nav__links { gap: 14px; }
+  .nav__links a { font-size: 12px; letter-spacing: .1em; }
+  .nav__brand { gap: 8px; }
+  .nav__name { font-size: 18px; }
 }
+.nav__name { white-space: nowrap; font-family: var(--f-cond) !important; }
+@media (max-width: 380px) { .nav__name { display: none; } }
 
 /* 05 TOPOGRAPHIC BACKGROUND ------------------------------------------------ */
 .topo {
@@ -179,7 +189,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .topo { --topo-fade-x: 70%; --topo-fade-y: 8%; --topo-fade-w: 120%; --topo-fade-h: 60%; }
   .topo > svg, .topo > img { width: 175vw; height: auto; aspect-ratio: 16 / 9; right: -28vw; }
 }
-.topo.is-drawing .tp-c { stroke-dasharray: 1; stroke-dashoffset: 1; animation: topo-draw var(--topo-draw) var(--ease) forwards; animation-delay: calc(var(--k) * 28ms); }
+/* Draw-in: JS measures every line in screen pixels (--len), so the dash always covers the
+   whole line, then removes .is-drawing when done so nothing can be left half drawn. */
+.topo.is-drawing .tp-c { stroke-dasharray: var(--len) var(--len); stroke-dashoffset: var(--len); animation: topo-draw var(--topo-draw) var(--ease) forwards; animation-delay: calc(var(--k) * 28ms); }
 @keyframes topo-draw { to { stroke-dashoffset: 0; } }
 
 /* 06 MOTION (reveals) ------------------------------------------------------ */
@@ -245,6 +257,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .p-hero__body { position: relative; z-index: 2; width: 100%; padding: 0 var(--gutter) clamp(32px, 6vh, 72px); }
 .p-hero__kicker { display: flex; gap: 22px; margin-bottom: 18px; }
 .p-hero__kicker .label { color: rgba(255, 255, 255, .78); }
+.p-hero .meta .label { color: rgba(255, 255, 255, .7); }
+.p-hero .meta dd { color: #fff; }
 
 .meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; border-top: 1px solid var(--rule); padding-top: 22px; }
 .meta dt { margin-bottom: 8px; }
@@ -307,7 +321,7 @@ html.hide-interim .slot__interim { display: none; }
 .filmstrip { display: grid; grid-auto-flow: column; grid-auto-columns: clamp(220px, 24vw, 380px); gap: clamp(10px, 1.2vw, 18px); overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px var(--gutter) 22px; scrollbar-width: thin; }
 .filmstrip > * { scroll-snap-align: start; }
 .filmstrip figure { margin: 0; }
-.filmstrip figcaption, .cap { margin-top: 10px; font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+.filmstrip figcaption, .cap { margin-top: 10px; font-family: var(--f-label); font-weight: 600; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
 .tone-dark .filmstrip figcaption, .tone-dark .cap { color: rgba(233, 237, 242, .6); }
 .set-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 18px 0; border-top: 1px solid var(--rule); margin-bottom: 18px; }
 .tone-dark .set-head { border-color: rgba(255, 255, 255, .14); }
@@ -315,9 +329,9 @@ html.hide-interim .slot__interim { display: none; }
 .lightbox { position: fixed; inset: 0; z-index: 300; background: rgba(9, 12, 16, .94); display: grid; place-items: center; opacity: 0; visibility: hidden; transition: opacity var(--t-fast) linear, visibility 0s linear var(--t-fast); }
 .lightbox.is-open { opacity: 1; visibility: visible; transition: opacity var(--t-fast) linear; }
 .lightbox img { max-width: 92vw; max-height: 86vh; object-fit: contain; }
-.lightbox__ui { position: absolute; inset: auto 0 18px 0; display: flex; justify-content: center; gap: 28px; color: #fff; font-family: var(--f-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+.lightbox__ui { position: absolute; inset: auto 0 18px 0; display: flex; justify-content: center; gap: 28px; color: #fff; font-family: var(--f-label); font-weight: 600; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
 .lightbox__ui button { padding: 10px 14px; }
-.lightbox__close { position: absolute; top: 14px; right: 18px; color: #fff; font-family: var(--f-mono); font-size: 12px; letter-spacing: .12em; padding: 12px; }
+.lightbox__close { position: absolute; top: 14px; right: 18px; color: #fff; font-family: var(--f-label); font-weight: 600; font-size: 12px; letter-spacing: .12em; padding: 12px; }
 
 /* 12 INDEX LIST + HOVER PREVIEW ------------------------------------------- */
 .index { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--rule); }
@@ -330,9 +344,17 @@ html.hide-interim .slot__interim { display: none; }
 .index .i-disc { color: var(--ink-soft); }
 .index .i-year { text-align: right; }
 .index .i-thumb { display: none; }
+/* Each row carries a faint image of the project; on hover the row opens up and the image fades in. */
+.index li { position: relative; }
+.index a { position: relative; overflow: hidden; isolation: isolate; }
+.index .i-bg { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.08); filter: saturate(.85); transition: opacity var(--t-med) var(--ease), transform 1200ms var(--ease); }
+.index a::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, var(--paper) 0%, color-mix(in srgb, var(--paper) 72%, transparent) 55%, color-mix(in srgb, var(--paper) 40%, transparent) 100%); opacity: 0; transition: opacity var(--t-med) var(--ease); }
 @media (hover: hover) and (pointer: fine) {
-  .index a:hover { padding-left: 18px; color: var(--accent); }
+  .index a:hover { padding-top: clamp(40px, 5.4vw, 86px); padding-bottom: clamp(40px, 5.4vw, 86px); padding-left: 18px; color: var(--accent); }
+  .index a:hover .i-bg { opacity: .42; transform: none; }
+  .index a:hover::before { opacity: 1; }
 }
+@media (hover: none), (max-width: 760px) { .index .i-bg, .index a::before { display: none; } }
 @media (max-width: 760px) {
   .index a { grid-template-columns: 1fr 84px; grid-template-areas: 'name thumb' 'disc thumb'; row-gap: 6px; }
   .index .i-num, .index .i-year { display: none; }
@@ -358,7 +380,11 @@ html.hide-interim .slot__interim { display: none; }
 .contact__mail { display: inline-block; font-family: var(--f-cond); font-weight: 700; font-size: clamp(34px, 7.4vw, 132px); line-height: .9; letter-spacing: -.005em; word-break: break-word; }
 .contact__mail:hover { color: var(--accent); }
 .footer { padding: 28px 0 34px; border-top: 1px solid var(--rule); }
-.footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px 28px; }
+.footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px 28px; }
+.footer__brand { display: inline-flex; align-items: center; gap: 12px; }
+.footer__brand .mark { height: 22px; width: 13px; }
+.footer__sign .coord { font-size: 11px; }
+.mark { width: 16px; }
 .footer ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
 .tone-dark .footer { border-color: rgba(255, 255, 255, .12); }
 

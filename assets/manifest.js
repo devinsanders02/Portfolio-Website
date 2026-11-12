@@ -31,135 +31,73 @@
   /* ---------------------------------------------------------------- WANDRD */
   add('wan-hero', {
     code: 'WAN-01', project: 'WANDRD', name: 'WANDRD: Hero brand photo',
-    contains: 'One wide lifestyle photo from the WANDRD imagery you used in the store (a person carrying a WANDRD bag outdoors). No text on it. [ASSUMPTION] you have rights to use WANDRD’s photography in your portfolio.',
+    contains: 'One wide lifestyle photo from the WANDRD imagery you used in the store (a person carrying a WANDRD bag outdoors). No text on it. The laptop mockup stands in for now.',
     kind: 'photograph', ratio: '16:9', size: '2560 × 1440 px or larger',
-    where: 'WANDRD page — full-screen opening image; homepage chapter 01', priority: 'essential',
+    where: 'WANDRD page — full-screen opening image; homepage chapter 01', priority: 'optional',
     file: 'assets/wandrd/wan-01-hero.jpg', interim: 'WANDRD-Hero.webp',
   });
-  add('wan-store-home-desktop', {
-    code: 'WAN-02', project: 'WANDRD', name: 'WANDRD: Brand Store home page — desktop, full length',
-    contains: 'A full-page screenshot of the live Brand Store home page on desktop, top to bottom (one tall image). Use a full-page screenshot extension or Chrome DevTools “Capture full size screenshot”.',
-    kind: 'screenshot', ratio: '10:22', size: '1440 px wide, full height', free: true,
-    where: 'WANDRD page — section 02 “The store”, inside the scrolling browser window', priority: 'essential',
-    file: 'assets/wandrd/wan-02-store-home-desktop.png', interim: 'WANDRD-HomePage.webp',
+  const shot = (id, code, name, file, where, alt) => add(id, {
+    code, project: 'WANDRD', name, contains: 'Full-length desktop screenshot of the live page.', kind: 'screenshot',
+    ratio: 'free', size: '1350 px wide, full height', free: true, where, priority: 'essential', file, src: file, alt,
   });
-  add('wan-store-photo-desktop', {
-    code: 'WAN-03', project: 'WANDRD', name: 'WANDRD: Brand Store “Photography Bags” page — desktop, full length',
-    contains: 'Full-page desktop screenshot of the Photography Bags sub-page. [ASSUMPTION] page names taken from the store navigation in your existing screenshots.',
-    kind: 'screenshot', ratio: '10:22', size: '1440 px wide, full height', free: true,
-    where: 'WANDRD page — section 03 “Structure”, browser window 1 of 3', priority: 'optional',
-    file: 'assets/wandrd/wan-03-store-photography-desktop.png',
-  });
-  add('wan-store-travel-desktop', {
-    code: 'WAN-04', project: 'WANDRD', name: 'WANDRD: Brand Store “Travel Bags” page — desktop, full length',
-    contains: 'Full-page desktop screenshot of the Travel Bags sub-page.',
-    kind: 'screenshot', ratio: '10:22', size: '1440 px wide, full height', free: true,
-    where: 'WANDRD page — section 03 “Structure”, browser window 2 of 3', priority: 'optional',
-    file: 'assets/wandrd/wan-04-store-travel-desktop.png',
-  });
-  add('wan-store-everyday-desktop', {
-    code: 'WAN-05', project: 'WANDRD', name: 'WANDRD: Brand Store “Everyday Bags” page — desktop, full length',
-    contains: 'Full-page desktop screenshot of the Everyday Bags sub-page.',
-    kind: 'screenshot', ratio: '10:22', size: '1440 px wide, full height', free: true,
-    where: 'WANDRD page — section 03 “Structure”, browser window 3 of 3', priority: 'optional',
-    file: 'assets/wandrd/wan-05-store-everyday-desktop.png',
-  });
-  add('wan-prvke-desktop', {
-    code: 'WAN-06', project: 'WANDRD', name: 'WANDRD: PRVKE product page — desktop, full length',
-    contains: 'Full-page desktop screenshot of the PRVKE page you designed in the store (the current image only shows the top).',
-    kind: 'screenshot', ratio: '16:9', size: '1440 px wide, full height', free: true,
-    where: 'WANDRD page — section 03, product page pair (left)', priority: 'optional',
-    file: 'assets/wandrd/wan-06-prvke-desktop.png', interim: 'WANDRD-PRVKE.webp',
-  });
-  add('wan-fernweh-desktop', {
-    code: 'WAN-07', project: 'WANDRD', name: 'WANDRD: Fernweh product page — desktop, full length',
-    contains: 'Full-page desktop screenshot of the Fernweh page you designed in the store.',
-    kind: 'screenshot', ratio: '16:9', size: '1440 px wide, full height', free: true,
-    where: 'WANDRD page — section 03, product page pair (right)', priority: 'optional',
-    file: 'assets/wandrd/wan-07-fernweh-desktop.png', interim: 'WANDRD-Fernweh.webp',
-  });
+  shot('wan-store-home-desktop', 'WAN-02', 'WANDRD: Brand Store home page — desktop, full length', 'assets/wandrd/store-home.webp', 'WANDRD page — 02 “The store”, scrolling browser', 'The full WANDRD Amazon Brand Store home page');
+  shot('wan-store-photo-desktop', 'WAN-03', 'WANDRD: Photography Bags page — desktop', 'assets/wandrd/store-photography.webp', 'WANDRD page — 03 “Structure”, browser 1 of 4', 'WANDRD Photography Bags store page');
+  shot('wan-store-travel-desktop', 'WAN-04', 'WANDRD: Travel Bags page — desktop', 'assets/wandrd/store-travel.webp', 'WANDRD page — 03 “Structure”, browser 2 of 4', 'WANDRD Travel Bags store page');
+  shot('wan-store-everyday-desktop', 'WAN-05', 'WANDRD: Everyday Bags page — desktop', 'assets/wandrd/store-everyday.webp', 'WANDRD page — 03 “Structure”, browser 3 of 4', 'WANDRD Everyday Bags store page');
+  shot('wan-store-accessories-desktop', 'WAN-05b', 'WANDRD: Accessories page — desktop', 'assets/wandrd/store-accessories.webp', 'WANDRD page — 03 “Structure”, browser 4 of 4', 'WANDRD Accessories store page');
+  shot('wan-prvke-desktop', 'WAN-06', 'WANDRD: PRVKE product page — desktop', 'assets/wandrd/page-prvke.webp', 'WANDRD page — 03, product page (left)', 'WANDRD PRVKE product page');
+  shot('wan-fernweh-desktop', 'WAN-07', 'WANDRD: Fernweh product page — desktop', 'assets/wandrd/page-fernweh.webp', 'WANDRD page — 03, product page (right)', 'WANDRD Fernweh product page');
   add('wan-store-home-mobile', {
     code: 'WAN-08', project: 'WANDRD', name: 'WANDRD: Brand Store home page — mobile, full length',
     contains: 'The store home page on a phone (Amazon app or mobile browser), captured as one long scrolling screenshot (iPhone: Safari share > Full Page, or stitch several screenshots).',
     kind: 'screenshot', ratio: '9:19.5', size: '1170 px wide, full height', free: true,
-    where: 'WANDRD page — section 04 “Mobile”, phone 1 of 3', priority: 'essential',
+    where: 'WANDRD page — 04 “Mobile”, phone 1 of 3', priority: 'essential',
     file: 'assets/wandrd/wan-08-store-home-mobile.png',
   });
   add('wan-store-sub-mobile', {
     code: 'WAN-09', project: 'WANDRD', name: 'WANDRD: Brand Store sub-page — mobile',
     contains: 'One store sub-page (e.g. Photography Bags) on a phone, full length.',
     kind: 'screenshot', ratio: '9:19.5', size: '1170 px wide, full height', free: true,
-    where: 'WANDRD page — section 04, phone 2 of 3', priority: 'optional',
+    where: 'WANDRD page — 04, phone 2 of 3', priority: 'optional',
     file: 'assets/wandrd/wan-09-store-sub-mobile.png',
   });
   add('wan-listing-mobile', {
-    code: 'WAN-10', project: 'WANDRD', name: 'WANDRD: Product listing with your infographics — mobile',
-    contains: 'A phone screenshot of a WANDRD product listing showing one of your infographics in the image carousel.',
+    code: 'WAN-10', project: 'WANDRD', name: 'WANDRD: Rogue Sling V2 listing — mobile',
+    contains: 'A phone screenshot of the Rogue Sling V2 listing with one of your infographics showing in the image carousel.',
     kind: 'screenshot', ratio: '9:19.5', size: '1170 × 2532 px', free: true,
-    where: 'WANDRD page — section 04, phone 3 of 3', priority: 'optional',
+    where: 'WANDRD page — 04, phone 3 of 3', priority: 'optional',
     file: 'assets/wandrd/wan-10-listing-mobile.png',
   });
-  for (let n = 1; n <= 6; n++) add(`wan-set1-${n}`, {
-    code: `WAN-S1-${n}`, project: 'WANDRD', name: `WANDRD: Infographic set 1 — image ${n} of 6`,
-    contains: `Product A, listing image ${n} in the order it appears on Amazon (1 = first image after the main product photo). The flat graphic, not a mockup. Tell me the product name. [ASSUMPTION] 6 images per set — send however many the listing has.`,
-    kind: 'flat graphic', ratio: '1:1', size: '2000 × 2000 px (your export size)',
-    where: `WANDRD page — section 05 “Listing images”, set 1, position ${n}`, priority: 'essential',
-    file: `assets/wandrd/wan-s1-${n}.jpg`,
-  });
-  for (let n = 1; n <= 6; n++) add(`wan-set2-${n}`, {
-    code: `WAN-S2-${n}`, project: 'WANDRD', name: `WANDRD: Infographic set 2 — image ${n} of 6`,
-    contains: `A second product (Product B), listing image ${n}. Choose a product that looks different from set 1 so the range shows.`,
-    kind: 'flat graphic', ratio: '1:1', size: '2000 × 2000 px',
-    where: `WANDRD page — section 05, set 2, position ${n}`, priority: 'optional',
-    file: `assets/wandrd/wan-s2-${n}.jpg`,
-  });
+  const rogue = ['Lightning fast access', 'Weather resistant materials', 'Customizable interior', 'Airmesh back panel', 'Three ways to carry', 'Padded shoulder strap'];
+  const fern = ['Rugged materials', 'Custom fit and comfort', 'Access and organization', 'Outdoor gear support', 'Travel-friendly design', 'Camera modularity'];
+  rogue.forEach((t, i) => add(`wan-set1-${i + 1}`, {
+    code: `WAN-S1-${i + 1}`, project: 'WANDRD', name: `WANDRD: Rogue Sling V2 — ${t}`, contains: `Listing infographic ${i + 1} of 6 (live).`,
+    kind: 'flat graphic', ratio: '1:1', size: '2000 × 2000 px', where: `WANDRD page — 05, Rogue V2 set, position ${i + 1}`, priority: 'essential',
+    file: `assets/wandrd/rogue-0${i + 1}.webp`, src: `assets/wandrd/rogue-0${i + 1}.webp`, alt: `Rogue Sling V2 infographic: ${t}`,
+  }));
+  fern.forEach((t, i) => add(`wan-set2-${i + 1}`, {
+    code: `WAN-S2-${i + 1}`, project: 'WANDRD', name: `WANDRD: Fernweh — ${t}`, contains: `Listing infographic ${i + 1} of 6 (not published).`,
+    kind: 'flat graphic', ratio: '1:1', size: '2000 × 2000 px', where: `WANDRD page — 05, Fernweh set, position ${i + 1}`, priority: 'optional',
+    file: `assets/wandrd/fernweh-0${i + 1}.webp`, src: `assets/wandrd/fernweh-0${i + 1}.webp`, alt: `Fernweh infographic: ${t}`,
+  }));
   add('wan-closeup', {
-    code: 'WAN-11', project: 'WANDRD', name: 'WANDRD: Your strongest infographic, full resolution',
-    contains: 'The one WANDRD infographic you are proudest of, at full export size. It is shown huge with numbered notes about your decisions. (Can be the same file as one in set 1 — just tell me which.)',
-    kind: 'flat graphic', ratio: '1:1', size: '2000 × 2000 px or larger',
-    where: 'WANDRD page — section 06 “Up close”', priority: 'essential',
-    file: 'assets/wandrd/wan-11-closeup.jpg',
+    code: 'WAN-11', project: 'WANDRD', name: 'WANDRD: Rogue V2 01 — Lightning Fast Access (close-up)',
+    contains: 'Your strongest infographic, shown large with three numbered notes.',
+    kind: 'flat graphic', ratio: '1:1', size: '2000 × 2000 px', where: 'WANDRD page — 06 “Up close”', priority: 'essential',
+    file: 'assets/wandrd/rogue-01.webp', src: 'assets/wandrd/rogue-01.webp', alt: 'Rogue Sling V2 infographic: Lightning fast access',
   });
   add('wan-phones', {
     code: 'WAN-12', project: 'WANDRD', name: 'WANDRD: Infographics in phones (existing)',
     contains: 'Your existing three-phone mockup of the mobile infographics.',
-    kind: 'mockup', ratio: '16:11', size: '3200 × 2225 px', where: 'WANDRD page — section 05 intro', priority: 'essential',
+    kind: 'mockup', ratio: '16:11', size: '3200 × 2225 px', where: 'WANDRD page — 05 intro', priority: 'essential',
     file: 'WANDRD-Infographics.webp', src: 'WANDRD-Infographics.webp', alt: 'Three phones showing WANDRD infographics on Amazon mobile listings',
-  });
-  add('wan-aplus-1', {
-    code: 'WAN-13', project: 'WANDRD', name: 'WANDRD: A+ content module 1 (desktop)',
-    contains: 'One A+ (enhanced brand content) module you designed, as the flat export. [ASSUMPTION] you designed A+ modules for WANDRD — delete this slot if not.',
-    kind: 'flat graphic', ratio: '97:60', size: '970 × 600 px (Amazon A+ standard)',
-    where: 'WANDRD page — section 07 “Supporting graphics”, row 1', priority: 'optional',
-    file: 'assets/wandrd/wan-13-aplus-1.jpg',
-  });
-  add('wan-aplus-2', {
-    code: 'WAN-14', project: 'WANDRD', name: 'WANDRD: A+ content module 2 (desktop)',
-    contains: 'A second A+ module, different layout from module 1.',
-    kind: 'flat graphic', ratio: '97:60', size: '970 × 600 px',
-    where: 'WANDRD page — section 07, row 1', priority: 'optional',
-    file: 'assets/wandrd/wan-14-aplus-2.jpg',
-  });
-  add('wan-banner', {
-    code: 'WAN-15', project: 'WANDRD', name: 'WANDRD: Brand Store hero banner',
-    contains: 'The wide banner at the top of the store (or a sub-page), as the flat export without Amazon’s interface around it.',
-    kind: 'flat graphic', ratio: '5:1', size: '3000 × 600 px',
-    where: 'WANDRD page — section 07, full-width row', priority: 'optional',
-    file: 'assets/wandrd/wan-15-store-banner.jpg',
-  });
-  add('wan-tiles', {
-    code: 'WAN-16', project: 'WANDRD', name: 'WANDRD: Store category tiles (set)',
-    contains: 'The category tiles you made (Photography / Travel / Everyday Bags). Send each tile as its own file; I will lay them out.',
-    kind: 'flat graphic', ratio: '1:1', size: 'Your export size',
-    where: 'WANDRD page — section 07, row 2', priority: 'optional',
-    file: 'assets/wandrd/wan-16-tile-*.jpg',
   });
 
   /* --------------------------------------------------------------- KleenBore
-     Product 1 is KDS-556 (from your example). Products 2 and 3 are yours to pick. */
+     A+ content (5 modules) is in place as plain images on the page. */
   add('kb-cover', {
     code: 'KB-01', project: 'KleenBore', name: 'KleenBore: Cover image',
-    contains: 'Either (a) a 4 × 2 grid export of eight of your strongest KleenBore infographics on your concrete texture, or (b) a strong KleenBore product photo. Used as the project’s first impression.',
+    contains: 'The hero image you mentioned sending in a separate chat. Used as the project’s first impression.',
     kind: 'flat graphic or photograph', ratio: '16:9', size: '2560 × 1440 px',
     where: 'Homepage chapter 02 and the KleenBore “next project” link', priority: 'essential',
     file: 'assets/kleenbore/kb-01-cover.jpg',
@@ -171,87 +109,53 @@
     where: 'KleenBore page — section 02 “The system”, left', priority: 'essential',
     file: 'assets/kleenbore/kb-02-template-guides.png',
   });
-  add('kb-type', {
-    code: 'KB-03', project: 'KleenBore', name: 'KleenBore: Type scale (optional export)',
-    contains: 'If you have it: your type scale page (Montserrat sizes and weights for headline, callout, body, spec). If not, send the sizes and I will set it in code.',
-    kind: 'flat graphic', ratio: '4:3', size: '2000 × 1500 px',
-    where: 'KleenBore page — section 02, right', priority: 'optional',
-    file: 'assets/kleenbore/kb-03-type-scale.png',
-  });
   const kbSets = [
-    { key: 'p1', code: 'KDS-556', label: 'KDS-556', pri: 'essential', note: 'Product named in your example.' },
-    { key: 'p2', code: 'KB-P2', label: 'Product 2 (your pick)', pri: 'essential', note: 'Pick a product from a different family than KDS-556. Tell me its name/SKU.' },
-    { key: 'p3', code: 'KB-P3', label: 'Product 3 (your pick)', pri: 'optional', note: 'A third family, only if it adds something new.' },
+    { key: 'p1', code: 'KDS-9', pri: 'essential' },
+    { key: 'p2', code: 'POC220', pri: 'essential' },
+    { key: 'p3', code: 'A188', pri: 'optional' },
   ];
   kbSets.forEach((s, si) => {
-    for (let n = 1; n <= 8; n++) add(`kb-${s.key}-${n}`, {
-      code: `${s.code}-${n}`, project: 'KleenBore', name: `${s.label}: Infographic ${n} of 8`,
-      contains: `Listing image ${n} of 8 for ${s.label}, as the flat 2000 × 2000 export, in listing order. ${s.note} [ASSUMPTION] 8 images per listing — send however many the listing has.`,
+    for (let n = 1; n <= 4; n++) add(`kb-${s.key}-${n}`, {
+      code: `${s.code}-${n}`, project: 'KleenBore', name: `KleenBore ${s.code}: Infographic ${n} of 4`,
+      contains: `Listing image ${n} for ${s.code}, as the flat 2000 × 2000 export, in listing order.`,
       kind: 'flat graphic', ratio: '1:1', size: '2000 × 2000 px',
-      where: `KleenBore page — section 03 “Complete listings”, set ${si + 1}, position ${n}`, priority: s.pri,
-      file: `assets/kleenbore/${s.key}-${n}.jpg`,
+      where: `KleenBore page — 03 “Complete listings”, ${s.code} set, position ${n}`, priority: s.pri,
+      file: `assets/kleenbore/${s.code.toLowerCase()}-${n}.jpg`,
     });
   });
-  [['Typography & hierarchy', 'an infographic where the headline / callout / body hierarchy is doing the most work'],
-   ['Technical callouts', 'an infographic with technical details: specs, dimensions, compatibility or numbered callouts'],
-   ['Comparison or chart', 'a comparison, size chart or “what’s in the box” graphic']].forEach(([t, what], i) => add(`kb-close-${i + 1}`, {
+  [['KDS-9 flat lay (hierarchy)', 'the KDS-9 flat lay: big red title, “dual system pistol cleaning kit”, product with tags below'],
+   ['Quick specs', 'the infographic where you pulled out the key specs to read at a glance'],
+   ['Lifestyle with callouts', 'the lifestyle photo with dark callout boxes']].forEach(([t, what], i) => add(`kb-close-${i + 1}`, {
     code: `KB-C${i + 1}`, project: 'KleenBore', name: `KleenBore: Close-up ${i + 1} — ${t}`,
-    contains: `Full-resolution file of ${what}. Shown large, cropped in, with numbered notes. Can repeat a file from the sets — tell me which.`,
+    contains: `Full-resolution file of ${what}. Shown large; hover zooms to 2×. Can repeat a file from the sets.`,
     kind: 'flat graphic', ratio: '1:1', size: '2000 × 2000 px',
-    where: `KleenBore page — section 04 “Up close”, panel ${i + 1}`, priority: i < 2 ? 'essential' : 'optional',
+    where: `KleenBore page — 04 “Up close”, panel ${i + 1}`, priority: 'essential',
     file: `assets/kleenbore/kb-c${i + 1}.jpg`,
   }));
   for (let n = 1; n <= 4; n++) add(`kb-family-${n}`, {
     code: `KB-F${n}`, project: 'KleenBore', name: `KleenBore: Same template, product ${n} of 4`,
     contains: `The SAME infographic type (e.g. the “features” image) for four different products, so the template system is visible. This is product ${n}.`,
     kind: 'flat graphic', ratio: '1:1', size: '2000 × 2000 px',
-    where: `KleenBore page — section 05 “One template, four products”, position ${n}`, priority: 'essential',
+    where: `KleenBore page — 05 “One template, four products”, position ${n}`, priority: 'optional',
     file: `assets/kleenbore/kb-f${n}.jpg`,
   });
-  add('kb-listing-mobile', {
-    code: 'KB-04', project: 'KleenBore', name: 'KleenBore: Live listing on a phone',
-    contains: 'Screenshot of a live KleenBore Amazon listing on your phone with one of your infographics showing.',
-    kind: 'screenshot', ratio: '9:19.5', size: '1170 × 2532 px', free: true,
-    where: 'KleenBore page — section 06 “Beyond the listing”, phone', priority: 'optional',
-    file: 'assets/kleenbore/kb-04-listing-mobile.png',
-  });
-  add('kb-product', {
-    code: 'KB-05', project: 'KleenBore', name: 'KleenBore: Product photo or mockup',
-    contains: 'One photo or mockup of a KleenBore product (packaging is fine). Gives the flat graphics a physical anchor.',
-    kind: 'photograph or mockup', ratio: '4:5', size: '1600 × 2000 px',
-    where: 'KleenBore page — section 06, beside the phone', priority: 'optional',
-    file: 'assets/kleenbore/kb-05-product.jpg',
-  });
-  [1, 2].forEach(n => add(`kb-marketing-${n}`, {
-    code: `KB-M${n}`, project: 'KleenBore', name: `KleenBore: Marketing graphic ${n}`,
-    contains: 'A non-listing marketing graphic you made for KleenBore (social post, email header, ad). Shows the system stretching beyond Amazon.',
-    kind: 'flat graphic', ratio: n === 1 ? '1:1' : '4:5', size: 'Your export size',
-    where: `KleenBore page — section 06, marketing row ${n}`, priority: 'optional',
-    file: `assets/kleenbore/kb-m${n}.jpg`,
-  }));
 
   /* ----------------------------------------------------- other projects */
-  add('gg-process', {
-    code: 'GG-01', project: 'Gerber Gear', name: 'Gerber Gear: Prototype or test-fold photo',
-    contains: 'A photo of an early prototype, a failed fold, or the laser cutter mid-job. One honest process image does more than another polished render.',
-    kind: 'photograph', ratio: '4:3', size: '2000 × 1500 px',
-    where: 'Gerber Gear page — under the dielines', priority: 'optional',
-    file: 'assets/gerber/gg-01-process.jpg',
-  });
   add('rr-process', {
     code: 'RR-01', project: 'Rexburg Rapids', name: 'Rexburg Rapids: Logo sketches / iterations',
     contains: 'A page or screenshot of the logo directions you explored before the final R mark.',
     kind: 'flat graphic or photograph', ratio: '16:9', size: '2400 × 1350 px',
-    where: 'Rexburg Rapids page — just above the guidelines', priority: 'optional',
+    where: 'Rexburg Rapids page — process section near the end', priority: 'optional',
     file: 'assets/rexburg/rr-01-iterations.jpg',
   });
-  add('about-portrait', {
-    code: 'ME-01', project: 'About', name: 'About: Portrait photo',
-    contains: 'A natural photo of you — outdoors fits the site (a summit photo from Bierstadt would be perfect). Not a cropped group photo.',
-    kind: 'photograph', ratio: '4:5', size: '1600 × 2000 px',
-    where: 'About page — next to the intro', priority: 'optional',
-    file: 'assets/about/me-01-portrait.jpg',
-  });
+
+  [['Storyboard', 'a storyboard frame or page for the Tron piece'], ['Pacing still', 'one still from the choppy timing pass'], ['Polished frame', 'a final frame with the glow and light effects']].forEach(([t, what], i) => add(`mo-break-${i + 1}`, {
+    code: `MO-B${i + 1}`, project: 'Motion Reel', name: `Motion: Tron breakdown ${i + 1} — ${t}`,
+    contains: `A cinematic-width still: ${what}.`,
+    kind: 'still frame', ratio: '2.39:1', size: '2400 × 1004 px (or your comp size)',
+    where: `Motion Reel page — Breakdown, step ${i + 1} of 3`, priority: 'optional',
+    file: `assets/motion/mo-b${i + 1}.jpg`,
+  }));
 
   window.ASSETS = A;
 })();

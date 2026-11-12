@@ -11,7 +11,7 @@
   <link rel="icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
   <script>document.documentElement.classList.add('js')</script>
   <script src="assets/manifest.js" defer></script>
@@ -24,6 +24,8 @@
     body.p-kb {
       --paper: #E3E3E0; --paper-2: #D6D6D2; --ink: #121212; --ink-soft: rgba(18, 18, 18, .62); --rule: rgba(18, 18, 18, .2);
       --accent: #D3202A; --night: #121212; --f-guest: 'Montserrat', var(--f-sans);
+      --f-sans: 'Montserrat', 'Barlow', system-ui, sans-serif; --f-label: 'Montserrat', 'Barlow', sans-serif;
+      font-family: var(--f-sans);
       background:
         radial-gradient(circle at 20% 10%, rgba(255, 255, 255, .35), transparent 40%),
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
@@ -52,7 +54,7 @@
     .kb-system { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(24px, 4vw, 72px); align-items: start; }
     .spec { width: 100%; border-collapse: collapse; font-size: 15px; }
     .spec th, .spec td { text-align: left; vertical-align: top; padding: 14px 0; border-bottom: 1px solid var(--rule); }
-    .spec th { width: 34%; font-family: var(--f-mono); font-weight: 500; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); padding-right: 16px; }
+    .spec th { width: 34%; font-family: var(--f-guest); font-weight: 700; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); padding-right: 16px; }
     .chips { display: flex; gap: 8px; margin-top: 4px; }
     .chips span { width: 46px; height: 46px; display: grid; place-items: end start; padding: 4px; font-family: var(--f-mono); font-size: 9px; letter-spacing: .06em; border: 1px solid var(--rule); }
     @media (max-width: 900px) { .kb-system { grid-template-columns: 1fr; } }
@@ -71,6 +73,22 @@
     .inspect__tag { position: absolute; right: 12px; top: 12px; z-index: 2; font-family: var(--f-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; background: var(--ink); color: #fff; padding: 5px 8px; }
     @media (max-width: 900px) { .kb-close { grid-template-columns: 1fr; } .kb-close:nth-of-type(even) .inspect { order: 0; } }
 
+    /* Type scale, set live in Montserrat at the real proportions (150 / 46 / 44 / 32 pt). */
+    .kb-scale { display: grid; gap: 0; border-top: 1px solid var(--rule); }
+    .kb-scale > div { display: grid; grid-template-columns: minmax(0, 1fr) 170px; gap: 16px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--rule); --u: clamp(.11px, .0135vw, .2px); }
+    .kb-scale .s { font-family: var(--f-guest); text-transform: uppercase; line-height: 1; white-space: nowrap; overflow: hidden; text-overflow: clip; }
+    .kb-scale .meta-s { font-size: 12px; color: var(--ink-soft); line-height: 1.45; }
+    .kb-scale .meta-s b { display: block; color: var(--ink); font-weight: 700; }
+    .kb-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: clamp(28px, 4vw, 48px); border-top: 3px solid var(--ink); padding-top: 18px; }
+    .kb-stats b { display: block; font-family: var(--f-guest); font-weight: 900; font-size: clamp(36px, 4vw, 64px); line-height: .9; }
+    .kb-stats b em { font-style: normal; color: var(--accent); }
+    .kb-stats span { display: block; margin-top: 8px; font-size: 13px; color: var(--ink-soft); max-width: 18ch; }
+    .kb-quote { font-family: var(--f-guest); font-weight: 600; font-size: clamp(18px, 1.5vw, 24px); line-height: 1.4; margin: 14px 0 0; max-width: 34ch; color: #fff; }
+    .kb-quote::before { content: ''; display: block; width: 28px; height: 6px; background: var(--accent); margin-bottom: 16px; }
+    .kb-close p { color: rgba(255, 255, 255, .78); max-width: 40ch; }
+    .kb-aplus { display: grid; gap: clamp(10px, 1.2vw, 18px); }
+    .kb-aplus img { width: 100%; height: auto; box-shadow: 0 30px 60px -40px rgba(0, 0, 0, .5); }
+
     .kb-family { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(8px, 1vw, 16px); }
     @media (max-width: 760px) { .kb-family { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
@@ -83,7 +101,7 @@
 <body class="p-kb">
   <a class="skip" href="#main">Skip to content</a>
   <header class="nav" data-tone="light">
-    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><span class="nav__name">Devin Sanders</span><span class="nav__coord">02 / KleenBore</span></a>
+    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="nav__name">Devin Sanders</span><span class="nav__coord">02 / KleenBore</span></a>
     <nav aria-label="Main">
       <ul class="nav__links">
         <li><a href="work.html"><span class="idx">01</span><span class="txt">Work</span></a></li>
@@ -125,15 +143,22 @@
           <div class="kb-sec__no"><b></b>01 · Brief</div>
           <div class="kb-intro">
             <!-- DRAFT COPY: rewrite in your voice. -->
-            <p class="lede reveal">A big catalog of firearm-cleaning products, and every listing needed images that explain the product in a few seconds and look like the same brand.</p>
+            <div>
+              <p class="lede reveal">A big catalog of firearm-cleaning products, and every listing needed images that explain the product in a few seconds and look like the same brand.</p>
+              <div class="kb-stats reveal" style="--d: 100ms">
+                <div><b>60<em>+</em></b><span>listing images designed</span></div>
+                <div><b>~1<em>yr</em></b><span>of refining the system as I went</span></div>
+                <div><b>2000<em>²</em></b><span>pixels, every image</span></div>
+              </div>
+            </div>
             <div class="reveal" style="--d: 120ms">
               <span class="label">What I did</span>
               <ol class="role-list" style="margin-top: 16px;">
-                <li>Designed the Amazon product infographics</li>
+                <li>Designed 60–70 Amazon listing images over about a year, improving the design as I went</li>
                 <li>Built a reusable template system for product families</li>
-                <li>Made the marketing graphics around the listings</li>
+                <li>Worked alongside Jayger and went back and forth with the client on feedback</li>
+                <li>Designed A+ content for the listings</li>
               </ol>
-              <span class="note" style="margin-top: 22px;">Add scope: roughly how many products/listings, over how long, and who you worked with.</span>
             </div>
           </div>
         </div>
@@ -153,14 +178,19 @@
                 <table class="spec">
                   <tr><th>Canvas</th><td>2000 × 2000 px, every image</td></tr>
                   <tr><th>Typeface</th><td>Montserrat, one family for everything</td></tr>
-                  <tr><th>Colour</th><td>Red, black and white on a concrete texture
+                  <tr><th>Colour</th><td>Black and white on a concrete texture, with red as the accent
                     <div class="chips" aria-hidden="true"><span style="background: var(--accent); color: #fff;">RED</span><span style="background: #121212; color: #fff;">BLK</span><span style="background: #fff;">WHT</span><span style="background: #BDBDB8;">CON</span></div>
                   </td></tr>
-                  <tr><th>Red is for</th><td><span class="note">Your rule: what red is allowed to mark (and what it never marks).</span></td></tr>
-                  <tr><th>Type scale</th><td><span class="note">Headline / callout / body / spec sizes. Send the numbers or KB-03.</span></td></tr>
+                  <tr><th>Red is for</th><td>Accents only: the product name and small details. Never whole blocks of text.</td></tr>
                   <tr><th>Layout</th><td>Layouts vary from image to image inside the system, so a set never feels like one template stamped eight times</td></tr>
                   <tr><th>Families</th><td>Reusable templates for each product family, so a new product starts from a layout that already works</td></tr>
                 </table>
+                <div class="kb-scale" style="margin-top: clamp(28px, 4vw, 48px);" aria-label="Type scale">
+                  <div><span class="s" style="font-weight: 800; font-size: calc(150 * var(--u)); color: var(--accent);">KDS-9</span><span class="meta-s"><b>Title</b>ExtraBold · 150 pt</span></div>
+                  <div><span class="s" style="font-weight: 800; font-size: calc(46 * var(--u)); letter-spacing: .021em;">Quick specs</span><span class="meta-s"><b>Callout header</b>ExtraBold · 46 pt · tracking 21</span></div>
+                  <div><span class="s" style="font-weight: 600; font-size: calc(44 * var(--u)); letter-spacing: .136em;">Pistol cleaning kit</span><span class="meta-s"><b>Subhead</b>SemiBold · 44 pt · tracking 136</span></div>
+                  <div><span class="s" style="font-weight: 500; font-size: calc(32 * var(--u)); text-transform: none;">Fits in a range bag.</span><span class="meta-s"><b>Callout body</b>Medium · 32 pt</span></div>
+                </div>
               </div>
             </div>
           </div>
@@ -175,33 +205,19 @@
           <div class="kb-sec__no"><b></b>03 · Sets</div>
           <div>
             <h2 class="kb-h" id="sets-title" style="font-size: clamp(36px, 4.6vw, 80px); margin-bottom: 12px;">Complete listings</h2>
-            <p class="muted" style="max-width: 56ch; margin: 0 0 clamp(36px, 5vw, 64px);">Each set is every image from one listing, in the order a shopper swipes through them. Click any image to view it full size.</p>
+            <p class="muted" style="max-width: 56ch; margin: 0 0 clamp(36px, 5vw, 64px);">Each set is the core images from one listing, in the order a shopper swipes through them. Click any image to view it full size.</p>
 
             <div data-gallery>
-              <div class="kb-sethead"><span class="kb-h">KDS-556</span><span class="label">8 images</span></div>
-              <div class="kb-set">
-                <div class="slot reveal" data-asset="kb-p1-1" data-zoom></div><div class="slot reveal" data-asset="kb-p1-2" data-zoom style="--d: 50ms"></div><div class="slot reveal" data-asset="kb-p1-3" data-zoom style="--d: 100ms"></div>
-                <div class="slot reveal" data-asset="kb-p1-4" data-zoom style="--d: 150ms"></div><div class="slot reveal" data-asset="kb-p1-5" data-zoom style="--d: 200ms"></div>
-                <div class="slot reveal" data-asset="kb-p1-6" data-zoom></div><div class="slot reveal" data-asset="kb-p1-7" data-zoom style="--d: 50ms"></div><div class="slot reveal" data-asset="kb-p1-8" data-zoom style="--d: 100ms"></div>
-              </div>
+              <div class="kb-sethead"><span class="kb-h">KDS-9</span><span class="label">4 images</span></div>
+              <div class="kb-set"><div class="slot reveal" data-asset="kb-p1-1" data-zoom style="--d: 0ms"></div><div class="slot reveal" data-asset="kb-p1-2" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="kb-p1-3" data-zoom style="--d: 120ms"></div><div class="slot reveal" data-asset="kb-p1-4" data-zoom style="--d: 180ms"></div></div>
             </div>
-
             <div data-gallery style="margin-top: clamp(56px, 7vw, 100px);">
-              <div class="kb-sethead"><span class="kb-h">Product 2</span><span class="label">8 images · name pending</span></div>
-              <div class="kb-set">
-                <div class="slot reveal" data-asset="kb-p2-1" data-zoom></div><div class="slot reveal" data-asset="kb-p2-2" data-zoom style="--d: 50ms"></div><div class="slot reveal" data-asset="kb-p2-3" data-zoom style="--d: 100ms"></div>
-                <div class="slot reveal" data-asset="kb-p2-4" data-zoom style="--d: 150ms"></div><div class="slot reveal" data-asset="kb-p2-5" data-zoom style="--d: 200ms"></div>
-                <div class="slot reveal" data-asset="kb-p2-6" data-zoom></div><div class="slot reveal" data-asset="kb-p2-7" data-zoom style="--d: 50ms"></div><div class="slot reveal" data-asset="kb-p2-8" data-zoom style="--d: 100ms"></div>
-              </div>
+              <div class="kb-sethead"><span class="kb-h">POC220</span><span class="label">4 images</span></div>
+              <div class="kb-set"><div class="slot reveal" data-asset="kb-p2-1" data-zoom style="--d: 0ms"></div><div class="slot reveal" data-asset="kb-p2-2" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="kb-p2-3" data-zoom style="--d: 120ms"></div><div class="slot reveal" data-asset="kb-p2-4" data-zoom style="--d: 180ms"></div></div>
             </div>
-
             <div data-gallery style="margin-top: clamp(56px, 7vw, 100px);">
-              <div class="kb-sethead"><span class="kb-h">Product 3</span><span class="label">8 images · optional</span></div>
-              <div class="kb-set">
-                <div class="slot reveal" data-asset="kb-p3-1" data-zoom></div><div class="slot reveal" data-asset="kb-p3-2" data-zoom style="--d: 50ms"></div><div class="slot reveal" data-asset="kb-p3-3" data-zoom style="--d: 100ms"></div>
-                <div class="slot reveal" data-asset="kb-p3-4" data-zoom style="--d: 150ms"></div><div class="slot reveal" data-asset="kb-p3-5" data-zoom style="--d: 200ms"></div>
-                <div class="slot reveal" data-asset="kb-p3-6" data-zoom></div><div class="slot reveal" data-asset="kb-p3-7" data-zoom style="--d: 50ms"></div><div class="slot reveal" data-asset="kb-p3-8" data-zoom style="--d: 100ms"></div>
-              </div>
+              <div class="kb-sethead"><span class="kb-h">A188</span><span class="label">4 images</span></div>
+              <div class="kb-set"><div class="slot reveal" data-asset="kb-p3-1" data-zoom style="--d: 0ms"></div><div class="slot reveal" data-asset="kb-p3-2" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="kb-p3-3" data-zoom style="--d: 120ms"></div><div class="slot reveal" data-asset="kb-p3-4" data-zoom style="--d: 180ms"></div></div>
             </div>
           </div>
         </div>
@@ -216,15 +232,15 @@
 
         <div class="kb-close">
           <div class="inspect reveal"><span class="inspect__tag">Hover to inspect</span><div class="slot" data-asset="kb-close-1"></div></div>
-          <div class="reveal" style="--d: 120ms"><span class="label">01 · Typography &amp; hierarchy</span><span class="note" style="margin-top: 14px;">What is read first, second, third, and how size/weight/red make that happen.</span></div>
+          <div class="reveal" style="--d: 120ms"><span class="label">01 · Hierarchy · KDS-9</span><p style="margin: 14px 0 0;">The title is read first: big and red. Then “dual system pistol cleaning kit”, then the product, with tags underneath. Body copy is the thinnest thing on the image, so it’s read last.</p></div>
         </div>
         <div class="kb-close" style="margin-top: clamp(56px, 8vw, 120px);">
           <div class="inspect reveal"><span class="inspect__tag">Hover to inspect</span><div class="slot" data-asset="kb-close-2"></div></div>
-          <div class="reveal" style="--d: 120ms"><span class="label">02 · Technical callouts</span><span class="note" style="margin-top: 14px;">How you turned specs into something a shopper understands at a glance.</span></div>
+          <div class="reveal" style="--d: 120ms"><span class="label">02 · Specs at a glance</span><p class="kb-quote">I wanted to pull out important specs that shoppers needed to know and position it in a way that is easy to glance at and read, and making it fast. Fewer words means more of a chance they keep scrolling.</p></div>
         </div>
         <div class="kb-close" style="margin-top: clamp(56px, 8vw, 120px);">
           <div class="inspect reveal"><span class="inspect__tag">Hover to inspect</span><div class="slot" data-asset="kb-close-3"></div></div>
-          <div class="reveal" style="--d: 120ms"><span class="label">03 · Comparison</span><span class="note" style="margin-top: 14px;">Optional. A comparison or size chart, and how you kept it readable on a phone.</span></div>
+          <div class="reveal" style="--d: 120ms"><span class="label">03 · Lifestyle</span><p style="margin: 14px 0 0;">A lifestyle photo with dark callout boxes. It breaks up a run of product-on-white images so the set doesn’t feel the same all the way through.</p></div>
         </div>
       </div>
     </section>
@@ -245,17 +261,20 @@
       </div>
     </section>
 
-    <!-- 06 IN THE WILD ----------------------------------------------------->
-    <section class="section" data-tone="light" aria-labelledby="wild-title" style="padding-top: 0;">
+    <!-- 06 A+ CONTENT ----------------------------------------------------->
+    <section class="section" data-tone="light" aria-labelledby="aplus-title" style="padding-top: 0;">
       <div class="wrap">
         <div class="kb-sec">
-          <div class="kb-sec__no"><b></b>06 · In use</div>
+          <div class="kb-sec__no"><b></b>06 · A+</div>
           <div>
-            <h2 class="kb-h" id="wild-title" style="font-size: clamp(36px, 4.6vw, 80px); margin-bottom: clamp(32px, 4vw, 56px);">Beyond the listing</h2>
-            <div class="kb-wild">
-              <div class="phone reveal"><div class="phone__screen"><div class="slot" data-asset="kb-listing-mobile"></div></div></div>
-              <div class="slot reveal" data-asset="kb-product" style="--d: 100ms"></div>
-              <div style="display: grid; gap: clamp(12px, 1.6vw, 24px);"><div class="slot reveal" data-asset="kb-marketing-1" style="--d: 200ms"></div><div class="slot reveal" data-asset="kb-marketing-2" style="--d: 260ms"></div></div>
+            <h2 class="kb-h" id="aplus-title" style="font-size: clamp(36px, 4.6vw, 80px); margin-bottom: 12px;">A+ content</h2>
+            <p class="muted" style="max-width: 56ch; margin: 0 0 clamp(32px, 4vw, 56px);">The modules further down the PocKit listing, read top to bottom the way a shopper scrolls them.</p>
+            <div class="kb-aplus" data-gallery>
+              <figure class="reveal" style="margin: 0; --d: 0ms"><img src="assets/kleenbore/aplus-01.webp" alt="KleenBore logo banner: Kleened to precision" width="2400" height="742" loading="lazy" decoding="async" data-lightbox></figure>
+              <figure class="reveal" style="margin: 0; --d: 60ms"><img src="assets/kleenbore/aplus-02.webp" alt="The PocKit, with quick specs" width="2400" height="742" loading="lazy" decoding="async" data-lightbox></figure>
+              <figure class="reveal" style="margin: 0; --d: 120ms"><img src="assets/kleenbore/aplus-03.webp" alt="PocKit features: compact storage, extendable, duty ready" width="2400" height="742" loading="lazy" decoding="async" data-lightbox></figure>
+              <figure class="reveal" style="margin: 0; --d: 180ms"><img src="assets/kleenbore/aplus-04.webp" alt="Proven adaptability: the PocKit kit range" width="2400" height="742" loading="lazy" decoding="async" data-lightbox></figure>
+              <figure class="reveal" style="margin: 0; --d: 240ms"><img src="assets/kleenbore/aplus-05.webp" alt="Engineered for tradition: KleenBore since 1951" width="2400" height="742" loading="lazy" decoding="async" data-lightbox></figure>
             </div>
           </div>
         </div>
@@ -278,8 +297,13 @@
 
   <footer class="footer">
     <div class="wrap">
-      <span class="label">© <span data-year>2026</span> Devin Sanders · Denver, Colorado</span>
-      <ul class="label"><li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li><li><a class="u-line" href="Resume.pdf">Résumé</a></li><li><a class="u-line" href="#main">Back to top ↑</a></li></ul>
+      <a class="footer__brand" href="index.html"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="label">© <span data-year>2026</span> Devin Sanders · Denver, Colorado</span></a>
+      <span class="label footer__sign" title="The contour lines on the homepage are this mountain"><span class="coord">39.5826° N 105.6688° W</span> · Mt. Bierstadt, 14,060 ft · My first fourteener</span>
+      <ul class="label">
+        <li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li>
+        <li><a class="u-line" href="Resume.pdf">Résumé</a></li>
+        <li><a class="u-line" href="#main">Back to top ↑</a></li>
+      </ul>
     </div>
   </footer>
 

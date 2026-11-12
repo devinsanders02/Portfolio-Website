@@ -26,7 +26,7 @@
     .rr-blue { background: var(--blue); color: #fff; }
     .rr-blue .label { color: rgba(255, 255, 255, .72); }
     .rr-mark { min-height: 100vh; min-height: 100svh; display: grid; place-items: center; position: relative; overflow: hidden; }
-    .rr-mark img { width: min(56vw, 640px); height: auto; }
+    .rr-mark img { width: max(118vw, 900px); max-width: none; height: auto; }
     .rr-mark__cap { position: absolute; left: var(--gutter); right: var(--gutter); bottom: clamp(24px, 5vh, 56px); display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
     .rr-intro { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 6vw, 100px); align-items: end; }
     .rr-intro .lede { font-family: var(--f-guest); font-weight: 700; font-size: clamp(26px, 2.8vw, 46px); line-height: 1.12; letter-spacing: -.02em; max-width: 20ch; }
@@ -50,9 +50,10 @@
     .rr-bento > * { position: relative; overflow: hidden; }
     .rr-bento img { width: 100%; height: 100%; object-fit: cover; transition: transform 1200ms var(--ease); }
     .rr-bento > *:hover img { transform: scale(1.04); }
-    .rr-bento figcaption { position: absolute; left: 10px; bottom: 10px; font-family: var(--f-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; background: rgba(255, 255, 255, .92); color: var(--ink); padding: 4px 7px; }
+    .rr-bento figcaption { position: absolute; left: 10px; bottom: 10px; font-family: var(--f-label); font-weight: 600; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; background: rgba(255, 255, 255, .92); color: var(--ink); padding: 4px 7px; }
     .b-a { grid-column: span 4; grid-row: span 3; } .b-b { grid-column: span 2; grid-row: span 2; } .b-c { grid-column: span 2; grid-row: span 1; }
     .b-d { grid-column: span 3; grid-row: span 2; } .b-e { grid-column: span 3; grid-row: span 2; }
+    .b-last { grid-column: 3 / span 2; grid-row: span 2; }
     .b-f { grid-column: span 2; grid-row: span 2; } .b-g { grid-column: span 2; grid-row: span 2; } .b-h { grid-column: span 2; grid-row: span 2; }
     @media (max-width: 760px) { .rr-bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 42vw; } .rr-bento > * { grid-column: span 1 !important; grid-row: span 1 !important; } .rr-bento .b-a, .rr-bento .b-d { grid-column: span 2 !important; } }
   </style>
@@ -60,7 +61,7 @@
 <body class="p-rr">
   <a class="skip" href="#main">Skip to content</a>
   <header class="nav" data-tone="dark">
-    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><span class="nav__name">Devin Sanders</span><span class="nav__coord">04 / Rexburg Rapids</span></a>
+    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="nav__name">Devin Sanders</span><span class="nav__coord">04 / Rexburg Rapids</span></a>
     <nav aria-label="Main"><ul class="nav__links">
       <li><a href="work.html"><span class="idx">01</span><span class="txt">Work</span></a></li>
       <li><a href="about.html"><span class="idx">02</span><span class="txt">About</span></a></li>
@@ -90,8 +91,8 @@
       <div class="wrap rr-intro">
         <!-- DRAFT COPY: rewrite in your voice. -->
         <div><p class="lede reveal">A rebrand for Rexburg’s summer waterpark. The new identity is loud, blue and yellow, and it has to work on everything from a billboard to a wristband.</p>
-        <span class="note reveal" style="margin-top: 22px; max-width: 520px;">If this was a class project and not a commission, say so in one line here.</span></div>
-        <div class="reveal-img" data-from="left" style="--d: 120ms"><img src="RexburgRapids-Swatch.webp" alt="Brand mood collage" loading="lazy" data-lightbox></div>
+        <p class="reveal muted" style="--d: 80ms; margin: 22px 0 0; max-width: 44ch;">A class project with a real client: I worked directly with them, and they gave feedback along the way.</p></div>
+        <figure class="reveal-img" data-from="left" style="--d: 120ms; margin: 0;"><img src="RexburgRapids-Swatch.webp" alt="Moodboard for the Rexburg Rapids identity" loading="lazy" data-lightbox><figcaption class="cap">Moodboard · the feeling I was going for</figcaption></figure>
       </div>
     </section>
 
@@ -102,7 +103,6 @@
 
     <section class="section" data-tone="light" aria-label="Guidelines">
       <div class="wrap">
-        <div style="max-width: 720px; margin-bottom: clamp(40px, 6vw, 80px);"><div class="slot reveal" data-asset="rr-process"></div></div>
         <span class="label label--accent">The Rapids Rulebook</span>
         <h2 class="rr-h" style="font-size: clamp(40px, 5.4vw, 96px); margin: 12px 0 clamp(32px, 4vw, 56px);">The guidelines</h2>
         <div class="reveal-img"><img src="RexburgRapids-Guide.webp" alt="Pages from the Rapids Rulebook brand guidelines" loading="lazy" data-lightbox></div>
@@ -137,18 +137,25 @@
           <figure class="b-d reveal" style="margin: 0;"><img src="RexburgRapids-Billboard.webp" alt="Promotional billboard" loading="lazy" data-lightbox><figcaption>Billboard</figcaption></figure>
           <figure class="b-e reveal" style="margin: 0; --d: 80ms"><img src="RexburgRapids-Laptop.webp" alt="Website on a laptop" loading="lazy" data-lightbox><figcaption>Website</figcaption></figure>
           <figure class="b-f reveal" style="margin: 0;"><img src="RexburgRapids-Banners.webp" alt="Street lamp banners" loading="lazy" data-lightbox><figcaption>Street banners</figcaption></figure>
-          <figure class="b-g reveal" style="margin: 0; --d: 80ms"><img src="RexburgRapids-Rules.webp" alt="Lazy river safety sign" loading="lazy" data-lightbox><figcaption>Safety sign</figcaption></figure>
+          <figure class="b-g reveal" style="margin: 0; --d: 80ms"><img src="RexburgRapids-Rules.webp" alt="Lazy river safety sign" loading="lazy" data-lightbox style="object-position: 0 50%;"><figcaption>Safety sign</figcaption></figure>
           <figure class="b-h reveal" style="margin: 0; --d: 160ms"><img src="RexburgRapids-Hat.webp" alt="Staff hat" loading="lazy" data-lightbox><figcaption>Staff hat</figcaption></figure>
           <figure class="b-f reveal" style="margin: 0;"><img src="RexburgRapids-Stickers.webp" alt="Die-cut stickers" loading="lazy" data-lightbox><figcaption>Stickers</figcaption></figure>
           <figure class="b-g reveal" style="margin: 0; --d: 80ms"><img src="RexburgRapids-SocMed.webp" alt="Social media templates" loading="lazy" data-lightbox><figcaption>Social</figcaption></figure>
           <figure class="b-h reveal" style="margin: 0; --d: 160ms"><img src="RexburgRapids-Shirt.webp" alt="Staff T-shirt" loading="lazy" data-lightbox><figcaption>Staff shirt</figcaption></figure>
-          <figure class="b-c reveal" style="margin: 0;"><img src="RexburgRapids-Bucket.webp" alt="Water slide detail" loading="lazy" data-lightbox><figcaption>Slide detail</figcaption></figure>
+          <figure class="b-c b-last reveal" style="margin: 0;"><img src="RexburgRapids-Bucket.webp" alt="Water slide detail" loading="lazy" data-lightbox><figcaption>Slide detail</figcaption></figure>
         </div>
       </div>
     </section>
 
+    <section class="section--tight" data-tone="light" aria-labelledby="proc-title">
+      <div class="wrap">
+        <div class="set-head"><h2 class="label label--accent" id="proc-title">Process</h2><span class="label">Before the final mark</span></div>
+        <div style="max-width: 900px;"><div class="slot reveal" data-asset="rr-process" data-zoom></div></div>
+      </div>
+    </section>
+
     <a class="next" href="about-face.html" data-tone="dark">
-      <div class="next__media"><img src="AboutFace/AF-Hero.webp" alt="" loading="lazy"></div>
+      <div class="next__media"><img src="AboutFace/AF-Hero2.webp" alt="" loading="lazy"></div>
       <div class="next__body"><span class="label">Next · 05 / 06</span><p class="display display--l" style="margin-top: 12px;">AboutFace</p></div>
     </a>
 
@@ -156,6 +163,16 @@
       <div class="wrap"><h2 class="label" id="contact-title">Say hello</h2><p style="margin: 18px 0 0;"><a class="contact__mail" href="mailto:devin.sanders02@gmail.com">devin.sanders02@gmail.com</a></p></div>
     </section>
   </main>
-  <footer class="footer"><div class="wrap"><span class="label">© <span data-year>2026</span> Devin Sanders · Denver, Colorado</span><ul class="label"><li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li><li><a class="u-line" href="Resume.pdf">Résumé</a></li><li><a class="u-line" href="#main">Back to top ↑</a></li></ul></div></footer>
+  <footer class="footer">
+    <div class="wrap">
+      <a class="footer__brand" href="index.html"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="label">© <span data-year>2026</span> Devin Sanders · Denver, Colorado</span></a>
+      <span class="label footer__sign" title="The contour lines on the homepage are this mountain"><span class="coord">39.5826° N 105.6688° W</span> · Mt. Bierstadt, 14,060 ft · My first fourteener</span>
+      <ul class="label">
+        <li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li>
+        <li><a class="u-line" href="Resume.pdf">Résumé</a></li>
+        <li><a class="u-line" href="#main">Back to top ↑</a></li>
+      </ul>
+    </div>
+  </footer>
 </body>
 </html>

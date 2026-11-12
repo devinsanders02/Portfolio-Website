@@ -27,7 +27,7 @@
     .screen__player { position: relative; width: 100%; aspect-ratio: 16 / 9; max-height: 74vh; margin: 0 auto 28px; background: #000; overflow: hidden; }
     .screen__player video, .screen__player img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .screen__play { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; z-index: 2; background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, .55)); transition: opacity var(--t-med) var(--ease); }
-    .screen__play span { display: inline-flex; align-items: center; gap: 14px; padding: 18px 28px; border: 1px solid rgba(255, 255, 255, .6); border-radius: 999px; font-family: var(--f-mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; backdrop-filter: blur(6px); transition: background-color var(--t-fast) linear, color var(--t-fast) linear; }
+    .screen__play span { display: inline-flex; align-items: center; gap: 14px; padding: 18px 28px; border: 1px solid rgba(255, 255, 255, .6); border-radius: 999px; font-family: var(--f-label); font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; backdrop-filter: blur(6px); transition: background-color var(--t-fast) linear, color var(--t-fast) linear; }
     .screen__play:hover span { background: #fff; color: #000; }
     .screen.is-playing .screen__play { opacity: 0; pointer-events: none; }
     .screen__head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
@@ -36,6 +36,11 @@
     .mr-frames h3 { font-family: var(--f-cond); text-transform: uppercase; font-size: clamp(22px, 2vw, 32px); margin: 14px 0 4px; }
     .mr-frames p { margin: 0; color: var(--ink-soft); }
     @media (max-width: 760px) { .mr-frames { grid-template-columns: 1fr; } }
+    .mr-break { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2vw, 32px); }
+    .mr-break h3 { font-family: var(--f-cond); text-transform: uppercase; font-size: clamp(22px, 2vw, 32px); margin: 4px 0 4px; }
+    .mr-break .label { display: block; margin-top: 16px; color: var(--accent); }
+    .mr-break p { margin: 0; color: var(--ink-soft); max-width: 34ch; }
+    @media (max-width: 760px) { .mr-break { grid-template-columns: 1fr; } }
     .mr-notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 5vw, 90px); }
     .mr-notes p { max-width: 44ch; color: rgba(237, 237, 240, .8); }
     @media (max-width: 760px) { .mr-notes { grid-template-columns: 1fr; } }
@@ -44,7 +49,7 @@
 <body class="p-mr">
   <a class="skip" href="#main">Skip to content</a>
   <header class="nav" data-tone="dark">
-    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><span class="nav__name">Devin Sanders</span><span class="nav__coord">06 / Motion</span></a>
+    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="nav__name">Devin Sanders</span><span class="nav__coord">06 / Motion</span></a>
     <nav aria-label="Main"><ul class="nav__links">
       <li><a href="work.html"><span class="idx">01</span><span class="txt">Work</span></a></li>
       <li><a href="about.html"><span class="idx">02</span><span class="txt">About</span></a></li>
@@ -79,16 +84,26 @@
       <div class="wrap">
         <h2 class="label" id="frames-title">Styleframes</h2>
         <div class="mr-frames" style="margin-top: 24px;" data-gallery>
-          <figure class="reveal"><div class="reveal-img"><img src="MotionReel/Motion-Thumbnail1.webp" alt="Kinetic typography styleframe" loading="lazy" data-lightbox></div><h3>Typography</h3><p>Letterforms built in space, with momentum.</p></figure>
-          <figure class="reveal" style="--d: 120ms"><div class="reveal-img" style="--d: 120ms"><img src="MotionReel/Motion-Thumbnail2.webp" alt="Brand identity reveal styleframe" loading="lazy" data-lightbox></div><h3>Identity reveal</h3><p>A logo that morphs into its final lockup.</p></figure>
+          <figure class="reveal"><div class="reveal-img"><img src="MotionReel/Motion-Thumbnail1.webp" alt="Styleframe: a logo being pieced together" loading="lazy" data-lightbox></div><h3>Logo build</h3><p>A logo pieced together, part by part, with continual movement.</p></figure>
+          <figure class="reveal" style="--d: 120ms"><div class="reveal-img" style="--d: 120ms"><img src="MotionReel/Motion-Thumbnail2.webp" alt="Styleframe: video mapped into 3D space" loading="lazy" data-lightbox></div><h3>Video in 3D space</h3><p>Video mapped onto surfaces in 3D space in After Effects.</p></figure>
         </div>
-        <span class="note" style="margin-top: 40px; max-width: 640px;">Worth adding: a short breakdown of one shot (sketch → styleframe → final). For game-studio motion roles, process is what gets you the interview.</span>
       </div>
     </section>
 
-    <a class="next" href="work.html" data-tone="dark">
+    <section class="section" data-tone="dark" aria-labelledby="break-title" style="padding-top: 0;">
+      <div class="wrap">
+        <div class="set-head"><h2 class="label label--accent" id="break-title">Breakdown · the Tron piece</h2><span class="label">Storyboard → pacing → polish</span></div>
+        <ol class="mr-break" data-gallery>
+          <li class="reveal"><div class="slot on-dark" data-asset="mo-break-1" data-zoom></div><span class="label">01</span><h3>Storyboard</h3><p>Planned out shot by shot before opening After Effects.</p></li>
+          <li class="reveal" style="--d: 100ms"><div class="slot on-dark" data-asset="mo-break-2" data-zoom></div><span class="label">02</span><h3>Pacing</h3><p>A choppy pass of still frames to get the timing right first.</p></li>
+          <li class="reveal" style="--d: 200ms"><div class="slot on-dark" data-asset="mo-break-3" data-zoom></div><span class="label">03</span><h3>Polish</h3><p>Then the motion, the glow and the light effects on top.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <a class="next" href="olly-packaging.html" data-tone="dark">
       <div class="next__media"><img src="Olly/Olly-Hero.webp" alt="" loading="lazy"></div>
-      <div class="next__body"><span class="label">Next</span><p class="display display--l" style="margin-top: 12px;">More work</p></div>
+      <div class="next__body"><span class="label">Next · More work</span><p class="display display--l" style="margin-top: 12px;">Olly</p></div>
     </a>
 
     <section class="contact" id="contact" data-tone="dark" aria-labelledby="contact-title">

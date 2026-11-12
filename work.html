@@ -20,17 +20,19 @@
     .w-head { position: relative; padding: calc(var(--nav-h) + clamp(60px, 10vh, 120px)) 0 clamp(36px, 5vw, 64px); overflow: hidden; }
     .w-head .topo { --topo-opacity: .55; --topo-fade-x: 92%; --topo-fade-y: 0%; }
     .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: clamp(28px, 4vw, 48px); }
-    .filters button { font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; padding: 9px 14px; border: 1px solid var(--rule); border-radius: 999px; transition: background-color var(--t-fast) linear, color var(--t-fast) linear, border-color var(--t-fast) linear; }
+    .filters button { font-family: var(--f-label); font-weight: 600; font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; padding: 9px 14px; border: 1px solid var(--rule); border-radius: 999px; transition: background-color var(--t-fast) linear, color var(--t-fast) linear, border-color var(--t-fast) linear; }
     .filters button:hover { border-color: var(--ink); }
     .filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
     .index li[hidden] { display: none; }
     .index .i-tag { color: var(--accent); }
+    .w-group { margin-top: clamp(64px, 8vw, 120px); }
+    .w-group[hidden] { display: none; }
   </style>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <header class="nav" data-tone="light">
-    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><span class="nav__name">Devin Sanders</span><span class="nav__coord">Index</span></a>
+    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="nav__name">Devin Sanders</span><span class="nav__coord">Index</span></a>
     <nav aria-label="Main"><ul class="nav__links">
       <li><a href="work.html" aria-current="page"><span class="idx">01</span><span class="txt">Work</span></a></li>
       <li><a href="about.html"><span class="idx">02</span><span class="txt">About</span></a></li>
@@ -52,7 +54,8 @@
           <button type="button" aria-pressed="false" data-f="identity">Identity</button>
           <button type="button" aria-pressed="false" data-f="packaging">Packaging</button>
           <button type="button" aria-pressed="false" data-f="editorial">Editorial</button>
-          <button type="button" aria-pressed="false" data-f="motion">Motion &amp; UI</button>
+          <button type="button" aria-pressed="false" data-f="motion">Motion</button>
+          <button type="button" aria-pressed="false" data-f="ui">Interface</button>
         </div>
       </div>
     </section>
@@ -60,33 +63,48 @@
     <section data-tone="light" aria-label="All projects" style="padding-bottom: clamp(80px, 10vw, 150px);">
       <div class="wrap">
         <ul class="index">
-          <li data-tags="client ecommerce"><a href="wandrd.html" data-peek="WANDRD-Hero.webp"><span class="i-num label">01</span><span class="i-name">WANDRD</span><span class="i-disc">Amazon Brand Store &amp; infographics · <span class="i-tag">Client · RIPPL</span></span><span class="i-year label">2025</span><img class="i-thumb" src="WANDRD-Hero.webp" alt="" loading="lazy"></a></li>
-          <li data-tags="client ecommerce"><a href="kleenbore.html"><span class="i-num label">02</span><span class="i-name">KleenBore</span><span class="i-disc">Amazon infographic system · <span class="i-tag">Client · RIPPL</span></span><span class="i-year label">2026</span></a></li>
-          <li data-tags="packaging"><a href="gerber-gear.html" data-peek="GerberGear/GG-Hero.webp"><span class="i-num label">03</span><span class="i-name">Gerber Gear</span><span class="i-disc">Structural packaging</span><span class="i-year label">2026</span><img class="i-thumb" src="GerberGear/GG-Hero.webp" alt="" loading="lazy"></a></li>
-          <li data-tags="identity"><a href="rexburg-rapids.html" data-peek="RexburgRapids-Hero.webp"><span class="i-num label">04</span><span class="i-name">Rexburg Rapids</span><span class="i-disc">Brand identity</span><span class="i-year label">2026</span><img class="i-thumb" src="RexburgRapids-Hero.webp" alt="" loading="lazy"></a></li>
-          <li data-tags="editorial"><a href="about-face.html" data-peek="AboutFace/AF-Hero.webp"><span class="i-num label">05</span><span class="i-name">AboutFace</span><span class="i-disc">Editorial typography</span><span class="i-year label">2026</span><img class="i-thumb" src="AboutFace/AF-Hero.webp" alt="" loading="lazy"></a></li>
-          <li data-tags="motion"><a href="motion-reel.html" data-peek="MotionReel/Motion-Hero.webp"><span class="i-num label">06</span><span class="i-name">Motion Reel</span><span class="i-disc">Motion design</span><span class="i-year label">2026</span><img class="i-thumb" src="MotionReel/Motion-Hero.webp" alt="" loading="lazy"></a></li>
-          <li data-tags="packaging"><a href="olly-packaging.html" data-peek="Olly/Olly-Hero.webp"><span class="i-num label">07</span><span class="i-name">Olly</span><span class="i-disc">Packaging extension</span><span class="i-year label">2026</span><img class="i-thumb" src="Olly/Olly-Hero.webp" alt="" loading="lazy"></a></li>
-          <li data-tags="identity client"><a href="identity-system.html" data-peek="Jared/IS-Hero.webp"><span class="i-num label">08</span><span class="i-name">Jared Christensen</span><span class="i-disc">Personal identity &amp; stationery</span><span class="i-year label">2026</span><img class="i-thumb" src="Jared/IS-Hero.webp" alt="" loading="lazy"></a></li>
-          <li data-tags="identity"><a href="analog-reboot.html" data-peek="AnalogReboot/AR-Hero.webp"><span class="i-num label">09</span><span class="i-name">Analog Reboot</span><span class="i-disc">Pattern design &amp; apparel</span><span class="i-year label">2026</span><img class="i-thumb" src="AnalogReboot/AR-Hero.webp" alt="" loading="lazy"></a></li>
-          <li data-tags="editorial"><a href="kindred-roots.html" data-peek="KindredRoots/KindredRoots-Hero.webp"><span class="i-num label">10</span><span class="i-name">Kindred Roots</span><span class="i-disc">Magazine layout</span><span class="i-year label">2026</span><img class="i-thumb" src="KindredRoots/KindredRoots-Hero.webp" alt="" loading="lazy"></a></li>
-          <li data-tags="motion"><a href="ui-ux.html" data-peek="UI-UX/iOS Thumbnail.webp"><span class="i-num label">11</span><span class="i-name">Interface concepts</span><span class="i-disc">UI / UX</span><span class="i-year label">2026</span><img class="i-thumb" src="UI-UX/iOS Thumbnail.webp" alt="" loading="lazy"></a></li>
+          <li data-tags="client ecommerce"><a href="wandrd.html"><img class="i-bg" src="WANDRD-Hero.webp" alt="" loading="lazy" decoding="async"><span class="i-num label">01</span><span class="i-name">WANDRD</span><span class="i-disc">Amazon Brand Store &amp; infographics · <span class="i-tag">Client · RIPPL</span></span><span class="i-year label">2025</span><img class="i-thumb" src="WANDRD-Hero.webp" alt="" loading="lazy"></a></li>
+          <li data-tags="client ecommerce"><a href="kleenbore.html"><img class="i-bg" src="assets/kleenbore/aplus-05.webp" alt="" loading="lazy" decoding="async"><span class="i-num label">02</span><span class="i-name">KleenBore</span><span class="i-disc">Amazon infographic system · <span class="i-tag">Client · RIPPL</span></span><span class="i-year label">2026</span></a></li>
+          <li data-tags="packaging"><a href="gerber-gear.html"><img class="i-bg" src="GerberGear/GG-Hero.webp" alt="" loading="lazy" decoding="async"><span class="i-num label">03</span><span class="i-name">Gerber Gear</span><span class="i-disc">Structural packaging</span><span class="i-year label">2026</span><img class="i-thumb" src="GerberGear/GG-Hero.webp" alt="" loading="lazy"></a></li>
+          <li data-tags="identity"><a href="rexburg-rapids.html"><img class="i-bg" src="RexburgRapids-Hero.webp" alt="" loading="lazy" decoding="async"><span class="i-num label">04</span><span class="i-name">Rexburg Rapids</span><span class="i-disc">Brand identity</span><span class="i-year label">2026</span><img class="i-thumb" src="RexburgRapids-Hero.webp" alt="" loading="lazy"></a></li>
+          <li data-tags="editorial"><a href="about-face.html"><img class="i-bg" src="AboutFace/AF-Hero2.webp" alt="" loading="lazy" decoding="async"><span class="i-num label">05</span><span class="i-name">AboutFace</span><span class="i-disc">Editorial typography</span><span class="i-year label">2026</span><img class="i-thumb" src="AboutFace/AF-Hero2.webp" alt="" loading="lazy"></a></li>
+          <li data-tags="motion"><a href="motion-reel.html"><img class="i-bg" src="MotionReel/Motion-Hero.webp" alt="" loading="lazy" decoding="async"><span class="i-num label">06</span><span class="i-name">Motion Reel</span><span class="i-disc">Motion design</span><span class="i-year label">2026</span><img class="i-thumb" src="MotionReel/Motion-Hero.webp" alt="" loading="lazy"></a></li>
+          <li data-tags="packaging"><a href="olly-packaging.html"><img class="i-bg" src="Olly/Olly-Hero.webp" alt="" loading="lazy" decoding="async"><span class="i-num label">07</span><span class="i-name">Olly</span><span class="i-disc">Packaging extension</span><span class="i-year label">2026</span><img class="i-thumb" src="Olly/Olly-Hero.webp" alt="" loading="lazy"></a></li>
+          <li data-tags="identity client"><a href="identity-system.html"><img class="i-bg" src="Jared/IS-Hero.webp" alt="" loading="lazy" decoding="async"><span class="i-num label">08</span><span class="i-name">Jared Christensen</span><span class="i-disc">Personal identity &amp; stationery</span><span class="i-year label">2026</span><img class="i-thumb" src="Jared/IS-Hero.webp" alt="" loading="lazy"></a></li>
+          <li data-tags="identity"><a href="analog-reboot.html"><img class="i-bg" src="AnalogReboot/AR-Hero.webp" alt="" loading="lazy" decoding="async"><span class="i-num label">09</span><span class="i-name">Analog Reboot</span><span class="i-disc">Pattern design &amp; apparel</span><span class="i-year label">2026</span><img class="i-thumb" src="AnalogReboot/AR-Hero.webp" alt="" loading="lazy"></a></li>
+          <li data-tags="editorial"><a href="kindred-roots.html"><img class="i-bg" src="KindredRoots/KindredRoots-Hero.webp" alt="" loading="lazy" decoding="async"><span class="i-num label">10</span><span class="i-name">Kindred Roots</span><span class="i-disc">Magazine layout</span><span class="i-year label">2026</span><img class="i-thumb" src="KindredRoots/KindredRoots-Hero.webp" alt="" loading="lazy"></a></li>
         </ul>
+        <div class="w-group" data-group="ui">
+          <div class="set-head"><h2 class="label label--accent">Interface design</h2><span class="label">Concepts, not shipped products</span></div>
+          <ul class="index">
+          <li data-tags="ui"><a href="ui-ux.html"><img class="i-bg" src="UI-UX/iOS Thumbnail.webp" alt="" loading="lazy" decoding="async"><span class="i-num label">11</span><span class="i-name">Interface concepts</span><span class="i-disc">UI / UX</span><span class="i-year label">2026</span><img class="i-thumb" src="UI-UX/iOS Thumbnail.webp" alt="" loading="lazy"></a></li>
+          </ul>
+        </div>
       </div>
     </section>
-    <div class="peek" aria-hidden="true"><img alt=""></div>
 
     <section class="contact" id="contact" data-tone="light" aria-labelledby="contact-title">
       <div class="wrap"><h2 class="label" id="contact-title">Say hello</h2><p style="margin: 18px 0 0;"><a class="contact__mail" href="mailto:devin.sanders02@gmail.com">devin.sanders02@gmail.com</a></p></div>
     </section>
   </main>
-  <footer class="footer"><div class="wrap"><span class="label">© <span data-year>2026</span> Devin Sanders · Denver, Colorado</span><ul class="label"><li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li><li><a class="u-line" href="Resume.pdf">Résumé</a></li><li><a class="u-line" href="#main">Back to top ↑</a></li></ul></div></footer>
+  <footer class="footer">
+    <div class="wrap">
+      <a class="footer__brand" href="index.html"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="label">© <span data-year>2026</span> Devin Sanders · Denver, Colorado</span></a>
+      <span class="label footer__sign" title="The contour lines on the homepage are this mountain"><span class="coord">39.5826° N 105.6688° W</span> · Mt. Bierstadt, 14,060 ft · My first fourteener</span>
+      <ul class="label">
+        <li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li>
+        <li><a class="u-line" href="Resume.pdf">Résumé</a></li>
+        <li><a class="u-line" href="#main">Back to top ↑</a></li>
+      </ul>
+    </div>
+  </footer>
 
   <script>
     document.querySelectorAll('.filters button').forEach(b => b.addEventListener('click', () => {
       document.querySelectorAll('.filters button').forEach(x => x.setAttribute('aria-pressed', x === b));
       const f = b.dataset.f;
       document.querySelectorAll('.index li').forEach(li => { li.hidden = f !== 'all' && !li.dataset.tags.split(' ').includes(f); });
+      document.querySelectorAll('.w-group').forEach(g => { g.hidden = !g.querySelector('li:not([hidden])'); });
     }));
   </script>
 </body>

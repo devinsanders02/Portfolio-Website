@@ -18,38 +18,47 @@
   <script src="js/site.js" defer></script>
   <style>
     /* ---------- WANDRD art direction ----------
-       Warm charcoal and sand, WANDRD's red as the accent, all-caps condensed
-       type like the store itself. Long dark stretches, broken by one sand
-       section for the phones (the pace changes when the screen gets small). */
+       WANDRD's own palette: near-black, pearl cream, sand, with Hot Red used
+       sparingly. Condensed caps like the store; small labels in a mono, standing
+       in for FF Typestar (brand font, Adobe Fonts only). Nav and footer stay in
+       Devin's colours, so the page reads as his case study about their brand. */
     body.p-wandrd {
-      --night: #141311; --paper: #E9E2D6; --paper-2: #DDD4C5; --sand: #D3C5AE;
-      --accent: #D9472B; --ink: #1E1C19; --ink-soft: rgba(30, 28, 25, .66); --rule: rgba(30, 28, 25, .18);
-      background: var(--night); color: #EDE7DD;
+      --night: #070707; --paper: #F1EEE9; --paper-2: #E7E2DA; --sand: #E2D3B0;
+      --accent: #FF3F28; --ink: #070707; --ink-soft: rgba(7, 7, 7, .64); --rule: rgba(7, 7, 7, .16);
+      --w-cream: #F1EEE9; --w-dim: rgba(241, 238, 233, .62); --w-line: rgba(241, 238, 233, .16);
+      background: var(--night); color: var(--w-cream);
     }
     .p-wandrd .tone-dark { background: var(--night); }
-    .p-wandrd .label { color: rgba(237, 231, 221, .58); }
-    .p-wandrd .tone-sand { background: var(--paper); color: var(--ink); }
+    .p-wandrd .tone-dark .label { color: var(--w-dim); }
+    .p-wandrd .label--accent, .p-wandrd .tone-dark .label--accent { color: var(--accent); }
+    .p-wandrd .tone-sand { background: var(--sand); color: var(--ink); }
     .p-wandrd .tone-sand .label { color: var(--ink-soft); }
-    .p-wandrd .label--accent { color: var(--accent); }
+    .p-wandrd .tone-cream { background: var(--paper); color: var(--ink); }
+    .p-wandrd .tone-cream .label { color: var(--ink-soft); }
+    .w-mono { font-family: var(--f-mono); font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
 
     .w-intro { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 6vw, 110px); align-items: start; }
-    .w-intro .lede { font-size: clamp(24px, 2.5vw, 42px); line-height: 1.18; max-width: 22ch; font-weight: 500; color: #F4EFE7; }
-    .w-intro .challenge { margin-top: clamp(36px, 5vw, 70px); max-width: 52ch; color: rgba(237, 231, 221, .76); }
+    .w-intro .lede { font-size: clamp(24px, 2.5vw, 42px); line-height: 1.16; max-width: 22ch; font-weight: 500; }
+    .w-intro .challenge { margin-top: clamp(36px, 5vw, 70px); max-width: 52ch; color: rgba(241, 238, 233, .76); }
+    .w-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: clamp(36px, 5vw, 64px); border-top: 1px solid var(--w-line); padding-top: 22px; }
+    .w-stats b { display: block; font-family: var(--f-cond); font-weight: 700; font-size: clamp(44px, 5vw, 84px); line-height: .9; }
+    .w-stats span { display: block; margin-top: 8px; color: var(--w-dim); font-size: 14px; max-width: 18ch; }
+    .p-wandrd .role-list li { border-color: var(--w-line); }
     @media (max-width: 900px) { .w-intro { grid-template-columns: 1fr; } }
 
     /* The store: a sticky browser window whose page scrolls as you scroll. */
-    .w-store { height: 340vh; --e: 0; position: relative; }
+    .w-store { height: 360vh; --e: 0; position: relative; }
     .w-store__sticky { position: sticky; top: 0; height: 100vh; height: 100svh; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(24px, 4vw, 72px); align-items: center; padding: calc(var(--nav-h) + 20px) var(--gutter) 40px; }
     .w-store__steps { position: relative; align-self: stretch; display: grid; align-content: center; }
     .w-store__step { grid-area: 1 / 1; transition: opacity 500ms var(--ease), transform 500ms var(--ease); }
     .w-store__step:not(.is-on) { opacity: 0; transform: translateY(16px); pointer-events: none; }
-    .w-store__step p { max-width: 36ch; color: rgba(237, 231, 221, .78); margin: 14px 0 0; }
+    .w-store__step p { max-width: 36ch; color: rgba(241, 238, 233, .8); margin: 14px 0 0; }
     .w-store__bar { display: flex; gap: 8px; margin-top: 30px; }
-    .w-store__bar i { flex: 1; height: 2px; background: rgba(237, 231, 221, .18); }
+    .w-store__bar i { flex: 1; height: 2px; background: var(--w-line); }
     .w-store__bar i.is-on { background: var(--accent); }
-    .w-store .browser { --view: min(74vh, 780px); }
+    .w-store .browser { --view: min(76vh, 800px); }
     .w-store .browser__view { height: var(--view); }
-    .w-store .browser__view .slot { position: absolute; left: 0; top: 0; width: 100%; transform: translateY(calc(-1 * var(--e) * max(0px, var(--shot-h, 0px) - var(--view)))); }
+    .w-store .browser__view .slot { position: absolute; left: 0; top: 0; width: 100%; transform: translateY(calc(-1 * var(--e) * max(0px, var(--shot-h, 0px) - var(--view)))); will-change: transform; }
     .w-store .browser__view .slot.is-empty { height: var(--view); transform: none; }
     @media (max-width: 900px) {
       .w-store { height: auto; }
@@ -57,54 +66,78 @@
       .w-store__step { grid-area: auto; opacity: 1 !important; transform: none !important; margin-bottom: 28px; }
       .w-store__bar { display: none; }
       .w-store .browser { --view: 70vh; }
+      .w-store .browser__view { overflow-y: auto; }
+      .w-store .browser__view .slot { position: relative; transform: none; }
     }
     @media (prefers-reduced-motion: reduce) {
       .w-store { height: auto; }
       .w-store__sticky { position: relative; height: auto; }
       .w-store__step { grid-area: auto; opacity: 1 !important; transform: none !important; margin-bottom: 28px; }
+      .w-store .browser__view { overflow-y: auto; }
+      .w-store .browser__view .slot { position: relative; transform: none; }
     }
 
-    /* Store map: the structure of the store, drawn as a diagram. */
-    .w-map { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: clamp(24px, 4vw, 72px); }
-    .tree { --line: rgba(237, 231, 221, .28); position: relative; display: grid; grid-template-columns: auto 1fr; gap: 0 clamp(24px, 4vw, 64px); align-items: center; font-family: var(--f-cond); text-transform: uppercase; }
-    .tree__root { padding: 18px 22px; border: 1px solid var(--accent); color: #fff; font-weight: 700; font-size: clamp(20px, 2vw, 30px); position: relative; }
+    /* Store map, drawn as a diagram from the real navigation. */
+    .w-map { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: clamp(24px, 4vw, 72px); align-items: center; }
+    .tree { --line: rgba(241, 238, 233, .26); position: relative; display: grid; grid-template-columns: auto 1fr; gap: 0 clamp(24px, 4vw, 64px); align-items: center; font-family: var(--f-cond); text-transform: uppercase; }
+    .tree__root { padding: 16px 22px; border: 1px solid var(--accent); color: #fff; font-weight: 700; font-size: clamp(20px, 2vw, 30px); position: relative; }
     .tree__root::after { content: ''; position: absolute; left: 100%; top: 50%; width: clamp(24px, 4vw, 64px); height: 1px; background: var(--line); }
-    .tree__kids { list-style: none; margin: 0; padding: 0 0 0 0; border-left: 1px solid var(--line); }
-    .tree__kids > li { position: relative; padding: 12px 0 12px 28px; }
+    .tree__kids { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--line); }
+    .tree__kids > li { position: relative; padding: 14px 0 14px 28px; display: grid; grid-template-columns: minmax(150px, 13ch) 1fr; gap: 10px 18px; align-items: center; }
     .tree__kids > li::before { content: ''; position: absolute; left: 0; top: 50%; width: 20px; height: 1px; background: var(--line); }
-    .tree__node { display: inline-block; font-weight: 600; font-size: clamp(18px, 1.6vw, 26px); }
-    .tree__leaf { display: inline-flex; gap: 10px; margin-left: 16px; vertical-align: middle; }
-    .tree__leaf span { font-family: var(--f-mono); font-size: 11px; letter-spacing: .1em; padding: 5px 8px; border: 1px solid var(--line); color: rgba(237, 231, 221, .8); }
-    @media (max-width: 900px) { .w-map { grid-template-columns: 1fr; } .tree { grid-template-columns: 1fr; gap: 18px; } .tree__root::after { display: none; } .tree__leaf { display: flex; margin: 8px 0 0; } }
+    .tree__node { font-weight: 600; font-size: clamp(18px, 1.6vw, 26px); }
+    .tree__leaf { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tree__leaf span { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; padding: 5px 8px; border: 1px solid var(--line); color: rgba(241, 238, 233, .8); }
+    .tree__leaf span.is-page { border-color: var(--accent); color: #fff; background: color-mix(in srgb, var(--accent) 22%, transparent); }
+    .tree__key { display: flex; gap: 8px; align-items: center; margin-top: 22px; }
+    .tree__key i { width: 14px; height: 14px; border: 1px solid var(--accent); background: color-mix(in srgb, var(--accent) 22%, transparent); }
+    @media (max-width: 900px) { .w-map { grid-template-columns: 1fr; } .tree { grid-template-columns: 1fr; gap: 18px; } .tree__root::after { display: none; } .tree__kids > li { grid-template-columns: 1fr; } }
 
-    .w-pages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 26px); }
-    .w-pages .browser__view { height: clamp(320px, 46vh, 520px); }
-    .w-pages .browser__view .slot { position: absolute; inset: 0 0 auto 0; transition: transform 6s linear; }
-    .w-pages .browser:hover .browser__view .slot:not(.is-empty) { transform: translateY(calc(-100% + clamp(320px, 46vh, 520px))); }
-    .w-pages .browser__view .slot.is-empty { height: 100%; }
-    .w-products { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 48px); margin-top: clamp(60px, 8vw, 120px); }
-    .w-products figcaption { margin-top: 16px; }
-    .w-products h3 { font-family: var(--f-cond); text-transform: uppercase; font-size: clamp(22px, 2vw, 32px); margin: 6px 0 8px; }
-    .w-products p { margin: 0; max-width: 48ch; color: rgba(237, 231, 221, .72); }
-    @media (max-width: 900px) { .w-pages, .w-products { grid-template-columns: 1fr; } }
+    /* Full-length pages in small browsers: hover (or tap-and-scroll on touch) to read the whole page. */
+    .w-pages { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 1.4vw, 22px); }
+    .w-pages--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: clamp(56px, 7vw, 110px); }
+    .scrollshot .browser__view { height: var(--vh, clamp(300px, 44vh, 500px)); }
+    .scrollshot .browser__view .slot { position: absolute; inset: 0 0 auto 0; transition: transform var(--dur, 7s) cubic-bezier(.45, 0, .55, 1); }
+    .scrollshot .browser__view .slot.is-empty { height: 100%; }
+    @media (hover: hover) and (pointer: fine) {
+      .scrollshot:hover .browser__view .slot:not(.is-empty) { transform: translateY(calc(-100% + var(--vh, clamp(300px, 44vh, 500px)))); }
+    }
+    @media (hover: none) { .scrollshot .browser__view { overflow-y: auto; } .scrollshot .browser__view .slot { position: relative; } }
+    .w-pages--2 .scrollshot { --vh: clamp(420px, 70vh, 760px); --dur: 14s; }
+    .w-pages figcaption { margin-top: 14px; }
+    .w-pages h3 { font-family: var(--f-cond); text-transform: uppercase; font-size: clamp(22px, 2vw, 32px); margin: 6px 0 8px; }
+    .w-pages p { margin: 0; max-width: 48ch; color: rgba(241, 238, 233, .72); }
+    @media (max-width: 1000px) { .w-pages { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 640px) { .w-pages, .w-pages--2 { grid-template-columns: 1fr; } }
 
     .w-phones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 3vw, 56px); justify-items: center; align-items: end; }
     .w-phones .phone:nth-child(2) { transform: translateY(-48px); }
     @media (max-width: 760px) { .w-phones { grid-template-columns: repeat(3, 72vw); overflow-x: auto; justify-content: start; padding-bottom: 16px; scroll-snap-type: x mandatory; } .w-phones > * { scroll-snap-align: center; } .w-phones .phone:nth-child(2) { transform: none; } }
 
-    .w-set { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(8px, 1vw, 16px); }
-    .w-set .slot { cursor: zoom-in; }
+    .w-set { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(8px, 1vw, 14px); }
     @media (max-width: 760px) { .w-set { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .p-wandrd .set-head { border-color: var(--w-line); }
+    .tag { display: inline-block; padding: 4px 8px; font-size: 11px; border: 1px solid currentColor; vertical-align: middle; margin-left: 10px; }
+    .tag--live { color: var(--accent); }
 
     .w-close { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(28px, 5vw, 90px); align-items: start; }
     .w-close__img { position: sticky; top: calc(var(--nav-h) + 24px); }
-    .w-close__notes { display: grid; gap: clamp(28px, 5vh, 56px); padding-top: 8vh; }
-    .w-close__notes h3 { font-family: var(--f-cond); text-transform: uppercase; font-size: clamp(22px, 2vw, 32px); margin: 8px 0 12px; }
+    .w-close__img .slot { position: relative; }
+    .pin { position: absolute; z-index: 3; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font: 600 12px/1 var(--f-mono); box-shadow: 0 0 0 6px rgba(255, 63, 40, .25); }
+    .w-close__notes { display: grid; gap: clamp(32px, 6vh, 64px); padding-top: 6vh; }
+    .w-close__notes h3 { font-family: var(--f-cond); text-transform: uppercase; font-size: clamp(24px, 2.2vw, 36px); margin: 8px 0 12px; }
+    .w-close__notes p { margin: 0; max-width: 40ch; color: rgba(241, 238, 233, .8); }
     @media (max-width: 900px) { .w-close { grid-template-columns: 1fr; } .w-close__img { position: relative; top: 0; } }
 
-    .w-support { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(14px, 2vw, 28px); }
-    .w-support .span-2 { grid-column: 1 / -1; }
-    @media (max-width: 760px) { .w-support { grid-template-columns: 1fr; } }
+    /* Brand story: the background banner with the cards sliding across it, as on Amazon. */
+    .w-story { position: relative; overflow: hidden; }
+    .w-story__bg { position: absolute; inset: 0; }
+    .w-story__bg img { width: 100%; height: 100%; object-fit: cover; }
+    .w-story__bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7, 7, 7, .55), rgba(7, 7, 7, .1) 40%, rgba(7, 7, 7, .6)); }
+    .w-story__head { position: relative; }
+    .w-story__row { position: relative; display: grid; grid-auto-flow: column; grid-auto-columns: clamp(220px, 22vw, 330px); gap: clamp(10px, 1.2vw, 18px); overflow-x: auto; padding: clamp(32px, 4vw, 56px) var(--gutter) 24px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+    .w-story__row figure { margin: 0; scroll-snap-align: start; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .7); }
+    .w-story__row img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
 
     .w-out { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px; align-items: end; }
     @media (max-width: 760px) { .w-out { grid-template-columns: 1fr; } }
@@ -114,7 +147,7 @@
 <body class="p-wandrd">
   <a class="skip" href="#main">Skip to content</a>
   <header class="nav" data-tone="dark">
-    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><span class="nav__name">Devin Sanders</span><span class="nav__coord">01 / WANDRD</span></a>
+    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="nav__name">Devin Sanders</span><span class="nav__coord">01 / WANDRD</span></a>
     <nav aria-label="Main">
       <ul class="nav__links">
         <li><a href="work.html"><span class="idx">01</span><span class="txt">Work</span></a></li>
@@ -133,7 +166,7 @@
       <div class="p-hero__body">
         <div class="p-hero__kicker"><span class="label label--accent">01 / Client work</span><span class="label">Designed at RIPPL</span></div>
         <h1 class="display display--xl" id="title">WANDRD</h1>
-        <p class="label" style="margin: 18px 0 clamp(28px, 5vh, 52px); color: rgba(255,255,255,.82); font-size: 13px;">Amazon Brand Store · Product infographics · E-commerce graphics</p>
+        <p class="label" style="margin: 18px 0 clamp(28px, 5vh, 52px); color: rgba(255,255,255,.82); font-size: 13px;">Amazon Brand Store · Infographics · Brand story</p>
         <dl class="meta" style="border-color: rgba(255,255,255,.2)">
           <div><dt class="label">Client</dt><dd>WANDRD</dd></div>
           <div><dt class="label">Agency</dt><dd>RIPPL</dd></div>
@@ -148,27 +181,32 @@
       <div class="wrap w-intro">
         <div>
           <!-- DRAFT COPY: rewrite in your voice. -->
-          <p class="lede reveal">WANDRD makes travel and camera bags for creatives. At RIPPL I designed their Amazon Brand Store, and the graphics that sell the bags inside it.</p>
+          <p class="lede reveal">WANDRD makes camera and travel bags. At RIPPL I designed their Amazon Brand Store, their brand story and the infographics that sell the bags.</p>
           <div class="challenge reveal" style="--d: 120ms">
             <span class="label label--accent">The problem with Amazon</span>
             <!-- Your existing copy, lightly trimmed. -->
             <p style="margin-top: 12px;">Amazon’s layout modules are rigid, and they flatten every brand into the same grid. The job was to work inside those limits with lifestyle tiles, bold type and infographics that still feel like WANDRD.</p>
           </div>
+          <div class="w-stats reveal" style="--d: 180ms">
+            <div><b>15</b><span>store pages designed</span></div>
+            <div><b>01</b><span>brand story, live on the listings</span></div>
+            <div><b>06</b><span>Rogue V2 infographics, live</span></div>
+          </div>
         </div>
         <div class="reveal" style="--d: 200ms">
           <span class="label">What I did</span>
           <ol class="role-list" style="margin-top: 16px;">
-            <li>Designed the Amazon Brand Store, which is live now</li>
-            <li>Created the product infographics for the listings</li>
-            <li>Developed brand storytelling and supporting e-commerce graphics</li>
+            <li>Designed the Amazon Brand Store: 15 pages, live now</li>
+            <li>Designed listing infographics, including the live Rogue V2 set</li>
+            <li>Designed the brand story that runs on their listings</li>
+            <li>Worked with WANDRD’s creative team through approvals and critiques</li>
           </ol>
-          <span class="note" style="margin-top: 22px;">Add one line on scope: how many pages and listings, and who you worked with (copywriter, art director, the client’s team).</span>
         </div>
       </div>
     </section>
 
     <!-- 02 THE STORE (centerpiece): sticky browser, page scrolls with you ---->
-    <section class="w-store tone-dark" data-tone="dark" data-scrub aria-labelledby="store-title">
+    <section class="w-store tone-dark" data-tone="dark" aria-labelledby="store-title">
       <div class="w-store__sticky">
         <div class="w-store__steps">
           <div>
@@ -177,9 +215,9 @@
           </div>
           <div style="position: relative; display: grid; margin-top: clamp(24px, 5vh, 60px);">
             <!-- Your existing captions. The step shown follows scroll position. -->
-            <div class="w-store__step is-on"><span class="label">Home page</span><p>The landing page leads with category tiles, so travelers and photographers get to the right bag fast.</p></div>
-            <div class="w-store__step"><span class="label">Navigation</span><p>Photography, Travel and Everyday bags each get their own page, with the same tile system carrying through.</p></div>
-            <div class="w-store__step"><span class="label">Product pages</span><p>Each hero product gets a page built around its story, with moody field photography and big, high-contrast callouts.</p></div>
+            <div class="w-store__step is-on"><span class="label">Home page</span><p>The landing page leads with the newest bag, then category tiles, so travelers and photographers get to the right bag fast.</p></div>
+            <div class="w-store__step"><span class="label">Proof</span><p>Press quotes and the Rogue Sling V2 launch sit in the middle, before the scroll gets long.</p></div>
+            <div class="w-store__step"><span class="label">Our story</span><p>The page ends on who WANDRD is, with their own badges and photography.</p></div>
           </div>
           <div class="w-store__bar" aria-hidden="true"><i class="is-on"></i><i></i><i></i></div>
         </div>
@@ -197,33 +235,35 @@
           <div class="reveal">
             <span class="label label--accent">03 · Structure</span>
             <h2 class="h2" id="map-title" style="margin-top: 14px;">How the store is organized</h2>
-            <span class="note" style="margin-top: 22px;">[ASSUMPTION] Map drawn from the navigation in your screenshots. Confirm the pages and which products got their own page.</span>
+            <p class="muted" style="margin: 16px 0 0; max-width: 34ch; color: var(--w-dim);">Four category pages under the home page, each linking to the bags inside it.</p>
+            <div class="tree__key label"><i></i>Has its own product page</div>
           </div>
-          <div class="tree reveal" style="--d: 120ms" role="img" aria-label="Store map: Home leads to Photography Bags, Travel Bags, Everyday Bags and Accessories. PRVKE and Fernweh have their own product pages.">
+          <div class="tree reveal" style="--d: 120ms" role="img" aria-label="Store map. Home leads to four pages. Photography bags: PRVKE, Rogue, Stratus 18L. Travel bags: Transit, Fernweh, Carryall. Everyday bags: PRVKE EDC, Nimbus 18L, Tech Bag, D1 Fanny Pack. Accessories: organization and packing, travel essentials, photo essentials. PRVKE and Fernweh have their own product pages.">
             <div class="tree__root">Home</div>
             <ul class="tree__kids">
-              <li><span class="tree__node">Photography bags</span><span class="tree__leaf"><span>PRVKE</span></span></li>
-              <li><span class="tree__node">Travel bags</span><span class="tree__leaf"><span>Fernweh</span></span></li>
-              <li><span class="tree__node">Everyday bags</span></li>
-              <li><span class="tree__node">Accessories</span></li>
+              <li><span class="tree__node">Photography bags</span><span class="tree__leaf"><span class="is-page">PRVKE</span><span>Rogue</span><span>Stratus 18L</span></span></li>
+              <li><span class="tree__node">Travel bags</span><span class="tree__leaf"><span>Transit</span><span class="is-page">Fernweh</span><span>Carryall</span></span></li>
+              <li><span class="tree__node">Everyday bags</span><span class="tree__leaf"><span>PRVKE EDC</span><span>Nimbus 18L</span><span>Tech Bag</span><span>D1 Fanny Pack</span></span></li>
+              <li><span class="tree__node">Accessories</span><span class="tree__leaf"><span>Organization &amp; packing</span><span>Travel essentials</span><span>Photo essentials</span></span></li>
             </ul>
           </div>
         </div>
 
         <div class="w-pages" style="margin-top: clamp(70px, 9vw, 140px);">
-          <figure class="reveal" style="margin: 0;"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><div class="browser__view"><div class="slot" data-asset="wan-store-photo-desktop"></div></div></div><figcaption class="cap">Photography bags · hover to scroll</figcaption></figure>
-          <figure class="reveal" style="margin: 0; --d: 100ms"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><div class="browser__view"><div class="slot" data-asset="wan-store-travel-desktop"></div></div></div><figcaption class="cap">Travel bags</figcaption></figure>
-          <figure class="reveal" style="margin: 0; --d: 200ms"><div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><div class="browser__view"><div class="slot" data-asset="wan-store-everyday-desktop"></div></div></div><figcaption class="cap">Everyday bags</figcaption></figure>
+          <figure class="reveal" style="margin: 0; --d: 0ms"><div class="browser scrollshot"><div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">…/WANDRD/photography-bags</span></div><div class="browser__view"><div class="slot" data-asset="wan-store-photo-desktop"></div></div></div><figcaption class="cap">Photography bags · hover to scroll</figcaption></figure>
+          <figure class="reveal" style="margin: 0; --d: 80ms"><div class="browser scrollshot"><div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">…/WANDRD/travel-bags</span></div><div class="browser__view"><div class="slot" data-asset="wan-store-travel-desktop"></div></div></div><figcaption class="cap">Travel bags</figcaption></figure>
+          <figure class="reveal" style="margin: 0; --d: 160ms"><div class="browser scrollshot"><div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">…/WANDRD/everyday-bags</span></div><div class="browser__view"><div class="slot" data-asset="wan-store-everyday-desktop"></div></div></div><figcaption class="cap">Everyday bags</figcaption></figure>
+          <figure class="reveal" style="margin: 0; --d: 240ms"><div class="browser scrollshot"><div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">…/WANDRD/accessories</span></div><div class="browser__view"><div class="slot" data-asset="wan-store-accessories-desktop"></div></div></div><figcaption class="cap">Accessories</figcaption></figure>
         </div>
 
-        <div class="w-products">
+        <div class="w-pages w-pages--2">
           <figure class="reveal" style="margin: 0;">
-            <div class="reveal-img" data-from="left"><div class="slot" data-asset="wan-prvke-desktop" data-zoom></div></div>
-            <figcaption><span class="label label--accent">Product page</span><h3>PRVKE</h3><p>Moody field photography with high-contrast callouts for the expandable roll-top and quick-draw camera access.</p></figcaption>
+            <div class="browser scrollshot"><div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">…/WANDRD/prvke</span></div><div class="browser__view"><div class="slot" data-asset="wan-prvke-desktop"></div></div></div>
+            <figcaption><span class="label label--accent">Product page</span><h3>PRVKE</h3><p>Moody field photography with high-contrast callouts for the roll-top and quick-draw camera access.</p></figcaption>
           </figure>
           <figure class="reveal" style="margin: 0; --d: 120ms">
-            <div class="reveal-img" data-from="left" style="--d: 120ms"><div class="slot" data-asset="wan-fernweh-desktop" data-zoom></div></div>
-            <figcaption><span class="label label--accent">Product page</span><h3>Fernweh</h3><p>A backpacking layout built around adventure: terrain, carrying comfort and the technical specs.</p></figcaption>
+            <div class="browser scrollshot"><div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">…/WANDRD/fernweh</span></div><div class="browser__view"><div class="slot" data-asset="wan-fernweh-desktop"></div></div></div>
+            <figcaption><span class="label label--accent">Product page</span><h3>Fernweh</h3><p>A backpacking layout built around the trip: terrain, carrying comfort and the technical specs.</p></figcaption>
           </figure>
         </div>
       </div>
@@ -253,53 +293,69 @@
         <p class="cap" style="margin-bottom: clamp(60px, 8vw, 120px);">The infographics as shoppers see them, in the mobile listing carousel.</p>
 
         <div data-gallery>
-          <div class="set-head"><span class="h3">Set 1 · <span class="muted">product name</span></span><span class="label">6 images · 2000 × 2000</span></div>
+          <div class="set-head"><span class="h3">Rogue Sling V2 <span class="tag tag--live w-mono">Live</span></span><span class="label">6 images · 2000 × 2000</span></div>
           <div class="w-set">
-            <div class="slot reveal" data-asset="wan-set1-1" data-zoom></div><div class="slot reveal" data-asset="wan-set1-2" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="wan-set1-3" data-zoom style="--d: 120ms"></div>
-            <div class="slot reveal" data-asset="wan-set1-4" data-zoom></div><div class="slot reveal" data-asset="wan-set1-5" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="wan-set1-6" data-zoom style="--d: 120ms"></div>
+            <div class="slot reveal" data-asset="wan-set1-1" data-zoom style="--d: 0ms"></div>
+            <div class="slot reveal" data-asset="wan-set1-2" data-zoom style="--d: 60ms"></div>
+            <div class="slot reveal" data-asset="wan-set1-3" data-zoom style="--d: 120ms"></div>
+            <div class="slot reveal" data-asset="wan-set1-4" data-zoom style="--d: 0ms"></div>
+            <div class="slot reveal" data-asset="wan-set1-5" data-zoom style="--d: 60ms"></div>
+            <div class="slot reveal" data-asset="wan-set1-6" data-zoom style="--d: 120ms"></div>
           </div>
         </div>
         <div data-gallery style="margin-top: clamp(56px, 7vw, 100px);">
-          <div class="set-head"><span class="h3">Set 2 · <span class="muted">product name</span></span><span class="label">6 images · optional</span></div>
+          <div class="set-head"><span class="h3">Fernweh <span class="tag w-mono">Not published</span></span><span class="label">6 images · 2000 × 2000</span></div>
           <div class="w-set">
-            <div class="slot reveal" data-asset="wan-set2-1" data-zoom></div><div class="slot reveal" data-asset="wan-set2-2" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="wan-set2-3" data-zoom style="--d: 120ms"></div>
-            <div class="slot reveal" data-asset="wan-set2-4" data-zoom></div><div class="slot reveal" data-asset="wan-set2-5" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="wan-set2-6" data-zoom style="--d: 120ms"></div>
+            <div class="slot reveal" data-asset="wan-set2-1" data-zoom style="--d: 0ms"></div>
+            <div class="slot reveal" data-asset="wan-set2-2" data-zoom style="--d: 60ms"></div>
+            <div class="slot reveal" data-asset="wan-set2-3" data-zoom style="--d: 120ms"></div>
+            <div class="slot reveal" data-asset="wan-set2-4" data-zoom style="--d: 0ms"></div>
+            <div class="slot reveal" data-asset="wan-set2-5" data-zoom style="--d: 60ms"></div>
+            <div class="slot reveal" data-asset="wan-set2-6" data-zoom style="--d: 120ms"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 06 UP CLOSE -------------------------------------------------------->
+    <!-- 06 UP CLOSE: Rogue V2 01 ------------------------------------------->
     <section class="section tone-dark" data-tone="dark" aria-labelledby="close-title" style="padding-top: 0;">
       <div class="wrap w-close">
-        <div class="w-close__img"><div class="slot" data-asset="wan-closeup" data-zoom></div></div>
+        <div class="w-close__img">
+          <div class="slot" data-asset="wan-closeup" data-zoom data-eager></div>
+          <span class="pin" style="left: 50%; top: 34%;" aria-hidden="true">1</span>
+          <span class="pin" style="left: 29%; top: 85.6%;" aria-hidden="true">2</span>
+          <span class="pin" style="left: 68%; top: 90.5%;" aria-hidden="true">3</span>
+        </div>
         <div class="w-close__notes">
-          <div><span class="label label--accent">06 · Up close</span><h2 class="h2" id="close-title" style="margin-top: 14px;">One infographic, three decisions</h2></div>
-          <!-- Write these yourself: they are the part a recruiter reads most closely. -->
-          <div class="reveal"><span class="label">01</span><h3>The headline</h3><span class="note">Why this size and position? What did you try first?</span></div>
-          <div class="reveal"><span class="label">02</span><h3>The order you read it in</h3><span class="note">What does the eye hit second and third, and how did you make that happen?</span></div>
-          <div class="reveal"><span class="label">03</span><h3>Why it feels like WANDRD</h3><span class="note">What makes this theirs and not a generic Amazon image? (Type, colour, photo crop…)</span></div>
+          <div><span class="label label--accent">06 · Up close</span><h2 class="h2" id="close-title" style="margin-top: 14px;">Lightning Fast Access, in the order you read it</h2></div>
+          <!-- DRAFT: written from your notes. Adjust the wording so it sounds like you. -->
+          <div class="reveal"><span class="label">01 · The photo</span><h3>Let the image sell it</h3><p>WANDRD lets their photography do the convincing. The lifestyle shot is the first thing you see, so it gets almost the whole frame.</p></div>
+          <div class="reveal"><span class="label">02 · The tag</span><h3>New and improved</h3><p>A small red “New and improved” comes next. This is V2, so the whole set needed to read as a refresh of the original, not the same bag again.</p></div>
+          <div class="reveal"><span class="label">03 · The words</span><h3>Short, punchy, a little witty</h3><p>Then the headline and one line under it. “Because fumbling is for amateurs” says more than a list of features would.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- 07 SUPPORTING GRAPHICS --------------------------------------------->
-    <section class="section tone-dark" data-tone="dark" aria-labelledby="support-title" style="padding-top: 0;">
-      <div class="wrap">
-        <span class="label label--accent">07 · Around the listings</span>
-        <h2 class="h2" id="support-title" style="margin: 14px 0 clamp(32px, 4vw, 56px);">Supporting graphics</h2>
-        <div class="w-support">
-          <div class="span-2 reveal-img" data-from="left"><div class="slot" data-asset="wan-banner" data-zoom></div></div>
-          <div class="slot reveal" data-asset="wan-aplus-1" data-zoom></div>
-          <div class="slot reveal" data-asset="wan-aplus-2" data-zoom style="--d: 100ms"></div>
-          <div class="slot span-2 reveal" data-asset="wan-tiles" style="--ar: 3 / 1" data-keep-ratio></div>
-        </div>
+    <!-- 07 BRAND STORY ----------------------------------------------------->
+    <section class="w-story section tone-dark" data-tone="dark" aria-labelledby="story-title">
+      <div class="w-story__bg reveal-img" data-from="center"><img src="assets/wandrd/story-bg.webp" alt="" loading="lazy" decoding="async"></div>
+      <div class="wrap w-story__head">
+        <span class="label label--accent">07 · Brand story</span>
+        <h2 class="display display--l" id="story-title" style="margin-top: 14px;">Wander more,<br>worry less</h2>
+        <p style="margin: 18px 0 0; max-width: 44ch; color: rgba(241, 238, 233, .86);">The brand story that runs on WANDRD’s listings: one background, five cards that scroll across it.</p>
+      </div>
+      <div class="w-story__row" data-gallery>
+        <figure class="reveal"><img src="assets/wandrd/story-01.webp" alt="Brand story card: bags for photography, travel and everyday" loading="lazy" decoding="async" data-lightbox></figure>
+        <figure class="reveal" style="--d: 80ms"><img src="assets/wandrd/story-02.webp" alt="Brand story card: WANDRD's mission" loading="lazy" decoding="async" data-lightbox></figure>
+        <figure class="reveal" style="--d: 160ms"><img src="assets/wandrd/story-03.webp" alt="Brand story card: the award-winning PRVKE" loading="lazy" decoding="async" data-lightbox></figure>
+        <figure class="reveal" style="--d: 240ms"><img src="assets/wandrd/story-04.webp" alt="Brand story card: the Rogue Sling" loading="lazy" decoding="async" data-lightbox></figure>
+        <figure class="reveal" style="--d: 320ms"><img src="assets/wandrd/story-05.webp" alt="Brand story card: wander more, worry less" loading="lazy" decoding="async" data-lightbox></figure>
       </div>
     </section>
 
     <!-- 08 OUTCOME --------------------------------------------------------->
     <section class="section--tight tone-dark" data-tone="dark" aria-label="Outcome">
-      <div class="wrap w-out" style="border-top: 1px solid rgba(237,231,221,.16); padding-top: clamp(32px, 4vw, 56px);">
+      <div class="wrap w-out" style="border-top: 1px solid var(--w-line); padding-top: clamp(32px, 4vw, 56px);">
         <div>
           <span class="label">Live now</span>
           <p class="h2" style="margin-top: 12px; max-width: 24ch;">The store is live on Amazon. Go have a look.</p>
@@ -314,7 +370,7 @@
       <div class="next__body"><span class="label">Next · 02 / 06</span><p class="display display--l" style="margin-top: 12px;">KleenBore</p></div>
     </a>
 
-    <section class="contact tone-dark" id="contact" data-tone="dark" aria-labelledby="contact-title">
+    <section class="contact" id="contact" data-tone="light" style="background: #F4F5F7; color: #2C3E50;" aria-labelledby="contact-title">
       <div class="wrap">
         <h2 class="label" id="contact-title">Say hello</h2>
         <p style="margin: 18px 0 0;"><a class="contact__mail" href="mailto:devin.sanders02@gmail.com">devin.sanders02@gmail.com</a></p>
@@ -322,10 +378,15 @@
     </section>
   </main>
 
-  <footer class="footer tone-dark">
+  <footer class="footer">
     <div class="wrap">
-      <span class="label">© <span data-year>2026</span> Devin Sanders · Denver, Colorado</span>
-      <ul class="label"><li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li><li><a class="u-line" href="Resume.pdf">Résumé</a></li><li><a class="u-line" href="#main">Back to top ↑</a></li></ul>
+      <a class="footer__brand" href="index.html"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="label">© <span data-year>2026</span> Devin Sanders · Denver, Colorado</span></a>
+      <span class="label footer__sign" title="The contour lines on the homepage are this mountain"><span class="coord">39.5826° N 105.6688° W</span> · Mt. Bierstadt, 14,060 ft · My first fourteener</span>
+      <ul class="label">
+        <li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li>
+        <li><a class="u-line" href="Resume.pdf">Résumé</a></li>
+        <li><a class="u-line" href="#main">Back to top ↑</a></li>
+      </ul>
     </div>
   </footer>
 
@@ -337,6 +398,7 @@
       const shot = () => s.querySelector('.browser__view .slot img');
       const measure = () => { const img = shot(); if (img && img.naturalWidth) s.style.setProperty('--shot-h', (img.getBoundingClientRect().height) + 'px'); };
       addEventListener('load', measure); addEventListener('resize', measure);
+      s.addEventListener('load', measure, true);
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       const tick = () => {
         const r = s.getBoundingClientRect(); const run = Math.max(1, s.offsetHeight - innerHeight);
