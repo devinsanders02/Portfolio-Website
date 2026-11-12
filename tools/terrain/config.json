@@ -1,6 +1,6 @@
 {
   "_readme": "Settings for the homepage contour background. Edit, then run: cd tools/terrain && npm install && node build.mjs",
-  "source": "procedural",
+  "source": "dem",
   "_source_options": "procedural = temporary stand-in terrain | dem = real elevation file (set demFile)",
   "demFile": "data/bierstadt.tif",
   "_demFile_note": "GeoTIFF (.tif) or ASCII grid (.asc) from OpenTopography. Put it in tools/terrain/data/",
@@ -18,7 +18,8 @@
     "peakX": 0.78,
     "peakY": 0.2,
     "scale": 1.0,
-    "rotateDeg": 0
+    "rotateDeg": 0,
+    "_scale_note": "1 = as wide as the elevation file allows; smaller zooms in."
   },
   "contours": {
     "count": 38,
@@ -31,12 +32,17 @@
   },
   "dem": {
     "_note": "Only used when source = dem.",
-    "intervalMeters": 40,
+    "intervalMeters": 20,
     "indexEvery": 5,
-    "minElevationMeters": 3350,
+    "minElevationMeters": 3300,
     "summitLabel": "MT. BIERSTADT  {ft} FT",
     "_summitLabel_note": "{ft} is filled in from the highest point in the elevation file, so the number is always the data's own.",
-    "summitLabelShow": true
+    "summitLabelShow": true,
+    "summitLonLat": [
+      -105.6688,
+      39.5826
+    ],
+    "_summitLonLat_note": "Mount Bierstadt summit [lon, lat]. The build finds the true high point within ~300 m of this."
   },
   "seed": 14065
 }

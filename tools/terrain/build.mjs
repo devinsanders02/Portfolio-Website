@@ -94,7 +94,7 @@ function proceduralField() {
 async function demField() {
   const file = path.resolve(here, cfg.demFile);
   if (!fs.existsSync(file)) throw new Error(`DEM file not found: ${file}`);
-  let w, h, data, nodata = null;
+  let w, h, data, nodata = null, geo = null;
   if (/\.asc$/i.test(file)) {
     const lines = fs.readFileSync(file, 'utf8').split(/\r?\n/);
     const hdr = {}; let k = 0;
@@ -107,26 +107,48 @@ async function demField() {
     const tiff = await fromArrayBuffer(buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength));
     const img = await tiff.getImage();
     w = img.getWidth(); h = img.getHeight(); nodata = img.getGDALNoData();
+    try { geo = { origin: img.getOrigin(), res: img.getResolution() }; } catch (e) { geo = null; }
     data = Float64Array.from((await img.readRasters({ samples: [0] }))[0]);
   }
-  let lo = Infinity, hi = -Infinity, hiIdx = 0;
-  for (let i = 0; i < data.length; i++) { const v = data[i]; if (nodata !== null && v === nodata) { data[i] = NaN; continue; } if (v < lo) lo = v; if (v > hi) { hi = v; hiIdx = i; } }
-  // Place the summit at (peakX, peakY) of the frame and sample the DEM into the grid.
-  const { peakX, peakY, scale, rotateDeg } = cfg.placement;
+  let lo = Infinity, hi = -Infinity;
+  for (let i = 0; i < data.length; i++) { const v = data[i]; if ((nodata !== null && v === nodata) || v < -1000) { data[i] = NaN; continue; } if (v < lo) lo = v; if (v > hi) hi = v; }
+
+  // Georeferencing (GeoTIFF only): find the summit we asked for, not just the highest
+  // pixel. Bierstadt's file also contains Mount Blue Sky, which is higher.
+  let sx = 0, sy = 0, peakM = -Infinity, latDeg = cfg.dem.summitLonLat ? cfg.dem.summitLonLat[1] : 39.6;
+  if (geo && cfg.dem.summitLonLat) {
+    const [lon, lat] = cfg.dem.summitLonLat;
+    const cx = Math.round((lon - geo.origin[0]) / geo.res[0]), cy = Math.round((lat - geo.origin[1]) / geo.res[1]);
+    const R = 30; // search radius in pixels for the true local summit
+    for (let y = Math.max(0, cy - R); y < Math.min(h, cy + R); y++) for (let x = Math.max(0, cx - R); x < Math.min(w, cx + R); x++) {
+      const v = data[y * w + x]; if (v > peakM) { peakM = v; sx = x; sy = y; }
+    }
+  } else { for (let i = 0; i < data.length; i++) if (data[i] > peakM) { peakM = data[i]; sx = i % w; sy = Math.floor(i / w); } }
+
+  // DEM pixels are square in degrees, not in metres: 1 degree of longitude is shorter.
+  const xStretch = 1 / Math.cos(latDeg * Math.PI / 180); // x pixels per y pixel for equal metres
+  const { peakX, peakY, rotateDeg } = cfg.placement;
   const rot = (rotateDeg || 0) * Math.PI / 180, cosR = Math.cos(rot), sinR = Math.sin(rot);
-  const sx = hiIdx % w, sy = Math.floor(hiIdx / w);
-  const pxPerGrid = (w / GW) * 1.25 / scale; // how many DEM pixels per grid cell
+  // Largest frame (in y-pixels per grid row) that keeps the whole screen inside the file,
+  // so no straight "end of data" edges appear. scale < 1 zooms in further.
+  const ar = GW / GH;
+  const fitH = Math.min(
+    sy / peakY, (h - 1 - sy) / (1 - peakY),
+    (sx / xStretch) / (peakX * ar), ((w - 1 - sx) / xStretch) / ((1 - peakX) * ar));
+  const pxPerRow = (fitH / GH) * Math.min(1, cfg.placement.scale || 1);
   const vals = new Float64Array(GW * GH);
   for (let j = 0; j < GH; j++) for (let i = 0; i < GW; i++) {
-    let dx = (i - peakX * GW) * pxPerGrid, dy = (j - peakY * GH) * pxPerGrid;
+    let dx = (i - peakX * GW) * pxPerRow, dy = (j - peakY * GH) * pxPerRow;
     [dx, dy] = [dx * cosR - dy * sinR, dx * sinR + dy * cosR];
-    const u = sx + dx, v = sy + dy;
+    const u = sx + dx * xStretch, v = sy + dy;
     const u0 = Math.floor(u), v0 = Math.floor(v), fu = u - u0, fv = v - v0;
-    const at = (a, b) => (a < 0 || b < 0 || a >= w || b >= h) ? NaN : data[b * w + a];
+    const at = (a, b) => data[Math.min(h - 1, Math.max(0, b)) * w + Math.min(w - 1, Math.max(0, a))];
     const val = at(u0, v0) * (1 - fu) * (1 - fv) + at(u0 + 1, v0) * fu * (1 - fv) + at(u0, v0 + 1) * (1 - fu) * fv + at(u0 + 1, v0 + 1) * fu * fv;
-    vals[j * GW + i] = Number.isFinite(val) ? val : lo - 1000;
+    vals[j * GW + i] = Number.isFinite(val) ? val : lo;
   }
-  return { vals, unit: 'm', summit: { m: hi, gx: peakX * GW, gy: peakY * GH }, range: [lo, hi] };
+  const frameKm = (GW * pxPerRow * Math.abs(geo ? geo.res[1] : 0.0000926) * 111.32).toFixed(1);
+  console.log(`summit ${peakM.toFixed(1)} m at pixel ${sx},${sy}; screen covers about ${frameKm} km across`);
+  return { vals, unit: 'm', summit: { m: peakM, gx: peakX * GW, gy: peakY * GH }, range: [lo, hi] };
 }
 
 // --------------------------------------------------------- path helpers ----
