@@ -1,1061 +1,161 @@
- <!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rexburg Rapids | Devin Sanders</title>
-
-  <!-- Favicon & Touch Icon -->
-  <link rel="icon" type="image/png" href="LogoBlue.png">
-  <link rel="apple-touch-icon" href="LogoBlue.png">
-
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rexburg Rapids — Brand Identity — Devin Sanders</title>
+  <meta name="description" content="A brand identity for Rexburg Rapids, a summer waterpark: logo, guidelines, signage, tickets, wristbands, billboards and merch. By Devin Sanders.">
+  <meta property="og:title" content="Rexburg Rapids — Brand Identity">
+  <meta property="og:description" content="A full identity for a summer waterpark, from the R mark to the wristbands.">
+  <meta name="theme-color" content="#0066CC">
+  <link rel="icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@500;700;800&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="assets/manifest.js" defer></script>
+  <script src="js/site.js" defer></script>
   <style>
-    /* =========================================================================
-       REXBURG RAPIDS CUSTOM SPECIFICATION & BRAND SYSTEM
-       ========================================================================= */
-
-    :root {
-      --rapids-blue: #0066CC;
-      --rapids-cyan: #2DD4FF;
-      --rapids-yellow: #FFC93C;
-      --rapids-dark: #002244;
-    }
-
-    /* 1. Shell & Hero -> Pure Barlow */
-    .turnstyle-headline {
-      font-family: var(--font-barlow) !important;
-      font-weight: 800 !important;
-      text-transform: uppercase;
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-    }
-
-    .turnstyle-caption-title,
-    .turnstyle-caption-text,
-    .case-section-header .label,
-    .more-projects-title,
-    .more-projects-all,
-    .more-project-name,
-    .more-project-tag {
-      font-family: var(--font-barlow) !important;
-    }
-
-    /* 2. Project Artwork Typography -> Jakarta Sans (Display) & Rubik (Body) */
-    .rapids-case-page .case-artwork-heading {
-      font-family: 'Plus Jakarta Sans', sans-serif !important;
-      font-weight: 700;
-    }
-
-    .rapids-case-page .case-artwork-body,
-    .rapids-case-page .swatch-meta-block {
-      font-family: 'Rubik', sans-serif !important;
-    }
-
-    /* Image Boundaries (Zero Layout Blowout) */
-    .case-content-wrap {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 4vw;
-      box-sizing: border-box;
-      position: relative;
-      z-index: 2;
-    }
-
-    .case-img-box {
-      width: 100%;
-      max-width: 100%;
-      overflow: hidden;
-      background-color: #FFFFFF;
-      border: 1px solid rgba(44, 62, 80, 0.08);
-      box-sizing: border-box;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .case-img-box img {
-      width: 100%;
-      height: 100%;
-      max-width: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .case-section-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .case-section-header .line {
-      width: 32px;
-      height: 2px;
-    }
-
-    .case-section-header .label {
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-dark);
-    }
-
-    /* Responsive Media Grid Layouts */
-    .case-grid-2col {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .case-grid-2col {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .case-grid-3col {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .case-grid-3col {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    /* Hero Banner */
-    .turnstyle-hero-banner {
-      position: relative;
-      width: 100%;
-      min-height: 85vh;
-      display: flex;
-      align-items: flex-end;
-      padding: 4.5rem 4vw;
-      box-sizing: border-box;
-      overflow: hidden;
-      z-index: 2;
-    }
-
-    .turnstyle-hero-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      z-index: 1;
-    }
-
-    .turnstyle-hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(0, 34, 68, 0.92) 0%,
-        rgba(0, 34, 68, 0.5) 45%,
-        transparent 75%
-      );
-      z-index: 2;
-    }
-
-    .turnstyle-hero-content {
-      position: relative;
-      z-index: 3;
-      max-width: 1080px;
-      color: #FFFFFF;
-    }
-
-    .turnstyle-headline {
-      font-size: clamp(2.75rem, 6.5vw, 5.25rem);
-      margin: 0 0 1.5rem 0;
-      color: #FFFFFF;
-    }
-
-    .turnstyle-caption-block {
-      border-left: 2px solid var(--rapids-cyan);
-      padding-left: 1.25rem;
-    }
-
-    .turnstyle-caption-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-    }
-
-    .turnstyle-caption-text {
-      font-size: 0.95rem;
-      font-weight: 300;
-      letter-spacing: 0.04em;
-      opacity: 0.85;
-      margin: 0.35rem 0 0 0;
-      color: #FFFFFF;
-    }
-
-    /* Full-Bleed Media Breakouts */
-    .full-bleed-gif,
-    .full-bleed-section {
-      width: 100%;
-      max-width: 100vw;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .full-bleed-gif img,
-    .full-bleed-section img {
-      width: 100%;
-      height: auto;
-      max-width: 1540px;
-      display: block;
-      object-fit: contain;
-    }
-
-    /* =========================================================================
-       MASSIVE FULL-BLEED TYPOGRAPHIC STRIP
-       ========================================================================= */
-    .rapids-type-strip-wrap {
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
-      margin-right: calc(-50vw + 50%);
-      background-color: var(--rapids-blue);
-      overflow: hidden;
-      padding: 2.25rem 0;
-      display: flex;
-      justify-content: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .rapids-type-bleed-row {
-      display: flex;
-      gap: 3rem;
-      white-space: nowrap;
-      user-select: none;
-    }
-
-    .rapids-giant-text {
-      font-family: 'Plus Jakarta Sans', sans-serif !important;
-      font-weight: 800;
-      font-size: clamp(4.5rem, 11vw, 9.5rem);
-      line-height: 0.88;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-      opacity: 0.95;
-    }
-
-    /* =========================================================================
-       ELEVATED COLOR ARCHITECTURE & STANDARDS
-       ========================================================================= */
-    .rapids-color-system {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      margin-bottom: 5rem;
-    }
-
-    @media (min-width: 900px) {
-      .rapids-color-system {
-        grid-template-columns: 1.35fr 1fr 1fr;
-      }
-    }
-
-    .color-pillar-card {
-      background: #FFFFFF;
-      border: 1px solid rgba(44, 62, 80, 0.1);
-      box-shadow: 0 12px 30px -10px rgba(44, 62, 80, 0.06);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .color-swatch-canvas {
-      width: 100%;
-      height: 180px;
-      position: relative;
-      padding: 1.5rem;
-      box-sizing: border-box;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-
-    .color-swatch-badge {
-      font-family: var(--font-barlow);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      padding: 0.35rem 0.65rem;
-      border-radius: 2px;
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(8px);
-      color: #FFFFFF;
-    }
-
-    .color-swatch-badge.dark-badge {
-      background: rgba(0, 0, 0, 0.18);
-      color: #002244;
-    }
-
-    .color-glyph-ghost {
-      width: 42px;
-      height: 42px;
-      opacity: 0.45;
-    }
-
-    .color-spec-body {
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      background: #FFFFFF;
-    }
-
-    .color-name-group .title {
-      font-family: 'Plus Jakarta Sans', sans-serif !important;
-      font-size: 1.45rem;
-      font-weight: 800;
-      margin: 0 0 0.25rem 0;
-      text-transform: uppercase;
-      letter-spacing: -0.01em;
-    }
-
-    .color-name-group .role {
-      font-family: var(--font-barlow);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      display: block;
-    }
-
-    .color-telemetry-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem 1.5rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid rgba(44, 62, 80, 0.08);
-      font-family: 'Rubik', sans-serif !important;
-      font-size: 0.82rem;
-      color: var(--text-dark);
-    }
-
-    .color-telemetry-grid .label {
-      font-weight: 600;
-      color: var(--text-muted);
-      display: block;
-      font-size: 0.72rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 0.15rem;
-    }
-
-    .color-telemetry-grid .val {
-      font-weight: 500;
-      letter-spacing: 0.02em;
-    }
-
-    /* =========================================================================
-       TYPOGRAPHY SPECIMEN BOARD
-       ========================================================================= */
-    .type-specimen-board {
-      background: #FFFFFF;
-      border: 1px solid rgba(44, 62, 80, 0.1);
-      box-shadow: 0 12px 30px -10px rgba(44, 62, 80, 0.06);
-      padding: 3.5rem 3rem;
-      box-sizing: border-box;
-      margin-bottom: 5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 3.5rem;
-    }
-
-    @media (max-width: 768px) {
-      .type-specimen-board {
-        padding: 2rem 1.5rem;
-        gap: 2.5rem;
-      }
-    }
-
-    .type-family-row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    @media (min-width: 900px) {
-      .type-family-row {
-        grid-template-columns: 280px 1fr;
-        gap: 3.5rem;
-      }
-    }
-
-    .type-meta-col {
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-    }
-
-    .type-role-tag {
-      font-family: var(--font-barlow);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--rapids-blue);
-    }
-
-    .type-family-name {
-      font-family: var(--font-barlow);
-      font-size: 1.6rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: -0.01em;
-      color: var(--text-dark);
-      margin: 0;
-    }
-
-    .type-usage-desc {
-      font-family: var(--font-barlow);
-      font-size: 0.9rem;
-      font-weight: 400;
-      color: var(--text-muted);
-      line-height: 1.5;
-      margin: 0.5rem 0 0 0;
-    }
-
-    .type-display-col {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-
-    .type-hero-glyph {
-      font-size: clamp(3.2rem, 7vw, 5.5rem);
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-    }
-
-    .type-alphabet-block {
-      font-size: clamp(1rem, 1.8vw, 1.25rem);
-      line-height: 1.6;
-      word-break: break-all;
-      opacity: 0.9;
-    }
-
-    .type-divider-hairline {
-      border: 0;
-      border-top: 1px solid rgba(44, 62, 80, 0.08);
-      margin: 0;
-    }
-
-    /* =========================================================================
-       MORE PROJECTS THUMBNAIL REEL (Interactive Discovery Strip)
-       ========================================================================= */
-    .more-projects-section {
-      position: relative;
-      z-index: 2;
-      max-width: 1440px;
-      margin: 4rem auto 2rem;
-      padding: 0 4vw;
-      box-sizing: border-box;
-    }
-
-    .more-projects-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid rgba(44, 62, 80, 0.12);
-      padding-bottom: 1rem;
-    }
-
-    .more-projects-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-dark);
-    }
-
-    .more-projects-all {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--accent-orange);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .more-projects-all:hover {
-      color: #d84b16;
-    }
-
-    .more-projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-
-    @media (min-width: 900px) {
-      .more-projects-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    .more-project-card {
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .more-project-thumb {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      overflow: hidden;
-      background: var(--card-stage-blue);
-      border: 1px solid rgba(44, 62, 80, 0.1);
-      margin-bottom: 0.85rem;
-    }
-
-    .more-project-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.75;
-      transition: transform 0.4s ease, opacity 0.3s ease;
-    }
-
-    .more-project-card:hover .more-project-thumb img {
-      transform: scale(1.05);
-      opacity: 1;
-    }
-
-    .more-project-tag {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent-orange);
-      margin-bottom: 0.2rem;
-    }
-
-    .more-project-name {
-      font-size: 1rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--text-dark);
-      letter-spacing: -0.01em;
-      line-height: 1.2;
-    }
-
-    .overlay-brand-stamp {
-      width: 32px;
-      height: auto;
-      filter: brightness(0) invert(1);
-      display: inline-block;
-      vertical-align: middle;
-    }
+    /* ---------- Rexburg Rapids art direction ----------
+       Loud and sunny, like the park. Big fields of the brand blue, yellow as the
+       spark, and a bento grid of applications that feels like a day pass full of
+       stops. Guest faces are the identity's own: Plus Jakarta Sans and Rubik. */
+    body.p-rr { --blue: #0066CC; --sky: #2DD4FF; --sun: #FFC93C; --night: #0A2A55; --paper: #F4F8FC; --ink: #0B2341; --ink-soft: rgba(11, 35, 65, .66); --rule: rgba(11, 35, 65, .16); --accent: #0066CC; --f-guest: 'Plus Jakarta Sans', var(--f-sans); background: var(--paper); color: var(--ink); }
+    .rr-h { font-family: var(--f-guest); font-weight: 800; letter-spacing: -.03em; line-height: .92; margin: 0; }
+    .rr-blue { background: var(--blue); color: #fff; }
+    .rr-blue .label { color: rgba(255, 255, 255, .72); }
+    .rr-mark { min-height: 100vh; min-height: 100svh; display: grid; place-items: center; position: relative; overflow: hidden; }
+    .rr-mark img { width: min(56vw, 640px); height: auto; }
+    .rr-mark__cap { position: absolute; left: var(--gutter); right: var(--gutter); bottom: clamp(24px, 5vh, 56px); display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .rr-intro { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 6vw, 100px); align-items: end; }
+    .rr-intro .lede { font-family: var(--f-guest); font-weight: 700; font-size: clamp(26px, 2.8vw, 46px); line-height: 1.12; letter-spacing: -.02em; max-width: 20ch; }
+    @media (max-width: 900px) { .rr-intro { grid-template-columns: 1fr; } }
+
+    .rr-palette { display: grid; grid-template-columns: 5fr 3fr 2fr; min-height: 62vh; }
+    .rr-swatch { padding: clamp(18px, 2.4vw, 36px); display: flex; flex-direction: column; justify-content: space-between; }
+    .rr-swatch h3 { font-family: var(--f-guest); font-weight: 800; font-size: clamp(24px, 2.6vw, 44px); margin: 6px 0 0; letter-spacing: -.02em; }
+    .rr-swatch dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; margin: 0; font-family: var(--f-mono); font-size: 12px; }
+    .rr-swatch dt { opacity: .6; }
+    .rr-swatch dd { margin: 0; }
+    @media (max-width: 760px) { .rr-palette { grid-template-columns: 1fr; } .rr-swatch { min-height: 32vh; } }
+
+    .rr-type { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 64px); }
+    .rr-type__big { font-size: clamp(90px, 12vw, 210px); line-height: .85; letter-spacing: -.04em; margin: 10px 0 18px; }
+    .rr-type p { max-width: 40ch; color: var(--ink-soft); }
+    @media (max-width: 760px) { .rr-type { grid-template-columns: 1fr; } }
+
+    /* Bento of applications */
+    .rr-bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: clamp(140px, 14vw, 240px); gap: clamp(8px, 1vw, 14px); }
+    .rr-bento > * { position: relative; overflow: hidden; }
+    .rr-bento img { width: 100%; height: 100%; object-fit: cover; transition: transform 1200ms var(--ease); }
+    .rr-bento > *:hover img { transform: scale(1.04); }
+    .rr-bento figcaption { position: absolute; left: 10px; bottom: 10px; font-family: var(--f-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; background: rgba(255, 255, 255, .92); color: var(--ink); padding: 4px 7px; }
+    .b-a { grid-column: span 4; grid-row: span 3; } .b-b { grid-column: span 2; grid-row: span 2; } .b-c { grid-column: span 2; grid-row: span 1; }
+    .b-d { grid-column: span 3; grid-row: span 2; } .b-e { grid-column: span 3; grid-row: span 2; }
+    .b-f { grid-column: span 2; grid-row: span 2; } .b-g { grid-column: span 2; grid-row: span 2; } .b-h { grid-column: span 2; grid-row: span 2; }
+    @media (max-width: 760px) { .rr-bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 42vw; } .rr-bento > * { grid-column: span 1 !important; grid-row: span 1 !important; } .rr-bento .b-a, .rr-bento .b-d { grid-column: span 2 !important; } }
   </style>
 </head>
-<body class="rapids-case-page page-subpage">
-
-  <!-- =================== START: SITE PRELOADER =================== -->
-  <div id="site-loader">
-    <img src="LogoBlue.png" alt="Loading..." class="loader-mark-pulse">
-  </div>
-  <!-- =================== END: SITE PRELOADER =================== -->
-
-  <!-- =================== START: SLIDE-DOWN INDEX OVERLAY =================== -->
-  <div id="index-overlay" class="index-overlay-panel">
-    <div class="overlay-top-bar">
-      <div style="display: flex; align-items: center; gap: 0.85rem;">
-        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="overlay-brand-stamp">
-        <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.75);">Index</span>
-      </div>
-      <button id="close-overlay-btn" style="background: none; border: none; cursor: pointer; color: white; display: flex; align-items: center;" aria-label="Close">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <line x1="4" y1="4" x2="20" y2="20"></line>
-          <line x1="20" y1="4" x2="4" y2="20"></line>
-        </svg>
-      </button>
-    </div>
-    <nav class="overlay-nav-links">
-      <div class="overlay-link-item">
-        <span>01</span>
-        <a href="index.html" class="overlay-link">Home</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>02</span>
-        <a href="work.html" class="overlay-link">Work</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>03</span>
-        <a href="ui-ux.html" class="overlay-link">UI/UX Work</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>04</span>
-        <a href="about.html" class="overlay-link">About</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>05</span>
-        <button id="overlay-contact-link" class="overlay-link">Contact</button>
-      </div>
-    </nav>
-  </div>
-  <!-- =================== END: SLIDE-DOWN INDEX OVERLAY =================== -->
-
-  <!-- =================== START: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
-  <button id="floating-nav-btn" class="floating-peak-btn subpage-permanent-btn" aria-label="Open Navigation">
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path d="M2 14 L6.5 5 L10 10 L16 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
-  </button>
-  <!-- =================== END: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
-
-  <!-- =================== START: PERSISTENT BACKGROUND =================== -->
-  <div class="hero-fixed-background" aria-hidden="true">
-    <div class="hero-dot-grid"></div>
-    <div class="hero-topography-plate">
-      <img src="topography.webp" alt="" class="topo-external-asset subpage-topo" aria-hidden="true">
-    </div>
-  </div>
-  <!-- =================== END: PERSISTENT BACKGROUND =================== -->
-
-  <!-- 1. Full-Bleed 100vh Hero Banner (Barlow Typographic Anchor) -->
-  <header class="turnstyle-hero-banner">
-    <img src="RexburgRapids-Hero.webp" alt="Rexburg Rapids Hero" class="turnstyle-hero-bg" fetchpriority="high">
-    <div class="turnstyle-hero-overlay"></div>
-
-    <div class="turnstyle-hero-content">
-      <h1 class="turnstyle-headline">
-        Bringing the splash back to Rexburg
-      </h1>
-      <div class="turnstyle-caption-block">
-        <div class="turnstyle-caption-title">Brand Identity & Visual System</div>
-        <p class="turnstyle-caption-text">Summer Waterpark Experience · 2026</p>
-      </div>
-    </div>
+<body class="p-rr">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav" data-tone="dark">
+    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><span class="nav__name">Devin Sanders</span><span class="nav__coord">04 / Rexburg Rapids</span></a>
+    <nav aria-label="Main"><ul class="nav__links">
+      <li><a href="work.html"><span class="idx">01</span><span class="txt">Work</span></a></li>
+      <li><a href="about.html"><span class="idx">02</span><span class="txt">About</span></a></li>
+      <li><a href="#contact"><span class="idx">03</span><span class="txt">Contact</span></a></li>
+    </ul></nav>
+    <div class="nav__progress" aria-hidden="true" style="background: var(--sun)"></div>
   </header>
+  <div class="ring" aria-hidden="true"></div>
 
-  <!-- Main Narrative & Content Blocks -->
-  <main style="padding-top: 5rem; padding-bottom: 5rem;">
-
-    <!-- 2. Framed Graphic Swatch Collage -->
-    <div class="case-content-wrap" style="margin-bottom: 5rem;">
-      <div class="case-section-header">
-        <div class="line" style="background-color: var(--rapids-blue);"></div>
-        <span class="label">Visual Foundation</span>
-      </div>
-      <div class="case-img-box" style="box-shadow: 0 8px 30px rgba(0,0,0,0.04);">
-        <img src="RexburgRapids-Swatch.webp" alt="Brand Mood Collage" loading="lazy" decoding="async">
-      </div>
-    </div>
-
-    <!-- 3. Full-Bleed Animated Logo Mark GIF -->
-    <div class="full-bleed-gif" style="margin-bottom: 5rem;">
-      <img src="Logo.webp" alt="Rexburg Rapids Animated Mark" loading="lazy">
-    </div>
-
-    <!-- 4. Full-Bleed Brand Guide Rulebook Spread -->
-    <div class="full-bleed-section" style="margin-bottom: 5rem; background-color: var(--rapids-blue);">
-      <img src="RexburgRapids-Guide.webp" alt="The Rapids Rulebook Brand Guidelines" loading="lazy" decoding="async">
-    </div>
-
-    <!-- 5. Framed Applications & Collateral Grid -->
-    <div class="case-content-wrap">
-
-      <div class="case-section-header">
-        <div class="line" style="background-color: var(--rapids-blue);"></div>
-        <span class="label">Environmental & Applications</span>
-      </div>
-
-      <!-- Facility Entrance Sign -->
-      <div class="case-img-box" style="aspect-ratio: 16 / 9; max-height: 640px; margin-bottom: 1.5rem;">
-        <img src="RexburgRapids-Signage.webp" alt="Facility Entrance Sign" loading="lazy" decoding="async">
-      </div>
-
-      <!-- One Day Pass & Wristband Split -->
-      <div class="case-grid-2col">
-        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
-          <img src="RexburgRapids-Ticket.webp" alt="One Day Pass Ticket" loading="lazy" decoding="async">
-        </div>
-        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
-          <img src="RexburgRapids-Wristband.webp" alt="Park Wristband" loading="lazy" decoding="async">
-        </div>
-      </div>
-
-      <!-- Highway Billboard -->
-      <div class="case-img-box" style="aspect-ratio: 16 / 8; max-height: 560px; margin-bottom: 1.5rem;">
-        <img src="RexburgRapids-Billboard.webp" alt="Promotional Billboard" loading="lazy" decoding="async">
-      </div>
-
-      <!-- Street Banners & Staff Hat -->
-      <div class="case-grid-2col">
-        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
-          <img src="RexburgRapids-Banners.webp" alt="Street Lamp Banners" loading="lazy" decoding="async">
-        </div>
-        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
-          <img src="RexburgRapids-Hat.webp" alt="Staff Hat Mockup" loading="lazy" decoding="async">
-        </div>
-      </div>
-
-      <!-- Website Laptop Mockup -->
-      <div class="case-img-box" style="aspect-ratio: 16 / 9; max-height: 640px; margin-bottom: 1.5rem;">
-        <img src="RexburgRapids-Laptop.webp" alt="Website on Laptop" loading="lazy" decoding="async">
-      </div>
-
-      <!-- 3-Tile Row: Waterslide Detail, Rules Sign, Stickers -->
-      <div class="case-grid-3col">
-        <div class="case-img-box" style="aspect-ratio: 1 / 1;">
-          <img src="RexburgRapids-Bucket.webp" alt="Water Slide Detail" loading="lazy" decoding="async">
-        </div>
-        <div class="case-img-box" style="aspect-ratio: 1 / 1;">
-          <img src="RexburgRapids-Rules.webp" alt="Lazy River Safety Sign" loading="lazy" decoding="async">
-        </div>
-        <div class="case-img-box" style="aspect-ratio: 1 / 1;">
-          <img src="RexburgRapids-Stickers.webp" alt="Die-Cut Brand Stickers" loading="lazy" decoding="async">
-        </div>
-      </div>
-
-      <!-- Social Media & Staff T-Shirt -->
-      <div class="case-grid-2col" style="margin-bottom: 5rem;">
-        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
-          <img src="RexburgRapids-SocMed.webp" alt="Social Media Templates" loading="lazy" decoding="async">
-        </div>
-        <div class="case-img-box" style="aspect-ratio: 4 / 3;">
-          <img src="RexburgRapids-Shirt.webp" alt="Apparel T-Shirt Mockup" loading="lazy" decoding="async">
-        </div>
-      </div>
-
-    </div>
-
-    <!-- 6. Massive Full-Bleed Typographic Pattern Strip -->
-    <div class="rapids-type-strip-wrap" style="margin-bottom: 5rem;">
-      <div class="rapids-type-bleed-row" aria-hidden="true">
-        <span class="rapids-giant-text">RAPIDS</span>
-        <span class="rapids-giant-text">·</span>
-        <span class="rapids-giant-text">RAPIDS</span>
-        <span class="rapids-giant-text">·</span>
-        <span class="rapids-giant-text">RAPIDS</span>
-        <span class="rapids-giant-text">·</span>
-        <span class="rapids-giant-text">RAPIDS</span>
-      </div>
-    </div>
-
-    <!-- 7. Elevated Brand Standards (Architectural Color Palette & Typography) -->
-    <div class="case-content-wrap">
-
-      <div class="case-section-header">
-        <div class="line" style="background-color: var(--rapids-blue);"></div>
-        <span class="label">Color Palette & System Architecture</span>
-      </div>
-
-      <!-- Architectural Swatch Strip -->
-      <div class="rapids-color-system">
-        
-        <!-- Color 1: Deep Blue -->
-        <article class="color-pillar-card">
-          <div class="color-swatch-canvas" style="background-color: #0066CC;">
-            <span class="color-swatch-badge">Primary Anchor</span>
-            <svg class="color-glyph-ghost" viewBox="0 0 100 100" fill="#FFFFFF">
-              <path d="M50,15 C69.3,15 85,30.7 85,50 C85,69.3 69.3,85 50,85 C30.7,85 15,69.3 15,50 C15,35 25,23 38,18 C28,26 25,38 28,49 C32,63 46,71 60,67 C74,63 82,49 78,35 C74,21 59,13 46,16 C48,15.3 49,15 50,15 Z"/>
-            </svg>
-          </div>
-          <div class="color-spec-body">
-            <div class="color-name-group">
-              <h3 class="title" style="color: #0066CC;">Deep Blue</h3>
-              <span class="role">Facility Wayfinding & Signage Base</span>
-            </div>
-            <div class="color-telemetry-grid">
-              <div>
-                <span class="label">HEX</span>
-                <span class="val">#0066CC</span>
-              </div>
-              <div>
-                <span class="label">Pantone</span>
-                <span class="val">285 C</span>
-              </div>
-              <div>
-                <span class="label">RGB</span>
-                <span class="val">0 · 102 · 204</span>
-              </div>
-              <div>
-                <span class="label">CMYK</span>
-                <span class="val">100 · 50 · 0 · 0</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Color 2: Light Blue -->
-        <article class="color-pillar-card">
-          <div class="color-swatch-canvas" style="background-color: #2DD4FF;">
-            <span class="color-swatch-badge dark-badge">Secondary Accent</span>
-            <svg class="color-glyph-ghost" viewBox="0 0 100 100" fill="#002244">
-              <path d="M50,15 C69.3,15 85,30.7 85,50 C85,69.3 69.3,85 50,85 C30.7,85 15,69.3 15,50 C15,35 25,23 38,18 C28,26 25,38 28,49 C32,63 46,71 60,67 C74,63 82,49 78,35 C74,21 59,13 46,16 C48,15.3 49,15 50,15 Z"/>
-            </svg>
-          </div>
-          <div class="color-spec-body">
-            <div class="color-name-group">
-              <h3 class="title" style="color: #0294cc;">Light Blue</h3>
-              <span class="role">Surface Highlights & Water Rails</span>
-            </div>
-            <div class="color-telemetry-grid">
-              <div>
-                <span class="label">HEX</span>
-                <span class="val">#2DD4FF</span>
-              </div>
-              <div>
-                <span class="label">Pantone</span>
-                <span class="val">298 C</span>
-              </div>
-              <div>
-                <span class="label">RGB</span>
-                <span class="val">45 · 212 · 255</span>
-              </div>
-              <div>
-                <span class="label">CMYK</span>
-                <span class="val">60 · 0 · 0 · 0</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Color 3: Sun Yellow -->
-        <article class="color-pillar-card">
-          <div class="color-swatch-canvas" style="background-color: #FFC93C;">
-            <span class="color-swatch-badge dark-badge">Warm Contrast</span>
-            <svg class="color-glyph-ghost" viewBox="0 0 100 100" fill="#002244">
-              <path d="M50,15 C69.3,15 85,30.7 85,50 C85,69.3 69.3,85 50,85 C30.7,85 15,69.3 15,50 C15,35 25,23 38,18 C28,26 25,38 28,49 C32,63 46,71 60,67 C74,63 82,49 78,35 C74,21 59,13 46,16 C48,15.3 49,15 50,15 Z"/>
-            </svg>
-          </div>
-          <div class="color-spec-body">
-            <div class="color-name-group">
-              <h3 class="title" style="color: #D99B00;">Sun Yellow</h3>
-              <span class="role">Passes, Wristbands & Callouts</span>
-            </div>
-            <div class="color-telemetry-grid">
-              <div>
-                <span class="label">HEX</span>
-                <span class="val">#FFC93C</span>
-              </div>
-              <div>
-                <span class="label">Pantone</span>
-                <span class="val">123 C</span>
-              </div>
-              <div>
-                <span class="label">RGB</span>
-                <span class="val">255 · 201 · 60</span>
-              </div>
-              <div>
-                <span class="label">CMYK</span>
-                <span class="val">0 · 21 · 89 · 0</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-      </div>
-
-      <!-- Typography Specimen Board -->
-      <div class="case-section-header">
-        <div class="line" style="background-color: var(--rapids-blue);"></div>
-        <span class="label">Typography System</span>
-      </div>
-
-      <div class="type-specimen-board">
-        
-        <!-- Font 1: Plus Jakarta Sans -->
-        <div class="type-family-row">
-          <div class="type-meta-col">
-            <span class="type-role-tag">Primary Display & Headlines</span>
-            <h3 class="type-family-name">Plus Jakarta Sans</h3>
-            <p class="type-usage-desc">
-              Geometric, warm modern grotesk built for impactful park displays, facility entrance portals, and dynamic digital banners.
-            </p>
-          </div>
-          <div class="type-display-col" style="font-family: 'Plus Jakarta Sans', sans-serif;">
-            <div class="type-hero-glyph" style="font-weight: 800; color: var(--rapids-blue);">
-              Aa Bb Gg 78
-            </div>
-            <div class="type-alphabet-block" style="font-weight: 700; color: var(--text-dark);">
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
-              abcdefghijklmnopqrstuvwxyz · 0123456789 (!@#$%&*)
-            </div>
-          </div>
-        </div>
-
-        <hr class="type-divider-hairline">
-
-        <!-- Font 2: Rubik -->
-        <div class="type-family-row">
-          <div class="type-meta-col">
-            <span class="type-role-tag">Wayfinding, Rules & Tickets</span>
-            <h3 class="type-family-name">Rubik</h3>
-            <p class="type-usage-desc">
-              Slightly rounded sans-serif maximizing legibility across distance, printed waterpark tickets, and safety guidelines.
-            </p>
-          </div>
-          <div class="type-display-col" style="font-family: 'Rubik', sans-serif;">
-            <div class="type-hero-glyph" style="font-weight: 600; color: var(--rapids-blue);">
-              Aa Bb Rr 45
-            </div>
-            <div class="type-alphabet-block" style="font-weight: 400; color: var(--text-dark);">
-              ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
-              abcdefghijklmnopqrstuvwxyz · 0123456789 (!@#$%&*)
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- =========================================================================
-         MORE PROJECTS THUMBNAIL REEL (Interactive Discovery Strip)
-         ========================================================================= -->
-    <section class="more-projects-section">
-      <div class="more-projects-header">
-        <span class="more-projects-title">More Selected Projects</span>
-        <a href="work.html" class="more-projects-all">View All Work →</a>
-      </div>
-
-      <div class="more-projects-grid">
-        <!-- Project 1: WANDRD -->
-        <a href="wandrd.html" class="more-project-card">
-          <div class="more-project-thumb">
-            <img src="WANDRD-Hero.webp" alt="WANDRD E-Commerce" loading="lazy" decoding="async">
-          </div>
-          <span class="more-project-tag">E-Commerce & A+</span>
-          <span class="more-project-name">WANDRD Storefront</span>
-        </a>
-
-        <!-- Project 2: Kindred Roots -->
-        <a href="kindred-roots.html" class="more-project-card">
-          <div class="more-project-thumb">
-            <img src="KindredRoots/KindredRoots-Hero.webp" alt="Kindred Roots Publication" loading="lazy" decoding="async">
-          </div>
-          <span class="more-project-tag">Editorial & Print</span>
-          <span class="more-project-name">Kindred Roots</span>
-        </a>
-
-        <!-- Project 3: Gerber Gear -->
-        <a href="gerber-gear.html" class="more-project-card">
-          <div class="more-project-thumb">
-            <img src="GerberGear/GG-Hero.webp" alt="Gerber Gear Packaging" loading="lazy" decoding="async">
-          </div>
-          <span class="more-project-tag">Packaging Suite</span>
-          <span class="more-project-name">Gerber Gear</span>
-        </a>
-
-        <!-- Project 4: Analog Reboot -->
-        <a href="analog-reboot.html" class="more-project-card">
-          <div class="more-project-thumb">
-            <img src="AnalogReboot/AR-Hero.webp" alt="Analog Reboot Apparel" loading="lazy" decoding="async">
-          </div>
-          <span class="more-project-tag">Pattern & Apparel</span>
-          <span class="more-project-name">Analog Reboot</span>
-        </a>
+  <main id="main">
+    <section class="p-hero" data-tone="dark" aria-labelledby="title">
+      <div class="p-hero__media" style="view-transition-name: hero-rexburg"><img src="RexburgRapids-Hero.webp" alt="A rider coming off a yellow and blue water slide" fetchpriority="high"></div>
+      <div class="p-hero__body">
+        <div class="p-hero__kicker"><span class="label" style="color: var(--sun)">04 / Identity</span></div>
+        <h1 class="display display--xl" id="title">Rexburg Rapids</h1>
+        <p class="label" style="margin: 18px 0 clamp(28px, 5vh, 52px); color: rgba(255,255,255,.85); font-size: 13px;">Brand identity · Guidelines · Signage · Merch</p>
+        <dl class="meta" style="border-color: rgba(255,255,255,.25)">
+          <div><dt class="label">Brand</dt><dd>Rexburg Rapids waterpark</dd></div>
+          <div><dt class="label">Scope</dt><dd>Logo to wristbands</dd></div>
+          <div><dt class="label">Type</dt><dd>Plus Jakarta Sans · Rubik</dd></div>
+          <div><dt class="label">Year</dt><dd>2026</dd></div>
+        </dl>
       </div>
     </section>
 
+    <section class="section" data-tone="light" aria-label="Overview">
+      <div class="wrap rr-intro">
+        <!-- DRAFT COPY: rewrite in your voice. -->
+        <div><p class="lede reveal">A rebrand for Rexburg’s summer waterpark. The new identity is loud, blue and yellow, and it has to work on everything from a billboard to a wristband.</p>
+        <span class="note reveal" style="margin-top: 22px; max-width: 520px;">If this was a class project and not a commission, say so in one line here.</span></div>
+        <div class="reveal-img" data-from="left" style="--d: 120ms"><img src="RexburgRapids-Swatch.webp" alt="Brand mood collage" loading="lazy" data-lightbox></div>
+      </div>
+    </section>
+
+    <section class="rr-mark rr-blue" data-tone="dark" aria-labelledby="mark-title">
+      <img src="Logo.webp" alt="The animated Rexburg Rapids R mark" loading="lazy">
+      <div class="rr-mark__cap"><h2 class="label" id="mark-title">The mark</h2><span class="label">Animated logo</span></div>
+    </section>
+
+    <section class="section" data-tone="light" aria-label="Guidelines">
+      <div class="wrap">
+        <div style="max-width: 720px; margin-bottom: clamp(40px, 6vw, 80px);"><div class="slot reveal" data-asset="rr-process"></div></div>
+        <span class="label label--accent">The Rapids Rulebook</span>
+        <h2 class="rr-h" style="font-size: clamp(40px, 5.4vw, 96px); margin: 12px 0 clamp(32px, 4vw, 56px);">The guidelines</h2>
+        <div class="reveal-img"><img src="RexburgRapids-Guide.webp" alt="Pages from the Rapids Rulebook brand guidelines" loading="lazy" data-lightbox></div>
+      </div>
+    </section>
+
+    <section aria-label="Colour palette" data-tone="dark">
+      <div class="rr-palette">
+        <div class="rr-swatch" style="background: var(--blue); color: #fff;"><div><span class="label" style="color: rgba(255,255,255,.75)">Primary</span><h3>Deep Blue</h3><p style="margin: 8px 0 0; opacity: .8;">Wayfinding and signage base</p></div><dl><dt>HEX</dt><dd>#0066CC</dd><dt>PMS</dt><dd>285 C</dd><dt>RGB</dt><dd>0 · 102 · 204</dd><dt>CMYK</dt><dd>100 · 50 · 0 · 0</dd></dl></div>
+        <div class="rr-swatch" style="background: var(--sky); color: var(--ink);"><div><span class="label">Secondary</span><h3>Light Blue</h3><p style="margin: 8px 0 0; opacity: .8;">Highlights and water rails</p></div><dl><dt>HEX</dt><dd>#2DD4FF</dd><dt>PMS</dt><dd>298 C</dd><dt>RGB</dt><dd>45 · 212 · 255</dd><dt>CMYK</dt><dd>60 · 0 · 0 · 0</dd></dl></div>
+        <div class="rr-swatch" style="background: var(--sun); color: var(--ink);"><div><span class="label">Contrast</span><h3>Sun Yellow</h3><p style="margin: 8px 0 0; opacity: .8;">Passes, wristbands, callouts</p></div><dl><dt>HEX</dt><dd>#FFC93C</dd><dt>PMS</dt><dd>123 C</dd><dt>RGB</dt><dd>255 · 201 · 60</dd><dt>CMYK</dt><dd>0 · 21 · 89 · 0</dd></dl></div>
+      </div>
+    </section>
+
+    <section class="section" data-tone="light" aria-labelledby="type-title">
+      <div class="wrap">
+        <h2 class="label label--accent" id="type-title">Typography</h2>
+        <div class="rr-type" style="margin-top: 28px;">
+          <div class="reveal"><span class="label">Display &amp; headlines</span><div class="rr-type__big" style="font-family: 'Plus Jakarta Sans'; font-weight: 800;">Aa Gg</div><h3 class="h3" style="font-family: 'Plus Jakarta Sans'">Plus Jakarta Sans</h3><p>A warm geometric grotesk for park entrances, displays and banners.</p></div>
+          <div class="reveal" style="--d: 120ms"><span class="label">Wayfinding, rules &amp; tickets</span><div class="rr-type__big" style="font-family: 'Rubik'; font-weight: 500;">Aa Rr</div><h3 class="h3" style="font-family: 'Rubik'">Rubik</h3><p>Slightly rounded and easy to read from a distance, on printed tickets and safety signs.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" data-tone="light" aria-labelledby="apps-title" style="padding-top: 0;">
+      <div class="wrap">
+        <h2 class="rr-h" id="apps-title" style="font-size: clamp(40px, 5.4vw, 96px); margin-bottom: clamp(32px, 4vw, 56px);">Around the park</h2>
+        <div class="rr-bento" data-gallery>
+          <figure class="b-a reveal" style="margin: 0;"><img src="RexburgRapids-Signage.webp" alt="Facility entrance sign" loading="lazy" data-lightbox><figcaption>Entrance sign</figcaption></figure>
+          <figure class="b-b reveal" style="margin: 0; --d: 80ms"><img src="RexburgRapids-Ticket.webp" alt="One day pass ticket" loading="lazy" data-lightbox><figcaption>Day pass</figcaption></figure>
+          <figure class="b-c reveal" style="margin: 0; --d: 160ms"><img src="RexburgRapids-Wristband.webp" alt="Park wristband" loading="lazy" data-lightbox><figcaption>Wristband</figcaption></figure>
+          <figure class="b-d reveal" style="margin: 0;"><img src="RexburgRapids-Billboard.webp" alt="Promotional billboard" loading="lazy" data-lightbox><figcaption>Billboard</figcaption></figure>
+          <figure class="b-e reveal" style="margin: 0; --d: 80ms"><img src="RexburgRapids-Laptop.webp" alt="Website on a laptop" loading="lazy" data-lightbox><figcaption>Website</figcaption></figure>
+          <figure class="b-f reveal" style="margin: 0;"><img src="RexburgRapids-Banners.webp" alt="Street lamp banners" loading="lazy" data-lightbox><figcaption>Street banners</figcaption></figure>
+          <figure class="b-g reveal" style="margin: 0; --d: 80ms"><img src="RexburgRapids-Rules.webp" alt="Lazy river safety sign" loading="lazy" data-lightbox><figcaption>Safety sign</figcaption></figure>
+          <figure class="b-h reveal" style="margin: 0; --d: 160ms"><img src="RexburgRapids-Hat.webp" alt="Staff hat" loading="lazy" data-lightbox><figcaption>Staff hat</figcaption></figure>
+          <figure class="b-f reveal" style="margin: 0;"><img src="RexburgRapids-Stickers.webp" alt="Die-cut stickers" loading="lazy" data-lightbox><figcaption>Stickers</figcaption></figure>
+          <figure class="b-g reveal" style="margin: 0; --d: 80ms"><img src="RexburgRapids-SocMed.webp" alt="Social media templates" loading="lazy" data-lightbox><figcaption>Social</figcaption></figure>
+          <figure class="b-h reveal" style="margin: 0; --d: 160ms"><img src="RexburgRapids-Shirt.webp" alt="Staff T-shirt" loading="lazy" data-lightbox><figcaption>Staff shirt</figcaption></figure>
+          <figure class="b-c reveal" style="margin: 0;"><img src="RexburgRapids-Bucket.webp" alt="Water slide detail" loading="lazy" data-lightbox><figcaption>Slide detail</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <a class="next" href="about-face.html" data-tone="dark">
+      <div class="next__media"><img src="AboutFace/AF-Hero.webp" alt="" loading="lazy"></div>
+      <div class="next__body"><span class="label">Next · 05 / 06</span><p class="display display--l" style="margin-top: 12px;">AboutFace</p></div>
+    </a>
+
+    <section class="contact" id="contact" data-tone="light" aria-labelledby="contact-title">
+      <div class="wrap"><h2 class="label" id="contact-title">Say hello</h2><p style="margin: 18px 0 0;"><a class="contact__mail" href="mailto:devin.sanders02@gmail.com">devin.sanders02@gmail.com</a></p></div>
+    </section>
   </main>
-
-  <!-- =================== START: GLOBAL EDITORIAL FOOTER =================== -->
-  <footer id="contact" class="site-footer">
-    <div class="footer-inner-shell">
-
-      <div class="footer-tier-hero">
-        <h2 class="footer-hero-headline">Let's build something meaningful.</h2>
-        <a href="mailto:devin.sanders02@gmail.com" class="footer-email-link">
-          <span>devin.sanders02@gmail.com</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
-          </svg>
-        </a>
-      </div>
-
-      <hr class="footer-hairline">
-
-      <div class="footer-directory-grid">
-        <div>
-          <span class="footer-col-header">01 /<span>Work</span></span>
-          <ul class="footer-nav-list">
-            <li><a href="work.html" class="footer-link-animated">Selected Work</a></li>
-            <li><a href="ui-ux.html" class="footer-link-animated">UI/UX & Systems</a></li>
-            <li><a href="about.html" class="footer-link-animated">About & Studio</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <span class="footer-col-header">02 /<span>Network</span></span>
-          <ul class="footer-nav-list">
-            <li>
-              <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer">
-                <span>LinkedIn</span>
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <span class="footer-col-header">03 /<span>Discipline</span></span>
-          <ul class="footer-discipline-list">
-            <li>Brand architecture & identity</li>
-            <li>Physical & digital commerce</li>
-          </ul>
-        </div>
-
-        <div>
-          <span class="footer-col-header">04 /<span>Top</span></span>
-          <button id="footer-scroll-top-btn" class="footer-scroll-top-btn">
-            <span>Return to Top</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="19" x2="12" y2="5"></line>
-              <polyline points="5 12 12 5 19 12"></polyline>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="footer-colophon-row">
-        <div>© <span id="copyright-year">2026</span> Devin Sanders. All Rights Reserved.</div>
-        <div>Barlow · Visual Brand Architecture</div>
-      </div>
-
-    </div>
-  </footer>
-  <!-- =================== END: GLOBAL EDITORIAL FOOTER =================== -->
-
-  <!-- Custom Survey Reticle Cursor -->
-  <div id="survey-cursor" class="survey-cursor" aria-hidden="true">
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
-  </div>
-
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
+  <footer class="footer"><div class="wrap"><span class="label">© <span data-year>2026</span> Devin Sanders · Denver, Colorado</span><ul class="label"><li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li><li><a class="u-line" href="Resume.pdf">Résumé</a></li><li><a class="u-line" href="#main">Back to top ↑</a></li></ul></div></footer>
 </body>
 </html>

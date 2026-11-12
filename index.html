@@ -1,240 +1,269 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Devin Sanders | Brand & Graphic Designer</title>
-
-  <!-- Favicon & Touch Icon -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="alternate icon" type="image/png" href="LogoBlue.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Devin Sanders — Graphic Designer</title>
+  <meta name="description" content="Devin Sanders is a graphic designer in Denver, Colorado: brand identity, packaging, Amazon storefronts and infographics.">
+  <meta property="og:title" content="Devin Sanders — Graphic Designer">
+  <meta property="og:description" content="Brand identity, packaging, Amazon storefronts and infographics. Denver, Colorado.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#F4F5F7">
+  <link rel="icon" href="favicon.svg">
   <link rel="apple-touch-icon" href="LogoBlue.png">
-
-  <!-- Direct Font Links -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="assets/manifest.js" defer></script>
+  <script src="js/site.js" defer></script>
   <style>
-    .overlay-brand-stamp {
-      width: 32px;
-      height: auto;
-      filter: brightness(0) invert(1);
-      display: inline-block;
-      vertical-align: middle;
+    /* ---------- Homepage composition ---------- */
+    .home-hero { position: relative; min-height: 100vh; min-height: 100svh; display: grid; grid-template-rows: auto 1fr auto; padding: calc(var(--nav-h) + 3vh) var(--gutter) clamp(28px, 5vh, 56px); overflow: hidden; }
+    .home-hero__meta { position: relative; display: grid; gap: 6px; align-content: start; }
+    .home-hero__meta .loc { font-family: var(--f-cond); font-weight: 500; font-size: clamp(22px, 2vw, 30px); letter-spacing: .08em; text-transform: uppercase; }
+    .home-hero__name { position: relative; align-self: end; margin: 0 0 clamp(18px, 3vh, 32px); color: var(--ink); font-size: clamp(84px, 15.5vw, 300px); }
+    .home-hero__name span { display: block; }
+    .home-hero__foot { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 48px; align-items: end; }
+    .home-hero__foot .lede { max-width: 34ch; }
+    .home-hero__cue { display: flex; gap: 12px; align-items: center; }
+    .home-hero__cue i { width: 1px; height: 48px; background: var(--ink); transform-origin: top; animation: cue 2.4s var(--ease) infinite; }
+    @keyframes cue { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+    @media (prefers-reduced-motion: no-preference) {
+      .js .home-hero__name span { opacity: 0; transform: translateY(40%); animation: rise 1200ms var(--ease) forwards; }
+      .js .home-hero__name span + span { animation-delay: 110ms; }
+      .js .home-hero__meta, .js .home-hero__foot { opacity: 0; animation: fade 900ms var(--ease) 500ms forwards; }
     }
-    /* Normalized top spacing without pinned logo collision */
-    .hero-top-row {
-      padding-top: 2rem !important;
-    }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+    @keyframes fade { to { opacity: 1; } }
+    @media (max-width: 760px) { .home-hero__foot { grid-template-columns: 1fr; } .home-hero__cue { display: none; } }
+
+    .toc { padding: clamp(64px, 9vw, 130px) 0 clamp(40px, 6vw, 80px); }
+    .toc__head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; margin-bottom: clamp(28px, 4vw, 56px); }
+    .toc__list { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+    .toc__list a { display: block; padding: 18px 16px 0 0; }
+    .toc__list .num { font-size: 12px; color: var(--accent); }
+    .toc__list .nm { display: block; margin-top: 8px; font-family: var(--f-cond); font-weight: 700; font-size: clamp(18px, 1.7vw, 28px); text-transform: uppercase; line-height: 1; }
+    .toc__list .ds { display: block; margin-top: 6px; font-size: 13px; color: var(--ink-soft); }
+    .toc__list a:hover .nm { color: var(--accent); }
+    @media (max-width: 900px) { .toc__list { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 22px; } }
+
+    .more { padding: clamp(90px, 12vw, 170px) 0 clamp(60px, 8vw, 110px); }
+    .more__head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 24px; margin-bottom: clamp(28px, 4vw, 56px); }
+
+    .aside { position: relative; padding: clamp(90px, 12vw, 180px) 0; background: var(--ink); color: #EEF1F4; overflow: hidden; }
+    .aside blockquote { margin: 0; font-family: var(--f-sans); font-weight: 500; font-size: clamp(28px, 3.6vw, 60px); line-height: 1.12; letter-spacing: -.015em; max-width: 22ch; }
+    .aside .label { color: rgba(238, 241, 244, .6); }
+    .aside__foot { margin-top: clamp(36px, 5vw, 64px); display: flex; flex-wrap: wrap; gap: 18px 40px; align-items: center; }
   </style>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <!-- =================== START: SITE PRELOADER =================== -->
-  <div id="site-loader">
-    <img src="LogoBlue.png" alt="Loading..." class="loader-mark-pulse">
-  </div>
-  <!-- =================== END: SITE PRELOADER =================== -->
-
-  <!-- =================== START: SLIDE-DOWN INDEX OVERLAY =================== -->
-  <div id="index-overlay" class="index-overlay-panel">
-    <div class="overlay-top-bar">
-      <div style="display: flex; align-items: center; gap: 0.85rem;">
-        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="overlay-brand-stamp">
-        <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.75);">Index</span>
-      </div>
-      <button id="close-overlay-btn" style="background: none; border: none; cursor: pointer; color: white; display: flex; align-items: center;" aria-label="Close">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <line x1="4" y1="4" x2="20" y2="20"></line>
-          <line x1="20" y1="4" x2="4" y2="20"></line>
-        </svg>
-      </button>
-    </div>
-    <nav class="overlay-nav-links">
-      <div class="overlay-link-item">
-        <span>01</span>
-        <a href="index.html" class="overlay-link active">Home</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>02</span>
-        <a href="work.html" class="overlay-link">Work</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>03</span>
-        <a href="ui-ux.html" class="overlay-link">UI/UX Work</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>04</span>
-        <a href="about.html" class="overlay-link">About</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>05</span>
-        <button id="overlay-contact-link" class="overlay-link">Contact</button>
-      </div>
+  <header class="nav" data-tone="light">
+    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><span class="nav__name">Devin Sanders</span></a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a href="work.html"><span class="idx">01</span><span class="txt">Work</span></a></li>
+        <li><a href="about.html"><span class="idx">02</span><span class="txt">About</span></a></li>
+        <li><a href="#contact"><span class="idx">03</span><span class="txt">Contact</span></a></li>
+      </ul>
     </nav>
-  </div>
-  <!-- =================== END: SLIDE-DOWN INDEX OVERLAY =================== -->
+  </header>
+  <div class="ring" aria-hidden="true"></div>
 
-  <!-- =================== START: DYNAMIC FLOATING PEAK NAV BUTTON (Scroll Triggered) =================== -->
-  <button id="floating-nav-btn" class="floating-peak-btn" aria-label="Open Navigation">
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path d="M2 14 L6.5 5 L10 10 L16 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
-  </button>
-  <!-- =================== END: DYNAMIC FLOATING PEAK NAV BUTTON =================== -->
+  <main id="main">
+    <!-- 00 HERO ------------------------------------------------------------>
+    <section class="home-hero" data-tone="light" aria-label="Introduction">
+      <!-- Contour lines: generated by tools/terrain (see README in that folder). The <img> is the no-JS fallback. -->
+      <div class="topo" data-src="assets/topo/terrain.svg" aria-hidden="true"><img src="assets/topo/terrain.svg" alt=""></div>
 
-  <!-- =================== START: PERSISTENT BACKGROUND =================== -->
-  <div class="hero-fixed-background" aria-hidden="true">
-    <div class="hero-dot-grid"></div>
-    <div class="hero-topography-plate">
-      <img src="topography.webp" alt="" class="topo-external-asset" aria-hidden="true">
-    </div>
-  </div>
-  <!-- =================== END: PERSISTENT BACKGROUND =================== -->
-
-  <!-- =================== START: HERO VIEWPORT =================== -->
-  <section id="hero-sticky-canvas" class="hero-sticky-canvas">
-
-    <div class="hero-top-row">
-      <!-- Consolidated Left-Rail Utility Stack -->
-      <div class="hero-meta-block js-fade-on-scroll">
-        <div class="meta-location">DENVER, CO</div>
-        <div class="meta-coords js-scramble-text" data-original="39.7392° N">39.7392° N</div>
-        <div class="meta-discipline js-scramble-text" data-original="VISUAL BRAND ARCHITECTURE & DESIGN">VISUAL BRAND ARCHITECTURE & DESIGN</div>
-
-        <!-- Navigation Menu (Stacked & Flush Left Under Denver) -->
-        <nav class="hero-nav-col" aria-label="Hero Navigation">
-          <a href="work.html" class="hero-nav-item">
-            <span class="nav-idx">01 /</span>
-            <span class="nav-txt">Work</span>
-          </a>
-          <a href="ui-ux.html" class="hero-nav-item">
-            <span class="nav-idx">02 /</span>
-            <span class="nav-txt">UI/UX</span>
-          </a>
-          <a href="about.html" class="hero-nav-item">
-            <span class="nav-idx">03 /</span>
-            <span class="nav-txt">About</span>
-          </a>
-          <button id="top-contact-btn" class="hero-nav-item hero-nav-btn">
-            <span class="nav-idx">04 /</span>
-            <span class="nav-txt">Contact</span>
-          </button>
-        </nav>
-      </div>
-    </div>
-
-    <!-- Bottom Left: Display Name Anchor -->
-    <div class="hero-bottom-anchor js-fade-on-scroll">
-      <h1 class="hero-display-name">Devin Sanders</h1>
-      <div class="hero-scroll-cue">
-        <span>Selected Work 2024–2026</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="12" y1="5" x2="12" y2="19"></line>
-          <polyline points="19 12 12 19 5 12"></polyline>
-        </svg>
-      </div>
-    </div>
-
-  </section>
-  <!-- =================== END: HERO VIEWPORT =================== -->
-
-  <!-- =================== START: FEATURED WORK FEED =================== -->
-  <main id="featured-work-container" class="featured-work-feed"></main>
-  <!-- =================== END: FEATURED WORK FEED =================== -->
-
-  <!-- =================== START: VIEW ALL PROJECTS BUTTON =================== -->
-  <section class="view-all-projects-section">
-    <a href="work.html" class="view-all-btn">
-      <span>View All Projects</span>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="5" y1="12" x2="19" y2="12"></line>
-        <polyline points="12 5 19 12 12 19"></polyline>
-      </svg>
-    </a>
-  </section>
-  <!-- =================== END: VIEW ALL PROJECTS BUTTON =================== -->
-
-  <!-- =================== START: GLOBAL EDITORIAL FOOTER =================== -->
-  <footer id="contact" class="site-footer">
-    <div class="footer-inner-shell">
-
-      <div class="footer-tier-hero">
-        <h2 class="footer-hero-headline">Let's build something meaningful.</h2>
-        <a href="mailto:devin.sanders02@gmail.com" class="footer-email-link">
-          <span>devin.sanders02@gmail.com</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
-          </svg>
-        </a>
+      <div class="home-hero__meta">
+        <span class="loc">Denver, CO</span>
+        <span class="label" data-scramble>39.7392° N · 104.9903° W</span>
+        <span class="label label--accent">Graphic designer — brand · packaging · e-commerce</span>
       </div>
 
-      <hr class="footer-hairline">
+      <h1 class="home-hero__name display display--xl"><span>Devin</span><span>Sanders</span></h1>
 
-      <div class="footer-directory-grid">
-        <div>
-          <span class="footer-col-header">01 /<span>Work</span></span>
-          <ul class="footer-nav-list">
-            <li><a href="work.html" class="footer-link-animated">Selected Work</a></li>
-            <li><a href="ui-ux.html" class="footer-link-animated">UI/UX & Systems</a></li>
-            <li><a href="about.html" class="footer-link-animated">About & Studio</a></li>
-          </ul>
+      <div class="home-hero__foot">
+        <!-- DRAFT COPY: rewrite in your own words. Built from your About page. -->
+        <p class="lede">I design brands, packaging and Amazon storefronts. My favorite part is watching a blank page turn into a whole system that actually works.</p>
+        <a class="home-hero__cue label" href="#work"><i aria-hidden="true"></i>Selected work</a>
+      </div>
+    </section>
+
+    <!-- 01 TABLE OF CONTENTS ---------------------------------------------->
+    <section class="toc" id="work" data-tone="light" aria-labelledby="toc-title">
+      <div class="wrap">
+        <div class="toc__head">
+          <h2 class="label" id="toc-title">Selected work · 2024—2026</h2>
+          <span class="label">Currently designing at RIPPL</span>
         </div>
+        <ol class="toc__list">
+          <li><a href="#ch-wandrd"><span class="num">01</span><span class="nm">WANDRD</span><span class="ds">Brand Store &amp; infographics</span></a></li>
+          <li><a href="#ch-kleenbore"><span class="num">02</span><span class="nm">KleenBore</span><span class="ds">Infographic system</span></a></li>
+          <li><a href="#ch-gerber"><span class="num">03</span><span class="nm">Gerber Gear</span><span class="ds">Structural packaging</span></a></li>
+          <li><a href="#ch-rexburg"><span class="num">04</span><span class="nm">Rexburg Rapids</span><span class="ds">Brand identity</span></a></li>
+          <li><a href="#ch-aboutface"><span class="num">05</span><span class="nm">AboutFace</span><span class="ds">Editorial typography</span></a></li>
+          <li><a href="#ch-motion"><span class="num">06</span><span class="nm">Motion Reel</span><span class="ds">Motion design</span></a></li>
+        </ol>
+      </div>
+    </section>
 
-        <div>
-          <span class="footer-col-header">02 /<span>Network</span></span>
-          <ul class="footer-nav-list">
-            <li>
-              <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer">
-                <span>LinkedIn</span>
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
-                </svg>
-              </a>
-            </li>
-          </ul>
+    <!-- 02 CHAPTERS: each frame opens to full-bleed as you scroll ---------->
+    <section class="stage" id="ch-wandrd" data-tone="dark" aria-labelledby="ch1">
+      <div class="stage__sticky">
+        <div class="stage__frame" style="view-transition-name: hero-wandrd"><div class="slot" data-asset="wan-hero" data-eager></div></div>
+        <div class="stage__ticks" aria-hidden="true"></div>
+        <div class="stage__over" aria-hidden="true"><span class="label">01 / 06</span><span class="label">Client work · RIPPL</span></div>
+        <div class="stage__title">
+          <h2 class="display display--xl" id="ch1">WANDRD</h2>
+          <div class="stage__info">
+            <span class="label">Amazon Brand Store · Infographics · 2025</span>
+            <p>The live Amazon Brand Store, plus the product infographics and graphics around it.</p>
+            <span class="link-arrow">View project</span>
+          </div>
         </div>
+        <a class="stage__link" href="wandrd.html"><span class="sr-only">View the WANDRD project</span></a>
+      </div>
+    </section>
 
-        <div>
-          <span class="footer-col-header">03 /<span>Discipline</span></span>
-          <ul class="footer-discipline-list">
-            <li>Brand architecture & identity</li>
-            <li>Physical & digital commerce</li>
-          </ul>
+    <section class="stage" id="ch-kleenbore" data-tone="dark" aria-labelledby="ch2">
+      <div class="stage__sticky">
+        <div class="stage__frame" style="view-transition-name: hero-kleenbore"><div class="slot" data-asset="kb-cover"></div></div>
+        <div class="stage__ticks" aria-hidden="true"></div>
+        <div class="stage__over" aria-hidden="true"><span class="label">02 / 06</span><span class="label">Client work · RIPPL</span></div>
+        <div class="stage__title">
+          <h2 class="display display--xl" id="ch2">KleenBore</h2>
+          <div class="stage__info">
+            <span class="label">Amazon infographic system · 2026</span>
+            <p>Listing graphics for a firearm-cleaning brand, built from one template system and scaled across the catalog.</p>
+            <span class="link-arrow">View project</span>
+          </div>
         </div>
+        <a class="stage__link" href="kleenbore.html"><span class="sr-only">View the KleenBore project</span></a>
+      </div>
+    </section>
 
-        <div>
-          <span class="footer-col-header">04 /<span>Top</span></span>
-          <button id="footer-scroll-top-btn" class="footer-scroll-top-btn">
-            <span>Return to Top</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="19" x2="12" y2="5"></line>
-              <polyline points="5 12 12 5 19 12"></polyline>
-            </svg>
-          </button>
+    <section class="stage" id="ch-gerber" data-tone="dark" aria-labelledby="ch3">
+      <div class="stage__sticky">
+        <div class="stage__frame" style="view-transition-name: hero-gerber"><img src="GerberGear/GG-Hero.webp" alt="Gerber kraft packaging on a forest floor" loading="lazy" decoding="async"></div>
+        <div class="stage__ticks" aria-hidden="true"></div>
+        <div class="stage__over" aria-hidden="true"><span class="label">03 / 06</span><span class="label">Packaging</span></div>
+        <div class="stage__title">
+          <h2 class="display display--xl" id="ch3">Gerber Gear</h2>
+          <div class="stage__info">
+            <span class="label">Structural packaging · 2026</span>
+            <p>Laser-cut kraft packaging for three field tools: a pocket knife, a hatchet and paracord. No plastic clamshells.</p>
+            <span class="link-arrow">View project</span>
+          </div>
+        </div>
+        <a class="stage__link" href="gerber-gear.html"><span class="sr-only">View the Gerber Gear project</span></a>
+      </div>
+    </section>
+
+    <section class="stage" id="ch-rexburg" data-tone="dark" aria-labelledby="ch4">
+      <div class="stage__sticky">
+        <div class="stage__frame" style="view-transition-name: hero-rexburg"><img src="RexburgRapids-Hero.webp" alt="A rider coming off a yellow and blue water slide" loading="lazy" decoding="async"></div>
+        <div class="stage__ticks" aria-hidden="true"></div>
+        <div class="stage__over" aria-hidden="true"><span class="label">04 / 06</span><span class="label">Identity</span></div>
+        <div class="stage__title">
+          <h2 class="display display--xl" id="ch4">Rexburg Rapids</h2>
+          <div class="stage__info">
+            <span class="label">Brand identity · 2026</span>
+            <p>A full identity for a summer waterpark, from the R mark to the wristbands, signs and billboards.</p>
+            <span class="link-arrow">View project</span>
+          </div>
+        </div>
+        <a class="stage__link" href="rexburg-rapids.html"><span class="sr-only">View the Rexburg Rapids project</span></a>
+      </div>
+    </section>
+
+    <section class="stage" id="ch-aboutface" data-tone="dark" aria-labelledby="ch5">
+      <div class="stage__sticky">
+        <div class="stage__frame" style="view-transition-name: hero-aboutface"><img src="AboutFace/AF-Hero.webp" alt="AboutFace journal covers on a blue surface" loading="lazy" decoding="async"></div>
+        <div class="stage__ticks" aria-hidden="true"></div>
+        <div class="stage__over" aria-hidden="true"><span class="label">05 / 06</span><span class="label">Typography</span></div>
+        <div class="stage__title">
+          <h2 class="display display--xl" id="ch5">AboutFace</h2>
+          <div class="stage__info">
+            <span class="label">Editorial typography · 2026</span>
+            <p>Five journal covers. Each one unlocks one more typographic variable, from a single size and weight to full freedom.</p>
+            <span class="link-arrow">View project</span>
+          </div>
+        </div>
+        <a class="stage__link" href="about-face.html"><span class="sr-only">View the AboutFace project</span></a>
+      </div>
+    </section>
+
+    <section class="stage" id="ch-motion" data-tone="dark" aria-labelledby="ch6">
+      <div class="stage__sticky">
+        <div class="stage__frame" style="view-transition-name: hero-motion"><img src="MotionReel/Motion-Hero.webp" alt="Glowing kinetic type frame from the motion reel" loading="lazy" decoding="async"></div>
+        <div class="stage__ticks" aria-hidden="true"></div>
+        <div class="stage__over" aria-hidden="true"><span class="label">06 / 06</span><span class="label">Motion</span></div>
+        <div class="stage__title">
+          <h2 class="display display--xl" id="ch6">Motion Reel</h2>
+          <div class="stage__info">
+            <span class="label">Motion design · 2026</span>
+            <p>Kinetic type and logo animation, made in After Effects.</p>
+            <span class="link-arrow">Watch the reel</span>
+          </div>
+        </div>
+        <a class="stage__link" href="motion-reel.html"><span class="sr-only">Watch the motion reel</span></a>
+      </div>
+    </section>
+
+    <!-- 03 MORE WORK: typographic index ------------------------------------>
+    <section class="more" data-tone="light" aria-labelledby="more-title">
+      <div class="wrap">
+        <div class="more__head">
+          <h2 class="display display--l" id="more-title">More work</h2>
+          <a class="link-arrow label" href="work.html">Full index</a>
+        </div>
+        <ul class="index">
+          <li><a href="olly-packaging.html" data-peek="Olly/Olly-Hero.webp"><span class="i-num label">07</span><span class="i-name">Olly</span><span class="i-disc">Packaging extension</span><span class="i-year label">2026</span><img class="i-thumb" src="Olly/Olly-Hero.webp" alt="" loading="lazy"></a></li>
+          <li><a href="identity-system.html" data-peek="Jared/IS-Hero.webp"><span class="i-num label">08</span><span class="i-name">Jared Christensen</span><span class="i-disc">Personal identity &amp; stationery</span><span class="i-year label">2026</span><img class="i-thumb" src="Jared/IS-Hero.webp" alt="" loading="lazy"></a></li>
+          <li><a href="analog-reboot.html" data-peek="AnalogReboot/AR-Hero.webp"><span class="i-num label">09</span><span class="i-name">Analog Reboot</span><span class="i-disc">Pattern design &amp; apparel</span><span class="i-year label">2026</span><img class="i-thumb" src="AnalogReboot/AR-Hero.webp" alt="" loading="lazy"></a></li>
+          <li><a href="kindred-roots.html" data-peek="KindredRoots/KindredRoots-Hero.webp"><span class="i-num label">10</span><span class="i-name">Kindred Roots</span><span class="i-disc">Magazine layout</span><span class="i-year label">2026</span><img class="i-thumb" src="KindredRoots/KindredRoots-Hero.webp" alt="" loading="lazy"></a></li>
+          <li><a href="ui-ux.html" data-peek="UI-UX/iOS Thumbnail.webp"><span class="i-num label">11</span><span class="i-name">Interface concepts</span><span class="i-disc">UI / UX</span><span class="i-year label">2026</span><img class="i-thumb" src="UI-UX/iOS Thumbnail.webp" alt="" loading="lazy"></a></li>
+        </ul>
+      </div>
+    </section>
+    <div class="peek" aria-hidden="true"><img alt=""></div>
+
+    <!-- 04 A LINE FROM THE ABOUT PAGE -------------------------------------->
+    <section class="aside" data-tone="dark" aria-label="About">
+      <div class="wrap">
+        <span class="label">About</span>
+        <!-- Your own line, from the About page. -->
+        <blockquote class="reveal" style="margin-top: 22px;">I am definitely that person who stops in grocery store aisles just to pick up a box and admire the packaging.</blockquote>
+        <div class="aside__foot reveal" style="--d: 120ms">
+          <a class="btn" href="about.html">More about me</a>
+          <a class="link-arrow u-line" href="Resume.pdf">Résumé (PDF)</a>
         </div>
       </div>
+    </section>
 
-      <div class="footer-colophon-row">
-        <div>© <span id="copyright-year">2026</span> Devin Sanders. All Rights Reserved.</div>
-        <div>Barlow · Visual Brand Architecture</div>
+    <!-- 05 CONTACT --------------------------------------------------------->
+    <section class="contact" id="contact" data-tone="light" aria-labelledby="contact-title">
+      <div class="wrap">
+        <h2 class="label" id="contact-title">Say hello</h2>
+        <p style="margin: 18px 0 0;"><a class="contact__mail" href="mailto:devin.sanders02@gmail.com">devin.sanders02@gmail.com</a></p>
       </div>
+    </section>
+  </main>
 
+  <footer class="footer">
+    <div class="wrap">
+      <span class="label">© <span data-year>2026</span> Devin Sanders · Denver, Colorado</span>
+      <ul class="label">
+        <li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li>
+        <li><a class="u-line" href="Resume.pdf">Résumé</a></li>
+        <li><a class="u-line" href="#main">Back to top ↑</a></li>
+      </ul>
     </div>
   </footer>
-  <!-- =================== END: GLOBAL EDITORIAL FOOTER =================== -->
-
-  <!-- Custom Survey Reticle Cursor -->
-  <div id="survey-cursor" class="survey-cursor" aria-hidden="true">
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
-  </div>
-
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,42 @@
+{
+  "_readme": "Settings for the homepage contour background. Edit, then run: cd tools/terrain && npm install && node build.mjs",
+  "source": "procedural",
+  "_source_options": "procedural = temporary stand-in terrain | dem = real elevation file (set demFile)",
+  "demFile": "data/bierstadt.tif",
+  "_demFile_note": "GeoTIFF (.tif) or ASCII grid (.asc) from OpenTopography. Put it in tools/terrain/data/",
+  "output": "../../assets/topo/terrain.svg",
+  "viewBox": [
+    1600,
+    900
+  ],
+  "grid": [
+    640,
+    360
+  ],
+  "placement": {
+    "_note": "Where the terrain sits in the frame. 0-1 of the frame. Lines live upper-right; centre and lower-left stay open.",
+    "peakX": 0.78,
+    "peakY": 0.2,
+    "scale": 1.0,
+    "rotateDeg": 0
+  },
+  "contours": {
+    "count": 38,
+    "_count_note": "Roughly how many contour levels from the lowest visible line to the summit. More = denser.",
+    "indexEvery": 5,
+    "cutoff": 0.13,
+    "_cutoff_note": "0-1. Elevations below this fraction are not drawn, which keeps the lower-left empty.",
+    "smoothing": 2,
+    "simplify": 0.55
+  },
+  "dem": {
+    "_note": "Only used when source = dem.",
+    "intervalMeters": 40,
+    "indexEvery": 5,
+    "minElevationMeters": 3350,
+    "summitLabel": "MT. BIERSTADT  {ft} FT",
+    "_summitLabel_note": "{ft} is filled in from the highest point in the elevation file, so the number is always the data's own.",
+    "summitLabelShow": true
+  },
+  "seed": 14065
+}

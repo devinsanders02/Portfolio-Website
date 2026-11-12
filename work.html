@@ -1,218 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Selected Work | Devin Sanders</title>
-
-  <!-- Favicon & Touch Icon -->
-  <link rel="icon" type="image/png" href="LogoBlue.png">
-  <link rel="apple-touch-icon" href="LogoBlue.png">
-
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Work — Devin Sanders</title>
+  <meta name="description" content="Every project by Devin Sanders: Amazon storefronts and infographics, packaging, brand identity, editorial and motion design.">
+  <meta property="og:title" content="Work — Devin Sanders">
+  <meta property="og:description" content="Amazon storefronts and infographics, packaging, brand identity, editorial and motion design.">
+  <meta name="theme-color" content="#F4F5F7">
+  <link rel="icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="assets/manifest.js" defer></script>
+  <script src="js/site.js" defer></script>
   <style>
-    .archive-page-wrap {
-      padding-top: 3.5rem !important;
-    }
-    .overlay-brand-stamp {
-      width: 32px;
-      height: auto;
-      filter: brightness(0) invert(1);
-      display: inline-block;
-      vertical-align: middle;
-    }
+    .w-head { position: relative; padding: calc(var(--nav-h) + clamp(60px, 10vh, 120px)) 0 clamp(36px, 5vw, 64px); overflow: hidden; }
+    .w-head .topo { --topo-opacity: .55; --topo-fade-x: 92%; --topo-fade-y: 0%; }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: clamp(28px, 4vw, 48px); }
+    .filters button { font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; padding: 9px 14px; border: 1px solid var(--rule); border-radius: 999px; transition: background-color var(--t-fast) linear, color var(--t-fast) linear, border-color var(--t-fast) linear; }
+    .filters button:hover { border-color: var(--ink); }
+    .filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .index li[hidden] { display: none; }
+    .index .i-tag { color: var(--accent); }
   </style>
 </head>
-<body class="page-subpage">
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav" data-tone="light">
+    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><span class="nav__name">Devin Sanders</span><span class="nav__coord">Index</span></a>
+    <nav aria-label="Main"><ul class="nav__links">
+      <li><a href="work.html" aria-current="page"><span class="idx">01</span><span class="txt">Work</span></a></li>
+      <li><a href="about.html"><span class="idx">02</span><span class="txt">About</span></a></li>
+      <li><a href="#contact"><span class="idx">03</span><span class="txt">Contact</span></a></li>
+    </ul></nav>
+  </header>
+  <div class="ring" aria-hidden="true"></div>
 
-  <!-- =================== START: SITE PRELOADER =================== -->
-  <div id="site-loader">
-    <img src="LogoBlue.png" alt="Loading..." class="loader-mark-pulse">
-  </div>
-  <!-- =================== END: SITE PRELOADER =================== -->
-
-  <!-- =================== START: SLIDE-DOWN INDEX OVERLAY =================== -->
-  <div id="index-overlay" class="index-overlay-panel">
-    <div class="overlay-top-bar">
-      <div style="display: flex; align-items: center; gap: 0.85rem;">
-        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="overlay-brand-stamp">
-        <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.75);">Index</span>
-      </div>
-      <button id="close-overlay-btn" style="background: none; border: none; cursor: pointer; color: white; display: flex; align-items: center;" aria-label="Close">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <line x1="4" y1="4" x2="20" y2="20"></line>
-          <line x1="20" y1="4" x2="4" y2="20"></line>
-        </svg>
-      </button>
-    </div>
-    <nav class="overlay-nav-links">
-      <div class="overlay-link-item">
-        <span>01</span>
-        <a href="index.html" class="overlay-link">Home</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>02</span>
-        <a href="work.html" class="overlay-link active">Work</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>03</span>
-        <a href="ui-ux.html" class="overlay-link">UI/UX Work</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>04</span>
-        <a href="about.html" class="overlay-link">About</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>05</span>
-        <button id="overlay-contact-link" class="overlay-link">Contact</button>
-      </div>
-    </nav>
-  </div>
-  <!-- =================== END: SLIDE-DOWN INDEX OVERLAY =================== -->
-
-  <!-- =================== START: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
-  <button id="floating-nav-btn" class="floating-peak-btn subpage-permanent-btn" aria-label="Open Navigation">
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path d="M2 14 L6.5 5 L10 10 L16 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
-  </button>
-  <!-- =================== END: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
-
-  <!-- =================== START: PERSISTENT BACKGROUND =================== -->
-  <div class="hero-fixed-background" aria-hidden="true">
-    <div class="hero-dot-grid"></div>
-    <div class="hero-topography-plate">
-      <img src="topography.webp" alt="" class="topo-external-asset subpage-topo" aria-hidden="true">
-    </div>
-  </div>
-  <!-- =================== END: PERSISTENT BACKGROUND =================== -->
-
-  <!-- =================== START: WORK ARCHIVE CONTENT =================== -->
-  <main class="archive-page-wrap">
-    
-    <!-- Editorial Header Block (Stacked on Left) -->
-    <header class="archive-header-block">
-      <div class="archive-header-text">
-        <span class="uppercase-label" style="margin-bottom: 0.75rem;">Archive // 2024–2026</span>
-        <h1 class="archive-page-title">Selected Work</h1>
-        <p class="archive-page-sub">
-          Brand architecture, packaging systems, and visual identity collateral built for physical and digital touchpoints.
-        </p>
-      </div>
-
-      <!-- Mechanical Filter Drawer Component -->
-      <div class="filter-drawer-container" id="filter-drawer-container">
-        <!-- Singular Orange Trigger Button -->
-        <button id="filter-drawer-toggle" class="filter-toggle-btn" aria-expanded="false" aria-label="Toggle Filters">
-          <span class="filter-toggle-icon">
-            <svg class="icon-funnel" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
-            </svg>
-            <svg class="icon-close" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </span>
-        </button>
-
-        <!-- Horizontal Slide-Out Drawer Track -->
-        <div class="filter-drawer-track" id="filter-drawer-track">
-          <button class="filter-btn active" data-filter="all">All [ <span id="count-all">0</span> ]</button>
-          <button class="filter-btn" data-filter="branding">Branding [ <span id="count-branding">0</span> ]</button>
-          <button class="filter-btn" data-filter="packaging">Packaging [ <span id="count-packaging">0</span> ]</button>
-          <button class="filter-btn" data-filter="other">Motion & System [ <span id="count-other">0</span> ]</button>
+  <main id="main">
+    <section class="w-head" data-tone="light">
+      <div class="topo" data-src="assets/topo/terrain.svg" aria-hidden="true"></div>
+      <div class="wrap" style="position: relative;">
+        <span class="label">Index · 11 projects · 2024—2026</span>
+        <h1 class="display display--xl" style="margin-top: 14px;">Work</h1>
+        <div class="filters" role="group" aria-label="Filter projects">
+          <button type="button" aria-pressed="true" data-f="all">All</button>
+          <button type="button" aria-pressed="false" data-f="client">Client work</button>
+          <button type="button" aria-pressed="false" data-f="ecommerce">E-commerce</button>
+          <button type="button" aria-pressed="false" data-f="identity">Identity</button>
+          <button type="button" aria-pressed="false" data-f="packaging">Packaging</button>
+          <button type="button" aria-pressed="false" data-f="editorial">Editorial</button>
+          <button type="button" aria-pressed="false" data-f="motion">Motion &amp; UI</button>
         </div>
       </div>
-    </header>
+    </section>
 
-    <!-- 2-Column Wide Duo Project Grid -->
-    <div id="work-grid" class="work-grid-2col"></div>
+    <section data-tone="light" aria-label="All projects" style="padding-bottom: clamp(80px, 10vw, 150px);">
+      <div class="wrap">
+        <ul class="index">
+          <li data-tags="client ecommerce"><a href="wandrd.html" data-peek="WANDRD-Hero.webp"><span class="i-num label">01</span><span class="i-name">WANDRD</span><span class="i-disc">Amazon Brand Store &amp; infographics · <span class="i-tag">Client · RIPPL</span></span><span class="i-year label">2025</span><img class="i-thumb" src="WANDRD-Hero.webp" alt="" loading="lazy"></a></li>
+          <li data-tags="client ecommerce"><a href="kleenbore.html"><span class="i-num label">02</span><span class="i-name">KleenBore</span><span class="i-disc">Amazon infographic system · <span class="i-tag">Client · RIPPL</span></span><span class="i-year label">2026</span></a></li>
+          <li data-tags="packaging"><a href="gerber-gear.html" data-peek="GerberGear/GG-Hero.webp"><span class="i-num label">03</span><span class="i-name">Gerber Gear</span><span class="i-disc">Structural packaging</span><span class="i-year label">2026</span><img class="i-thumb" src="GerberGear/GG-Hero.webp" alt="" loading="lazy"></a></li>
+          <li data-tags="identity"><a href="rexburg-rapids.html" data-peek="RexburgRapids-Hero.webp"><span class="i-num label">04</span><span class="i-name">Rexburg Rapids</span><span class="i-disc">Brand identity</span><span class="i-year label">2026</span><img class="i-thumb" src="RexburgRapids-Hero.webp" alt="" loading="lazy"></a></li>
+          <li data-tags="editorial"><a href="about-face.html" data-peek="AboutFace/AF-Hero.webp"><span class="i-num label">05</span><span class="i-name">AboutFace</span><span class="i-disc">Editorial typography</span><span class="i-year label">2026</span><img class="i-thumb" src="AboutFace/AF-Hero.webp" alt="" loading="lazy"></a></li>
+          <li data-tags="motion"><a href="motion-reel.html" data-peek="MotionReel/Motion-Hero.webp"><span class="i-num label">06</span><span class="i-name">Motion Reel</span><span class="i-disc">Motion design</span><span class="i-year label">2026</span><img class="i-thumb" src="MotionReel/Motion-Hero.webp" alt="" loading="lazy"></a></li>
+          <li data-tags="packaging"><a href="olly-packaging.html" data-peek="Olly/Olly-Hero.webp"><span class="i-num label">07</span><span class="i-name">Olly</span><span class="i-disc">Packaging extension</span><span class="i-year label">2026</span><img class="i-thumb" src="Olly/Olly-Hero.webp" alt="" loading="lazy"></a></li>
+          <li data-tags="identity client"><a href="identity-system.html" data-peek="Jared/IS-Hero.webp"><span class="i-num label">08</span><span class="i-name">Jared Christensen</span><span class="i-disc">Personal identity &amp; stationery</span><span class="i-year label">2026</span><img class="i-thumb" src="Jared/IS-Hero.webp" alt="" loading="lazy"></a></li>
+          <li data-tags="identity"><a href="analog-reboot.html" data-peek="AnalogReboot/AR-Hero.webp"><span class="i-num label">09</span><span class="i-name">Analog Reboot</span><span class="i-disc">Pattern design &amp; apparel</span><span class="i-year label">2026</span><img class="i-thumb" src="AnalogReboot/AR-Hero.webp" alt="" loading="lazy"></a></li>
+          <li data-tags="editorial"><a href="kindred-roots.html" data-peek="KindredRoots/KindredRoots-Hero.webp"><span class="i-num label">10</span><span class="i-name">Kindred Roots</span><span class="i-disc">Magazine layout</span><span class="i-year label">2026</span><img class="i-thumb" src="KindredRoots/KindredRoots-Hero.webp" alt="" loading="lazy"></a></li>
+          <li data-tags="motion"><a href="ui-ux.html" data-peek="UI-UX/iOS Thumbnail.webp"><span class="i-num label">11</span><span class="i-name">Interface concepts</span><span class="i-disc">UI / UX</span><span class="i-year label">2026</span><img class="i-thumb" src="UI-UX/iOS Thumbnail.webp" alt="" loading="lazy"></a></li>
+        </ul>
+      </div>
+    </section>
+    <div class="peek" aria-hidden="true"><img alt=""></div>
 
+    <section class="contact" id="contact" data-tone="light" aria-labelledby="contact-title">
+      <div class="wrap"><h2 class="label" id="contact-title">Say hello</h2><p style="margin: 18px 0 0;"><a class="contact__mail" href="mailto:devin.sanders02@gmail.com">devin.sanders02@gmail.com</a></p></div>
+    </section>
   </main>
-  <!-- =================== END: WORK ARCHIVE CONTENT =================== -->
+  <footer class="footer"><div class="wrap"><span class="label">© <span data-year>2026</span> Devin Sanders · Denver, Colorado</span><ul class="label"><li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li><li><a class="u-line" href="Resume.pdf">Résumé</a></li><li><a class="u-line" href="#main">Back to top ↑</a></li></ul></div></footer>
 
-  <!-- =================== START: GLOBAL EDITORIAL FOOTER =================== -->
-  <footer id="contact" class="site-footer">
-    <div class="footer-inner-shell">
-
-      <div class="footer-tier-hero">
-        <h2 class="footer-hero-headline">Let's build something meaningful.</h2>
-        <a href="mailto:devin.sanders02@gmail.com" class="footer-email-link">
-          <span>devin.sanders02@gmail.com</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
-          </svg>
-        </a>
-      </div>
-
-      <hr class="footer-hairline">
-
-      <div class="footer-directory-grid">
-        <div>
-          <span class="footer-col-header">01 /<span>Work</span></span>
-          <ul class="footer-nav-list">
-            <li><a href="work.html" class="footer-link-animated">Selected Work</a></li>
-            <li><a href="ui-ux.html" class="footer-link-animated">UI/UX & Systems</a></li>
-            <li><a href="about.html" class="footer-link-animated">About & Studio</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <span class="footer-col-header">02 /<span>Network</span></span>
-          <ul class="footer-nav-list">
-            <li>
-              <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer">
-                <span>LinkedIn</span>
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <span class="footer-col-header">03 /<span>Discipline</span></span>
-          <ul class="footer-discipline-list">
-            <li>Brand architecture & identity</li>
-            <li>Physical & digital commerce</li>
-          </ul>
-        </div>
-
-        <div>
-          <span class="footer-col-header">04 /<span>Top</span></span>
-          <button id="footer-scroll-top-btn" class="footer-scroll-top-btn">
-            <span>Return to Top</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="19" x2="12" y2="5"></line>
-              <polyline points="5 12 12 5 19 12"></polyline>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="footer-colophon-row">
-        <div>© <span id="copyright-year">2026</span> Devin Sanders. All Rights Reserved.</div>
-        <div>Barlow · Visual Brand Architecture</div>
-      </div>
-
-    </div>
-  </footer>
-  <!-- =================== END: GLOBAL EDITORIAL FOOTER =================== -->
-
-  <!-- Custom Survey Reticle Cursor -->
-  <div id="survey-cursor" class="survey-cursor" aria-hidden="true">
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
-  </div>
-
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
+  <script>
+    document.querySelectorAll('.filters button').forEach(b => b.addEventListener('click', () => {
+      document.querySelectorAll('.filters button').forEach(x => x.setAttribute('aria-pressed', x === b));
+      const f = b.dataset.f;
+      document.querySelectorAll('.index li').forEach(li => { li.hidden = f !== 'all' && !li.dataset.tags.split(' ').includes(f); });
+    }));
+  </script>
 </body>
 </html>
