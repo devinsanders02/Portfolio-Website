@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       card.innerHTML = `
         <div class="stage-canvas-box" id="gallery-box-${index}">
-          <img id="img-display-${index}" class="stage-image" src="${allImages[0]}" alt="${project.title}">
+          <img id="img-display-${index}" class="stage-image" src="${allImages[0]}" alt="${project.title}" loading="lazy" decoding="async">
           <div class="stage-scrim"></div>
           <div class="stage-content-overlay">
             <div class="stage-header-row">
