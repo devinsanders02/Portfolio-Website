@@ -47,21 +47,21 @@
     code: 'WAN-03', project: 'WANDRD', name: 'WANDRD: Brand Store “Photography Bags” page — desktop, full length',
     contains: 'Full-page desktop screenshot of the Photography Bags sub-page. [ASSUMPTION] page names taken from the store navigation in your existing screenshots.',
     kind: 'screenshot', ratio: '10:22', size: '1440 px wide, full height', free: true,
-    where: 'WANDRD page — section 03 “Store pages”, browser window 1 of 3', priority: 'optional',
+    where: 'WANDRD page — section 03 “Structure”, browser window 1 of 3', priority: 'optional',
     file: 'assets/wandrd/wan-03-store-photography-desktop.png',
   });
   add('wan-store-travel-desktop', {
     code: 'WAN-04', project: 'WANDRD', name: 'WANDRD: Brand Store “Travel Bags” page — desktop, full length',
     contains: 'Full-page desktop screenshot of the Travel Bags sub-page.',
     kind: 'screenshot', ratio: '10:22', size: '1440 px wide, full height', free: true,
-    where: 'WANDRD page — section 03 “Store pages”, browser window 2 of 3', priority: 'optional',
+    where: 'WANDRD page — section 03 “Structure”, browser window 2 of 3', priority: 'optional',
     file: 'assets/wandrd/wan-04-store-travel-desktop.png',
   });
   add('wan-store-everyday-desktop', {
     code: 'WAN-05', project: 'WANDRD', name: 'WANDRD: Brand Store “Everyday Bags” page — desktop, full length',
     contains: 'Full-page desktop screenshot of the Everyday Bags sub-page.',
     kind: 'screenshot', ratio: '10:22', size: '1440 px wide, full height', free: true,
-    where: 'WANDRD page — section 03 “Store pages”, browser window 3 of 3', priority: 'optional',
+    where: 'WANDRD page — section 03 “Structure”, browser window 3 of 3', priority: 'optional',
     file: 'assets/wandrd/wan-05-store-everyday-desktop.png',
   });
   add('wan-prvke-desktop', {
@@ -82,7 +82,7 @@
     code: 'WAN-08', project: 'WANDRD', name: 'WANDRD: Brand Store home page — mobile, full length',
     contains: 'The store home page on a phone (Amazon app or mobile browser), captured as one long scrolling screenshot (iPhone: Safari share > Full Page, or stitch several screenshots).',
     kind: 'screenshot', ratio: '9:19.5', size: '1170 px wide, full height', free: true,
-    where: 'WANDRD page — section 04 “On the phone”, phone 1 of 3', priority: 'essential',
+    where: 'WANDRD page — section 04 “Mobile”, phone 1 of 3', priority: 'essential',
     file: 'assets/wandrd/wan-08-store-home-mobile.png',
   });
   add('wan-store-sub-mobile', {
@@ -188,7 +188,7 @@
       code: `${s.code}-${n}`, project: 'KleenBore', name: `${s.label}: Infographic ${n} of 8`,
       contains: `Listing image ${n} of 8 for ${s.label}, as the flat 2000 × 2000 export, in listing order. ${s.note} [ASSUMPTION] 8 images per listing — send however many the listing has.`,
       kind: 'flat graphic', ratio: '1:1', size: '2000 × 2000 px',
-      where: `KleenBore page — section 03 “Complete sets”, set ${si + 1}, position ${n}`, priority: s.pri,
+      where: `KleenBore page — section 03 “Complete listings”, set ${si + 1}, position ${n}`, priority: s.pri,
       file: `assets/kleenbore/${s.key}-${n}.jpg`,
     });
   });
@@ -205,14 +205,14 @@
     code: `KB-F${n}`, project: 'KleenBore', name: `KleenBore: Same template, product ${n} of 4`,
     contains: `The SAME infographic type (e.g. the “features” image) for four different products, so the template system is visible. This is product ${n}.`,
     kind: 'flat graphic', ratio: '1:1', size: '2000 × 2000 px',
-    where: `KleenBore page — section 05 “One template, many products”, position ${n}`, priority: 'essential',
+    where: `KleenBore page — section 05 “One template, four products”, position ${n}`, priority: 'essential',
     file: `assets/kleenbore/kb-f${n}.jpg`,
   });
   add('kb-listing-mobile', {
     code: 'KB-04', project: 'KleenBore', name: 'KleenBore: Live listing on a phone',
     contains: 'Screenshot of a live KleenBore Amazon listing on your phone with one of your infographics showing.',
     kind: 'screenshot', ratio: '9:19.5', size: '1170 × 2532 px', free: true,
-    where: 'KleenBore page — section 06 “In the wild”, phone', priority: 'optional',
+    where: 'KleenBore page — section 06 “Beyond the listing”, phone', priority: 'optional',
     file: 'assets/kleenbore/kb-04-listing-mobile.png',
   });
   add('kb-product', {
@@ -235,14 +235,14 @@
     code: 'GG-01', project: 'Gerber Gear', name: 'Gerber Gear: Prototype or test-fold photo',
     contains: 'A photo of an early prototype, a failed fold, or the laser cutter mid-job. One honest process image does more than another polished render.',
     kind: 'photograph', ratio: '4:3', size: '2000 × 1500 px',
-    where: 'Gerber Gear page — between the three tools and the dielines', priority: 'optional',
+    where: 'Gerber Gear page — under the dielines', priority: 'optional',
     file: 'assets/gerber/gg-01-process.jpg',
   });
   add('rr-process', {
     code: 'RR-01', project: 'Rexburg Rapids', name: 'Rexburg Rapids: Logo sketches / iterations',
     contains: 'A page or screenshot of the logo directions you explored before the final R mark.',
     kind: 'flat graphic or photograph', ratio: '16:9', size: '2400 × 1350 px',
-    where: 'Rexburg Rapids page — after the logo, before the guidelines', priority: 'optional',
+    where: 'Rexburg Rapids page — just above the guidelines', priority: 'optional',
     file: 'assets/rexburg/rr-01-iterations.jpg',
   });
   add('about-portrait', {

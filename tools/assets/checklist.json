@@ -45,7 +45,7 @@
   "ratio": "10:22",
   "size": "1440 px wide, full height",
   "free": true,
-  "where": "WANDRD page — section 03 “Store pages”, browser window 1 of 3",
+  "where": "WANDRD page — section 03 “Structure”, browser window 1 of 3",
   "file": "assets/wandrd/wan-03-store-photography-desktop.png",
   "status": "⬜ needed"
  },
@@ -62,7 +62,7 @@
   "ratio": "10:22",
   "size": "1440 px wide, full height",
   "free": true,
-  "where": "WANDRD page — section 03 “Store pages”, browser window 2 of 3",
+  "where": "WANDRD page — section 03 “Structure”, browser window 2 of 3",
   "file": "assets/wandrd/wan-04-store-travel-desktop.png",
   "status": "⬜ needed"
  },
@@ -79,7 +79,7 @@
   "ratio": "10:22",
   "size": "1440 px wide, full height",
   "free": true,
-  "where": "WANDRD page — section 03 “Store pages”, browser window 3 of 3",
+  "where": "WANDRD page — section 03 “Structure”, browser window 3 of 3",
   "file": "assets/wandrd/wan-05-store-everyday-desktop.png",
   "status": "⬜ needed"
  },
@@ -130,7 +130,7 @@
   "ratio": "9:19.5",
   "size": "1170 px wide, full height",
   "free": true,
-  "where": "WANDRD page — section 04 “On the phone”, phone 1 of 3",
+  "where": "WANDRD page — section 04 “Mobile”, phone 1 of 3",
   "file": "assets/wandrd/wan-08-store-home-mobile.png",
   "status": "⬜ needed"
  },
@@ -517,7 +517,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 1, position 1",
+  "where": "KleenBore page — section 03 “Complete listings”, set 1, position 1",
   "file": "assets/kleenbore/p1-1.jpg",
   "status": "⬜ needed"
  },
@@ -533,7 +533,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 1, position 2",
+  "where": "KleenBore page — section 03 “Complete listings”, set 1, position 2",
   "file": "assets/kleenbore/p1-2.jpg",
   "status": "⬜ needed"
  },
@@ -549,7 +549,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 1, position 3",
+  "where": "KleenBore page — section 03 “Complete listings”, set 1, position 3",
   "file": "assets/kleenbore/p1-3.jpg",
   "status": "⬜ needed"
  },
@@ -565,7 +565,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 1, position 4",
+  "where": "KleenBore page — section 03 “Complete listings”, set 1, position 4",
   "file": "assets/kleenbore/p1-4.jpg",
   "status": "⬜ needed"
  },
@@ -581,7 +581,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 1, position 5",
+  "where": "KleenBore page — section 03 “Complete listings”, set 1, position 5",
   "file": "assets/kleenbore/p1-5.jpg",
   "status": "⬜ needed"
  },
@@ -597,7 +597,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 1, position 6",
+  "where": "KleenBore page — section 03 “Complete listings”, set 1, position 6",
   "file": "assets/kleenbore/p1-6.jpg",
   "status": "⬜ needed"
  },
@@ -613,7 +613,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 1, position 7",
+  "where": "KleenBore page — section 03 “Complete listings”, set 1, position 7",
   "file": "assets/kleenbore/p1-7.jpg",
   "status": "⬜ needed"
  },
@@ -629,7 +629,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 1, position 8",
+  "where": "KleenBore page — section 03 “Complete listings”, set 1, position 8",
   "file": "assets/kleenbore/p1-8.jpg",
   "status": "⬜ needed"
  },
@@ -645,7 +645,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 2, position 1",
+  "where": "KleenBore page — section 03 “Complete listings”, set 2, position 1",
   "file": "assets/kleenbore/p2-1.jpg",
   "status": "⬜ needed"
  },
@@ -661,7 +661,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 2, position 2",
+  "where": "KleenBore page — section 03 “Complete listings”, set 2, position 2",
   "file": "assets/kleenbore/p2-2.jpg",
   "status": "⬜ needed"
  },
@@ -677,7 +677,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 2, position 3",
+  "where": "KleenBore page — section 03 “Complete listings”, set 2, position 3",
   "file": "assets/kleenbore/p2-3.jpg",
   "status": "⬜ needed"
  },
@@ -693,7 +693,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 2, position 4",
+  "where": "KleenBore page — section 03 “Complete listings”, set 2, position 4",
   "file": "assets/kleenbore/p2-4.jpg",
   "status": "⬜ needed"
  },
@@ -709,7 +709,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 2, position 5",
+  "where": "KleenBore page — section 03 “Complete listings”, set 2, position 5",
   "file": "assets/kleenbore/p2-5.jpg",
   "status": "⬜ needed"
  },
@@ -725,7 +725,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 2, position 6",
+  "where": "KleenBore page — section 03 “Complete listings”, set 2, position 6",
   "file": "assets/kleenbore/p2-6.jpg",
   "status": "⬜ needed"
  },
@@ -741,7 +741,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 2, position 7",
+  "where": "KleenBore page — section 03 “Complete listings”, set 2, position 7",
   "file": "assets/kleenbore/p2-7.jpg",
   "status": "⬜ needed"
  },
@@ -757,7 +757,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 2, position 8",
+  "where": "KleenBore page — section 03 “Complete listings”, set 2, position 8",
   "file": "assets/kleenbore/p2-8.jpg",
   "status": "⬜ needed"
  },
@@ -773,7 +773,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 3, position 1",
+  "where": "KleenBore page — section 03 “Complete listings”, set 3, position 1",
   "file": "assets/kleenbore/p3-1.jpg",
   "status": "⬜ needed"
  },
@@ -789,7 +789,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 3, position 2",
+  "where": "KleenBore page — section 03 “Complete listings”, set 3, position 2",
   "file": "assets/kleenbore/p3-2.jpg",
   "status": "⬜ needed"
  },
@@ -805,7 +805,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 3, position 3",
+  "where": "KleenBore page — section 03 “Complete listings”, set 3, position 3",
   "file": "assets/kleenbore/p3-3.jpg",
   "status": "⬜ needed"
  },
@@ -821,7 +821,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 3, position 4",
+  "where": "KleenBore page — section 03 “Complete listings”, set 3, position 4",
   "file": "assets/kleenbore/p3-4.jpg",
   "status": "⬜ needed"
  },
@@ -837,7 +837,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 3, position 5",
+  "where": "KleenBore page — section 03 “Complete listings”, set 3, position 5",
   "file": "assets/kleenbore/p3-5.jpg",
   "status": "⬜ needed"
  },
@@ -853,7 +853,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 3, position 6",
+  "where": "KleenBore page — section 03 “Complete listings”, set 3, position 6",
   "file": "assets/kleenbore/p3-6.jpg",
   "status": "⬜ needed"
  },
@@ -869,7 +869,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 3, position 7",
+  "where": "KleenBore page — section 03 “Complete listings”, set 3, position 7",
   "file": "assets/kleenbore/p3-7.jpg",
   "status": "⬜ needed"
  },
@@ -885,7 +885,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 03 “Complete sets”, set 3, position 8",
+  "where": "KleenBore page — section 03 “Complete listings”, set 3, position 8",
   "file": "assets/kleenbore/p3-8.jpg",
   "status": "⬜ needed"
  },
@@ -949,7 +949,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 05 “One template, many products”, position 1",
+  "where": "KleenBore page — section 05 “One template, four products”, position 1",
   "file": "assets/kleenbore/kb-f1.jpg",
   "status": "⬜ needed"
  },
@@ -965,7 +965,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 05 “One template, many products”, position 2",
+  "where": "KleenBore page — section 05 “One template, four products”, position 2",
   "file": "assets/kleenbore/kb-f2.jpg",
   "status": "⬜ needed"
  },
@@ -981,7 +981,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 05 “One template, many products”, position 3",
+  "where": "KleenBore page — section 05 “One template, four products”, position 3",
   "file": "assets/kleenbore/kb-f3.jpg",
   "status": "⬜ needed"
  },
@@ -997,7 +997,7 @@
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
-  "where": "KleenBore page — section 05 “One template, many products”, position 4",
+  "where": "KleenBore page — section 05 “One template, four products”, position 4",
   "file": "assets/kleenbore/kb-f4.jpg",
   "status": "⬜ needed"
  },
@@ -1014,7 +1014,7 @@
   "ratio": "9:19.5",
   "size": "1170 × 2532 px",
   "free": true,
-  "where": "KleenBore page — section 06 “In the wild”, phone",
+  "where": "KleenBore page — section 06 “Beyond the listing”, phone",
   "file": "assets/kleenbore/kb-04-listing-mobile.png",
   "status": "⬜ needed"
  },
@@ -1078,7 +1078,7 @@
   "kind": "photograph",
   "ratio": "4:3",
   "size": "2000 × 1500 px",
-  "where": "Gerber Gear page — between the three tools and the dielines",
+  "where": "Gerber Gear page — under the dielines",
   "file": "assets/gerber/gg-01-process.jpg",
   "status": "⬜ needed"
  },
@@ -1094,7 +1094,7 @@
   "kind": "flat graphic or photograph",
   "ratio": "16:9",
   "size": "2400 × 1350 px",
-  "where": "Rexburg Rapids page — after the logo, before the guidelines",
+  "where": "Rexburg Rapids page — just above the guidelines",
   "file": "assets/rexburg/rr-01-iterations.jpg",
   "status": "⬜ needed"
  },
