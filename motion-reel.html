@@ -1,662 +1,147 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Motion Reel 2026 | Devin Sanders</title>
-
-  <!-- Favicon & Touch Icon -->
-  <link rel="icon" type="image/png" href="LogoBlue.png">
-  <link rel="apple-touch-icon" href="LogoBlue.png">
-
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Motion Reel — Devin Sanders</title>
+  <meta name="description" content="A motion design reel by Devin Sanders: kinetic typography and logo animation made in After Effects.">
+  <meta property="og:title" content="Motion Reel — Devin Sanders">
+  <meta property="og:description" content="Kinetic type and logo animation, made in After Effects.">
+  <meta name="theme-color" content="#050506">
+  <link rel="icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Bungee&family=Share+Tech&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Bungee&family=Share+Tech&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="assets/manifest.js" defer></script>
+  <script src="js/site.js" defer></script>
   <style>
-    /* =========================================================================
-       MOTION REEL CINEMA & KINETIC CHOREOGRAPHY SPECIFICATION
-       ========================================================================= */
+    /* ---------- Motion Reel art direction ----------
+       A screening room. Black, the reel is the page, and nothing moves on the
+       page itself while the video plays. */
+    body.p-mr { --night: #050506; --paper: #050506; --ink: #EDEDF0; --ink-soft: rgba(237, 237, 240, .6); --rule: rgba(237, 237, 240, .14); --accent: #F5C518; background: var(--night); color: var(--ink); }
+    .p-mr .label { color: rgba(237, 237, 240, .55); }
+    .p-mr .label--accent { color: var(--accent); }
+    .screen { position: relative; min-height: 100vh; min-height: 100svh; display: grid; align-content: end; padding: calc(var(--nav-h) + 20px) var(--gutter) clamp(28px, 5vh, 56px); }
+    .screen__player { position: relative; width: 100%; aspect-ratio: 16 / 9; max-height: 74vh; margin: 0 auto 28px; background: #000; overflow: hidden; }
+    .screen__player video, .screen__player img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .screen__play { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; z-index: 2; background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, .55)); transition: opacity var(--t-med) var(--ease); }
+    .screen__play span { display: inline-flex; align-items: center; gap: 14px; padding: 18px 28px; border: 1px solid rgba(255, 255, 255, .6); border-radius: 999px; font-family: var(--f-label); font-weight: 600; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; backdrop-filter: blur(6px); transition: background-color var(--t-fast) linear, color var(--t-fast) linear; }
+    .screen__play:hover span { background: #fff; color: #000; }
+    .screen.is-playing .screen__play { opacity: 0; pointer-events: none; }
+    .screen__head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
+    .mr-frames { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(14px, 2vw, 32px); }
+    .mr-frames figure { margin: 0; }
+    .mr-frames h3 { font-family: var(--f-cond); text-transform: uppercase; font-size: clamp(22px, 2vw, 32px); margin: 14px 0 4px; }
+    .mr-frames p { margin: 0; color: var(--ink-soft); }
+    @media (max-width: 760px) { .mr-frames { grid-template-columns: 1fr; } }
+    .mr-break { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 3vw, 48px) clamp(14px, 2vw, 32px); }
+    .mr-break-head { max-width: 62ch; margin-bottom: clamp(28px, 4vw, 56px); border-top: 1px solid var(--rule); padding-top: 18px; }
+    .mr-break-h { font-family: var(--f-cond); font-weight: 700; text-transform: uppercase; font-size: clamp(40px, 5vw, 84px); line-height: .92; margin: 10px 0 0; }
+    .mr-break-head p { margin: 12px 0 0; color: var(--ink-soft); }
+    .mr-break h3 { font-family: var(--f-cond); text-transform: uppercase; font-size: clamp(22px, 2vw, 32px); margin: 4px 0 4px; }
+    .mr-break .label { display: block; margin-top: 16px; color: var(--accent); }
+    .mr-break p { margin: 0; color: var(--ink-soft); max-width: 34ch; }
+    @media (max-width: 760px) { .mr-break { grid-template-columns: 1fr; } }
+    .mr-notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 5vw, 90px); }
+    .mr-notes p { max-width: 44ch; color: rgba(237, 237, 240, .8); }
+    @media (max-width: 760px) { .mr-notes { grid-template-columns: 1fr; } }
 
-    :root {
-      --motion-amber: #C9A24B;
-      --motion-orange: #F15B22;
-      --motion-dark: #0A0E14;
-      --motion-surface: #101620;
-      --motion-border: rgba(255, 255, 255, 0.12);
-      --motion-text-dim: rgba(255, 255, 255, 0.75);
-    }
-
-    body.motion-case-page {
-      background-color: var(--motion-dark) !important;
-      color: #FFFFFF !important;
-    }
-
-    /* Subdued Dark Topo Background */
-    .motion-case-page .hero-topography-plate {
-      filter: blur(2px);
-      -webkit-filter: blur(2px);
-      opacity: 0.14 !important;
-      transform: scale(1.02);
-    }
-
-    .topo-external-asset.subpage-topo-dark {
-      filter: invert(1) brightness(0.4) contrast(1.2);
-    }
-
-    /* 1. Shell & Hero -> Pure Barlow */
-    .turnstyle-headline {
-      font-family: var(--font-barlow) !important;
-      font-weight: 800 !important;
-      text-transform: uppercase;
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-    }
-
-    .turnstyle-caption-title,
-    .turnstyle-caption-text,
-    .case-section-header .label,
-    .more-projects-title,
-    .more-projects-all,
-    .more-project-name,
-    .more-project-tag,
-    .stills-label {
-      font-family: var(--font-barlow) !important;
-    }
-
-    /* 2. Motion Artwork Typography -> Bungee (Display) & Share Tech (Body) */
-    .motion-case-page main h2,
-    .motion-case-page main h3,
-    .motion-case-page main h4 {
-      font-family: 'Bungee', cursive !important;
-      letter-spacing: 0.02em;
-    }
-
-    .motion-case-page main p,
-    .motion-case-page main li,
-    .motion-intro-p,
-    .stills-caption {
-      font-family: 'Share Tech', monospace, sans-serif !important;
-      line-height: 1.65;
-    }
-
-    /* Hero Banner */
-    .turnstyle-hero-banner {
-      position: relative;
-      width: 100%;
-      min-height: 85vh;
-      display: flex;
-      align-items: flex-end;
-      padding: 4.5rem 4vw;
-      box-sizing: border-box;
-      overflow: hidden;
-      z-index: 2;
-    }
-
-    .turnstyle-hero-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      z-index: 1;
-    }
-
-    .turnstyle-hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(10, 14, 20, 0.96) 0%,
-        rgba(10, 14, 20, 0.6) 45%,
-        transparent 75%
-      );
-      z-index: 2;
-    }
-
-    .turnstyle-hero-content {
-      position: relative;
-      z-index: 3;
-      max-width: 1040px;
-      color: #FFFFFF;
-    }
-
-    .turnstyle-headline {
-      font-size: clamp(2.5rem, 6vw, 4.75rem);
-      margin: 0 0 1.5rem 0;
-      color: #FFFFFF;
-    }
-
-    .turnstyle-caption-block {
-      border-left: 2px solid var(--motion-amber);
-      padding-left: 1.25rem;
-    }
-
-    .turnstyle-caption-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-    }
-
-    .turnstyle-caption-text {
-      font-size: 0.95rem;
-      font-weight: 300;
-      letter-spacing: 0.04em;
-      opacity: 0.85;
-      margin: 0.35rem 0 0 0;
-      color: #FFFFFF;
-    }
-
-    /* Main Container Shell */
-    .case-content-wrap {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 4vw;
-      box-sizing: border-box;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Section Headers */
-    .case-section-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .case-section-header .line {
-      width: 32px;
-      height: 2px;
-      background-color: var(--motion-amber);
-    }
-
-    .case-section-header .label {
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-    }
-
-    /* Intro Narrative Grid (No Spec Bars) */
-    .motion-intro-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-      margin-bottom: 6rem;
-    }
-
-    @media (min-width: 860px) {
-      .motion-intro-grid {
-        grid-template-columns: 1.3fr 1fr;
-        gap: 4.5rem;
-      }
-    }
-
-    .intro-eyebrow {
-      font-family: var(--font-barlow);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--motion-amber);
-      display: block;
-      margin-bottom: 0.65rem;
-    }
-
-    .motion-intro-p {
-      font-size: 1.12rem;
-      color: #FFFFFF;
-      margin: 0;
-    }
-
-    .motion-intro-sub {
-      font-size: 1rem;
-      color: var(--motion-text-dim);
-      margin: 0;
-    }
-
-    /* Theater Screen Video Stage */
-    .cinema-player-stage {
-      width: 100%;
-      background: #000000;
-      border: 1px solid var(--motion-border);
-      box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.7);
-      overflow: hidden;
-      margin-bottom: 6.5rem;
-      position: relative;
-    }
-
-    .cinema-video-element {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 16 / 9;
-      display: block;
-      object-fit: cover;
-      background-color: #000000;
-    }
-
-    /* Styleframes & Stills Gallery */
-    .stills-gallery-section {
-      margin-bottom: 6.5rem;
-    }
-
-    .stills-grid-2col {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    @media (min-width: 768px) {
-      .stills-grid-2col {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .still-card {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .still-media-box {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: var(--motion-surface);
-      border: 1px solid var(--motion-border);
-      overflow: hidden;
-      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
-    }
-
-    .still-media-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    .still-card:hover .still-media-box img {
-      transform: scale(1.04);
-    }
-
-    .stills-caption-wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1rem;
-      border-top: 1px solid var(--motion-border);
-      padding-top: 0.75rem;
-    }
-
-    .stills-label {
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--motion-amber);
-    }
-
-    .stills-caption {
-      font-size: 0.92rem;
-      color: var(--motion-text-dim);
-      margin: 0;
-      text-align: right;
-    }
-
-    /* Dynamic Bottom Project Reel */
-    .more-projects-section {
-      position: relative;
-      z-index: 2;
-      max-width: 1440px;
-      margin: 5rem auto 2rem;
-      padding: 0 4vw;
-      box-sizing: border-box;
-    }
-
-    .more-projects-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid var(--motion-border);
-      padding-bottom: 1rem;
-    }
-
-    .more-projects-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-    }
-
-    .more-projects-all {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--motion-orange);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .more-projects-all:hover {
-      color: #d84b16;
-    }
-
-    .more-projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-
-    @media (min-width: 900px) {
-      .more-projects-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    .more-project-card {
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .more-project-thumb {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      overflow: hidden;
-      background: var(--motion-surface);
-      border: 1px solid var(--motion-border);
-      margin-bottom: 0.85rem;
-    }
-
-    .more-project-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.75;
-      transition: transform 0.4s ease, opacity 0.3s ease;
-    }
-
-    .more-project-card:hover .more-project-thumb img {
-      transform: scale(1.05);
-      opacity: 1;
-    }
-
-    .more-project-tag {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--motion-orange);
-      margin-bottom: 0.2rem;
-    }
-
-    .more-project-name {
-      font-size: 1rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: #FFFFFF;
-      letter-spacing: -0.01em;
-      line-height: 1.2;
-    }
-
-    .overlay-brand-stamp {
-      width: 32px;
-      height: auto;
-      filter: brightness(0) invert(1);
-      display: inline-block;
-      vertical-align: middle;
-    }
+    /* Motion: Bungee headings and Share Tech text (its original pair) */
+    .p-mr main > section:not(.p-hero):not(.contact):not(.ui-head):not(.screen) { --f-cond: 'Bungee', sans-serif; --f-label: 'Share Tech', sans-serif; --f-guest: 'Bungee', sans-serif; --f-num: 'Share Tech', sans-serif; }
+    .p-mr main > section:not(.p-hero):not(.contact):not(.ui-head):not(.screen) p { font-family: 'Share Tech', sans-serif; font-size: 1.05em; }
+    .p-mr main > section:not(.p-hero):not(.contact):not(.ui-head):not(.screen) :is(h2, h3) { font-weight: 400; letter-spacing: 0; }
+    /* the hero title stays in Barlow Condensed, as it was */
   </style>
 </head>
-<body class="motion-case-page page-subpage">
-
-  <!-- =================== START: SITE PRELOADER =================== -->
-  <div id="site-loader">
-    <img src="LogoBlue.png" alt="Loading..." class="loader-mark-pulse">
-  </div>
-  <!-- =================== END: SITE PRELOADER =================== -->
-
-  <!-- =================== START: SLIDE-DOWN INDEX OVERLAY =================== -->
-  <div id="index-overlay" class="index-overlay-panel">
-    <div class="overlay-top-bar">
-      <div style="display: flex; align-items: center; gap: 0.85rem;">
-        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="overlay-brand-stamp">
-        <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.75);">Index</span>
-      </div>
-      <button id="close-overlay-btn" style="background: none; border: none; cursor: pointer; color: white; display: flex; align-items: center;" aria-label="Close">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <line x1="4" y1="4" x2="20" y2="20"></line>
-          <line x1="20" y1="4" x2="4" y2="20"></line>
-        </svg>
-      </button>
-    </div>
-    <nav class="overlay-nav-links">
-      <div class="overlay-link-item">
-        <span>01</span>
-        <a href="index.html" class="overlay-link">Home</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>02</span>
-        <a href="work.html" class="overlay-link">Work</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>03</span>
-        <a href="ui-ux.html" class="overlay-link">UI/UX Work</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>04</span>
-        <a href="about.html" class="overlay-link">About</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>05</span>
-        <button id="overlay-contact-link" class="overlay-link">Contact</button>
-      </div>
-    </nav>
-  </div>
-  <!-- =================== END: SLIDE-DOWN INDEX OVERLAY =================== -->
-
-  <!-- =================== START: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
-  <button id="floating-nav-btn" class="floating-peak-btn subpage-permanent-btn" aria-label="Open Navigation">
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path d="M2 14 L6.5 5 L10 10 L16 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
-  </button>
-  <!-- =================== END: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
-
-  <!-- =================== START: PERSISTENT BACKGROUND =================== -->
-  <div class="hero-fixed-background" aria-hidden="true">
-    <div class="hero-dot-grid"></div>
-    <div class="hero-topography-plate">
-      <img src="topography.webp" alt="" class="topo-external-asset subpage-topo-dark" aria-hidden="true">
-    </div>
-  </div>
-  <!-- =================== END: PERSISTENT BACKGROUND =================== -->
-
-  <!-- 1. Full-Bleed 100vh Hero Banner -->
-  <header class="turnstyle-hero-banner">
-    <img src="MotionReel/Motion-Hero.webp" alt="Motion Reel 2026 Showcase" class="turnstyle-hero-bg" fetchpriority="high">
-    <div class="turnstyle-hero-overlay"></div>
-
-    <div class="turnstyle-hero-content">
-      <h1 class="turnstyle-headline">
-        Exploring Rhythm, Kinetic Type, and Brand Choreography
-      </h1>
-      <div class="turnstyle-caption-block">
-        <div class="turnstyle-caption-title">Motion Reel</div>
-        <p class="turnstyle-caption-text">Animation & Kinetic Direction · 2026</p>
-      </div>
-    </div>
+<body class="p-mr">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav" data-tone="dark">
+    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="nav__name">Devin Sanders</span><span class="nav__coord">06 / Motion</span></a>
+    <nav aria-label="Main"><ul class="nav__links">
+      <li><a href="work.html"><span class="idx">01</span><span class="txt">Work</span></a></li>
+      <li><a href="about.html"><span class="idx">02</span><span class="txt">About</span></a></li>
+      <li><a href="#contact"><span class="idx">03</span><span class="txt">Contact</span></a></li>
+    </ul></nav>
+    <div class="nav__progress" aria-hidden="true"></div>
   </header>
+  <div class="ring" aria-hidden="true"></div>
 
-  <!-- Main Theater Stage -->
-  <main style="padding-top: 5.5rem; padding-bottom: 6rem;">
+  <main id="main">
+    <section class="screen" data-tone="dark" aria-labelledby="title">
+      <div class="screen__player" style="view-transition-name: hero-motion">
+        <!-- preload="none": the 11 MB file only downloads when someone presses play -->
+        <video src="MotionReel/MotionReel.mp4" poster="MotionReel/Motion-Hero.webp" preload="none" playsinline controls aria-label="Motion design reel, 38 seconds"></video>
+        <button class="screen__play" type="button" aria-label="Play the reel"><span>▶ Play reel · 0:38</span></button>
+      </div>
+      <div class="screen__head">
+        <div><span class="label label--accent">06 / Motion</span><h1 class="display display--xl" id="title" style="margin-top: 10px;">Motion Reel</h1></div>
+        <p class="label">After Effects · Illustrator · 2026</p>
+      </div>
+    </section>
 
-    <!-- 2. Narrative Overview (No Spec Bars) -->
-    <section class="case-content-wrap">
-      <div class="motion-intro-grid">
-        <div>
-          <span class="intro-eyebrow">The Kinetic Focus</span>
-          <p class="motion-intro-p">
-            A curated compilation of motion graphics exploring brand identity animation, typography in space, and rhythmic visual pacing. Every transition is timed to reinforce narrative momentum and tactile energy.
-          </p>
+    <section class="section" data-tone="dark" aria-label="About the reel">
+      <div class="wrap mr-notes">
+        <!-- Your existing copy, trimmed. -->
+        <div class="reveal"><span class="label label--accent">What’s in it</span><p>Brand identity animation, type moving through space, and pacing that follows the beat. Every transition is timed to keep things moving.</p></div>
+        <div class="reveal" style="--d: 120ms"><span class="label label--accent">How it’s made</span><p>After Effects and Illustrator, with a lot of attention on easing curves, kinetic type, logos that morph, and cuts that follow the audio.</p></div>
+      </div>
+    </section>
+
+    <section class="section" data-tone="dark" aria-labelledby="frames-title" style="padding-top: 0;">
+      <div class="wrap">
+        <h2 class="label" id="frames-title">Styleframes</h2>
+        <div class="mr-frames" style="margin-top: 24px;" data-gallery>
+          <figure class="reveal"><div class="reveal-img"><img src="MotionReel/Motion-Thumbnail1.webp" alt="Styleframe: a logo being pieced together" loading="lazy" data-lightbox></div><h3>Logo build</h3><p>A logo pieced together, part by part, with continual movement.</p></figure>
+          <figure class="reveal" style="--d: 120ms"><div class="reveal-img" style="--d: 120ms"><img src="MotionReel/Motion-Thumbnail2.webp" alt="Styleframe: video mapped into 3D space" loading="lazy" data-lightbox></div><h3>Video in 3D space</h3><p>Video mapped onto surfaces in 3D space in After Effects.</p></figure>
         </div>
-        <div>
-          <span class="intro-eyebrow">Tools & Spatial Easing</span>
-          <p class="motion-intro-sub">
-            Created in Adobe After Effects and Illustrator, focusing on spatial easing curves, kinetic type systems, morphing brand marks, and audio-reactive pacing.
-          </p>
+      </div>
+    </section>
+
+    <section class="section" data-tone="dark" aria-labelledby="break-title" style="padding-top: 0;">
+      <div class="wrap">
+        <div class="mr-break-head">
+          <span class="label label--accent">Breakdown · the Tron piece</span>
+          <h2 class="mr-break-h" id="break-title">From the animatic</h2>
+          <p>I storyboarded it first, then cut an animatic: a rough pass of still frames to get the timing right before anything moved smoothly. The glow and light effects came last. These four frames are from that animatic stage.</p>
         </div>
+        <ol class="mr-break" data-gallery>
+          <li class="reveal"><div class="slot on-dark" data-asset="mo-break-1" data-zoom></div><span class="label">01</span><h3>The bike draws in</h3><p>Lines of light trace out the bike.</p></li>
+          <li class="reveal" style="--d: 100ms"><div class="slot on-dark" data-asset="mo-break-2" data-zoom></div><span class="label">02</span><h3>The race</h3><p>Two riders from above, blocking out where the trails go.</p></li>
+          <li class="reveal"><div class="slot on-dark" data-asset="mo-break-3" data-zoom></div><span class="label">03</span><h3>The type</h3><p>The letters, built from the same lines as the bikes.</p></li>
+          <li class="reveal" style="--d: 100ms"><div class="slot on-dark" data-asset="mo-break-4" data-zoom></div><span class="label">04</span><h3>The logo lands</h3><p>Where everything settles: the logo, in cool blue.</p></li>
+        </ol>
       </div>
     </section>
 
-    <!-- 3. The Theater Video Player -->
-    <section class="case-content-wrap">
-      <div class="case-section-header">
-        <div class="line"></div>
-        <span class="label">Theater Screening // Full Cut</span>
-      </div>
+    <a class="next" href="olly-packaging.html" data-tone="dark">
+      <div class="next__media"><img src="Olly/Olly-Hero.webp" alt="" loading="lazy"></div>
+      <div class="next__body"><span class="label">Next · More work</span><p class="display display--l" style="margin-top: 12px;">Olly</p></div>
+    </a>
 
-      <div class="cinema-player-stage">
-        <video 
-          class="cinema-video-element"
-          controls 
-          playsinline 
-          preload="metadata"
-          poster="MotionReel/Motion-Hero.webp">
-          <source src="MotionReel/MotionReel.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
+    <section class="contact" id="contact" data-tone="dark" aria-labelledby="contact-title">
+      <div class="wrap"><h2 class="label" id="contact-title">Say hello</h2><p style="margin: 18px 0 0;"><a class="contact__mail" href="mailto:devin.sanders02@gmail.com">devin.sanders02@gmail.com</a></p></div>
     </section>
-
-    <!-- 4. Styleframes & Kinetic Stills Gallery -->
-    <section class="case-content-wrap stills-gallery-section">
-      <div class="case-section-header">
-        <div class="line"></div>
-        <span class="label">Kinetic Styleframes & Keyframes</span>
-      </div>
-
-      <div class="stills-grid-2col">
-        <!-- Still 01 -->
-        <article class="still-card">
-          <div class="still-media-box">
-            <img src="MotionReel/Motion-Thumbnail1.webp" alt="Kinetic Typography Styleframe" loading="lazy" decoding="async">
-          </div>
-          <div class="stills-caption-wrap">
-            <span class="stills-label">Frame 01 // Typography</span>
-            <p class="stills-caption">Spatial letterform composition and kinetic momentum</p>
-          </div>
-        </article>
-
-        <!-- Still 02 -->
-        <article class="still-card">
-          <div class="still-media-box">
-            <img src="MotionReel/Motion-Thumbnail2.webp" alt="Brand Identity Reveal Styleframe" loading="lazy" decoding="async">
-          </div>
-          <div class="stills-caption-wrap">
-            <span class="stills-label">Frame 02 // Identity Reveal</span>
-            <p class="stills-caption">Vector morphing and rhythmic brand lockups</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 5. Dynamic Bottom Project Reel (Option B: Automatically pulls Jared, Rustic, Olly, AboutFace) -->
-    <section class="more-projects-section">
-      <div class="more-projects-header">
-        <span class="more-projects-title">More Selected Projects</span>
-        <a href="work.html" class="more-projects-all">View All Work →</a>
-      </div>
-      <div id="more-projects-grid" class="more-projects-grid"></div>
-    </section>
-
   </main>
-
-  <!-- =================== START: GLOBAL EDITORIAL FOOTER =================== -->
-  <footer id="contact" class="site-footer">
-    <div class="footer-inner-shell">
-
-      <div class="footer-tier-hero">
-        <h2 class="footer-hero-headline">Let's build something meaningful.</h2>
-        <a href="mailto:devin.sanders02@gmail.com" class="footer-email-link">
-          <span>devin.sanders02@gmail.com</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
-          </svg>
-        </a>
-      </div>
-
-      <hr class="footer-hairline">
-
-      <div class="footer-directory-grid">
-        <div>
-          <span class="footer-col-header">01 /<span>Work</span></span>
-          <ul class="footer-nav-list">
-            <li><a href="work.html" class="footer-link-animated">Selected Work</a></li>
-            <li><a href="ui-ux.html" class="footer-link-animated">UI/UX & Systems</a></li>
-            <li><a href="about.html" class="footer-link-animated">About & Studio</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <span class="footer-col-header">02 /<span>Network</span></span>
-          <ul class="footer-nav-list">
-            <li>
-              <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer">
-                <span>LinkedIn</span>
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <span class="footer-col-header">03 /<span>Discipline</span></span>
-          <ul class="footer-discipline-list">
-            <li>Brand architecture & identity</li>
-            <li>Physical & digital commerce</li>
-          </ul>
-        </div>
-
-        <div>
-          <span class="footer-col-header">04 /<span>Top</span></span>
-          <button id="footer-scroll-top-btn" class="footer-scroll-top-btn">
-            <span>Return to Top</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="19" x2="12" y2="5"></line>
-              <polyline points="5 12 12 5 19 12"></polyline>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="footer-colophon-row">
-        <div>© <span id="copyright-year">2026</span> Devin Sanders. All Rights Reserved.</div>
-        <div>Barlow · Visual Brand Architecture</div>
-      </div>
-
+  <footer class="footer">
+    <div class="wrap">
+      <a class="footer__brand" href="index.html"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="label">© <span data-year>2026</span> Devin Sanders · Denver, Colorado</span></a>
+      <span class="label footer__sign" title="The contour lines on the homepage are this mountain"><span class="coord">39.5826° N 105.6688° W</span> · Mt. Bierstadt, 14,060 ft · My first fourteener</span>
+      <ul class="label">
+        <li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li>
+        <li><a class="u-line" href="Resume.pdf">Resume</a></li>
+        <li><a class="u-line" href="#main">Back to top ↑</a></li>
+      </ul>
     </div>
   </footer>
-  <!-- =================== END: GLOBAL EDITORIAL FOOTER =================== -->
 
-  <!-- Custom Survey Reticle Cursor -->
-  <div id="survey-cursor" class="survey-cursor" aria-hidden="true">
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
-  </div>
-
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
+  <script>
+    (() => {
+      const scr = document.querySelector('.screen'), v = scr.querySelector('video'), b = scr.querySelector('.screen__play');
+      b.addEventListener('click', () => { scr.classList.add('is-playing'); v.play(); v.focus(); });
+      v.addEventListener('ended', () => scr.classList.remove('is-playing'));
+    })();
+  </script>
 </body>
 </html>

@@ -1,849 +1,422 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WANDRD Amazon Brand Store | Devin Sanders</title>
-
-  <!-- Favicon & Touch Icon -->
-  <link rel="icon" type="image/png" href="LogoBlue.png">
-  <link rel="apple-touch-icon" href="LogoBlue.png">
-
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WANDRD — Amazon Brand Store &amp; Infographics — Devin Sanders</title>
+  <meta name="description" content="Client work at RIPPL: WANDRD's live Amazon Brand Store, product infographics and supporting e-commerce graphics, designed by Devin Sanders.">
+  <meta property="og:title" content="WANDRD — Amazon Brand Store & Infographics">
+  <meta property="og:description" content="The live Amazon Brand Store, product infographics and e-commerce graphics for WANDRD. Client work at RIPPL.">
+  <meta name="theme-color" content="#141311">
+  <link rel="icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="assets/manifest.js" defer></script>
+  <script src="js/site.js" defer></script>
   <style>
-    /* =========================================================================
-       WANDRD CUSTOM SPECIFICATION & BRAND SYSTEM (Dark Tech / Tactical)
-       ========================================================================= */
+    /* ---------- WANDRD art direction ----------
+       Like wandrd.com: mostly white, black type, pearl cream and sand as
+       secondary grounds, Hot Red used sparingly. Condensed caps like the store.
+       Black is saved for the photo moments (hero, brand story). Nav and footer
+       stay in Devin's colours, so the page reads as his case study. */
+    body.p-wandrd {
+      --night: #070707; --paper: #FFFFFF; --paper-2: #F1EEE9; --sand: #E2D3B0;
+      --accent: #FF3F28; --ink: #070707; --ink-soft: rgba(7, 7, 7, .64); --rule: rgba(7, 7, 7, .14);
+      --f-num: var(--f-cond);
+      --w-fg: #070707; --w-soft: rgba(7, 7, 7, .74); --w-dim: rgba(7, 7, 7, .58); --w-line: rgba(7, 7, 7, .14); --w-line2: rgba(7, 7, 7, .28);
+      background: #fff; color: var(--w-fg);
+    }
+    .p-wandrd .w-dark { --w-fg: #F1EEE9; --w-soft: rgba(241, 238, 233, .84); --w-dim: rgba(241, 238, 233, .64); --w-line: rgba(241, 238, 233, .18); --w-line2: rgba(241, 238, 233, .3); background: var(--night); color: var(--w-fg); }
+    .p-wandrd .tone-white { background: #fff; color: var(--w-fg); }
+    .p-wandrd .tone-cream { background: var(--paper-2); color: var(--w-fg); }
+    .p-wandrd .tone-sand { background: #D8DFE4; color: var(--ink); } /* WANDRD Dusty Blue */
+    .p-wandrd .tone-white .label, .p-wandrd .tone-cream .label, .p-wandrd .tone-sand .label, .p-wandrd .w-dark .label { color: var(--w-dim); }
+    .p-wandrd .label--accent, .p-wandrd section .label--accent { color: var(--accent); }
+    .w-mono { font-family: var(--f-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .p-wandrd .browser { box-shadow: 0 30px 60px -36px rgba(7, 7, 7, .45), 0 0 0 1px rgba(7, 7, 7, .08); }
 
-    :root {
-      --wandrd-orange: #F15B22;
-      --wandrd-dark: #07090C;
-      --wandrd-card-bg: #0E1217;
-      --wandrd-border: rgba(255, 255, 255, 0.12);
-      --wandrd-text-dim: rgba(255, 255, 255, 0.7);
+    .w-intro { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 6vw, 110px); align-items: start; }
+    .w-intro .lede { font-size: clamp(24px, 2.5vw, 42px); line-height: 1.16; max-width: 22ch; font-weight: 500; }
+    .w-intro .challenge { margin-top: clamp(36px, 5vw, 70px); max-width: 52ch; color: var(--w-soft); }
+    .w-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: clamp(36px, 5vw, 64px); border-top: 1px solid var(--w-line); padding-top: 22px; }
+    .w-stats b { display: block; font-family: var(--f-cond); font-weight: 700; font-size: clamp(44px, 5vw, 84px); line-height: .9; }
+    .w-stats span { display: block; margin-top: 8px; color: var(--w-dim); font-size: 15px; max-width: 18ch; }
+    .p-wandrd .role-list li { border-color: var(--w-line); }
+    @media (max-width: 900px) { .w-intro { grid-template-columns: 1fr; } }
+
+    /* The store: a sticky browser window whose page scrolls as you scroll. */
+    .w-store { height: 360vh; --e: 0; position: relative; }
+    .w-store__sticky { position: sticky; top: 0; height: 100vh; height: 100svh; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(24px, 4vw, 72px); align-items: center; padding: calc(var(--nav-h) + 20px) var(--gutter) 40px; }
+    .w-store__steps { position: relative; align-self: stretch; display: grid; align-content: center; }
+    .w-store__step { grid-area: 1 / 1; transition: opacity 500ms var(--ease), transform 500ms var(--ease); }
+    .w-store__step:not(.is-on) { opacity: 0; transform: translateY(16px); pointer-events: none; }
+    .w-store__step p { max-width: 36ch; color: var(--w-soft); margin: 14px 0 0; }
+    .w-store__bar { display: flex; gap: 8px; margin-top: 30px; }
+    .w-store__bar i { flex: 1; height: 2px; background: var(--w-line); }
+    .w-store__bar i.is-on { background: var(--accent); }
+    .w-store .browser { --view: min(76vh, 800px); }
+    .w-store .browser__view { height: var(--view); }
+    .w-store .browser__view .slot { position: absolute; left: 0; top: 0; width: 100%; transform: translateY(calc(-1 * var(--e) * max(0px, var(--shot-h, 0px) - var(--view)))); will-change: transform; }
+    .w-store .browser__view .slot.is-empty { height: var(--view); transform: none; }
+    @media (max-width: 900px) {
+      .w-store { height: auto; }
+      .w-store__sticky { position: relative; height: auto; grid-template-columns: 1fr; }
+      .w-store__step { grid-area: auto; opacity: 1 !important; transform: none !important; margin-bottom: 28px; }
+      .w-store__bar { display: none; }
+      .w-store .browser { --view: 70vh; }
+      .w-store .browser__view { overflow-y: auto; }
+      .w-store .browser__view .slot { position: relative; transform: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .w-store { height: auto; }
+      .w-store__sticky { position: relative; height: auto; }
+      .w-store__step { grid-area: auto; opacity: 1 !important; transform: none !important; margin-bottom: 28px; }
+      .w-store .browser__view { overflow-y: auto; }
+      .w-store .browser__view .slot { position: relative; transform: none; }
     }
 
-    /* Page Canvas Override: Deep Obsidian Dark Mode */
-    body.wandrd-case-page {
-      background-color: var(--wandrd-dark) !important;
-      color: #FFFFFF !important;
-    }
+    /* Store map, drawn as a diagram from the real navigation. */
+    .w-map { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: clamp(24px, 4vw, 72px); align-items: center; }
+    .tree { --line: var(--w-line2); position: relative; display: grid; grid-template-columns: auto 1fr; gap: 0 clamp(24px, 4vw, 64px); align-items: center; font-family: var(--f-cond); text-transform: uppercase; }
+    .tree__root { padding: 16px 22px; border: 2px solid var(--ink); color: var(--ink); font-weight: 700; font-size: clamp(20px, 2vw, 30px); position: relative; }
+    .tree__root::after { content: ''; position: absolute; left: 100%; top: 50%; width: clamp(24px, 4vw, 64px); height: 1px; background: var(--line); }
+    .tree__kids { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--line); }
+    .tree__kids > li { position: relative; padding: 14px 0 14px 28px; display: grid; grid-template-columns: minmax(150px, 13ch) 1fr; gap: 10px 18px; align-items: center; }
+    .tree__kids > li::before { content: ''; position: absolute; left: 0; top: 50%; width: 20px; height: 1px; background: var(--line); }
+    .tree__node { font-weight: 600; font-size: clamp(19px, 1.6vw,27px); }
+    .tree__leaf { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tree__leaf span { font-family: var(--f-label); font-weight: 600; font-size: 12.5px; letter-spacing: .08em; padding: 5px 8px; border: 1px solid var(--line); color: var(--w-soft); }
+    .tree__leaf span { border-color: var(--w-line2); }
+    .tree__leaf span.is-shown { border-color: var(--accent); color: #fff; background: var(--accent); }
+    .tree__key { display: flex; gap: 8px; align-items: center; margin-top: 22px; }
+    .tree__key i { width: 14px; height: 14px; border: 1px solid var(--w-line2); }
+    .tree__key i.is-shown { border-color: var(--accent); background: var(--accent); }
+    .tree__key { flex-wrap: wrap; }
+    .tree__key span { margin-right: 14px; }
+    @media (max-width: 900px) { .w-map { grid-template-columns: 1fr; } .tree { grid-template-columns: 1fr; gap: 18px; } .tree__root::after { display: none; } .tree__kids > li { grid-template-columns: 1fr; } }
 
-    /* Shell & Hero -> Pure Barlow */
-    .turnstyle-headline {
-      font-family: var(--font-barlow) !important;
-      font-weight: 800 !important;
-      text-transform: uppercase;
-      line-height: 0.95;
-      letter-spacing: -0.03em;
+    /* Full-length pages in small browsers: hover (or tap-and-scroll on touch) to read the whole page. */
+    .w-pages { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 1.4vw, 22px); }
+    .w-pages--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: clamp(56px, 7vw, 110px); }
+    .scrollshot .browser__view { height: var(--vh, clamp(300px, 44vh, 500px)); }
+    .scrollshot .browser__view .slot { position: absolute; inset: 0 0 auto 0; transition: transform var(--dur, 7s) cubic-bezier(.45, 0, .55, 1); }
+    .scrollshot .browser__view .slot.is-empty { height: 100%; }
+    @media (hover: hover) and (pointer: fine) {
+      .scrollshot:hover .browser__view .slot:not(.is-empty) { transform: translateY(calc(-100% + var(--vh, clamp(300px, 44vh, 500px)))); }
     }
+    @media (hover: none) { .scrollshot .browser__view { overflow-y: auto; } .scrollshot .browser__view .slot { position: relative; } }
+    .w-pages--2 .scrollshot { --vh: clamp(420px, 70vh, 760px); --dur: 14s; }
+    .w-pages figcaption { margin-top: 14px; }
+    .w-pages h3 { font-family: var(--f-cond); text-transform: uppercase; font-size: clamp(22px, 2vw, 32px); margin: 6px 0 8px; }
+    .w-pages p { margin: 0; max-width: 48ch; color: var(--w-soft); }
+    @media (max-width: 1000px) { .w-pages { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 640px) { .w-pages, .w-pages--2 { grid-template-columns: 1fr; } }
 
-    .turnstyle-caption-title,
-    .turnstyle-caption-text,
-    .case-section-header .label,
-    .more-projects-title,
-    .more-projects-all,
-    .more-project-name,
-    .more-project-tag,
-    .spec-telemetry-item .label,
-    .spec-telemetry-item .val {
-      font-family: var(--font-barlow) !important;
-    }
+    .w-phones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 3vw, 56px); justify-items: center; align-items: end; }
+    .w-phone { margin: 0; width: 100%; max-width: 340px; }
+    .w-phones .phone { aspect-ratio: 9 / 17.2; }
+    .w-phones > :nth-child(2) { transform: translateY(-48px); }
+    @media (max-width: 760px) { .w-phones { grid-template-columns: repeat(3, 72vw); overflow-x: auto; justify-content: start; padding-bottom: 16px; scroll-snap-type: x mandatory; } .w-phones > * { scroll-snap-align: center; } .w-phones > :nth-child(2) { transform: none; } }
 
-    /* Project Artwork Typography -> Chakra Petch (Display) & Schibsted Grotesk (Body) */
-    .wandrd-case-page main h2,
-    .wandrd-case-page main h3,
-    .wandrd-case-page main h4,
-    .wandrd-case-page .context-headline,
-    .wandrd-case-page .step-num {
-      font-family: 'Chakra Petch', sans-serif !important;
-      letter-spacing: -0.01em;
-      text-transform: uppercase;
-    }
+    .w-set { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(8px, 1vw, 14px); }
+    @media (max-width: 760px) { .w-set { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .p-wandrd .set-head { border-color: var(--w-line); }
+    .tag { display: inline-block; padding: 4px 8px; font-size: 12.5px; border: 1px solid currentColor; vertical-align: middle; margin-left: 10px; }
+    .tag--live { color: var(--accent); }
 
-    .wandrd-case-page main p,
-    .wandrd-case-page main li,
-    .wandrd-case-page .feature-copy p {
-      font-family: 'Schibsted Grotesk', sans-serif !important;
-    }
+    .w-close { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(28px, 5vw, 90px); align-items: start; }
+    .w-close__img { position: sticky; top: calc(var(--nav-h) + 24px); }
+    .w-close__img .slot { position: relative; }
+    .pin { position: absolute; z-index: 3; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font: 600 12px/1 var(--f-mono); box-shadow: 0 0 0 6px rgba(255, 63, 40, .25); }
+    .w-close__notes { display: grid; gap: clamp(32px, 6vh, 64px); padding-top: 6vh; }
+    .w-close__notes h3 { font-family: var(--f-cond); text-transform: uppercase; font-size: clamp(24px, 2.2vw, 36px); margin: 8px 0 12px; }
+    .w-close__notes p { margin: 0; max-width: 40ch; color: var(--w-soft); }
+    @media (max-width: 900px) { .w-close { grid-template-columns: 1fr; } .w-close__img { position: relative; top: 0; } }
 
-    /* Hero Banner */
-    .turnstyle-hero-banner {
-      position: relative;
-      width: 100%;
-      min-height: 85vh;
-      display: flex;
-      align-items: flex-end;
-      padding: 4.5rem 4vw;
-      box-sizing: border-box;
-      overflow: hidden;
-      z-index: 2;
-    }
+    /* Brand story: the background banner with the cards sliding across it, as on Amazon. */
+    .w-story { position: relative; overflow: hidden; }
+    .w-story__bg { position: absolute; inset: 0; }
+    .w-story__bg img { width: 100%; height: 100%; object-fit: cover; }
+    .w-story__bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7, 7, 7, .55), rgba(7, 7, 7, .1) 40%, rgba(7, 7, 7, .6)); }
+    .w-story__head { position: relative; }
+    .w-story__row { position: relative; display: grid; grid-auto-flow: column; grid-auto-columns: clamp(220px, 22vw, 330px); gap: clamp(10px, 1.2vw, 18px); overflow-x: auto; padding: clamp(32px, 4vw, 56px) var(--gutter) 24px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+    .w-story__row { scrollbar-width: none; } .w-story__row::-webkit-scrollbar { display: none; }
+    .w-story__row figure { margin: 0; scroll-snap-align: start; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .7); }
+    .w-story__row img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
 
-    .turnstyle-hero-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      z-index: 1;
-    }
-
-    .turnstyle-hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(7, 9, 12, 0.96) 0%,
-        rgba(7, 9, 12, 0.65) 40%,
-        rgba(7, 9, 12, 0.2) 75%,
-        transparent 100%
-      );
-      z-index: 2;
-    }
-
-    .turnstyle-hero-content {
-      position: relative;
-      z-index: 3;
-      max-width: 950px;
-      color: #FFFFFF;
-    }
-
-    .turnstyle-headline {
-      font-size: clamp(2.5rem, 6vw, 4.75rem);
-      margin: 0 0 1.5rem 0;
-      color: #FFFFFF;
-    }
-
-    .turnstyle-caption-block {
-      border-left: 2px solid var(--wandrd-orange);
-      padding-left: 1.25rem;
-    }
-
-    .turnstyle-caption-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-    }
-
-    .turnstyle-caption-text {
-      font-size: 0.95rem;
-      font-weight: 300;
-      letter-spacing: 0.04em;
-      opacity: 0.85;
-      margin: 0.35rem 0 0 0;
-      color: #FFFFFF;
-    }
-
-    /* Main Container Shell */
-    .case-content-wrap {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 4vw;
-      box-sizing: border-box;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Technical Spec Telemetry Bar */
-    .spec-telemetry-strip {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      background: var(--wandrd-card-bg);
-      border: 1px solid var(--wandrd-border);
-      padding: 1.75rem 2rem;
-      margin: 0 auto 5rem;
-      box-sizing: border-box;
-    }
-
-    @media (min-width: 860px) {
-      .spec-telemetry-strip {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
-      }
-    }
-
-    .spec-telemetry-item .label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--wandrd-orange);
-      display: block;
-      margin-bottom: 0.35rem;
-    }
-
-    .spec-telemetry-item .val {
-      font-size: 0.95rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: #FFFFFF;
-    }
-
-    /* Section Headers */
-    .case-section-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .case-section-header .line {
-      width: 32px;
-      height: 2px;
-      background-color: var(--wandrd-orange);
-    }
-
-    .case-section-header .label {
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-    }
-
-    /* Intro Narrative Grid */
-    .wandrd-intro-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-      margin-bottom: 5.5rem;
-    }
-
-    @media (min-width: 860px) {
-      .wandrd-intro-grid {
-        grid-template-columns: 1.2fr 1fr;
-        gap: 4.5rem;
-      }
-    }
-
-    .wandrd-intro-title {
-      font-family: var(--font-barlow);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--wandrd-orange);
-      margin-bottom: 0.65rem;
-      display: block;
-    }
-
-    .wandrd-intro-lead {
-      font-size: 1.18rem;
-      font-weight: 300;
-      line-height: 1.6;
-      color: #FFFFFF;
-      margin: 0;
-    }
-
-    .wandrd-intro-body {
-      font-size: 0.98rem;
-      font-weight: 300;
-      line-height: 1.65;
-      color: var(--wandrd-text-dim);
-      margin: 0;
-    }
-
-    /* Alternating Store Feature Stages (01, 02, 03) */
-    .case-feature-split {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-      align-items: center;
-      margin-bottom: 5.5rem;
-      background: var(--wandrd-card-bg);
-      border: 1px solid var(--wandrd-border);
-      padding: 2.5rem;
-      box-sizing: border-box;
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
-    }
-
-    @media (min-width: 960px) {
-      .case-feature-split {
-        grid-template-columns: 1.45fr 1fr;
-        gap: 4rem;
-        padding: 3rem;
-      }
-      .case-feature-split.reverse {
-        grid-template-columns: 1fr 1.45fr;
-      }
-      .case-feature-split.reverse .feature-media {
-        order: 2;
-      }
-      .case-feature-split.reverse .feature-copy {
-        order: 1;
-      }
-    }
-
-    .feature-media {
-      width: 100%;
-      overflow: hidden;
-      background: #000000;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .feature-media img {
-      width: 100%;
-      height: auto;
-      max-width: 100%;
-      display: block;
-      object-fit: cover;
-    }
-
-    .feature-copy {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .step-num {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--wandrd-orange);
-      letter-spacing: 0.15em;
-    }
-
-    .feature-copy h3 {
-      font-size: clamp(1.4rem, 2.2vw, 2rem);
-      font-weight: 800;
-      margin: 0;
-      color: #FFFFFF;
-      letter-spacing: -0.01em;
-    }
-
-    .feature-copy p {
-      font-size: 0.95rem;
-      font-weight: 300;
-      line-height: 1.6;
-      color: var(--wandrd-text-dim);
-      margin: 0;
-    }
-
-    /* In-Context Block */
-    .case-context-block {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-      align-items: center;
-      background: var(--wandrd-card-bg);
-      border: 1px solid var(--wandrd-border);
-      padding: 2.5rem;
-      margin-bottom: 5.5rem;
-      box-sizing: border-box;
-    }
-
-    @media (min-width: 960px) {
-      .case-context-block {
-        grid-template-columns: 1.35fr 1fr;
-        gap: 4rem;
-        padding: 3.5rem;
-      }
-    }
-
-    .case-context-block img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .context-headline {
-      font-size: clamp(2.4rem, 4.5vw, 4rem);
-      line-height: 0.95;
-      font-weight: 800;
-      margin: 0 0 1rem 0;
-      color: #FFFFFF;
-    }
-
-    .outline-txt {
-      color: transparent;
-      -webkit-text-stroke: 1.5px var(--wandrd-orange);
-    }
-
-    /* Infographic Showcase */
-    .case-phone-showcase {
-      width: 100%;
-      background: var(--wandrd-card-bg);
-      border: 1px solid var(--wandrd-border);
-      padding: 2rem;
-      box-sizing: border-box;
-      margin-bottom: 5.5rem;
-      display: flex;
-      justify-content: center;
-    }
-
-    .case-phone-showcase img {
-      width: 100%;
-      max-width: 1100px;
-      height: auto;
-      display: block;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    /* Fixed Topo Subdued Dark Styling */
-    .topo-external-asset.subpage-topo-dark {
-      opacity: 0.12 !important;
-      filter: invert(1) brightness(0.4) contrast(1.2);
-    }
-
-    /* More Projects Reel (Dark Mode Variant) */
-    .more-projects-section {
-      position: relative;
-      z-index: 2;
-      max-width: 1440px;
-      margin: 4rem auto 2rem;
-      padding: 0 4vw;
-      box-sizing: border-box;
-    }
-
-    .more-projects-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-      padding-bottom: 1rem;
-    }
-
-    .more-projects-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-    }
-
-    .more-projects-all {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--wandrd-orange);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .more-projects-all:hover {
-      color: #d84b16;
-    }
-
-    .more-projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-
-    @media (min-width: 900px) {
-      .more-projects-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    .more-project-card {
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .more-project-thumb {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      overflow: hidden;
-      background: #000000;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      margin-bottom: 0.85rem;
-    }
-
-    .more-project-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.7;
-      transition: transform 0.4s ease, opacity 0.3s ease;
-    }
-
-    .more-project-card:hover .more-project-thumb img {
-      transform: scale(1.05);
-      opacity: 1;
-    }
-
-    .more-project-tag {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--wandrd-orange);
-      margin-bottom: 0.2rem;
-    }
-
-    .more-project-name {
-      font-size: 1rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: #FFFFFF;
-      letter-spacing: -0.01em;
-      line-height: 1.2;
-    }
-
-    .overlay-brand-stamp {
-      width: 32px;
-      height: auto;
-      filter: brightness(0) invert(1);
-      display: inline-block;
-      vertical-align: middle;
-    }
+    .w-out { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 28px; align-items: end; }
+    @media (max-width: 760px) { .w-out { grid-template-columns: 1fr; } }
+    .p-wandrd .btn--accent:hover { background: #fff; border-color: #fff; color: var(--night); }
   </style>
 </head>
-<body class="wandrd-case-page page-subpage">
-
-  <!-- =================== START: SITE PRELOADER =================== -->
-  <div id="site-loader">
-    <img src="LogoBlue.png" alt="Loading..." class="loader-mark-pulse">
-  </div>
-  <!-- =================== END: SITE PRELOADER =================== -->
-
-  <!-- =================== START: SLIDE-DOWN INDEX OVERLAY =================== -->
-  <div id="index-overlay" class="index-overlay-panel">
-    <div class="overlay-top-bar">
-      <div style="display: flex; align-items: center; gap: 0.85rem;">
-        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="overlay-brand-stamp">
-        <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.75);">Index</span>
-      </div>
-      <button id="close-overlay-btn" style="background: none; border: none; cursor: pointer; color: white; display: flex; align-items: center;" aria-label="Close">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <line x1="4" y1="4" x2="20" y2="20"></line>
-          <line x1="20" y1="4" x2="4" y2="20"></line>
-        </svg>
-      </button>
-    </div>
-    <nav class="overlay-nav-links">
-      <div class="overlay-link-item">
-        <span>01</span>
-        <a href="index.html" class="overlay-link">Home</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>02</span>
-        <a href="work.html" class="overlay-link">Work</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>03</span>
-        <a href="ui-ux.html" class="overlay-link">UI/UX Work</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>04</span>
-        <a href="about.html" class="overlay-link">About</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>05</span>
-        <button id="overlay-contact-link" class="overlay-link">Contact</button>
-      </div>
+<body class="p-wandrd">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav" data-tone="dark">
+    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="nav__name">Devin Sanders</span><span class="nav__coord">01 / WANDRD</span></a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        <li><a href="work.html"><span class="idx">01</span><span class="txt">Work</span></a></li>
+        <li><a href="about.html"><span class="idx">02</span><span class="txt">About</span></a></li>
+        <li><a href="#contact"><span class="idx">03</span><span class="txt">Contact</span></a></li>
+      </ul>
     </nav>
-  </div>
-  <!-- =================== END: SLIDE-DOWN INDEX OVERLAY =================== -->
-
-  <!-- =================== START: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
-  <button id="floating-nav-btn" class="floating-peak-btn subpage-permanent-btn" aria-label="Open Navigation">
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path d="M2 14 L6.5 5 L10 10 L16 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
-  </button>
-  <!-- =================== END: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
-
-  <!-- =================== START: PERSISTENT BACKGROUND =================== -->
-  <div class="hero-fixed-background" aria-hidden="true">
-    <div class="hero-dot-grid"></div>
-    <div class="hero-topography-plate">
-      <img src="topography.webp" alt="" class="topo-external-asset subpage-topo-dark" aria-hidden="true">
-    </div>
-  </div>
-  <!-- =================== END: PERSISTENT BACKGROUND =================== -->
-
-  <!-- 1. Full-Bleed 100vh Hero Banner (Barlow Typographic Anchor) -->
-  <header class="turnstyle-hero-banner">
-    <img src="WANDRD-Hero.webp" alt="WANDRD Hero Showcase" class="turnstyle-hero-bg" fetchpriority="high">
-    <div class="turnstyle-hero-overlay"></div>
-
-    <div class="turnstyle-hero-content">
-      <h1 class="turnstyle-headline">
-        Building an Elevated E-Commerce Storefront
-      </h1>
-      <div class="turnstyle-caption-block">
-        <div class="turnstyle-caption-title">WANDRD Brand Store</div>
-        <p class="turnstyle-caption-text">Amazon Store Strategy & Product Graphic Systems · 2025</p>
-      </div>
-    </div>
+    <div class="nav__progress" aria-hidden="true"></div>
   </header>
+  <div class="ring" aria-hidden="true"></div>
 
-  <!-- Main Narrative & Content Blocks -->
-  <main style="padding-top: 5rem; padding-bottom: 5rem;">
-
-    <!-- 2. Technical Telemetry Spec Strip -->
-    <div class="case-content-wrap">
-      <div class="spec-telemetry-strip">
-        <div class="spec-telemetry-item">
-          <span class="label">Discipline</span>
-          <span class="val">Technical Carry & E-Commerce</span>
-        </div>
-        <div class="spec-telemetry-item">
-          <span class="label">Platform</span>
-          <span class="val">Amazon Storefront & A+ System</span>
-        </div>
-        <div class="spec-telemetry-item">
-          <span class="label">Architecture</span>
-          <span class="val">3 Sub-Stores · Mobile Infographics</span>
-        </div>
-        <div class="spec-telemetry-item">
-          <span class="label">Timeline</span>
-          <span class="val">Live Production · 2025</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3. Intro Narrative & Challenge Grid -->
-    <div class="case-content-wrap">
-      <div class="wandrd-intro-grid">
-        <div>
-          <span class="wandrd-intro-title">Project Overview</span>
-          <p class="wandrd-intro-lead">
-            WANDRD designs versatile travel gear and camera bags for creatives. This project focused on structuring their comprehensive Amazon Brand Store into an intuitive, high-conversion visual ecosystem.
-          </p>
-        </div>
-        <div>
-          <span class="wandrd-intro-title">The Amazon Challenge</span>
-          <p class="wandrd-intro-body">
-            Amazon's rigid layout modules often dilute distinctive brand identities. The goal was to overcome these grid limitations through custom lifestyle tiles, bold typographic callouts, and tailored infographics that feel authentic to WANDRD.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 4. The Brand Store (3 Alternating Modular Rows) -->
-    <div class="case-content-wrap">
-
-      <div class="case-section-header">
-        <div class="line"></div>
-        <span class="label">The Brand Store Architecture</span>
-      </div>
-
-      <!-- 01 Home Page -->
-      <article class="case-feature-split">
-        <div class="feature-media">
-          <img src="WANDRD-HomePage.webp" alt="WANDRD Home Page Store" loading="lazy" decoding="async">
-        </div>
-        <div class="feature-copy">
-          <span class="step-num">01 / 03</span>
-          <h3>Home Page Architecture</h3>
-          <p>
-            The primary landing portal leading with category tiles to direct travelers and photographers quickly toward their specific carry volume.
-          </p>
-        </div>
-      </article>
-
-      <!-- 02 Product Page (PRVKE) -->
-      <article class="case-feature-split reverse">
-        <div class="feature-media">
-          <img src="WANDRD-PRVKE.webp" alt="WANDRD PRVKE Product Page" loading="lazy" decoding="async">
-        </div>
-        <div class="feature-copy">
-          <span class="step-num">02 / 03</span>
-          <h3>Product Page — The PRVKE</h3>
-          <p>
-            Pairs moody lifestyle field imagery with high-contrast callouts to highlight the expandable roll-top and dedicated quick-draw camera access.
-          </p>
-        </div>
-      </article>
-
-      <!-- 03 Product Page (Fernweh) -->
-      <article class="case-feature-split">
-        <div class="feature-media">
-          <img src="WANDRD-Fernweh.webp" alt="WANDRD Fernweh Product Page" loading="lazy" decoding="async">
-        </div>
-        <div class="feature-copy">
-          <span class="step-num">03 / 03</span>
-          <h3>Product Page — The Fernweh</h3>
-          <p>
-            A high-capacity backpacking layout structured around adventure storytelling—balancing terrain scale, carrying comfort, and technical specs.
-          </p>
-        </div>
-      </article>
-
-    </div>
-
-    <!-- 5. In Context: Designed For Amazon -->
-    <div class="case-content-wrap">
-
-      <div class="case-section-header">
-        <div class="line"></div>
-        <span class="label">In Context // Amazon Ecosystem</span>
-      </div>
-
-      <div class="case-context-block">
-        <div>
-          <img src="WANDRD-Lifestyle.webp" alt="WANDRD Store on Laptop" loading="lazy" decoding="async">
-        </div>
-        <div>
-          <h2 class="context-headline">
-            Designed<br>For<br><span class="outline-txt">Amazon</span>
-          </h2>
-          <p style="font-weight: 300; font-size: 0.98rem; line-height: 1.65; color: var(--wandrd-text-dim); margin: 0;">
-            Operating within Amazon's strict template limits required precision. Every modular banner was engineered to scale seamlessly between desktop browsers and the Amazon mobile app without losing legibility.
-          </p>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- 6. Mobile Infographics Showcase -->
-    <div class="case-content-wrap">
-
-      <div class="case-section-header">
-        <div class="line"></div>
-        <span class="label">Mobile A+ Infographic Graphics</span>
-      </div>
-
-      <div class="case-phone-showcase">
-        <img src="WANDRD-Infographics.webp" alt="WANDRD Amazon Mobile Infographics" loading="lazy" decoding="async">
-      </div>
-
-    </div>
-
-    <!-- =========================================================================
-         MORE PROJECTS THUMBNAIL REEL (Interactive Discovery Strip)
-         ========================================================================= -->
-    <section class="more-projects-section">
-      <div class="more-projects-header">
-        <span class="more-projects-title">More Selected Projects</span>
-        <a href="work.html" class="more-projects-all">View All Work →</a>
-      </div>
-
-      <div class="more-projects-grid">
-        <!-- Project 1: Rexburg Rapids -->
-        <a href="rexburg-rapids.html" class="more-project-card">
-          <div class="more-project-thumb">
-            <img src="RexburgRapids-Hero.webp" alt="Rexburg Rapids Identity" loading="lazy" decoding="async">
-          </div>
-          <span class="more-project-tag">Brand Identity</span>
-          <span class="more-project-name">Rexburg Rapids</span>
-        </a>
-
-        <!-- Project 2: Kindred Roots -->
-        <a href="kindred-roots.html" class="more-project-card">
-          <div class="more-project-thumb">
-            <img src="KindredRoots/KindredRoots-Hero.webp" alt="Kindred Roots Publication" loading="lazy" decoding="async">
-          </div>
-          <span class="more-project-tag">Editorial & Print</span>
-          <span class="more-project-name">Kindred Roots</span>
-        </a>
-
-        <!-- Project 3: Gerber Gear -->
-        <a href="gerber-gear.html" class="more-project-card">
-          <div class="more-project-thumb">
-            <img src="GerberGear/GG-Hero.webp" alt="Gerber Gear Packaging" loading="lazy" decoding="async">
-          </div>
-          <span class="more-project-tag">Packaging Suite</span>
-          <span class="more-project-name">Gerber Gear</span>
-        </a>
-
-        <!-- Project 4: Analog Reboot -->
-        <a href="analog-reboot.html" class="more-project-card">
-          <div class="more-project-thumb">
-            <img src="AnalogReboot/AR-Hero.webp" alt="Analog Reboot Apparel" loading="lazy" decoding="async">
-          </div>
-          <span class="more-project-tag">Pattern & Apparel</span>
-          <span class="more-project-name">Analog Reboot</span>
-        </a>
+  <main id="main">
+    <!-- 00 HERO ------------------------------------------------------------>
+    <section class="p-hero" data-tone="dark" aria-labelledby="title">
+      <div class="p-hero__media" style="view-transition-name: hero-wandrd"><div class="slot" data-asset="wan-hero" data-eager></div></div>
+      <div class="p-hero__body">
+        <div class="p-hero__kicker"><span class="label label--accent">01 / Client work</span><span class="label">Designed at RIPPL</span></div>
+        <h1 class="display display--xl" id="title">WANDRD</h1>
+        <p class="label" style="margin: 18px 0 clamp(28px, 5vh, 52px); color: rgba(255,255,255,.82); font-size: 14px;">Amazon Brand Store · Infographics · Brand story</p>
+        <dl class="meta" style="border-color: rgba(255,255,255,.2)">
+          <div><dt class="label">Client</dt><dd>WANDRD</dd></div>
+          <div><dt class="label">Agency</dt><dd>RIPPL</dd></div>
+          <div><dt class="label">Year</dt><dd>2025</dd></div>
+          <div><dt class="label">Status</dt><dd><a class="u-line" href="https://www.amazon.com/stores/WANDRD/page/7721C241-7911-4D7A-98C7-C1F6CCB648CF" rel="noopener" target="_blank">Live on Amazon ↗</a></dd></div>
+        </dl>
       </div>
     </section>
 
+    <!-- 01 INTRO ----------------------------------------------------------->
+    <section class="section tone-white" data-tone="light" aria-label="Overview">
+      <div class="wrap w-intro">
+        <div>
+          <!-- DRAFT COPY: rewrite in your voice. -->
+          <p class="lede reveal">WANDRD makes camera and travel bags. At RIPPL I designed their Amazon Brand Store, their brand story and the infographics that sell the bags.</p>
+          <div class="challenge reveal" style="--d: 120ms">
+            <span class="label label--accent">The problem with Amazon</span>
+            <!-- Your existing copy, lightly trimmed. -->
+            <p style="margin-top: 12px;">Amazon’s layout modules are rigid, and they flatten every brand into the same grid. The job was to work inside those limits with lifestyle tiles, bold type and infographics that still feel like WANDRD.</p>
+          </div>
+          <div class="w-stats reveal" style="--d: 180ms">
+            <div><b>15</b><span>store pages designed</span></div>
+            <div><b>01</b><span>brand story, live on the listings</span></div>
+            <div><b>06</b><span>Rogue V2 infographics, live</span></div>
+          </div>
+        </div>
+        <div class="reveal" style="--d: 200ms">
+          <span class="label">What I did</span>
+          <ol class="role-list" style="margin-top: 16px;">
+            <li>Designed the Amazon Brand Store: 15 pages, live now</li>
+            <li>Designed listing infographics, including the live Rogue V2 set</li>
+            <li>Designed the brand story that runs on their listings</li>
+            <li>Worked with WANDRD’s creative team through approvals and critiques</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 THE STORE (centerpiece): sticky browser, page scrolls with you ---->
+    <section class="w-store tone-cream" data-tone="light" aria-labelledby="store-title">
+      <div class="w-store__sticky">
+        <div class="w-store__steps">
+          <div>
+            <span class="label label--accent">02 · The store</span>
+            <h2 class="display display--l" id="store-title" style="margin-top: 14px;">The Brand Store</h2>
+          </div>
+          <div style="position: relative; display: grid; margin-top: clamp(24px, 5vh, 60px);">
+            <!-- Your existing captions. The step shown follows scroll position. -->
+            <div class="w-store__step is-on"><span class="label">Home page</span><p>The landing page leads with the newest bag, then category tiles, so travelers and photographers get to the right bag fast.</p></div>
+            <div class="w-store__step"><span class="label">Proof</span><p>Press quotes and the Rogue Sling V2 launch sit in the middle, before the scroll gets long.</p></div>
+            <div class="w-store__step"><span class="label">Our story</span><p>The page ends on who WANDRD is, with their own badges and photography.</p></div>
+          </div>
+          <div class="w-store__bar" aria-hidden="true"><i class="is-on"></i><i></i><i></i></div>
+        </div>
+        <div class="browser">
+          <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">amazon.com/stores/WANDRD</span></div>
+          <div class="browser__view"><div class="slot" data-asset="wan-store-home-desktop" data-eager></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 STORE MAP + PAGES ------------------------------------------------>
+    <section class="section tone-white" data-tone="light" aria-labelledby="map-title">
+      <div class="wrap">
+        <div class="w-map">
+          <div class="reveal">
+            <span class="label label--accent">03 · Structure</span>
+            <h2 class="h2" id="map-title" style="margin-top: 14px;">How the store is organized</h2>
+            <p class="muted" style="margin: 16px 0 0; max-width: 34ch; color: var(--w-dim);">Four category pages under the home page. Every bag has its own product page; two of them are shown in full below.</p>
+            <div class="tree__key label"><i></i><span>Product page</span><i class="is-shown"></i><span>Shown below</span></div>
+          </div>
+          <div class="tree reveal" style="--d: 120ms" role="img" aria-label="Store map. Home leads to four pages. Photography bags: PRVKE, Rogue, Stratus 18L. Travel bags: Transit, Fernweh, Carryall. Everyday bags: PRVKE EDC, Nimbus 18L, Tech Bag, D1 Fanny Pack. Accessories: organization and packing, travel essentials, photo essentials. Every bag has its own product page; PRVKE and Fernweh are shown below.">
+            <div class="tree__root">Home</div>
+            <ul class="tree__kids">
+              <li><span class="tree__node">Photography bags</span><span class="tree__leaf"><span class="is-shown">PRVKE</span><span>Rogue</span><span>Stratus 18L</span></span></li>
+              <li><span class="tree__node">Travel bags</span><span class="tree__leaf"><span>Transit</span><span class="is-shown">Fernweh</span><span>Carryall</span></span></li>
+              <li><span class="tree__node">Everyday bags</span><span class="tree__leaf"><span>PRVKE EDC</span><span>Nimbus 18L</span><span>Tech Bag</span><span>D1 Fanny Pack</span></span></li>
+              <li><span class="tree__node">Accessories</span><span class="tree__leaf"><span>Organization &amp; packing</span><span>Travel essentials</span><span>Photo essentials</span></span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="w-pages" style="margin-top: clamp(70px, 9vw, 140px);">
+          <figure class="reveal" style="margin: 0; --d: 0ms"><div class="browser scrollshot"><div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">…/WANDRD/photography-bags</span></div><div class="browser__view"><div class="slot" data-asset="wan-store-photo-desktop"></div></div></div><figcaption class="cap">Photography bags · hover to scroll</figcaption></figure>
+          <figure class="reveal" style="margin: 0; --d: 80ms"><div class="browser scrollshot"><div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">…/WANDRD/travel-bags</span></div><div class="browser__view"><div class="slot" data-asset="wan-store-travel-desktop"></div></div></div><figcaption class="cap">Travel bags</figcaption></figure>
+          <figure class="reveal" style="margin: 0; --d: 160ms"><div class="browser scrollshot"><div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">…/WANDRD/everyday-bags</span></div><div class="browser__view"><div class="slot" data-asset="wan-store-everyday-desktop"></div></div></div><figcaption class="cap">Everyday bags</figcaption></figure>
+          <figure class="reveal" style="margin: 0; --d: 240ms"><div class="browser scrollshot"><div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">…/WANDRD/accessories</span></div><div class="browser__view"><div class="slot" data-asset="wan-store-accessories-desktop"></div></div></div><figcaption class="cap">Accessories</figcaption></figure>
+        </div>
+
+        <div class="w-pages w-pages--2">
+          <figure class="reveal" style="margin: 0;">
+            <div class="browser scrollshot"><div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">…/WANDRD/prvke</span></div><div class="browser__view"><div class="slot" data-asset="wan-prvke-desktop"></div></div></div>
+            <figcaption><span class="label label--accent">Product page</span><h3>PRVKE</h3><p>Moody field photography with high-contrast callouts for the roll-top and quick-draw camera access.</p></figcaption>
+          </figure>
+          <figure class="reveal" style="margin: 0; --d: 120ms">
+            <div class="browser scrollshot"><div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">…/WANDRD/fernweh</span></div><div class="browser__view"><div class="slot" data-asset="wan-fernweh-desktop"></div></div></div>
+            <figcaption><span class="label label--accent">Product page</span><h3>Fernweh</h3><p>A backpacking layout built around the trip: terrain, carrying comfort and the technical specs.</p></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 ON THE PHONE (sand: the pace changes here) ---------------------->
+    <section class="section tone-sand" data-tone="light" aria-labelledby="phone-title">
+      <div class="wrap">
+        <div class="sec-head" style="margin-bottom: clamp(48px, 7vw, 100px);">
+          <div><span class="label label--accent">04 · Mobile</span><h2 class="display display--l" id="phone-title" style="margin-top: 14px;">Most people<br>shop on a phone</h2></div>
+          <p class="reveal">Every banner and tile had to hold up in the Amazon app as well as on desktop, without the type getting too small to read.</p>
+        </div>
+        <div class="w-phones">
+          <figure class="w-phone reveal"><div class="phone"><div class="phone__screen"><div class="slot" data-asset="wan-store-home-mobile"></div></div></div><figcaption class="cap" style="text-align: center; margin-top: 18px;">Store home</figcaption></figure>
+          <figure class="w-phone reveal" style="--d: 120ms"><div class="phone"><div class="phone__screen"><div class="slot" data-asset="wan-store-sub-mobile"></div></div></div><figcaption class="cap" style="text-align: center; margin-top: 18px;">Rogue, in the store</figcaption></figure>
+          <figure class="w-phone reveal" style="--d: 240ms"><div class="phone"><div class="phone__screen"><div class="slot" data-asset="wan-listing-mobile"></div></div></div><figcaption class="cap" style="text-align: center; margin-top: 18px;">Rogue V2 listing</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 LISTING IMAGES ---------------------------------------------------->
+    <section class="section tone-white" data-tone="light" aria-labelledby="sets-title">
+      <div class="wrap">
+        <span class="label label--accent">05 · Listing images</span>
+        <h2 class="display display--l" id="sets-title" style="margin: 14px 0 clamp(36px, 5vw, 72px);">Infographics</h2>
+        <div class="reveal-img" data-from="center"><div class="slot" data-asset="wan-phones" data-zoom></div></div>
+        <p class="cap" style="margin-bottom: clamp(60px, 8vw, 120px);">The infographics as shoppers see them, in the mobile listing carousel.</p>
+
+        <div data-gallery>
+          <div class="set-head"><span class="h3">Rogue Sling V2 <span class="tag tag--live w-mono">Live</span></span><span class="label">6 images · 2000 × 2000</span></div>
+          <div class="w-set">
+            <div class="slot reveal" data-asset="wan-set1-1" data-zoom style="--d: 0ms"></div>
+            <div class="slot reveal" data-asset="wan-set1-2" data-zoom style="--d: 60ms"></div>
+            <div class="slot reveal" data-asset="wan-set1-3" data-zoom style="--d: 120ms"></div>
+            <div class="slot reveal" data-asset="wan-set1-4" data-zoom style="--d: 0ms"></div>
+            <div class="slot reveal" data-asset="wan-set1-5" data-zoom style="--d: 60ms"></div>
+            <div class="slot reveal" data-asset="wan-set1-6" data-zoom style="--d: 120ms"></div>
+          </div>
+        </div>
+        <div data-gallery style="margin-top: clamp(56px, 7vw, 100px);">
+          <div class="set-head"><span class="h3">Fernweh <span class="tag w-mono">Not published</span></span><span class="label">6 images · 2000 × 2000</span></div>
+          <div class="w-set">
+            <div class="slot reveal" data-asset="wan-set2-1" data-zoom style="--d: 0ms"></div>
+            <div class="slot reveal" data-asset="wan-set2-2" data-zoom style="--d: 60ms"></div>
+            <div class="slot reveal" data-asset="wan-set2-3" data-zoom style="--d: 120ms"></div>
+            <div class="slot reveal" data-asset="wan-set2-4" data-zoom style="--d: 0ms"></div>
+            <div class="slot reveal" data-asset="wan-set2-5" data-zoom style="--d: 60ms"></div>
+            <div class="slot reveal" data-asset="wan-set2-6" data-zoom style="--d: 120ms"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 UP CLOSE: Rogue V2 01 ------------------------------------------->
+    <section class="section tone-cream" data-tone="light" aria-labelledby="close-title">
+      <div class="wrap w-close">
+        <div class="w-close__img">
+          <div class="slot" data-asset="wan-closeup" data-zoom data-eager></div>
+          <span class="pin" style="left: 50%; top: 34%;" aria-hidden="true">1</span>
+          <span class="pin" style="left: 29%; top: 85.6%;" aria-hidden="true">2</span>
+          <span class="pin" style="left: 68%; top: 90.5%;" aria-hidden="true">3</span>
+        </div>
+        <div class="w-close__notes">
+          <div><span class="label label--accent">06 · Up close</span><h2 class="h2" id="close-title" style="margin-top: 14px;">Lightning Fast Access, in the order you read it</h2></div>
+          <!-- DRAFT: written from your notes. Adjust the wording so it sounds like you. -->
+          <div class="reveal"><span class="label">01 · The photo</span><h3>Let the image sell it</h3><p>WANDRD lets their photography do the convincing. The lifestyle shot is the first thing you see, so it gets almost the whole frame.</p></div>
+          <div class="reveal"><span class="label">02 · The tag</span><h3>New and improved</h3><p>A small red “New and improved” comes next. This is V2, so the whole set needed to read as a refresh of the original, not the same bag again.</p></div>
+          <div class="reveal"><span class="label">03 · The words</span><h3>Short, punchy, a little witty</h3><p>Then the headline and one line under it. “Because fumbling is for amateurs” says more than a list of features would.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 BRAND STORY ----------------------------------------------------->
+    <section class="w-story section w-dark" data-tone="dark" aria-labelledby="story-title">
+      <div class="w-story__bg reveal-img" data-from="center"><img src="assets/wandrd/story-bg.webp" alt="" loading="lazy" decoding="async"></div>
+      <div class="wrap w-story__head">
+        <span class="label label--accent">07 · Brand story</span>
+        <h2 class="display display--l" id="story-title" style="margin-top: 14px;">Wander more,<br>worry less</h2>
+        <p style="margin: 18px 0 0; max-width: 44ch; color: var(--w-soft);">The brand story that runs on WANDRD’s listings: one background, five cards that scroll across it.</p>
+      </div>
+      <div class="w-story__row" data-gallery>
+        <figure class="reveal"><img src="assets/wandrd/story-01.webp" alt="Brand story card: bags for photography, travel and everyday" loading="lazy" decoding="async" data-lightbox></figure>
+        <figure class="reveal" style="--d: 80ms"><img src="assets/wandrd/story-02.webp" alt="Brand story card: WANDRD's mission" loading="lazy" decoding="async" data-lightbox></figure>
+        <figure class="reveal" style="--d: 160ms"><img src="assets/wandrd/story-03.webp" alt="Brand story card: the award-winning PRVKE" loading="lazy" decoding="async" data-lightbox></figure>
+        <figure class="reveal" style="--d: 240ms"><img src="assets/wandrd/story-04.webp" alt="Brand story card: the Rogue Sling" loading="lazy" decoding="async" data-lightbox></figure>
+        <figure class="reveal" style="--d: 320ms"><img src="assets/wandrd/story-05.webp" alt="Brand story card: wander more, worry less" loading="lazy" decoding="async" data-lightbox></figure>
+      </div>
+    </section>
+
+    <!-- 08 OUTCOME --------------------------------------------------------->
+    <section class="section--tight tone-white" data-tone="light" aria-label="Outcome">
+      <div class="wrap w-out" style="border-top: 1px solid var(--w-line); padding-top: clamp(32px, 4vw, 56px);">
+        <div>
+          <span class="label">Live now</span>
+          <p class="h2" style="margin-top: 12px; max-width: 24ch;">The store is live on Amazon. Go have a look.</p>
+        </div>
+        <a class="btn btn--accent" href="https://www.amazon.com/stores/WANDRD/page/7721C241-7911-4D7A-98C7-C1F6CCB648CF" rel="noopener" target="_blank">Visit the WANDRD store ↗</a>
+      </div>
+    </section>
+
+    <!-- NEXT --------------------------------------------------------------->
+    <a class="next" href="kleenbore.html" data-tone="dark">
+      <div class="next__media"><div class="slot on-dark" data-asset="kb-cover"></div></div>
+      <div class="next__body"><span class="label">Next · 02 / 06</span><p class="display display--l" style="margin-top: 12px;">KleenBore</p></div>
+    </a>
+
+    <section class="contact" id="contact" data-tone="light" style="background: #F4F5F7; color: #2C3E50;" aria-labelledby="contact-title">
+      <div class="wrap">
+        <h2 class="label" id="contact-title">Say hello</h2>
+        <p style="margin: 18px 0 0;"><a class="contact__mail" href="mailto:devin.sanders02@gmail.com">devin.sanders02@gmail.com</a></p>
+      </div>
+    </section>
   </main>
 
-  <!-- =================== START: GLOBAL EDITORIAL FOOTER =================== -->
-  <footer id="contact" class="site-footer">
-    <div class="footer-inner-shell">
-
-      <div class="footer-tier-hero">
-        <h2 class="footer-hero-headline">Let's build something meaningful.</h2>
-        <a href="mailto:devin.sanders02@gmail.com" class="footer-email-link">
-          <span>devin.sanders02@gmail.com</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
-          </svg>
-        </a>
-      </div>
-
-      <hr class="footer-hairline">
-
-      <div class="footer-directory-grid">
-        <div>
-          <span class="footer-col-header">01 /<span>Work</span></span>
-          <ul class="footer-nav-list">
-            <li><a href="work.html" class="footer-link-animated">Selected Work</a></li>
-            <li><a href="ui-ux.html" class="footer-link-animated">UI/UX & Systems</a></li>
-            <li><a href="about.html" class="footer-link-animated">About & Studio</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <span class="footer-col-header">02 /<span>Network</span></span>
-          <ul class="footer-nav-list">
-            <li>
-              <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer">
-                <span>LinkedIn</span>
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <span class="footer-col-header">03 /<span>Discipline</span></span>
-          <ul class="footer-discipline-list">
-            <li>Brand architecture & identity</li>
-            <li>Physical & digital commerce</li>
-          </ul>
-        </div>
-
-        <div>
-          <span class="footer-col-header">04 /<span>Top</span></span>
-          <button id="footer-scroll-top-btn" class="footer-scroll-top-btn">
-            <span>Return to Top</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="19" x2="12" y2="5"></line>
-              <polyline points="5 12 12 5 19 12"></polyline>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="footer-colophon-row">
-        <div>© <span id="copyright-year">2026</span> Devin Sanders. All Rights Reserved.</div>
-        <div>Barlow · Visual Brand Architecture</div>
-      </div>
-
+  <footer class="footer">
+    <div class="wrap">
+      <a class="footer__brand" href="index.html"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="label">© <span data-year>2026</span> Devin Sanders · Denver, Colorado</span></a>
+      <span class="label footer__sign" title="The contour lines on the homepage are this mountain"><span class="coord">39.5826° N 105.6688° W</span> · Mt. Bierstadt, 14,060 ft · My first fourteener</span>
+      <ul class="label">
+        <li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li>
+        <li><a class="u-line" href="Resume.pdf">Resume</a></li>
+        <li><a class="u-line" href="#main">Back to top ↑</a></li>
+      </ul>
     </div>
   </footer>
-  <!-- =================== END: GLOBAL EDITORIAL FOOTER =================== -->
 
-  <!-- Custom Survey Reticle Cursor -->
-  <div id="survey-cursor" class="survey-cursor" aria-hidden="true">
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
-  </div>
-
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
+  <script>
+    /* The store section: step captions + scroll the screenshot inside the browser. */
+    (() => {
+      const s = document.querySelector('.w-store'); if (!s) return;
+      const steps = [...s.querySelectorAll('.w-store__step')], bars = [...s.querySelectorAll('.w-store__bar i')];
+      const shot = () => s.querySelector('.browser__view .slot img');
+      const measure = () => { const img = shot(); if (img && img.naturalWidth) s.style.setProperty('--shot-h', (img.getBoundingClientRect().height) + 'px'); };
+      addEventListener('load', measure); addEventListener('resize', measure);
+      s.addEventListener('load', measure, true);
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const tick = () => {
+        const r = s.getBoundingClientRect(); const run = Math.max(1, s.offsetHeight - innerHeight);
+        const p = Math.min(1, Math.max(0, -r.top / run)); s.style.setProperty('--e', p.toFixed(4));
+        const i = Math.min(steps.length - 1, Math.floor(p * steps.length));
+        steps.forEach((el, k) => el.classList.toggle('is-on', k === i)); bars.forEach((el, k) => el.classList.toggle('is-on', k <= i));
+        measure();
+      };
+      let raf = 0; addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { tick(); raf = 0; }); }, { passive: true }); tick();
+    })();
+  </script>
 </body>
 </html>

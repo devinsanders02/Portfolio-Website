@@ -1,0 +1,8 @@
+{
+  "name": "terrain-contours",
+  "private": true,
+  "type": "module",
+  "description": "Offline generator for the homepage contour background. Not deployed; run locally, commit the SVG it writes.",
+  "scripts": { "build": "node build.mjs" },
+  "dependencies": { "d3-contour": "4.0.2", "geotiff": "2.1.3" }
+}

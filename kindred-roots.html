@@ -1,834 +1,129 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kindred Roots Magazine | Devin Sanders</title>
-
-  <!-- Favicon & Touch Icon -->
-  <link rel="icon" type="image/png" href="LogoBlue.png">
-  <link rel="apple-touch-icon" href="LogoBlue.png">
-
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kindred Roots Magazine — Devin Sanders</title>
+  <meta name="description" content="Editorial design for Kindred Roots, a magazine about community and belonging.">
+  <meta property="og:title" content="Kindred Roots Magazine — Devin Sanders">
+  <meta property="og:description" content="Editorial design for Kindred Roots, a magazine about community and belonging.">
+  <meta name="theme-color" content="#F4F5F7">
+  <link rel="icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="assets/manifest.js" defer></script>
+  <script src="js/site.js" defer></script>
   <style>
-    /* =========================================================================
-       KINDRED ROOTS EDITORIAL ARCHITECTURE & OPEN CANVAS SYSTEM
-       ========================================================================= */
+    /* shared bits for the More work pages */
+    .mw-intro { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 6vw, 110px); align-items: start; }
+    .mw-intro .lede { font-size: clamp(22px, 2.2vw, 36px); line-height: 1.2; max-width: 26ch; font-weight: 500; margin: 0; }
+    .mw-intro .prose { color: var(--ink-soft); }
+    .mw-figs { display: grid; gap: clamp(10px, 1.2vw, 20px); }
+    .mw-figs figure { margin: 0; }
+    .mw-figs img { width: 100%; height: 100%; object-fit: cover; }
+    .mw-bleed { position: relative; min-height: 90vh; display: flex; align-items: flex-end; overflow: hidden; color: #fff; }
+    .mw-bleed > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .mw-bleed::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, .6)); }
+    .mw-bleed__body { position: relative; z-index: 2; padding: 0 var(--gutter) clamp(28px, 6vh, 64px); }
+    .mw-bleed__body .label { color: rgba(255, 255, 255, .78); }
+    @media (max-width: 900px) { .mw-intro { grid-template-columns: 1fr; } }
+    body.p-kr { --paper: #F2ECE2; --paper-2: #E6DDCF; --ink: #2B2620; --ink-soft: rgba(43, 38, 32, .66); --rule: rgba(43, 38, 32, .18); --accent: #A4532E; background: var(--paper); color: var(--ink); }
+    .p-kr .lede { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: clamp(26px, 2.6vw, 44px); line-height: 1.15; }
+    .kr-spreads { display: grid; gap: clamp(64px, 9vw, 150px); }
+    .kr-spread { display: grid; grid-template-columns: minmax(0, 9fr) minmax(0, 3fr); gap: clamp(18px, 3vw, 48px); align-items: end; }
+    .kr-spread:nth-child(even) { grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); }
+    .kr-spread:nth-child(even) figure { order: 2; }
+    .kr-spread figure { margin: 0; box-shadow: 0 40px 70px -40px rgba(43, 30, 15, .5); }
+    .kr-spread img { width: 100%; }
+    .kr-spread__cap p { font-family: 'Fraunces', Georgia, serif; font-size: 19px; line-height: 1.4; margin: 10px 0 0; }
+    .kr-no { display: block; font-family: 'Fraunces', Georgia, serif; font-size: clamp(56px, 6vw, 104px); line-height: .9; color: var(--accent); margin-bottom: 12px; }
+    .kr-band { background: #A4532E; color: #F7EFE3; padding: clamp(80px, 11vw, 170px) 0; }
+    .kr-band .label { color: rgba(247, 239, 227, .75); }
+    .kr-quote { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: clamp(34px, 4.6vw, 80px); line-height: 1.08; letter-spacing: -.01em; margin: 18px 0 0; max-width: 20ch; }
+    .kr-leaf { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: clamp(36px, 4.6vw, 80px); line-height: 1; margin: 10px 0 0; }
+    .p-kr .hs-item img { box-shadow: 0 30px 60px -30px rgba(43, 30, 15, .55); }
+    .kr-details { grid-template-columns: 1fr 1fr; }
+    .kr-details .kr-wide { grid-column: 1 / -1; }
+    @media (max-width: 900px) { .kr-spread, .kr-spread:nth-child(even) { grid-template-columns: 1fr; } .kr-spread:nth-child(even) figure { order: 0; } .kr-details { grid-template-columns: 1fr; } }
 
-    :root {
-      --roots-gold: #B87D28;
-      --roots-bg: #F9F9F8;
-      --roots-ink: #16222F;
-      --roots-border: rgba(44, 62, 80, 0.12);
-      --roots-muted: #2C3E50;
-    }
-
-    body.roots-case-page {
-      background-color: var(--roots-bg) !important;
-      color: var(--roots-ink) !important;
-    }
-
-    /* 1. Global Background Topo Blur (Blurs the lines across the entire page) */
-    .roots-case-page .hero-topography-plate {
-      filter: blur(8px);
-      -webkit-filter: blur(8px);
-      opacity: 0.18 !important;
-      transform: scale(1.04); /* Prevents blur fringe along screen edges */
-    }
-
-    /* 2. Shell & Hero -> Pure Barlow */
-    .turnstyle-headline {
-      font-family: var(--font-barlow) !important;
-      font-weight: 800 !important;
-      text-transform: uppercase;
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-    }
-
-    .turnstyle-caption-title,
-    .turnstyle-caption-text,
-    .case-section-header .label,
-    .more-projects-title,
-    .more-projects-all,
-    .more-project-name,
-    .more-project-tag,
-    .editorial-colophon-tag,
-    .spread-meta-tag,
-    .roots-pull-author,
-    .spread-number {
-      font-family: var(--font-barlow) !important;
-    }
-
-    /* 3. Editorial Typography -> Zilla Slab (Display / Quotes) & Syne (Body) */
-    .roots-case-page main h2,
-    .roots-case-page main h3,
-    .roots-case-page main h4,
-    .roots-pull-quote,
-    .spread-title {
-      font-family: 'Zilla Slab', serif !important;
-      letter-spacing: -0.01em;
-    }
-
-    .roots-case-page main p,
-    .roots-case-page main li,
-    .spread-caption,
-    .editorial-body-narrative {
-      font-family: 'Syne', sans-serif !important;
-      font-weight: 500 !important;
-      color: var(--roots-ink) !important;
-      line-height: 1.65;
-    }
-
-    /* Hero Banner */
-    .turnstyle-hero-banner {
-      position: relative;
-      width: 100%;
-      min-height: 85vh;
-      display: flex;
-      align-items: flex-end;
-      padding: 4.5rem 4vw;
-      box-sizing: border-box;
-      overflow: hidden;
-      z-index: 2;
-    }
-
-    .turnstyle-hero-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      z-index: 1;
-    }
-
-    .turnstyle-hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(30, 25, 20, 0.92) 0%,
-        rgba(30, 25, 20, 0.5) 45%,
-        transparent 75%
-      );
-      z-index: 2;
-    }
-
-    .turnstyle-hero-content {
-      position: relative;
-      z-index: 3;
-      max-width: 1040px;
-      color: #FFFFFF;
-    }
-
-    .turnstyle-headline {
-      font-size: clamp(2.5rem, 6vw, 4.75rem);
-      margin: 0 0 1.5rem 0;
-      color: #FFFFFF;
-    }
-
-    .turnstyle-caption-block {
-      border-left: 2px solid var(--roots-gold);
-      padding-left: 1.25rem;
-    }
-
-    .turnstyle-caption-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-    }
-
-    .turnstyle-caption-text {
-      font-size: 0.95rem;
-      font-weight: 300;
-      letter-spacing: 0.04em;
-      opacity: 0.85;
-      margin: 0.35rem 0 0 0;
-      color: #FFFFFF;
-    }
-
-    /* Main Container Shell */
-    .case-content-wrap {
-      max-width: 1440px;
-      margin: 0 auto;
-      padding: 0 4vw;
-      box-sizing: border-box;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Section Headers */
-    .case-section-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .case-section-header .line {
-      width: 32px;
-      height: 2px;
-      background-color: var(--roots-gold);
-    }
-
-    .case-section-header .label {
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--roots-ink);
-    }
-
-    /* Free-Floating Editorial Intro Block */
-    .editorial-statement-block {
-      max-width: 860px;
-      margin: 0 auto 6.5rem;
-      text-align: left;
-    }
-
-    .editorial-colophon-tag {
-      font-size: 0.8rem !important;
-      font-weight: 700 !important;
-      letter-spacing: 0.16em !important;
-      text-transform: uppercase;
-      color: var(--roots-gold);
-      display: block;
-      margin-bottom: 1.25rem;
-    }
-
-    .editorial-lead-quote {
-      font-family: 'Zilla Slab', serif !important;
-      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
-      font-weight: 700;
-      line-height: 1.25;
-      color: var(--roots-ink);
-      margin: 0 0 1.75rem 0;
-    }
-
-    .editorial-body-narrative {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      margin: 0;
-    }
-
-    /* Shared Stage Framing (Print Paper Elevation) */
-    .editorial-stage-frame {
-      width: 100%;
-      background: #FFFFFF;
-      border: 1px solid var(--roots-border);
-      box-shadow: 0 16px 40px -15px rgba(44, 62, 80, 0.08);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .editorial-stage-frame img {
-      width: 100%;
-      height: 100%;
-      max-width: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* Master Spread Stage */
-    .master-spread-stage {
-      margin-bottom: 7.5rem;
-    }
-
-    /* Clean Open Caption Strip */
-    .spread-caption-strip {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 2rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid var(--roots-border);
-      margin-top: 1.25rem;
-    }
-
-    .spread-meta-tag {
-      font-size: 0.8rem !important;
-      font-weight: 700 !important;
-      letter-spacing: 0.12em !important;
-      text-transform: uppercase;
-      color: var(--roots-gold);
-    }
-
-    .spread-caption {
-      font-size: 0.98rem !important;
-      color: var(--roots-muted) !important;
-      margin: 0;
-      max-width: 620px;
-      text-align: right;
-    }
-
-    @media (max-width: 768px) {
-      .spread-caption-strip {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-      }
-      .spread-caption {
-        text-align: left;
-      }
-    }
-
-    /* Open Asymmetric Editorial Pair */
-    .editorial-asymmetric-pair {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      align-items: center;
-      margin-bottom: 7.5rem;
-    }
-
-    @media (min-width: 960px) {
-      .editorial-asymmetric-pair {
-        grid-template-columns: 1fr 1.55fr;
-        gap: 4.5rem;
-      }
-    }
-
-    .roots-pull-quote-box {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      padding-left: 1.75rem;
-      border-left: 3px solid var(--roots-gold);
-    }
-
-    .roots-pull-quote {
-      font-size: clamp(1.75rem, 2.5vw, 2.35rem);
-      font-weight: 700;
-      line-height: 1.22;
-      color: var(--roots-ink);
-      margin: 0;
-    }
-
-    .roots-pull-quote em {
-      font-style: italic;
-      color: var(--roots-gold);
-    }
-
-    .roots-pull-author {
-      font-size: 0.82rem !important;
-      font-weight: 700 !important;
-      letter-spacing: 0.12em !important;
-      text-transform: uppercase;
-      color: var(--roots-gold);
-    }
-
-    /* Feature Article Sequence */
-    .article-spread-sequence {
-      display: flex;
-      flex-direction: column;
-      gap: 6.5rem;
-      margin-bottom: 7.5rem;
-    }
-
-    .article-spread-entry {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .spread-header-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 1.5rem;
-      border-bottom: 1px solid var(--roots-border);
-      padding-bottom: 0.85rem;
-    }
-
-    .spread-title {
-      font-size: clamp(1.4rem, 2.2vw, 1.9rem);
-      font-weight: 700;
-      margin: 0;
-      color: var(--roots-ink);
-    }
-
-    .spread-number {
-      font-size: 0.85rem !important;
-      font-weight: 700 !important;
-      color: var(--roots-gold);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    /* Free-floating article description */
-    .article-desc-wrap {
-      max-width: 680px;
-    }
-
-    .article-desc-wrap p {
-      margin: 0;
-    }
-
-    /* Secondary Detail & Rhythm Grids */
-    .case-grid-2col {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.75rem;
-      margin-bottom: 2rem;
-    }
-
-    @media (min-width: 768px) {
-      .case-grid-2col {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .case-grid-3col {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.75rem;
-      margin-bottom: 3rem;
-    }
-
-    @media (min-width: 768px) {
-      .case-grid-3col {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    /* More Projects Reel (Light Editorial Variant) */
-    .more-projects-section {
-      position: relative;
-      z-index: 2;
-      max-width: 1440px;
-      margin: 5rem auto 2rem;
-      padding: 0 4vw;
-      box-sizing: border-box;
-    }
-
-    .more-projects-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid var(--roots-border);
-      padding-bottom: 1rem;
-    }
-
-    .more-projects-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-dark);
-    }
-
-    .more-projects-all {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--accent-orange);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .more-projects-all:hover {
-      color: #d84b16;
-    }
-
-    .more-projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-
-    @media (min-width: 900px) {
-      .more-projects-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    .more-project-card {
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .more-project-thumb {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      overflow: hidden;
-      background: var(--card-stage-blue);
-      border: 1px solid rgba(44, 62, 80, 0.1);
-      margin-bottom: 0.85rem;
-    }
-
-    .more-project-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.75;
-      transition: transform 0.4s ease, opacity 0.3s ease;
-    }
-
-    .more-project-card:hover .more-project-thumb img {
-      transform: scale(1.05);
-      opacity: 1;
-    }
-
-    .more-project-tag {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent-orange);
-      margin-bottom: 0.2rem;
-    }
-
-    .more-project-name {
-      font-size: 1rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--text-dark);
-      letter-spacing: -0.01em;
-      line-height: 1.2;
-    }
-
-    .overlay-brand-stamp {
-      width: 32px;
-      height: auto;
-      filter: brightness(0) invert(1);
-      display: inline-block;
-      vertical-align: middle;
-    }
   </style>
 </head>
-<body class="roots-case-page page-subpage">
-
-  <!-- =================== START: SITE PRELOADER =================== -->
-  <div id="site-loader">
-    <img src="LogoBlue.png" alt="Loading..." class="loader-mark-pulse">
-  </div>
-  <!-- =================== END: SITE PRELOADER =================== -->
-
-  <!-- =================== START: SLIDE-DOWN INDEX OVERLAY =================== -->
-  <div id="index-overlay" class="index-overlay-panel">
-    <div class="overlay-top-bar">
-      <div style="display: flex; align-items: center; gap: 0.85rem;">
-        <img src="LogoBlue.png" alt="Devin Sanders Mark" class="overlay-brand-stamp">
-        <span style="font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.75);">Index</span>
-      </div>
-      <button id="close-overlay-btn" style="background: none; border: none; cursor: pointer; color: white; display: flex; align-items: center;" aria-label="Close">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <line x1="4" y1="4" x2="20" y2="20"></line>
-          <line x1="20" y1="4" x2="4" y2="20"></line>
-        </svg>
-      </button>
-    </div>
-    <nav class="overlay-nav-links">
-      <div class="overlay-link-item">
-        <span>01</span>
-        <a href="index.html" class="overlay-link">Home</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>02</span>
-        <a href="work.html" class="overlay-link">Work</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>03</span>
-        <a href="ui-ux.html" class="overlay-link">UI/UX Work</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>04</span>
-        <a href="about.html" class="overlay-link">About</a>
-      </div>
-      <div class="overlay-link-item">
-        <span>05</span>
-        <button id="overlay-contact-link" class="overlay-link">Contact</button>
-      </div>
-    </nav>
-  </div>
-  <!-- =================== END: SLIDE-DOWN INDEX OVERLAY =================== -->
-
-  <!-- =================== START: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
-  <button id="floating-nav-btn" class="floating-peak-btn subpage-permanent-btn" aria-label="Open Navigation">
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path d="M2 14 L6.5 5 L10 10 L16 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
-  </button>
-  <!-- =================== END: PERMANENT FLOATING PEAK NAV BUTTON =================== -->
-
-  <!-- =================== START: PERSISTENT BACKGROUND =================== -->
-  <div class="hero-fixed-background" aria-hidden="true">
-    <div class="hero-dot-grid"></div>
-    <div class="hero-topography-plate">
-      <img src="topography.webp" alt="" class="topo-external-asset subpage-topo" aria-hidden="true">
-    </div>
-  </div>
-  <!-- =================== END: PERSISTENT BACKGROUND =================== -->
-
-  <!-- 1. Full-Bleed 100vh Hero Banner (Barlow Typographic Anchor) -->
-  <header class="turnstyle-hero-banner">
-    <img src="KindredRoots/KindredRoots-Hero.webp" alt="Kindred Roots Magazine Spread" class="turnstyle-hero-bg" fetchpriority="high">
-    <div class="turnstyle-hero-overlay"></div>
-
-    <div class="turnstyle-hero-content">
-      <h1 class="turnstyle-headline">
-        Designing Editorial Space for Human Connection
-      </h1>
-      <div class="turnstyle-caption-block">
-        <div class="turnstyle-caption-title">Kindred Roots Magazine</div>
-        <p class="turnstyle-caption-text">Editorial Architecture, Typography & Publication Layout · 2026</p>
-      </div>
-    </div>
+<body class="p-kr">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav" data-tone="dark">
+    <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="nav__name">Devin Sanders</span><span class="nav__coord">More work / Kindred Roots</span></a>
+    <nav aria-label="Main"><ul class="nav__links">
+      <li><a href="work.html"><span class="idx">01</span><span class="txt">Work</span></a></li>
+      <li><a href="about.html"><span class="idx">02</span><span class="txt">About</span></a></li>
+      <li><a href="#contact"><span class="idx">03</span><span class="txt">Contact</span></a></li>
+    </ul></nav>
+    <div class="nav__progress" aria-hidden="true"></div>
   </header>
+  <div class="ring" aria-hidden="true"></div>
 
-  <!-- Main Editorial Canvas -->
-  <main style="padding-top: 5.5rem; padding-bottom: 5rem;">
-
-    <!-- 2. Literary Opening Statement (Open, Free-Floating) -->
-    <section class="case-content-wrap">
-      <div class="editorial-statement-block">
-        <span class="editorial-colophon-tag">Editorial Statement // Human Friction</span>
-        <h2 class="editorial-lead-quote">
-          "A study on physical print as an intentional counterweight to frictionless screen consumption."
-        </h2>
-        <p class="editorial-body-narrative">
-          Kindred Roots explores community, belonging, and the spaces between people in an increasingly isolated culture. This project centered on crafting an intentional editorial architecture that balances bold display typography with spacious, quiet reading spreads—establishing clear grid pacing and warm earthy tones so each multi-page narrative develops its own distinct atmosphere.
-        </p>
+  <main id="main">
+    <section class="p-hero" data-tone="dark" aria-labelledby="title">
+      <div class="p-hero__media"><img src="KindredRoots/KindredRoots-Hero.webp" alt="Kindred Roots magazine spread" fetchpriority="high"></div>
+      <div class="p-hero__body">
+        <div class="p-hero__kicker"><span class="label">10 / Editorial</span></div>
+        <h1 class="display fit" id="title" style="--chars: 13">Kindred Roots</h1>
+        <p class="label" style="margin: 18px 0 clamp(28px, 5vh, 52px); color: rgba(255,255,255,.85); font-size: 14px;">Magazine layout · Typography · Publication design</p>
+        <dl class="meta" style="border-color: rgba(255,255,255,.22)"><div><dt class="label">Format</dt><dd>Print magazine</dd></div><div><dt class="label">Issue</dt><dd>01</dd></div><div><dt class="label">Focus</dt><dd>Community &amp; belonging</dd></div><div><dt class="label">Year</dt><dd>2026</dd></div></dl>
       </div>
     </section>
 
-    <!-- 3. Master Spread Stage: Table of Contents -->
-    <section class="case-content-wrap master-spread-stage">
-      <div class="case-section-header">
-        <div class="line"></div>
-        <span class="label">Editorial Hierarchy</span>
+    <section class="section case-intro" data-tone="light" aria-label="Overview">
+      <div class="wrap">
+        <!-- DRAFT COPY: check it sounds like you. -->
+        <p class="case-intro__lede reveal">Kindred Roots, issue 01: a magazine about community and belonging.</p>
+        <div class="case-intro__grid"><div class="ci reveal" style="--d: 0ms"><span class="ci__n">01</span><span class="label">Why print</span><p>A slower alternative to the screen: something you sit down with.</p></div><div class="ci reveal" style="--d: 90ms"><span class="ci__n">02</span><span class="label">The grid</span><p>Big display type next to calm, roomy reading spreads.</p></div><div class="ci reveal" style="--d: 180ms"><span class="ci__n">03</span><span class="label">The mood</span><p>Warm, earthy colours, so each story gets its own mood and still feels like the same magazine.</p></div></div>
       </div>
-
-      <div class="editorial-stage-frame" style="aspect-ratio: 16 / 10;">
-        <img src="KindredRoots/KindredRoots-ToC.webp" alt="Kindred Roots Table of Contents Spread" loading="lazy" decoding="async">
+    </section>
+    <section class="section kr-paper" data-tone="light" aria-label="Spreads">
+      <div class="wrap kr-spreads" data-gallery>
+        <article class="kr-spread reveal"><figure class="reveal-img"><img src="KindredRoots/KindredRoots-ToC.webp" alt="Table of contents spread" loading="lazy" decoding="async" data-lightbox></figure><div class="kr-spread__cap"><span class="kr-no">01</span><span class="label">Contents</span><p>Wide margins and big numbers set the pace before the first story starts.</p></div></article>
+        <article class="kr-spread reveal"><figure class="reveal-img"><img src="KindredRoots/KindredRoots-LFE.webp" alt="Letter from the editor spread" loading="lazy" decoding="async" data-lightbox></figure><div class="kr-spread__cap"><span class="kr-no">02</span><span class="label">Letter from the editor</span><p>A quieter spread, mostly text, to slow the reader down.</p></div></article>
+        <article class="kr-spread reveal"><figure class="reveal-img"><img src="KindredRoots/KindredRoots-FeatArt1.webp" alt="404: Connection Not Found feature spread" loading="lazy" decoding="async" data-lightbox></figure><div class="kr-spread__cap"><span class="kr-no">03</span><span class="label">Feature 01 · 404: Connection Not Found</span><p>Error-message type, dark colour and uneven columns, for a story about losing touch online.</p></div></article>
+        <article class="kr-spread reveal"><figure class="reveal-img"><img src="KindredRoots/KindredRoots-FeatArt2.webp" alt="Un-Mapped feature spread" loading="lazy" decoding="async" data-lightbox></figure><div class="kr-spread__cap"><span class="kr-no">04</span><span class="label">Feature 02 · Un-Mapped</span><p>Big aerial landscapes, heavy title bars and contour lines, for a story about being alone outdoors.</p></div></article>
       </div>
-
-      <div class="spread-caption-strip">
-        <span class="spread-meta-tag">Table of Contents // Architecture</span>
-        <p class="spread-caption">
-          Establishing typographic pacing through spacious numerical margins, structured category dividers, and warm uncoated paper stock.
-        </p>
+    </section>
+    <section class="kr-band" data-tone="dark" aria-label="The theme">
+      <div class="wrap">
+        <span class="label">Inside issue 01</span>
+        <p class="kr-quote reveal">Two features: one about losing touch online, one about being alone outdoors.</p>
       </div>
     </section>
 
-    <!-- 4. Asymmetric Editorial Pair: Open Pull-Quote + Editor's Letter -->
-    <section class="case-content-wrap editorial-asymmetric-pair">
-      <div class="roots-pull-quote-box">
-        <blockquote class="roots-pull-quote">
-          "Great publications do not fill space; they <em>frame silence</em> so the story can breathe."
-        </blockquote>
-        <span class="roots-pull-author">Letter From the Editor · Issue 01</span>
-      </div>
-
-      <div class="editorial-stage-frame" style="aspect-ratio: 4 / 3;">
-        <img src="KindredRoots/KindredRoots-LFE.webp" alt="Letter from the Editor Spread" loading="lazy" decoding="async">
+    <section class="hscroll" data-tone="light" aria-labelledby="kr-d">
+      <div class="hscroll__sticky">
+        <div class="wrap hscroll__head"><span class="label label--accent">Leaf through</span><h2 class="kr-leaf" id="kr-d">Inside the issue</h2></div>
+        <div class="hscroll__track" data-gallery><figure class="hs-item"><img src="KindredRoots/KindredRoots-Detail1.webp" alt="Typesetting detail" loading="eager" decoding="async" data-lightbox></figure><figure class="hs-item"><img src="KindredRoots/KindredRoots-Detail2.webp" alt="Typesetting detail" loading="eager" decoding="async" data-lightbox></figure><figure class="hs-item"><img src="KindredRoots/KindredRoots-Spread1.webp" alt="Inside page" loading="eager" decoding="async" data-lightbox></figure><figure class="hs-item"><img src="KindredRoots/KindredRoots-FeatArt1.2.webp" alt="Feature 01 continued" loading="eager" decoding="async" data-lightbox></figure><figure class="hs-item"><img src="KindredRoots/KindredRoots-FeatArt2.2.webp" alt="Feature 02 continued" loading="eager" decoding="async" data-lightbox></figure></div>
       </div>
     </section>
 
-    <!-- 5. Feature Narrative Spreads with Clean Open Text -->
-    <section class="case-content-wrap article-spread-sequence">
+    <a class="next" href="ui-ux.html" data-tone="dark">
+      <div class="next__media"><img src="UI-UX/iOS Thumbnail.webp" alt="" loading="lazy"></div>
+      <div class="next__body"><span class="label">Next · More work</span><p class="display display--l" style="margin-top: 12px;">Interface concepts</p></div>
+    </a>
 
-      <!-- Feature Article 01: 404 Connection Not Found -->
-      <article class="article-spread-entry">
-        <div class="spread-header-row">
-          <h3 class="spread-title">404: Connection Not Found</h3>
-          <span class="spread-number">Feature Article // 01</span>
-        </div>
-        <div class="editorial-stage-frame" style="aspect-ratio: 16 / 10;">
-          <img src="KindredRoots/KindredRoots-FeatArt1.webp" alt="404 Connection Not Found Spread" loading="lazy" decoding="async">
-        </div>
-        <div class="article-desc-wrap">
-          <p class="editorial-body-narrative">
-            Using digital error syntax, dark nocturnal color grading, and asymmetric multi-column text blocks to explore the quiet breakdown of conversational presence in digital spaces.
-          </p>
-        </div>
-      </article>
-
-      <!-- Feature Article 02: Un-Mapped -->
-      <article class="article-spread-entry">
-        <div class="spread-header-row">
-          <h3 class="spread-title">Un-Mapped // Terrain & Reflection</h3>
-          <span class="spread-number">Feature Article // 02</span>
-        </div>
-        <div class="editorial-stage-frame" style="aspect-ratio: 16 / 10;">
-          <img src="KindredRoots/KindredRoots-FeatArt2.webp" alt="Unmapped Feature Spread" loading="lazy" decoding="async">
-        </div>
-        <div class="article-desc-wrap">
-          <p class="editorial-body-narrative">
-            Expansive aerial landscapes framed by bold geometric title bars and subtle topographic vector elevations to evoke physical isolation and wilderness solitude.
-          </p>
-        </div>
-      </article>
-
+    <section class="contact" id="contact" data-tone="light" aria-labelledby="contact-title">
+      <div class="wrap"><h2 class="label" id="contact-title">Say hello</h2><p style="margin: 18px 0 0;"><a class="contact__mail" href="mailto:devin.sanders02@gmail.com">devin.sanders02@gmail.com</a></p></div>
     </section>
-
-    <!-- 6. Typesetting Details & Macro Typography -->
-    <section class="case-content-wrap" style="margin-bottom: 7.5rem;">
-      <div class="case-section-header">
-        <div class="line"></div>
-        <span class="label">Typesetting Detail & Pacing</span>
-      </div>
-
-      <div class="case-grid-2col">
-        <div class="editorial-stage-frame" style="aspect-ratio: 4 / 3;">
-          <img src="KindredRoots/KindredRoots-Detail1.webp" alt="Magazine Detail Spread 1" loading="lazy" decoding="async">
-        </div>
-        <div class="editorial-stage-frame" style="aspect-ratio: 4 / 3;">
-          <img src="KindredRoots/KindredRoots-Detail2.webp" alt="Magazine Detail Spread 2" loading="lazy" decoding="async">
-        </div>
-      </div>
-
-      <!-- 7. 3-Spread Horizontal Rhythm Showcase -->
-      <div class="case-grid-3col">
-        <div class="editorial-stage-frame" style="aspect-ratio: 4 / 3;">
-          <img src="KindredRoots/KindredRoots-Spread1.webp" alt="Editorial Page Feature 1" loading="lazy" decoding="async">
-        </div>
-        <div class="editorial-stage-frame" style="aspect-ratio: 4 / 3;">
-          <img src="KindredRoots/KindredRoots-FeatArt1.2.webp" alt="Editorial Page Feature 2" loading="lazy" decoding="async">
-        </div>
-        <div class="editorial-stage-frame" style="aspect-ratio: 4 / 3;">
-          <img src="KindredRoots/KindredRoots-FeatArt2.2.webp" alt="Editorial Page Feature 3" loading="lazy" decoding="async">
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================================
-         MORE PROJECTS THUMBNAIL REEL (Interactive Discovery Strip)
-         ========================================================================= -->
-    <section class="more-projects-section">
-      <div class="more-projects-header">
-        <span class="more-projects-title">More Selected Projects</span>
-        <a href="work.html" class="more-projects-all">View All Work →</a>
-      </div>
-
-      <div class="more-projects-grid">
-        <!-- Project 1: WANDRD -->
-        <a href="wandrd.html" class="more-project-card">
-          <div class="more-project-thumb">
-            <img src="WANDRD-Hero.webp" alt="WANDRD Storefront" loading="lazy" decoding="async">
-          </div>
-          <span class="more-project-tag">E-Commerce & A+</span>
-          <span class="more-project-name">WANDRD Storefront</span>
-        </a>
-
-        <!-- Project 2: Rexburg Rapids -->
-        <a href="rexburg-rapids.html" class="more-project-card">
-          <div class="more-project-thumb">
-            <img src="RexburgRapids-Hero.webp" alt="Rexburg Rapids Identity" loading="lazy" decoding="async">
-          </div>
-          <span class="more-project-tag">Brand Identity</span>
-          <span class="more-project-name">Rexburg Rapids</span>
-        </a>
-
-        <!-- Project 3: Gerber Gear -->
-        <a href="gerber-gear.html" class="more-project-card">
-          <div class="more-project-thumb">
-            <img src="GerberGear/GG-Hero.webp" alt="Gerber Gear Packaging" loading="lazy" decoding="async">
-          </div>
-          <span class="more-project-tag">Packaging Suite</span>
-          <span class="more-project-name">Gerber Gear</span>
-        </a>
-
-        <!-- Project 4: Analog Reboot -->
-        <a href="analog-reboot.html" class="more-project-card">
-          <div class="more-project-thumb">
-            <img src="AnalogReboot/AR-Hero.webp" alt="Analog Reboot Apparel" loading="lazy" decoding="async">
-          </div>
-          <span class="more-project-tag">Pattern & Apparel</span>
-          <span class="more-project-name">Analog Reboot</span>
-        </a>
-      </div>
-    </section>
-
   </main>
 
-  <!-- =================== START: GLOBAL EDITORIAL FOOTER =================== -->
-  <footer id="contact" class="site-footer">
-    <div class="footer-inner-shell">
-
-      <div class="footer-tier-hero">
-        <h2 class="footer-hero-headline">Let's build something meaningful.</h2>
-        <a href="mailto:devin.sanders02@gmail.com" class="footer-email-link">
-          <span>devin.sanders02@gmail.com</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
-          </svg>
-        </a>
-      </div>
-
-      <hr class="footer-hairline">
-
-      <div class="footer-directory-grid">
-        <div>
-          <span class="footer-col-header">01 /<span>Work</span></span>
-          <ul class="footer-nav-list">
-            <li><a href="work.html" class="footer-link-animated">Selected Work</a></li>
-            <li><a href="ui-ux.html" class="footer-link-animated">UI/UX & Systems</a></li>
-            <li><a href="about.html" class="footer-link-animated">About & Studio</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <span class="footer-col-header">02 /<span>Network</span></span>
-          <ul class="footer-nav-list">
-            <li>
-              <a href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" target="_blank" rel="noopener noreferrer">
-                <span>LinkedIn</span>
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <span class="footer-col-header">03 /<span>Discipline</span></span>
-          <ul class="footer-discipline-list">
-            <li>Brand architecture & identity</li>
-            <li>Physical & digital commerce</li>
-          </ul>
-        </div>
-
-        <div>
-          <span class="footer-col-header">04 /<span>Top</span></span>
-          <button id="footer-scroll-top-btn" class="footer-scroll-top-btn">
-            <span>Return to Top</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="19" x2="12" y2="5"></line>
-              <polyline points="5 12 12 5 19 12"></polyline>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="footer-colophon-row">
-        <div>© <span id="copyright-year">2026</span> Devin Sanders. All Rights Reserved.</div>
-        <div>Barlow · Visual Brand Architecture</div>
-      </div>
-
+  <footer class="footer">
+    <div class="wrap">
+      <a class="footer__brand" href="index.html"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="label">© <span data-year>2026</span> Devin Sanders · Denver, Colorado</span></a>
+      <span class="label footer__sign" title="The contour lines on the homepage are this mountain"><span class="coord">39.5826° N 105.6688° W</span> · Mt. Bierstadt, 14,060 ft · My first fourteener</span>
+      <ul class="label">
+        <li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li>
+        <li><a class="u-line" href="Resume.pdf">Resume</a></li>
+        <li><a class="u-line" href="#main">Back to top ↑</a></li>
+      </ul>
     </div>
   </footer>
-  <!-- =================== END: GLOBAL EDITORIAL FOOTER =================== -->
-
-  <!-- Custom Survey Reticle Cursor -->
-  <div id="survey-cursor" class="survey-cursor" aria-hidden="true">
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
-  </div>
-
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
 </body>
 </html>
