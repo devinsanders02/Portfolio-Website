@@ -80,31 +80,25 @@
     .rail a.is-active::after { width: 30px; opacity: 1; background: var(--accent); }
     @media (max-width: 760px) { .rail { display: none; } }
 
-    .aside { position: relative; padding: clamp(90px, 12vw, 180px) 0; background: var(--ink); color: #EEF1F4; overflow: hidden; }
+    .aside { position: relative; height: 100vh; height: 100svh; max-height: 900px; min-height: 560px; display: flex; align-items: center; padding: 0; background: var(--ink); color: #EEF1F4; overflow: hidden; }
     .aside .wrap { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 110px); align-items: center; }
     .aside blockquote { margin: 22px 0 0; font-family: var(--f-sans); font-weight: 500; font-size: clamp(28px, 3.4vw, 56px); line-height: 1.04; letter-spacing: -.015em; max-width: 22ch; }
     .aside blockquote::before { content: '“'; display: block; font-family: var(--f-cond); font-weight: 700; font-size: 1.9em; line-height: .6; color: var(--accent); margin-bottom: .1em; }
     .aside .label { color: rgba(238, 241, 244, .6); }
     .aside__foot { margin-top: clamp(36px, 5vw, 64px); display: flex; flex-wrap: wrap; gap: 18px 40px; align-items: center; }
-    .aside__mark { position: relative; justify-self: center; width: min(100%, 300px); }
-    .aside__mark svg { width: 100%; height: auto; overflow: visible; }
+    /* The mark is taller than the band, so its top and bottom run off the edges */
+    .aside .wrap { width: 100%; }
+    .aside__mark { position: static; align-self: stretch; }
+    .aside__mark svg { position: absolute; top: -9%; height: 118%; width: auto; right: max(var(--gutter), calc((100vw - 1500px) / 2 + 2vw)); overflow: visible; }
+    .aside__mark path { stroke-width: 2.4; }
     .aside__mark path { fill: none; stroke: var(--accent); stroke-width: 2.6; }
-    .aside__mark .trace { stroke: #FFD9C7; stroke-width: 4.5; stroke-linecap: round; opacity: 0; filter: drop-shadow(0 0 6px rgba(241, 91, 34, .9)); }
-    .aside__mark .ghost { stroke: rgba(241, 91, 34, .22); stroke-width: 10; filter: blur(6px); opacity: 0; }
     @media (prefers-reduced-motion: no-preference) {
-      .js .aside__mark .base { stroke-dasharray: 1 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2600ms var(--ease-in-out) 200ms; }
+      .js .aside__mark .base { stroke-dasharray: 1 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2800ms var(--ease-in-out) 200ms; }
       .js .aside__mark.is-in .base { stroke-dashoffset: 0; }
-      /* After the draw, a short bright segment keeps running around the mark, and a glow breathes */
-      .js .aside__mark.is-in .trace { stroke-dasharray: .07 .93; animation: mark-trace 5.5s linear 2.8s infinite, mark-in .6s linear 2.8s forwards; }
-      .js .aside__mark.is-in .ghost { animation: mark-glow 4s ease-in-out 2.8s infinite; }
-      .aside__mark:hover .trace { animation-duration: 2.2s, .6s; }
     }
-    @keyframes mark-trace { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
-    @keyframes mark-in { to { opacity: 1; } }
-    @keyframes mark-glow { 0%, 100% { opacity: .2; } 50% { opacity: 1; } }
     .now { list-style: none; margin: clamp(36px, 4vw, 56px) 0 0; padding: 0; border-top: 1px solid rgba(255, 255, 255, .16); }
     .now li { display: grid; grid-template-columns: 90px 1fr; gap: 16px; padding: 11px 0; line-height: 1.35; border-bottom: 1px solid rgba(255, 255, 255, .16); font-size: clamp(17px, 1.15vw,20px); }
-    @media (max-width: 860px) { .aside .wrap { grid-template-columns: 1fr; } .aside__mark { width: 160px; justify-self: start; order: -1; } }
+    @media (max-width: 860px) { .aside { height: auto; max-height: none; padding: 90px 0; } .aside .wrap { grid-template-columns: 1fr; position: relative; z-index: 1; } .aside__mark svg { height: 108%; top: -4%; right: -30vw; opacity: .45; } }
   </style>
 </head>
 <body>
@@ -276,8 +270,8 @@
             <a class="link-arrow u-line" href="Resume.pdf">Resume (PDF)</a>
           </div>
         </div>
-        <div class="aside__mark reveal" aria-hidden="true" style="pointer-events: auto;">
-          <svg viewBox="176 80 236 428"><path class="ghost" d="M403.77,303.53c-4.05-7.61-11.58-12.81-20.14-13.89l-169.32-21.4,43.26-85.82,26.47,21.91c2.87,2.37,6.38,3.56,9.88,3.56s7.02-1.19,9.88-3.56l26.47-21.91,39.59,78.54c3.85,7.64,13.18,10.72,20.82,6.86,7.64-3.85,10.72-13.17,6.86-20.82l-69.72-138.3c-6.49-12.88-19.48-20.88-33.91-20.88s-27.41,8-33.91,20.88l-76.21,151.16c-3.88,7.7-3.78,16.85.27,24.46,4.05,7.61,11.58,12.81,20.14,13.89l169.32,21.4-41.96,83.22-27.78-22.99c-5.73-4.75-14.03-4.75-19.77,0l-27.78,22.99-39.49-78.32c-3.85-7.64-13.17-10.72-20.82-6.86-7.64,3.85-10.72,13.17-6.86,20.82l70.92,140.69c6.49,12.88,19.48,20.88,33.91,20.88s27.41-8,33.91-20.88l76.21-151.17c3.88-7.7,3.78-16.84-.27-24.46ZM293.93,118.83c1.6,0,4.54.5,6.22,3.83l15.82,31.38-22.04,18.24-22.04-18.24,15.82-31.38c1.68-3.33,4.62-3.83,6.22-3.83ZM293.93,469.03c-1.6,0-4.54-.5-6.22-3.83l-17.13-33.97,23.35-19.33,23.35,19.33-17.13,33.97c-1.68,3.33-4.62,3.83-6.22,3.83Z"/><path class="base" pathLength="1" d="M403.77,303.53c-4.05-7.61-11.58-12.81-20.14-13.89l-169.32-21.4,43.26-85.82,26.47,21.91c2.87,2.37,6.38,3.56,9.88,3.56s7.02-1.19,9.88-3.56l26.47-21.91,39.59,78.54c3.85,7.64,13.18,10.72,20.82,6.86,7.64-3.85,10.72-13.17,6.86-20.82l-69.72-138.3c-6.49-12.88-19.48-20.88-33.91-20.88s-27.41,8-33.91,20.88l-76.21,151.16c-3.88,7.7-3.78,16.85.27,24.46,4.05,7.61,11.58,12.81,20.14,13.89l169.32,21.4-41.96,83.22-27.78-22.99c-5.73-4.75-14.03-4.75-19.77,0l-27.78,22.99-39.49-78.32c-3.85-7.64-13.17-10.72-20.82-6.86-7.64,3.85-10.72,13.17-6.86,20.82l70.92,140.69c6.49,12.88,19.48,20.88,33.91,20.88s27.41-8,33.91-20.88l76.21-151.17c3.88-7.7,3.78-16.84-.27-24.46ZM293.93,118.83c1.6,0,4.54.5,6.22,3.83l15.82,31.38-22.04,18.24-22.04-18.24,15.82-31.38c1.68-3.33,4.62-3.83,6.22-3.83ZM293.93,469.03c-1.6,0-4.54-.5-6.22-3.83l-17.13-33.97,23.35-19.33,23.35,19.33-17.13,33.97c-1.68,3.33-4.62,3.83-6.22,3.83Z"/><path class="trace" pathLength="1" d="M403.77,303.53c-4.05-7.61-11.58-12.81-20.14-13.89l-169.32-21.4,43.26-85.82,26.47,21.91c2.87,2.37,6.38,3.56,9.88,3.56s7.02-1.19,9.88-3.56l26.47-21.91,39.59,78.54c3.85,7.64,13.18,10.72,20.82,6.86,7.64-3.85,10.72-13.17,6.86-20.82l-69.72-138.3c-6.49-12.88-19.48-20.88-33.91-20.88s-27.41,8-33.91,20.88l-76.21,151.16c-3.88,7.7-3.78,16.85.27,24.46,4.05,7.61,11.58,12.81,20.14,13.89l169.32,21.4-41.96,83.22-27.78-22.99c-5.73-4.75-14.03-4.75-19.77,0l-27.78,22.99-39.49-78.32c-3.85-7.64-13.17-10.72-20.82-6.86-7.64,3.85-10.72,13.17-6.86,20.82l70.92,140.69c6.49,12.88,19.48,20.88,33.91,20.88s27.41-8,33.91-20.88l76.21-151.17c3.88-7.7,3.78-16.84-.27-24.46ZM293.93,118.83c1.6,0,4.54.5,6.22,3.83l15.82,31.38-22.04,18.24-22.04-18.24,15.82-31.38c1.68-3.33,4.62-3.83,6.22-3.83ZM293.93,469.03c-1.6,0-4.54-.5-6.22-3.83l-17.13-33.97,23.35-19.33,23.35,19.33-17.13,33.97c-1.68,3.33-4.62,3.83-6.22,3.83Z"/></svg>
+        <div class="aside__mark reveal" aria-hidden="true">
+          <svg viewBox="176 80 236 428"><path class="ghost" style="display:none" d="M403.77,303.53c-4.05-7.61-11.58-12.81-20.14-13.89l-169.32-21.4,43.26-85.82,26.47,21.91c2.87,2.37,6.38,3.56,9.88,3.56s7.02-1.19,9.88-3.56l26.47-21.91,39.59,78.54c3.85,7.64,13.18,10.72,20.82,6.86,7.64-3.85,10.72-13.17,6.86-20.82l-69.72-138.3c-6.49-12.88-19.48-20.88-33.91-20.88s-27.41,8-33.91,20.88l-76.21,151.16c-3.88,7.7-3.78,16.85.27,24.46,4.05,7.61,11.58,12.81,20.14,13.89l169.32,21.4-41.96,83.22-27.78-22.99c-5.73-4.75-14.03-4.75-19.77,0l-27.78,22.99-39.49-78.32c-3.85-7.64-13.17-10.72-20.82-6.86-7.64,3.85-10.72,13.17-6.86,20.82l70.92,140.69c6.49,12.88,19.48,20.88,33.91,20.88s27.41-8,33.91-20.88l76.21-151.17c3.88-7.7,3.78-16.84-.27-24.46ZM293.93,118.83c1.6,0,4.54.5,6.22,3.83l15.82,31.38-22.04,18.24-22.04-18.24,15.82-31.38c1.68-3.33,4.62-3.83,6.22-3.83ZM293.93,469.03c-1.6,0-4.54-.5-6.22-3.83l-17.13-33.97,23.35-19.33,23.35,19.33-17.13,33.97c-1.68,3.33-4.62,3.83-6.22,3.83Z"/><path class="base" pathLength="1" d="M403.77,303.53c-4.05-7.61-11.58-12.81-20.14-13.89l-169.32-21.4,43.26-85.82,26.47,21.91c2.87,2.37,6.38,3.56,9.88,3.56s7.02-1.19,9.88-3.56l26.47-21.91,39.59,78.54c3.85,7.64,13.18,10.72,20.82,6.86,7.64-3.85,10.72-13.17,6.86-20.82l-69.72-138.3c-6.49-12.88-19.48-20.88-33.91-20.88s-27.41,8-33.91,20.88l-76.21,151.16c-3.88,7.7-3.78,16.85.27,24.46,4.05,7.61,11.58,12.81,20.14,13.89l169.32,21.4-41.96,83.22-27.78-22.99c-5.73-4.75-14.03-4.75-19.77,0l-27.78,22.99-39.49-78.32c-3.85-7.64-13.17-10.72-20.82-6.86-7.64,3.85-10.72,13.17-6.86,20.82l70.92,140.69c6.49,12.88,19.48,20.88,33.91,20.88s27.41-8,33.91-20.88l76.21-151.17c3.88-7.7,3.78-16.84-.27-24.46ZM293.93,118.83c1.6,0,4.54.5,6.22,3.83l15.82,31.38-22.04,18.24-22.04-18.24,15.82-31.38c1.68-3.33,4.62-3.83,6.22-3.83ZM293.93,469.03c-1.6,0-4.54-.5-6.22-3.83l-17.13-33.97,23.35-19.33,23.35,19.33-17.13,33.97c-1.68,3.33-4.62,3.83-6.22,3.83Z"/></svg>
         </div>
       </div>
     </section>

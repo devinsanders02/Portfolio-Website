@@ -45,9 +45,9 @@
     @media (max-width: 560px) { .ol-tier__figs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
     /* Olly is set in Onest (its original typeface) */
-    .p-olly main { --f-sans: 'Onest', sans-serif; --f-cond: 'Onest', sans-serif; --f-label: 'Onest', sans-serif; --f-guest: 'Onest', sans-serif; --f-num: 'Onest', sans-serif; font-family: 'Onest', sans-serif; }
-    .p-olly main .display { font-weight: 800; letter-spacing: -.03em; }
-    .p-olly main .fit { font-size: min(11vw, 210px, calc((100vw - 2 * var(--gutter)) / (var(--chars, 8) * .68))); }
+    .p-olly main > section:not(.p-hero):not(.contact):not(.ui-head):not(.screen) { --f-sans: 'Onest', sans-serif; --f-cond: 'Onest', sans-serif; --f-label: 'Onest', sans-serif; --f-guest: 'Onest', sans-serif; --f-num: 'Onest', sans-serif; font-family: 'Onest', sans-serif; }
+    .p-olly main > section:not(.p-hero):not(.contact):not(.ui-head):not(.screen) .display { font-weight: 800; letter-spacing: -.03em; }
+    .p-olly .story .display { line-height: 1.02; }
   </style>
 </head>
 <body class="p-olly">
@@ -100,9 +100,9 @@
       </div>
     </section>
     <section class="story" data-tone="dark" aria-labelledby="lineup-title">
-      <div class="story__bg reveal-img" data-from="center"><img src="Olly/Olly-Packages.webp" alt="" loading="lazy" decoding="async"></div>
+      <div class="story__bg"><img fetchpriority="low" src="Olly/Olly-Packages.webp" alt="" decoding="async"></div>
       <div class="wrap story__head"><span class="label">The lineup</span><h2 class="display display--l" id="lineup-title" style="margin-top: 12px;">Same box,<br>three audiences</h2><p>Side by side they read as one family, and the lid colours tell you which one is yours.</p></div>
-      <div class="story__row" data-gallery><figure class="reveal" style="--d: 0ms"><img src="Olly/Olly-Kids1.webp" alt="Kids" loading="lazy" decoding="async" data-lightbox><figcaption>Kids</figcaption></figure><figure class="reveal" style="--d: 70ms"><img src="Olly/Olly-College1.webp" alt="Young adults" loading="lazy" decoding="async" data-lightbox><figcaption>Young adults</figcaption></figure><figure class="reveal" style="--d: 140ms"><img src="Olly/Olly-Senior1.webp" alt="Seniors" loading="lazy" decoding="async" data-lightbox><figcaption>Seniors</figcaption></figure><figure class="reveal" style="--d: 210ms"><img src="Olly/Olly-College3.webp" alt="Single-serve stick" loading="lazy" decoding="async" data-lightbox><figcaption>Single-serve stick</figcaption></figure><figure class="reveal" style="--d: 280ms"><img src="Olly/Olly-Senior4.webp" alt="Nutrition panel" loading="lazy" decoding="async" data-lightbox><figcaption>Nutrition panel</figcaption></figure></div>
+      <div class="story__row" data-gallery><figure class="reveal" style="--d: 0ms"><img src="Olly/Olly-Kids1.webp" alt="Kids" loading="eager" decoding="async" data-lightbox><figcaption>Kids</figcaption></figure><figure class="reveal" style="--d: 70ms"><img src="Olly/Olly-College1.webp" alt="Young adults" loading="eager" decoding="async" data-lightbox><figcaption>Young adults</figcaption></figure><figure class="reveal" style="--d: 140ms"><img src="Olly/Olly-Senior1.webp" alt="Seniors" loading="eager" decoding="async" data-lightbox><figcaption>Seniors</figcaption></figure><figure class="reveal" style="--d: 210ms"><img src="Olly/Olly-College3.webp" alt="Single-serve stick" loading="eager" decoding="async" data-lightbox><figcaption>Single-serve stick</figcaption></figure><figure class="reveal" style="--d: 280ms"><img src="Olly/Olly-Senior4.webp" alt="Nutrition panel" loading="eager" decoding="async" data-lightbox><figcaption>Nutrition panel</figcaption></figure></div>
     </section>
 
     <a class="next" href="identity-system.html" data-tone="dark">

@@ -10,12 +10,12 @@
   /* --------------------------------------------------------- project picker
      After the big "Next" link: every project, so nobody is forced down one path. */
   const PROJECTS = [
-    ['wandrd.html', 'WANDRD', 'WANDRD-Hero.webp'], ['kleenbore.html', 'KleenBore', 'assets/kleenbore/hero-saf400.webp'],
-    ['gerber-gear.html', 'Gerber Gear', 'GerberGear/GG-Hero.webp'], ['rexburg-rapids.html', 'Rexburg Rapids', 'RexburgRapids-Hero.webp'],
-    ['about-face.html', 'AboutFace', 'AboutFace/AF-Hero2.webp'], ['motion-reel.html', 'Motion Reel', 'MotionReel/Motion-Thumbnail1.webp'],
-    ['olly-packaging.html', 'Olly', 'Olly/Olly-Hero.webp'], ['identity-system.html', 'Jared Christensen', 'Jared/IS-Hero.webp'],
-    ['analog-reboot.html', 'Analog Reboot', 'AnalogReboot/AR-Hero.webp'], ['kindred-roots.html', 'Kindred Roots', 'KindredRoots/KindredRoots-Hero.webp'],
-    ['ui-ux.html', 'Interface concepts', 'UI-UX/iOS Thumbnail.webp'],
+    ['wandrd.html', 'WANDRD', 'assets/thumbs/wandrd.webp'], ['kleenbore.html', 'KleenBore', 'assets/thumbs/kleenbore.webp'],
+    ['gerber-gear.html', 'Gerber Gear', 'assets/thumbs/gerber-gear.webp'], ['rexburg-rapids.html', 'Rexburg Rapids', 'assets/thumbs/rexburg-rapids.webp'],
+    ['about-face.html', 'AboutFace', 'assets/thumbs/about-face.webp'], ['motion-reel.html', 'Motion Reel', 'assets/thumbs/motion-reel.webp'],
+    ['olly-packaging.html', 'Olly', 'assets/thumbs/olly-packaging.webp'], ['identity-system.html', 'Jared Christensen', 'assets/thumbs/identity-system.webp'],
+    ['analog-reboot.html', 'Analog Reboot', 'assets/thumbs/analog-reboot.webp'], ['kindred-roots.html', 'Kindred Roots', 'assets/thumbs/kindred-roots.webp'],
+    ['ui-ux.html', 'Interface concepts', 'assets/thumbs/ui-ux.webp'],
   ];
   const nextLink = $('main > a.next');
   if (nextLink) {

@@ -32,10 +32,9 @@
     @media (max-width: 900px) { .mw-intro { grid-template-columns: 1fr; } }
     body.p-jc { --accent: #E63946; }
     /* Jared's identity is set in Inter: everything inside the page uses it (nav and footer stay in Devin's Barlow) */
-    .p-jc main { --f-sans: 'Inter', system-ui, sans-serif; --f-cond: 'Inter', system-ui, sans-serif; --f-label: 'Inter', system-ui, sans-serif; --f-guest: 'Inter', system-ui, sans-serif; --f-num: 'Inter', system-ui, sans-serif; font-family: 'Inter', system-ui, sans-serif; }
-    .p-jc main .display, .p-jc main .jc-big, .p-jc main .jc-pal b, .p-jc main .h2 { font-weight: 800; letter-spacing: -.035em; }
-    .p-jc main .fit { font-size: min(9vw, 190px, calc((100vw - 2 * var(--gutter)) / (var(--chars, 8) * .66))); }
-    .p-jc main .label { letter-spacing: .08em; }
+    .p-jc main > section:not(.p-hero):not(.contact):not(.ui-head):not(.screen) { --f-sans: 'Inter', system-ui, sans-serif; --f-cond: 'Inter', system-ui, sans-serif; --f-label: 'Inter', system-ui, sans-serif; --f-guest: 'Inter', system-ui, sans-serif; --f-num: 'Inter', system-ui, sans-serif; font-family: 'Inter', system-ui, sans-serif; }
+    .p-jc main > section:not(.p-hero):not(.contact):not(.ui-head):not(.screen) :is(.display, .jc-big, .jc-pal b, .h2) { font-weight: 800; letter-spacing: -.035em; }
+    .p-jc main > section:not(.p-hero):not(.contact):not(.ui-head):not(.screen) .label { letter-spacing: .08em; }
     .jc-idea { background: #000; color: #fff; padding: clamp(90px, 13vw, 200px) 0 clamp(70px, 9vw, 140px); }
     .jc-big { font-family: var(--f-cond); font-weight: 800; text-transform: uppercase; font-size: clamp(48px, 8vw, 150px); line-height: .9; letter-spacing: -.035em; margin: 18px 0 0; max-width: 11ch; }
     .jc-dots { display: inline-flex; gap: .1em; margin-left: .06em; }

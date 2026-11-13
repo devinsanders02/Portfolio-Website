@@ -11,7 +11,7 @@
   <link rel="icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@500;600;700;800&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
   <script>document.documentElement.classList.add('js')</script>
   <script src="assets/manifest.js" defer></script>
@@ -31,28 +31,24 @@
     .mw-bleed__body .label { color: rgba(255, 255, 255, .78); }
     @media (max-width: 900px) { .mw-intro { grid-template-columns: 1fr; } }
     body.p-kr { --paper: #F2ECE2; --paper-2: #E6DDCF; --ink: #2B2620; --ink-soft: rgba(43, 38, 32, .66); --rule: rgba(43, 38, 32, .18); --accent: #A4532E; background: var(--paper); color: var(--ink); }
-    .p-kr .lede { font-family: 'Zilla Slab', Georgia, serif; font-weight: 400; font-size: clamp(26px, 2.6vw, 44px); line-height: 1.15; }
+    .p-kr .lede { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: clamp(26px, 2.6vw, 44px); line-height: 1.15; }
     .kr-spreads { display: grid; gap: clamp(64px, 9vw, 150px); }
     .kr-spread { display: grid; grid-template-columns: minmax(0, 9fr) minmax(0, 3fr); gap: clamp(18px, 3vw, 48px); align-items: end; }
     .kr-spread:nth-child(even) { grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); }
     .kr-spread:nth-child(even) figure { order: 2; }
     .kr-spread figure { margin: 0; box-shadow: 0 40px 70px -40px rgba(43, 30, 15, .5); }
     .kr-spread img { width: 100%; }
-    .kr-spread__cap p { font-family: 'Zilla Slab', Georgia, serif; font-size: 19px; line-height: 1.4; margin: 10px 0 0; }
-    .kr-no { display: block; font-family: 'Zilla Slab', Georgia, serif; font-size: clamp(56px, 6vw, 104px); line-height: .9; color: var(--accent); margin-bottom: 12px; }
+    .kr-spread__cap p { font-family: 'Fraunces', Georgia, serif; font-size: 19px; line-height: 1.4; margin: 10px 0 0; }
+    .kr-no { display: block; font-family: 'Fraunces', Georgia, serif; font-size: clamp(56px, 6vw, 104px); line-height: .9; color: var(--accent); margin-bottom: 12px; }
     .kr-band { background: #A4532E; color: #F7EFE3; padding: clamp(80px, 11vw, 170px) 0; }
     .kr-band .label { color: rgba(247, 239, 227, .75); }
-    .kr-quote { font-family: 'Zilla Slab', Georgia, serif; font-weight: 400; font-size: clamp(34px, 4.6vw, 80px); line-height: 1.08; letter-spacing: -.01em; margin: 18px 0 0; max-width: 20ch; }
-    .kr-leaf { font-family: 'Zilla Slab', Georgia, serif; font-weight: 400; font-size: clamp(36px, 4.6vw, 80px); line-height: 1; margin: 10px 0 0; }
+    .kr-quote { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: clamp(34px, 4.6vw, 80px); line-height: 1.08; letter-spacing: -.01em; margin: 18px 0 0; max-width: 20ch; }
+    .kr-leaf { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: clamp(36px, 4.6vw, 80px); line-height: 1; margin: 10px 0 0; }
     .p-kr .hs-item img { box-shadow: 0 30px 60px -30px rgba(43, 30, 15, .55); }
     .kr-details { grid-template-columns: 1fr 1fr; }
     .kr-details .kr-wide { grid-column: 1 / -1; }
     @media (max-width: 900px) { .kr-spread, .kr-spread:nth-child(even) { grid-template-columns: 1fr; } .kr-spread:nth-child(even) figure { order: 0; } .kr-details { grid-template-columns: 1fr; } }
 
-    /* Kindred Roots: Syne for display, Zilla Slab for reading (its original pair) */
-    .p-kr main { --f-sans: 'Zilla Slab', Georgia, serif; --f-cond: 'Syne', sans-serif; --f-label: 'Syne', sans-serif; --f-guest: 'Syne', sans-serif; --f-num: 'Syne', sans-serif; font-family: 'Zilla Slab', Georgia, serif; }
-    .p-kr main .display { font-weight: 800; letter-spacing: -.03em; }
-    .p-kr main .fit { font-size: min(9.5vw, 190px, calc((100vw - 2 * var(--gutter)) / (var(--chars, 8) * .72))); }
   </style>
 </head>
 <body class="p-kr">

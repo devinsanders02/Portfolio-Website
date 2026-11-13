@@ -33,7 +33,7 @@
     .ui-head { background: #171C2B; color: #fff; overflow: hidden; }
     .ui-head__grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(28px, 4vw, 70px); align-items: center; min-height: min(92vh, 900px); padding-top: var(--nav-h); }
     .ui-head .label { color: #A9B8FF; }
-    .ui-head .display { font-size: clamp(56px, 8.4vw, 150px); margin: 14px 0 0; }
+    .ui-head .display { font-size: clamp(56px, 8.4vw, 150px); margin: 14px 0 0; letter-spacing: .005em; }
     .ui-head .lede { margin: 24px 0 0; max-width: 34ch; color: rgba(255, 255, 255, .82); }
     .ui-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 0; padding: 0; }
     .ui-tags li { padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(169, 184, 255, .4); font-size: 14px; color: #E2E7FF; }
@@ -72,8 +72,8 @@
     @media (max-width: 900px) { .ui-case { grid-template-columns: 1fr; } .ui-case:nth-child(even) .ui-case__img { order: 0; } .ui-labs { grid-template-columns: 1fr; } }
 
     /* Interface concepts: Manrope, a clean UI face */
-    .p-ui main { --f-sans: 'Manrope', sans-serif; --f-cond: 'Manrope', sans-serif; --f-label: 'Manrope', sans-serif; --f-guest: 'Manrope', sans-serif; --f-num: 'Manrope', sans-serif; font-family: 'Manrope', sans-serif; }
-    .p-ui main .display { font-weight: 800; letter-spacing: -.04em; text-transform: none; }
+    .p-ui main > section:not(.p-hero):not(.contact):not(.ui-head):not(.screen) { --f-sans: 'Manrope', sans-serif; --f-cond: 'Manrope', sans-serif; --f-label: 'Manrope', sans-serif; --f-guest: 'Manrope', sans-serif; --f-num: 'Manrope', sans-serif; font-family: 'Manrope', sans-serif; }
+    .p-ui main > section:not(.p-hero):not(.contact):not(.ui-head):not(.screen) .display { font-weight: 800; letter-spacing: -.04em; text-transform: none; }
   </style>
 </head>
 <body class="p-ui">
