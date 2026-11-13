@@ -27,7 +27,7 @@
     .screen__player { position: relative; width: 100%; aspect-ratio: 16 / 9; max-height: 74vh; margin: 0 auto 28px; background: #000; overflow: hidden; }
     .screen__player video, .screen__player img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .screen__play { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; z-index: 2; background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, .55)); transition: opacity var(--t-med) var(--ease); }
-    .screen__play span { display: inline-flex; align-items: center; gap: 14px; padding: 18px 28px; border: 1px solid rgba(255, 255, 255, .6); border-radius: 999px; font-family: var(--f-label); font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; backdrop-filter: blur(6px); transition: background-color var(--t-fast) linear, color var(--t-fast) linear; }
+    .screen__play span { display: inline-flex; align-items: center; gap: 14px; padding: 18px 28px; border: 1px solid rgba(255, 255, 255, .6); border-radius: 999px; font-family: var(--f-label); font-weight: 600; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; backdrop-filter: blur(6px); transition: background-color var(--t-fast) linear, color var(--t-fast) linear; }
     .screen__play:hover span { background: #fff; color: #000; }
     .screen.is-playing .screen__play { opacity: 0; pointer-events: none; }
     .screen__head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
@@ -36,7 +36,9 @@
     .mr-frames h3 { font-family: var(--f-cond); text-transform: uppercase; font-size: clamp(22px, 2vw, 32px); margin: 14px 0 4px; }
     .mr-frames p { margin: 0; color: var(--ink-soft); }
     @media (max-width: 760px) { .mr-frames { grid-template-columns: 1fr; } }
-    .mr-break { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2vw, 32px); }
+    .mr-break { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 3vw, 48px) clamp(14px, 2vw, 32px); }
+    .mr-break-head { max-width: 62ch; margin-bottom: clamp(28px, 4vw, 56px); border-top: 1px solid var(--rule); padding-top: 18px; }
+    .mr-break-head p { margin: 12px 0 0; color: var(--ink-soft); }
     .mr-break h3 { font-family: var(--f-cond); text-transform: uppercase; font-size: clamp(22px, 2vw, 32px); margin: 4px 0 4px; }
     .mr-break .label { display: block; margin-top: 16px; color: var(--accent); }
     .mr-break p { margin: 0; color: var(--ink-soft); max-width: 34ch; }
@@ -92,11 +94,15 @@
 
     <section class="section" data-tone="dark" aria-labelledby="break-title" style="padding-top: 0;">
       <div class="wrap">
-        <div class="set-head"><h2 class="label label--accent" id="break-title">Breakdown · the Tron piece</h2><span class="label">Storyboard → pacing → polish</span></div>
+        <div class="mr-break-head">
+          <h2 class="label label--accent" id="break-title">Breakdown · the Tron piece</h2>
+          <p>I storyboarded it first, blocked out the timing with a choppy pass of still frames, then polished it with the glow and light effects. Four frames from the finished piece:</p>
+        </div>
         <ol class="mr-break" data-gallery>
-          <li class="reveal"><div class="slot on-dark" data-asset="mo-break-1" data-zoom></div><span class="label">01</span><h3>Storyboard</h3><p>Planned out shot by shot before opening After Effects.</p></li>
-          <li class="reveal" style="--d: 100ms"><div class="slot on-dark" data-asset="mo-break-2" data-zoom></div><span class="label">02</span><h3>Pacing</h3><p>A choppy pass of still frames to get the timing right first.</p></li>
-          <li class="reveal" style="--d: 200ms"><div class="slot on-dark" data-asset="mo-break-3" data-zoom></div><span class="label">03</span><h3>Polish</h3><p>Then the motion, the glow and the light effects on top.</p></li>
+          <li class="reveal"><div class="slot on-dark" data-asset="mo-break-1" data-zoom></div><span class="label">01</span><h3>The bike draws in</h3><p>Lines of light trace the bike before it moves.</p></li>
+          <li class="reveal" style="--d: 100ms"><div class="slot on-dark" data-asset="mo-break-2" data-zoom></div><span class="label">02</span><h3>The race</h3><p>Two riders from above, each leaving a trail of light behind.</p></li>
+          <li class="reveal"><div class="slot on-dark" data-asset="mo-break-3" data-zoom></div><span class="label">03</span><h3>The type</h3><p>The letters are built from the same glowing lines as the bikes.</p></li>
+          <li class="reveal" style="--d: 100ms"><div class="slot on-dark" data-asset="mo-break-4" data-zoom></div><span class="label">04</span><h3>The logo lands</h3><p>Everything settles into the final logo, in cool blue.</p></li>
         </ol>
       </div>
     </section>

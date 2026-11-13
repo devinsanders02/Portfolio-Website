@@ -7,6 +7,19 @@
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
+  /* ------------------------------------------------------------- no widows
+     Joins the last two words of every paragraph, caption and heading with a
+     non-breaking space so no word sits alone on its own line (backs up the
+     CSS text-wrap rules in browsers that don't support them yet). */
+  $$('main p, main li, main dd, main figcaption, main blockquote, main h2, main h3, footer .label').forEach(el => {
+    if (el.closest('.slot') || el.classList.contains('fit')) return;
+    if (el.textContent.trim().split(/\s+/).length < 4) return;
+    const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    let last = null;
+    while (w.nextNode()) if (w.currentNode.nodeValue.trim()) last = w.currentNode;
+    if (last) last.nodeValue = last.nodeValue.replace(/\s+(\S+)\s*$/, '\u00A0$1');
+  });
+
   /* ---------------------------------------------------------------- slots
      Fills every <div class="slot" data-asset="id"> from assets/manifest.js.
      A slot with a src shows the image; without one it shows a labelled

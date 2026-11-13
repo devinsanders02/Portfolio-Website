@@ -2,7 +2,7 @@
 
 Generated from `assets/manifest.js` by `tools/assets/checklist.mjs`. Don't edit by hand.
 
-**14 essential** and **15 optional** assets still needed · 21 in place.
+**16 essential** and **9 optional** assets still needed · 29 in place.
 
 How to send: one file at a time is fine. Name it by its **code** (e.g. `KDS-556-1.png`) or just tell me the code. Any of .png, .jpg or .webp works. I convert and resize everything.
 
@@ -19,9 +19,9 @@ How to send: one file at a time is fine. Name it by its **code** (e.g. `KDS-556-
 | ✅ in place | **WAN-05b** | WANDRD: Accessories page — desktop | Full-length desktop screenshot of the live page. | screenshot | 1350 px wide, full height (full length) | WANDRD page — 03 “Structure”, browser 4 of 4 | essential |
 | ✅ in place | **WAN-06** | WANDRD: PRVKE product page — desktop | Full-length desktop screenshot of the live page. | screenshot | 1350 px wide, full height (full length) | WANDRD page — 03, product page (left) | essential |
 | ✅ in place | **WAN-07** | WANDRD: Fernweh product page — desktop | Full-length desktop screenshot of the live page. | screenshot | 1350 px wide, full height (full length) | WANDRD page — 03, product page (right) | essential |
-| ⬜ needed | **WAN-08** | WANDRD: Brand Store home page — mobile, full length | The store home page on a phone (Amazon app or mobile browser), captured as one long scrolling screenshot (iPhone: Safari share > Full Page, or stitch several screenshots). | screenshot | 1170 px wide, full height (full length) | WANDRD page — 04 “Mobile”, phone 1 of 3 | essential |
-| ⬜ needed | **WAN-09** | WANDRD: Brand Store sub-page — mobile | One store sub-page (e.g. Photography Bags) on a phone, full length. | screenshot | 1170 px wide, full height (full length) | WANDRD page — 04, phone 2 of 3 | optional |
-| ⬜ needed | **WAN-10** | WANDRD: Rogue Sling V2 listing — mobile | A phone screenshot of the Rogue Sling V2 listing with one of your infographics showing in the image carousel. | screenshot | 1170 × 2532 px (full length) | WANDRD page — 04, phone 3 of 3 | optional |
+| ✅ in place | **WAN-08** | WANDRD: Brand Store home page — mobile | The store home page on a phone (Amazon app or mobile browser), captured as one long scrolling screenshot (iPhone: Safari share > Full Page, or stitch several screenshots). | screenshot | 1170 px wide, full height (full length) | WANDRD page — 04 “Mobile”, phone 1 of 3 | essential |
+| ✅ in place | **WAN-09** | WANDRD: Brand Store, Rogue section — mobile | One store sub-page (e.g. Photography Bags) on a phone, full length. | screenshot | 1170 px wide, full height (full length) | WANDRD page — 04, phone 2 of 3 | optional |
+| ✅ in place | **WAN-10** | WANDRD: Rogue Sling V2 listing — mobile | A phone screenshot of the Rogue Sling V2 listing with one of your infographics showing in the image carousel. | screenshot | 1170 × 2532 px (full length) | WANDRD page — 04, phone 3 of 3 | optional |
 | ✅ in place | **WAN-S1-1** | WANDRD: Rogue Sling V2 — Lightning fast access | Listing infographic 1 of 6 (live). | flat graphic | 2000 × 2000 px (1:1) | WANDRD page — 05, Rogue V2 set, position 1 | essential |
 | ✅ in place | **WAN-S1-2** | WANDRD: Rogue Sling V2 — Weather resistant materials | Listing infographic 2 of 6 (live). | flat graphic | 2000 × 2000 px (1:1) | WANDRD page — 05, Rogue V2 set, position 2 | essential |
 | ✅ in place | **WAN-S1-3** | WANDRD: Rogue Sling V2 — Customizable interior | Listing infographic 3 of 6 (live). | flat graphic | 2000 × 2000 px (1:1) | WANDRD page — 05, Rogue V2 set, position 3 | essential |
@@ -41,16 +41,20 @@ How to send: one file at a time is fine. Name it by its **code** (e.g. `KDS-556-
 
 | | Code | Asset | What it should contain | Type | Size / shape | Where it appears | Priority |
 |---|---|---|---|---|---|---|---|
-| ⬜ needed | **KB-01** | KleenBore: Cover image | The hero image you mentioned sending in a separate chat. Used as the project’s first impression. | flat graphic or photograph | 2560 × 1440 px (16:9) | Homepage chapter 02 and the KleenBore “next project” link | essential |
+| ✅ in place | **KB-01** | KleenBore: Hero — SAF400 shelf shot | Your SAF400 action photo: shotgun kits on the shelf with the rifle in front. Cropped wide so the kits lead. | photograph | 1086 × 1448 px (a larger original would look sharper full width) (3:4) | KleenBore page — full-screen hero; homepage chapter 02 | essential |
 | ⬜ needed | **KB-02** | KleenBore: Template with layout guides visible | One 2000 × 2000 infographic template exported with its grid, margins and guides showing (Illustrator: View > Guides on, then screenshot or export). Shows the system behind the set. | screenshot | 2000 × 2000 px (1:1) | KleenBore page — section 02 “The system”, left | essential |
-| ⬜ needed | **KDS-9-1** | KleenBore KDS-9: Infographic 1 of 4 | Listing image 1 for KDS-9, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, KDS-9 set, position 1 | essential |
-| ⬜ needed | **KDS-9-2** | KleenBore KDS-9: Infographic 2 of 4 | Listing image 2 for KDS-9, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, KDS-9 set, position 2 | essential |
-| ⬜ needed | **KDS-9-3** | KleenBore KDS-9: Infographic 3 of 4 | Listing image 3 for KDS-9, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, KDS-9 set, position 3 | essential |
-| ⬜ needed | **KDS-9-4** | KleenBore KDS-9: Infographic 4 of 4 | Listing image 4 for KDS-9, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, KDS-9 set, position 4 | essential |
-| ⬜ needed | **POC220-1** | KleenBore POC220: Infographic 1 of 4 | Listing image 1 for POC220, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, POC220 set, position 1 | essential |
-| ⬜ needed | **POC220-2** | KleenBore POC220: Infographic 2 of 4 | Listing image 2 for POC220, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, POC220 set, position 2 | essential |
-| ⬜ needed | **POC220-3** | KleenBore POC220: Infographic 3 of 4 | Listing image 3 for POC220, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, POC220 set, position 3 | essential |
-| ⬜ needed | **POC220-4** | KleenBore POC220: Infographic 4 of 4 | Listing image 4 for POC220, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, POC220 set, position 4 | essential |
+| ⬜ needed | **KDS-9-1** | KleenBore KDS-9: Infographic 1 of 6 | Listing image 1 for KDS-9, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, KDS-9 set, position 1 | essential |
+| ⬜ needed | **KDS-9-2** | KleenBore KDS-9: Infographic 2 of 6 | Listing image 2 for KDS-9, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, KDS-9 set, position 2 | essential |
+| ⬜ needed | **KDS-9-3** | KleenBore KDS-9: Infographic 3 of 6 | Listing image 3 for KDS-9, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, KDS-9 set, position 3 | essential |
+| ⬜ needed | **KDS-9-4** | KleenBore KDS-9: Infographic 4 of 6 | Listing image 4 for KDS-9, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, KDS-9 set, position 4 | essential |
+| ⬜ needed | **KDS-9-5** | KleenBore KDS-9: Infographic 5 of 6 | Listing image 5 for KDS-9, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, KDS-9 set, position 5 | essential |
+| ⬜ needed | **KDS-9-6** | KleenBore KDS-9: Infographic 6 of 6 | Listing image 6 for KDS-9, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, KDS-9 set, position 6 | essential |
+| ⬜ needed | **POC220-1** | KleenBore POC220: Infographic 1 of 6 | Listing image 1 for POC220, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, POC220 set, position 1 | essential |
+| ⬜ needed | **POC220-2** | KleenBore POC220: Infographic 2 of 6 | Listing image 2 for POC220, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, POC220 set, position 2 | essential |
+| ⬜ needed | **POC220-3** | KleenBore POC220: Infographic 3 of 6 | Listing image 3 for POC220, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, POC220 set, position 3 | essential |
+| ⬜ needed | **POC220-4** | KleenBore POC220: Infographic 4 of 6 | Listing image 4 for POC220, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, POC220 set, position 4 | essential |
+| ⬜ needed | **POC220-5** | KleenBore POC220: Infographic 5 of 6 | Listing image 5 for POC220, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, POC220 set, position 5 | essential |
+| ⬜ needed | **POC220-6** | KleenBore POC220: Infographic 6 of 6 | Listing image 6 for POC220, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, POC220 set, position 6 | essential |
 | ⬜ needed | **A188-1** | KleenBore A188: Infographic 1 of 4 | Listing image 1 for A188, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, A188 set, position 1 | optional |
 | ⬜ needed | **A188-2** | KleenBore A188: Infographic 2 of 4 | Listing image 2 for A188, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, A188 set, position 2 | optional |
 | ⬜ needed | **A188-3** | KleenBore A188: Infographic 3 of 4 | Listing image 3 for A188, as the flat 2000 × 2000 export, in listing order. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 03 “Complete listings”, A188 set, position 3 | optional |
@@ -63,16 +67,11 @@ How to send: one file at a time is fine. Name it by its **code** (e.g. `KDS-556-
 | ⬜ needed | **KB-F3** | KleenBore: Same template, product 3 of 4 | The SAME infographic type (e.g. the “features” image) for four different products, so the template system is visible. This is product 3. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 05 “One template, four products”, position 3 | optional |
 | ⬜ needed | **KB-F4** | KleenBore: Same template, product 4 of 4 | The SAME infographic type (e.g. the “features” image) for four different products, so the template system is visible. This is product 4. | flat graphic | 2000 × 2000 px (1:1) | KleenBore page — 05 “One template, four products”, position 4 | optional |
 
-## Rexburg Rapids
-
-| | Code | Asset | What it should contain | Type | Size / shape | Where it appears | Priority |
-|---|---|---|---|---|---|---|---|
-| ⬜ needed | **RR-01** | Rexburg Rapids: Logo sketches / iterations | A page or screenshot of the logo directions you explored before the final R mark. | flat graphic or photograph | 2400 × 1350 px (16:9) | Rexburg Rapids page — process section near the end | optional |
-
 ## Motion Reel
 
 | | Code | Asset | What it should contain | Type | Size / shape | Where it appears | Priority |
 |---|---|---|---|---|---|---|---|
-| ⬜ needed | **MO-B1** | Motion: Tron breakdown 1 — Storyboard | A cinematic-width still: a storyboard frame or page for the Tron piece. | still frame | 2400 × 1004 px (or your comp size) (2.39:1) | Motion Reel page — Breakdown, step 1 of 3 | optional |
-| ⬜ needed | **MO-B2** | Motion: Tron breakdown 2 — Pacing still | A cinematic-width still: one still from the choppy timing pass. | still frame | 2400 × 1004 px (or your comp size) (2.39:1) | Motion Reel page — Breakdown, step 2 of 3 | optional |
-| ⬜ needed | **MO-B3** | Motion: Tron breakdown 3 — Polished frame | A cinematic-width still: a final frame with the glow and light effects. | still frame | 2400 × 1004 px (or your comp size) (2.39:1) | Motion Reel page — Breakdown, step 3 of 3 | optional |
+| ✅ in place | **MO-B1** | Motion: Tron still 1 — The bike draws in | Still 1 of 4 from the Tron piece. | still frame | 1920 × 1080 px (16:9) | Motion Reel page — Breakdown, still 1 of 4 | optional |
+| ✅ in place | **MO-B2** | Motion: Tron still 2 — The race | Still 2 of 4 from the Tron piece. | still frame | 1920 × 1080 px (16:9) | Motion Reel page — Breakdown, still 2 of 4 | optional |
+| ✅ in place | **MO-B3** | Motion: Tron still 3 — The type | Still 3 of 4 from the Tron piece. | still frame | 1920 × 1080 px (16:9) | Motion Reel page — Breakdown, still 3 of 4 | optional |
+| ✅ in place | **MO-B4** | Motion: Tron still 4 — The logo lands | Still 4 of 4 from the Tron piece. | still frame | 1920 × 1080 px (16:9) | Motion Reel page — Breakdown, still 4 of 4 | optional |

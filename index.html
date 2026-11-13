@@ -43,9 +43,9 @@
     .toc__head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; margin-bottom: clamp(28px, 4vw, 56px); }
     .toc__list { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
     .toc__list a { display: block; padding: 18px 16px 0 0; }
-    .toc__list .num { font-size: 12px; color: var(--accent); }
+    .toc__list .num { font-size: 13.5px; color: var(--accent); }
     .toc__list .nm { display: block; margin-top: 8px; font-family: var(--f-cond); font-weight: 700; font-size: clamp(18px, 1.7vw, 28px); text-transform: uppercase; line-height: 1; }
-    .toc__list .ds { display: block; margin-top: 6px; font-size: 13px; color: var(--ink-soft); }
+    .toc__list .ds { display: block; margin-top: 6px; font-size: 14px; color: var(--ink-soft); }
     .toc__list a:hover .nm { color: var(--accent); }
     @media (max-width: 900px) { .toc__list { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 22px; } }
 
@@ -67,15 +67,17 @@
     /* Titles sit on one line and are sized from their own length, so long names never overflow. */
     @media (prefers-reduced-motion: reduce) { .chap__media { transform: none; } .chap::before { display: none; } }
 
-    .rail { position: fixed; right: var(--gutter); top: 50%; z-index: 60; transform: translateY(-50%); display: grid; gap: 4px; opacity: 0; visibility: hidden; transition: opacity var(--t-med) var(--ease), visibility 0s linear var(--t-med); color: #fff; mix-blend-mode: difference; }
-    .rail.is-on { opacity: 1; visibility: visible; transition: opacity var(--t-med) var(--ease); }
-    .rail a { display: flex; align-items: center; justify-content: flex-end; gap: 12px; padding: 6px 0; font-size: 12px; }
-    .rail b { font-family: var(--f-label); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; opacity: 0; transform: translateX(6px); transition: opacity var(--t-fast) linear, transform var(--t-fast) var(--ease); }
-    .rail a:hover b, .rail a.is-active b { opacity: 1; transform: none; }
-    .rail .num { opacity: .55; transition: opacity var(--t-fast) linear; }
-    .rail a.is-active .num { opacity: 1; }
-    .rail a::after { content: ''; width: 18px; height: 1px; background: currentColor; opacity: .5; transition: width var(--t-med) var(--ease), opacity var(--t-fast) linear; }
-    .rail a.is-active::after { width: 34px; opacity: 1; }
+    /* Chapter rail: a small dark panel so it reads on any image, light or dark. */
+    .rail { position: fixed; right: calc(var(--gutter) - 6px); top: 50%; z-index: 60; transform: translate(12px, -50%); display: grid; gap: 2px; padding: 10px 14px; border-radius: 6px; background: rgba(12, 17, 24, .66); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 10px 30px -12px rgba(0, 0, 0, .5); color: #fff; opacity: 0; visibility: hidden; transition: opacity var(--t-med) var(--ease), transform var(--t-med) var(--ease), visibility 0s linear var(--t-med); }
+    .rail.is-on { opacity: 1; visibility: visible; transform: translate(0, -50%); transition: opacity var(--t-med) var(--ease), transform var(--t-med) var(--ease); }
+    .rail a { display: flex; align-items: center; justify-content: flex-end; gap: 12px; padding: 7px 0; font-size: 15px; }
+    .rail b { font-family: var(--f-label); font-weight: 600; font-size: 13.5px; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; max-width: 0; overflow: hidden; opacity: 0; transition: max-width var(--t-med) var(--ease), opacity var(--t-fast) linear; }
+    .rail a:hover b, .rail a:focus-visible b, .rail a.is-active b { max-width: 180px; opacity: 1; }
+    .rail .num { font-weight: 700; opacity: .72; transition: opacity var(--t-fast) linear, color var(--t-fast) linear; }
+    .rail a:hover .num { opacity: 1; }
+    .rail a.is-active .num { opacity: 1; color: var(--accent); }
+    .rail a::after { content: ''; width: 14px; height: 2px; background: currentColor; opacity: .45; transition: width var(--t-med) var(--ease), opacity var(--t-fast) linear, background-color var(--t-fast) linear; }
+    .rail a.is-active::after { width: 30px; opacity: 1; background: var(--accent); }
     @media (max-width: 760px) { .rail { display: none; } }
 
     .aside { position: relative; padding: clamp(90px, 12vw, 180px) 0; background: var(--ink); color: #EEF1F4; overflow: hidden; }
@@ -92,7 +94,7 @@
       .js .aside__mark.is-in path { stroke-dashoffset: 0; }
     }
     .now { list-style: none; margin: clamp(36px, 4vw, 56px) 0 0; padding: 0; border-top: 1px solid rgba(255, 255, 255, .16); }
-    .now li { display: grid; grid-template-columns: 90px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, .16); font-size: clamp(16px, 1.15vw, 19px); }
+    .now li { display: grid; grid-template-columns: 90px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, .16); font-size: clamp(17px, 1.15vw,20px); }
     @media (max-width: 860px) { .aside .wrap { grid-template-columns: 1fr; } .aside__mark { width: 160px; justify-self: start; order: -1; } }
   </style>
 </head>

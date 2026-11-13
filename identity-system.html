@@ -31,6 +31,19 @@
     .mw-bleed__body .label { color: rgba(255, 255, 255, .78); }
     @media (max-width: 900px) { .mw-intro { grid-template-columns: 1fr; } }
     body.p-jc { --accent: #E63946; }
+    .jc-idea { background: #000; color: #fff; padding: clamp(90px, 13vw, 200px) 0 clamp(70px, 9vw, 140px); }
+    .jc-big { font-family: var(--f-cond); font-weight: 700; text-transform: uppercase; font-size: clamp(56px, 9.6vw, 180px); line-height: .86; letter-spacing: -.005em; margin: 18px 0 0; max-width: 11ch; }
+    .jc-dots { display: inline-flex; gap: .1em; margin-left: .06em; }
+    .jc-dots i { width: .15em; height: .15em; background: #E63946; border-radius: 50%; }
+    @media (prefers-reduced-motion: no-preference) {
+      .jc-dots i { animation: jc-dot 1.8s ease-in-out infinite; }
+      .jc-dots i:nth-child(2) { animation-delay: .25s; } .jc-dots i:nth-child(3) { animation-delay: .5s; }
+    }
+    @keyframes jc-dot { 0%, 60%, 100% { opacity: .2; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-.06em); } }
+    .jc-why { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(24px, 4vw, 72px); margin-top: clamp(48px, 6vw, 90px); padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, .2); }
+    .jc-why .lede { color: #fff; }
+    .jc-why p:last-child { margin: 0; color: rgba(255, 255, 255, .72); max-width: 44ch; }
+    @media (max-width: 900px) { .jc-why { grid-template-columns: 1fr; } }
     .jc-red { background: #E63946; padding: clamp(60px, 8vw, 130px) 0 clamp(40px, 5vw, 70px); }
     .jc-red img { width: 100%; box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .5); }
     .jc-code { font-family: var(--f-mono); font-weight: 500; color: #E63946; }
@@ -44,7 +57,7 @@
     .jc-pal { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
     .jc-pal li { display: flex; justify-content: space-between; align-items: end; gap: 16px; padding: 18px; min-height: 92px; }
     .jc-pal b { font-family: var(--f-cond); text-transform: uppercase; font-size: 24px; }
-    .jc-pal .coord { font-size: 11px; }
+    .jc-pal .coord { font-size: 12.5px; }
     @media (max-width: 900px) { .jc-piece, .jc-std { grid-template-columns: 1fr; } .jc-piece--flip figure { order: 0; } }
   </style>
 </head>
@@ -66,17 +79,21 @@
       <div class="p-hero__media"><img src="Jared/IS-Hero.webp" alt="Jared Christensen wordmark" fetchpriority="high"></div>
       <div class="p-hero__body">
         <div class="p-hero__kicker"><span class="label">08 / Client · Identity</span></div>
-        <h1 class="display" id="title" style="font-size: clamp(30px, 3.4vw, 56px);">Jared Christensen</h1>
-        <p class="label" style="margin: 18px 0 clamp(28px, 5vh, 52px); color: rgba(255,255,255,.85); font-size: 13px;">Personal identity · Stationery · Guidelines</p>
+        <h1 class="display fit" id="title" style="--chars: 17">Jared Christensen</h1>
+        <p class="label" style="margin: 18px 0 clamp(28px, 5vh, 52px); color: rgba(255,255,255,.85); font-size: 14px;">Personal identity · Stationery · Guidelines</p>
         <dl class="meta" style="border-color: rgba(255,255,255,.22)"><div><dt class="label">Client</dt><dd>Jared Christensen</dd></div><div><dt class="label">Scope</dt><dd>Wordmark &amp; stationery</dd></div><div><dt class="label">Colour</dt><dd>Marathon Red</dd></div><div><dt class="label">Year</dt><dd>2026</dd></div></dl>
       </div>
     </section>
 
-    <section class="section" data-tone="light" aria-label="Overview">
-      <div class="wrap mw-intro">
+    <section class="jc-idea" data-tone="dark" aria-labelledby="jc-idea">
+      <div class="wrap">
+        <span class="label jc-code">The idea</span>
+        <h2 class="jc-big reveal" id="jc-idea">Plenty more in the works<span class="jc-dots" aria-hidden="true"><i></i><i></i><i></i></span></h2>
         <!-- DRAFT COPY: rewritten plainly from your old page. Change anything that doesn't sound like you. -->
-        <p class="lede reveal">A personal identity for a designer, built around one idea: the work is never finished.</p>
-        <div class="reveal prose" style="--d: 120ms"><span class="label">The wordmark</span><div style="margin-top: 12px;"><p>The wordmark ends in an ellipsis, a “to be continued”. It is a mark for someone who is always working on what comes next.</p><p>The stationery takes it into print: Marathon Red, black and white, a strict grid and a monospace for the small details.</p></div></div>
+        <div class="jc-why reveal" style="--d: 120ms">
+          <p class="lede">A personal identity for a designer, built around one idea: the work is never finished.</p>
+          <p>The wordmark ends in an ellipsis, a “to be continued”. The stationery takes it into print with Marathon Red, black and white, a strict grid and a monospace for the small details.</p>
+        </div>
       </div>
     </section>
     <section class="jc-red" data-tone="dark" aria-label="Stationery suite">

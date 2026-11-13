@@ -48,17 +48,19 @@
   shot('wan-prvke-desktop', 'WAN-06', 'WANDRD: PRVKE product page — desktop', 'assets/wandrd/page-prvke.webp', 'WANDRD page — 03, product page (left)', 'WANDRD PRVKE product page');
   shot('wan-fernweh-desktop', 'WAN-07', 'WANDRD: Fernweh product page — desktop', 'assets/wandrd/page-fernweh.webp', 'WANDRD page — 03, product page (right)', 'WANDRD Fernweh product page');
   add('wan-store-home-mobile', {
-    code: 'WAN-08', project: 'WANDRD', name: 'WANDRD: Brand Store home page — mobile, full length',
+    code: 'WAN-08', project: 'WANDRD', name: 'WANDRD: Brand Store home page — mobile',
     contains: 'The store home page on a phone (Amazon app or mobile browser), captured as one long scrolling screenshot (iPhone: Safari share > Full Page, or stitch several screenshots).',
     kind: 'screenshot', ratio: '9:19.5', size: '1170 px wide, full height', free: true,
     where: 'WANDRD page — 04 “Mobile”, phone 1 of 3', priority: 'essential',
+    src: 'assets/wandrd/mobile-home.webp', alt: 'The WANDRD Brand Store home page in the Amazon app',
     file: 'assets/wandrd/wan-08-store-home-mobile.png',
   });
   add('wan-store-sub-mobile', {
-    code: 'WAN-09', project: 'WANDRD', name: 'WANDRD: Brand Store sub-page — mobile',
+    code: 'WAN-09', project: 'WANDRD', name: 'WANDRD: Brand Store, Rogue section — mobile',
     contains: 'One store sub-page (e.g. Photography Bags) on a phone, full length.',
     kind: 'screenshot', ratio: '9:19.5', size: '1170 px wide, full height', free: true,
     where: 'WANDRD page — 04, phone 2 of 3', priority: 'optional',
+    src: 'assets/wandrd/mobile-rogue-store.webp', alt: 'The Rogue section of the WANDRD Brand Store in the Amazon app',
     file: 'assets/wandrd/wan-09-store-sub-mobile.png',
   });
   add('wan-listing-mobile', {
@@ -66,6 +68,7 @@
     contains: 'A phone screenshot of the Rogue Sling V2 listing with one of your infographics showing in the image carousel.',
     kind: 'screenshot', ratio: '9:19.5', size: '1170 × 2532 px', free: true,
     where: 'WANDRD page — 04, phone 3 of 3', priority: 'optional',
+    src: 'assets/wandrd/mobile-listing.webp', alt: 'The Rogue 6L V2 listing in the Amazon app, showing a Weather Resistant Materials infographic',
     file: 'assets/wandrd/wan-10-listing-mobile.png',
   });
   const rogue = ['Lightning fast access', 'Weather resistant materials', 'Customizable interior', 'Airmesh back panel', 'Three ways to carry', 'Padded shoulder strap'];
@@ -96,11 +99,12 @@
   /* --------------------------------------------------------------- KleenBore
      A+ content (5 modules) is in place as plain images on the page. */
   add('kb-cover', {
-    code: 'KB-01', project: 'KleenBore', name: 'KleenBore: Cover image',
-    contains: 'The hero image you mentioned sending in a separate chat. Used as the project’s first impression.',
-    kind: 'flat graphic or photograph', ratio: '16:9', size: '2560 × 1440 px',
-    where: 'Homepage chapter 02 and the KleenBore “next project” link', priority: 'essential',
-    file: 'assets/kleenbore/kb-01-cover.jpg',
+    code: 'KB-01', project: 'KleenBore', name: 'KleenBore: Hero — SAF400 shelf shot',
+    contains: 'Your SAF400 action photo: shotgun kits on the shelf with the rifle in front. Cropped wide so the kits lead.',
+    kind: 'photograph', ratio: '3:4', size: '1086 × 1448 px (a larger original would look sharper full width)',
+    where: 'KleenBore page — full-screen hero; homepage chapter 02', priority: 'essential',
+    file: 'assets/kleenbore/hero-saf400.webp', src: 'assets/kleenbore/hero-saf400.webp',
+    alt: 'KleenBore shotgun cleaning kits on a workshop shelf, with a rifle leaning in front',
   });
   add('kb-template', {
     code: 'KB-02', project: 'KleenBore', name: 'KleenBore: Template with layout guides visible',
@@ -110,13 +114,13 @@
     file: 'assets/kleenbore/kb-02-template-guides.png',
   });
   const kbSets = [
-    { key: 'p1', code: 'KDS-9', pri: 'essential' },
-    { key: 'p2', code: 'POC220', pri: 'essential' },
-    { key: 'p3', code: 'A188', pri: 'optional' },
+    { key: 'p1', code: 'KDS-9', pri: 'essential', n: 6 },
+    { key: 'p2', code: 'POC220', pri: 'essential', n: 6 },
+    { key: 'p3', code: 'A188', pri: 'optional', n: 4 },
   ];
   kbSets.forEach((s, si) => {
-    for (let n = 1; n <= 4; n++) add(`kb-${s.key}-${n}`, {
-      code: `${s.code}-${n}`, project: 'KleenBore', name: `KleenBore ${s.code}: Infographic ${n} of 4`,
+    for (let n = 1; n <= s.n; n++) add(`kb-${s.key}-${n}`, {
+      code: `${s.code}-${n}`, project: 'KleenBore', name: `KleenBore ${s.code}: Infographic ${n} of ${s.n}`,
       contains: `Listing image ${n} for ${s.code}, as the flat 2000 × 2000 export, in listing order.`,
       kind: 'flat graphic', ratio: '1:1', size: '2000 × 2000 px',
       where: `KleenBore page — 03 “Complete listings”, ${s.code} set, position ${n}`, priority: s.pri,
@@ -141,20 +145,13 @@
   });
 
   /* ----------------------------------------------------- other projects */
-  add('rr-process', {
-    code: 'RR-01', project: 'Rexburg Rapids', name: 'Rexburg Rapids: Logo sketches / iterations',
-    contains: 'A page or screenshot of the logo directions you explored before the final R mark.',
-    kind: 'flat graphic or photograph', ratio: '16:9', size: '2400 × 1350 px',
-    where: 'Rexburg Rapids page — process section near the end', priority: 'optional',
-    file: 'assets/rexburg/rr-01-iterations.jpg',
-  });
 
-  [['Storyboard', 'a storyboard frame or page for the Tron piece'], ['Pacing still', 'one still from the choppy timing pass'], ['Polished frame', 'a final frame with the glow and light effects']].forEach(([t, what], i) => add(`mo-break-${i + 1}`, {
-    code: `MO-B${i + 1}`, project: 'Motion Reel', name: `Motion: Tron breakdown ${i + 1} — ${t}`,
-    contains: `A cinematic-width still: ${what}.`,
-    kind: 'still frame', ratio: '2.39:1', size: '2400 × 1004 px (or your comp size)',
-    where: `Motion Reel page — Breakdown, step ${i + 1} of 3`, priority: 'optional',
-    file: `assets/motion/mo-b${i + 1}.jpg`,
+  [['The bike draws in', 'tron-01'], ['The race', 'tron-02'], ['The type', 'tron-03'], ['The logo lands', 'tron-04']].forEach(([t, f], i) => add(`mo-break-${i + 1}`, {
+    code: `MO-B${i + 1}`, project: 'Motion Reel', name: `Motion: Tron still ${i + 1} — ${t}`,
+    contains: `Still ${i + 1} of 4 from the Tron piece.`,
+    kind: 'still frame', ratio: '16:9', size: '1920 × 1080 px',
+    where: `Motion Reel page — Breakdown, still ${i + 1} of 4`, priority: 'optional',
+    file: `assets/motion/${f}.webp`, src: `assets/motion/${f}.webp`, alt: `Still from the Tron-style motion piece: ${t.toLowerCase()}`,
   }));
 
   window.ASSETS = A;

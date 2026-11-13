@@ -34,32 +34,39 @@
     }
     .kb-h { font-family: var(--f-guest); font-weight: 900; text-transform: uppercase; letter-spacing: -.02em; line-height: .88; margin: 0; }
     .kb-sec { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: clamp(16px, 3vw, 48px); border-top: 3px solid var(--ink); padding-top: 18px; }
-    .kb-sec__no { font-family: var(--f-guest); font-weight: 800; font-size: 14px; letter-spacing: .06em; }
+    .kb-sec__no { font-family: var(--f-guest); font-weight: 800; font-size: 15px; letter-spacing: .06em; }
     .kb-sec__no b { display: block; width: 28px; height: 6px; background: var(--accent); margin-bottom: 10px; }
     @media (max-width: 760px) { .kb-sec { grid-template-columns: 1fr; } }
 
-    .kb-hero { min-height: 100vh; min-height: 100svh; padding: calc(var(--nav-h) + 4vh) var(--gutter) clamp(28px, 5vh, 56px); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: 1fr auto; gap: clamp(24px, 4vw, 64px); }
-    .kb-hero__title { align-self: end; }
+    /* Hero: the SAF400 photo full width, cropped so the kits carry the frame. */
+    .kb-hero { position: relative; min-height: 100vh; min-height: 100svh; padding: calc(var(--nav-h) + 4vh) var(--gutter) clamp(28px, 5vh, 56px); display: grid; grid-template-rows: 1fr auto; gap: clamp(24px, 4vw, 64px); color: #fff; background: var(--night); overflow: hidden; isolation: isolate; }
+    .kb-hero__bg { position: absolute; inset: 0; z-index: -1; }
+    .kb-hero__bg .slot { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; }
+    .kb-hero__bg img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 64%; }
+    .kb-hero__bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(12, 12, 12, .86) 0%, rgba(12, 12, 12, .5) 34%, rgba(12, 12, 12, 0) 62%), linear-gradient(0deg, rgba(12, 12, 12, .8) 0%, rgba(12, 12, 12, 0) 34%); }
+    .kb-hero__title { align-self: end; max-width: 46vw; }
     .kb-hero__title .kb-h { font-size: clamp(64px, 9.4vw, 176px); }
     .kb-hero__title .bar { width: 120px; height: 14px; background: var(--accent); margin-bottom: 26px; }
-    .kb-hero__media { align-self: center; position: relative; }
-    .kb-hero__stack { position: absolute; left: -9%; bottom: -10%; width: 34%; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; filter: drop-shadow(0 30px 40px rgba(0, 0, 0, .25)); }
-    .kb-hero .meta { grid-column: 1 / -1; }
-    @media (max-width: 900px) { .kb-hero { grid-template-columns: 1fr; grid-template-rows: auto; } .kb-hero__stack { display: none; } }
+    .kb-hero .label { color: rgba(255, 255, 255, .8); }
+    .kb-hero .label--accent { color: #FF4A52; }
+    .kb-hero .meta { border-color: rgba(255, 255, 255, .25); }
+    .kb-hero .meta dd { color: #fff; }
+    @media (max-width: 900px) { .kb-hero__title { max-width: none; } .kb-hero__bg img { object-position: 70% 64%; } .kb-hero__bg::after { background: linear-gradient(0deg, rgba(12, 12, 12, .9) 0%, rgba(12, 12, 12, .2) 60%); } }
 
     .kb-intro { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 6vw, 100px); }
     .kb-intro .lede { font-family: var(--f-guest); font-weight: 700; font-size: clamp(24px, 2.4vw, 40px); line-height: 1.15; max-width: 24ch; letter-spacing: -.01em; }
     @media (max-width: 900px) { .kb-intro { grid-template-columns: 1fr; } }
 
     .kb-system { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(24px, 4vw, 72px); align-items: start; }
-    .spec { width: 100%; border-collapse: collapse; font-size: 15px; }
+    .spec { width: 100%; border-collapse: collapse; font-size: 16px; }
     .spec th, .spec td { text-align: left; vertical-align: top; padding: 14px 0; border-bottom: 1px solid var(--rule); }
-    .spec th { width: 34%; font-family: var(--f-guest); font-weight: 700; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); padding-right: 16px; }
+    .spec th { width: 34%; font-family: var(--f-guest); font-weight: 700; font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); padding-right: 16px; }
     .chips { display: flex; gap: 8px; margin-top: 4px; }
     .chips span { width: 46px; height: 46px; display: grid; place-items: end start; padding: 4px; font-family: var(--f-mono); font-size: 9px; letter-spacing: .06em; border: 1px solid var(--rule); }
     @media (max-width: 900px) { .kb-system { grid-template-columns: 1fr; } }
 
     .kb-set { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(6px, .8vw, 12px); }
+    .kb-set--6 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     @media (max-width: 760px) { .kb-set { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     .kb-sethead { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 14px 0; margin-bottom: 14px; border-bottom: 1px solid var(--rule); }
     .kb-sethead .kb-h { font-size: clamp(22px, 2.4vw, 38px); letter-spacing: -.01em; }
@@ -77,13 +84,13 @@
     .kb-scale { display: grid; gap: 0; border-top: 1px solid var(--rule); }
     .kb-scale > div { display: grid; grid-template-columns: minmax(0, 1fr) 170px; gap: 16px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--rule); --u: clamp(.11px, .0135vw, .2px); }
     .kb-scale .s { font-family: var(--f-guest); text-transform: uppercase; line-height: 1; white-space: nowrap; overflow: hidden; text-overflow: clip; }
-    .kb-scale .meta-s { font-size: 12px; color: var(--ink-soft); line-height: 1.45; }
+    .kb-scale .meta-s { font-size: 13.5px; color: var(--ink-soft); line-height: 1.45; }
     .kb-scale .meta-s b { display: block; color: var(--ink); font-weight: 700; }
     .kb-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: clamp(28px, 4vw, 48px); border-top: 3px solid var(--ink); padding-top: 18px; }
     .kb-stats b { display: block; font-family: var(--f-guest); font-weight: 900; font-size: clamp(36px, 4vw, 64px); line-height: .9; }
     .kb-stats b em { font-style: normal; color: var(--accent); }
-    .kb-stats span { display: block; margin-top: 8px; font-size: 13px; color: var(--ink-soft); max-width: 18ch; }
-    .kb-quote { font-family: var(--f-guest); font-weight: 600; font-size: clamp(18px, 1.5vw, 24px); line-height: 1.4; margin: 14px 0 0; max-width: 34ch; color: #fff; }
+    .kb-stats span { display: block; margin-top: 8px; font-size: 14px; color: var(--ink-soft); max-width: 18ch; }
+    .kb-quote { font-family: var(--f-guest); font-weight: 600; font-size: clamp(19px, 1.5vw,25px); line-height: 1.4; margin: 14px 0 0; max-width: 34ch; color: #fff; }
     .kb-quote::before { content: ''; display: block; width: 28px; height: 6px; background: var(--accent); margin-bottom: 16px; }
     .kb-close p { color: rgba(255, 255, 255, .78); max-width: 40ch; }
     .kb-aplus { display: grid; gap: clamp(10px, 1.2vw, 18px); }
@@ -100,7 +107,7 @@
 </head>
 <body class="p-kb">
   <a class="skip" href="#main">Skip to content</a>
-  <header class="nav" data-tone="light">
+  <header class="nav" data-tone="dark">
     <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="nav__name">Devin Sanders</span><span class="nav__coord">02 / KleenBore</span></a>
     <nav aria-label="Main">
       <ul class="nav__links">
@@ -115,18 +122,13 @@
 
   <main id="main">
     <!-- 00 HERO ------------------------------------------------------------>
-    <section class="kb-hero" data-tone="light" aria-labelledby="title">
+    <section class="kb-hero" data-tone="dark" aria-labelledby="title">
+      <div class="kb-hero__bg" style="view-transition-name: hero-kleenbore"><div class="slot" data-asset="kb-cover" data-eager></div></div>
       <div class="kb-hero__title">
         <div class="bar" aria-hidden="true"></div>
         <span class="label label--accent">02 / Client work · Designed at RIPPL</span>
         <h1 class="kb-h" id="title" style="margin-top: 16px;">Kleen<br>Bore</h1>
         <p class="label" style="margin-top: 22px;">Amazon infographic system · Marketing graphics</p>
-      </div>
-      <div class="kb-hero__media">
-        <div style="view-transition-name: hero-kleenbore"><div class="slot" data-asset="kb-cover" data-eager></div></div>
-        <div class="kb-hero__stack" aria-hidden="true">
-          <div class="slot" data-asset="kb-p1-1"></div><div class="slot" data-asset="kb-p1-2"></div>
-        </div>
       </div>
       <dl class="meta">
         <div><dt class="label">Client</dt><dd>KleenBore</dd></div>
@@ -208,16 +210,16 @@
             <p class="muted" style="max-width: 56ch; margin: 0 0 clamp(36px, 5vw, 64px);">Each set is the core images from one listing, in the order a shopper swipes through them. Click any image to view it full size.</p>
 
             <div data-gallery>
-              <div class="kb-sethead"><span class="kb-h">KDS-9</span><span class="label">4 images</span></div>
-              <div class="kb-set"><div class="slot reveal" data-asset="kb-p1-1" data-zoom style="--d: 0ms"></div><div class="slot reveal" data-asset="kb-p1-2" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="kb-p1-3" data-zoom style="--d: 120ms"></div><div class="slot reveal" data-asset="kb-p1-4" data-zoom style="--d: 180ms"></div></div>
+              <div class="kb-sethead"><span class="kb-h">KDS-9</span><span class="label">6 images</span></div>
+              <div class="kb-set kb-set--6"><div class="slot reveal" data-asset="kb-p1-1" data-zoom style="--d: 0ms"></div><div class="slot reveal" data-asset="kb-p1-2" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="kb-p1-3" data-zoom style="--d: 120ms"></div><div class="slot reveal" data-asset="kb-p1-4" data-zoom style="--d: 0ms"></div><div class="slot reveal" data-asset="kb-p1-5" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="kb-p1-6" data-zoom style="--d: 120ms"></div></div>
             </div>
             <div data-gallery style="margin-top: clamp(56px, 7vw, 100px);">
-              <div class="kb-sethead"><span class="kb-h">POC220</span><span class="label">4 images</span></div>
-              <div class="kb-set"><div class="slot reveal" data-asset="kb-p2-1" data-zoom style="--d: 0ms"></div><div class="slot reveal" data-asset="kb-p2-2" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="kb-p2-3" data-zoom style="--d: 120ms"></div><div class="slot reveal" data-asset="kb-p2-4" data-zoom style="--d: 180ms"></div></div>
+              <div class="kb-sethead"><span class="kb-h">POC220</span><span class="label">6 images</span></div>
+              <div class="kb-set kb-set--6"><div class="slot reveal" data-asset="kb-p2-1" data-zoom style="--d: 0ms"></div><div class="slot reveal" data-asset="kb-p2-2" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="kb-p2-3" data-zoom style="--d: 120ms"></div><div class="slot reveal" data-asset="kb-p2-4" data-zoom style="--d: 0ms"></div><div class="slot reveal" data-asset="kb-p2-5" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="kb-p2-6" data-zoom style="--d: 120ms"></div></div>
             </div>
             <div data-gallery style="margin-top: clamp(56px, 7vw, 100px);">
               <div class="kb-sethead"><span class="kb-h">A188</span><span class="label">4 images</span></div>
-              <div class="kb-set"><div class="slot reveal" data-asset="kb-p3-1" data-zoom style="--d: 0ms"></div><div class="slot reveal" data-asset="kb-p3-2" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="kb-p3-3" data-zoom style="--d: 120ms"></div><div class="slot reveal" data-asset="kb-p3-4" data-zoom style="--d: 180ms"></div></div>
+              <div class="kb-set kb-set--4"><div class="slot reveal" data-asset="kb-p3-1" data-zoom style="--d: 0ms"></div><div class="slot reveal" data-asset="kb-p3-2" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="kb-p3-3" data-zoom style="--d: 120ms"></div><div class="slot reveal" data-asset="kb-p3-4" data-zoom style="--d: 0ms"></div></div>
             </div>
           </div>
         </div>
