@@ -11,7 +11,7 @@
   <link rel="icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
   <script>document.documentElement.classList.add('js')</script>
   <script src="assets/manifest.js" defer></script>
@@ -58,6 +58,11 @@
     .ar-bento img { width: 100%; height: 100%; object-fit: cover; }
     .ar-bento figcaption { position: absolute; left: 10px; bottom: 10px; font-family: var(--f-label); font-weight: 600; font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; background: rgba(255, 255, 255, .92); color: var(--ink); padding: 4px 7px; }
     @media (max-width: 760px) { .ar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ar-bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 44vw; } .ar-bento figure, .ar-bento .ar-b0, .ar-bento .ar-b1 { grid-column: span 1; grid-row: span 1; } }
+
+    /* Space Grotesk: a little technical, a little retro, like the electronics the patterns come from */
+    .p-ar main { --f-sans: 'Space Grotesk', sans-serif; --f-cond: 'Space Grotesk', sans-serif; --f-label: 'Space Grotesk', sans-serif; --f-guest: 'Space Grotesk', sans-serif; --f-num: 'Space Grotesk', sans-serif; font-family: 'Space Grotesk', sans-serif; }
+    .p-ar main .display { font-weight: 700; letter-spacing: -.035em; }
+    .p-ar main .fit { font-size: min(10vw, 200px, calc((100vw - 2 * var(--gutter)) / (var(--chars, 8) * .66))); }
   </style>
 </head>
 <body class="p-ar">

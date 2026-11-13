@@ -81,9 +81,9 @@
     @media (max-width: 900px) { .kb-close { grid-template-columns: 1fr; } .kb-close:nth-of-type(even) .inspect { order: 0; } }
 
     /* Type scale, set live in Montserrat at the real proportions (150 / 46 / 44 / 32 pt). */
-    .kb-scale { display: grid; border-top: 3px solid var(--ink); --u: clamp(.3px, .056vw, .86px); }
+    .kb-scale { display: grid; border-top: 3px solid var(--ink); --u: clamp(.24px, .044vw, .66px); }
     .kb-scale > div { display: grid; grid-template-columns: minmax(0, 1fr) 230px; gap: 24px; align-items: center; padding: clamp(16px, 2vw, 28px) 0; border-bottom: 1px solid var(--rule); }
-    .kb-scale .s { font-family: var(--f-guest); text-transform: uppercase; line-height: 1; white-space: nowrap; overflow: hidden; }
+    .kb-scale .s { font-family: var(--f-guest); text-transform: uppercase; line-height: 1.2; padding-bottom: .06em; white-space: nowrap; overflow: hidden; }
     .kb-scale .meta-s { font-size: 16px; color: var(--ink-soft); line-height: 1.45; }
     .kb-scale .meta-s b { display: block; color: var(--ink); font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
     @media (max-width: 700px) { .kb-scale > div { grid-template-columns: 1fr; gap: 8px; } }
@@ -106,7 +106,11 @@
     .kb-pull i { font-style: normal; color: var(--accent); }
     .kb-rhythm { list-style: none; margin: 0 0 24px; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
     .kb-rhythm li { position: relative; opacity: .45; transition: opacity var(--t-med) var(--ease); }
-    .kb-rhythm li.is-dark { opacity: 1; outline: 3px solid var(--accent); outline-offset: 2px; }
+    .kb-rhythm li.is-dark { opacity: 1; }
+    .kb-pick { all: unset; display: block; cursor: pointer; outline: 2px solid rgba(255, 255, 255, .3); outline-offset: 2px; transition: outline-color var(--t-fast) linear; }
+    .kb-pick:hover, .kb-pick:focus-visible { outline-color: #fff; }
+    .kb-pick[aria-pressed="true"] { outline: 3px solid var(--accent); }
+    .kb-pick span { color: #fff !important; }
     .kb-rhythm img { width: 100%; aspect-ratio: 1; object-fit: cover; }
     .kb-rhythm span { display: block; margin-top: 6px; font: 700 12px/1 var(--f-guest); color: rgba(255, 255, 255, .7); }
     .kb-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: clamp(28px, 4vw, 48px); border-top: 3px solid var(--ink); padding-top: 18px; }
@@ -249,8 +253,8 @@
           <div class="reveal" style="--d: 120ms">
             <span class="label">03 · Rhythm</span>
             <h3 class="kb-close__h">Breaking up the set</h3>
-            <ol class="kb-rhythm" aria-label="KDS-9 set: images 2 and 5 are dark lifestyle images, the rest are light"><li class=""><img src="assets/kleenbore/kds-9-1.webp" alt="" loading="lazy" decoding="async"><span>01</span></li><li class="is-dark"><img src="assets/kleenbore/kds-9-2.webp" alt="" loading="lazy" decoding="async"><span>02</span></li><li class=""><img src="assets/kleenbore/kds-9-3.webp" alt="" loading="lazy" decoding="async"><span>03</span></li><li class=""><img src="assets/kleenbore/kds-9-4.webp" alt="" loading="lazy" decoding="async"><span>04</span></li><li class="is-dark"><img src="assets/kleenbore/kds-9-5.webp" alt="" loading="lazy" decoding="async"><span>05</span></li><li class=""><img src="assets/kleenbore/kds-9-6.webp" alt="" loading="lazy" decoding="async"><span>06</span></li></ol>
-            <p>Two dark lifestyle images with callout boxes sit between the product-on-white ones, so swiping through the set never feels like the same image six times.</p>
+            <ol class="kb-rhythm" aria-label="KDS-9 set: images 2 and 5 are dark lifestyle images, the rest are light"><li class=""><img src="assets/kleenbore/kds-9-1.webp" alt="" loading="lazy" decoding="async"><span>01</span></li><li class="is-dark"><button type="button" class="kb-pick" data-src="assets/kleenbore/kds-9-2.webp" aria-pressed="true" aria-label="Show image 2 large"><img src="assets/kleenbore/kds-9-2.webp" alt="" loading="lazy" decoding="async"><span>02 · view</span></button></li><li class=""><img src="assets/kleenbore/kds-9-3.webp" alt="" loading="lazy" decoding="async"><span>03</span></li><li class=""><img src="assets/kleenbore/kds-9-4.webp" alt="" loading="lazy" decoding="async"><span>04</span></li><li class="is-dark"><button type="button" class="kb-pick" data-src="assets/kleenbore/kds-9-5.webp" aria-pressed="false" aria-label="Show image 5 large"><img src="assets/kleenbore/kds-9-5.webp" alt="" loading="lazy" decoding="async"><span>05 · view</span></button></li><li class=""><img src="assets/kleenbore/kds-9-6.webp" alt="" loading="lazy" decoding="async"><span>06</span></li></ol>
+            <p>Click 02 or 05 to see it large. Two dark lifestyle images with callout boxes sit between the product-on-white ones, so swiping through the set never feels like the same image six times.</p>
           </div>
         </div>
       </div>
@@ -343,6 +347,12 @@
   </footer>
 
   <script>
+    /* Up close panel 3: the 02 / 05 thumbnails choose which image is shown large. */
+    document.querySelectorAll('.kb-pick').forEach(b => b.addEventListener('click', () => {
+      const panel = b.closest('.kb-close'), img = panel.querySelector('.inspect img');
+      if (img) { img.src = b.dataset.src; img.alt = 'KleenBore KDS-9 listing image ' + b.dataset.src.slice(-6, -5) + ' (AI photo)'; }
+      panel.querySelectorAll('.kb-pick').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+    }));
     /* Up close: the zoom follows the pointer. */
     document.querySelectorAll('.inspect').forEach(el => el.addEventListener('mousemove', e => {
       const r = el.getBoundingClientRect(), s = el.querySelector('.slot');

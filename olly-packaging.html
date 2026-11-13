@@ -11,7 +11,7 @@
   <link rel="icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Onest:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
   <script>document.documentElement.classList.add('js')</script>
   <script src="assets/manifest.js" defer></script>
@@ -43,6 +43,11 @@
     .ol-tier__figs img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; }
     @media (max-width: 900px) { .ol-tier__grid { grid-template-columns: 1fr; } .ol-tier__text { position: relative; top: 0; } }
     @media (max-width: 560px) { .ol-tier__figs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+    /* Olly is set in Onest (its original typeface) */
+    .p-olly main { --f-sans: 'Onest', sans-serif; --f-cond: 'Onest', sans-serif; --f-label: 'Onest', sans-serif; --f-guest: 'Onest', sans-serif; --f-num: 'Onest', sans-serif; font-family: 'Onest', sans-serif; }
+    .p-olly main .display { font-weight: 800; letter-spacing: -.03em; }
+    .p-olly main .fit { font-size: min(11vw, 210px, calc((100vw - 2 * var(--gutter)) / (var(--chars, 8) * .68))); }
   </style>
 </head>
 <body class="p-olly">

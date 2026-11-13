@@ -143,6 +143,7 @@
     .w-story__bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7, 7, 7, .55), rgba(7, 7, 7, .1) 40%, rgba(7, 7, 7, .6)); }
     .w-story__head { position: relative; }
     .w-story__row { position: relative; display: grid; grid-auto-flow: column; grid-auto-columns: clamp(220px, 22vw, 330px); gap: clamp(10px, 1.2vw, 18px); overflow-x: auto; padding: clamp(32px, 4vw, 56px) var(--gutter) 24px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+    .w-story__row { scrollbar-width: none; } .w-story__row::-webkit-scrollbar { display: none; }
     .w-story__row figure { margin: 0; scroll-snap-align: start; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .7); }
     .w-story__row img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
 

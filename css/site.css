@@ -459,7 +459,7 @@ html.hide-interim .slot__interim { display: none; }
 .case-intro__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.6vw, 44px); margin-top: clamp(48px, 6vw, 96px); }
 .ci { border-top: 3px solid var(--ink); padding-top: 18px; }
 .ci__n { display: block; font-family: var(--f-num); font-weight: 700; font-size: clamp(40px, 4vw, 68px); line-height: .9; color: var(--accent); letter-spacing: -.01em; }
-.ci .label { display: block; margin: 14px 0 8px; }
+.ci .label { display: block; margin: 16px 0 10px; font-family: var(--f-guest); font-weight: 700; font-size: clamp(19px, 1.5vw, 24px); letter-spacing: 0; text-transform: none; color: var(--ink); line-height: 1.15; }
 .ci p { margin: 0; color: var(--ink-soft); max-width: 36ch; }
 @media (max-width: 860px) { .case-intro__grid { grid-template-columns: 1fr; } }
 
@@ -486,11 +486,27 @@ html.hide-interim .slot__interim { display: none; }
 .story { position: relative; overflow: hidden; color: #fff; padding: clamp(80px, 10vw, 150px) 0 clamp(40px, 5vw, 70px); }
 .story__bg { position: absolute; inset: 0; }
 .story__bg img { width: 100%; height: 100%; object-fit: cover; }
-.story__bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, .55), rgba(0, 0, 0, .1) 45%, rgba(0, 0, 0, .55)); }
+.story__bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, .78) 0%, rgba(0, 0, 0, .45) 38%, rgba(0, 0, 0, .25) 60%, rgba(0, 0, 0, .7) 100%); }
 .story__head { position: relative; }
 .story__head .label { color: rgba(255, 255, 255, .8); }
-.story__head p { margin: 16px 0 0; max-width: 44ch; color: rgba(255, 255, 255, .88); }
+.story__head p { margin: 16px 0 0; max-width: 44ch; color: #fff; font-size: clamp(17px, 1.3vw, 20px); text-shadow: 0 1px 12px rgba(0, 0, 0, .6); }
+.story__head .display { text-shadow: 0 2px 24px rgba(0, 0, 0, .35); }
 .story__row { position: relative; display: grid; grid-auto-flow: column; grid-auto-columns: clamp(220px, 22vw, 330px); gap: clamp(10px, 1.2vw, 18px); overflow-x: auto; padding: clamp(32px, 4vw, 56px) var(--gutter) 24px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
 .story__row figure { margin: 0; scroll-snap-align: start; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .7); }
 .story__row img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
-.story__row figcaption { margin-top: 10px; font-family: var(--f-label); font-weight: 600; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255, 255, 255, .85); }
+.story__row figcaption { display: inline-block; margin-top: 10px; padding: 5px 10px; background: rgba(0, 0, 0, .72); font-family: var(--f-label); font-weight: 600; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: #fff; }
+
+
+/* Story strip controls: arrows + a progress bar so it's obvious the row scrolls */
+.story__ctrl { position: relative; display: flex; align-items: center; gap: 16px; padding: 0 var(--gutter); }
+.story__ctrl button { width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, .8); background: rgba(0, 0, 0, .45); color: #fff; font-size: 20px; cursor: pointer; transition: background-color var(--t-fast) linear, opacity var(--t-fast) linear; }
+.story__ctrl button:hover { background: var(--accent); border-color: var(--accent); }
+.story__ctrl button:disabled { opacity: .35; cursor: default; background: rgba(0, 0, 0, .45); border-color: rgba(255, 255, 255, .8); }
+.story__bar { flex: 1; height: 3px; background: rgba(255, 255, 255, .25); }
+.story__bar i { display: block; height: 100%; width: var(--w, 20%); margin-left: var(--l, 0); background: #fff; transition: margin-left 120ms linear; }
+.story__row { scrollbar-width: none; } .story__row::-webkit-scrollbar { display: none; }
+
+/* On touch screens, sideways rows only scroll sideways (no vertical wobble) */
+@media (hover: none) {
+  .filmstrip, .story__row, .w-story__row, .w-phones, .hscroll__track, .af-row { touch-action: pan-x pinch-zoom; overscroll-behavior-x: contain; }
+}

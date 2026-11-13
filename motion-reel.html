@@ -11,7 +11,7 @@
   <link rel="icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Bungee&family=Share+Tech&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
   <script>document.documentElement.classList.add('js')</script>
   <script src="assets/manifest.js" defer></script>
@@ -47,6 +47,13 @@
     .mr-notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 5vw, 90px); }
     .mr-notes p { max-width: 44ch; color: rgba(237, 237, 240, .8); }
     @media (max-width: 760px) { .mr-notes { grid-template-columns: 1fr; } }
+
+    /* Motion: Bungee headings and Share Tech text (its original pair) */
+    .p-mr main { --f-cond: 'Bungee', sans-serif; --f-label: 'Share Tech', sans-serif; --f-guest: 'Bungee', sans-serif; --f-num: 'Share Tech', sans-serif; }
+    .p-mr main p { font-family: 'Share Tech', sans-serif; font-size: 1.05em; }
+    .p-mr main .display, .p-mr main h2, .p-mr main h3 { font-weight: 400; letter-spacing: 0; }
+    /* the hero title stays in Barlow Condensed, as it was */
+    .p-mr main h1.display { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; }
   </style>
 </head>
 <body class="p-mr">

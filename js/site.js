@@ -186,6 +186,25 @@
     railLinks.forEach((a, i) => a.classList.toggle('is-active', i === active));
   }
 
+  /* --------------------------------------------------- story strip controls */
+  $$('.story__row, .w-story__row').forEach(row => {
+    const ctrl = document.createElement('div');
+    ctrl.className = 'story__ctrl';
+    ctrl.innerHTML = '<button type="button" aria-label="Scroll back">←</button><div class="story__bar" aria-hidden="true"><i></i></div><button type="button" aria-label="Scroll forward">→</button>';
+    row.after(ctrl);
+    const [prev, next] = $$('button', ctrl), bar = $('.story__bar i', ctrl);
+    const step = () => row.clientWidth * .8;
+    prev.addEventListener('click', () => row.scrollBy({ left: -step(), behavior: reduce ? 'auto' : 'smooth' }));
+    next.addEventListener('click', () => row.scrollBy({ left: step(), behavior: reduce ? 'auto' : 'smooth' }));
+    const upd = () => {
+      const max = row.scrollWidth - row.clientWidth, w = row.clientWidth / row.scrollWidth * 100;
+      bar.style.setProperty('--w', w + '%');
+      bar.style.setProperty('--l', (max > 0 ? row.scrollLeft / max * (100 - w) : 0) + '%');
+      prev.disabled = row.scrollLeft < 4; next.disabled = row.scrollLeft > max - 4;
+    };
+    row.addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); addEventListener('load', upd); upd();
+  });
+
   /* ------------------------------------------------------ horizontal scroll */
   const hs = $$('.hscroll');
   const hsOn = () => !reduce && matchMedia('(hover: hover) and (min-width: 761px)').matches;

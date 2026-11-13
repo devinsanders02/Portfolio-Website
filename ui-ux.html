@@ -11,7 +11,7 @@
   <link rel="icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
   <script>document.documentElement.classList.add('js')</script>
   <script src="assets/manifest.js" defer></script>
@@ -30,19 +30,29 @@
     .mw-bleed__body { position: relative; z-index: 2; padding: 0 var(--gutter) clamp(28px, 6vh, 64px); }
     .mw-bleed__body .label { color: rgba(255, 255, 255, .78); }
     @media (max-width: 900px) { .mw-intro { grid-template-columns: 1fr; } }
-    .ui-head { background: #1D1A3A; color: #fff; overflow: hidden; }
+    .ui-head { background: #171C2B; color: #fff; overflow: hidden; }
     .ui-head__grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(28px, 4vw, 70px); align-items: center; min-height: min(92vh, 900px); padding-top: var(--nav-h); }
-    .ui-head .label { color: #B9B3FF; }
+    .ui-head .label { color: #A9B8FF; }
     .ui-head .display { font-size: clamp(56px, 8.4vw, 150px); margin: 14px 0 0; }
     .ui-head .lede { margin: 24px 0 0; max-width: 34ch; color: rgba(255, 255, 255, .82); }
     .ui-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 0; padding: 0; }
-    .ui-tags li { padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(185, 179, 255, .5); font-size: 14px; color: #E3E0FF; }
-    .ui-stack { position: relative; aspect-ratio: 1; }
-    .ui-stack img { position: absolute; left: 12%; top: 14%; width: 76%; border-radius: 14px; box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .7); transform: translate(var(--x), var(--y)) rotate(var(--r)); transition: transform 900ms var(--ease); background: #fff; }
-    .ui-stack:hover img:nth-child(1) { transform: translate(-24%, 12%) rotate(-11deg); }
-    .ui-stack:hover img:nth-child(2) { transform: translate(26%, -8%) rotate(10deg); }
-    .ui-num { display: block; font-family: var(--f-cond); font-weight: 700; font-size: clamp(80px, 9vw, 160px); line-height: .8; color: #5B4FE0; margin-bottom: 14px; }
-    @media (max-width: 900px) { .ui-head__grid { grid-template-columns: 1fr; padding-bottom: 60px; } .ui-stack { max-width: 460px; } }
+    .ui-tags li { padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(169, 184, 255, .4); font-size: 14px; color: #E2E7FF; }
+    .ui-deck { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+    .ui-deck a { display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 18px; padding: 10px; border-radius: 14px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .1); transition: background-color var(--t-fast) linear, transform var(--t-med) var(--ease); }
+    .ui-deck a:hover { background: rgba(255, 255, 255, .14); transform: translateX(-8px); }
+    .ui-deck img { width: 120px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; background: #fff; }
+    .ui-deck span { font-weight: 700; font-size: clamp(18px, 1.5vw, 24px); letter-spacing: -.01em; }
+    .ui-deck b { display: block; font-size: 13px; color: #A9B8FF; letter-spacing: .1em; margin-bottom: 4px; }
+    .ui-minis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 32px); }
+    .ui-mini .ui-case__img { aspect-ratio: 4 / 3; display: grid; place-items: center; }
+    .ui-mini .ui-case__img img { max-height: 100%; }
+    .ui-mini__n { display: block; margin-top: 18px; font-weight: 800; font-size: 40px; line-height: .9; color: #5C74E8; }
+    .ui-mini h3 { font-weight: 800; font-size: clamp(20px, 1.6vw, 26px); letter-spacing: -.02em; margin: 8px 0 6px; }
+    .ui-mini p { margin: 0 0 16px; color: var(--ink-soft); }
+    .ui-mini .btn { height: 42px; padding: 0 16px; font-size: 14px; }
+    @media (max-width: 900px) { .ui-minis { grid-template-columns: 1fr; } }
+    .ui-num { display: block; font-family: var(--f-cond); font-weight: 700; font-size: clamp(80px, 9vw, 160px); line-height: .8; color: #5C74E8; margin-bottom: 14px; }
+    @media (max-width: 900px) { .ui-head__grid { grid-template-columns: 1fr; padding-bottom: 60px; } }
     .ui-old { padding: calc(var(--nav-h) + clamp(60px, 10vh, 120px)) 0 clamp(50px, 7vw, 100px); }
     .ui-head .display { font-size: clamp(56px, 10vw, 180px); }
     .ui-cases { display: grid; gap: clamp(70px, 9vw, 150px); }
@@ -60,6 +70,10 @@
     .ui-lab__img img { max-width: 100%; max-height: 100%; object-fit: contain; }
     .ui-lab h3 { margin: 16px 0 6px; } .ui-lab p { margin: 0 0 10px; color: rgba(233, 237, 242, .7); }
     @media (max-width: 900px) { .ui-case { grid-template-columns: 1fr; } .ui-case:nth-child(even) .ui-case__img { order: 0; } .ui-labs { grid-template-columns: 1fr; } }
+
+    /* Interface concepts: Manrope, a clean UI face */
+    .p-ui main { --f-sans: 'Manrope', sans-serif; --f-cond: 'Manrope', sans-serif; --f-label: 'Manrope', sans-serif; --f-guest: 'Manrope', sans-serif; --f-num: 'Manrope', sans-serif; font-family: 'Manrope', sans-serif; }
+    .p-ui main .display { font-weight: 800; letter-spacing: -.04em; text-transform: none; }
   </style>
 </head>
 <body class="p-ui">
@@ -84,34 +98,34 @@
           <p class="lede">Self-initiated UI and UX work, taken all the way to clickable Figma prototypes. None of these are shipped products.</p>
           <ul class="ui-tags" aria-label="Platforms"><li>iOS</li><li>Web dashboard</li><li>Mobile app</li><li>Figma prototypes</li></ul>
         </div>
-        <div class="ui-stack" aria-hidden="true">
-          <img src="UI-UX/WISE Thumbnail.webp" alt="" style="--r: -7deg; --x: -14%; --y: 8%;">
-          <img src="UI-UX/KT Thumbnail.webp" alt="" style="--r: 6deg; --x: 16%; --y: -4%;">
-          <img src="UI-UX/iOS Thumbnail.webp" alt="" style="--r: -1deg; --x: 0%; --y: 0%;">
-        </div>
+        <ol class="ui-deck" aria-label="The three case studies">
+          <li><a href="#case-1"><img src="UI-UX/iOS Thumbnail.webp" alt=""><span><b>01</b> iOS habit ecosystem</span></a></li>
+          <li><a href="#case-2"><img src="UI-UX/WISE Thumbnail.webp" alt=""><span><b>02</b> Wise dashboard</span></a></li>
+          <li><a href="#case-3"><img src="UI-UX/KT Thumbnail.webp" alt=""><span><b>03</b> KalorieTrak</span></a></li>
+        </ol>
       </div>
     </section>
 
     <section class="section" data-tone="light" aria-label="Case studies" style="padding-top: 0;">
       <div class="wrap ui-cases">
-        <article class="ui-case reveal">
+        <article class="ui-case reveal" id="case-1">
           <figure class="ui-case__img"><img src="UI-UX/iOS Thumbnail.webp" alt="iOS habit ecosystem" loading="lazy" decoding="async" data-lightbox></figure>
           <div><span class="ui-num">01</span><span class="label label--accent">2026 · iOS · Widgets · Focus</span><h2 class="display display--m" style="margin: 10px 0 14px;">iOS habit ecosystem</h2><p>Reminders, Lock Screen widgets and Focus working together as one habit loop across devices.</p><div class="ui-links"><a class="btn" href="https://www.figma.com/proto/6uUz9Vnx3JQnb6TEKXB0lE/Ecosystem-Case-Study?node-id=1-2&p=f&viewport=285%2C97%2C0.18&t=M0zisJOCAqMX3oGw-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=1%3A2&page-id=0%3A1" rel="noopener" target="_blank">Case study ↗</a></div></div>
         </article>
-        <article class="ui-case reveal">
+        <article class="ui-case reveal" id="case-2">
           <figure class="ui-case__img"><img src="UI-UX/WISE Thumbnail.webp" alt="Wise dashboard" loading="lazy" decoding="async" data-lightbox></figure>
           <div><span class="ui-num">02</span><span class="label label--accent">2025 · Desktop · Mobile · Design system</span><h2 class="display display--m" style="margin: 10px 0 14px;">Wise dashboard</h2><p>Taking Wise from one-off currency transfers to a full dashboard with multi-currency accounts and cards.</p><div class="ui-links"><a class="btn" href="https://www.figma.com/proto/e73lxstvISQ5uGFYnZOOOS/Wise-Banking-Dash-Case-Study?node-id=1-2&page-id=0%3A1&starting-point-node-id=1%3A2&scaling=scale-down-width&content-scaling=fixed&t=RoTTcpocSUe5iZQs-1" rel="noopener" target="_blank">Case study ↗</a><a class="btn" href="https://www.figma.com/proto/4qe0TRjqgTmGfm4kcG44uH/Wise-Design-System-MASTER?node-id=2150-2940&page-id=125%3A1802&starting-point-node-id=2150%3A2940&t=4SkG7lGFOJMhLwgp-1" rel="noopener" target="_blank">Desktop prototype ↗</a><a class="btn" href="https://www.figma.com/proto/06Z3boWDUoB3vxWtp3mjth/Wise-Mobile-Dashboard?node-id=3-3412&page-id=0%3A1&t=QcWfE70UrDFl6pip-1" rel="noopener" target="_blank">Mobile prototype ↗</a></div></div>
         </article>
-        <article class="ui-case reveal">
+        <article class="ui-case reveal" id="case-3">
           <figure class="ui-case__img"><img src="UI-UX/KT Thumbnail.webp" alt="KalorieTrak" loading="lazy" decoding="async" data-lightbox></figure>
           <div><span class="ui-num">03</span><span class="label label--accent">2025 · iOS app · Tracking</span><h2 class="display display--m" style="margin: 10px 0 14px;">KalorieTrak</h2><p>A food tracker built to be read at a glance, with as little typing as possible.</p><div class="ui-links"><a class="btn" href="https://www.figma.com/proto/xUzNM9LqSACz0XuuJqye13/KalorieTrak-Case-Study?node-id=1-2&p=f&viewport=431%2C25%2C0.06&t=21KN4Pxxcs8Hgg5G-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=1%3A2&page-id=0%3A1" rel="noopener" target="_blank">Case study ↗</a><a class="btn" href="https://www.figma.com/proto/lE2UR9lkQUrgT1mAOOBCQK/KalorieTrak?node-id=45-2&p=f&viewport=565%2C25%2C0.09&t=5YI8JYTytwQhwWar-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=103%3A27&show-proto-sidebar=1&page-id=0%3A1" rel="noopener" target="_blank">Prototype ↗</a></div></div>
         </article>
       </div>
     </section>
-    <section class="section ui-labs-sec" data-tone="dark" aria-labelledby="labs">
+    <section class="section" data-tone="light" aria-labelledby="labs" style="padding-top: 0;">
       <div class="wrap">
         <div class="set-head"><h2 class="label label--accent" id="labs">Small studies</h2><span class="label">Single screens</span></div>
-        <div class="ui-labs" data-gallery><figure class="reveal ui-lab"><div class="ui-lab__img"><img src="UI-UX/SmartHome.webp" alt="Smart home screen" loading="lazy" decoding="async" data-lightbox></div><figcaption><h3 class="h3">Smart home screen</h3><p>Room controls you can read at a glance.</p><a class="link-arrow u-line" href="https://www.figma.com/proto/H3dsTS4sKsFdt8Mj8jP62n/Smart-Home-Screen?node-id=1-2&p=f&viewport=125%2C-33%2C0.81&t=bJVffbagub2tABmI-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1" rel="noopener" target="_blank">Prototype</a></figcaption></figure><figure class="reveal ui-lab"><div class="ui-lab__img"><img src="UI-UX/OneTap.webp" alt="One-tap purchase" loading="lazy" decoding="async" data-lightbox></div><figcaption><h3 class="h3">One-tap purchase</h3><p>Checkout on a single screen instead of a multi-step cart.</p></figcaption></figure><figure class="reveal ui-lab"><div class="ui-lab__img"><img src="UI-UX/Onboard.webp" alt="Onboarding" loading="lazy" decoding="async" data-lightbox></div><figcaption><h3 class="h3">Onboarding</h3><p>A step-by-step setup that walks new users through permissions.</p><a class="link-arrow u-line" href="https://www.figma.com/proto/j7WV1YWcnsGuorRJ9HIFVw/Onboarding-Screen?node-id=7-12&p=f&viewport=-32%2C-533%2C0.62&t=gI2LM5w897hNEAiP-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=7%3A12&page-id=0%3A1" rel="noopener" target="_blank">Prototype</a></figcaption></figure></div>
+        <div class="ui-minis" data-gallery><article class="ui-mini reveal" style="--d: 0ms"><figure class="ui-case__img"><img src="UI-UX/SmartHome.webp" alt="Smart home screen" loading="lazy" decoding="async" data-lightbox></figure><span class="ui-mini__n">04</span><h3>Smart home screen</h3><p>Room controls you can read at a glance.</p><a class="btn" href="https://www.figma.com/proto/H3dsTS4sKsFdt8Mj8jP62n/Smart-Home-Screen?node-id=1-2&p=f&viewport=125%2C-33%2C0.81&t=bJVffbagub2tABmI-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1" rel="noopener" target="_blank">Prototype ↗</a></article><article class="ui-mini reveal" style="--d: 90ms"><figure class="ui-case__img"><img src="UI-UX/OneTap.webp" alt="One-tap purchase" loading="lazy" decoding="async" data-lightbox></figure><span class="ui-mini__n">05</span><h3>One-tap purchase</h3><p>Checkout on a single screen instead of a multi-step cart.</p></article><article class="ui-mini reveal" style="--d: 180ms"><figure class="ui-case__img"><img src="UI-UX/Onboard.webp" alt="Onboarding" loading="lazy" decoding="async" data-lightbox></figure><span class="ui-mini__n">06</span><h3>Onboarding</h3><p>A step-by-step setup that walks new users through permissions.</p><a class="btn" href="https://www.figma.com/proto/j7WV1YWcnsGuorRJ9HIFVw/Onboarding-Screen?node-id=7-12&p=f&viewport=-32%2C-533%2C0.62&t=gI2LM5w897hNEAiP-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=7%3A12&page-id=0%3A1" rel="noopener" target="_blank">Prototype ↗</a></article></div>
       </div>
     </section>
 
