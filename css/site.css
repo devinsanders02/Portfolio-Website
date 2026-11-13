@@ -202,12 +202,12 @@ h1, h2, h3, .h2, .h3, .lede { text-wrap: balance; }
   -webkit-mask-image: radial-gradient(ellipse var(--topo-fade-w) var(--topo-fade-h) at var(--topo-fade-x) var(--topo-fade-y), #000 40%, transparent 100%);
           mask-image: radial-gradient(ellipse var(--topo-fade-w) var(--topo-fade-h) at var(--topo-fade-x) var(--topo-fade-y), #000 40%, transparent 100%);
 }
-.topo > svg, .topo > img { position: absolute; top: 0; right: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: top right; transform: translate3d(calc(var(--mx, 0) * -14px), calc(var(--my, 0) * -10px), 0); transition: transform 1600ms var(--ease); }
+.topo > svg, .topo > img { position: absolute; top: 0; right: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: top right; }
 .topo .tp-c, .topo > img { opacity: var(--topo-opacity); }
 /* Always on, very slow: a wave of light moves through the contour levels */
 .topo.is-live .tp-c { animation: topo-wave 9s ease-in-out infinite; animation-delay: calc(var(--k) * -160ms); }
 @keyframes topo-wave { 0%, 100% { opacity: var(--topo-opacity); } 50% { opacity: calc(var(--topo-opacity) * .4); } }
-@media (prefers-reduced-motion: reduce) { .topo.is-live .tp-c { animation: none; } .topo > svg { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .topo.is-live .tp-c { animation: none; } }
 @media (max-aspect-ratio: 1/1) {
   /* Portrait screens: keep the summit on screen instead of cropping to the far right */
   .topo { --topo-fade-x: 70%; --topo-fade-y: 8%; --topo-fade-w: 120%; --topo-fade-h: 60%; }
@@ -478,3 +478,19 @@ html.hide-interim .slot__interim { display: none; }
   .hscroll__track { transform: none; width: auto; overflow-x: auto; scroll-snap-type: x mandatory; }
   .hs-item { height: 52vh; scroll-snap-align: start; }
 }
+
+
+/* ------------------------------------------------------------ story strip
+   A full-bleed background image with a row of cards sliding across it
+   (first used for the WANDRD brand story). */
+.story { position: relative; overflow: hidden; color: #fff; padding: clamp(80px, 10vw, 150px) 0 clamp(40px, 5vw, 70px); }
+.story__bg { position: absolute; inset: 0; }
+.story__bg img { width: 100%; height: 100%; object-fit: cover; }
+.story__bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0, 0, 0, .55), rgba(0, 0, 0, .1) 45%, rgba(0, 0, 0, .55)); }
+.story__head { position: relative; }
+.story__head .label { color: rgba(255, 255, 255, .8); }
+.story__head p { margin: 16px 0 0; max-width: 44ch; color: rgba(255, 255, 255, .88); }
+.story__row { position: relative; display: grid; grid-auto-flow: column; grid-auto-columns: clamp(220px, 22vw, 330px); gap: clamp(10px, 1.2vw, 18px); overflow-x: auto; padding: clamp(32px, 4vw, 56px) var(--gutter) 24px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+.story__row figure { margin: 0; scroll-snap-align: start; box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .7); }
+.story__row img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.story__row figcaption { margin-top: 10px; font-family: var(--f-label); font-weight: 600; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255, 255, 255, .85); }

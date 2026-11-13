@@ -219,7 +219,7 @@ if (cfg.source === 'dem' && cfg.dem.summitLabelShow && field.summit) {
   const ft = Math.round(field.summit.m * 3.28084).toLocaleString('en-US');
   const x = f1(field.summit.gx * sx), y = f1(field.summit.gy * sy);
   // Summit marker: a pulsing ring + dot, and a label with a paper-coloured halo so it reads over the lines
-  label = `<g class="tp-summit" transform="translate(${x} ${y})"><circle class="tp-pulse" r="7"/><circle class="tp-dot" r="5.5"/><text x="16" y="5">${cfg.dem.summitLabel.replace('{ft}', ft)}</text></g>`;
+  label = `<g class="tp-summit" transform="translate(${x} ${y})"><circle class="tp-pulse" r="7"/><circle class="tp-dot" r="4.5"/><text x="16" y="5">${cfg.dem.summitLabel.replace('{ft}', ft)}</text></g>`;
 }
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VW} ${VH}" preserveAspectRatio="xMaxYMin slice" class="tp" data-source="${cfg.source}" aria-hidden="true" focusable="false">
@@ -230,8 +230,8 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VW} ${VH}" p
 .tp-lo{stroke:color-mix(in oklab,var(--topo-mid,#d9c4e6) var(--m),var(--topo-low,#bcd3ec))}
 .tp-hi{stroke:color-mix(in oklab,var(--topo-high,#f0c8bf) var(--m),var(--topo-mid,#d9c4e6))}
 .tp-i{stroke-width:calc(var(--topo-width,1.1) * var(--topo-index-weight,1.9))}
-.tp-summit text{fill:var(--topo-label,#2c3e50);font:700 15px/1 Barlow,system-ui,sans-serif;letter-spacing:.16em;paint-order:stroke;stroke:var(--topo-halo,#f4f5f7);stroke-width:7px;stroke-linejoin:round}
-.tp-dot{fill:var(--topo-mark,#f15b22);stroke:var(--topo-halo,#f4f5f7);stroke-width:3}
+.tp-summit text{fill:var(--topo-label,#2c3e50);font:500 13px/1 Barlow,system-ui,sans-serif;letter-spacing:.16em;paint-order:stroke;stroke:var(--topo-halo,#f4f5f7);stroke-width:6px;opacity:.8;stroke-linejoin:round}
+.tp-dot{fill:var(--topo-mark,#f15b22);stroke:var(--topo-halo,#f4f5f7);stroke-width:2.5}
 .tp-pulse{fill:none;stroke:var(--topo-mark,#f15b22);stroke-width:1.5;transform-box:fill-box;transform-origin:center;animation:tp-pulse 2.8s ease-out infinite}
 @keyframes tp-pulse{from{transform:scale(1);opacity:.9}to{transform:scale(4.6);opacity:0}}
 @media (prefers-reduced-motion:reduce){.tp-pulse{animation:none;opacity:0}}

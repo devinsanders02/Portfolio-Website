@@ -83,15 +83,6 @@
     fetch(topo.dataset.src).then(r => r.ok ? r.text() : Promise.reject()).then(svg => {
       topo.innerHTML = svg;
       const live = () => { if (!reduce) topo.classList.add('is-live'); };
-      // Lines drift a few pixels against the pointer (desktop only)
-      if (!reduce && matchMedia('(pointer: fine)').matches) {
-        const host = topo.parentElement;
-        host.addEventListener('pointermove', e => {
-          const r = host.getBoundingClientRect();
-          topo.style.setProperty('--mx', ((e.clientX - r.left) / r.width - .5).toFixed(3));
-          topo.style.setProperty('--my', ((e.clientY - r.top) / r.height - .5).toFixed(3));
-        });
-      }
       if (reduce || sessionStorageGet('topoDrawn')) { live(); return; }
       sessionStorageSet('topoDrawn', '1');
       // Measure each line on screen so the dash covers it end to end (pathLength is
