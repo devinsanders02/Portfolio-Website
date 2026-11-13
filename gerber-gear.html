@@ -40,9 +40,15 @@
     @media (max-width: 900px) { .g-unit { grid-template-columns: 1fr; } .g-unit__text { position: relative; top: 0; } }
 
     /* Dielines on kraft: the flat construction drawings */
-    .g-dielines { background: var(--kraft); color: var(--ink); }
+    .g-dielines { background: #34373A; color: #F2EEE6; --ink-soft: rgba(242, 238, 230, .72); } /* onyx */
+    .g-dielines .label { color: rgba(242, 238, 230, .7); }
     .g-dielines__row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.4vw, 24px); }
-    .g-dielines__row img { aspect-ratio: 3 / 2; object-fit: contain; width: 100%; background: #FBF8F2; padding: clamp(8px, 1vw, 16px); box-shadow: 0 20px 40px -28px rgba(40, 28, 10, .5); }
+    .g-dielines__row figure { margin: 0; }
+    /* Printed sheets laid on a dark table: the white reads as paper, not as a box */
+    .g-dielines__row img { aspect-ratio: 3 / 2; object-fit: contain; width: 100%; background: #F6F2EA; padding: clamp(10px, 1.2vw, 18px); box-shadow: 0 30px 50px -24px rgba(0, 0, 0, .7), 0 2px 0 rgba(0, 0, 0, .25); transform: rotate(var(--r, 0deg)); transition: transform var(--t-med) var(--ease); }
+    .g-dielines__row figure:nth-child(1) img { --r: -1.4deg; } .g-dielines__row figure:nth-child(2) img { --r: .8deg; } .g-dielines__row figure:nth-child(3) img { --r: -.6deg; }
+    .g-dielines__row figure:hover img { --r: 0deg; transform: rotate(0) translateY(-6px); }
+    .g-dielines__row figcaption { color: rgba(242, 238, 230, .78); margin-top: 18px; }
     @media (max-width: 900px) { .g-dielines__row { grid-template-columns: 1fr; } }
 
     .g-bleed { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; color: #fff; overflow: hidden; }
@@ -50,6 +56,7 @@
     .g-bleed::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(10, 14, 11, .78)); }
     .g-bleed__body { position: relative; z-index: 2; padding: 0 var(--gutter) clamp(32px, 7vh, 80px); max-width: 760px; }
     .g-bleed__body p { color: rgba(255, 255, 255, .84); }
+    .g-chip { display: inline-block; padding: 6px 10px; background: var(--kraft); color: #1F241F !important; }
     .g-unbox { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: clamp(12px, 1.6vw, 24px); align-items: stretch; }
     .g-unbox__main, .g-unbox__main img { height: 100%; }
     .g-unbox__side { display: grid; grid-template-rows: auto 1fr; gap: clamp(12px, 1.6vw, 24px); }
@@ -88,17 +95,11 @@
       </div>
     </section>
 
-    <section class="section" data-tone="light" aria-label="Overview">
-      <div class="wrap g-intro">
-        <div>
-          <p class="lede reveal">Three field tools, three packages, made to bundle together as one set. Built as prototypes from cardboard and thick paper stock.</p>
-          <p class="reveal muted" style="--d: 80ms; margin: 22px 0 0; max-width: 46ch; font-size: 16px;">A school project. I’m not affiliated with Gerber: the tools, including the hatchet and its sheath, are theirs. The packaging around them is mine.</p>
-        </div>
-        <div class="reveal prose" style="--d: 120ms">
-          <span class="label">The problem</span>
-          <!-- Your existing copy, trimmed. -->
-          <p style="margin-top: 12px;">Outdoor gear usually ships in plastic clamshells that can’t be recycled and hide what the tool feels like. I wanted interlocking kraft structures with custom inserts that hold heavy steel safely, and still show off a rugged brand.</p>
-        </div>
+    <section class="section case-intro" data-tone="light" aria-label="Overview">
+      <div class="wrap">
+        <!-- DRAFT COPY: check it sounds like you. -->
+        <p class="case-intro__lede reveal">Packaging for three Gerber field tools, a knife, a hatchet and a paracord spool, made to sell on their own and bundle as one set.</p>
+        <div class="case-intro__grid"><div class="ci reveal" style="--d: 0ms"><span class="ci__n">01</span><span class="label">The problem</span><p>Outdoor gear usually ships in plastic clamshells that can’t be recycled and hide what the tool feels like.</p></div><div class="ci reveal" style="--d: 90ms"><span class="ci__n">02</span><span class="label">Built from</span><p>Cardboard for the display and unboxing, thick paper stock for the packages. Every piece was a working prototype.</p></div><div class="ci reveal" style="--d: 180ms"><span class="ci__n">03</span><span class="label">Good to know</span><p>A school project. I’m not affiliated with Gerber: the tools, hatchet and sheath included, are theirs. The packaging is mine.</p></div></div>
       </div>
     </section>
 
@@ -128,16 +129,16 @@
       </div>
     </section>
 
-    <section class="section g-dielines" data-tone="light" aria-labelledby="die-title">
+    <section class="section g-dielines" data-tone="dark" aria-labelledby="die-title">
       <div class="wrap">
         <div class="sec-head">
           <h2 class="g-h" id="die-title" style="font-size: clamp(44px, 6vw, 110px);">Flat, before<br>it’s a box</h2>
           <p>The dielines for all three, flat before anything is folded or glued.</p>
         </div>
         <div class="g-dielines__row" data-gallery>
-          <figure style="margin: 0;" class="reveal"><img src="GerberGear/GG-DielineKnife.webp" alt="Pocket knife packaging dieline" loading="lazy" data-lightbox><figcaption class="cap" style="color: var(--ink)">01 · Knife</figcaption></figure>
-          <figure style="margin: 0; --d: 100ms;" class="reveal"><img src="GerberGear/GG-DielineHatchet.webp" alt="Hatchet packaging dieline" loading="lazy" data-lightbox><figcaption class="cap" style="color: var(--ink)">02 · Hatchet</figcaption></figure>
-          <figure style="margin: 0;" class="reveal"><img src="GerberGear/GG-DielineParacord.webp" alt="Paracord sleeve dieline" loading="lazy" data-lightbox><figcaption class="cap" style="color: var(--ink)">03 · Paracord</figcaption></figure>
+          <figure style="margin: 0;" class="reveal"><img src="GerberGear/GG-DielineKnife.webp" alt="Pocket knife packaging dieline" loading="lazy" data-lightbox><figcaption class="cap">01 · Knife</figcaption></figure>
+          <figure style="margin: 0; --d: 100ms;" class="reveal"><img src="GerberGear/GG-DielineHatchet.webp" alt="Hatchet packaging dieline" loading="lazy" data-lightbox><figcaption class="cap">02 · Hatchet</figcaption></figure>
+          <figure style="margin: 0;" class="reveal"><img src="GerberGear/GG-DielineParacord.webp" alt="Paracord sleeve dieline" loading="lazy" data-lightbox><figcaption class="cap">03 · Paracord</figcaption></figure>
         </div>
       </div>
     </section>
@@ -145,7 +146,7 @@
     <section class="g-bleed" data-tone="dark" aria-labelledby="pos-title">
       <img src="GerberGear/GG-POS.webp" alt="Point-of-display retail unit holding all three tools" loading="lazy">
       <div class="g-bleed__body">
-        <span class="label" style="color: var(--kraft)">On the shelf</span>
+        <span class="label g-chip">On the shelf</span>
         <h2 class="g-h" id="pos-title" style="font-size: clamp(40px, 5vw, 92px); margin: 12px 0 14px;">Counter display</h2>
         <p>A cardboard counter unit that holds all three tools, with tiered shelves so every package stays visible and easy to pick up.</p>
       </div>
@@ -185,7 +186,7 @@
       <span class="label footer__sign" title="The contour lines on the homepage are this mountain"><span class="coord">39.5826° N 105.6688° W</span> · Mt. Bierstadt, 14,060 ft · My first fourteener</span>
       <ul class="label">
         <li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li>
-        <li><a class="u-line" href="Resume.pdf">Résumé</a></li>
+        <li><a class="u-line" href="Resume.pdf">Resume</a></li>
         <li><a class="u-line" href="#main">Back to top ↑</a></li>
       </ul>
     </div>

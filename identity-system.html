@@ -11,7 +11,7 @@
   <link rel="icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
   <script>document.documentElement.classList.add('js')</script>
   <script src="assets/manifest.js" defer></script>
@@ -31,8 +31,13 @@
     .mw-bleed__body .label { color: rgba(255, 255, 255, .78); }
     @media (max-width: 900px) { .mw-intro { grid-template-columns: 1fr; } }
     body.p-jc { --accent: #E63946; }
+    /* Jared's identity is set in Inter: everything inside the page uses it (nav and footer stay in Devin's Barlow) */
+    .p-jc main { --f-sans: 'Inter', system-ui, sans-serif; --f-cond: 'Inter', system-ui, sans-serif; --f-label: 'Inter', system-ui, sans-serif; --f-guest: 'Inter', system-ui, sans-serif; --f-num: 'Inter', system-ui, sans-serif; font-family: 'Inter', system-ui, sans-serif; }
+    .p-jc main .display, .p-jc main .jc-big, .p-jc main .jc-pal b, .p-jc main .h2 { font-weight: 800; letter-spacing: -.035em; }
+    .p-jc main .fit { font-size: min(9vw, 190px, calc((100vw - 2 * var(--gutter)) / (var(--chars, 8) * .66))); }
+    .p-jc main .label { letter-spacing: .08em; }
     .jc-idea { background: #000; color: #fff; padding: clamp(90px, 13vw, 200px) 0 clamp(70px, 9vw, 140px); }
-    .jc-big { font-family: var(--f-cond); font-weight: 700; text-transform: uppercase; font-size: clamp(56px, 9.6vw, 180px); line-height: .86; letter-spacing: -.005em; margin: 18px 0 0; max-width: 11ch; }
+    .jc-big { font-family: var(--f-cond); font-weight: 800; text-transform: uppercase; font-size: clamp(48px, 8vw, 150px); line-height: .9; letter-spacing: -.035em; margin: 18px 0 0; max-width: 11ch; }
     .jc-dots { display: inline-flex; gap: .1em; margin-left: .06em; }
     .jc-dots i { width: .15em; height: .15em; background: #E63946; border-radius: 50%; }
     @media (prefers-reduced-motion: no-preference) {
@@ -141,7 +146,7 @@
       <span class="label footer__sign" title="The contour lines on the homepage are this mountain"><span class="coord">39.5826° N 105.6688° W</span> · Mt. Bierstadt, 14,060 ft · My first fourteener</span>
       <ul class="label">
         <li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li>
-        <li><a class="u-line" href="Resume.pdf">Résumé</a></li>
+        <li><a class="u-line" href="Resume.pdf">Resume</a></li>
         <li><a class="u-line" href="#main">Back to top ↑</a></li>
       </ul>
     </div>

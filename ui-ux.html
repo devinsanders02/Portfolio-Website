@@ -30,7 +30,20 @@
     .mw-bleed__body { position: relative; z-index: 2; padding: 0 var(--gutter) clamp(28px, 6vh, 64px); }
     .mw-bleed__body .label { color: rgba(255, 255, 255, .78); }
     @media (max-width: 900px) { .mw-intro { grid-template-columns: 1fr; } }
-    .ui-head { padding: calc(var(--nav-h) + clamp(60px, 10vh, 120px)) 0 clamp(50px, 7vw, 100px); }
+    .ui-head { background: #1D1A3A; color: #fff; overflow: hidden; }
+    .ui-head__grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(28px, 4vw, 70px); align-items: center; min-height: min(92vh, 900px); padding-top: var(--nav-h); }
+    .ui-head .label { color: #B9B3FF; }
+    .ui-head .display { font-size: clamp(56px, 8.4vw, 150px); margin: 14px 0 0; }
+    .ui-head .lede { margin: 24px 0 0; max-width: 34ch; color: rgba(255, 255, 255, .82); }
+    .ui-tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 0; padding: 0; }
+    .ui-tags li { padding: 7px 14px; border-radius: 999px; border: 1px solid rgba(185, 179, 255, .5); font-size: 14px; color: #E3E0FF; }
+    .ui-stack { position: relative; aspect-ratio: 1; }
+    .ui-stack img { position: absolute; left: 12%; top: 14%; width: 76%; border-radius: 14px; box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .7); transform: translate(var(--x), var(--y)) rotate(var(--r)); transition: transform 900ms var(--ease); background: #fff; }
+    .ui-stack:hover img:nth-child(1) { transform: translate(-24%, 12%) rotate(-11deg); }
+    .ui-stack:hover img:nth-child(2) { transform: translate(26%, -8%) rotate(10deg); }
+    .ui-num { display: block; font-family: var(--f-cond); font-weight: 700; font-size: clamp(80px, 9vw, 160px); line-height: .8; color: #5B4FE0; margin-bottom: 14px; }
+    @media (max-width: 900px) { .ui-head__grid { grid-template-columns: 1fr; padding-bottom: 60px; } .ui-stack { max-width: 460px; } }
+    .ui-old { padding: calc(var(--nav-h) + clamp(60px, 10vh, 120px)) 0 clamp(50px, 7vw, 100px); }
     .ui-head .display { font-size: clamp(56px, 10vw, 180px); }
     .ui-cases { display: grid; gap: clamp(70px, 9vw, 150px); }
     .ui-case { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(24px, 4vw, 72px); align-items: center; }
@@ -51,7 +64,7 @@
 </head>
 <body class="p-ui">
   <a class="skip" href="#main">Skip to content</a>
-  <header class="nav" data-tone="light">
+  <header class="nav" data-tone="dark">
     <a class="nav__brand" href="index.html" aria-label="Devin Sanders, home"><svg class="mark" viewBox="0 0 236 428" aria-hidden="true"><use href="assets/logo/mark.svg#m"/></svg><span class="nav__name">Devin Sanders</span><span class="nav__coord">More work / Interface</span></a>
     <nav aria-label="Main"><ul class="nav__links">
       <li><a href="work.html"><span class="idx">01</span><span class="txt">Work</span></a></li>
@@ -63,11 +76,19 @@
   <div class="ring" aria-hidden="true"></div>
 
   <main id="main">
-    <section class="ui-head" data-tone="light" aria-labelledby="title">
-      <div class="wrap">
-        <span class="label label--accent">11 / Interface design · Concepts</span>
-        <h1 class="display display--xl" id="title" style="margin-top: 14px;">Interface concepts</h1>
-        <p class="lede" style="margin-top: 22px; max-width: 40ch;">Self-initiated UI and UX work: ideas taken to clickable Figma prototypes. None of these are shipped products.</p>
+    <section class="ui-head" data-tone="dark" aria-labelledby="title">
+      <div class="wrap ui-head__grid">
+        <div>
+          <span class="label">11 / Interface design · Concepts</span>
+          <h1 class="display" id="title">Interface<br>concepts</h1>
+          <p class="lede">Self-initiated UI and UX work, taken all the way to clickable Figma prototypes. None of these are shipped products.</p>
+          <ul class="ui-tags" aria-label="Platforms"><li>iOS</li><li>Web dashboard</li><li>Mobile app</li><li>Figma prototypes</li></ul>
+        </div>
+        <div class="ui-stack" aria-hidden="true">
+          <img src="UI-UX/WISE Thumbnail.webp" alt="" style="--r: -7deg; --x: -14%; --y: 8%;">
+          <img src="UI-UX/KT Thumbnail.webp" alt="" style="--r: 6deg; --x: 16%; --y: -4%;">
+          <img src="UI-UX/iOS Thumbnail.webp" alt="" style="--r: -1deg; --x: 0%; --y: 0%;">
+        </div>
       </div>
     </section>
 
@@ -75,15 +96,15 @@
       <div class="wrap ui-cases">
         <article class="ui-case reveal">
           <figure class="ui-case__img"><img src="UI-UX/iOS Thumbnail.webp" alt="iOS habit ecosystem" loading="lazy" decoding="async" data-lightbox></figure>
-          <div><span class="label label--accent">01 · 2026</span><h2 class="display display--m" style="margin: 10px 0 14px;">iOS habit ecosystem</h2><p>Reminders, Lock Screen widgets and Focus working together as one habit loop across devices.</p><div class="ui-links"><a class="btn" href="https://www.figma.com/proto/6uUz9Vnx3JQnb6TEKXB0lE/Ecosystem-Case-Study?node-id=1-2&p=f&viewport=285%2C97%2C0.18&t=M0zisJOCAqMX3oGw-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=1%3A2&page-id=0%3A1" rel="noopener" target="_blank">Case study ↗</a><a class="btn" href="https://www.figma.com/make/hBfsKObrnzYV7OVkhdcA56/Mobile-App-Prototype-Design?fullscreen=1&t=ayey4knAqwlkAHdd-1&code-node-id=0-9" rel="noopener" target="_blank">Prototype ↗</a></div></div>
+          <div><span class="ui-num">01</span><span class="label label--accent">2026 · iOS · Widgets · Focus</span><h2 class="display display--m" style="margin: 10px 0 14px;">iOS habit ecosystem</h2><p>Reminders, Lock Screen widgets and Focus working together as one habit loop across devices.</p><div class="ui-links"><a class="btn" href="https://www.figma.com/proto/6uUz9Vnx3JQnb6TEKXB0lE/Ecosystem-Case-Study?node-id=1-2&p=f&viewport=285%2C97%2C0.18&t=M0zisJOCAqMX3oGw-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=1%3A2&page-id=0%3A1" rel="noopener" target="_blank">Case study ↗</a></div></div>
         </article>
         <article class="ui-case reveal">
           <figure class="ui-case__img"><img src="UI-UX/WISE Thumbnail.webp" alt="Wise dashboard" loading="lazy" decoding="async" data-lightbox></figure>
-          <div><span class="label label--accent">02 · 2025</span><h2 class="display display--m" style="margin: 10px 0 14px;">Wise dashboard</h2><p>Taking Wise from one-off currency transfers to a full dashboard with multi-currency accounts and cards.</p><div class="ui-links"><a class="btn" href="https://www.figma.com/proto/e73lxstvISQ5uGFYnZOOOS/Wise-Banking-Dash-Case-Study?node-id=1-2&page-id=0%3A1&starting-point-node-id=1%3A2&scaling=scale-down-width&content-scaling=fixed&t=RoTTcpocSUe5iZQs-1" rel="noopener" target="_blank">Case study ↗</a><a class="btn" href="https://www.figma.com/proto/4qe0TRjqgTmGfm4kcG44uH/Wise-Design-System-MASTER?node-id=2150-2940&page-id=125%3A1802&starting-point-node-id=2150%3A2940&t=4SkG7lGFOJMhLwgp-1" rel="noopener" target="_blank">Desktop prototype ↗</a><a class="btn" href="https://www.figma.com/proto/06Z3boWDUoB3vxWtp3mjth/Wise-Mobile-Dashboard?node-id=3-3412&page-id=0%3A1&t=QcWfE70UrDFl6pip-1" rel="noopener" target="_blank">Mobile prototype ↗</a></div></div>
+          <div><span class="ui-num">02</span><span class="label label--accent">2025 · Desktop · Mobile · Design system</span><h2 class="display display--m" style="margin: 10px 0 14px;">Wise dashboard</h2><p>Taking Wise from one-off currency transfers to a full dashboard with multi-currency accounts and cards.</p><div class="ui-links"><a class="btn" href="https://www.figma.com/proto/e73lxstvISQ5uGFYnZOOOS/Wise-Banking-Dash-Case-Study?node-id=1-2&page-id=0%3A1&starting-point-node-id=1%3A2&scaling=scale-down-width&content-scaling=fixed&t=RoTTcpocSUe5iZQs-1" rel="noopener" target="_blank">Case study ↗</a><a class="btn" href="https://www.figma.com/proto/4qe0TRjqgTmGfm4kcG44uH/Wise-Design-System-MASTER?node-id=2150-2940&page-id=125%3A1802&starting-point-node-id=2150%3A2940&t=4SkG7lGFOJMhLwgp-1" rel="noopener" target="_blank">Desktop prototype ↗</a><a class="btn" href="https://www.figma.com/proto/06Z3boWDUoB3vxWtp3mjth/Wise-Mobile-Dashboard?node-id=3-3412&page-id=0%3A1&t=QcWfE70UrDFl6pip-1" rel="noopener" target="_blank">Mobile prototype ↗</a></div></div>
         </article>
         <article class="ui-case reveal">
           <figure class="ui-case__img"><img src="UI-UX/KT Thumbnail.webp" alt="KalorieTrak" loading="lazy" decoding="async" data-lightbox></figure>
-          <div><span class="label label--accent">03 · 2025</span><h2 class="display display--m" style="margin: 10px 0 14px;">KalorieTrak</h2><p>A food tracker built to be read at a glance, with as little typing as possible.</p><div class="ui-links"><a class="btn" href="https://www.figma.com/proto/xUzNM9LqSACz0XuuJqye13/KalorieTrak-Case-Study?node-id=1-2&p=f&viewport=431%2C25%2C0.06&t=21KN4Pxxcs8Hgg5G-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=1%3A2&page-id=0%3A1" rel="noopener" target="_blank">Case study ↗</a><a class="btn" href="https://www.figma.com/proto/lE2UR9lkQUrgT1mAOOBCQK/KalorieTrak?node-id=45-2&p=f&viewport=565%2C25%2C0.09&t=5YI8JYTytwQhwWar-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=103%3A27&show-proto-sidebar=1&page-id=0%3A1" rel="noopener" target="_blank">Prototype ↗</a></div></div>
+          <div><span class="ui-num">03</span><span class="label label--accent">2025 · iOS app · Tracking</span><h2 class="display display--m" style="margin: 10px 0 14px;">KalorieTrak</h2><p>A food tracker built to be read at a glance, with as little typing as possible.</p><div class="ui-links"><a class="btn" href="https://www.figma.com/proto/xUzNM9LqSACz0XuuJqye13/KalorieTrak-Case-Study?node-id=1-2&p=f&viewport=431%2C25%2C0.06&t=21KN4Pxxcs8Hgg5G-1&scaling=scale-down-width&content-scaling=fixed&starting-point-node-id=1%3A2&page-id=0%3A1" rel="noopener" target="_blank">Case study ↗</a><a class="btn" href="https://www.figma.com/proto/lE2UR9lkQUrgT1mAOOBCQK/KalorieTrak?node-id=45-2&p=f&viewport=565%2C25%2C0.09&t=5YI8JYTytwQhwWar-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=103%3A27&show-proto-sidebar=1&page-id=0%3A1" rel="noopener" target="_blank">Prototype ↗</a></div></div>
         </article>
       </div>
     </section>
@@ -94,9 +115,9 @@
       </div>
     </section>
 
-    <a class="next" href="olly-packaging.html" data-tone="dark">
-      <div class="next__media"><img src="Olly/Olly-Hero.webp" alt="" loading="lazy"></div>
-      <div class="next__body"><span class="label">Next · More work</span><p class="display display--l" style="margin-top: 12px;">Olly</p></div>
+    <a class="next" href="wandrd.html" data-tone="dark">
+      <div class="next__media"><img src="WANDRD-Hero.webp" alt="" loading="lazy"></div>
+      <div class="next__body"><span class="label">Back to the start</span><p class="display display--l" style="margin-top: 12px;">WANDRD</p></div>
     </a>
 
     <section class="contact" id="contact" data-tone="light" aria-labelledby="contact-title">
@@ -110,7 +131,7 @@
       <span class="label footer__sign" title="The contour lines on the homepage are this mountain"><span class="coord">39.5826° N 105.6688° W</span> · Mt. Bierstadt, 14,060 ft · My first fourteener</span>
       <ul class="label">
         <li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li>
-        <li><a class="u-line" href="Resume.pdf">Résumé</a></li>
+        <li><a class="u-line" href="Resume.pdf">Resume</a></li>
         <li><a class="u-line" href="#main">Back to top ↑</a></li>
       </ul>
     </div>

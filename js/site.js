@@ -7,6 +7,26 @@
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
+  /* --------------------------------------------------------- project picker
+     After the big "Next" link: every project, so nobody is forced down one path. */
+  const PROJECTS = [
+    ['wandrd.html', 'WANDRD', 'WANDRD-Hero.webp'], ['kleenbore.html', 'KleenBore', 'assets/kleenbore/hero-saf400.webp'],
+    ['gerber-gear.html', 'Gerber Gear', 'GerberGear/GG-Hero.webp'], ['rexburg-rapids.html', 'Rexburg Rapids', 'RexburgRapids-Hero.webp'],
+    ['about-face.html', 'AboutFace', 'AboutFace/AF-Hero2.webp'], ['motion-reel.html', 'Motion Reel', 'MotionReel/Motion-Thumbnail1.webp'],
+    ['olly-packaging.html', 'Olly', 'Olly/Olly-Hero.webp'], ['identity-system.html', 'Jared Christensen', 'Jared/IS-Hero.webp'],
+    ['analog-reboot.html', 'Analog Reboot', 'AnalogReboot/AR-Hero.webp'], ['kindred-roots.html', 'Kindred Roots', 'KindredRoots/KindredRoots-Hero.webp'],
+    ['ui-ux.html', 'Interface concepts', 'UI-UX/iOS Thumbnail.webp'],
+  ];
+  const nextLink = $('main > a.next');
+  if (nextLink) {
+    const here = location.pathname.split('/').pop() || 'index.html';
+    const nav = document.createElement('nav');
+    nav.className = 'picker'; nav.setAttribute('aria-label', 'All projects');
+    nav.innerHTML = '<div class="wrap"><div class="picker__head"><span class="label label--accent">Or pick any project</span><a class="label u-line" href="work.html">All work</a></div><ul>' +
+      PROJECTS.map(([u, n, img]) => `<li><a href="${u}"${u === here ? ' aria-current="page"' : ''}><img src="${img}" alt="" loading="lazy" decoding="async"><b>${n}</b></a></li>`).join('') + '</ul></div>';
+    nextLink.after(nav);
+  }
+
   /* ------------------------------------------------------------- no widows
      Joins the last two words of every paragraph, caption and heading with a
      non-breaking space so no word sits alone on its own line (backs up the
@@ -62,7 +82,17 @@
   if (topo) {
     fetch(topo.dataset.src).then(r => r.ok ? r.text() : Promise.reject()).then(svg => {
       topo.innerHTML = svg;
-      if (reduce || sessionStorageGet('topoDrawn')) return;
+      const live = () => { if (!reduce) topo.classList.add('is-live'); };
+      // Lines drift a few pixels against the pointer (desktop only)
+      if (!reduce && matchMedia('(pointer: fine)').matches) {
+        const host = topo.parentElement;
+        host.addEventListener('pointermove', e => {
+          const r = host.getBoundingClientRect();
+          topo.style.setProperty('--mx', ((e.clientX - r.left) / r.width - .5).toFixed(3));
+          topo.style.setProperty('--my', ((e.clientY - r.top) / r.height - .5).toFixed(3));
+        });
+      }
+      if (reduce || sessionStorageGet('topoDrawn')) { live(); return; }
       sessionStorageSet('topoDrawn', '1');
       // Measure each line on screen so the dash covers it end to end (pathLength is
       // unreliable with non-scaling strokes), then clear the dash once the draw is done.
@@ -76,7 +106,7 @@
       });
       const dur = parseFloat(getComputedStyle(doc).getPropertyValue('--topo-draw')) || 2400;
       topo.classList.add('is-drawing');
-      setTimeout(() => topo.classList.remove('is-drawing'), dur + maxK * 28 + 300);
+      setTimeout(() => { topo.classList.remove('is-drawing'); live(); }, dur + maxK * 28 + 300);
     }).catch(() => {});
   }
   function sessionStorageGet(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }
@@ -165,6 +195,25 @@
     railLinks.forEach((a, i) => a.classList.toggle('is-active', i === active));
   }
 
+  /* ------------------------------------------------------ horizontal scroll */
+  const hs = $$('.hscroll');
+  const hsOn = () => !reduce && matchMedia('(hover: hover) and (min-width: 761px)').matches;
+  function hsSize() {
+    hs.forEach(sec => {
+      const track = $('.hscroll__track', sec);
+      sec._dist = Math.max(0, track.scrollWidth - innerWidth);
+      sec.style.height = hsOn() ? (sec._dist + innerHeight) + 'px' : '';
+    });
+  }
+  function hsProgress() {
+    if (!hsOn()) return;
+    hs.forEach(sec => {
+      const p = Math.min(1, Math.max(0, -sec.getBoundingClientRect().top / Math.max(1, sec._dist)));
+      $('.hscroll__track', sec).style.setProperty('--hx', (p * sec._dist).toFixed(1));
+    });
+  }
+  if (hs.length) { hsSize(); addEventListener('resize', hsSize); addEventListener('load', () => { hsSize(); hsProgress(); }); $$('.hscroll img').forEach(i => i.addEventListener('load', hsSize)); }
+
   // Jump links to chapters land where the chapter is fully in place
   $$('a[href^="#ch-"]').forEach(a => a.addEventListener('click', e => {
     const t = $(a.getAttribute('href')); if (!t) return;
@@ -175,7 +224,7 @@
 
   /* ------------------------------------------------------ scroll handler */
   let ticking = false;
-  function onScroll() { if (ticking) return; ticking = true; requestAnimationFrame(() => { navTone(); navState(); stageProgress(); chapProgress(); railState(); ticking = false; }); }
+  function onScroll() { if (ticking) return; ticking = true; requestAnimationFrame(() => { navTone(); navState(); stageProgress(); chapProgress(); railState(); hsProgress(); ticking = false; }); }
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('resize', onScroll);
   onScroll();

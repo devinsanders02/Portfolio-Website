@@ -35,7 +35,7 @@
     "intervalMeters": 20,
     "indexEvery": 5,
     "minElevationMeters": 3300,
-    "summitLabel": "MT. BIERSTADT  {ft} FT",
+    "summitLabel": "MT. BIERSTADT · {ft} FT",
     "_summitLabel_note": "{ft} is filled in from the highest point in the elevation file, so the number is always the data's own.",
     "summitLabelShow": true,
     "summitLonLat": [

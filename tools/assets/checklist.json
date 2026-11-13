@@ -1,19 +1,20 @@
 [
  {
   "id": "wan-hero",
-  "src": "",
-  "interim": "WANDRD-Hero.webp",
+  "src": "WANDRD-Hero.webp",
+  "interim": "",
   "priority": "optional",
   "code": "WAN-01",
   "project": "WANDRD",
   "name": "WANDRD: Hero brand photo",
-  "contains": "One wide lifestyle photo from the WANDRD imagery you used in the store (a person carrying a WANDRD bag outdoors). No text on it. The laptop mockup stands in for now.",
+  "contains": "The laptop mockup of the Brand Store (final).",
   "kind": "photograph",
   "ratio": "16:9",
   "size": "2560 × 1440 px or larger",
   "where": "WANDRD page — full-screen opening image; homepage chapter 01",
-  "file": "assets/wandrd/wan-01-hero.jpg",
-  "status": "🟡 interim image showing"
+  "file": "WANDRD-Hero.webp",
+  "alt": "The WANDRD Amazon Brand Store on a laptop",
+  "status": "✅ in place"
  },
  {
   "id": "wan-store-home-desktop",
@@ -452,7 +453,7 @@
  },
  {
   "id": "kb-template",
-  "src": "",
+  "src": "assets/kleenbore/template.webp",
   "interim": "",
   "priority": "essential",
   "code": "KB-02",
@@ -463,12 +464,13 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — section 02 “The system”, left",
-  "file": "assets/kleenbore/kb-02-template-guides.png",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/template.webp",
+  "alt": "The KleenBore infographic layout template, with its guides showing",
+  "status": "✅ in place"
  },
  {
   "id": "kb-p1-1",
-  "src": "",
+  "src": "assets/kleenbore/kds-9-1.webp",
   "interim": "",
   "priority": "essential",
   "code": "KDS-9-1",
@@ -479,12 +481,13 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 03 “Complete listings”, KDS-9 set, position 1",
-  "file": "assets/kleenbore/kds-9-1.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/kds-9-1.webp",
+  "alt": "KleenBore KDS-9 listing image 1",
+  "status": "✅ in place"
  },
  {
   "id": "kb-p1-2",
-  "src": "",
+  "src": "assets/kleenbore/kds-9-2.webp",
   "interim": "",
   "priority": "essential",
   "code": "KDS-9-2",
@@ -495,12 +498,13 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 03 “Complete listings”, KDS-9 set, position 2",
-  "file": "assets/kleenbore/kds-9-2.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/kds-9-2.webp",
+  "alt": "KleenBore KDS-9 listing image 2",
+  "status": "✅ in place"
  },
  {
   "id": "kb-p1-3",
-  "src": "",
+  "src": "assets/kleenbore/kds-9-3.webp",
   "interim": "",
   "priority": "essential",
   "code": "KDS-9-3",
@@ -511,12 +515,13 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 03 “Complete listings”, KDS-9 set, position 3",
-  "file": "assets/kleenbore/kds-9-3.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/kds-9-3.webp",
+  "alt": "KleenBore KDS-9 listing image 3",
+  "status": "✅ in place"
  },
  {
   "id": "kb-p1-4",
-  "src": "",
+  "src": "assets/kleenbore/kds-9-4.webp",
   "interim": "",
   "priority": "essential",
   "code": "KDS-9-4",
@@ -527,12 +532,13 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 03 “Complete listings”, KDS-9 set, position 4",
-  "file": "assets/kleenbore/kds-9-4.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/kds-9-4.webp",
+  "alt": "KleenBore KDS-9 listing image 4",
+  "status": "✅ in place"
  },
  {
   "id": "kb-p1-5",
-  "src": "",
+  "src": "assets/kleenbore/kds-9-5.webp",
   "interim": "",
   "priority": "essential",
   "code": "KDS-9-5",
@@ -543,12 +549,13 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 03 “Complete listings”, KDS-9 set, position 5",
-  "file": "assets/kleenbore/kds-9-5.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/kds-9-5.webp",
+  "alt": "KleenBore KDS-9 listing image 5",
+  "status": "✅ in place"
  },
  {
   "id": "kb-p1-6",
-  "src": "",
+  "src": "assets/kleenbore/kds-9-6.webp",
   "interim": "",
   "priority": "essential",
   "code": "KDS-9-6",
@@ -559,12 +566,13 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 03 “Complete listings”, KDS-9 set, position 6",
-  "file": "assets/kleenbore/kds-9-6.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/kds-9-6.webp",
+  "alt": "KleenBore KDS-9 listing image 6",
+  "status": "✅ in place"
  },
  {
   "id": "kb-p2-1",
-  "src": "",
+  "src": "assets/kleenbore/poc220-1.webp",
   "interim": "",
   "priority": "essential",
   "code": "POC220-1",
@@ -575,12 +583,13 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 03 “Complete listings”, POC220 set, position 1",
-  "file": "assets/kleenbore/poc220-1.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/poc220-1.webp",
+  "alt": "KleenBore POC220 listing image 1",
+  "status": "✅ in place"
  },
  {
   "id": "kb-p2-2",
-  "src": "",
+  "src": "assets/kleenbore/poc220-2.webp",
   "interim": "",
   "priority": "essential",
   "code": "POC220-2",
@@ -591,12 +600,13 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 03 “Complete listings”, POC220 set, position 2",
-  "file": "assets/kleenbore/poc220-2.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/poc220-2.webp",
+  "alt": "KleenBore POC220 listing image 2",
+  "status": "✅ in place"
  },
  {
   "id": "kb-p2-3",
-  "src": "",
+  "src": "assets/kleenbore/poc220-3.webp",
   "interim": "",
   "priority": "essential",
   "code": "POC220-3",
@@ -607,12 +617,13 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 03 “Complete listings”, POC220 set, position 3",
-  "file": "assets/kleenbore/poc220-3.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/poc220-3.webp",
+  "alt": "KleenBore POC220 listing image 3",
+  "status": "✅ in place"
  },
  {
   "id": "kb-p2-4",
-  "src": "",
+  "src": "assets/kleenbore/poc220-4.webp",
   "interim": "",
   "priority": "essential",
   "code": "POC220-4",
@@ -623,12 +634,13 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 03 “Complete listings”, POC220 set, position 4",
-  "file": "assets/kleenbore/poc220-4.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/poc220-4.webp",
+  "alt": "KleenBore POC220 listing image 4",
+  "status": "✅ in place"
  },
  {
   "id": "kb-p2-5",
-  "src": "",
+  "src": "assets/kleenbore/poc220-5.webp",
   "interim": "",
   "priority": "essential",
   "code": "POC220-5",
@@ -639,12 +651,13 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 03 “Complete listings”, POC220 set, position 5",
-  "file": "assets/kleenbore/poc220-5.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/poc220-5.webp",
+  "alt": "KleenBore POC220 listing image 5",
+  "status": "✅ in place"
  },
  {
   "id": "kb-p2-6",
-  "src": "",
+  "src": "assets/kleenbore/poc220-6.webp",
   "interim": "",
   "priority": "essential",
   "code": "POC220-6",
@@ -655,12 +668,13 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 03 “Complete listings”, POC220 set, position 6",
-  "file": "assets/kleenbore/poc220-6.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/poc220-6.webp",
+  "alt": "KleenBore POC220 listing image 6",
+  "status": "✅ in place"
  },
  {
   "id": "kb-p3-1",
-  "src": "",
+  "src": "assets/kleenbore/a188-1.webp",
   "interim": "",
   "priority": "optional",
   "code": "A188-1",
@@ -671,12 +685,13 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 03 “Complete listings”, A188 set, position 1",
-  "file": "assets/kleenbore/a188-1.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/a188-1.webp",
+  "alt": "KleenBore A188 listing image 1",
+  "status": "✅ in place"
  },
  {
   "id": "kb-p3-2",
-  "src": "",
+  "src": "assets/kleenbore/a188-2.webp",
   "interim": "",
   "priority": "optional",
   "code": "A188-2",
@@ -687,12 +702,13 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 03 “Complete listings”, A188 set, position 2",
-  "file": "assets/kleenbore/a188-2.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/a188-2.webp",
+  "alt": "KleenBore A188 listing image 2",
+  "status": "✅ in place"
  },
  {
   "id": "kb-p3-3",
-  "src": "",
+  "src": "assets/kleenbore/a188-3.webp",
   "interim": "",
   "priority": "optional",
   "code": "A188-3",
@@ -703,12 +719,13 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 03 “Complete listings”, A188 set, position 3",
-  "file": "assets/kleenbore/a188-3.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/a188-3.webp",
+  "alt": "KleenBore A188 listing image 3",
+  "status": "✅ in place"
  },
  {
   "id": "kb-p3-4",
-  "src": "",
+  "src": "assets/kleenbore/a188-4.webp",
   "interim": "",
   "priority": "optional",
   "code": "A188-4",
@@ -719,12 +736,13 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 03 “Complete listings”, A188 set, position 4",
-  "file": "assets/kleenbore/a188-4.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/a188-4.webp",
+  "alt": "KleenBore A188 listing image 4",
+  "status": "✅ in place"
  },
  {
   "id": "kb-close-1",
-  "src": "",
+  "src": "assets/kleenbore/kds-9-1.webp",
   "interim": "",
   "priority": "essential",
   "code": "KB-C1",
@@ -735,12 +753,13 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 04 “Up close”, panel 1",
-  "file": "assets/kleenbore/kb-c1.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/kds-9-1.webp",
+  "alt": "KleenBore KDS-9 close-up: KDS-9 flat lay (hierarchy)",
+  "status": "✅ in place"
  },
  {
   "id": "kb-close-2",
-  "src": "",
+  "src": "assets/kleenbore/kds-9-3.webp",
   "interim": "",
   "priority": "essential",
   "code": "KB-C2",
@@ -751,88 +770,26 @@
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 04 “Up close”, panel 2",
-  "file": "assets/kleenbore/kb-c2.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/kds-9-3.webp",
+  "alt": "KleenBore KDS-9 close-up: Quick specs",
+  "status": "✅ in place"
  },
  {
   "id": "kb-close-3",
-  "src": "",
+  "src": "assets/kleenbore/kds-9-2.webp",
   "interim": "",
   "priority": "essential",
   "code": "KB-C3",
   "project": "KleenBore",
-  "name": "KleenBore: Close-up 3 — Lifestyle with callouts",
+  "name": "KleenBore: Close-up 3 — Lifestyle with callouts (AI photo)",
   "contains": "Full-resolution file of the lifestyle photo with dark callout boxes. Shown large; hover zooms to 2×. Can repeat a file from the sets.",
   "kind": "flat graphic",
   "ratio": "1:1",
   "size": "2000 × 2000 px",
   "where": "KleenBore page — 04 “Up close”, panel 3",
-  "file": "assets/kleenbore/kb-c3.jpg",
-  "status": "⬜ needed"
- },
- {
-  "id": "kb-family-1",
-  "src": "",
-  "interim": "",
-  "priority": "optional",
-  "code": "KB-F1",
-  "project": "KleenBore",
-  "name": "KleenBore: Same template, product 1 of 4",
-  "contains": "The SAME infographic type (e.g. the “features” image) for four different products, so the template system is visible. This is product 1.",
-  "kind": "flat graphic",
-  "ratio": "1:1",
-  "size": "2000 × 2000 px",
-  "where": "KleenBore page — 05 “One template, four products”, position 1",
-  "file": "assets/kleenbore/kb-f1.jpg",
-  "status": "⬜ needed"
- },
- {
-  "id": "kb-family-2",
-  "src": "",
-  "interim": "",
-  "priority": "optional",
-  "code": "KB-F2",
-  "project": "KleenBore",
-  "name": "KleenBore: Same template, product 2 of 4",
-  "contains": "The SAME infographic type (e.g. the “features” image) for four different products, so the template system is visible. This is product 2.",
-  "kind": "flat graphic",
-  "ratio": "1:1",
-  "size": "2000 × 2000 px",
-  "where": "KleenBore page — 05 “One template, four products”, position 2",
-  "file": "assets/kleenbore/kb-f2.jpg",
-  "status": "⬜ needed"
- },
- {
-  "id": "kb-family-3",
-  "src": "",
-  "interim": "",
-  "priority": "optional",
-  "code": "KB-F3",
-  "project": "KleenBore",
-  "name": "KleenBore: Same template, product 3 of 4",
-  "contains": "The SAME infographic type (e.g. the “features” image) for four different products, so the template system is visible. This is product 3.",
-  "kind": "flat graphic",
-  "ratio": "1:1",
-  "size": "2000 × 2000 px",
-  "where": "KleenBore page — 05 “One template, four products”, position 3",
-  "file": "assets/kleenbore/kb-f3.jpg",
-  "status": "⬜ needed"
- },
- {
-  "id": "kb-family-4",
-  "src": "",
-  "interim": "",
-  "priority": "optional",
-  "code": "KB-F4",
-  "project": "KleenBore",
-  "name": "KleenBore: Same template, product 4 of 4",
-  "contains": "The SAME infographic type (e.g. the “features” image) for four different products, so the template system is visible. This is product 4.",
-  "kind": "flat graphic",
-  "ratio": "1:1",
-  "size": "2000 × 2000 px",
-  "where": "KleenBore page — 05 “One template, four products”, position 4",
-  "file": "assets/kleenbore/kb-f4.jpg",
-  "status": "⬜ needed"
+  "file": "assets/kleenbore/kds-9-2.webp",
+  "alt": "KleenBore KDS-9 close-up: Lifestyle with callouts (AI photo)",
+  "status": "✅ in place"
  },
  {
   "id": "mo-break-1",

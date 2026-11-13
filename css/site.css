@@ -169,38 +169,50 @@ h1, h2, h3, .h2, .h3, .lede { text-wrap: balance; }
 .nav[data-tone="dark"] { color: #fff; }
 .nav.is-solid { background: color-mix(in srgb, var(--paper) 86%, transparent); -webkit-backdrop-filter: blur(14px) saturate(1.2); backdrop-filter: blur(14px) saturate(1.2); }
 .nav.is-solid[data-tone="dark"] { background: color-mix(in srgb, var(--night) 70%, transparent); }
-.nav__brand { display: flex; align-items: center; gap: 12px; }
+.nav__brand { display: flex; align-items: center; gap: 16px; }
 .mark { width: auto; height: 28px; fill: currentColor; flex: none; }
-.nav__brand:hover .mark { color: var(--accent); }
+.nav .mark { height: 42px; width: 23px; transition: color var(--t-fast) linear, transform var(--t-med) var(--ease); }
+.nav__brand:hover .mark { color: var(--accent); transform: translateY(-2px) rotate(-4deg); }
 .nav__name { font-family: var(--f-cond); font-weight: 700; font-size: 22px; letter-spacing: .02em; text-transform: uppercase; }
-.nav__coord { font-family: var(--f-num); font-weight: 600; font-size: 12.5px; letter-spacing: .1em; opacity: .7; }
+.nav__coord { font-family: var(--f-label); font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; padding-left: 16px; border-left: 1px solid color-mix(in srgb, currentColor 35%, transparent); line-height: 1.2; opacity: .85; }
 .nav__links { display: flex; gap: clamp(18px, 2.4vw, 40px); list-style: none; margin: 0; padding: 0; }
-.nav__links a { font-family: var(--f-label); font-weight: 600; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; display: inline-flex; gap: .5em; padding: 10px 0; }
-.nav__links .idx { opacity: .5; }
+.nav__links { align-items: center; }
+.nav__links a { font-family: var(--f-label); font-weight: 600; font-size: 14.5px; letter-spacing: .14em; text-transform: uppercase; display: inline-flex; align-items: center; gap: .5em; padding: 10px 0; }
+.nav__links .idx { display: none; }
+.nav__links .txt { background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat; padding-bottom: 3px; transition: background-size var(--t-med) var(--ease); }
+.nav__links a:hover .txt, .nav__links a[aria-current="page"] .txt { background-size: 100% 2px; }
 .nav__links a[aria-current="page"] .txt { color: var(--accent); }
+/* Contact is the one action, so it gets a button */
+.nav__links li:last-child a { padding: 10px 18px; border: 1.5px solid currentColor; border-radius: 999px; transition: background-color var(--t-fast) linear, border-color var(--t-fast) linear, color var(--t-fast) linear; }
+.nav__links li:last-child a .txt { background: none; padding: 0; }
+.nav__links li:last-child a:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
 .nav__progress { position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--accent); transform-origin: 0 50%; transform: scaleX(var(--progress, 0)); }
 @media (max-width: 640px) {
-  .nav__coord, .nav__links .idx { display: none; }
-  .nav__links { gap: 14px; }
+  .nav__coord { display: none; }
+  .nav__links { gap: 16px; }
   .nav__links a { font-size: 13.5px; letter-spacing: .1em; }
-  .nav__brand { gap: 8px; }
-  .nav__name { font-size: 18px; }
+  .nav__links li:last-child a { padding: 8px 14px; }
+  .nav .mark { height: 36px; width: 20px; }
 }
-.nav__name { white-space: nowrap; font-family: var(--f-cond) !important; }
-@media (max-width: 380px) { .nav__name { display: none; } }
+.nav__name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* 05 TOPOGRAPHIC BACKGROUND ------------------------------------------------ */
 .topo {
   position: absolute; inset: 0; overflow: hidden; pointer-events: none;
-  opacity: var(--topo-opacity);
   -webkit-mask-image: radial-gradient(ellipse var(--topo-fade-w) var(--topo-fade-h) at var(--topo-fade-x) var(--topo-fade-y), #000 40%, transparent 100%);
           mask-image: radial-gradient(ellipse var(--topo-fade-w) var(--topo-fade-h) at var(--topo-fade-x) var(--topo-fade-y), #000 40%, transparent 100%);
 }
-.topo > svg, .topo > img { position: absolute; top: 0; right: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: top right; }
+.topo > svg, .topo > img { position: absolute; top: 0; right: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: top right; transform: translate3d(calc(var(--mx, 0) * -14px), calc(var(--my, 0) * -10px), 0); transition: transform 1600ms var(--ease); }
+.topo .tp-c, .topo > img { opacity: var(--topo-opacity); }
+/* Always on, very slow: a wave of light moves through the contour levels */
+.topo.is-live .tp-c { animation: topo-wave 9s ease-in-out infinite; animation-delay: calc(var(--k) * -160ms); }
+@keyframes topo-wave { 0%, 100% { opacity: var(--topo-opacity); } 50% { opacity: calc(var(--topo-opacity) * .4); } }
+@media (prefers-reduced-motion: reduce) { .topo.is-live .tp-c { animation: none; } .topo > svg { transform: none; } }
 @media (max-aspect-ratio: 1/1) {
   /* Portrait screens: keep the summit on screen instead of cropping to the far right */
   .topo { --topo-fade-x: 70%; --topo-fade-y: 8%; --topo-fade-w: 120%; --topo-fade-h: 60%; }
   .topo > svg, .topo > img { width: 175vw; height: auto; aspect-ratio: 16 / 9; right: -28vw; }
+  .topo .tp-summit text { display: none; }
 }
 /* Draw-in: JS measures every line in screen pixels (--len), so the dash always covers the
    whole line, then removes .is-drawing when done so nothing can be left half drawn. */
@@ -395,7 +407,9 @@ html.hide-interim .slot__interim { display: none; }
 .footer { padding: 28px 0 34px; border-top: 1px solid var(--rule); }
 .footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px 28px; }
 .footer__brand { display: inline-flex; align-items: center; gap: 12px; }
-.footer__brand .mark { height: 22px; width: 13px; }
+.footer__brand { gap: 18px; }
+.footer__brand .mark { height: 64px; width: 35px; transition: color var(--t-fast) linear; }
+.footer__brand:hover .mark { color: var(--accent); }
 .footer__sign .coord { font-size: 12.5px; }
 .mark { width: 16px; }
 .footer ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
@@ -421,4 +435,46 @@ html.hide-interim .slot__interim { display: none; }
   .stage__sticky { position: relative; height: 100vh; }
   .topo.is-drawing .tp-c { animation: none; stroke-dasharray: none; stroke-dashoffset: 0; }
   ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
+
+
+/* ---------------------------------------------------------- project picker
+   Under the "Next" link on every project page: jump to any other project. */
+.picker { padding: clamp(40px, 5vw, 72px) 0; border-bottom: 1px solid var(--rule); background: var(--paper); color: var(--ink); }
+.picker__head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 20px; }
+.picker ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+.picker a { position: relative; display: flex; align-items: flex-end; aspect-ratio: 16 / 10; padding: 12px; overflow: hidden; color: #fff; background: var(--night); isolation: isolate; }
+.picker img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; opacity: .7; transition: transform 900ms var(--ease), opacity var(--t-med) var(--ease); }
+.picker a::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, .72)); }
+.picker a:hover img { transform: scale(1.06); opacity: 1; }
+.picker b { font-family: var(--f-cond); font-weight: 700; font-size: 20px; text-transform: uppercase; letter-spacing: .02em; line-height: 1; }
+.picker a[aria-current="page"] { outline: 2px solid var(--accent); outline-offset: 2px; pointer-events: none; }
+.picker a[aria-current="page"] b::after { content: ' · here'; color: var(--accent); font-size: 13px; }
+
+
+/* ------------------------------------------------------------ case intro
+   Opening of a project page: one big line, then three short facts with
+   numbers, so the text has a structure instead of floating paragraphs. */
+.case-intro__lede { margin: 0; max-width: 24ch; font-family: var(--f-guest); font-weight: 600; font-size: clamp(30px, 3.5vw, 60px); line-height: 1.08; letter-spacing: -.012em; }
+.case-intro__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.6vw, 44px); margin-top: clamp(48px, 6vw, 96px); }
+.ci { border-top: 3px solid var(--ink); padding-top: 18px; }
+.ci__n { display: block; font-family: var(--f-num); font-weight: 700; font-size: clamp(40px, 4vw, 68px); line-height: .9; color: var(--accent); letter-spacing: -.01em; }
+.ci .label { display: block; margin: 14px 0 8px; }
+.ci p { margin: 0; color: var(--ink-soft); max-width: 36ch; }
+@media (max-width: 860px) { .case-intro__grid { grid-template-columns: 1fr; } }
+
+
+/* ---------------------------------------------------- horizontal scroll
+   A row of images that slides sideways while you scroll down (desktop).
+   On touch screens and with reduced motion it is a normal swipeable row. */
+.hscroll { position: relative; }
+.hscroll__sticky { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; flex-direction: column; justify-content: center; gap: clamp(24px, 4vh, 48px); overflow: hidden; padding-top: var(--nav-h); }
+.hscroll__track { display: flex; gap: clamp(14px, 1.6vw, 26px); padding: 0 var(--gutter); width: max-content; transform: translate3d(calc(var(--hx, 0) * -1px), 0, 0); will-change: transform; }
+.hs-item { margin: 0; flex: none; height: min(62vh, 640px); }
+.hs-item img { height: 100%; width: auto; }
+@media (hover: none), (max-width: 760px), (prefers-reduced-motion: reduce) {
+  .hscroll { height: auto !important; }
+  .hscroll__sticky { position: relative; height: auto; padding: clamp(60px, 8vw, 100px) 0; }
+  .hscroll__track { transform: none; width: auto; overflow-x: auto; scroll-snap-type: x mandatory; }
+  .hs-item { height: 52vh; scroll-snap-align: start; }
 }

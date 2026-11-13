@@ -31,10 +31,10 @@
   /* ---------------------------------------------------------------- WANDRD */
   add('wan-hero', {
     code: 'WAN-01', project: 'WANDRD', name: 'WANDRD: Hero brand photo',
-    contains: 'One wide lifestyle photo from the WANDRD imagery you used in the store (a person carrying a WANDRD bag outdoors). No text on it. The laptop mockup stands in for now.',
+    contains: 'The laptop mockup of the Brand Store (final).',
     kind: 'photograph', ratio: '16:9', size: '2560 × 1440 px or larger',
     where: 'WANDRD page — full-screen opening image; homepage chapter 01', priority: 'optional',
-    file: 'assets/wandrd/wan-01-hero.jpg', interim: 'WANDRD-Hero.webp',
+    file: 'WANDRD-Hero.webp', src: 'WANDRD-Hero.webp', alt: 'The WANDRD Amazon Brand Store on a laptop',
   });
   const shot = (id, code, name, file, where, alt) => add(id, {
     code, project: 'WANDRD', name, contains: 'Full-length desktop screenshot of the live page.', kind: 'screenshot',
@@ -111,7 +111,7 @@
     contains: 'One 2000 × 2000 infographic template exported with its grid, margins and guides showing (Illustrator: View > Guides on, then screenshot or export). Shows the system behind the set.',
     kind: 'screenshot', ratio: '1:1', size: '2000 × 2000 px',
     where: 'KleenBore page — section 02 “The system”, left', priority: 'essential',
-    file: 'assets/kleenbore/kb-02-template-guides.png',
+    file: 'assets/kleenbore/template.webp', src: 'assets/kleenbore/template.webp', alt: 'The KleenBore infographic layout template, with its guides showing',
   });
   const kbSets = [
     { key: 'p1', code: 'KDS-9', pri: 'essential', n: 6 },
@@ -124,25 +124,19 @@
       contains: `Listing image ${n} for ${s.code}, as the flat 2000 × 2000 export, in listing order.`,
       kind: 'flat graphic', ratio: '1:1', size: '2000 × 2000 px',
       where: `KleenBore page — 03 “Complete listings”, ${s.code} set, position ${n}`, priority: s.pri,
-      file: `assets/kleenbore/${s.code.toLowerCase()}-${n}.jpg`,
+      file: `assets/kleenbore/${s.code.toLowerCase()}-${n}.webp`, src: `assets/kleenbore/${s.code.toLowerCase()}-${n}.webp`,
+      alt: `KleenBore ${s.code} listing image ${n}`,
     });
   });
   [['KDS-9 flat lay (hierarchy)', 'the KDS-9 flat lay: big red title, “dual system pistol cleaning kit”, product with tags below'],
    ['Quick specs', 'the infographic where you pulled out the key specs to read at a glance'],
-   ['Lifestyle with callouts', 'the lifestyle photo with dark callout boxes']].forEach(([t, what], i) => add(`kb-close-${i + 1}`, {
+   ['Lifestyle with callouts (AI photo)', 'the lifestyle photo with dark callout boxes']].forEach(([t, what], i) => add(`kb-close-${i + 1}`, {
     code: `KB-C${i + 1}`, project: 'KleenBore', name: `KleenBore: Close-up ${i + 1} — ${t}`,
     contains: `Full-resolution file of ${what}. Shown large; hover zooms to 2×. Can repeat a file from the sets.`,
     kind: 'flat graphic', ratio: '1:1', size: '2000 × 2000 px',
     where: `KleenBore page — 04 “Up close”, panel ${i + 1}`, priority: 'essential',
-    file: `assets/kleenbore/kb-c${i + 1}.jpg`,
+    file: `assets/kleenbore/kds-9-${[1, 3, 2][i]}.webp`, src: `assets/kleenbore/kds-9-${[1, 3, 2][i]}.webp`, alt: `KleenBore KDS-9 close-up: ${t}`,
   }));
-  for (let n = 1; n <= 4; n++) add(`kb-family-${n}`, {
-    code: `KB-F${n}`, project: 'KleenBore', name: `KleenBore: Same template, product ${n} of 4`,
-    contains: `The SAME infographic type (e.g. the “features” image) for four different products, so the template system is visible. This is product ${n}.`,
-    kind: 'flat graphic', ratio: '1:1', size: '2000 × 2000 px',
-    where: `KleenBore page — 05 “One template, four products”, position ${n}`, priority: 'optional',
-    file: `assets/kleenbore/kb-f${n}.jpg`,
-  });
 
   /* ----------------------------------------------------- other projects */
 

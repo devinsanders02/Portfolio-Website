@@ -30,14 +30,28 @@
     .mw-bleed__body { position: relative; z-index: 2; padding: 0 var(--gutter) clamp(28px, 6vh, 64px); }
     .mw-bleed__body .label { color: rgba(255, 255, 255, .78); }
     @media (max-width: 900px) { .mw-intro { grid-template-columns: 1fr; } }
-    body.p-ar { --accent: #F15B22; }
-    .ar-dark { background: #111214; }
-    .ar-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; background: rgba(255, 255, 255, .08); }
-    .ar-grid figure { margin: 0; position: relative; background: #111214; }
+    /* The pattern line's own colours: cream ground, deep blue for type, and the stripe colours as accents. No black, no house orange. */
+    body.p-ar { --paper: #F7F2E6; --paper-2: #EDE6D4; --ink: #14254F; --ink-soft: rgba(20, 37, 79, .7); --rule: rgba(20, 37, 79, .18); --accent: #3D7CFF; --night: #14254F; --ar-red: #E0503C; --ar-yellow: #F2B33D; --ar-green: #4E9A5B; --ar-blue: #3D7CFF; --ar-pink: #F9968D; --ar-olive: #C5CA57; background: var(--paper); color: var(--ink); }
+    .ar-dark { background: #14254F; }
+    .p-ar .case-intro .ci:nth-child(1) { border-color: var(--ar-red); } .p-ar .case-intro .ci:nth-child(1) .ci__n { color: var(--ar-red); }
+    .p-ar .case-intro .ci:nth-child(2) { border-color: var(--ar-yellow); } .p-ar .case-intro .ci:nth-child(2) .ci__n { color: #D69A22; }
+    .p-ar .case-intro .ci:nth-child(3) { border-color: var(--ar-green); } .p-ar .case-intro .ci:nth-child(3) .ci__n { color: var(--ar-green); }
+    .ar-pal { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); min-height: clamp(260px, 38vh, 420px); }
+    .ar-pal li { list-style: none; display: flex; flex-direction: column; justify-content: flex-end; padding: 16px; color: #fff; transform-origin: 50% 100%; }
+    .ar-pal li b { font-family: var(--f-cond); font-weight: 700; font-size: clamp(18px, 1.6vw, 26px); text-transform: uppercase; line-height: 1; }
+    .ar-pal li span { font-size: 13px; margin-top: 6px; opacity: .85; }
+    @media (prefers-reduced-motion: no-preference) {
+      .js .ar-pal li { transform: scaleY(.15); transition: transform 900ms var(--ease); }
+      .js .ar-pal.is-in li { transform: none; }
+      .js .ar-pal li:nth-child(2) { transition-delay: 70ms; } .js .ar-pal li:nth-child(3) { transition-delay: 140ms; } .js .ar-pal li:nth-child(4) { transition-delay: 210ms; } .js .ar-pal li:nth-child(5) { transition-delay: 280ms; } .js .ar-pal li:nth-child(6) { transition-delay: 350ms; }
+    }
+    @media (max-width: 760px) { .ar-pal { grid-template-columns: repeat(3, minmax(0, 1fr)); } .ar-pal li { min-height: 150px; } }
+    .ar-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; background: rgba(247, 242, 230, .14); }
+    .ar-grid figure { margin: 0; position: relative; background: #14254F; }
     .ar-grid img { width: 100%; aspect-ratio: 1; object-fit: cover; transition: transform 900ms var(--ease); }
     .ar-grid figure:hover img { transform: scale(1.04); }
     .ar-grid figcaption { display: flex; gap: 10px; align-items: baseline; padding: 10px 12px 14px; font-family: var(--f-label); font-weight: 600; font-size: 13.5px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255, 255, 255, .78); }
-    .ar-grid .coord { color: var(--accent); font-size: 12.5px; }
+    .ar-grid .coord { color: var(--ar-yellow); font-size: 12.5px; }
     .ar-bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: clamp(120px, 13vw, 220px); gap: clamp(8px, 1vw, 14px); }
     .ar-bento figure { margin: 0; position: relative; overflow: hidden; grid-column: span 2; grid-row: span 2; }
     .ar-bento .ar-b0, .ar-bento .ar-b1 { grid-column: span 3; grid-row: span 3; }
@@ -70,11 +84,11 @@
       </div>
     </section>
 
-    <section class="section" data-tone="light" aria-label="Overview">
-      <div class="wrap mw-intro">
-        <!-- DRAFT COPY: rewritten plainly from your old page. Change anything that doesn't sound like you. -->
-        <p class="lede reveal">Twelve surface patterns sampled from old electronics, made into a small apparel and accessories line.</p>
-        <div class="reveal prose" style="--d: 120ms"><span class="label">Where it comes from</span><div style="margin-top: 12px;"><p>Cassette tape, circuit boards and CRT scan lines, turned into repeats that can run across a jacket, a hat or a pair of socks.</p><p>Each pattern has its own code, so the set works like a collection.</p></div></div>
+    <section class="section case-intro" data-tone="light" aria-label="Overview">
+      <div class="wrap">
+        <!-- DRAFT COPY: check it sounds like you. -->
+        <p class="case-intro__lede reveal">Twelve surface patterns sampled from old electronics, made into a small apparel and accessories line.</p>
+        <div class="case-intro__grid"><div class="ci reveal" style="--d: 0ms"><span class="ci__n">01</span><span class="label">The source</span><p>Cassette tape, circuit boards and CRT scan lines.</p></div><div class="ci reveal" style="--d: 90ms"><span class="ci__n">02</span><span class="label">The repeats</span><p>Each one is built as a repeat, so it can run across a jacket, a hat or a pair of socks.</p></div><div class="ci reveal" style="--d: 180ms"><span class="ci__n">03</span><span class="label">The collection</span><p>Every pattern gets its own code, AR-001 to AR-012, so the set reads like a collection.</p></div></div>
       </div>
     </section>
     <section class="section ar-dark" data-tone="dark" aria-labelledby="ar-p">
@@ -95,6 +109,20 @@
       <div class="next__body"><span class="label">Next · More work</span><p class="display display--l" style="margin-top: 12px;">Kindred Roots</p></div>
     </a>
 
+    <section class="section--tight" data-tone="light" aria-labelledby="ar-palette" style="padding-bottom: 0;">
+      <div class="wrap">
+        <div class="set-head"><h2 class="label label--accent" id="ar-palette">The palette</h2><span class="label">Pulled from the patterns</span></div>
+      </div>
+      <ol class="ar-pal reveal" aria-label="Analog Reboot colours">
+        <li style="background: #14254F;"><b>Deep blue</b><span>#14254F</span></li>
+        <li style="background: #3D7CFF;"><b>Signal blue</b><span>#3D7CFF</span></li>
+        <li style="background: #4E9A5B;"><b>Circuit green</b><span>#4E9A5B</span></li>
+        <li style="background: #F2B33D; color: #14254F;"><b>Tape yellow</b><span>#F2B33D</span></li>
+        <li style="background: #E0503C;"><b>Record red</b><span>#E0503C</span></li>
+        <li style="background: #F7F2E6; color: #14254F; box-shadow: inset 0 0 0 1px rgba(20,37,79,.15);"><b>Cream</b><span>#F7F2E6</span></li>
+      </ol>
+    </section>
+
     <section class="contact" id="contact" data-tone="light" aria-labelledby="contact-title">
       <div class="wrap"><h2 class="label" id="contact-title">Say hello</h2><p style="margin: 18px 0 0;"><a class="contact__mail" href="mailto:devin.sanders02@gmail.com">devin.sanders02@gmail.com</a></p></div>
     </section>
@@ -106,7 +134,7 @@
       <span class="label footer__sign" title="The contour lines on the homepage are this mountain"><span class="coord">39.5826° N 105.6688° W</span> · Mt. Bierstadt, 14,060 ft · My first fourteener</span>
       <ul class="label">
         <li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li>
-        <li><a class="u-line" href="Resume.pdf">Résumé</a></li>
+        <li><a class="u-line" href="Resume.pdf">Resume</a></li>
         <li><a class="u-line" href="#main">Back to top ↑</a></li>
       </ul>
     </div>

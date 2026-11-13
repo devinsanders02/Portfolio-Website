@@ -81,11 +81,30 @@
     @media (max-width: 900px) { .kb-close { grid-template-columns: 1fr; } .kb-close:nth-of-type(even) .inspect { order: 0; } }
 
     /* Type scale, set live in Montserrat at the real proportions (150 / 46 / 44 / 32 pt). */
-    .kb-scale { display: grid; gap: 0; border-top: 1px solid var(--rule); }
-    .kb-scale > div { display: grid; grid-template-columns: minmax(0, 1fr) 170px; gap: 16px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--rule); --u: clamp(.11px, .0135vw, .2px); }
-    .kb-scale .s { font-family: var(--f-guest); text-transform: uppercase; line-height: 1; white-space: nowrap; overflow: hidden; text-overflow: clip; }
-    .kb-scale .meta-s { font-size: 13.5px; color: var(--ink-soft); line-height: 1.45; }
-    .kb-scale .meta-s b { display: block; color: var(--ink); font-weight: 700; }
+    .kb-scale { display: grid; border-top: 3px solid var(--ink); --u: clamp(.3px, .056vw, .86px); }
+    .kb-scale > div { display: grid; grid-template-columns: minmax(0, 1fr) 230px; gap: 24px; align-items: center; padding: clamp(16px, 2vw, 28px) 0; border-bottom: 1px solid var(--rule); }
+    .kb-scale .s { font-family: var(--f-guest); text-transform: uppercase; line-height: 1; white-space: nowrap; overflow: hidden; }
+    .kb-scale .meta-s { font-size: 16px; color: var(--ink-soft); line-height: 1.45; }
+    .kb-scale .meta-s b { display: block; color: var(--ink); font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
+    @media (max-width: 700px) { .kb-scale > div { grid-template-columns: 1fr; gap: 8px; } }
+    .kb-stats b { color: var(--ink); }
+    .ai-note { margin: 18px 0 0; padding: 14px 16px; border-left: 4px solid var(--accent); background: rgba(0, 0, 0, .04); max-width: 70ch; font-size: 15.5px; color: var(--ink-soft); }
+    .ai-note b { color: var(--ink); }
+    .slot[data-ai] { position: relative; }
+    .slot[data-ai]::after { content: 'AI photo'; position: absolute; top: 10px; right: 10px; z-index: 3; padding: 4px 8px; background: rgba(18, 18, 18, .82); color: #fff; font: 700 11px/1 var(--f-guest); letter-spacing: .1em; text-transform: uppercase; pointer-events: none; }
+    .kb-close__h { font-family: var(--f-guest); font-weight: 800; text-transform: uppercase; font-size: clamp(26px, 2.4vw, 40px); line-height: 1.05; margin: 12px 0 24px; color: #fff; }
+    .kb-order { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(255, 255, 255, .18); font-family: var(--f-guest); font-size: clamp(17px, 1.4vw, 22px); }
+    .kb-order li { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, .18); }
+    .kb-order .n { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font: 800 13px/1 var(--f-guest); }
+    .kb-order .t { text-transform: uppercase; color: #fff; line-height: 1.1; }
+    .kb-order .w { font-size: 13.5px; color: rgba(255, 255, 255, .62); text-align: right; }
+    .kb-pull { font-family: var(--f-guest); font-weight: 900; text-transform: uppercase; font-size: clamp(44px, 5.2vw, 92px); line-height: .95; letter-spacing: -.01em; color: #fff; margin: 14px 0 26px; }
+    .kb-pull i { font-style: normal; color: var(--accent); }
+    .kb-rhythm { list-style: none; margin: 0 0 24px; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+    .kb-rhythm li { position: relative; opacity: .45; transition: opacity var(--t-med) var(--ease); }
+    .kb-rhythm li.is-dark { opacity: 1; outline: 3px solid var(--accent); outline-offset: 2px; }
+    .kb-rhythm img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+    .kb-rhythm span { display: block; margin-top: 6px; font: 700 12px/1 var(--f-guest); color: rgba(255, 255, 255, .7); }
     .kb-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: clamp(28px, 4vw, 48px); border-top: 3px solid var(--ink); padding-top: 18px; }
     .kb-stats b { display: block; font-family: var(--f-guest); font-weight: 900; font-size: clamp(36px, 4vw, 64px); line-height: .9; }
     .kb-stats b em { font-style: normal; color: var(--accent); }
@@ -148,9 +167,9 @@
             <div>
               <p class="lede reveal">A big catalog of firearm-cleaning products, and every listing needed images that explain the product in a few seconds and look like the same brand.</p>
               <div class="kb-stats reveal" style="--d: 100ms">
-                <div><b>60<em>+</em></b><span>listing images designed</span></div>
-                <div><b>~1<em>yr</em></b><span>of refining the system as I went</span></div>
-                <div><b>2000<em>²</em></b><span>pixels, every image</span></div>
+                <div><b><em>60</em>+</b><span>listing images designed</span></div>
+                <div><b><em>~1</em>yr</b><span>of refining the system as I went</span></div>
+                <div><b><em>3</em></b><span>product types on one system: kits, PocKits, brushes</span></div>
               </div>
             </div>
             <div class="reveal" style="--d: 120ms">
@@ -158,7 +177,7 @@
               <ol class="role-list" style="margin-top: 16px;">
                 <li>Designed 60–70 Amazon listing images over about a year, improving the design as I went</li>
                 <li>Built a reusable template system for product families</li>
-                <li>Worked alongside Jayger and went back and forth with the client on feedback</li>
+                <li>Went back and forth with the client on feedback, round after round</li>
                 <li>Designed A+ content for the listings</li>
               </ol>
             </div>
@@ -184,18 +203,25 @@
                     <div class="chips" aria-hidden="true"><span style="background: var(--accent); color: #fff;">RED</span><span style="background: #121212; color: #fff;">BLK</span><span style="background: #fff;">WHT</span><span style="background: #BDBDB8;">CON</span></div>
                   </td></tr>
                   <tr><th>Red is for</th><td>Accents only: the product name and small details. Never whole blocks of text.</td></tr>
-                  <tr><th>Layout</th><td>Layouts vary from image to image inside the system, so a set never feels like one template stamped eight times</td></tr>
+                  <tr><th>Layout</th><td>Layouts vary from image to image inside the system, so a set never feels like one template stamped over and over</td></tr>
                   <tr><th>Families</th><td>Reusable templates for each product family, so a new product starts from a layout that already works</td></tr>
                 </table>
-                <div class="kb-scale" style="margin-top: clamp(28px, 4vw, 48px);" aria-label="Type scale">
-                  <div><span class="s" style="font-weight: 800; font-size: calc(150 * var(--u)); color: var(--accent);">KDS-9</span><span class="meta-s"><b>Title</b>ExtraBold · 150 pt</span></div>
-                  <div><span class="s" style="font-weight: 800; font-size: calc(46 * var(--u)); letter-spacing: .021em;">Quick specs</span><span class="meta-s"><b>Callout header</b>ExtraBold · 46 pt · tracking 21</span></div>
-                  <div><span class="s" style="font-weight: 600; font-size: calc(44 * var(--u)); letter-spacing: .136em;">Pistol cleaning kit</span><span class="meta-s"><b>Subhead</b>SemiBold · 44 pt · tracking 136</span></div>
-                  <div><span class="s" style="font-weight: 500; font-size: calc(32 * var(--u)); text-transform: none;">Fits in a range bag.</span><span class="meta-s"><b>Callout body</b>Medium · 32 pt</span></div>
-                </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TYPE SCALE: set live at the real proportions ----------------------->
+    <section class="section" data-tone="light" aria-labelledby="scale-title" style="padding-top: 0;">
+      <div class="wrap">
+        <div class="kb-sethead"><span class="kb-h" id="scale-title">The type scale</span><span class="label">Montserrat · sizes from the template</span></div>
+        <div class="kb-scale reveal">
+          <div><span class="s" style="font-weight: 800; font-size: calc(180 * var(--u)); color: var(--accent);">KDS-9</span><span class="meta-s"><b>Title</b>ExtraBold · 180 pt</span></div>
+          <div><span class="s" style="font-weight: 800; font-size: calc(54 * var(--u)); letter-spacing: .021em;">Quick specs</span><span class="meta-s"><b>Callout header</b>ExtraBold · 54 pt</span></div>
+          <div><span class="s" style="font-weight: 600; font-size: calc(54 * var(--u)); letter-spacing: .136em; color: #595959;">Pistol cleaning kit</span><span class="meta-s"><b>Subhead</b>SemiBold · 54 pt · tracking +136</span></div>
+          <div><span class="s" style="font-weight: 500; font-size: calc(40 * var(--u)); text-transform: none; color: #595959;">Fits in a range bag.</span><span class="meta-s"><b>Callout body</b>Medium · 40 pt</span></div>
         </div>
       </div>
     </section>
@@ -211,7 +237,8 @@
 
             <div data-gallery>
               <div class="kb-sethead"><span class="kb-h">KDS-9</span><span class="label">6 images</span></div>
-              <div class="kb-set kb-set--6"><div class="slot reveal" data-asset="kb-p1-1" data-zoom style="--d: 0ms"></div><div class="slot reveal" data-asset="kb-p1-2" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="kb-p1-3" data-zoom style="--d: 120ms"></div><div class="slot reveal" data-asset="kb-p1-4" data-zoom style="--d: 0ms"></div><div class="slot reveal" data-asset="kb-p1-5" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="kb-p1-6" data-zoom style="--d: 120ms"></div></div>
+              <div class="kb-set kb-set--6"><div class="slot reveal" data-asset="kb-p1-1" data-zoom style="--d: 0ms"></div><div class="slot reveal" data-ai data-asset="kb-p1-2" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="kb-p1-3" data-zoom style="--d: 120ms"></div><div class="slot reveal" data-asset="kb-p1-4" data-zoom style="--d: 0ms"></div><div class="slot reveal" data-ai data-asset="kb-p1-5" data-zoom style="--d: 60ms"></div><div class="slot reveal" data-asset="kb-p1-6" data-zoom style="--d: 120ms"></div></div>
+              <p class="ai-note"><b>About images 2 and 5:</b> KleenBore didn’t have lifestyle photos for this kit yet, so I made these two with AI image tools to keep the listing moving. The layout, type and callouts are mine, and the photos get swapped for real ones once they come in.</p>
             </div>
             <div data-gallery style="margin-top: clamp(56px, 7vw, 100px);">
               <div class="kb-sethead"><span class="kb-h">POC220</span><span class="label">6 images</span></div>
@@ -234,30 +261,32 @@
 
         <div class="kb-close">
           <div class="inspect reveal"><span class="inspect__tag">Hover to inspect</span><div class="slot" data-asset="kb-close-1"></div></div>
-          <div class="reveal" style="--d: 120ms"><span class="label">01 · Hierarchy · KDS-9</span><p style="margin: 14px 0 0;">The title is read first: big and red. Then “dual system pistol cleaning kit”, then the product, with tags underneath. Body copy is the thinnest thing on the image, so it’s read last.</p></div>
+          <div class="reveal" style="--d: 120ms">
+            <span class="label">01 · Hierarchy · KDS-9</span>
+            <h3 class="kb-close__h">The order you read it in</h3>
+            <ol class="kb-order">
+              <li><span class="n">1</span><span class="t" style="font-size: 1.9em; font-weight: 900; color: var(--accent);">KDS-9</span><span class="w">Biggest, red. Read first.</span></li>
+              <li><span class="n">2</span><span class="t" style="font-size: .95em; font-weight: 600; letter-spacing: .14em;">Dual system pistol cleaning kit</span><span class="w">What it is</span></li>
+              <li><span class="n">3</span><span class="t" style="font-size: .95em; font-weight: 800;">The product + its tags</span><span class="w">What’s inside</span></li>
+              <li><span class="n">4</span><span class="t" style="font-size: .8em; font-weight: 400; text-transform: none; letter-spacing: 0;">Body copy</span><span class="w">Thinnest, read last</span></li>
+            </ol>
+          </div>
         </div>
-        <div class="kb-close" style="margin-top: clamp(56px, 8vw, 120px);">
+        <div class="kb-close" style="margin-top: clamp(70px, 9vw, 140px);">
           <div class="inspect reveal"><span class="inspect__tag">Hover to inspect</span><div class="slot" data-asset="kb-close-2"></div></div>
-          <div class="reveal" style="--d: 120ms"><span class="label">02 · Specs at a glance</span><p class="kb-quote">I wanted to pull out important specs that shoppers needed to know and position it in a way that is easy to glance at and read, and making it fast. Fewer words means more of a chance they keep scrolling.</p></div>
+          <div class="reveal" style="--d: 120ms">
+            <span class="label">02 · Specs at a glance</span>
+            <p class="kb-pull">Easy to glance at. Fast to read<i>.</i></p>
+            <p>I pulled out the specs shoppers actually need and put them where the eye lands. Fewer words means people actually read them, and keep swiping through the rest of the images.</p>
+          </div>
         </div>
-        <div class="kb-close" style="margin-top: clamp(56px, 8vw, 120px);">
-          <div class="inspect reveal"><span class="inspect__tag">Hover to inspect</span><div class="slot" data-asset="kb-close-3"></div></div>
-          <div class="reveal" style="--d: 120ms"><span class="label">03 · Lifestyle</span><p style="margin: 14px 0 0;">A lifestyle photo with dark callout boxes. It breaks up a run of product-on-white images so the set doesn’t feel the same all the way through.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 05 ONE TEMPLATE, MANY PRODUCTS ------------------------------------>
-    <section class="section" data-tone="light" aria-labelledby="fam-title">
-      <div class="wrap">
-        <div class="kb-sec">
-          <div class="kb-sec__no"><b></b>05 · Families</div>
-          <div>
-            <h2 class="kb-h" id="fam-title" style="font-size: clamp(36px, 4.6vw, 80px); margin-bottom: 12px;">One template,<br>four products</h2>
-            <p class="muted" style="max-width: 56ch; margin: 0 0 clamp(32px, 4vw, 56px);">The same image type across four products. The structure stays put; the product, the callouts and the photography change.</p>
-            <div class="kb-family" data-gallery>
-              <div class="slot reveal" data-asset="kb-family-1" data-zoom></div><div class="slot reveal" data-asset="kb-family-2" data-zoom style="--d: 80ms"></div><div class="slot reveal" data-asset="kb-family-3" data-zoom style="--d: 160ms"></div><div class="slot reveal" data-asset="kb-family-4" data-zoom style="--d: 240ms"></div>
-            </div>
+        <div class="kb-close" style="margin-top: clamp(70px, 9vw, 140px);">
+          <div class="inspect reveal"><span class="inspect__tag">Hover to inspect</span><div class="slot" data-ai data-asset="kb-close-3"></div></div>
+          <div class="reveal" style="--d: 120ms">
+            <span class="label">03 · Rhythm</span>
+            <h3 class="kb-close__h">Breaking up the set</h3>
+            <ol class="kb-rhythm" aria-label="KDS-9 set: images 2 and 5 are dark lifestyle images, the rest are light"><li class=""><img src="assets/kleenbore/kds-9-1.webp" alt="" loading="lazy" decoding="async"><span>01</span></li><li class="is-dark"><img src="assets/kleenbore/kds-9-2.webp" alt="" loading="lazy" decoding="async"><span>02</span></li><li class=""><img src="assets/kleenbore/kds-9-3.webp" alt="" loading="lazy" decoding="async"><span>03</span></li><li class=""><img src="assets/kleenbore/kds-9-4.webp" alt="" loading="lazy" decoding="async"><span>04</span></li><li class="is-dark"><img src="assets/kleenbore/kds-9-5.webp" alt="" loading="lazy" decoding="async"><span>05</span></li><li class=""><img src="assets/kleenbore/kds-9-6.webp" alt="" loading="lazy" decoding="async"><span>06</span></li></ol>
+            <p>Two dark lifestyle images with callout boxes sit between the product-on-white ones, so swiping through the set never feels like the same image six times.</p>
           </div>
         </div>
       </div>
@@ -267,7 +296,7 @@
     <section class="section" data-tone="light" aria-labelledby="aplus-title" style="padding-top: 0;">
       <div class="wrap">
         <div class="kb-sec">
-          <div class="kb-sec__no"><b></b>06 · A+</div>
+          <div class="kb-sec__no"><b></b>05 · A+</div>
           <div>
             <h2 class="kb-h" id="aplus-title" style="font-size: clamp(36px, 4.6vw, 80px); margin-bottom: 12px;">A+ content</h2>
             <p class="muted" style="max-width: 56ch; margin: 0 0 clamp(32px, 4vw, 56px);">The modules further down the PocKit listing, read top to bottom the way a shopper scrolls them.</p>
@@ -303,7 +332,7 @@
       <span class="label footer__sign" title="The contour lines on the homepage are this mountain"><span class="coord">39.5826° N 105.6688° W</span> · Mt. Bierstadt, 14,060 ft · My first fourteener</span>
       <ul class="label">
         <li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li>
-        <li><a class="u-line" href="Resume.pdf">Résumé</a></li>
+        <li><a class="u-line" href="Resume.pdf">Resume</a></li>
         <li><a class="u-line" href="#main">Back to top ↑</a></li>
       </ul>
     </div>

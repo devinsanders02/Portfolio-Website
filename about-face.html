@@ -56,6 +56,20 @@
     .af-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(8px, 1vw, 16px); }
     .af-row img { width: 100%; box-shadow: 0 16px 30px -18px rgba(0, 0, 0, .4); }
     @media (max-width: 760px) { .af-row { grid-template-columns: repeat(5, 46vw); overflow-x: auto; scroll-snap-type: x mandatory; } .af-row > * { scroll-snap-align: start; } }
+    .af-lead { font-size: clamp(19px, 1.5vw, 24px); line-height: 1.4; margin: 0; }
+    .af-unlock { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 8px; }
+    .af-unlock li { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; }
+    .af-bar { display: block; width: var(--w); min-width: 52px; background: var(--accent); color: #fff; padding: 8px 10px; transform-origin: 0 50%; }
+    .af-bar b { font-weight: 700; font-size: 14px; letter-spacing: .04em; }
+    .af-unlock li:last-child .af-bar { background: #111; }
+    .af-bar__t { font-size: 14px; color: var(--ink-soft); }
+    .af-unlock__cap { margin: 14px 0 0; font-size: 15px; color: var(--ink-soft); }
+    @media (prefers-reduced-motion: no-preference) {
+      .js .af-unlock .af-bar { transform: scaleX(0); transition: transform 900ms var(--ease); }
+      .js .reveal.is-in .af-unlock .af-bar { transform: none; }
+      .js .af-unlock li:nth-child(2) .af-bar { transition-delay: 100ms; } .js .af-unlock li:nth-child(3) .af-bar { transition-delay: 200ms; }
+      .js .af-unlock li:nth-child(4) .af-bar { transition-delay: 300ms; } .js .af-unlock li:nth-child(5) .af-bar { transition-delay: 400ms; }
+    }
   </style>
 </head>
 <body class="p-af">
@@ -92,8 +106,9 @@
         <h2 class="af-h reveal" style="font-size: clamp(48px, 7vw, 130px);">Less to work<br>with, on purpose.</h2>
         <div class="reveal" style="--d: 120ms">
           <!-- Your existing copy, trimmed. -->
-          <p>A five-part journal series about how much hierarchy, rhythm and tension you can build when the basic typographic variables are locked.</p>
-          <p class="muted" style="margin-top: 1em; font-size: 17px; font-family: var(--f-sans); letter-spacing: 0;">Each issue unlocks one more variable, from a single weight at a single size to full typographic freedom.</p>
+          <p class="af-lead">A five-part journal series about how much hierarchy, rhythm and tension you can build when the basic typographic variables are locked.</p>
+          <ol class="af-unlock" aria-label="Each issue unlocks one more variable"><li style="--w: 20%"><span class="af-bar"><b>01</b></span><span class="af-bar__t">1 weight, 1 size</span></li><li style="--w: 40%"><span class="af-bar"><b>02</b></span><span class="af-bar__t">+ a second size</span></li><li style="--w: 60%"><span class="af-bar"><b>03</b></span><span class="af-bar__t">+ a second weight</span></li><li style="--w: 80%"><span class="af-bar"><b>04</b></span><span class="af-bar__t">+ colour & position</span></li><li style="--w: 100%"><span class="af-bar"><b>05</b></span><span class="af-bar__t">Full freedom</span></li></ol>
+          <p class="af-unlock__cap">Each issue unlocks one more variable.</p>
         </div>
       </div>
     </section>
@@ -130,7 +145,7 @@
     <section class="section tone-dark" data-tone="dark" aria-labelledby="print-title">
       <div class="wrap">
         <span class="label">In print</span>
-        <h2 class="af-h" id="print-title" style="font-size: clamp(44px, 6vw, 110px); color: #fff; margin: 12px 0 clamp(32px, 4vw, 60px);">All five</h2>
+        <h2 class="af-h" id="print-title" style="font-size: clamp(44px, 6vw, 110px); letter-spacing: .01em; color: #fff; margin: 12px 0 clamp(32px, 4vw, 60px);">All five</h2>
       </div>
       <div class="filmstrip" data-gallery style="grid-auto-columns: clamp(280px, 42vw, 720px);">
         <figure><img src="AboutFace/AF-Cover1.webp" alt="Issue 01 printed" loading="lazy" data-lightbox><figcaption>01 · 1 weight · 1 size</figcaption></figure>
@@ -166,7 +181,7 @@
       <span class="label footer__sign" title="The contour lines on the homepage are this mountain"><span class="coord">39.5826° N 105.6688° W</span> · Mt. Bierstadt, 14,060 ft · My first fourteener</span>
       <ul class="label">
         <li><a class="u-line" href="https://www.linkedin.com/in/devin-sanders-6a43a41b6/" rel="noopener">LinkedIn</a></li>
-        <li><a class="u-line" href="Resume.pdf">Résumé</a></li>
+        <li><a class="u-line" href="Resume.pdf">Resume</a></li>
         <li><a class="u-line" href="#main">Back to top ↑</a></li>
       </ul>
     </div>

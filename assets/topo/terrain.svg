@@ -6,8 +6,11 @@
 .tp-lo{stroke:color-mix(in oklab,var(--topo-mid,#d9c4e6) var(--m),var(--topo-low,#bcd3ec))}
 .tp-hi{stroke:color-mix(in oklab,var(--topo-high,#f0c8bf) var(--m),var(--topo-mid,#d9c4e6))}
 .tp-i{stroke-width:calc(var(--topo-width,1.1) * var(--topo-index-weight,1.9))}
-.tp-summit path{fill:var(--topo-label,#2c3e50);stroke:none}
-.tp-summit text{fill:var(--topo-label,#2c3e50);stroke:none;font:500 11px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.12em}
+.tp-summit text{fill:var(--topo-label,#2c3e50);font:700 15px/1 Barlow,system-ui,sans-serif;letter-spacing:.16em;paint-order:stroke;stroke:var(--topo-halo,#f4f5f7);stroke-width:7px;stroke-linejoin:round}
+.tp-dot{fill:var(--topo-mark,#f15b22);stroke:var(--topo-halo,#f4f5f7);stroke-width:3}
+.tp-pulse{fill:none;stroke:var(--topo-mark,#f15b22);stroke-width:1.5;transform-box:fill-box;transform-origin:center;animation:tp-pulse 2.8s ease-out infinite}
+@keyframes tp-pulse{from{transform:scale(1);opacity:.9}to{transform:scale(4.6);opacity:0}}
+@media (prefers-reduced-motion:reduce){.tp-pulse{animation:none;opacity:0}}
 </style>
 <path class="tp-c tp-lo" style="--m:16%;--k:4" pathLength="1" d="M934.2 898.7L935.2 896.8L937.7 896.7L945.2 899.6"/>
 <path class="tp-c tp-lo tp-i" style="--m:20%;--k:5" pathLength="1" d="M905.2 899L902.7 888.2L896.8 868.7L893.5 861.1L892.6 856.1L895 851.1L900.2 847.2L902.7 847.7L912.7 856.3L920.2 858.9L922.7 858.9L927.7 855.9L930.2 855.5L967.8 862.5L970.3 864L977.8 871.5L997.8 883L1016 898.7"/>
@@ -55,5 +58,5 @@
 <path class="tp-c tp-hi" style="--m:92%;--k:47" pathLength="1" d="M1209.1 223.4L1215.8 217.7L1230.1 211.5L1240 209.5L1258.5 202.9L1273 194.2L1283.3 186.8L1284.8 184.6L1284.3 181.3L1277.4 176.8L1261.7 162L1250.9 146L1249.1 144.7L1247.7 145.1L1243.4 151.8L1237.8 156.4L1236.7 165.8L1233.2 171.7L1224.1 180.6L1213 186.7L1207.1 194.1L1203.7 204L1201.4 222.2L1201.9 224.4L1204.1 225.5L1206.6 225.2L1209.1 223.4Z"/>
 <path class="tp-c tp-hi" style="--m:96%;--k:48" pathLength="1" d="M1221.7 206.5L1229.1 203.1L1244.1 200L1260.3 191.6L1269.2 184.4L1269.7 180.8L1255.8 166.6L1253.3 160.6L1250.4 157L1248.1 156.1L1244.9 158.6L1244.3 167L1238.3 177.7L1233.8 182L1222.2 189.5L1218.1 194.3L1215.7 199.4L1214.4 206.5L1215.1 208L1216.6 208.6L1221.7 206.5Z"/>
 <path class="tp-c tp-hi" style="--m:100%;--k:49" pathLength="1" d="M1242.6 191.5L1251.2 187.3L1256.8 182.7L1257 180.8L1253.4 176.5L1250.5 175.8L1248.6 177L1244.2 184.4L1238.2 189.3L1237 191.7L1240.3 192.5L1242.6 191.5Z"/>
-<g class="tp-summit"><path d="M1250 173.5L1256 184.5L1244 184.5Z"/><text x="1264" y="184.5">MT. BIERSTADT  14,060 FT</text></g>
+<g class="tp-summit" transform="translate(1250 180.5)"><circle class="tp-pulse" r="7"/><circle class="tp-dot" r="5.5"/><text x="16" y="5">MT. BIERSTADT · 14,060 FT</text></g>
 </svg>
